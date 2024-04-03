@@ -1,5 +1,6 @@
-validator_keys
 bls_to_execution_changes
+exit_transactions
+validator_keys
 
 # Python testing & linting:
 build/
