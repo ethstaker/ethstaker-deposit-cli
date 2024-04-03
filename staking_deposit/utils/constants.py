@@ -9,6 +9,7 @@ ZERO_BYTES32 = b'\x00' * 32
 
 # Execution-spec constants taken from https://github.com/ethereum/consensus-specs/blob/dev/specs/phase0/beacon-chain.md
 DOMAIN_DEPOSIT = bytes.fromhex('03000000')
+DOMAIN_VOLUNTARY_EXIT = bytes.fromhex('04000000')
 DOMAIN_BLS_TO_EXECUTION_CHANGE = bytes.fromhex('0A000000')
 BLS_WITHDRAWAL_PREFIX = bytes.fromhex('00')
 ETH1_ADDRESS_WITHDRAWAL_PREFIX = bytes.fromhex('01')
@@ -22,6 +23,7 @@ MAX_DEPOSIT_AMOUNT = 2 ** 5 * ETH2GWEI
 WORD_LISTS_PATH = os.path.join('staking_deposit', 'key_handling', 'key_derivation', 'word_lists')
 DEFAULT_VALIDATOR_KEYS_FOLDER_NAME = 'validator_keys'
 DEFAULT_BLS_TO_EXECUTION_CHANGES_FOLDER_NAME = 'bls_to_execution_changes'
+DEFAULT_EXIT_TRANSACTION_FOLDER_NAME = 'exit_transactions'
 
 # Internationalisation constants
 INTL_CONTENT_PATH = os.path.join('staking_deposit', 'intl')
