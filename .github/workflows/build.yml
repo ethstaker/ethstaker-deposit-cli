@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-20.04, macos-12, macos-latest, windows-latest]
+        os: [ubuntu-20.04, macos-13, macos-latest, windows-latest]
         python-version: ["3.12"]
     steps:
       - uses: actions/checkout@v4
@@ -55,7 +55,7 @@ jobs:
           mkdir ${BUILD_FILE_NAME}
           pyinstaller --distpath ./${BUILD_FILE_NAME} ./build_configs/linux/build.spec
       - name: Build with build.spec (macOS amd64)
-        if: ${{ matrix.os == 'macos-12' }}
+        if: ${{ matrix.os == 'macos-13' }}
         run: |
           export BUILD_FILE_NAME=ethstaker_deposit-cli-${SHORT_SHA}-darwin-amd64
           echo "BUILD_FILE_NAME=${BUILD_FILE_NAME}" >> "$GITHUB_ENV"
