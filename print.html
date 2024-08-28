@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="landing.html"><strong aria-hidden="true">1.</strong> Ethstaker Deposit CLI</a></li><li class="chapter-item expanded "><a href="quick_setup.html"><strong aria-hidden="true">2.</strong> Quick Setup</a></li><li class="chapter-item expanded "><a href="new_mnemonic.html"><strong aria-hidden="true">3.</strong> New Mnemonic</a></li><li class="chapter-item expanded "><a href="existing_mnemonic.html"><strong aria-hidden="true">4.</strong> Existing Mnemonic</a></li><li class="chapter-item expanded "><a href="generate_bls_to_execution_change.html"><strong aria-hidden="true">5.</strong> Generate BLS to Execution Change</a></li><li class="chapter-item expanded "><a href="exit_transaction_keystore.html"><strong aria-hidden="true">6.</strong> Exit Transaction Keystore</a></li><li class="chapter-item expanded "><a href="exit_transaction_mnemonic.html"><strong aria-hidden="true">7.</strong> Exit Transaction Mnemonic</a></li><li class="chapter-item expanded "><a href="local_development.html"><strong aria-hidden="true">8.</strong> Local Development</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="landing.html"><strong aria-hidden="true">1.</strong> Ethstaker Deposit CLI</a></li><li class="chapter-item expanded "><a href="quick_setup.html"><strong aria-hidden="true">2.</strong> Quick Setup</a></li><li class="chapter-item expanded "><a href="new_mnemonic.html"><strong aria-hidden="true">3.</strong> New Mnemonic</a></li><li class="chapter-item expanded "><a href="existing_mnemonic.html"><strong aria-hidden="true">4.</strong> Existing Mnemonic</a></li><li class="chapter-item expanded "><a href="generate_bls_to_execution_change.html"><strong aria-hidden="true">5.</strong> Generate BLS to Execution Change</a></li><li class="chapter-item expanded "><a href="exit_transaction_keystore.html"><strong aria-hidden="true">6.</strong> Exit Transaction Keystore</a></li><li class="chapter-item expanded "><a href="exit_transaction_mnemonic.html"><strong aria-hidden="true">7.</strong> Exit Transaction Mnemonic</a></li><li class="chapter-item expanded "><a href="partial_deposit.html"><strong aria-hidden="true">8.</strong> Partial Deposit</a></li><li class="chapter-item expanded "><a href="local_development.html"><strong aria-hidden="true">9.</strong> Local Development</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -230,6 +230,9 @@
 <li>
 <p><strong><a href="exit_transaction_mnemonic.html">exit-transaction-mnemonic</a></strong>: Generate an exit message using the mnemonic of your validators.</p>
 </li>
+<li>
+<p><strong><a href="partial_deposit.html">partial-deposit</a></strong>: Generate a deposit file with an existing validator key. Can be used to initiate a validator or deposit to an existing validator.</p>
+</li>
 </ul>
 <h2 id="canonical-deposit-contract-and-launchpad"><a class="header" href="#canonical-deposit-contract-and-launchpad">Canonical Deposit Contract and Launchpad</a></h2>
 <p>Ethstaker confirms the canonical Ethereum staking deposit contract addresses and launchpad URLs.
@@ -313,6 +316,9 @@ Please be sure that your ETH is deposited only to this deposit contract address,
 </li>
 <li>
 <p><strong><a href="exit_transaction_mnemonic.html">exit-transaction-mnemonic</a></strong>: Generate an exit message using the mnemonic of your validators.</p>
+</li>
+<li>
+<p><strong><a href="partial_deposit.html">partial-deposit</a></strong>: Generate a partial deposit using a validator keystore.</p>
 </li>
 </ul>
 <hr />
@@ -490,6 +496,37 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 </ul>
 <h2 id="example-usage-4"><a class="header" href="#example-usage-4">Example Usage</a></h2>
 <pre><code class="language-sh">./deposit exit-transaction-mnemonic
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="partial-deposit"><a class="header" href="#partial-deposit">partial-deposit</a></h1>
+<div class="warning">
+Including sensitive arguments when executing CLI commands poses a security risk, as these values can be accessible through disk and shell history. This exposure can allow other users, including admins and malicious actors, to gain access to sensitive information, putting your funds at risk.
+</div>
+<h2 id="description-5"><a class="header" href="#description-5">Description</a></h2>
+<p>Creates a deposit file with an existing validator key. Can be used to initiate a validator or deposit to an existing validator.
+If you wish to create a validator with 0x00 credentials, you must use the <strong><a href="new_mnemonic.html">new-mnemonic</a></strong> or the <strong><a href="existing_mnemonic.html">existing-mnemonic</a></strong> command.</p>
+<h2 id="optional-arguments-5"><a class="header" href="#optional-arguments-5">Optional Arguments</a></h2>
+<ul>
+<li>
+<p><strong><code>--chain</code></strong>: The chain to use for generating the deposit data. Options are: 'mainnet', 'holesky', etc.</p>
+</li>
+<li>
+<p><strong><code>--keystore</code></strong>: The keystore file associating with the validator you wish to deposit to.</p>
+</li>
+<li>
+<p><strong><code>--keystore_password</code></strong>: The password that is used to encrypt the provided keystore. Note: It's not your mnemonic password. <span class="warning"></span></p>
+</li>
+<li>
+<p><strong><code>--amount</code></strong>: The amount you wish to deposit in ether. Must be at least 1 and can not have precision beyond 1 gwei. Defaults to 32 ether.</p>
+</li>
+<li>
+<p><strong><code>--withdrawal_address</code></strong>: The withdrawal address of the existing validator or the desired withdrawal address.</p>
+</li>
+<li>
+<p><strong><code>--output_folder</code></strong>: The folder path for the <code>deposit-*</code> JSON file.</p>
+</li>
+</ul>
+<h2 id="example-usage-5"><a class="header" href="#example-usage-5">Example Usage</a></h2>
+<pre><code class="language-sh">./deposit partial-deposit --keystore /path/to/keystore.json
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="local-development-instructions"><a class="header" href="#local-development-instructions">Local Development Instructions</a></h1>
 <p>To install the <code>ethstaker-deposit-cli</code>, follow these steps:</p>

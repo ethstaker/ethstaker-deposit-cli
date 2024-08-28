@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Existing Mnemonic</title>
+        <title>Partial Deposit</title>
 
 
         <!-- Custom HTML head -->
@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="landing.html"><strong aria-hidden="true">1.</strong> Ethstaker Deposit CLI</a></li><li class="chapter-item expanded "><a href="quick_setup.html"><strong aria-hidden="true">2.</strong> Quick Setup</a></li><li class="chapter-item expanded "><a href="new_mnemonic.html"><strong aria-hidden="true">3.</strong> New Mnemonic</a></li><li class="chapter-item expanded "><a href="existing_mnemonic.html" class="active"><strong aria-hidden="true">4.</strong> Existing Mnemonic</a></li><li class="chapter-item expanded "><a href="generate_bls_to_execution_change.html"><strong aria-hidden="true">5.</strong> Generate BLS to Execution Change</a></li><li class="chapter-item expanded "><a href="exit_transaction_keystore.html"><strong aria-hidden="true">6.</strong> Exit Transaction Keystore</a></li><li class="chapter-item expanded "><a href="exit_transaction_mnemonic.html"><strong aria-hidden="true">7.</strong> Exit Transaction Mnemonic</a></li><li class="chapter-item expanded "><a href="partial_deposit.html"><strong aria-hidden="true">8.</strong> Partial Deposit</a></li><li class="chapter-item expanded "><a href="local_development.html"><strong aria-hidden="true">9.</strong> Local Development</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="landing.html"><strong aria-hidden="true">1.</strong> Ethstaker Deposit CLI</a></li><li class="chapter-item expanded "><a href="quick_setup.html"><strong aria-hidden="true">2.</strong> Quick Setup</a></li><li class="chapter-item expanded "><a href="new_mnemonic.html"><strong aria-hidden="true">3.</strong> New Mnemonic</a></li><li class="chapter-item expanded "><a href="existing_mnemonic.html"><strong aria-hidden="true">4.</strong> Existing Mnemonic</a></li><li class="chapter-item expanded "><a href="generate_bls_to_execution_change.html"><strong aria-hidden="true">5.</strong> Generate BLS to Execution Change</a></li><li class="chapter-item expanded "><a href="exit_transaction_keystore.html"><strong aria-hidden="true">6.</strong> Exit Transaction Keystore</a></li><li class="chapter-item expanded "><a href="exit_transaction_mnemonic.html"><strong aria-hidden="true">7.</strong> Exit Transaction Mnemonic</a></li><li class="chapter-item expanded "><a href="partial_deposit.html" class="active"><strong aria-hidden="true">8.</strong> Partial Deposit</a></li><li class="chapter-item expanded "><a href="local_development.html"><strong aria-hidden="true">9.</strong> Local Development</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -173,55 +173,47 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="existing-mnemonic"><a class="header" href="#existing-mnemonic">existing-mnemonic</a></h1>
+                        <h1 id="partial-deposit"><a class="header" href="#partial-deposit">partial-deposit</a></h1>
 <div class="warning">
 Including sensitive arguments when executing CLI commands poses a security risk, as these values can be accessible through disk and shell history. This exposure can allow other users, including admins and malicious actors, to gain access to sensitive information, putting your funds at risk.
 </div>
 <h2 id="description"><a class="header" href="#description">Description</a></h2>
-<p>Uses an existing BIP-39 mnemonic phrase for key generation.</p>
+<p>Creates a deposit file with an existing validator key. Can be used to initiate a validator or deposit to an existing validator.
+If you wish to create a validator with 0x00 credentials, you must use the <strong><a href="new_mnemonic.html">new-mnemonic</a></strong> or the <strong><a href="existing_mnemonic.html">existing-mnemonic</a></strong> command.</p>
 <h2 id="optional-arguments"><a class="header" href="#optional-arguments">Optional Arguments</a></h2>
 <ul>
 <li>
-<p><strong><code>--chain</code></strong>: The chain to use for generating the deposit data. Options are: 'mainnet', 'holesky', etc...</p>
+<p><strong><code>--chain</code></strong>: The chain to use for generating the deposit data. Options are: 'mainnet', 'holesky', etc.</p>
 </li>
 <li>
-<p><strong><code>--mnemonic</code></strong>: The mnemonic you used to create withdrawal credentials. <span class="warning"></span></p>
-</li>
-<li>
-<p><strong><code>--mnemonic_password</code></strong>: The mnemonic password you used in your key generation. Note: It's not the keystore password. <span class="warning"></span></p>
-</li>
-<li>
-<p><strong><code>--validator_start_index</code></strong>: The index of the first validator's keys you wish to generate. If this is your first time generating keys with this mnemonic, use 0. If you have generated keys using this mnemonic before, use the next index from which you want to start generating keys from. As an example if you've generated 4 keys before (keys #0, #1, #2, #3), then enter 4 here.</p>
-</li>
-<li>
-<p><strong><code>--num_validators</code></strong>: Number of validators to create.</p>
+<p><strong><code>--keystore</code></strong>: The keystore file associating with the validator you wish to deposit to.</p>
 </li>
 <li>
 <p><strong><code>--keystore_password</code></strong>: The password that is used to encrypt the provided keystore. Note: It's not your mnemonic password. <span class="warning"></span></p>
 </li>
 <li>
-<p><strong><code>--withdrawal_address</code></strong>: The Ethereum execution address for validator withdrawals.</p>
+<p><strong><code>--amount</code></strong>: The amount you wish to deposit in ether. Must be at least 1 and can not have precision beyond 1 gwei. Defaults to 32 ether.</p>
 </li>
 <li>
-<p><strong><code>--pbkdf2</code></strong>: Will use pbkdf2 key derivation instead of scrypt for generated keystore files as defined in <a href="https://eips.ethereum.org/EIPS/eip-2335#decryption-key">EIP-2335</a>. This can be a good alternative if you intend to work with a large number of keys, as it can improve performance however it is less secure. You should only use this option if you understand the associated risks and have familiarity with encryption.</p>
+<p><strong><code>--withdrawal_address</code></strong>: The withdrawal address of the existing validator or the desired withdrawal address.</p>
 </li>
 <li>
-<p><strong><code>--folder</code></strong>: The folder where keystore and deposit data files will be saved.</p>
+<p><strong><code>--output_folder</code></strong>: The folder path for the <code>deposit-*</code> JSON file.</p>
 </li>
 </ul>
 <h2 id="example-usage"><a class="header" href="#example-usage">Example Usage</a></h2>
-<pre><code class="language-sh">./deposit existing-mnemonic
+<pre><code class="language-sh">./deposit partial-deposit --keystore /path/to/keystore.json
 </code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="new_mnemonic.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="exit_transaction_mnemonic.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="generate_bls_to_execution_change.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="local_development.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -231,11 +223,11 @@ Including sensitive arguments when executing CLI commands poses a security risk,
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="new_mnemonic.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="exit_transaction_mnemonic.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="generate_bls_to_execution_change.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="local_development.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
