@@ -196,9 +196,12 @@
 </li>
 <li>
 <p><strong>Setup virtualenv (optional)</strong></p>
-<pre><code class="language-sh">pip3 install virtualenv
-virtualenv venv
-.\venv\Scripts\activate
+<p>Install <code>venv</code> if not already installed, e.g. for Debian/Ubuntu:</p>
+<pre><code class="language-sh">sudo apt update &amp;&amp; sudo apt install python3-venv
+</code></pre>
+<p>Create a new <a href="https://docs.python.org/3/library/venv.html">virtual environment</a>:</p>
+<pre><code class="language-sh">python3 -m venv .venv
+source .venv/bin/activate
 </code></pre>
 </li>
 <li>
@@ -210,6 +213,15 @@ virtualenv venv
 <p><strong>Run the CLI</strong></p>
 <p>You can now run the CLI tool using the following command:</p>
 <pre><code class="language-sh">python3 -m ethstaker_deposit [OPTIONS] COMMAND [ARGS]
+</code></pre>
+</li>
+<li>
+<p><strong>Use pre-commit for PRs</strong></p>
+<p>Install <code>pre-commit</code> if not already installed, e.g. for Debian/Ubuntu:</p>
+<pre><code class="language-sh">sudo apt update &amp;&amp; sudo apt install pre-commit
+</code></pre>
+<p>Enable it for your <code>git commit</code> workflow:</p>
+<pre><code class="language-sh">pre-commit install
 </code></pre>
 </li>
 </ol>
