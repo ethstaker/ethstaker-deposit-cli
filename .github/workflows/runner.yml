@@ -44,10 +44,10 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, ubuntu-24.04-arm64, macos-13, macos-latest, windows-latest]
-        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13.0-rc.1"]
+        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13.0-rc.2"]
         exclude:
           - os: ubuntu-24.04-arm64
-            python-version: "3.13.0-rc.1"
+            python-version: "3.13.0-rc.2"
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
