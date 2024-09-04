@@ -22,15 +22,20 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 'Comment on PR'
-        uses: actions/github-script@v3
+        uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             var fs = require('fs');
-            var issue_number = Number(fs.readFileSync('./issue_number'));
+            const issueNumberPath = './issue_number'
+            if (!fs.existsSync(issueNumberPath)) {
+              console.log("Coverage artifacts were not downloaded, succeeding early");
+              return;
+            }
+            var issueNumber = Number(fs.readFileSync(issueNumberPath));
             await github.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue_number: issue_number,
+              issue_number: issueNumber,
               body: fs.readFileSync('./coverage-text-report').toString()
             });
