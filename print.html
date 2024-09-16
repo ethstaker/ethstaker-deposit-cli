@@ -222,7 +222,7 @@
 <p><strong><a href="existing_mnemonic.html">existing-mnemonic</a></strong>: Provide a mnemonic to regenerate validator keys or create new ones.</p>
 </li>
 <li>
-<p><strong><a href="generate_bls_to_execution_change.html">generate-bls-to-execution-change</a></strong>: Update your withdrawal credentials of existing validators. It is <strong>required</strong> to have the corresponding mnemonic.</p>
+<p><strong><a href="generate_bls_to_execution_change.html">generate-bls-to-execution-change</a></strong>: Add a withdrawal address to a validator that does not currently have one. It is <strong>required</strong> to have the corresponding mnemonic.</p>
 </li>
 <li>
 <p><strong><a href="generate_bls_to_execution_change_keystore.html">generate-bls-to-execution-change-keystore</a></strong>: Sign an update withdrawal credentials message using your validator keystore.</p>
@@ -350,7 +350,7 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 <p><strong><code>--keystore_password</code></strong>: The password that is used to encrypt the provided keystore. Note: It's not your mnemonic password. <span class="warning"></span></p>
 </li>
 <li>
-<p><strong><code>--withdrawal_address</code></strong>: The Ethereum execution address for validator withdrawals.</p>
+<p><strong><code>--withdrawal_address</code></strong>: The Ethereum address that will be used in withdrawal. It typically starts with '0x' followed by 40 hexadecimal characters. Please make sure you have full control over the address you choose here. Once you set a withdrawal address on chain, it cannot be changed.</p>
 </li>
 <li>
 <p><strong><code>--pbkdf2</code></strong>: Will use pbkdf2 key derivation instead of scrypt for generated keystore files as defined in <a href="https://eips.ethereum.org/EIPS/eip-2335#decryption-key">EIP-2335</a>. This can be a good alternative if you intend to work with a large number of keys, as it can improve performance however it is less secure. You should only use this option if you understand the associated risks and have familiarity with encryption.</p>
@@ -394,7 +394,7 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 <p><strong><code>--keystore_password</code></strong>: The password that is used to encrypt the provided keystore. Note: It's not your mnemonic password. <span class="warning"></span></p>
 </li>
 <li>
-<p><strong><code>--withdrawal_address</code></strong>: The Ethereum execution address for validator withdrawals.</p>
+<p><strong><code>--withdrawal_address</code></strong>: The Ethereum address that will be used in withdrawal. It typically starts with '0x' followed by 40 hexadecimal characters. Please make sure you have full control over the address you choose here. Once you set a withdrawal address on chain, it cannot be changed.</p>
 </li>
 <li>
 <p><strong><code>--pbkdf2</code></strong>: Will use pbkdf2 key derivation instead of scrypt for generated keystore files as defined in <a href="https://eips.ethereum.org/EIPS/eip-2335#decryption-key">EIP-2335</a>. This can be a good alternative if you intend to work with a large number of keys, as it can improve performance however it is less secure. You should only use this option if you understand the associated risks and have familiarity with encryption.</p>
@@ -441,7 +441,7 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 <p><strong><code>--bls_withdrawal_credentials_list</code></strong>: A list of the old BLS withdrawal credentials of the given validator(s). It is for confirming you are using the correct keys. Split multiple items with whitespaces or commas.</p>
 </li>
 <li>
-<p><strong><code>--withdrawal_address</code></strong>: If this field is set and valid, the given Ethereum execution address will be used to create the withdrawal credentials. Otherwise it will generate withdrawal credentials with the mnemonic-derived withdrawal public key.</p>
+<p><strong><code>--withdrawal_address</code></strong>: The Ethereum address that will be used in withdrawal. It typically starts with '0x' followed by 40 hexadecimal characters. Please make sure you have full control over the address you choose here. Once you set a withdrawal address on chain, it cannot be changed.</p>
 </li>
 <li>
 <p><strong><code>--devnet_chain_setting</code></strong>: The custom chain setting of a devnet or testnet. Note that it will override your <code>--chain</code> choice. This should be a JSON string containing an object with the following keys: network_name, genesis_fork_version, exit_fork_version and genesis_validator_root.</p>
