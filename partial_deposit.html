@@ -200,6 +200,9 @@ If you wish to create a validator with 0x00 credentials, you must use the <stron
 <li>
 <p><strong><code>--output_folder</code></strong>: The folder path for the <code>deposit-*</code> JSON file.</p>
 </li>
+<li>
+<p><strong><code>--devnet_chain_setting</code></strong>: The custom chain setting of a devnet or testnet. Note that it will override your <code>--chain</code> choice. This should be a JSON string containing an object with the following keys: network_name, genesis_fork_version, exit_fork_version and genesis_validator_root.</p>
+</li>
 </ul>
 <h2 id="output-file"><a class="header" href="#output-file">Output file</a></h2>
 <p>A successful call to this command will result in one <a href="deposit_data_file.html">deposit data file</a> created.</p>

@@ -206,7 +206,7 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 <p><strong><code>--withdrawal_address</code></strong>: If this field is set and valid, the given Ethereum execution address will be used to create the withdrawal credentials. Otherwise it will generate withdrawal credentials with the mnemonic-derived withdrawal public key.</p>
 </li>
 <li>
-<p><strong><code>--devnet_chain_setting</code></strong>: The custom chain setting of a devnet or testnet. Note that it will override your <code>--chain</code> choice.</p>
+<p><strong><code>--devnet_chain_setting</code></strong>: The custom chain setting of a devnet or testnet. Note that it will override your <code>--chain</code> choice. This should be a JSON string containing an object with the following keys: network_name, genesis_fork_version, exit_fork_version and genesis_validator_root.</p>
 </li>
 </ul>
 <h2 id="example-usage"><a class="header" href="#example-usage">Example Usage</a></h2>
