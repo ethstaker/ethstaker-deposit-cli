@@ -353,7 +353,7 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 <p><strong><code>--withdrawal_address</code></strong>: The Ethereum address that will be used in withdrawal. It typically starts with '0x' followed by 40 hexadecimal characters. Please make sure you have full control over the address you choose here. Once you set a withdrawal address on chain, it cannot be changed.</p>
 </li>
 <li>
-<p><strong><code>--pbkdf2</code></strong>: Will use pbkdf2 key derivation instead of scrypt for generated keystore files as defined in <a href="https://eips.ethereum.org/EIPS/eip-2335#decryption-key">EIP-2335</a>. This can be a good alternative if you intend to work with a large number of keys, as it can improve performance however it is less secure. You should only use this option if you understand the associated risks and have familiarity with encryption.</p>
+<p><strong><code>--pbkdf2</code></strong>: Will use pbkdf2 key encryption instead of scrypt for generated keystore files as defined in <a href="https://eips.ethereum.org/EIPS/eip-2335#decryption-key">EIP-2335</a>. This can be a good alternative if you intend to work with a large number of keys, as it can improve performance. pbkdf2 encryption is, however, less secure than scrypt. You should only use this option if you understand the associated risks and have familiarity with encryption.</p>
 </li>
 <li>
 <p><strong><code>--folder</code></strong>: The folder where keystore and deposit data files will be saved.</p>
@@ -367,6 +367,8 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 <h2 id="example-usage"><a class="header" href="#example-usage">Example Usage</a></h2>
 <pre><code class="language-sh">./deposit new-mnemonic
 </code></pre>
+<h2 id="note"><a class="header" href="#note">Note</a></h2>
+<p>The newly generated mnemonic <strong>must</strong> be written down, on a piece of paper or transferred to steel. The clipboard is cleared when this command finishes. If the mnemonic is lost and the validator does not have a withdrawal address, funds <strong>cannot</strong> be recovered.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="existing-mnemonic"><a class="header" href="#existing-mnemonic">existing-mnemonic</a></h1>
 <div class="warning">
 Including sensitive arguments when executing CLI commands poses a security risk, as these values can be accessible through disk and shell history. This exposure can allow other users, including admins and malicious actors, to gain access to sensitive information, putting your funds at risk.
