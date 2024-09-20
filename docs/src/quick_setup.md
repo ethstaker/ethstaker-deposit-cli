@@ -2,9 +2,14 @@
 
 This guide will walk you through the steps to download and set up the `ethstaker-deposit-cli` for your operating system.
 
+**Build requirements**
+
+- [Python **3.9+**](https://www.python.org/about/gettingstarted/)
+- [pip3](https://pip.pypa.io/en/stable/installing/)
+
 ## Step 1: Download the Latest Release
 
-### Option 1: Download binary executable file
+### Download binary executable file
 
 1. Navigate to the [Releases page](https://github.com/eth-educators/ethstaker-deposit-cli/releases) of the `ethstaker-deposit-cli` repository.
 
