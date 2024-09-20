@@ -2,6 +2,7 @@
 
 - [Ethstaker Deposit CLI](landing.md)
 - [Quick Setup](quick_setup.md)
+- [Other Install Options](other_install_options.md)
 
 # Commands
 

@@ -4,6 +4,8 @@ This guide will walk you through the steps to download and set up the `ethstaker
 
 ## Step 1: Download the Latest Release
 
+### Option 1: Download binary executable file
+
 1. Navigate to the [Releases page](https://github.com/eth-educators/ethstaker-deposit-cli/releases) of the `ethstaker-deposit-cli` repository.
 
 2. Download the corresponding file for your operating system:
@@ -14,6 +16,8 @@ This guide will walk you through the steps to download and set up the `ethstaker
 3. Extract the contents of the zipped file
 
 4. Open a terminal or command prompt and navigate to the extracted folder
+
+For other installation options, including building with python or virtualenv and docker image instructions, go [here](other_install_options.md)
 
 
 ## Step 2: Verify the Installation
@@ -37,6 +41,8 @@ gpg --verify staking_deposit-cli-***.asc staking_deposit-cli-***
 **Windows users:** You should replace `./deposit` with `deposit.exe` to run properly.
 
 **MacOS users:** In order to run from the terminal, you must first open the file to bypass MacOS code signing issues. Do so by right clicking the `deposit` file and then selecting `Open`.
+
+**Linux users:** On Unix-based systems, keystores and the deposit_data*.json have 440/-r--r----- file permissions (user & group read only). This improves security by limiting which users and processes that have access to these files. If you are getting permission denied errors when handling your keystores, consider changing which user/group owns the file (with chown) or, if need be, change the file permissions with chmod.
 
 Determine which command best suites what you would like to accomplish:
 
