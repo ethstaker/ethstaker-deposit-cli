@@ -18,7 +18,8 @@
 
 - [Keystore](keystore_file.md)
 - [Deposit Data](deposit_data_file.md)
-- [BLS to execution change](bls_to_execution_change_file.md)
+- [BLS to Execution Change](bls_to_execution_change_file.md)
+- [Signed Exit Transaction](signed_exit_transaction_file.md)
 
 # Development
 

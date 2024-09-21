@@ -26,7 +26,7 @@ Generates a BLS to execution address change message. This is used to add a withd
 - **`--devnet_chain_setting`**: The custom chain setting of a devnet or testnet. Note that it will override your `--chain` choice. This should be a JSON string containing an object with the following keys: network_name, genesis_fork_version, exit_fork_version and genesis_validator_root.
 
 ## Output files
-A successful call to this command will result in one [BLS to execution change file](bls_to_execution_change_file.md) created.
+A successful call to this command will result in one [BLS to Execution Change file](bls_to_execution_change_file.md) created.
 
 ## Example Usage
 
