@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="landing.html"><strong aria-hidden="true">1.</strong> Ethstaker Deposit CLI</a></li><li class="chapter-item expanded "><a href="quick_setup.html"><strong aria-hidden="true">2.</strong> Quick Setup</a></li><li class="chapter-item expanded affix "><li class="part-title">Commands</li><li class="chapter-item expanded "><a href="new_mnemonic.html"><strong aria-hidden="true">3.</strong> New Mnemonic</a></li><li class="chapter-item expanded "><a href="existing_mnemonic.html"><strong aria-hidden="true">4.</strong> Existing Mnemonic</a></li><li class="chapter-item expanded "><a href="generate_bls_to_execution_change.html"><strong aria-hidden="true">5.</strong> Generate BLS to Execution Change</a></li><li class="chapter-item expanded "><a href="exit_transaction_keystore.html"><strong aria-hidden="true">6.</strong> Exit Transaction Keystore</a></li><li class="chapter-item expanded "><a href="exit_transaction_mnemonic.html"><strong aria-hidden="true">7.</strong> Exit Transaction Mnemonic</a></li><li class="chapter-item expanded "><a href="partial_deposit.html"><strong aria-hidden="true">8.</strong> Partial Deposit</a></li><li class="chapter-item expanded "><a href="test_keystore.html"><strong aria-hidden="true">9.</strong> Test Keystore</a></li><li class="chapter-item expanded affix "><li class="part-title">File formats</li><li class="chapter-item expanded "><a href="keystore_file.html"><strong aria-hidden="true">10.</strong> Keystore</a></li><li class="chapter-item expanded "><a href="deposit_data_file.html"><strong aria-hidden="true">11.</strong> Deposit Data</a></li><li class="chapter-item expanded "><a href="bls_to_execution_change_file.html"><strong aria-hidden="true">12.</strong> BLS to execution change</a></li><li class="chapter-item expanded affix "><li class="part-title">Development</li><li class="chapter-item expanded "><a href="local_development.html"><strong aria-hidden="true">13.</strong> Local Development</a></li><li class="chapter-item expanded "><a href="release_process.html"><strong aria-hidden="true">14.</strong> Release Process</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="landing.html"><strong aria-hidden="true">1.</strong> Ethstaker Deposit CLI</a></li><li class="chapter-item expanded "><a href="quick_setup.html"><strong aria-hidden="true">2.</strong> Quick Setup</a></li><li class="chapter-item expanded affix "><li class="part-title">Commands</li><li class="chapter-item expanded "><a href="new_mnemonic.html"><strong aria-hidden="true">3.</strong> New Mnemonic</a></li><li class="chapter-item expanded "><a href="existing_mnemonic.html"><strong aria-hidden="true">4.</strong> Existing Mnemonic</a></li><li class="chapter-item expanded "><a href="generate_bls_to_execution_change.html"><strong aria-hidden="true">5.</strong> Generate BLS to Execution Change</a></li><li class="chapter-item expanded "><a href="exit_transaction_keystore.html"><strong aria-hidden="true">6.</strong> Exit Transaction Keystore</a></li><li class="chapter-item expanded "><a href="exit_transaction_mnemonic.html"><strong aria-hidden="true">7.</strong> Exit Transaction Mnemonic</a></li><li class="chapter-item expanded "><a href="partial_deposit.html"><strong aria-hidden="true">8.</strong> Partial Deposit</a></li><li class="chapter-item expanded "><a href="test_keystore.html"><strong aria-hidden="true">9.</strong> Test Keystore</a></li><li class="chapter-item expanded affix "><li class="part-title">File formats</li><li class="chapter-item expanded "><a href="keystore_file.html"><strong aria-hidden="true">10.</strong> Keystore</a></li><li class="chapter-item expanded "><a href="deposit_data_file.html"><strong aria-hidden="true">11.</strong> Deposit Data</a></li><li class="chapter-item expanded "><a href="bls_to_execution_change_file.html"><strong aria-hidden="true">12.</strong> BLS to Execution Change</a></li><li class="chapter-item expanded "><a href="signed_exit_transaction_file.html"><strong aria-hidden="true">13.</strong> Signed Exit Transaction</a></li><li class="chapter-item expanded affix "><li class="part-title">Development</li><li class="chapter-item expanded "><a href="local_development.html"><strong aria-hidden="true">14.</strong> Local Development</a></li><li class="chapter-item expanded "><a href="release_process.html"><strong aria-hidden="true">15.</strong> Release Process</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -450,7 +450,7 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 </li>
 </ul>
 <h2 id="output-files-2"><a class="header" href="#output-files-2">Output files</a></h2>
-<p>A successful call to this command will result in one <a href="bls_to_execution_change_file.html">BLS to execution change file</a> created.</p>
+<p>A successful call to this command will result in one <a href="bls_to_execution_change_file.html">BLS to Execution Change file</a> created.</p>
 <h2 id="example-usage-2"><a class="header" href="#example-usage-2">Example Usage</a></h2>
 <pre><code class="language-sh">./deposit generate-bls-to-execution-change
 </code></pre>
@@ -484,6 +484,8 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 <p><strong><code>--devnet_chain_setting</code></strong>: The custom chain setting of a devnet or testnet. Note that it will override your <code>--chain</code> choice. This should be a JSON string containing an object with the following keys: network_name, genesis_fork_version, exit_fork_version and genesis_validator_root.</p>
 </li>
 </ul>
+<h2 id="output-files-3"><a class="header" href="#output-files-3">Output files</a></h2>
+<p>A successful call to this command will result in one <a href="signed_exit_transaction_file.html">Signed Exit Transaction file</a> created.</p>
 <h2 id="example-usage-3"><a class="header" href="#example-usage-3">Example Usage</a></h2>
 <pre><code class="language-sh">./deposit exit-transaction-keystore --keystore /path/to/keystore.json
 </code></pre>
@@ -520,6 +522,8 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 <p><strong><code>--devnet_chain_setting</code></strong>: The custom chain setting of a devnet or testnet. Note that it will override your <code>--chain</code> choice. This should be a JSON string containing an object with the following keys: network_name, genesis_fork_version, exit_fork_version and genesis_validator_root.</p>
 </li>
 </ul>
+<h2 id="output-files-4"><a class="header" href="#output-files-4">Output files</a></h2>
+<p>A successful call to this command will result in one or more <a href="signed_exit_transaction_file.html">Signed Exit Transaction files</a> created.</p>
 <h2 id="example-usage-4"><a class="header" href="#example-usage-4">Example Usage</a></h2>
 <pre><code class="language-sh">./deposit exit-transaction-mnemonic
 </code></pre>
@@ -635,9 +639,9 @@ Including sensitive arguments when executing CLI commands poses a security risk,
   }
 ]
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="bls-to-execution-change-file"><a class="header" href="#bls-to-execution-change-file">BLS to execution change file</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="bls-to-execution-change-file"><a class="header" href="#bls-to-execution-change-file">BLS to Execution Change file</a></h1>
 <p>A BLS to execution change file is created when calling the <strong><a href="generate_bls_to_execution_change.html">generate-bls-to-execution-change</a></strong> command.</p>
-<p>The BLS to execution change file is a JSON file. It contains a list of messages to change the withdrawal credentials for one or many validators. The format of the BLS to execution change file is loosly based on the input for the POST <code>/eth/v1/beacon/pool/bls_to_execution_changes</code> <a href="https://ethereum.github.io/beacon-APIs/#/Beacon/submitPoolBLSToExecutionChange">API endpoint</a> as defined by <a href="https://github.com/ethereum/beacon-APIs">the Ethereum Beacon APIs</a>. Part of this content is based on the <a href="https://github.com/ethereum/consensus-specs/blob/v1.3.0/specs/capella/beacon-chain.md#signedblstoexecutionchange">SignedBLSToExecutionChange</a> container as defined in the <a href="https://github.com/ethereum/consensus-specs/">Ethereum Consensus Specifications</a>.</p>
+<p>The BLS to execution change file is a JSON file. It contains a list of messages to change the withdrawal credentials for one or many validators. The format of the BLS to execution change file is loosly based on the input for the POST <code>/eth/v1/beacon/pool/bls_to_execution_changes</code> <a href="https://ethereum.github.io/beacon-APIs/#/Beacon/submitPoolBLSToExecutionChange">API endpoint</a> as defined by <a href="https://github.com/ethereum/beacon-APIs">the Ethereum Beacon APIs</a>. Part of this content is based on the <a href="https://github.com/ethereum/consensus-specs/blob/dev/specs/capella/beacon-chain.md#signedblstoexecutionchange">SignedBLSToExecutionChange</a> container as defined in the <a href="https://github.com/ethereum/consensus-specs/">Ethereum Consensus Specifications</a>.</p>
 <h2 id="broadcasting"><a class="header" href="#broadcasting">Broadcasting</a></h2>
 <p>If you have access to a beacon node client running on your target network, you can publish these messages simply by calling the POST <code>/eth/v1/beacon/pool/bls_to_execution_changes</code> <a href="https://ethereum.github.io/beacon-APIs/#/Beacon/submitPoolBLSToExecutionChange">API endpoint</a> and passing the content of the BLS to execution change file as the payload. You can also use <a href="https://beaconcha.in/tools/broadcast">the Beaconcha.in Broadcast Signed Messages tool</a> which might be easier for most users.</p>
 <h2 id="example-1"><a class="header" href="#example-1">Example</a></h2>
@@ -656,6 +660,20 @@ Including sensitive arguments when executing CLI commands poses a security risk,
     }
   }
 ]
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="signed-exit-transaction-file"><a class="header" href="#signed-exit-transaction-file">Signed Exit Transaction file</a></h1>
+<p>A signed exit transaction file is created when calling the <strong><a href="exit_transaction_keystore.html">exit-transaction-keystore</a></strong> or the <strong><a href="exit_transaction_mnemonic.html">exit-transaction-mnemonic</a></strong> command.</p>
+<p>The signed exit transaction file is a JSON file. It contains a single message to exit a validator. The format of the signed exit transaction file is loosly based on the input for the POST <code>/eth/v1/beacon/pool/voluntary_exits</code> <a href="https://ethereum.github.io/beacon-APIs/#/Beacon/submitPoolVoluntaryExit">API endpoint</a> as defined by <a href="https://github.com/ethereum/beacon-APIs">the Ethereum Beacon APIs</a>. Part of this content is based on the <a href="https://github.com/ethereum/consensus-specs/blob/dev/specs/phase0/beacon-chain.md#signedvoluntaryexit">SignedVoluntaryExit</a> signed envelope as defined in the <a href="https://github.com/ethereum/consensus-specs/">Ethereum Consensus Specifications</a>.</p>
+<h2 id="broadcasting-1"><a class="header" href="#broadcasting-1">Broadcasting</a></h2>
+<p>If you have access to a beacon node client running on your target network, you can publish this message simply by calling the POST <code>/eth/v1/beacon/pool/voluntary_exits</code> <a href="https://ethereum.github.io/beacon-APIs/#/Beacon/submitPoolVoluntaryExit">API endpoint</a> and passing the content of the signed exit transaction file as the payload. You can also use <a href="https://beaconcha.in/tools/broadcast">the Beaconcha.in Broadcast Signed Messages tool</a> which might be easier for most users.</p>
+<h2 id="example-2"><a class="header" href="#example-2">Example</a></h2>
+<pre><code class="language-JSON">{
+  "message":{
+    "epoch":"0",
+    "validator_index":"1804776"
+  },
+  "signature":"0x97fa465cf1081755002e35fab245bd2872381b07cbfa4df245a13e3834aba83a347f5c2a36a34760e9fcc754dd862de700d103b1cb0d5d9ce293242ebf9ad44a6073e5c4794424428a8f983513d88e6ff6ddccbde7b3e0ea43554a0b856f3199"
+}
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="local-development-instructions"><a class="header" href="#local-development-instructions">Local Development Instructions</a></h1>
 <p>To install the <code>ethstaker-deposit-cli</code>, follow these steps:</p>
