@@ -19,3 +19,16 @@ Please read [Launchpad Validator FAQs](https://launchpad.ethereum.org/faq#keys) 
 
 You can find the audit report by Trail of Bits of the original staking-deposit-cli [here](https://github.com/trailofbits/publications/blob/master/reviews/ETH2DepositCLI.pdf). The audit of the updated ethstaker-deposit-cli is forthcoming.
 
+## Canonical Deposit Contract and Launchpad
+
+Ethstaker confirms the canonical Ethereum staking deposit contract addresses and launchpad URLs.
+Please be sure that your ETH is deposited only to this deposit contract address, depending on chain.
+
+Depositing to the wrong address **will** lose you your ETH.
+
+- Ethereum mainnet
+  - Deposit address: [0x00000000219ab540356cBB839Cbe05303d7705Fa](https://etherscan.io/address/0x00000000219ab540356cBB839Cbe05303d7705Fa)
+  - [Launchpad](https://launchpad.ethereum.org/)
+- Ethereum Holešky (Holešovice) testnet
+  - Deposit address: [0x4242424242424242424242424242424242424242](https://holesky.etherscan.io/address/0x4242424242424242424242424242424242424242)
+  - [Launchpad](https://holesky.launchpad.ethereum.org/)
