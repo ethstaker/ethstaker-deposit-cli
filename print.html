@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="landing.html"><strong aria-hidden="true">1.</strong> Ethstaker Deposit CLI</a></li><li class="chapter-item expanded "><a href="quick_setup.html"><strong aria-hidden="true">2.</strong> Quick Setup</a></li><li class="chapter-item expanded affix "><li class="part-title">Commands</li><li class="chapter-item expanded "><a href="new_mnemonic.html"><strong aria-hidden="true">3.</strong> New Mnemonic</a></li><li class="chapter-item expanded "><a href="existing_mnemonic.html"><strong aria-hidden="true">4.</strong> Existing Mnemonic</a></li><li class="chapter-item expanded "><a href="generate_bls_to_execution_change.html"><strong aria-hidden="true">5.</strong> Generate BLS to Execution Change</a></li><li class="chapter-item expanded "><a href="exit_transaction_keystore.html"><strong aria-hidden="true">6.</strong> Exit Transaction Keystore</a></li><li class="chapter-item expanded "><a href="exit_transaction_mnemonic.html"><strong aria-hidden="true">7.</strong> Exit Transaction Mnemonic</a></li><li class="chapter-item expanded "><a href="partial_deposit.html"><strong aria-hidden="true">8.</strong> Partial Deposit</a></li><li class="chapter-item expanded "><a href="test_keystore.html"><strong aria-hidden="true">9.</strong> Test Keystore</a></li><li class="chapter-item expanded affix "><li class="part-title">File formats</li><li class="chapter-item expanded "><a href="keystore_file.html"><strong aria-hidden="true">10.</strong> Keystore</a></li><li class="chapter-item expanded "><a href="deposit_data_file.html"><strong aria-hidden="true">11.</strong> Deposit Data</a></li><li class="chapter-item expanded "><a href="bls_to_execution_change_file.html"><strong aria-hidden="true">12.</strong> BLS to Execution Change</a></li><li class="chapter-item expanded "><a href="signed_exit_transaction_file.html"><strong aria-hidden="true">13.</strong> Signed Exit Transaction</a></li><li class="chapter-item expanded affix "><li class="part-title">Development</li><li class="chapter-item expanded "><a href="local_development.html"><strong aria-hidden="true">14.</strong> Local Development</a></li><li class="chapter-item expanded "><a href="release_process.html"><strong aria-hidden="true">15.</strong> Release Process</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="landing.html"><strong aria-hidden="true">1.</strong> Ethstaker Deposit CLI</a></li><li class="chapter-item expanded "><a href="quick_setup.html"><strong aria-hidden="true">2.</strong> Quick Setup</a></li><li class="chapter-item expanded "><a href="other_install_options.html"><strong aria-hidden="true">3.</strong> Other Install Options</a></li><li class="chapter-item expanded affix "><li class="part-title">Commands</li><li class="chapter-item expanded "><a href="new_mnemonic.html"><strong aria-hidden="true">4.</strong> New Mnemonic</a></li><li class="chapter-item expanded "><a href="existing_mnemonic.html"><strong aria-hidden="true">5.</strong> Existing Mnemonic</a></li><li class="chapter-item expanded "><a href="generate_bls_to_execution_change.html"><strong aria-hidden="true">6.</strong> Generate BLS to Execution Change</a></li><li class="chapter-item expanded "><a href="exit_transaction_keystore.html"><strong aria-hidden="true">7.</strong> Exit Transaction Keystore</a></li><li class="chapter-item expanded "><a href="exit_transaction_mnemonic.html"><strong aria-hidden="true">8.</strong> Exit Transaction Mnemonic</a></li><li class="chapter-item expanded "><a href="partial_deposit.html"><strong aria-hidden="true">9.</strong> Partial Deposit</a></li><li class="chapter-item expanded "><a href="test_keystore.html"><strong aria-hidden="true">10.</strong> Test Keystore</a></li><li class="chapter-item expanded affix "><li class="part-title">File formats</li><li class="chapter-item expanded "><a href="keystore_file.html"><strong aria-hidden="true">11.</strong> Keystore</a></li><li class="chapter-item expanded "><a href="deposit_data_file.html"><strong aria-hidden="true">12.</strong> Deposit Data</a></li><li class="chapter-item expanded "><a href="bls_to_execution_change_file.html"><strong aria-hidden="true">13.</strong> BLS to Execution Change</a></li><li class="chapter-item expanded "><a href="signed_exit_transaction_file.html"><strong aria-hidden="true">14.</strong> Signed Exit Transaction</a></li><li class="chapter-item expanded affix "><li class="part-title">Development</li><li class="chapter-item expanded "><a href="local_development.html"><strong aria-hidden="true">15.</strong> Local Development</a></li><li class="chapter-item expanded "><a href="release_process.html"><strong aria-hidden="true">16.</strong> Release Process</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -264,7 +264,13 @@ Please be sure that your ETH is deposited only to this deposit contract address,
 <p>If you encounter any issues or have questions while using the <code>ethstaker-deposit-cli</code>, please contact us on the <a href="https://dsc.gg/ethstaker">Ethstaker discord</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="quick-setup"><a class="header" href="#quick-setup">Quick Setup</a></h1>
 <p>This guide will walk you through the steps to download and set up the <code>ethstaker-deposit-cli</code> for your operating system.</p>
+<p><strong>Build requirements</strong></p>
+<ul>
+<li><a href="https://www.python.org/about/gettingstarted/">Python <strong>3.9+</strong></a></li>
+<li><a href="https://pip.pypa.io/en/stable/installing/">pip3</a></li>
+</ul>
 <h2 id="step-1-download-the-latest-release"><a class="header" href="#step-1-download-the-latest-release">Step 1: Download the Latest Release</a></h2>
+<h3 id="download-binary-executable-file"><a class="header" href="#download-binary-executable-file">Download binary executable file</a></h3>
 <ol>
 <li>
 <p>Navigate to the <a href="https://github.com/eth-educators/ethstaker-deposit-cli/releases">Releases page</a> of the <code>ethstaker-deposit-cli</code> repository.</p>
@@ -284,6 +290,7 @@ Please be sure that your ETH is deposited only to this deposit contract address,
 <p>Open a terminal or command prompt and navigate to the extracted folder</p>
 </li>
 </ol>
+<p>For other installation options, including building with python or virtualenv and docker image instructions, go <a href="other_install_options.html">here</a></p>
 <h2 id="step-2-verify-the-installation"><a class="header" href="#step-2-verify-the-installation">Step 2: Verify the Installation</a></h2>
 <ol>
 <li>
@@ -306,6 +313,7 @@ Please be sure that your ETH is deposited only to this deposit contract address,
 <h2 id="step-3-usage"><a class="header" href="#step-3-usage">Step 3: Usage</a></h2>
 <p><strong>Windows users:</strong> You should replace <code>./deposit</code> with <code>deposit.exe</code> to run properly.</p>
 <p><strong>MacOS users:</strong> In order to run from the terminal, you must first open the file to bypass MacOS code signing issues. Do so by right clicking the <code>deposit</code> file and then selecting <code>Open</code>.</p>
+<p><strong>Linux users:</strong> On Unix-based systems, keystores and the deposit_data*.json have 440/-r--r----- file permissions (user &amp; group read only). This improves security by limiting which users and processes that have access to these files. If you are getting permission denied errors when handling your keystores, consider changing which user/group owns the file (with chown) or, if need be, change the file permissions with chmod.</p>
 <p>Determine which command best suites what you would like to accomplish:</p>
 <ul>
 <li>
@@ -329,6 +337,185 @@ Please be sure that your ETH is deposited only to this deposit contract address,
 </ul>
 <hr />
 <p>If you encounter any issues, please check the <a href="https://github.com/eth-educators/ethstaker-deposit-cli/issues">issues page</a> for help or to report a problem. You may also contact us on the <a href="https://dsc.gg/ethstaker">Ethstaker discord</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="other-install-options"><a class="header" href="#other-install-options">Other Install Options</a></h1>
+<h2 id="linux-or-macos-users"><a class="header" href="#linux-or-macos-users">Linux or MacOS users</a></h2>
+<h3 id="option-1-build-deposit-cli-with-native-python"><a class="header" href="#option-1-build-deposit-cli-with-native-python">Option 1. Build <code>deposit-cli</code> with native Python</a></h3>
+<ol>
+<li>
+<p><strong>Python version checking</strong></p>
+<p>Ensure you are using Python version &gt;= Python3.9:</p>
+<pre><code class="language-sh">python3 -V
+</code></pre>
+</li>
+<li>
+<p><strong>Installation</strong></p>
+<p>Install the dependencies:</p>
+<pre><code class="language-sh">pip3 install -r requirements.txt
+</code></pre>
+<p>Or use the helper script:</p>
+<pre><code class="language-sh">./deposit.sh install
+</code></pre>
+</li>
+<li>
+<p><strong>Create keys and <code>deposit_data-*.json</code></strong></p>
+<p>Run one of the following command to enter the interactive CLI:</p>
+<pre><code class="language-sh">./deposit.sh new-mnemonic
+</code></pre>
+<p>or</p>
+<pre><code class="language-sh">./deposit.sh existing-mnemonic
+</code></pre>
+<p>You can also run the tool with optional arguments:</p>
+<pre><code class="language-sh">./deposit.sh new-mnemonic --num_validators=&lt;NUM_VALIDATORS&gt; --mnemonic_language=english --chain=&lt;CHAIN_NAME&gt; --folder=&lt;YOUR_FOLDER_PATH&gt;
+</code></pre>
+<pre><code class="language-sh">./deposit.sh existing-mnemonic --num_validators=&lt;NUM_VALIDATORS&gt; --validator_start_index=&lt;START_INDEX&gt; --chain=&lt;CHAIN_NAME&gt; --folder=&lt;YOUR_FOLDER_PATH&gt;
+</code></pre>
+</li>
+</ol>
+<h3 id="option-2-build-deposit-cli-with-virtualenv"><a class="header" href="#option-2-build-deposit-cli-with-virtualenv">Option 2. Build <code>deposit-cli</code> with <code>virtualenv</code></a></h3>
+<ol>
+<li>
+<p><strong>Python version checking</strong></p>
+<p>Ensure you are using Python version &gt;= Python3.9:</p>
+<pre><code class="language-sh">python3 -V
+</code></pre>
+</li>
+<li>
+<p><strong>Installation</strong></p>
+<p>Install <code>venv</code> if not already installed, e.g. for Debian/Ubuntu:</p>
+<pre><code class="language-sh">sudo apt update &amp;&amp; sudo apt install python3-venv
+</code></pre>
+<p>Create a new <a href="https://docs.python.org/3/library/venv.html">virtual environment</a>:</p>
+<pre><code class="language-sh">python3 -m venv .venv
+source .venv/bin/activate
+</code></pre>
+<p>and install the dependencies:</p>
+<pre><code class="language-sh">pip3 install -r requirements.txt
+</code></pre>
+</li>
+<li>
+<p><strong>Create keys and <code>deposit_data-*.json</code></strong></p>
+<p>Run one of the following command to enter the interactive CLI:</p>
+<pre><code class="language-sh">python3 -m ethstaker_deposit new-mnemonic
+</code></pre>
+<p>or</p>
+<pre><code class="language-sh">python3 -m ethstaker_deposit existing-mnemonic
+</code></pre>
+<p>You can also run the tool with optional arguments:</p>
+<pre><code class="language-sh">python3 -m ethstaker_deposit new-mnemonic --num_validators=&lt;NUM_VALIDATORS&gt; --mnemonic_language=english --chain=&lt;CHAIN_NAME&gt; --folder=&lt;YOUR_FOLDER_PATH&gt;
+</code></pre>
+<pre><code class="language-sh">python3 -m ethstaker_deposit existing-mnemonic --num_validators=&lt;NUM_VALIDATORS&gt; --validator_start_index=&lt;START_INDEX&gt; --chain=&lt;CHAIN_NAME&gt; --folder=&lt;YOUR_FOLDER_PATH&gt;
+</code></pre>
+</li>
+</ol>
+<h3 id="option-3-use-published-docker-image"><a class="header" href="#option-3-use-published-docker-image">Option 3. Use published docker image</a></h3>
+<ol>
+<li>
+<p><strong>Pull the official docker image</strong></p>
+<p>Run the following command to pull the latest docker image published on the Github repository:</p>
+<pre><code class="language-sh">docker pull ghcr.io/eth-educators/ethstaker-deposit-cli:latest
+</code></pre>
+</li>
+<li>
+<p><strong>Create keys and <code>deposit_data-*.json</code></strong></p>
+<p>Run the following command to enter the interactive CLI:</p>
+<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ghcr.io/eth-educators/ethstaker-deposit-cli:latest
+</code></pre>
+<p>You can also run the tool with optional arguments:</p>
+<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ghcr.io/eth-educators/ethstaker-deposit-cli:latest new-mnemonic --num_validators=&lt;NUM_VALIDATORS&gt; --mnemonic_language=english
+</code></pre>
+<p>Example for 1 validator on the <a href="https://holesky.launchpad.ethereum.org/">Holesky testnet</a> using english:</p>
+<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ghcr.io/eth-educators/ethstaker-deposit-cli:latest new-mnemonic --num_validators=1 --mnemonic_language=english --chain=holesky
+</code></pre>
+</li>
+</ol>
+<h3 id="option-4-use-local-docker-image"><a class="header" href="#option-4-use-local-docker-image">Option 4. Use local docker image</a></h3>
+<ol>
+<li>
+<p><strong>Build the docker image</strong></p>
+<p>Run the following command to locally build the docker image:</p>
+<pre><code class="language-sh">make build_docker
+</code></pre>
+</li>
+<li>
+<p><strong>Create keys and <code>deposit_data-*.json</code></strong></p>
+<p>Run the following command to enter the interactive CLI:</p>
+<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys eth-educators/ethstaker-deposit-cli
+</code></pre>
+<p>You can also run the tool with optional arguments:</p>
+<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys eth-educators/ethstaker-deposit-cli new-mnemonic --num_validators=&lt;NUM_VALIDATORS&gt; --mnemonic_language=english
+</code></pre>
+<p>Example for 1 validator on the <a href="https://holesky.launchpad.ethereum.org/">Holesky testnet</a> using english:</p>
+<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys eth-educators/ethstaker-deposit-cli new-mnemonic --num_validators=1 --mnemonic_language=english --chain=holesky
+</code></pre>
+</li>
+</ol>
+<hr />
+<h2 id="for-windows-users"><a class="header" href="#for-windows-users">For Windows users</a></h2>
+<h3 id="option-1-build-deposit-cli-with-native-python-1"><a class="header" href="#option-1-build-deposit-cli-with-native-python-1">Option 1. Build <code>deposit-cli</code> with native Python</a></h3>
+<ol>
+<li>
+<p><strong>Python version checking</strong></p>
+<p>Ensure you are using Python version &gt;= Python12 (Assume that you've installed Python 3 as the main Python):</p>
+<pre><code class="language-sh">python -V
+</code></pre>
+</li>
+<li>
+<p><strong>Installation</strong></p>
+<p>Install the dependencies:</p>
+<pre><code class="language-sh">pip3 install -r requirements.txt
+</code></pre>
+<p>Or use the helper script:</p>
+<pre><code class="language-sh">sh deposit.sh install
+</code></pre>
+</li>
+<li>
+<p><strong>Create keys and <code>deposit_data-*.json</code></strong></p>
+<p>Run one of the following command to enter the interactive CLI:</p>
+<pre><code class="language-sh">./deposit.sh new-mnemonic
+</code></pre>
+<p>or</p>
+<pre><code class="language-sh">./deposit.sh existing-mnemonic
+</code></pre>
+<p>You can also run the tool with optional arguments:</p>
+<pre><code class="language-sh">./deposit.sh new-mnemonic --num_validators=&lt;NUM_VALIDATORS&gt; --mnemonic_language=english --chain=&lt;CHAIN_NAME&gt; --folder=&lt;YOUR_FOLDER_PATH&gt;
+</code></pre>
+<pre><code class="language-sh">./deposit.sh existing-mnemonic --num_validators=&lt;NUM_VALIDATORS&gt; --validator_start_index=&lt;START_INDEX&gt; --chain=&lt;CHAIN_NAME&gt; --folder=&lt;YOUR_FOLDER_PATH&gt;
+</code></pre>
+</li>
+</ol>
+<h3 id="option-2-build-deposit-cli-with-virtualenv-1"><a class="header" href="#option-2-build-deposit-cli-with-virtualenv-1">Option 2. Build <code>deposit-cli</code> with <code>virtualenv</code></a></h3>
+<ol>
+<li>
+<p><strong>Python version checking</strong></p>
+<p>Ensure you are using Python version &gt;= Python3.9 (Assume that you've installed Python 3 as the main Python):</p>
+<pre><code class="language-cmd">python -V
+</code></pre>
+</li>
+<li>
+<p><strong>Installation</strong></p>
+<p>Create a new <a href="https://docs.python.org/3/library/venv.html">virtual environment</a>:</p>
+<pre><code class="language-sh">python3 -m venv .venv
+.\.venv\Scripts\activate
+</code></pre>
+<p>and install the dependencies:</p>
+<pre><code class="language-cmd">pip3 install -r requirements.txt
+</code></pre>
+</li>
+<li>
+<p><strong>Create keys and <code>deposit_data-*.json</code></strong></p>
+<p>Run one of the following command to enter the interactive CLI:</p>
+<pre><code class="language-cmd">python -m ethstaker_deposit new-mnemonic
+</code></pre>
+<p>or</p>
+<pre><code class="language-cmd">python -m ethstaker_deposit existing-mnemonic
+</code></pre>
+<p>You can also run the tool with optional arguments:</p>
+<pre><code class="language-cmd">python -m ethstaker_deposit new-mnemonic --num_validators=&lt;NUM_VALIDATORS&gt; --mnemonic_language=english --chain=&lt;CHAIN_NAME&gt; --folder=&lt;YOUR_FOLDER_PATH&gt;
+</code></pre>
+<pre><code class="language-cmd">python -m ethstaker_deposit existing-mnemonic --num_validators=&lt;NUM_VALIDATORS&gt; --validator_start_index=&lt;START_INDEX&gt; --chain=&lt;CHAIN_NAME&gt; --folder=&lt;YOUR_FOLDER_PATH&gt;
+</code></pre>
+</li>
+</ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="new-mnemonic"><a class="header" href="#new-mnemonic">new-mnemonic</a></h1>
 <div class="warning">
 Including sensitive arguments when executing CLI commands poses a security risk, as these values can be accessible through disk and shell history. This exposure can allow other users, including admins and malicious actors, to gain access to sensitive information, putting your funds at risk.
