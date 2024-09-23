@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="landing.html"><strong aria-hidden="true">1.</strong> Ethstaker Deposit CLI</a></li><li class="chapter-item expanded "><a href="quick_setup.html"><strong aria-hidden="true">2.</strong> Quick Setup</a></li><li class="chapter-item expanded "><a href="other_install_options.html"><strong aria-hidden="true">3.</strong> Other Install Options</a></li><li class="chapter-item expanded affix "><li class="part-title">Commands</li><li class="chapter-item expanded "><a href="new_mnemonic.html"><strong aria-hidden="true">4.</strong> New Mnemonic</a></li><li class="chapter-item expanded "><a href="existing_mnemonic.html"><strong aria-hidden="true">5.</strong> Existing Mnemonic</a></li><li class="chapter-item expanded "><a href="generate_bls_to_execution_change.html"><strong aria-hidden="true">6.</strong> Generate BLS to Execution Change</a></li><li class="chapter-item expanded "><a href="exit_transaction_keystore.html"><strong aria-hidden="true">7.</strong> Exit Transaction Keystore</a></li><li class="chapter-item expanded "><a href="exit_transaction_mnemonic.html"><strong aria-hidden="true">8.</strong> Exit Transaction Mnemonic</a></li><li class="chapter-item expanded "><a href="partial_deposit.html"><strong aria-hidden="true">9.</strong> Partial Deposit</a></li><li class="chapter-item expanded "><a href="test_keystore.html"><strong aria-hidden="true">10.</strong> Test Keystore</a></li><li class="chapter-item expanded affix "><li class="part-title">File formats</li><li class="chapter-item expanded "><a href="keystore_file.html"><strong aria-hidden="true">11.</strong> Keystore</a></li><li class="chapter-item expanded "><a href="deposit_data_file.html"><strong aria-hidden="true">12.</strong> Deposit Data</a></li><li class="chapter-item expanded "><a href="bls_to_execution_change_file.html"><strong aria-hidden="true">13.</strong> BLS to Execution Change</a></li><li class="chapter-item expanded "><a href="signed_exit_transaction_file.html"><strong aria-hidden="true">14.</strong> Signed Exit Transaction</a></li><li class="chapter-item expanded affix "><li class="part-title">Development</li><li class="chapter-item expanded "><a href="local_development.html"><strong aria-hidden="true">15.</strong> Local Development</a></li><li class="chapter-item expanded "><a href="release_process.html"><strong aria-hidden="true">16.</strong> Release Process</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="landing.html"><strong aria-hidden="true">1.</strong> Ethstaker Deposit CLI</a></li><li class="chapter-item expanded "><a href="quick_setup.html"><strong aria-hidden="true">2.</strong> Quick Setup</a></li><li class="chapter-item expanded "><a href="other_install_options.html"><strong aria-hidden="true">3.</strong> Other Install Options</a></li><li class="chapter-item expanded affix "><li class="part-title">Commands</li><li class="chapter-item expanded "><a href="new_mnemonic.html"><strong aria-hidden="true">4.</strong> New Mnemonic</a></li><li class="chapter-item expanded "><a href="existing_mnemonic.html"><strong aria-hidden="true">5.</strong> Existing Mnemonic</a></li><li class="chapter-item expanded "><a href="generate_bls_to_execution_change.html"><strong aria-hidden="true">6.</strong> Generate BLS to Execution Change</a></li><li class="chapter-item expanded "><a href="generate_bls_to_execution_change_keystore.html"><strong aria-hidden="true">7.</strong> Generate BLS to Execution Change Keystore</a></li><li class="chapter-item expanded "><a href="exit_transaction_keystore.html"><strong aria-hidden="true">8.</strong> Exit Transaction Keystore</a></li><li class="chapter-item expanded "><a href="exit_transaction_mnemonic.html"><strong aria-hidden="true">9.</strong> Exit Transaction Mnemonic</a></li><li class="chapter-item expanded "><a href="partial_deposit.html"><strong aria-hidden="true">10.</strong> Partial Deposit</a></li><li class="chapter-item expanded "><a href="test_keystore.html"><strong aria-hidden="true">11.</strong> Test Keystore</a></li><li class="chapter-item expanded affix "><li class="part-title">File formats</li><li class="chapter-item expanded "><a href="keystore_file.html"><strong aria-hidden="true">12.</strong> Keystore</a></li><li class="chapter-item expanded "><a href="deposit_data_file.html"><strong aria-hidden="true">13.</strong> Deposit Data</a></li><li class="chapter-item expanded "><a href="bls_to_execution_change_file.html"><strong aria-hidden="true">14.</strong> BLS to Execution Change</a></li><li class="chapter-item expanded "><a href="bls_to_execution_change_keystore_file.html"><strong aria-hidden="true">15.</strong> BLS to Execution Change Keystore</a></li><li class="chapter-item expanded "><a href="signed_exit_transaction_file.html"><strong aria-hidden="true">16.</strong> Signed Exit Transaction</a></li><li class="chapter-item expanded affix "><li class="part-title">Development</li><li class="chapter-item expanded "><a href="local_development.html"><strong aria-hidden="true">17.</strong> Local Development</a></li><li class="chapter-item expanded "><a href="release_process.html"><strong aria-hidden="true">18.</strong> Release Process</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -641,13 +641,49 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 <h2 id="example-usage-2"><a class="header" href="#example-usage-2">Example Usage</a></h2>
 <pre><code class="language-sh">./deposit generate-bls-to-execution-change
 </code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="generate-bls-to-execution-change-keystore"><a class="header" href="#generate-bls-to-execution-change-keystore">generate-bls-to-execution-change-keystore</a></h1>
+<div class="warning">
+This command is associated with the a proposed solution to update withdrawal credentials for those who are missing their mnemonic. At this point this has not been approved or implemented and there is no guarantee credentials will be modified in the future.
+<p>The project is located <a href="https://github.com/eth-educators/update-credentials-without-mnemonic">here</a> if you would like to learn more.</p>
+</div>
+<h2 id="description-3"><a class="header" href="#description-3">Description</a></h2>
+<p>Signs a withdrawal credential update message using the provided keystore. This signature is one of the required proofs of ownership for validators who have lost or are missing their mnemonic and are unable to perform the BLS change needed to update their withdrawal credentials.</p>
+<h2 id="optional-arguments-3"><a class="header" href="#optional-arguments-3">Optional Arguments</a></h2>
+<ul>
+<li>
+<p><strong><code>--chain</code></strong>: The chain to use for generating the deposit data. Options are: 'mainnet', 'holesky', etc.</p>
+</li>
+<li>
+<p><strong><code>--keystore</code></strong>: The keystore file associating with the validator you wish to sign with. This keystore file should match the provided validator index.</p>
+</li>
+<li>
+<p><strong><code>--keystore_password</code></strong>: The password that is used to encrypt the provided keystore. Note: It's not your mnemonic password. <span class="warning"></span></p>
+</li>
+<li>
+<p><strong><code>--validator_index</code></strong>: The validator index corresponding to the provided keystore.</p>
+</li>
+<li>
+<p><strong><code>--withdrawal_address</code></strong>: The Ethereum address that will be used in withdrawal. It typically starts with '0x' followed by 40 hexadecimal characters. Please make sure you have full control over the address you choose here. Once you set a withdrawal address on chain, it cannot be changed.</p>
+</li>
+<li>
+<p><strong><code>--output_folder</code></strong>: The folder path for the <code>bls_to_execution_change_keystore_signature-*</code> JSON file.</p>
+</li>
+<li>
+<p><strong><code>--devnet_chain_setting</code></strong>: The custom chain setting of a devnet or testnet. Note that it will override your <code>--chain</code> choice. This should be a JSON string containing an object with the following keys: network_name, genesis_fork_version, exit_fork_version and genesis_validator_root.</p>
+</li>
+</ul>
+<h2 id="output-files-3"><a class="header" href="#output-files-3">Output files</a></h2>
+<p>A successful call to this command will result in one <a href="bls_to_execution_change_keystore_file.html">BLS to Execution Change Keystore file</a> created.</p>
+<h2 id="example-usage-3"><a class="header" href="#example-usage-3">Example Usage</a></h2>
+<pre><code class="language-sh">./deposit generate-bls-to-execution-change
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="exit-transaction-keystore"><a class="header" href="#exit-transaction-keystore">exit-transaction-keystore</a></h1>
 <div class="warning">
 Including sensitive arguments when executing CLI commands poses a security risk, as these values can be accessible through disk and shell history. This exposure can allow other users, including admins and malicious actors, to gain access to sensitive information, putting your funds at risk.
 </div>
-<h2 id="description-3"><a class="header" href="#description-3">Description</a></h2>
+<h2 id="description-4"><a class="header" href="#description-4">Description</a></h2>
 <p>Creates an exit transaction using a keystore file.</p>
-<h2 id="optional-arguments-3"><a class="header" href="#optional-arguments-3">Optional Arguments</a></h2>
+<h2 id="optional-arguments-4"><a class="header" href="#optional-arguments-4">Optional Arguments</a></h2>
 <ul>
 <li>
 <p><strong><code>--chain</code></strong>: The chain to use for generating the deposit data. Options are: 'mainnet', 'holesky', etc.</p>
@@ -671,18 +707,18 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 <p><strong><code>--devnet_chain_setting</code></strong>: The custom chain setting of a devnet or testnet. Note that it will override your <code>--chain</code> choice. This should be a JSON string containing an object with the following keys: network_name, genesis_fork_version, exit_fork_version and genesis_validator_root.</p>
 </li>
 </ul>
-<h2 id="output-files-3"><a class="header" href="#output-files-3">Output files</a></h2>
+<h2 id="output-files-4"><a class="header" href="#output-files-4">Output files</a></h2>
 <p>A successful call to this command will result in one <a href="signed_exit_transaction_file.html">Signed Exit Transaction file</a> created.</p>
-<h2 id="example-usage-3"><a class="header" href="#example-usage-3">Example Usage</a></h2>
+<h2 id="example-usage-4"><a class="header" href="#example-usage-4">Example Usage</a></h2>
 <pre><code class="language-sh">./deposit exit-transaction-keystore --keystore /path/to/keystore.json
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="exit-transaction-mnemonic"><a class="header" href="#exit-transaction-mnemonic">exit-transaction-mnemonic</a></h1>
 <div class="warning">
 Including sensitive arguments when executing CLI commands poses a security risk, as these values can be accessible through disk and shell history. This exposure can allow other users, including admins and malicious actors, to gain access to sensitive information, putting your funds at risk.
 </div>
-<h2 id="description-4"><a class="header" href="#description-4">Description</a></h2>
+<h2 id="description-5"><a class="header" href="#description-5">Description</a></h2>
 <p>Creates an exit transaction using a mnemonic phrase.</p>
-<h2 id="optional-arguments-4"><a class="header" href="#optional-arguments-4">Optional Arguments</a></h2>
+<h2 id="optional-arguments-5"><a class="header" href="#optional-arguments-5">Optional Arguments</a></h2>
 <ul>
 <li>
 <p><strong><code>--chain</code></strong>: The chain to use for generating the deposit data. Options are: 'mainnet', 'holesky', etc.</p>
@@ -709,19 +745,19 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 <p><strong><code>--devnet_chain_setting</code></strong>: The custom chain setting of a devnet or testnet. Note that it will override your <code>--chain</code> choice. This should be a JSON string containing an object with the following keys: network_name, genesis_fork_version, exit_fork_version and genesis_validator_root.</p>
 </li>
 </ul>
-<h2 id="output-files-4"><a class="header" href="#output-files-4">Output files</a></h2>
+<h2 id="output-files-5"><a class="header" href="#output-files-5">Output files</a></h2>
 <p>A successful call to this command will result in one or more <a href="signed_exit_transaction_file.html">Signed Exit Transaction files</a> created.</p>
-<h2 id="example-usage-4"><a class="header" href="#example-usage-4">Example Usage</a></h2>
+<h2 id="example-usage-5"><a class="header" href="#example-usage-5">Example Usage</a></h2>
 <pre><code class="language-sh">./deposit exit-transaction-mnemonic
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="partial-deposit"><a class="header" href="#partial-deposit">partial-deposit</a></h1>
 <div class="warning">
 Including sensitive arguments when executing CLI commands poses a security risk, as these values can be accessible through disk and shell history. This exposure can allow other users, including admins and malicious actors, to gain access to sensitive information, putting your funds at risk.
 </div>
-<h2 id="description-5"><a class="header" href="#description-5">Description</a></h2>
+<h2 id="description-6"><a class="header" href="#description-6">Description</a></h2>
 <p>Creates a deposit file with an existing validator key. Can be used to initiate a validator or deposit to an existing validator.
 If you wish to create a validator with 0x00 credentials, you must use the <strong><a href="new_mnemonic.html">new-mnemonic</a></strong> or the <strong><a href="existing_mnemonic.html">existing-mnemonic</a></strong> command.</p>
-<h2 id="optional-arguments-5"><a class="header" href="#optional-arguments-5">Optional Arguments</a></h2>
+<h2 id="optional-arguments-6"><a class="header" href="#optional-arguments-6">Optional Arguments</a></h2>
 <ul>
 <li>
 <p><strong><code>--chain</code></strong>: The chain to use for generating the deposit data. Options are: 'mainnet', 'holesky', etc.</p>
@@ -747,16 +783,16 @@ If you wish to create a validator with 0x00 credentials, you must use the <stron
 </ul>
 <h2 id="output-file"><a class="header" href="#output-file">Output file</a></h2>
 <p>A successful call to this command will result in one <a href="deposit_data_file.html">deposit data file</a> created.</p>
-<h2 id="example-usage-5"><a class="header" href="#example-usage-5">Example Usage</a></h2>
+<h2 id="example-usage-6"><a class="header" href="#example-usage-6">Example Usage</a></h2>
 <pre><code class="language-sh">./deposit partial-deposit --keystore /path/to/keystore.json
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="test-keystore"><a class="header" href="#test-keystore">test-keystore</a></h1>
 <div class="warning">
 Including sensitive arguments when executing CLI commands poses a security risk, as these values can be accessible through disk and shell history. This exposure can allow other users, including admins and malicious actors, to gain access to sensitive information, putting your funds at risk.
 </div>
-<h2 id="description-6"><a class="header" href="#description-6">Description</a></h2>
+<h2 id="description-7"><a class="header" href="#description-7">Description</a></h2>
 <p>Will verify access to the provided keystore file by attempting to decrypt it with the provided keystore password.</p>
-<h2 id="optional-arguments-6"><a class="header" href="#optional-arguments-6">Optional Arguments</a></h2>
+<h2 id="optional-arguments-7"><a class="header" href="#optional-arguments-7">Optional Arguments</a></h2>
 <ul>
 <li>
 <p><strong><code>--keystore</code></strong>: The keystore file you wish to verify.</p>
@@ -765,7 +801,7 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 <p><strong><code>--keystore_password</code></strong>: The password used to attempt decryption of the provided keystore file. Note: It is not your mnemonic password. <span class="warning"></span></p>
 </li>
 </ul>
-<h2 id="example-usage-6"><a class="header" href="#example-usage-6">Example Usage</a></h2>
+<h2 id="example-usage-7"><a class="header" href="#example-usage-7">Example Usage</a></h2>
 <pre><code class="language-sh">./deposit test-keystore --keystore /path/to/keystore.json
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="keystore-file"><a class="header" href="#keystore-file">Keystore file</a></h1>
@@ -848,12 +884,26 @@ Including sensitive arguments when executing CLI commands poses a security risk,
   }
 ]
 </code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="bls-to-execution-change-keystore-file"><a class="header" href="#bls-to-execution-change-keystore-file">BLS to Execution Change Keystore file</a></h1>
+<p>A BLS to execution change keystore file is created when calling the <strong><a href="generate_bls_to_execution_change_keystore.html">generate-bls-to-execution-change-keystore</a></strong> command.</p>
+<p>The BLS to execution change keystore file is a JSON file. The format is very similar to the <a href="bls_to_execution_change_file.html">BLS to execution change file</a> but with the <code>from_bls_pubkey</code> and <code>metadata</code> attributes removed.</p>
+<h2 id="utilizing"><a class="header" href="#utilizing">Utilizing</a></h2>
+<p>There is currently no integration with this file format with either the execution layer or beacon chain. The <code>signature</code> value must be provided as the <code>keystore_signature</code> for the <a href="https://github.com/eth-educators/update-credentials-without-mnemonic#signature-file-format">Signature file</a>.</p>
+<h2 id="example-2"><a class="header" href="#example-2">Example</a></h2>
+<pre><code class="language-JSON">{
+  "message":{
+    "validator_index":"1804776",
+    "to_execution_address":"0x4d496ccc28058b1d74b7a19541663e21154f9c84"
+  },
+  "signature":"0xa1e47e6b1fdf4dd5f1dd3ddb3d47d2dcf446d096d49d90afef06a38dc02fba6b4d16d1dc1184c791e54666dabb8bdedd0660bc9bb3bc5d0e592eaf5f0c978cca4fcafe4037672940d6f1a44d2a33503c30cb98ca695979b1de9e321a8a694bc2",
+}
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="signed-exit-transaction-file"><a class="header" href="#signed-exit-transaction-file">Signed Exit Transaction file</a></h1>
 <p>A signed exit transaction file is created when calling the <strong><a href="exit_transaction_keystore.html">exit-transaction-keystore</a></strong> or the <strong><a href="exit_transaction_mnemonic.html">exit-transaction-mnemonic</a></strong> command.</p>
 <p>The signed exit transaction file is a JSON file. It contains a single message to exit a validator. The format of the signed exit transaction file is loosly based on the input for the POST <code>/eth/v1/beacon/pool/voluntary_exits</code> <a href="https://ethereum.github.io/beacon-APIs/#/Beacon/submitPoolVoluntaryExit">API endpoint</a> as defined by <a href="https://github.com/ethereum/beacon-APIs">the Ethereum Beacon APIs</a>. Part of this content is based on the <a href="https://github.com/ethereum/consensus-specs/blob/dev/specs/phase0/beacon-chain.md#signedvoluntaryexit">SignedVoluntaryExit</a> signed envelope as defined in the <a href="https://github.com/ethereum/consensus-specs/">Ethereum Consensus Specifications</a>.</p>
 <h2 id="broadcasting-1"><a class="header" href="#broadcasting-1">Broadcasting</a></h2>
 <p>If you have access to a beacon node client running on your target network, you can publish this message simply by calling the POST <code>/eth/v1/beacon/pool/voluntary_exits</code> <a href="https://ethereum.github.io/beacon-APIs/#/Beacon/submitPoolVoluntaryExit">API endpoint</a> and passing the content of the signed exit transaction file as the payload. You can also use <a href="https://beaconcha.in/tools/broadcast">the Beaconcha.in Broadcast Signed Messages tool</a> which might be easier for most users.</p>
-<h2 id="example-2"><a class="header" href="#example-2">Example</a></h2>
+<h2 id="example-3"><a class="header" href="#example-3">Example</a></h2>
 <pre><code class="language-JSON">{
   "message":{
     "epoch":"0",
