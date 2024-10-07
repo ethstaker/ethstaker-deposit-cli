@@ -326,6 +326,9 @@ Please be sure that your ETH is deposited only to this deposit contract address,
 <p><strong><a href="generate_bls_to_execution_change.html">generate-bls-to-execution-change</a></strong>: Update your withdrawal credentials of existing validators. It is <strong>required</strong> to have the corresponding mnemonic.</p>
 </li>
 <li>
+<p><strong><a href="generate_bls_to_execution_change_keystore.html">generate-bls-to-execution-change-keystore</a></strong>: Sign an update withdrawal credentials message using your validator keystore.</p>
+</li>
+<li>
 <p><strong><a href="exit_transaction_keystore.html">exit-transaction-keystore</a></strong>: Generate an exit message using the keystore of your validators.</p>
 </li>
 <li>
@@ -681,7 +684,7 @@ This command is associated with the a proposed solution to update withdrawal cre
 <h2 id="output-files-3"><a class="header" href="#output-files-3">Output files</a></h2>
 <p>A successful call to this command will result in one <a href="bls_to_execution_change_keystore_file.html">BLS to Execution Change Keystore file</a> created.</p>
 <h2 id="example-usage-3"><a class="header" href="#example-usage-3">Example Usage</a></h2>
-<pre><code class="language-sh">./deposit generate-bls-to-execution-change
+<pre><code class="language-sh">./deposit generate-bls-to-execution-change-keystore
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="exit-transaction-keystore"><a class="header" href="#exit-transaction-keystore">exit-transaction-keystore</a></h1>
 <div class="warning">
