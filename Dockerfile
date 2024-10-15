@@ -1,5 +1,5 @@
 # This image is from python:3.12-slim-bookworm
-FROM python@sha256:af4e85f1cac90dd3771e47292ea7c8a9830abfabbe4faa5c53f158854c2e819d
+FROM python@sha256:45803c375b95ea33f482e53a461eca8f247617667d703660a06ccf5eb3d05326
 
 WORKDIR /app
 
