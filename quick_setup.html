@@ -208,16 +208,13 @@
 <p>Make sure you have <a href="https://cli.github.com/">the GitHub CLI installed</a>.</p>
 </li>
 <li>
-<p>Download <a href="https://github.com/eth-educators/ethstaker-deposit-cli/attestations">the associated attestation</a> for the archive you downloaded in Step 1.</p>
-</li>
-<li>
-<p>Verify the attestation file against the corresponding file but be sure to replace the contents with the exact file name:</p>
+<p>Verify the attestation against the corresponding file but be sure to replace the contents with the exact file name:</p>
 </li>
 </ol>
-<pre><code class="language-sh">gh attestation verify ethstaker_deposit-cli-*******-***.*** --owner eth-educators --bundle ./eth-educators-ethstaker-deposit-cli-attestation-*******.sigstore.json
+<pre><code class="language-sh">gh attestation verify ethstaker_deposit-cli-*******-***.*** --repo eth-educators/ethstaker-deposit-cli
 </code></pre>
 <p>This step requires you to be online. If you want to perform this offline, follow <a href="https://docs.github.com/en/actions/security-for-github-actions/using-artifact-attestations/verifying-attestations-offline">these instructions from GitHub</a>.</p>
-<ol start="4">
+<ol start="3">
 <li>You should see <code>✓ Verification succeeded!</code> in the output <strong>otherwise do not continue</strong>.</li>
 </ol>
 <h2 id="step-3-usage"><a class="header" href="#step-3-usage">Step 3: Usage</a></h2>

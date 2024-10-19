@@ -185,64 +185,15 @@
 git push origin v1.0.0
 </code></pre>
 <ol start="5">
-<li>Wait for all the build assets to be created by <a href="https://github.com/eth-educators/ethstaker-deposit-cli/actions/workflows/build.yml">the ci-build workflow</a>. Wait for the docker image to be created by <a href="https://github.com/eth-educators/ethstaker-deposit-cli/actions/workflows/docker.yml">the ci-docker workflow</a>.</li>
-<li>Download all the release assets from <a href="https://github.com/eth-educators/ethstaker-deposit-cli/actions/workflows/build.yml">the build process</a> in step 5. Extract the zip files to get the actual release files. Test some of the binary assets to make sure there is no major issue with them.</li>
-<li>Draft <a href="https://github.com/eth-educators/ethstaker-deposit-cli/releases/new">a new release on Github</a>.</li>
-<li>Choose the tag you created at step 4.</li>
-<li>Click the <em>Generate release notes</em> button. Copy the generated content to be included later.</li>
-<li>Add an interesting release title.</li>
-<li>Use <a href="#release-notes-template">the template below</a> for the content of the release notes. Fill in the different sections correctly. Make sure all the links are updated to work with the new release including the various asset links and the docker image link. Include the generated release notes from step 9 in the <em>All changes</em> section.</li>
-<li>Upload all the binary assets extracted in step 6 in the draft release binaries section.</li>
+<li>Wait for all the build assets and the draft release to be created by <a href="https://github.com/eth-educators/ethstaker-deposit-cli/actions/workflows/build.yml">the ci-build workflow</a>.</li>
+<li>Open the draft release and fill in the different sections correctly.</li>
 <li>If this is not a production release, check the <em>Set as a pre-release</em> checkbox.</li>
 <li>Click the <em>Publish release</em> button.</li>
 <li>Determine a new dev version number. You can try to guess the next version number to the best of your ability. This will always be subject to change. Add a <code>dev</code> identifier to the version number to clearly indicate this is a dev version number.</li>
 <li>Update <code>ethstaker_deposit/__init__.py</code>'s <code>__version__</code> variable with a new dev version number. Commit this change to the main branch.</li>
 </ol>
 <h2 id="release-notes-template"><a class="header" href="#release-notes-template">Release Notes Template</a></h2>
-<p>You can start the release notes with this template:</p>
-<pre><code class="language-markdown"># Summary
-
-This preview release contains all the changes that were made since the original fork of the [staking-deposit-cli project](https://github.com/ethereum/staking-deposit-cli/) ([fdab65d commit](https://github.com/ethereum/staking-deposit-cli/commit/fdab65d33a63632e1935e9a9235119a46e37c221)).
-
-Notable changes from the original project include:
-
-- New exit commands to create an exit message and perform a voluntary exit for your validators.
-- Multiprocessing support to increase the speed of processes that can be expanded to use more than a single thread or a single process. This helps with generating a large number of validator keys for instance.
-- Support for more recent OSes and Python versions by default.
-- A dedicated [documentation website](https://eth-educators.github.io/ethstaker-deposit-cli/).
-
-# Known Issues
-
-`[Remove this section if there is no known issue]`
-
-# All changes
-
-`[Generated release notes]`
-
-# Building process
-
-Release assets were built using Github Actions and [this workflow run](https://github.com/eth-educators/ethstaker-deposit-cli/actions/runs/10113717389). You can establish the provenance of this build using [our artifact attestations](https://github.com/eth-educators/ethstaker-deposit-cli/attestations).
-
-# Binaries
-
-| System  | Architecture | Binary             | Checksum               | Attestation           |
-|---------|--------------|--------------------|------------------------|-----------------------|
-| Windows | x86_64       | [ethstaker_deposit-cli-c840111-windows-amd64.zip](https://github.com/eth-educators/ethstaker-deposit-cli/releases/download/v0.1.0/ethstaker_deposit-cli-c840111-windows-amd64.zip) | [sha256](https://github.com/eth-educators/ethstaker-deposit-cli/releases/download/v0.1.0/ethstaker_deposit-cli-c840111-windows-amd64.zip.sha256) | [Attestation](https://github.com/eth-educators/ethstaker-deposit-cli/attestations/2242278) |
-| macOS   | x86_64       | [ethstaker_deposit-cli-c840111-darwin-amd64.tar.gz](https://github.com/eth-educators/ethstaker-deposit-cli/releases/download/v0.1.0/ethstaker_deposit-cli-c840111-darwin-amd64.tar.gz) | [sha256](https://github.com/eth-educators/ethstaker-deposit-cli/releases/download/v0.1.0/ethstaker_deposit-cli-c840111-darwin-amd64.tar.gz.sha256) | [Attestation](https://github.com/eth-educators/ethstaker-deposit-cli/attestations/2242270) |
-| macOS   | aarch64      | [ethstaker_deposit-cli-c840111-darwin-arm64.tar.gz](https://github.com/eth-educators/ethstaker-deposit-cli/releases/download/v0.1.0/ethstaker_deposit-cli-c840111-darwin-arm64.tar.gz) | [sha256](https://github.com/eth-educators/ethstaker-deposit-cli/releases/download/v0.1.0/ethstaker_deposit-cli-c840111-darwin-arm64.tar.gz.sha256) | [Attestation](https://github.com/eth-educators/ethstaker-deposit-cli/attestations/2242259) |
-| Linux   | x86_64       | [ethstaker_deposit-cli-c840111-linux-amd64.tar.gz](https://github.com/eth-educators/ethstaker-deposit-cli/releases/download/v0.1.0/ethstaker_deposit-cli-c840111-linux-amd64.tar.gz) | [sha256](https://github.com/eth-educators/ethstaker-deposit-cli/releases/download/v0.1.0/ethstaker_deposit-cli-c840111-linux-amd64.tar.gz.sha256) | [Attestation](https://github.com/eth-educators/ethstaker-deposit-cli/attestations/2242267) |
-| Linux   | aarch64      | [ethstaker_deposit-cli-c840111-linux-arm64.tar.gz](https://github.com/eth-educators/ethstaker-deposit-cli/releases/download/v0.1.0/ethstaker_deposit-cli-c840111-linux-arm64.tar.gz) | [sha256](https://github.com/eth-educators/ethstaker-deposit-cli/releases/download/v0.1.0/ethstaker_deposit-cli-c840111-linux-arm64.tar.gz.sha256) | [Attestation](https://github.com/eth-educators/ethstaker-deposit-cli/attestations/2242273) |
-
-# Docker image
-
-| Version | Name | Package |
-|---------|------|---------|
-| v0.1.0  | `ghcr.io/eth-educators/ethstaker-deposit-cli:v0.1.0` | [Github Package](https://github.com/eth-educators/ethstaker-deposit-cli/pkgs/container/ethstaker-deposit-cli/249338184?tag=v0.1.0) |
-
-## License
-
-By downloading and using this software, you agree to the [license](LICENSE).
-</code></pre>
+<p>You can find the latest release notes template on https://github.com/eth-educators/ethstaker-deposit-cli/blob/main/.github/release_template.md .</p>
 
                     </main>
 
