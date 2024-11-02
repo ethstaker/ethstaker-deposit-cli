@@ -845,7 +845,7 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 <li><strong>deposit_data_root</strong>: The deposit data root value to be passed to the deposit function call.</li>
 <li><strong>fork_version</strong>: The fork version of the network that this deposit file was created for.</li>
 <li><strong>network_name</strong>: The network name of the network that this deposit file was created for.</li>
-<li><strong>deposit_cli_version</strong>: The tool version used to create this file.</li>
+<li><strong>deposit_cli_version</strong>: The tool version used to create this file. We are currently faking this value to work around <a href="https://github.com/eth-educators/ethstaker-deposit-cli/issues/216">an issue</a> with the Launchpad.</li>
 </ul>
 <h2 id="example"><a class="header" href="#example">Example</a></h2>
 <pre><code class="language-JSON">[
