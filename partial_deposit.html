@@ -198,6 +198,9 @@ If you wish to create a validator with 0x00 credentials, you must use the <stron
 <p><strong><code>--withdrawal_address</code></strong>: The withdrawal address of the existing validator or the desired withdrawal address.</p>
 </li>
 <li>
+<p><strong><code>--compounding / --regular-withdrawal</code></strong>: Generates compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance or generate regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance. Use of this option requires a withdrawal address. This feature is only supported on networks that have undergone the Pectra fork. Defaults to regular withdrawal.</p>
+</li>
+<li>
 <p><strong><code>--output_folder</code></strong>: The folder path for the <code>deposit-*</code> JSON file.</p>
 </li>
 <li>
