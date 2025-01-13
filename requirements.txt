@@ -117,9 +117,9 @@ cytoolz==1.0.1 \
 eth-hash==0.7.0 \
     --hash=sha256:b8d5a230a2b251f4a291e3164a23a14057c4a6de4b0aa4a16fa4dc9161b57e2f \
     --hash=sha256:bacdc705bfd85dadd055ecd35fd1b4f846b671add101427e089a4ca2e8db310a
-eth-typing==5.0.1 \
-    --hash=sha256:83debf88c9df286db43bb7374974681ebcc9f048fac81be2548dbc549a3203c0 \
-    --hash=sha256:f30d1af16aac598f216748a952eeb64fbcb6e73efa691d2de31148138afe96de
+eth-typing==5.1.0 \
+    --hash=sha256:8581f212ee6252aaa285377a77620f6e5f6e16ac3f144c61f098fafd47967b1a \
+    --hash=sha256:c0d6b93f5385aa84efc4b47ae2bd478da069bc0ffda8b67e0ccb573f43defd29
 eth-utils==5.1.0 \
     --hash=sha256:84c6314b9cf1fcd526107464bbf487e3f87097a2e753360d5ed319f7d42e3f20 \
     --hash=sha256:a99f1f01b51206620904c5af47fac65abc143aebd0a76bdec860381c5a3230f8
