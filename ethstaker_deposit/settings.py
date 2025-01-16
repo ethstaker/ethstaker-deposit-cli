@@ -31,6 +31,8 @@ SEPOLIA = 'sepolia'
 HOLESKY = 'holesky'
 MEKONG = 'mekong'
 EPHEMERY = 'ephemery'
+GNOSIS = 'gnosis'
+CHIADO = 'chiado'
 
 # Mainnet setting
 MainnetSetting = BaseChainSetting(
@@ -66,6 +68,18 @@ EphemerySetting = BaseChainSetting(
     # You can manually obtain the GENESIS_VALIDATORS_ROOT with each reset on
     # https://github.com/ephemery-testnet/ephemery-genesis/releases
     GENESIS_VALIDATORS_ROOT=None)
+# Gnosis setting
+GnosisSetting = BaseChainSetting(
+    NETWORK_NAME=GNOSIS,
+    GENESIS_FORK_VERSION=bytes.fromhex('00000064'),
+    EXIT_FORK_VERSION=bytes.fromhex('03000064'),
+    GENESIS_VALIDATORS_ROOT=bytes.fromhex('f5dcb5564e829aab27264b9becd5dfaa017085611224cb3036f573368dbb9d47'))
+# Chiado setting
+ChiadoSetting = BaseChainSetting(
+    NETWORK_NAME=CHIADO,
+    GENESIS_FORK_VERSION=bytes.fromhex('0000006f'),
+    EXIT_FORK_VERSION=bytes.fromhex('0300006f'),
+    GENESIS_VALIDATORS_ROOT=bytes.fromhex('9d642dac73058fbf39c0ae41ab1e34e4d889043cb199851ded7095bc99eb4c1e'))
 
 
 ALL_CHAINS: Dict[str, BaseChainSetting] = {
@@ -74,6 +88,8 @@ ALL_CHAINS: Dict[str, BaseChainSetting] = {
     HOLESKY: HoleskySetting,
     MEKONG: MekongSetting,
     EPHEMERY: EphemerySetting,
+    GNOSIS: GnosisSetting,
+    CHIADO: ChiadoSetting,
 }
 
 ALL_CHAIN_KEYS: tuple[str, ...] = tuple(ALL_CHAINS.keys())
