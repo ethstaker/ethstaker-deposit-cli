@@ -7,7 +7,7 @@ Uses an existing BIP-39 mnemonic phrase for key generation.
 
 ## Optional Arguments
 
-- **`--chain`**: The chain to use for generating the deposit data. Options are: 'mainnet', 'sepolia', 'holesky', 'mekong', or 'ephemery'.
+- **`--chain`**: The chain to use for generating the deposit data. Options are: 'mainnet', 'sepolia', 'holesky', 'mekong', 'ephemery', 'gnosis', or 'chiado'.
 
 - **`--mnemonic`**: The mnemonic you used to create withdrawal credentials. <span class="warning"></span>
 

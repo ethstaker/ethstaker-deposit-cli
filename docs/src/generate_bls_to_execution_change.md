@@ -9,7 +9,7 @@ Generates a BLS to execution address change message. This is used to add a withd
 
 - **`--bls_to_execution_changes_folder`**: The path to store the change JSON file.
 
-- **`--chain`**: The chain to use for generating the deposit data. Options are: 'mainnet', 'sepolia', 'holesky', 'mekong', or 'ephemery'.
+- **`--chain`**: The chain to use for generating the deposit data. Options are: 'mainnet', 'sepolia', 'holesky', 'mekong', 'ephemery', 'gnosis', or 'chiado'.
 
 - **`--mnemonic`**: The mnemonic you used to create withdrawal credentials. <span class="warning"></span>
 

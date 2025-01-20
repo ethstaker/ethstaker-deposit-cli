@@ -11,7 +11,7 @@ Signs a withdrawal credential update message using the provided keystore. This s
 
 ## Optional Arguments
 
-- **`--chain`**: The chain to use for generating the deposit data. Options are: 'mainnet', 'sepolia', 'holesky', 'mekong', or 'ephemery'.
+- **`--chain`**: The chain to use for generating the deposit data. Options are: 'mainnet', 'sepolia', 'holesky', 'mekong', 'ephemery', 'gnosis', or 'chiado'.
 
 - **`--keystore`**: The keystore file associating with the validator you wish to sign with. This keystore file should match the provided validator index.
 
