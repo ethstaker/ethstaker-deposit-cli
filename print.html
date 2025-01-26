@@ -997,6 +997,10 @@ source .venv/bin/activate
 <p>Enable it for your <code>git commit</code> workflow:</p>
 <pre><code class="language-sh">pre-commit install
 </code></pre>
+<p>If you are using <code>uv</code>, you can also install it using:</p>
+<pre><code class="language-console">uv sync --all-extras
+uv run pre-commit install
+</code></pre>
 </li>
 </ol>
 <p><strong>To execute tests, you will need to install the test dependencies</strong>:</p>
