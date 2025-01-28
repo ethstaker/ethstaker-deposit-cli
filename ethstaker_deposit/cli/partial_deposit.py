@@ -165,6 +165,11 @@ def partial_deposit(
         click.echo(load_text(['arg_partial_deposit_keystore_password', 'mismatch']), err=True)
         sys.exit(1)
 
+    if chain in ["gnosis", "chiado"]:
+        # we need to scale (only for gnosis/chiado) because 32 * 1e9 means 1 GNO
+        # when the user enters 3, they mean 3 GNO, represented by 3 * 32 * 1e9
+        amount = amount * 32
+
     signing_key = int.from_bytes(secret_bytes, 'big')
 
     # Get chain setting

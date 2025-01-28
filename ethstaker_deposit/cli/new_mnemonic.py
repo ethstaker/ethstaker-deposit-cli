@@ -49,6 +49,12 @@ languages = get_first_options(MNEMONIC_LANG_OPTIONS)
 )
 @generate_keys_arguments_decorator
 def new_mnemonic(ctx: click.Context, mnemonic_language: str, **kwargs: Any) -> None:
+    if (ctx.params["chain"] in ["gnosis", "chiado"]) and ctx.params["compounding"]:
+        # we need to scale (only for gnosis/chiado) when the user explicitly enters the amount because 32 * 1e9 means 1 GNO
+        # when the user enters 3, they mean 3 GNO, represented by 3 * 32 * 1e9
+        # this is done only for compounding
+        ctx.params["amount"] = int(ctx.params["amount"]) * 32
+
     mnemonic = get_mnemonic(language=mnemonic_language, words_path=WORD_LISTS_PATH)
     test_mnemonic = ''
     while mnemonic != reconstruct_mnemonic(test_mnemonic, WORD_LISTS_PATH, mnemonic_language):

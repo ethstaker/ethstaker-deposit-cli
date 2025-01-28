@@ -116,6 +116,12 @@ def validate_mnemonic_language(ctx: click.Context, param: Any, language: str) ->
 @generate_keys_arguments_decorator
 @click.pass_context
 def existing_mnemonic(ctx: click.Context, mnemonic: str, mnemonic_password: str, **kwargs: Any) -> None:
+    if (ctx.params["chain"] in ["gnosis", "chiado"]) and ctx.params["compounding"]:
+        # we need to scale (only for gnosis/chiado) when the user explicitly enters the amount because 32 * 1e9 means 1 GNO
+        # when the user enters 3, they mean 3 GNO, represented by 3 * 32 * 1e9
+        # this is done only for compounding
+        ctx.params["amount"] = int(ctx.params["amount"]) * 32
+
     ctx.obj = {} if ctx.obj is None else ctx.obj  # Create a new ctx.obj if it doesn't exist
     ctx.obj.update({'mnemonic': mnemonic, 'mnemonic_password': mnemonic_password})
     # Clear clipboard
