@@ -29,7 +29,7 @@
         },
         "arg_amount": {
             "help": "The amount to deposit to these validators in ether denomination. Must be at least 1 ether and can not have greater precision than 1 gwei. Use of this option requires compounding validators.",
-            "prompt": "Please enter the amount you wish to deposit to these validators. Must be at least 1 ether and can not have greater precision than 1 gwei. 32 is required to activate a new validator"
+            "prompt": "Please enter the amount you wish to deposit to these validators. Must be at least 1 ether and can not have greater precision than 1 gwei. 32 is required to activate a new validator (or 1 for Gnosis Chain and Chiado)"
         },
         "arg_pbkdf2": {
             "help": "Uses the pbkdf2 hashing function instead of scrypt for generated keystore files. "

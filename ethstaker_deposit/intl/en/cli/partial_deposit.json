@@ -9,7 +9,7 @@
       },
       "arg_partial_deposit_amount": {
           "help": "The amount to deposit to this validator in ether denomination. Must be at least 1 ether and can not have greater precision than 1 gwei. Default is 32 ether.",
-          "prompt": "Please enter the amount you wish to deposit to this validator. Must be at least 1 ether and can not have greater precision than 1 gwei. 32 is required to activate a new validator"
+          "prompt": "Please enter the amount you wish to deposit to this validator. Must be at least 1 ether and can not have greater precision than 1 gwei. 32 is required to activate a new validator (or 1 for Gnosis Chain and Chiado)"
       },
       "arg_partial_deposit_keystore": {
           "help": "The keystore file associated with the validator you wish to sign with and deposit to.",
