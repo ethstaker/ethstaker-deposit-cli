@@ -171,8 +171,6 @@ def generate_keys(ctx: click.Context, validator_start_index: int,
                   devnet_chain_setting: Optional[BaseChainSetting], **kwargs: Any) -> None:
     mnemonic = ctx.obj['mnemonic']
     mnemonic_password = ctx.obj['mnemonic_password']
-    if chain in ["gnosis", "chiado"]:
-        amount = ctx.params["amount"]
     if withdrawal_address is None or not compounding:
         amount = MIN_ACTIVATION_AMOUNT
     amounts = [amount] * num_validators
