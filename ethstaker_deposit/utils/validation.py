@@ -211,7 +211,7 @@ def validate_deposit_amount(amount: str, **kwargs) -> int:
         # Gnosis Chain and Chiado need a 32x multiplier on deposits
         # The values range from 0.0325 GNO (represented as 1 ETH) to 64 GNO (represented as 2048 ETH)
         # This validation allows users to enter amount in GNO terms, without causing confusion
-        if ("chain" in params) and (params["chain"] in ["gnosis", "chiado"]) and (("compounding" in params) or not params["compounding"]):
+        if ("chain" in params) and (params["chain"] in ["gnosis", "chiado"]):
             amount_gwei *= 32
 
         if amount_gwei % 1 != 0:
