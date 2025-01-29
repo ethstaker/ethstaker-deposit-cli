@@ -98,10 +98,11 @@ FUNC_NAME = 'partial_deposit'
 )
 @jit_option(
     callback=captive_prompt_callback(
-        lambda amount: validate_deposit_amount(amount),
+        lambda amount, **kwargs: validate_deposit_amount(amount, **kwargs),
         lambda: load_text(['arg_partial_deposit_amount', 'prompt'], func=FUNC_NAME),
         default="32",
         prompt_if=prompt_if_none,
+        prompt_marker="amount",
     ),
     default="32",
     help=lambda: load_text(['arg_partial_deposit_amount', 'help'], func=FUNC_NAME),
@@ -164,11 +165,6 @@ def partial_deposit(
     except ValueError:
         click.echo(load_text(['arg_partial_deposit_keystore_password', 'mismatch']), err=True)
         sys.exit(1)
-
-    if chain in ["gnosis", "chiado"]:
-        # we need to scale (only for gnosis/chiado) because 32 * 1e9 means 1 GNO
-        # when the user enters 3, they mean 3 GNO, represented by 3 * 32 * 1e9
-        amount = amount * 32
 
     signing_key = int.from_bytes(secret_bytes, 'big')
 

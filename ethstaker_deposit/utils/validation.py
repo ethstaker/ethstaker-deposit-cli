@@ -198,7 +198,7 @@ def validate_yesno(ctx: click.Context, param: Any, value: str) -> bool:
         raise ValidationError(load_text(['err_invalid_bool_value']))
 
 
-def validate_deposit_amount(amount: str) -> int:
+def validate_deposit_amount(amount: str, **kwargs) -> int:
     '''
     Verifies that `amount` is a valid gwei denomination and 1 ether <= amount <= MAX_DEPOSIT_AMOUNT gwei
     Amount is expected to be in ether and the returned value will be converted to gwei and represented as an int
@@ -206,6 +206,13 @@ def validate_deposit_amount(amount: str) -> int:
     try:
         decimal_ether = Decimal(amount)
         amount_gwei = decimal_ether * Decimal(ETH2GWEI)
+
+        params = kwargs.get('params', {})
+        # Gnosis Chain and Chiado need a 32x multiplier on deposits
+        # The values range from 0.0325 GNO (represented as 1 ETH) to 64 GNO (represented as 2048 ETH)
+        # This validation allows users to enter amount in GNO terms, without causing confusion
+        if ("chain" in params) and (params["chain"] in ["gnosis", "chiado"]):
+            amount_gwei *= 32
 
         if amount_gwei % 1 != 0:
             raise ValidationError(load_text(['err_not_gwei_denomination']))
