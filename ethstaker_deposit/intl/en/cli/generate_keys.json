@@ -28,8 +28,8 @@
             "prompt": "Please enter yes if you want to generate compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance. Compounding validators and 0x02 withdrawal credentials are only supported on networks that have undergone the Pectra fork. Please type no or nothing if you want regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance."
         },
         "arg_amount": {
-            "help": "The amount to deposit to these validators in ether denomination. Must be at least 1 ether and can not have greater precision than 1 gwei. Use of this option requires compounding validators.",
-            "prompt": "Please enter the amount you wish to deposit to these validators. Must be at least 1 ether and can not have greater precision than 1 gwei. 32 is required to activate a new validator (or 1 for Gnosis Chain and Chiado)"
+            "help": "The amount to deposit to these validators in ether denomination. Must be at least 1 ether (or 0.0325 for Gnosis Chain and Chiado) and can not have greater precision than 1 gwei. Use of this option requires compounding validators.",
+            "prompt": "Please enter the amount you wish to deposit to these validators. Must be at least 1 ether (or 0.0325 for Gnosis Chain and Chiado) and can not have greater precision than 1 gwei. 32 is required to activate a new validator (or 1 for Gnosis Chain and Chiado)"
         },
         "arg_pbkdf2": {
             "help": "Uses the pbkdf2 hashing function instead of scrypt for generated keystore files. "
