@@ -98,7 +98,7 @@ FUNC_NAME = 'partial_deposit'
 )
 @jit_option(
     callback=captive_prompt_callback(
-        lambda amount: validate_deposit_amount(amount),
+        lambda amount, **kwargs: validate_deposit_amount(amount, **kwargs),
         lambda: load_text(['arg_partial_deposit_amount', 'prompt'], func=FUNC_NAME),
         default="32",
         prompt_if=prompt_if_none,

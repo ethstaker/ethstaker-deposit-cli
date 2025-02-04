@@ -133,10 +133,11 @@ def generate_keys_arguments_decorator(function: Callable[..., Any]) -> Callable[
         ),
         jit_option(
             callback=captive_prompt_callback(
-                lambda amount: validate_deposit_amount(amount),
+                lambda amount, **kwargs: validate_deposit_amount(amount, **kwargs),
                 lambda: load_text(['arg_amount', 'prompt'], func='generate_keys_arguments_decorator'),
                 default=str(min_activation_amount_eth),
                 prompt_if=prompt_if_other_value('compounding', True),
+                prompt_marker="amount",
             ),
             default=str(min_activation_amount_eth),
             help=lambda: load_text(['arg_amount', 'help'], func='generate_keys_arguments_decorator'),
@@ -178,6 +179,8 @@ def generate_keys(ctx: click.Context, validator_start_index: int,
 
     # Get chain setting
     chain_setting = devnet_chain_setting if devnet_chain_setting is not None else get_chain_setting(chain)
+
+    amounts = [amount * chain_setting.MULPLIER for amount in amounts]
 
     if not os.path.exists(folder):
         os.mkdir(folder)

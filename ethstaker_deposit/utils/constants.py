@@ -32,6 +32,25 @@ DEFAULT_PARTIAL_DEPOSIT_FOLDER_NAME = 'partial_deposits'
 INTL_CONTENT_PATH = os.path.join('ethstaker_deposit', 'intl')
 
 
+CHAIN_MIN_ACTIVATION_OVERRIDES: Dict[str, int] = {
+    'chiado': 1 * ETH2GWEI,
+    'gnosis': 1 * ETH2GWEI,
+}
+
+
+CONTEXT_REQUIRING_PROMPTS = [
+    "amount",
+]
+
+
+def get_min_activation_amount(chain: str, **kwargs) -> int:
+    """
+    Returns the minimum activation amount for the specified chain.
+    Defaults to 32 ETH unless overridden for a specific chain.
+    """
+    return CHAIN_MIN_ACTIVATION_OVERRIDES.get(chain, MIN_ACTIVATION_AMOUNT) // ETH2GWEI
+
+
 def _add_index_to_options(d: Dict[str, list[str]]) -> Dict[str, list[str]]:
     '''
     Adds the (1 indexed) index (in the dict) to the first element of value list.

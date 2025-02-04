@@ -46,7 +46,7 @@ from ethstaker_deposit.utils.constants import (
     MAX_DEPOSIT_AMOUNT,
 )
 from ethstaker_deposit.utils.crypto import SHA256
-from ethstaker_deposit.settings import BaseChainSetting, get_devnet_chain_setting
+from ethstaker_deposit.settings import BaseChainSetting, get_chain_setting, get_devnet_chain_setting
 
 
 #
@@ -198,7 +198,7 @@ def validate_yesno(ctx: click.Context, param: Any, value: str) -> bool:
         raise ValidationError(load_text(['err_invalid_bool_value']))
 
 
-def validate_deposit_amount(amount: str) -> int:
+def validate_deposit_amount(amount: str, **kwargs) -> int:
     '''
     Verifies that `amount` is a valid gwei denomination and 1 ether <= amount <= MAX_DEPOSIT_AMOUNT gwei
     Amount is expected to be in ether and the returned value will be converted to gwei and represented as an int
@@ -207,10 +207,15 @@ def validate_deposit_amount(amount: str) -> int:
         decimal_ether = Decimal(amount)
         amount_gwei = decimal_ether * Decimal(ETH2GWEI)
 
+        params = kwargs.get('params', {})
+        chain = params.get('chain', 'mainnet')
+        chain_setting = get_chain_setting(chain)
+        min_amount = chain_setting.MINIMUM_COMPOUNDING_DEPOSIT if params.get('compounding', False) else 1
+
         if amount_gwei % 1 != 0:
             raise ValidationError(load_text(['err_not_gwei_denomination']))
 
-        if amount_gwei < 1 * ETH2GWEI:
+        if amount_gwei < min_amount * ETH2GWEI:
             raise ValidationError(load_text(['err_min_deposit']))
 
         if amount_gwei > MAX_DEPOSIT_AMOUNT:
