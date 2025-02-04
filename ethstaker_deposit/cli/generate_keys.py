@@ -135,11 +135,9 @@ def generate_keys_arguments_decorator(function: Callable[..., Any]) -> Callable[
             callback=captive_prompt_callback(
                 lambda amount, **kwargs: validate_deposit_amount(amount, **kwargs),
                 lambda: load_text(['arg_amount', 'prompt'], func='generate_keys_arguments_decorator'),
-                default=str(min_activation_amount_eth),
                 prompt_if=prompt_if_other_value('compounding', True),
                 prompt_marker="amount",
             ),
-            default=str(min_activation_amount_eth),
             help=lambda: load_text(['arg_amount', 'help'], func='generate_keys_arguments_decorator'),
             param_decls='--amount',
             prompt=False,  # the callback handles the prompt

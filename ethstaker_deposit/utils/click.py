@@ -166,10 +166,11 @@ def captive_prompt_callback(
         # To avoid showing confirmation prompt twice, we introduce a flag to prompt inside
         # the callback
         # See https://github.com/pallets/click/discussions/2673
+        default_value = _value_of(default) if default is not None else param.default
         if (prompt_if is not None
                 and ctx.get_parameter_source(param.name) == click.core.ParameterSource.DEFAULT
                 and prompt_if(ctx, param, user_input)):
-            user_input = click.prompt(prompt(), hide_input=hide_input, default=_value_of(default))
+            user_input = click.prompt(prompt(), hide_input=hide_input, default=default_value)
         if config.non_interactive:
             return process_with_optional_context(ctx, processing_func, user_input)
         while True:

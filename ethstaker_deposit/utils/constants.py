@@ -43,7 +43,7 @@ CONTEXT_REQUIRING_PROMPTS = [
 ]
 
 
-def get_min_activation_amount(chain: str, **kwargs) -> int:
+def get_min_activation_amount(chain: str) -> int:
     """
     Returns the minimum activation amount for the specified chain.
     Defaults to 32 ETH unless overridden for a specific chain.
