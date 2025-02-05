@@ -134,7 +134,7 @@ def generate_keys_arguments_decorator(function: Callable[..., Any]) -> Callable[
         jit_option(
             callback=captive_prompt_callback(
                 lambda amount, **kwargs: validate_deposit_amount(amount, **kwargs),
-                lambda: load_text(['arg_amount', 'prompt'], func='generate_keys_arguments_decorator'),
+                get_amount_prompt_from_template,
                 prompt_if=prompt_if_other_value('compounding', True),
                 prompt_marker="amount",
             ),
@@ -160,6 +160,17 @@ def generate_keys_arguments_decorator(function: Callable[..., Any]) -> Callable[
     for decorator in reversed(decorators):
         function = decorator(function)
     return function
+
+def get_amount_prompt_from_template() -> str:
+    ctx = click.get_current_context(silent=True)
+    chain = ctx.params.get('chain', 'mainnet') if ctx is not None else 'mainnet'
+    chain_setting = get_chain_setting(chain)
+    min_deposit = chain_setting.MINIMUM_COMPOUNDING_DEPOSIT if ctx.params.get('compounding', False) else 1
+    multiplier = chain_setting.MULPLIER if ctx.params.get('compounding', False) else 1
+    activation_amount = str(int(32/multiplier))
+    template = load_text(['arg_amount', 'prompt'], func='generate_keys_arguments_decorator')
+    return template.format(min_deposit=min_deposit, activation_amount=activation_amount)
+
 
 
 @click.command()
