@@ -139,6 +139,14 @@ jobs:
         uses: docker/metadata-action@369eb591f429131d6889c46b94e711f089e6ca96
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+      # Set up Qemu for multi-arch build
+      - name: Set up Qemu
+        # This pinned action came from docker/setup-qemu-action@v3, releases can be found on https://github.com/docker/setup-qemu-action/releases
+        uses: docker/setup-qemu-action@4574d27a4764455b42196d70a065bc6853246a25
+      # Set up buildx for multi-arch build
+      - name: Set up Docker Buildx
+        # This pinned action came from docker/setup-buildx-action@v3, releases can be found on https://github.com/docker/setup-buildx-action/releases
+        uses: docker/setup-buildx-action@f7ce87c1d6bead3e36075b2ce75da1f6cc28aaca
       # This step uses the `docker/build-push-action` action to build the image, based on your repository's `Dockerfile`. If the build succeeds, it pushes the image to GitHub Packages.
       # It uses the `context` parameter to define the build's context as the set of files located in the specified path. For more information, see "[Usage](https://github.com/docker/build-push-action#usage)" in the README of the `docker/build-push-action` repository.
       # It uses the `tags` and `labels` parameters to tag and label the image with the output from the "meta" step.
@@ -148,6 +156,7 @@ jobs:
         uses: docker/build-push-action@ca877d9245402d1537745e0e356eab47c3520991
         with:
           context: .
+          platforms: linux/amd64,linux/arm64,linux/riscv64
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
