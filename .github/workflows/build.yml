@@ -197,7 +197,7 @@ jobs:
             var tagName = '';
             var dockerVersion = '';
             if (context.eventName == 'push') {
-              const tagRegex = /(?:refs\/tags\/)?(v\d+\.\d+\.\d+)$/;
+              const tagRegex = /(?:refs\/tags\/)?(v\d+\.\d+\.\d+(?:-\w+)?)$/;
 
               const match = context.ref.match(tagRegex);
               if (match) {
