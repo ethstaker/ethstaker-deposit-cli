@@ -142,7 +142,7 @@ jobs:
       # Set up Qemu for multi-arch build
       - name: Set up Qemu
         # This pinned action came from docker/setup-qemu-action@v3, releases can be found on https://github.com/docker/setup-qemu-action/releases
-        uses: docker/setup-qemu-action@4574d27a4764455b42196d70a065bc6853246a25
+        uses: docker/setup-qemu-action@29109295f81e9208d7d86ff1c6c12d2833863392
       # Set up buildx for multi-arch build
       - name: Set up Docker Buildx
         # This pinned action came from docker/setup-buildx-action@v3, releases can be found on https://github.com/docker/setup-buildx-action/releases
