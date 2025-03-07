@@ -50,7 +50,7 @@ FUNC_NAME = 'generate_bls_to_execution_change_keystore'
 )
 @jit_option(
     callback=captive_prompt_callback(
-        lambda x: closest_match(x, ALL_CHAIN_KEYS),
+        lambda x, _: closest_match(x, ALL_CHAIN_KEYS),
         choice_prompt_func(
             lambda: load_text(['arg_chain', 'prompt'], func=FUNC_NAME),
             ALL_CHAIN_KEYS
@@ -65,7 +65,7 @@ FUNC_NAME = 'generate_bls_to_execution_change_keystore'
 )
 @jit_option(
     callback=captive_prompt_callback(
-        lambda file: validate_keystore_file(file),
+        lambda file, _: validate_keystore_file(file),
         lambda: load_text(['arg_bls_to_execution_changes_keystore_keystore', 'prompt'], func=FUNC_NAME),
         prompt_if=prompt_if_none,
     ),
@@ -75,7 +75,7 @@ FUNC_NAME = 'generate_bls_to_execution_change_keystore'
 )
 @jit_option(
     callback=captive_prompt_callback(
-        lambda x: x,
+        lambda x, _: x,
         lambda: load_text(['arg_bls_to_execution_changes_keystore_keystore_password', 'prompt'], func=FUNC_NAME),
         None,
         lambda: load_text(['arg_bls_to_execution_changes_keystore_keystore_password', 'invalid'], func=FUNC_NAME),
@@ -88,7 +88,7 @@ FUNC_NAME = 'generate_bls_to_execution_change_keystore'
 )
 @jit_option(
     callback=captive_prompt_callback(
-        lambda num: validate_int_range(num, 0, 2**32),
+        lambda num, _: validate_int_range(num, 0, 2**32),
         lambda: load_text(['arg_validator_index', 'prompt'], func=FUNC_NAME),
     ),
     help=lambda: load_text(['arg_validator_index', 'help'], func=FUNC_NAME),
@@ -97,7 +97,7 @@ FUNC_NAME = 'generate_bls_to_execution_change_keystore'
 )
 @jit_option(
     callback=captive_prompt_callback(
-        lambda address: validate_withdrawal_address(None, None, address, True),
+        lambda address, _: validate_withdrawal_address(None, None, address, True),
         lambda: load_text(['arg_withdrawal_address', 'prompt'], func=FUNC_NAME),
         lambda: load_text(['arg_withdrawal_address', 'confirm'], func=FUNC_NAME),
         lambda: load_text(['arg_withdrawal_address', 'mismatch'], func=FUNC_NAME),

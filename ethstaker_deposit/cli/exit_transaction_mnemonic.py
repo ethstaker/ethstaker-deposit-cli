@@ -58,7 +58,7 @@ FUNC_NAME = 'exit_transaction_mnemonic'
 )
 @jit_option(
     callback=captive_prompt_callback(
-        lambda x: closest_match(x, ALL_CHAIN_KEYS),
+        lambda x, _: closest_match(x, ALL_CHAIN_KEYS),
         choice_prompt_func(
             lambda: load_text(['arg_exit_transaction_mnemonic_chain', 'prompt'], func=FUNC_NAME),
             ALL_CHAIN_KEYS
@@ -74,7 +74,7 @@ FUNC_NAME = 'exit_transaction_mnemonic'
 @load_mnemonic_arguments_decorator
 @jit_option(
     callback=captive_prompt_callback(
-        lambda num: validate_int_range(num, 0, 2**32),
+        lambda num, _: validate_int_range(num, 0, 2**32),
         lambda: load_text(['arg_exit_transaction_mnemonic_start_index', 'prompt'], func=FUNC_NAME),
     ),
     default=0,
@@ -84,7 +84,7 @@ FUNC_NAME = 'exit_transaction_mnemonic'
 )
 @jit_option(
     callback=captive_prompt_callback(
-        lambda validator_indices: validate_validator_indices(validator_indices),
+        lambda validator_indices, _: validate_validator_indices(validator_indices),
         lambda: load_text(['arg_exit_transaction_mnemonic_indices', 'prompt'], func=FUNC_NAME),
     ),
     help=lambda: load_text(['arg_exit_transaction_mnemonic_indices', 'help'], func=FUNC_NAME),

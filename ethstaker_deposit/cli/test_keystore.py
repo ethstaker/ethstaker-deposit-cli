@@ -23,7 +23,7 @@ FUNC_NAME = 'test_keystore'
 )
 @jit_option(
     callback=captive_prompt_callback(
-        lambda file: validate_keystore_file(file),
+        lambda file, _: validate_keystore_file(file),
         lambda: load_text(['arg_test_keystore_keystore', 'prompt'], func=FUNC_NAME),
         prompt_if=prompt_if_none,
     ),
@@ -33,7 +33,7 @@ FUNC_NAME = 'test_keystore'
 )
 @jit_option(
     callback=captive_prompt_callback(
-        lambda x: x,
+        lambda x, _: x,
         lambda: load_text(['arg_test_keystore_keystore_password', 'prompt'], func=FUNC_NAME),
         None,
         lambda: load_text(['arg_test_keystore_keystore_password', 'invalid'], func=FUNC_NAME),

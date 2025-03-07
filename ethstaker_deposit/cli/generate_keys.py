@@ -61,7 +61,7 @@ def generate_keys_arguments_decorator(function: Callable[..., Any]) -> Callable[
     decorators = [
         jit_option(
             callback=captive_prompt_callback(
-                lambda num: validate_int_range(num, 1, 2**32),
+                lambda num, _: validate_int_range(num, 1, 2**32),
                 lambda: load_text(['num_validators', 'prompt'], func='generate_keys_arguments_decorator')
             ),
             help=lambda: load_text(['num_validators', 'help'], func='generate_keys_arguments_decorator'),
@@ -76,7 +76,7 @@ def generate_keys_arguments_decorator(function: Callable[..., Any]) -> Callable[
         ),
         jit_option(
             callback=captive_prompt_callback(
-                lambda x: closest_match(x, ALL_CHAIN_KEYS),
+                lambda x, _: closest_match(x, ALL_CHAIN_KEYS),
                 choice_prompt_func(
                     lambda: load_text(['chain', 'prompt'], func='generate_keys_arguments_decorator'),
                     ALL_CHAIN_KEYS
@@ -91,7 +91,7 @@ def generate_keys_arguments_decorator(function: Callable[..., Any]) -> Callable[
         ),
         jit_option(
             callback=captive_prompt_callback(
-                validate_password_strength,
+                lambda password, _: validate_password_strength(password),
                 lambda: load_text(['keystore_password', 'prompt'], func='generate_keys_arguments_decorator'),
                 lambda: load_text(['keystore_password', 'confirm'], func='generate_keys_arguments_decorator'),
                 lambda: load_text(['keystore_password', 'mismatch'], func='generate_keys_arguments_decorator'),
@@ -105,7 +105,7 @@ def generate_keys_arguments_decorator(function: Callable[..., Any]) -> Callable[
         ),
         jit_option(
             callback=captive_prompt_callback(
-                lambda address: validate_withdrawal_address(None, None, address),
+                lambda address, _: validate_withdrawal_address(None, None, address),
                 lambda: load_text(['arg_withdrawal_address', 'prompt'], func='generate_keys_arguments_decorator'),
                 lambda: load_text(['arg_withdrawal_address', 'confirm'], func='generate_keys_arguments_decorator'),
                 lambda: load_text(['arg_withdrawal_address', 'mismatch'], func='generate_keys_arguments_decorator'),
@@ -119,7 +119,7 @@ def generate_keys_arguments_decorator(function: Callable[..., Any]) -> Callable[
         ),
         jit_option(
             callback=captive_prompt_callback(
-                lambda value: validate_yesno(None, None, value),
+                lambda value, _: validate_yesno(None, None, value),
                 lambda: load_text(['arg_compounding', 'prompt'], func='generate_keys_arguments_decorator'),
                 default="False",
                 prompt_if=prompt_if_other_exists('withdrawal_address'),

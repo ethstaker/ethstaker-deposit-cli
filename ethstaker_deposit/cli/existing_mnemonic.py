@@ -38,7 +38,7 @@ def load_mnemonic_arguments_decorator(function: Callable[..., Any]) -> Callable[
         jit_option(
             callback=lambda c, _, mnemonic:
                 captive_prompt_callback(
-                    lambda mnemonic: validate_mnemonic(mnemonic=mnemonic, language=c.params.get('mnemonic_language')),
+                    lambda mnemonic, _: validate_mnemonic(mnemonic=mnemonic, language=c.params.get('mnemonic_language')),
                     prompt=lambda: load_text(['arg_mnemonic', 'prompt'], func='existing_mnemonic'),
                     prompt_if=prompt_if_none,
                 )(c, _, mnemonic),
@@ -49,7 +49,7 @@ def load_mnemonic_arguments_decorator(function: Callable[..., Any]) -> Callable[
         ),
         jit_option(
             callback=captive_prompt_callback(
-                lambda x: x,
+                lambda x, _: x,
                 lambda: load_text(['arg_mnemonic_password', 'prompt'], func='existing_mnemonic'),
                 lambda: load_text(['arg_mnemonic_password', 'confirm'], func='existing_mnemonic'),
                 lambda: load_text(['arg_mnemonic_password', 'mismatch'], func='existing_mnemonic'),
@@ -103,7 +103,7 @@ def validate_mnemonic_language(ctx: click.Context, param: Any, language: str) ->
 @load_mnemonic_arguments_decorator
 @jit_option(
     callback=captive_prompt_callback(
-        lambda num: validate_int_range(num, 0, 2**32),
+        lambda num, _: validate_int_range(num, 0, 2**32),
         lambda: load_text(['arg_validator_start_index', 'prompt'], func='existing_mnemonic'),
         lambda: load_text(['arg_validator_start_index', 'confirm'], func='existing_mnemonic'),
         prompt_if=prompt_if_none,

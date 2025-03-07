@@ -60,7 +60,7 @@ FUNC_NAME = 'partial_deposit'
 )
 @jit_option(
     callback=captive_prompt_callback(
-        lambda x: closest_match(x, ALL_CHAIN_KEYS),
+        lambda x, _: closest_match(x, ALL_CHAIN_KEYS),
         choice_prompt_func(
             lambda: load_text(['arg_partial_deposit_chain', 'prompt'], func=FUNC_NAME),
             ALL_CHAIN_KEYS
@@ -75,7 +75,7 @@ FUNC_NAME = 'partial_deposit'
 )
 @jit_option(
     callback=captive_prompt_callback(
-        lambda file: validate_keystore_file(file),
+        lambda file, _: validate_keystore_file(file),
         lambda: load_text(['arg_partial_deposit_keystore', 'prompt'], func=FUNC_NAME),
         prompt_if=prompt_if_none,
     ),
@@ -85,7 +85,7 @@ FUNC_NAME = 'partial_deposit'
 )
 @jit_option(
     callback=captive_prompt_callback(
-        lambda x: x,
+        lambda x, _: x,
         lambda: load_text(['arg_partial_deposit_keystore_password', 'prompt'], func=FUNC_NAME),
         None,
         lambda: load_text(['arg_partial_deposit_keystore_password', 'invalid'], func=FUNC_NAME),
@@ -110,7 +110,7 @@ FUNC_NAME = 'partial_deposit'
 )
 @jit_option(
     callback=captive_prompt_callback(
-        lambda address: validate_withdrawal_address(None, None, address, True),
+        lambda address, _: validate_withdrawal_address(None, None, address, True),
         lambda: load_text(['arg_withdrawal_address', 'prompt'], func=FUNC_NAME),
         lambda: load_text(['arg_withdrawal_address', 'confirm'], func=FUNC_NAME),
         lambda: load_text(['arg_withdrawal_address', 'mismatch'], func=FUNC_NAME),
@@ -122,7 +122,7 @@ FUNC_NAME = 'partial_deposit'
 )
 @jit_option(
     callback=captive_prompt_callback(
-        lambda value: validate_yesno(None, None, value),
+        lambda value, _: validate_yesno(None, None, value),
         lambda: load_text(['arg_compounding', 'prompt'], func=FUNC_NAME),
         default="False",
         prompt_if=prompt_if_other_exists('withdrawal_address'),

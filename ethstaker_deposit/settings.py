@@ -18,7 +18,7 @@ class BaseChainSetting(NamedTuple):
     EXIT_FORK_VERSION: bytes  # capella fork version for voluntary exits (EIP-7044)
     GENESIS_VALIDATORS_ROOT: Optional[bytes] = None
     MULPLIER: int = 1
-    MINIMUM_COMPOUNDING_DEPOSIT: int = 1
+    MINIMUM_COMPOUNDING_DEPOSIT: float = 1
 
     def __str__(self) -> str:
         gvr_value = self.GENESIS_VALIDATORS_ROOT.hex() if self.GENESIS_VALIDATORS_ROOT is not None else 'None'

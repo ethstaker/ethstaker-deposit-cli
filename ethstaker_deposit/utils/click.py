@@ -133,12 +133,12 @@ def process_with_optional_context(ctx: click.Context, processing_func: Callable[
     Processes the user's input with the optional context if the prompt requires it.
     '''
     if prompt_marker in CONTEXT_REQUIRING_PROMPTS:
-        return processing_func(user_input, params=ctx.params)
-    return processing_func(user_input)
+        return processing_func(user_input, ctx.params)
+    return processing_func(user_input, {})
 
 
 def captive_prompt_callback(
-    processing_func: Callable[[str], Any],
+    processing_func: Callable[[str, dict[str, Any]], Any],
     prompt: Callable[[], str],
     confirmation_prompt: Optional[Callable[[], str]] = None,
     confirmation_mismatch_msg: Callable[[], str] = lambda: '',

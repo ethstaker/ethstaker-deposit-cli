@@ -198,7 +198,7 @@ def validate_yesno(ctx: click.Context, param: Any, value: str) -> bool:
         raise ValidationError(load_text(['err_invalid_bool_value']))
 
 
-def validate_deposit_amount(amount: str, **kwargs) -> int:
+def validate_deposit_amount(amount: str, **kwargs: Dict[str, Any]) -> int:
     '''
     Verifies that `amount` is a valid gwei denomination and 1 ether <= amount <= MAX_DEPOSIT_AMOUNT gwei
     Amount is expected to be in ether and the returned value will be converted to gwei and represented as an int
