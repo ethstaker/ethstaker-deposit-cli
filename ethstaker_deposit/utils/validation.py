@@ -474,6 +474,8 @@ def validate_devnet_chain_setting(ctx: click.Context, param: Any, value: Optiona
             genesis_fork_version=devnet_chain_setting_dict['genesis_fork_version'],
             exit_fork_version=devnet_chain_setting_dict['exit_fork_version'],
             genesis_validator_root=devnet_chain_setting_dict.get('genesis_validator_root', None),
+            multiplier=devnet_chain_setting_dict.get('multiplier', None),
+            minimum_compounding_deposit=devnet_chain_setting_dict.get('minimum_compounding_deposit', None),
         )
         click.echo(str(chain_setting) + '\n')
         return chain_setting
