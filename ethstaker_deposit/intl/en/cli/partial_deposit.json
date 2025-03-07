@@ -33,7 +33,7 @@
           "prompt": "Please enter yes if you want to generate compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance. Compounding validators and 0x02 withdrawal credentials are only supported on networks that have undergone the Pectra fork. Please type no or nothing if you want regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance."
       },
       "arg_devnet_chain_setting": {
-          "help": "[DEVNET ONLY] Set specific GENESIS_FORK_VERSION value. This should be a JSON string containing an object with the following keys: network_name, genesis_fork_version, exit_fork_version and genesis_validator_root. It should be similar to what you can find in settings.py. This will override any selected chain."
+          "help": "[DEVNET ONLY] Set specific GENESIS_FORK_VERSION value. This should be a JSON string containing an object with the following keys: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier and minimum_compounding_deposit. It should be similar to what you can find in settings.py. This will override any selected chain."
       },
       "msg_partial_deposit_creation": "\nCreating your partial deposit...",
       "msg_verify_partial_deposit": "\nVerifying your partial deposit...",
