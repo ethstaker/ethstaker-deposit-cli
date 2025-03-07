@@ -17,7 +17,7 @@ class BaseChainSetting(NamedTuple):
     GENESIS_FORK_VERSION: bytes
     EXIT_FORK_VERSION: bytes  # capella fork version for voluntary exits (EIP-7044)
     GENESIS_VALIDATORS_ROOT: Optional[bytes] = None
-    MULPLIER: int = 1
+    MULTIPLIER: int = 1
     MINIMUM_COMPOUNDING_DEPOSIT: float = 1
 
     def __str__(self) -> str:
@@ -26,7 +26,7 @@ class BaseChainSetting(NamedTuple):
                 f'  - Genesis fork version: {self.GENESIS_FORK_VERSION.hex()}\n'
                 f'  - Exit fork version: {self.EXIT_FORK_VERSION.hex()}\n'
                 f'  - Genesis validators root: {gvr_value}\n'
-                f'  - Multiplier: {self.MULPLIER}\n'
+                f'  - Multiplier: {self.MULTIPLIER}\n'
                 f'  - Minimum compounding deposit: {self.MINIMUM_COMPOUNDING_DEPOSIT}')
 
 
@@ -78,7 +78,7 @@ GnosisSetting = BaseChainSetting(
     GENESIS_FORK_VERSION=bytes.fromhex('00000064'),
     EXIT_FORK_VERSION=bytes.fromhex('03000064'),
     GENESIS_VALIDATORS_ROOT=bytes.fromhex('f5dcb5564e829aab27264b9becd5dfaa017085611224cb3036f573368dbb9d47'),
-    MULPLIER=32,
+    MULTIPLIER=32,
     MINIMUM_COMPOUNDING_DEPOSIT=0.03125)
 # Chiado setting
 ChiadoSetting = BaseChainSetting(
@@ -86,7 +86,7 @@ ChiadoSetting = BaseChainSetting(
     GENESIS_FORK_VERSION=bytes.fromhex('0000006f'),
     EXIT_FORK_VERSION=bytes.fromhex('0300006f'),
     GENESIS_VALIDATORS_ROOT=bytes.fromhex('9d642dac73058fbf39c0ae41ab1e34e4d889043cb199851ded7095bc99eb4c1e'),
-    MULPLIER=32,
+    MULTIPLIER=32,
     MINIMUM_COMPOUNDING_DEPOSIT=0.03125)
 
 
