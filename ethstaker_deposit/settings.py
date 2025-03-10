@@ -111,14 +111,14 @@ def get_devnet_chain_setting(network_name: str,
                              genesis_fork_version: str,
                              exit_fork_version: str,
                              genesis_validator_root: Optional[str],
-                             multiplier: Optional[int],
-                             minimum_compounding_deposit: Optional[float]) -> BaseChainSetting:
+                             multiplier: Optional[int] = 1,
+                             minimum_compounding_deposit: Optional[float] = 1) -> BaseChainSetting:
                              
     return BaseChainSetting(
         NETWORK_NAME=network_name,
         GENESIS_FORK_VERSION=decode_hex(genesis_fork_version),
         EXIT_FORK_VERSION=decode_hex(exit_fork_version),
         GENESIS_VALIDATORS_ROOT=decode_hex(genesis_validator_root) if genesis_validator_root is not None else None,
-        MULTIPLIER=multiplier if multiplier is not None else 1,
-        MINIMUM_COMPOUNDING_DEPOSIT=minimum_compounding_deposit if minimum_compounding_deposit is not None else 1,
+        MULTIPLIER=multiplier,
+        MINIMUM_COMPOUNDING_DEPOSIT=minimum_compounding_deposit,
     )
