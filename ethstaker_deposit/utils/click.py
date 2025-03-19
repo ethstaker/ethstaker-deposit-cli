@@ -128,7 +128,7 @@ def prompt_if_other_value(other: str, value: Any) -> Callable[[click.Context, An
     return callback
 
 
-def process_with_optional_context(ctx: click.Context, processing_func: Callable[[str, dict[str, Any]], Any], user_input: str, prompt_marker: str) -> Any:
+def process_with_optional_context(ctx: click.Context, processing_func: Callable[..., Any], user_input: str, prompt_marker: str) -> Any:
     '''
     Processes the user's input with the optional context if the prompt requires it.
     '''
