@@ -136,6 +136,7 @@ def generate_keys_arguments_decorator(function: Callable[..., Any]) -> Callable[
                 lambda amount, **kwargs: validate_deposit_amount(amount, **kwargs),
                 get_amount_prompt_from_template,
                 prompt_if=prompt_if_other_value('compounding', True),
+                default=str(min_activation_amount_eth),
                 prompt_marker="amount",
             ),
             help=lambda: load_text(['arg_amount', 'help'], func='generate_keys_arguments_decorator'),

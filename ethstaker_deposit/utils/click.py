@@ -133,7 +133,7 @@ def process_with_optional_context(ctx: click.Context, processing_func: Callable[
     Processes the user's input with the optional context if the prompt requires it.
     '''
     if prompt_marker in CONTEXT_REQUIRING_PROMPTS:
-        return processing_func(user_input, ctx.params)
+        return processing_func(user_input, params=ctx.params)
     return processing_func(user_input, {})
 
 

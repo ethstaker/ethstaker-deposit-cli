@@ -102,6 +102,7 @@ FUNC_NAME = 'partial_deposit'
         lambda: load_text(['arg_partial_deposit_amount', 'prompt'], func=FUNC_NAME),
         default="32",
         prompt_if=prompt_if_none,
+        prompt_marker="amount",
     ),
     default="32",
     help=lambda: load_text(['arg_partial_deposit_amount', 'help'], func=FUNC_NAME),
