@@ -136,7 +136,7 @@ def generate_keys_arguments_decorator(function: Callable[..., Any]) -> Callable[
                 lambda amount, **kwargs: validate_deposit_amount(amount, **kwargs),
                 get_amount_prompt_from_template,
                 prompt_if=prompt_if_other_value('compounding', True),
-                default=str(min_activation_amount_eth),
+                default=get_default_amount,
                 prompt_marker="amount",
             ),
             help=lambda: load_text(['arg_amount', 'help'], func='generate_keys_arguments_decorator'),
@@ -171,6 +171,13 @@ def get_amount_prompt_from_template() -> str:
     activation_amount = str(int(32/multiplier))
     template = load_text(['arg_amount', 'prompt'], func='generate_keys_arguments_decorator')
     return template.format(min_deposit=min_deposit, activation_amount=activation_amount)
+
+def get_default_amount() -> str:
+    ctx = click.get_current_context(silent=True)
+    chain = ctx.params.get('chain', 'mainnet') if ctx is not None else 'mainnet'
+    chain_setting = get_chain_setting(chain)
+    multiplier = chain_setting.MULTIPLIER if ctx.params.get('compounding', False) else 1
+    return str(int(32/multiplier))
 
 
 

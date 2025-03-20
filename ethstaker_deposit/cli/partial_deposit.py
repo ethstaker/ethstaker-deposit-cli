@@ -9,6 +9,7 @@ from eth_utils import to_canonical_address
 from py_ecc.bls import G2ProofOfPossession as bls
 from typing import Any, Optional
 
+from ethstaker_deposit.cli.generate_keys import get_default_amount
 from ethstaker_deposit.key_handling.keystore import Keystore
 from ethstaker_deposit.settings import (
     fake_cli_version,
@@ -100,7 +101,7 @@ FUNC_NAME = 'partial_deposit'
     callback=captive_prompt_callback(
         lambda amount, **kwargs: validate_deposit_amount(amount, **kwargs),
         lambda: load_text(['arg_partial_deposit_amount', 'prompt'], func=FUNC_NAME),
-        default="32",
+        default=get_default_amount,
         prompt_if=prompt_if_none,
         prompt_marker="amount",
     ),
