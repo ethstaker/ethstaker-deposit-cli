@@ -117,6 +117,8 @@ def validate_deposit(deposit_data_dict: Dict[str, Any], credential: Credential =
         return False
 
     # Verify deposit amount
+    # chain_setting = get_chain_setting(chain)
+    # min_amount = chain_setting.MIN_DEPOSIT_AMOUNT
     if not MIN_DEPOSIT_AMOUNT <= amount <= MAX_DEPOSIT_AMOUNT:
         return False
 
@@ -210,7 +212,7 @@ def validate_deposit_amount(amount: str, **kwargs: Dict[str, Any]) -> int:
         params = kwargs.get('params', {})
         chain = params.get('chain', 'mainnet')
         chain_setting = get_chain_setting(chain)
-        min_amount = chain_setting.MINIMUM_COMPOUNDING_DEPOSIT if params.get('compounding', False) else 1
+        min_amount = chain_setting.MIN_DEPOSIT_AMOUNT
 
         if amount_gwei % 1 != 0:
             raise ValidationError(load_text(['err_not_gwei_denomination']))

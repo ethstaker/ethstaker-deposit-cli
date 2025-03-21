@@ -19,7 +19,7 @@ Creates an exit transaction using a keystore file.
 
 - **`--output_folder`**: The folder path for the `signed_exit_transaction-*` JSON file.
 
-- **`--devnet_chain_setting`**: The custom chain setting of a devnet or testnet. Note that it will override your `--chain` choice. This should be a JSON string containing an object with the following keys: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier and minimum_compounding_deposit.
+- **`--devnet_chain_setting`**: The custom chain setting of a devnet or testnet. Note that it will override your `--chain` choice. This should be a JSON string containing an object with the following keys: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier and min_deposit_amount.
 
 ## Output files
 A successful call to this command will result in one [Signed Exit Transaction file](signed_exit_transaction_file.md) created.

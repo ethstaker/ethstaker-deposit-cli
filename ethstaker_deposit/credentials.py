@@ -29,7 +29,6 @@ from ethstaker_deposit.utils.constants import (
     COMPOUNDING_WITHDRAWAL_PREFIX,
     ETH2GWEI,
     MAX_DEPOSIT_AMOUNT,
-    MIN_DEPOSIT_AMOUNT,
 )
 from ethstaker_deposit.utils.crypto import SHA256
 from ethstaker_deposit.utils.deposit import export_deposit_data_json as export_deposit_data_json_util
@@ -142,7 +141,7 @@ class Credential:
 
     @property
     def deposit_message(self) -> DepositMessage:
-        if not MIN_DEPOSIT_AMOUNT <= self.amount <= MAX_DEPOSIT_AMOUNT:
+        if not self.chain_setting.MIN_DEPOSIT_AMOUNT <= self.amount <= MAX_DEPOSIT_AMOUNT:
             raise ValidationError(f"{self.amount / ETH2GWEI} ETH deposits are not within the bounds of this cli.")
         return DepositMessage(  # type: ignore[no-untyped-call]
             pubkey=self.signing_pk,
