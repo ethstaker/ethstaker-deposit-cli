@@ -212,6 +212,8 @@ def test_validate_devnet_chain_setting_json() -> None:
         "genesis_fork_version": "01017000",
         "exit_fork_version": "04017000",
         "genesis_validator_root": "9143aa7c615a7f7115e2b6aac319c03529df8242ae705fba9df39b79c59fa8b1",
+        "multiplier": "1",
+        "min_deposit_amount": "1",
         "more_key": "value"
     }
     with pytest.raises(ValidationError):
@@ -224,3 +226,33 @@ def test_validate_devnet_chain_setting_json() -> None:
     # Invalid devnet chain with missing root JSON object
     with pytest.raises(ValidationError):
         assert validate_devnet_chain_setting_json('[1, 2, 3]') is False
+        
+    correct_devnet_chain_with_multiplier = {
+        "network_name": "holeskycopy",
+        "genesis_fork_version": "01017000",
+        "exit_fork_version": "04017000",
+        "genesis_validator_root": "9143aa7c615a7f7115e2b6aac319c03529df8242ae705fba9df39b79c59fa8b1",
+        "multiplier": "1"
+    }
+    assert validate_devnet_chain_setting_json(json.dumps(correct_devnet_chain_with_multiplier)) is True
+    
+    correct_devnet_chain_with_multiplier_and_min_deposit_amount = {
+        "network_name": "holeskycopy",
+        "genesis_fork_version": "01017000",
+        "exit_fork_version": "04017000",
+        "genesis_validator_root": "9143aa7c615a7f7115e2b6aac319c03529df8242ae705fba9df39b79c59fa8b1",
+        "multiplier": "1",
+        "min_deposit_amount": "1"
+    }
+    assert validate_devnet_chain_setting_json(json.dumps(correct_devnet_chain_with_multiplier_and_min_deposit_amount)) is True
+    
+    invalid_devnet_chain_with_min_deposit_amount_and_wrong_key = {
+        "network_name": "holeskycopy",
+        "genesis_fork_version": "01017000",
+        "exit_fork_version": "04017000",
+        "genesis_validator_root": "9143aa7c615a7f7115e2b6aac319c03529df8242ae705fba9df39b79c59fa8b1",
+        "min_deposit_amount": "1",
+        "compounding": "true"
+    }
+    with pytest.raises(ValidationError):
+        assert validate_devnet_chain_setting_json(json.dumps(invalid_devnet_chain_with_min_deposit_amount_and_wrong_key)) is False

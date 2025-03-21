@@ -56,7 +56,7 @@
         "err_devnet_chain_setting_not_object": "Invalid JSON string for devnet_chain_setting. The JSON string does not contain an object at root.",
         "err_devnet_chain_setting_missing_keys": "Invalid JSON string for devnet_chain_setting. It is missing one or more of these key in the root object: network_name, genesis_fork_version or exit_fork_version.",
         "err_devnet_chain_setting_invalid_json": "Invalid JSON string for devnet_chain_setting. Decoding the JSON string was impossible. Make sure to pass a valid JSON string.",
-        "err_devnet_chain_setting_key_length": "Invalid JSON string for devnet_chain_setting. The root object should only contain 3 or 4 keys.",
-        "err_devnet_chain_setting_invalid_fourth_key": "Invalid JSON string for devnet_chain_setting. The root object is missing the genesis_validator_root key."
+        "err_devnet_chain_setting_key_length": "Invalid JSON string for devnet_chain_setting. The root object should only contain 3, 4, 5 or 6 keys.",
+        "err_devnet_chain_setting_unknown_keys": "The devnet chain setting contains unrecognized keys."
     }
 }

@@ -491,17 +491,20 @@ def validate_devnet_chain_setting_json(json_value: str) -> bool:
             raise ValidationError(load_text(['err_devnet_chain_setting_not_object']) + '\n')
 
         required_keys = ('network_name', 'genesis_fork_version', 'exit_fork_version')
+        optional_keys = ('genesis_validator_root', 'multiplier', 'min_deposit_amount')
 
         all_keys = all(key in devnet_chain_setting_dict for key in required_keys)
 
         if not all_keys:
             raise ValidationError(load_text(['err_devnet_chain_setting_missing_keys']) + '\n')
-
-        if len(devnet_chain_setting_dict) not in (3, 4):
+        
+        if len(devnet_chain_setting_dict) not in (3, 4, 5, 6):
             raise ValidationError(load_text(['err_devnet_chain_setting_key_length']) + '\n')
-
-        if len(devnet_chain_setting_dict) == 4 and 'genesis_validator_root' not in devnet_chain_setting_dict:
-            raise ValidationError(load_text(['err_devnet_chain_setting_invalid_fourth_key']) + '\n')
+        
+        allowed_keys = set(required_keys + optional_keys)
+        unknown_keys = set(devnet_chain_setting_dict) - allowed_keys
+        if unknown_keys:
+            raise ValidationError(load_text(['err_devnet_chain_setting_unknown_keys']) + '\n')
 
         return True
     except json.JSONDecodeError:

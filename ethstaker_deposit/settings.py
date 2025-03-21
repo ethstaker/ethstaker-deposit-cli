@@ -27,7 +27,7 @@ class BaseChainSetting(NamedTuple):
                 f'  - Exit fork version: {self.EXIT_FORK_VERSION.hex()}\n'
                 f'  - Genesis validators root: {gvr_value}\n'
                 f'  - Multiplier: {self.MULTIPLIER}\n'
-                f'  - Minimum compounding deposit: {self.MIN_DEPOSIT_AMOUNT}')
+                f'  - Minimum deposit amount: {self.MIN_DEPOSIT_AMOUNT}')
 
 
 MAINNET = 'mainnet'
