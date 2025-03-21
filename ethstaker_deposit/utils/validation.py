@@ -42,7 +42,6 @@ from ethstaker_deposit.utils.constants import (
     COMPOUNDING_WITHDRAWAL_PREFIX,
     ETH2GWEI,
     EXECUTION_ADDRESS_WITHDRAWAL_PREFIX,
-    MIN_DEPOSIT_AMOUNT,
     MAX_DEPOSIT_AMOUNT,
 )
 from ethstaker_deposit.utils.crypto import SHA256
@@ -54,7 +53,7 @@ from ethstaker_deposit.settings import BaseChainSetting, get_chain_setting, get_
 #
 
 
-def verify_deposit_data_json(filefolder: str, credentials: Sequence[Credential]) -> bool:
+def verify_deposit_data_json(filefolder: str, credentials: Sequence[Credential], chain: str) -> bool:
     """
     Validate every deposit found in the deposit-data JSON file folder.
     """
@@ -68,14 +67,15 @@ def verify_deposit_data_json(filefolder: str, credentials: Sequence[Credential])
                            show_percent=False, show_pos=True) as bar:
 
         with concurrent.futures.ProcessPoolExecutor() as executor:
-            for valid_deposit in executor.map(validate_deposit, deposit_json, credentials):
+            chains = [chain] * len(deposit_json)
+            for valid_deposit in executor.map(validate_deposit, deposit_json, chains, credentials):
                 all_valid_deposits &= valid_deposit
                 bar.update(1)
 
     return all_valid_deposits
 
 
-def validate_deposit(deposit_data_dict: Dict[str, Any], credential: Credential = None) -> bool:
+def validate_deposit(deposit_data_dict: Dict[str, Any], chain: str, credential: Credential = None) -> bool:
     '''
     Checks whether a deposit is valid based on the staking deposit rules.
     https://github.com/ethereum/consensus-specs/blob/dev/specs/phase0/beacon-chain.md#deposits
@@ -117,9 +117,9 @@ def validate_deposit(deposit_data_dict: Dict[str, Any], credential: Credential =
         return False
 
     # Verify deposit amount
-    # chain_setting = get_chain_setting(chain)
-    # min_amount = chain_setting.MIN_DEPOSIT_AMOUNT
-    if not MIN_DEPOSIT_AMOUNT <= amount <= MAX_DEPOSIT_AMOUNT:
+    chain_setting = get_chain_setting(chain)
+    min_amount = chain_setting.MIN_DEPOSIT_AMOUNT * ETH2GWEI
+    if not min_amount <= amount <= MAX_DEPOSIT_AMOUNT:
         return False
 
     # Verify deposit signature && pubkey

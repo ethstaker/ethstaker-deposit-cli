@@ -222,7 +222,7 @@ def generate_keys(ctx: click.Context, validator_start_index: int,
     deposits_file = credentials.export_deposit_data_json(folder=folder, timestamp=timestamp)
     if not credentials.verify_keystores(keystore_filefolders=keystore_filefolders, password=keystore_password):
         raise ValidationError(load_text(['err_verify_keystores']))
-    if not verify_deposit_data_json(deposits_file, credentials.credentials):
+    if not verify_deposit_data_json(deposits_file, credentials.credentials, chain):
         raise ValidationError(load_text(['err_verify_deposit']))
     click.echo(load_text(['msg_creation_success']) + folder)
     if not config.non_interactive:
