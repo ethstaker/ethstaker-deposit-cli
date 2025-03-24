@@ -60,7 +60,7 @@ test = [
     "mypy-extensions==1.0.0",
     "packaging==24.1",
     "pluggy==1.5.0",
-    "referencing==0.35.1",
+    "referencing==0.36.2",
     "rpds-py==0.20.0",
     "typing-extensions==4.12.2",
     "ruff==0.9.0",
