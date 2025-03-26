@@ -2,7 +2,7 @@
 
 A deposit data file is created when calling the **[new-mnemonic](new_mnemonic.md)**, the **[existing-mnemonic](existing_mnemonic.md)** or the **[partial-deposit](partial_deposit.md)** command.
 
-The deposit data file is a JSON file that contains a list of deposits that is mostly used for the [Ethereum Staking Launchpad](https://github.com/ethereum/staking-launchpad). It is loosly based on [the DepositData structure](https://github.com/ethereum/consensus-specs/blob/dev/specs/phase0/beacon-chain.md#depositdata) and the [deposit function](https://github.com/ethereum/consensus-specs/blob/dev/specs/phase0/deposit-contract.md#deposit-function) from the [deposit smart contract](https://github.com/ethereum/consensus-specs/blob/dev/specs/phase0/deposit-contract.md).
+The deposit data file is a JSON file that contains a list of deposits that is mostly used for the [Ethereum Staking Launchpad](https://github.com/ethereum/staking-launchpad). It is loosely based on [the DepositData structure](https://github.com/ethereum/consensus-specs/blob/dev/specs/phase0/beacon-chain.md#depositdata) and the [deposit function](https://github.com/ethereum/consensus-specs/blob/dev/specs/phase0/deposit-contract.md#deposit-function) from the [deposit smart contract](https://github.com/ethereum/consensus-specs/blob/dev/specs/phase0/deposit-contract.md).
 
 ## Format
 Each deposit from the list will contain this structure:

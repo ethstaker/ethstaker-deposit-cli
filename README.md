@@ -32,3 +32,6 @@ Depositing to the wrong address **will** lose you your ETH.
 - Ethereum Holešky (Holešovice) testnet
   - Deposit address: [0x4242424242424242424242424242424242424242](https://holesky.etherscan.io/address/0x4242424242424242424242424242424242424242)
   - [Launchpad](https://holesky.launchpad.ethereum.org/)
+- Ethereum Hoodi testnet
+  - Deposit address: [0x00000000219ab540356cBB839Cbe05303d7705Fa](https://hoodi.etherscan.io/address/0x00000000219ab540356cBB839Cbe05303d7705Fa)
+  - [Launchpad](https://hoodi.launchpad.ethereum.org/)
