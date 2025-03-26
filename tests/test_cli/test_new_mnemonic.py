@@ -194,7 +194,8 @@ def test_new_mnemonic_compounding_validators(monkeypatch) -> None:
 
     # Clean up
     clean_key_folder(my_folder_path)
-    
+
+
 def test_gnosis_new_mnemonic_compounding_validators(monkeypatch) -> None:
     # monkeypatch get_mnemonic
     def mock_get_mnemonic(language, words_path, entropy=None) -> str:
@@ -252,7 +253,8 @@ def test_gnosis_new_mnemonic_compounding_validators(monkeypatch) -> None:
 
     # Clean up
     clean_key_folder(my_folder_path)
-    
+
+
 def test_chiado_new_mnemonic_compounding_validators(monkeypatch) -> None:
     # monkeypatch get_mnemonic
     def mock_get_mnemonic(language, words_path, entropy=None) -> str:
@@ -371,7 +373,8 @@ def test_new_mnemonic_compounding_custom_amount(monkeypatch) -> None:
 
     # Clean up
     clean_key_folder(my_folder_path)
-    
+
+
 def test_gnosis_new_mnemonic_compounding_custom_amount(monkeypatch) -> None:
     # monkeypatch get_mnemonic
     def mock_get_mnemonic(language, words_path, entropy=None) -> str:
@@ -431,7 +434,8 @@ def test_gnosis_new_mnemonic_compounding_custom_amount(monkeypatch) -> None:
 
     # Clean up
     clean_key_folder(my_folder_path)
-    
+
+
 def test_chiado_new_mnemonic_compounding_custom_amount(monkeypatch) -> None:
     # monkeypatch get_mnemonic
     def mock_get_mnemonic(language, words_path, entropy=None) -> str:

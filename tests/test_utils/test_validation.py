@@ -226,7 +226,7 @@ def test_validate_devnet_chain_setting_json() -> None:
     # Invalid devnet chain with missing root JSON object
     with pytest.raises(ValidationError):
         assert validate_devnet_chain_setting_json('[1, 2, 3]') is False
-        
+
     correct_devnet_chain_with_multiplier = {
         "network_name": "holeskycopy",
         "genesis_fork_version": "01017000",
@@ -235,7 +235,7 @@ def test_validate_devnet_chain_setting_json() -> None:
         "multiplier": "1"
     }
     assert validate_devnet_chain_setting_json(json.dumps(correct_devnet_chain_with_multiplier)) is True
-    
+
     correct_devnet_chain_with_multiplier_and_min_deposit_amount = {
         "network_name": "holeskycopy",
         "genesis_fork_version": "01017000",
@@ -244,8 +244,9 @@ def test_validate_devnet_chain_setting_json() -> None:
         "multiplier": "1",
         "min_deposit_amount": "1"
     }
-    assert validate_devnet_chain_setting_json(json.dumps(correct_devnet_chain_with_multiplier_and_min_deposit_amount)) is True
-    
+    assert validate_devnet_chain_setting_json(
+        json.dumps(correct_devnet_chain_with_multiplier_and_min_deposit_amount)) is True
+
     invalid_devnet_chain_with_min_deposit_amount_and_wrong_key = {
         "network_name": "holeskycopy",
         "genesis_fork_version": "01017000",
@@ -255,4 +256,5 @@ def test_validate_devnet_chain_setting_json() -> None:
         "compounding": "true"
     }
     with pytest.raises(ValidationError):
-        assert validate_devnet_chain_setting_json(json.dumps(invalid_devnet_chain_with_min_deposit_amount_and_wrong_key)) is False
+        assert validate_devnet_chain_setting_json(
+            json.dumps(invalid_devnet_chain_with_min_deposit_amount_and_wrong_key)) is False

@@ -162,23 +162,24 @@ def generate_keys_arguments_decorator(function: Callable[..., Any]) -> Callable[
         function = decorator(function)
     return function
 
+
 def get_amount_prompt_from_template() -> str:
     ctx = click.get_current_context(silent=True)
     chain = ctx.params.get('chain', 'mainnet') if ctx is not None else 'mainnet'
     chain_setting = get_chain_setting(chain)
     min_deposit = chain_setting.MIN_DEPOSIT_AMOUNT
     multiplier = chain_setting.MULTIPLIER
-    activation_amount = str(int(32/multiplier))
+    activation_amount = str(int(32 / multiplier))
     template = load_text(['arg_amount', 'prompt'], func='generate_keys_arguments_decorator')
     return template.format(min_deposit=min_deposit, activation_amount=activation_amount)
+
 
 def get_default_amount() -> str:
     ctx = click.get_current_context(silent=True)
     chain = ctx.params.get('chain', 'mainnet') if ctx is not None else 'mainnet'
     chain_setting = get_chain_setting(chain)
     multiplier = chain_setting.MULTIPLIER
-    return str(int(32/multiplier))
-
+    return str(int(32 / multiplier))
 
 
 @click.command()

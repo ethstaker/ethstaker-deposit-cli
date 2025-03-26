@@ -497,10 +497,10 @@ def validate_devnet_chain_setting_json(json_value: str) -> bool:
 
         if not all_keys:
             raise ValidationError(load_text(['err_devnet_chain_setting_missing_keys']) + '\n')
-        
+
         if len(devnet_chain_setting_dict) not in (3, 4, 5, 6):
             raise ValidationError(load_text(['err_devnet_chain_setting_key_length']) + '\n')
-        
+
         allowed_keys = set(required_keys + optional_keys)
         unknown_keys = set(devnet_chain_setting_dict) - allowed_keys
         if unknown_keys:

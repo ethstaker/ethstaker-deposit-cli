@@ -141,7 +141,9 @@ class Credential:
 
     @property
     def deposit_message(self) -> DepositMessage:
-        if not self.chain_setting.MIN_DEPOSIT_AMOUNT * ETH2GWEI <= self.amount <= MAX_DEPOSIT_AMOUNT * self.chain_setting.MULTIPLIER:
+        min_amount = self.chain_setting.MIN_DEPOSIT_AMOUNT * ETH2GWEI
+        max_amount = MAX_DEPOSIT_AMOUNT * self.chain_setting.MULTIPLIER
+        if not min_amount <= self.amount <= max_amount:
             raise ValidationError(f"{self.amount / ETH2GWEI} ETH deposits are not within the bounds of this cli.")
         return DepositMessage(  # type: ignore[no-untyped-call]
             pubkey=self.signing_pk,

@@ -38,7 +38,8 @@ def load_mnemonic_arguments_decorator(function: Callable[..., Any]) -> Callable[
         jit_option(
             callback=lambda c, _, mnemonic:
                 captive_prompt_callback(
-                    lambda mnemonic, _: validate_mnemonic(mnemonic=mnemonic, language=c.params.get('mnemonic_language')),
+                    lambda mnemonic, _: validate_mnemonic(mnemonic=mnemonic,
+                                                          language=c.params.get('mnemonic_language')),
                     prompt=lambda: load_text(['arg_mnemonic', 'prompt'], func='existing_mnemonic'),
                     prompt_if=prompt_if_none,
                 )(c, _, mnemonic),
