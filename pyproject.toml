@@ -54,7 +54,7 @@ test = [
     "pytest-asyncio==0.25.2",
     "coverage==7.6.10",
     "tomli==2.2.1",
-    "attrs==24.2.0",
+    "attrs==25.3.0",
     "iniconfig==2.1.0",
     "jsonschema-specifications==2023.12.1",
     "mypy-extensions==1.0.0",
