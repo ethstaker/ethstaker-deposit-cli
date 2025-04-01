@@ -51,7 +51,7 @@ test = [
     "jsonschema==4.23.0",
     "mypy==1.15.0",
     "pytest==8.3.5",
-    "pytest-asyncio==0.25.2",
+    "pytest-asyncio==0.26.0",
     "coverage==7.6.10",
     "tomli==2.2.1",
     "attrs==25.3.0",
