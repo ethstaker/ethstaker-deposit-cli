@@ -12,7 +12,7 @@ from ethstaker_deposit.exceptions import ValidationError
 from ethstaker_deposit.settings import get_chain_setting
 from ethstaker_deposit.utils import config
 # To work around an issue with disabling language prompt and CLIRunner() isolation
-from ethstaker_deposit.utils.constants import CONTEXT_REQUIRING_PROMPTS, INTL_LANG_OPTIONS, get_min_activation_amount
+from ethstaker_deposit.utils.constants import CONTEXT_REQUIRING_PROMPTS, INTL_LANG_OPTIONS
 from ethstaker_deposit.utils.intl import (
     get_first_options,
 )

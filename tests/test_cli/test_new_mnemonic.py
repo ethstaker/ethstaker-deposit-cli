@@ -1183,7 +1183,8 @@ def test_new_mnemonic_custom_testnet_with_custom_multiplier(monkeypatch) -> None
 
     # Clean up
     clean_key_folder(my_folder_path)
-    
+
+
 def test_new_mnemonic_custom_testnet_with_custom_multiplier_and_min_activation_amount(monkeypatch) -> None:
     # monkeypatch get_mnemonic
     def mock_get_mnemonic(language, words_path, entropy=None) -> str:
