@@ -166,7 +166,8 @@ def generate_keys_arguments_decorator(function: Callable[..., Any]) -> Callable[
 def get_amount_prompt_from_template() -> str:
     ctx = click.get_current_context(silent=True)
     chain = ctx.params.get('chain', 'mainnet') if ctx is not None else 'mainnet'
-    chain_setting = get_chain_setting(chain)
+    devnet_chain_setting = ctx.params.get('devnet_chain_setting')
+    chain_setting = devnet_chain_setting if devnet_chain_setting is not None else get_chain_setting(chain)
     min_deposit = chain_setting.MIN_DEPOSIT_AMOUNT
     activation_amount = chain_setting.MIN_ACTIVATION_AMOUNT
     template = load_text(['arg_amount', 'prompt'], func='generate_keys_arguments_decorator')
@@ -176,7 +177,8 @@ def get_amount_prompt_from_template() -> str:
 def get_default_amount() -> str:
     ctx = click.get_current_context(silent=True)
     chain = ctx.params.get('chain', 'mainnet') if ctx is not None else 'mainnet'
-    chain_setting = get_chain_setting(chain)
+    devnet_chain_setting = ctx.params.get('devnet_chain_setting')
+    chain_setting = devnet_chain_setting if devnet_chain_setting is not None else get_chain_setting(chain)
     return str(chain_setting.MIN_ACTIVATION_AMOUNT)
 
 

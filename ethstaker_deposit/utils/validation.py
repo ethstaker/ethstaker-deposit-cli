@@ -210,8 +210,9 @@ def validate_deposit_amount(amount: str, **kwargs: Dict[str, Any]) -> int:
         amount_gwei = decimal_ether * Decimal(ETH2GWEI)
 
         params = kwargs.get('params', {})
-        chain = params.get('chain', 'mainnet')
-        chain_setting = get_chain_setting(chain)
+        chain = params.get('chain', 'mainnet') if params is not None else 'mainnet'
+        devnet_chain_setting = params.get('devnet_chain_setting')
+        chain_setting = devnet_chain_setting if devnet_chain_setting is not None else get_chain_setting(chain)
         min_amount = chain_setting.MIN_DEPOSIT_AMOUNT
 
         if amount_gwei % 1 != 0:

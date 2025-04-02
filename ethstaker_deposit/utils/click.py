@@ -64,7 +64,11 @@ class JITOption(click.Option):
     def get_default(self, ctx: click.Context, call: bool = True) -> Any:
         self.default = _value_of(self.callable_default)
         if self.name == "amount":
-            self.default = get_min_activation_amount(ctx.params.get('chain', 'mainnet'))
+            chain = ctx.params.get('devnet_chain_setting')
+            if chain is not None:
+                self.default = chain.min_activation_amount
+            else:
+                self.default = get_min_activation_amount(ctx.params.get('chain', 'mainnet'))
         return super().get_default(ctx, call)
 
 

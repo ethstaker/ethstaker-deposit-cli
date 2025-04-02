@@ -1113,10 +1113,10 @@ def test_new_mnemonic_custom_testnet(monkeypatch) -> None:
             assert get_permissions(validator_keys_folder_path, file_name) == '0o400'
 
     # Clean up
-    clean_key_folder(my_folder_path)
+    # clean_key_folder(my_folder_path)
 
 
-def test_new_mnemonic_custom_testnet_with_custom_setting_amount(monkeypatch) -> None:
+def test_new_mnemonic_custom_testnet_with_custom_multiplier(monkeypatch) -> None:
     # monkeypatch get_mnemonic
     def mock_get_mnemonic(language, words_path, entropy=None) -> str:
         return "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about"
@@ -1134,8 +1134,7 @@ def test_new_mnemonic_custom_testnet_with_custom_setting_amount(monkeypatch) -> 
         "genesis_fork_version": "01017000",
         "exit_fork_version": "04017000",
         "genesis_validator_root": "9143aa7c615a7f7115e2b6aac319c03529df8242ae705fba9df39b79c59fa8b1",
-        "multiplier": "4",
-        "min_deposit_amount": "0.8"
+        "multiplier": 4,
     }
 
     devnet_chain_setting = json.dumps(devnet_chain)
@@ -1168,7 +1167,76 @@ def test_new_mnemonic_custom_testnet_with_custom_setting_amount(monkeypatch) -> 
             COMPOUNDING_WITHDRAWAL_PREFIX + b'\x00' * 11 + decode_hex(withdrawal_address)
         )
         amount = deposit['amount']
-        assert amount == (4 * ETH2GWEI)
+        assert amount == (32 * 4 * ETH2GWEI)
+
+    all_uuid = [
+        get_uuid(validator_keys_folder_path + '/' + key_file)
+        for key_file in key_files
+        if key_file.startswith('keystore')
+    ]
+    assert len(set(all_uuid)) == 1
+
+    # Verify file permissions
+    if os.name == 'posix':
+        for file_name in key_files:
+            assert get_permissions(validator_keys_folder_path, file_name) == '0o400'
+
+    # Clean up
+    clean_key_folder(my_folder_path)
+    
+def test_new_mnemonic_custom_testnet_with_custom_multiplier_and_min_activation_amount(monkeypatch) -> None:
+    # monkeypatch get_mnemonic
+    def mock_get_mnemonic(language, words_path, entropy=None) -> str:
+        return "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about"
+
+    monkeypatch.setattr(new_mnemonic, "get_mnemonic", mock_get_mnemonic)
+
+    # Prepare folder
+    my_folder_path = os.path.join(os.getcwd(), 'TESTING_TEMP_FOLDER')
+    clean_key_folder(my_folder_path)
+    if not os.path.exists(my_folder_path):
+        os.mkdir(my_folder_path)
+
+    devnet_chain = {
+        "network_name": "devnet",
+        "genesis_fork_version": "01017000",
+        "exit_fork_version": "04017000",
+        "genesis_validator_root": "9143aa7c615a7f7115e2b6aac319c03529df8242ae705fba9df39b79c59fa8b1",
+        "multiplier": 4,
+        "min_activation_amount": 2
+    }
+
+    devnet_chain_setting = json.dumps(devnet_chain)
+
+    runner = CliRunner()
+    withdrawal_address = '0x00000000219ab540356cBB839Cbe05303d7705Fa'
+    inputs = ['english', 'english', '1', 'MyPasswordIs', 'MyPasswordIs', withdrawal_address, withdrawal_address,
+              'yes', '',
+              'abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about', '']
+    data = '\n'.join(inputs)
+    arguments = [
+        '--ignore_connectivity',
+        'new-mnemonic',
+        '--folder', my_folder_path,
+        '--devnet_chain_setting', devnet_chain_setting,
+    ]
+    result = runner.invoke(cli, arguments, input=data)
+    assert result.exit_code == 0
+
+    # Check files
+    validator_keys_folder_path = os.path.join(my_folder_path, DEFAULT_VALIDATOR_KEYS_FOLDER_NAME)
+    _, _, key_files = next(os.walk(validator_keys_folder_path))
+
+    deposit_file = [key_file for key_file in key_files if key_file.startswith('deposit_data')][0]
+    with open(validator_keys_folder_path + '/' + deposit_file, 'r', encoding='utf-8') as f:
+        deposits_dict = json.load(f)
+    for deposit in deposits_dict:
+        withdrawal_credentials = bytes.fromhex(deposit['withdrawal_credentials'])
+        assert withdrawal_credentials == (
+            COMPOUNDING_WITHDRAWAL_PREFIX + b'\x00' * 11 + decode_hex(withdrawal_address)
+        )
+        amount = deposit['amount']
+        assert amount == (2 * 4 * ETH2GWEI)
 
     all_uuid = [
         get_uuid(validator_keys_folder_path + '/' + key_file)
