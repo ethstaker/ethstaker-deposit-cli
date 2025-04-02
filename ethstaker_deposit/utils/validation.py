@@ -53,7 +53,8 @@ from ethstaker_deposit.settings import BaseChainSetting, get_chain_setting, get_
 #
 
 
-def verify_deposit_data_json(filefolder: str, credentials: Sequence[Credential], chain_setting: BaseChainSetting) -> bool:
+def verify_deposit_data_json(filefolder: str, credentials: Sequence[Credential],
+                             chain_setting: BaseChainSetting) -> bool:
     """
     Validate every deposit found in the deposit-data JSON file folder.
     """
@@ -75,7 +76,8 @@ def verify_deposit_data_json(filefolder: str, credentials: Sequence[Credential],
     return all_valid_deposits
 
 
-def validate_deposit(deposit_data_dict: Dict[str, Any], chain_setting: BaseChainSetting, credential: Credential = None) -> bool:
+def validate_deposit(deposit_data_dict: Dict[str, Any], chain_setting: BaseChainSetting,
+                     credential: Credential = None) -> bool:
     '''
     Checks whether a deposit is valid based on the staking deposit rules.
     https://github.com/ethereum/consensus-specs/blob/dev/specs/phase0/beacon-chain.md#deposits

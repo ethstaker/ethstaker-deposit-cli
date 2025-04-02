@@ -1253,7 +1253,8 @@ def test_new_mnemonic_custom_multiplier_and_min_activation_amount_testnet(monkey
 
     # Clean up
     clean_key_folder(my_folder_path)
-    
+
+
 def test_new_mnemonic_custom_multiplier_and_min_activation_amount_testnet_custom_amount(monkeypatch) -> None:
     # monkeypatch get_mnemonic
     def mock_get_mnemonic(language, words_path, entropy=None) -> str:
@@ -1277,7 +1278,7 @@ def test_new_mnemonic_custom_multiplier_and_min_activation_amount_testnet_custom
     }
 
     devnet_chain_setting = json.dumps(devnet_chain)
-    
+
     custom_amount = 1050
 
     runner = CliRunner()
