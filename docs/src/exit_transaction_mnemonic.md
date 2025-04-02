@@ -23,7 +23,7 @@ Creates an exit transaction using a mnemonic phrase.
 
 - **`--output_folder`**: The folder path for the `signed_exit_transaction-*` JSON file.
 
-- **`--devnet_chain_setting`**: The custom chain setting of a devnet or testnet. Note that it will override your `--chain` choice. This should be a JSON string containing an object with the following keys: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier and min_deposit_amount.
+- **`--devnet_chain_setting`**: The custom chain setting of a devnet or testnet. Note that it will override your `--chain` choice. This should be a JSON string containing an object with the following keys: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount and min_deposit_amount.
 
 ## Output files
 A successful call to this command will result in one or more [Signed Exit Transaction files](signed_exit_transaction_file.md) created.

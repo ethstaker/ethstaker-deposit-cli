@@ -476,6 +476,9 @@ def validate_devnet_chain_setting(ctx: click.Context, param: Any, value: Optiona
             genesis_fork_version=devnet_chain_setting_dict['genesis_fork_version'],
             exit_fork_version=devnet_chain_setting_dict['exit_fork_version'],
             genesis_validator_root=devnet_chain_setting_dict.get('genesis_validator_root', None),
+            multiplier=devnet_chain_setting_dict.get('multiplier', 1),
+            min_activation_amount=devnet_chain_setting_dict.get('min_activation_amount', 32),
+            min_deposit_amount=devnet_chain_setting_dict.get('min_deposit_amount', 1)
         )
         click.echo(str(chain_setting) + '\n')
         return chain_setting
@@ -491,14 +494,14 @@ def validate_devnet_chain_setting_json(json_value: str) -> bool:
             raise ValidationError(load_text(['err_devnet_chain_setting_not_object']) + '\n')
 
         required_keys = ('network_name', 'genesis_fork_version', 'exit_fork_version')
-        optional_keys = ('genesis_validator_root', 'multiplier', 'min_deposit_amount')
+        optional_keys = ('genesis_validator_root', 'multiplier', 'min_activation_amount', 'min_deposit_amount')
 
         all_keys = all(key in devnet_chain_setting_dict for key in required_keys)
 
         if not all_keys:
             raise ValidationError(load_text(['err_devnet_chain_setting_missing_keys']) + '\n')
 
-        if len(devnet_chain_setting_dict) not in (3, 4, 5, 6):
+        if len(devnet_chain_setting_dict) not in (3, 4, 5, 6, 7):
             raise ValidationError(load_text(['err_devnet_chain_setting_key_length']) + '\n')
 
         allowed_keys = set(required_keys + optional_keys)

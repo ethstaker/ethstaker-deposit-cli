@@ -35,7 +35,7 @@
             "help": "Uses the pbkdf2 hashing function instead of scrypt for generated keystore files. "
         },
         "arg_devnet_chain_setting": {
-            "help": "[DEVNET ONLY] Set specific GENESIS_FORK_VERSION value. This should be a JSON string containing an object with the following keys: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier and min_deposit_amount. It should be similar to what you can find in settings.py. This will override any selected chain."
+            "help": "[DEVNET ONLY] Set specific GENESIS_FORK_VERSION value. This should be a JSON string containing an object with the following keys: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount and min_deposit_amount. It should be similar to what you can find in settings.py. This will override any selected chain."
         }
     },
     "generate_keys": {

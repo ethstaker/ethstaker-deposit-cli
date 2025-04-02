@@ -22,7 +22,7 @@ If you wish to create a validator with 0x00 credentials, you must use the **[new
 
 - **`--output_folder`**: The folder path for the `deposit-*` JSON file.
 
-- **`--devnet_chain_setting`**: The custom chain setting of a devnet or testnet. Note that it will override your `--chain` choice. This should be a JSON string containing an object with the following keys: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier and min_deposit_amount.
+- **`--devnet_chain_setting`**: The custom chain setting of a devnet or testnet. Note that it will override your `--chain` choice. This should be a JSON string containing an object with the following keys: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount and min_deposit_amount.
 
 ## Output file
 A successful call to this command will result in one [deposit data file](deposit_data_file.md) created.
