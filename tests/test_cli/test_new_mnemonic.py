@@ -1113,7 +1113,7 @@ def test_new_mnemonic_custom_testnet(monkeypatch) -> None:
             assert get_permissions(validator_keys_folder_path, file_name) == '0o400'
 
     # Clean up
-    # clean_key_folder(my_folder_path)
+    clean_key_folder(my_folder_path)
 
 
 def test_new_mnemonic_custom_testnet_with_custom_multiplier(monkeypatch) -> None:

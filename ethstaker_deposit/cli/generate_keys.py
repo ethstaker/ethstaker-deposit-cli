@@ -24,8 +24,7 @@ from ethstaker_deposit.utils.validation import (
 )
 from ethstaker_deposit.utils.constants import (
     DEFAULT_VALIDATOR_KEYS_FOLDER_NAME,
-    MIN_ACTIVATION_AMOUNT,
-    ETH2GWEI,
+    MIN_ACTIVATION_AMOUNT
 )
 from ethstaker_deposit.utils.ascii_art import RHINO_0
 from ethstaker_deposit.utils.click import (
@@ -48,10 +47,6 @@ from ethstaker_deposit.settings import (
     get_chain_setting,
     BaseChainSetting,
 )
-
-
-min_activation_amount_eth = MIN_ACTIVATION_AMOUNT // ETH2GWEI
-
 
 def generate_keys_arguments_decorator(function: Callable[..., Any]) -> Callable[..., Any]:
     '''
@@ -167,7 +162,10 @@ def get_amount_prompt_from_template() -> str:
     ctx = click.get_current_context(silent=True)
     chain = ctx.params.get('chain', 'mainnet') if ctx is not None else 'mainnet'
     devnet_chain_setting = ctx.params.get('devnet_chain_setting')
-    chain_setting = devnet_chain_setting if devnet_chain_setting is not None else get_chain_setting(chain)
+    if devnet_chain_setting is not None:
+        chain_setting = devnet_chain_setting
+    else:
+        chain_setting = get_chain_setting(chain)
     min_deposit = chain_setting.MIN_DEPOSIT_AMOUNT
     activation_amount = chain_setting.MIN_ACTIVATION_AMOUNT
     template = load_text(['arg_amount', 'prompt'], func='generate_keys_arguments_decorator')
@@ -178,7 +176,10 @@ def get_default_amount() -> str:
     ctx = click.get_current_context(silent=True)
     chain = ctx.params.get('chain', 'mainnet') if ctx is not None else 'mainnet'
     devnet_chain_setting = ctx.params.get('devnet_chain_setting')
-    chain_setting = devnet_chain_setting if devnet_chain_setting is not None else get_chain_setting(chain)
+    if devnet_chain_setting is not None:
+        chain_setting = devnet_chain_setting
+    else:
+        chain_setting = get_chain_setting(chain)
     return str(chain_setting.MIN_ACTIVATION_AMOUNT)
 
 

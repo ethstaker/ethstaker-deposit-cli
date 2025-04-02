@@ -9,6 +9,7 @@ from typing import (
 )
 
 from ethstaker_deposit.exceptions import ValidationError
+from ethstaker_deposit.settings import get_chain_setting
 from ethstaker_deposit.utils import config
 # To work around an issue with disabling language prompt and CLIRunner() isolation
 from ethstaker_deposit.utils.constants import CONTEXT_REQUIRING_PROMPTS, INTL_LANG_OPTIONS, get_min_activation_amount
@@ -64,11 +65,13 @@ class JITOption(click.Option):
     def get_default(self, ctx: click.Context, call: bool = True) -> Any:
         self.default = _value_of(self.callable_default)
         if self.name == "amount":
-            chain = ctx.params.get('devnet_chain_setting')
-            if chain is not None:
-                self.default = chain.min_activation_amount
+            chain = ctx.params.get('chain', 'mainnet')
+            devnet_chain_setting = ctx.params.get('devnet_chain_setting')
+            if devnet_chain_setting is not None:
+                chain_setting = devnet_chain_setting
             else:
-                self.default = get_min_activation_amount(ctx.params.get('chain', 'mainnet'))
+                chain_setting = get_chain_setting(chain)
+            self.default = chain_setting.MIN_ACTIVATION_AMOUNT
         return super().get_default(ctx, call)
 
 
