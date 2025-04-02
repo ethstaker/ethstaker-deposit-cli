@@ -214,7 +214,7 @@ def partial_deposit(
     with open(saved_folder, 'r', encoding='utf-8') as f:
         deposit_json = json.load(f)
 
-    if (not validate_deposit(deposit_json[0], chain)):
+    if (not validate_deposit(deposit_json[0], chain_setting)):
         click.echo(load_text(['err_verify_partial_deposit']))
         return
 
