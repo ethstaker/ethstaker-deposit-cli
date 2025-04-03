@@ -12,8 +12,8 @@ from ethstaker_deposit.utils.constants import (
     DEFAULT_VALIDATOR_KEYS_FOLDER_NAME,
     EXECUTION_ADDRESS_WITHDRAWAL_PREFIX,
     COMPOUNDING_WITHDRAWAL_PREFIX,
-    MIN_ACTIVATION_AMOUNT,
     ETH2GWEI,
+    MIN_ACTIVATION_AMOUNT,
 )
 from .helpers import clean_key_folder, get_permissions, get_uuid
 

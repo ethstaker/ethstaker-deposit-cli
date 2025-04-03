@@ -292,7 +292,7 @@ class CredentialList:
                       mnemonic: str,
                       mnemonic_password: str,
                       num_keys: int,
-                      amounts: list[int],
+                      amounts: list[float],
                       chain_setting: BaseChainSetting,
                       start_index: int,
                       hex_withdrawal_address: Optional[HexAddress],

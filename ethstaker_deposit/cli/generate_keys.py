@@ -24,7 +24,7 @@ from ethstaker_deposit.utils.validation import (
 )
 from ethstaker_deposit.utils.constants import (
     DEFAULT_VALIDATOR_KEYS_FOLDER_NAME,
-    MIN_ACTIVATION_AMOUNT
+    ETH2GWEI
 )
 from ethstaker_deposit.utils.ascii_art import RHINO_0
 from ethstaker_deposit.utils.click import (
@@ -188,17 +188,18 @@ def get_default_amount() -> str:
 @click.pass_context
 def generate_keys(ctx: click.Context, validator_start_index: int,
                   num_validators: int, folder: str, chain: str, keystore_password: str,
-                  withdrawal_address: HexAddress, compounding: bool, amount: int, pbkdf2: bool,
+                  withdrawal_address: HexAddress, compounding: bool, amount: float, pbkdf2: bool,
                   devnet_chain_setting: Optional[BaseChainSetting], **kwargs: Any) -> None:
     mnemonic = ctx.obj['mnemonic']
     mnemonic_password = ctx.obj['mnemonic_password']
-    if withdrawal_address is None or not compounding:
-        amount = MIN_ACTIVATION_AMOUNT
-    amounts = [amount] * num_validators
-    folder = os.path.join(folder, DEFAULT_VALIDATOR_KEYS_FOLDER_NAME)
 
     # Get chain setting
     chain_setting = devnet_chain_setting if devnet_chain_setting is not None else get_chain_setting(chain)
+
+    if withdrawal_address is None or not compounding:
+        amount = chain_setting.MIN_ACTIVATION_AMOUNT * ETH2GWEI
+    amounts = [amount] * num_validators
+    folder = os.path.join(folder, DEFAULT_VALIDATOR_KEYS_FOLDER_NAME)
 
     amounts = [amount * chain_setting.MULTIPLIER for amount in amounts]
 

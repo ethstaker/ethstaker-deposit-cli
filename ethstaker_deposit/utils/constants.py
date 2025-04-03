@@ -3,8 +3,6 @@ from typing import (
     Dict,
 )
 
-from ethstaker_deposit.settings import get_chain_setting
-
 
 ZERO_BYTES32 = b'\x00' * 32
 
@@ -35,15 +33,6 @@ INTL_CONTENT_PATH = os.path.join('ethstaker_deposit', 'intl')
 CONTEXT_REQUIRING_PROMPTS = [
     "amount",
 ]
-
-
-def get_min_activation_amount(chain: str) -> float:
-    """
-    Returns the minimum activation amount for the specified chain.
-    Defaults to 32 ETH unless overridden for a specific chain.
-    """
-    chain_setting = get_chain_setting(chain)
-    return chain_setting.MIN_ACTIVATION_AMOUNT
 
 
 def _add_index_to_options(d: Dict[str, list[str]]) -> Dict[str, list[str]]:

@@ -26,7 +26,7 @@ from ethstaker_deposit.utils.validation import (
 )
 from ethstaker_deposit.utils.constants import (
     DEFAULT_BLS_TO_EXECUTION_CHANGES_FOLDER_NAME,
-    MIN_ACTIVATION_AMOUNT,
+    ETH2GWEI
 )
 from ethstaker_deposit.utils.click import (
     captive_prompt_callback,
@@ -172,7 +172,7 @@ def generate_bls_to_execution_change(
         )
 
     num_validators = len(validator_indices)
-    amounts = [MIN_ACTIVATION_AMOUNT] * num_validators
+    amounts = [chain_setting.MIN_ACTIVATION_AMOUNT * ETH2GWEI] * num_validators
 
     credentials = CredentialList.from_mnemonic(
         mnemonic=mnemonic,
