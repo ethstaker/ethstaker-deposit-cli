@@ -30,7 +30,7 @@ dependencies = [
     "pycryptodome==3.21.0",
     "pyperclip==1.9.0",
     "py-ecc==7.0.1",
-    "ssz==0.5.1",
+    "ssz==0.5.2",
     "cached-property==2.0.1",
     "colorama==0.4.6 ; sys_platform == 'win32'",
     "cytoolz==1.0.1",
