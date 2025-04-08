@@ -205,14 +205,17 @@ def validate_deposit_amount(amount: str, **kwargs: Dict[str, Any]) -> int:
     '''
     Verifies that `amount` is a valid gwei denomination and 1 ether <= amount <= MAX_DEPOSIT_AMOUNT gwei
     Amount is expected to be in ether and the returned value will be converted to gwei and represented as an int
+    Optional `kwargs`:
+    - `params` (dict): can include `chain` (e.g., 'mainnet') and/or `devnet_chain_setting` to override
+    default chain settings.
     '''
     try:
         decimal_ether = Decimal(amount)
         amount_gwei = decimal_ether * Decimal(ETH2GWEI)
 
         params = kwargs.get('params', {})
-        chain = params.get('chain', 'mainnet') if params is not None else 'mainnet'
-        devnet_chain_setting = params.get('devnet_chain_setting')
+        chain = params.get('chain', 'mainnet')
+        devnet_chain_setting = params.get('devnet_chain_setting', None)
         if devnet_chain_setting is not None:
             chain_setting = devnet_chain_setting
         else:

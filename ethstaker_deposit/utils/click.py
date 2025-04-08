@@ -66,7 +66,7 @@ class JITOption(click.Option):
         self.default = _value_of(self.callable_default)
         if self.name == "amount":
             chain = ctx.params.get('chain', 'mainnet')
-            devnet_chain_setting = ctx.params.get('devnet_chain_setting')
+            devnet_chain_setting = ctx.params.get('devnet_chain_setting', None)
             if devnet_chain_setting is not None:
                 chain_setting = devnet_chain_setting
             else:

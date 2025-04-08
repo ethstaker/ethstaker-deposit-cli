@@ -162,7 +162,7 @@ def generate_keys_arguments_decorator(function: Callable[..., Any]) -> Callable[
 def get_amount_prompt_from_template() -> str:
     ctx = click.get_current_context(silent=True)
     chain = ctx.params.get('chain', 'mainnet') if ctx is not None else 'mainnet'
-    devnet_chain_setting = ctx.params.get('devnet_chain_setting')
+    devnet_chain_setting = ctx.params.get('devnet_chain_setting', None)
     if devnet_chain_setting is not None:
         chain_setting = devnet_chain_setting
     else:
@@ -176,7 +176,7 @@ def get_amount_prompt_from_template() -> str:
 def get_default_amount() -> str:
     ctx = click.get_current_context(silent=True)
     chain = ctx.params.get('chain', 'mainnet') if ctx is not None else 'mainnet'
-    devnet_chain_setting = ctx.params.get('devnet_chain_setting')
+    devnet_chain_setting = ctx.params.get('devnet_chain_setting', None)
     if devnet_chain_setting is not None:
         chain_setting = devnet_chain_setting
     else:

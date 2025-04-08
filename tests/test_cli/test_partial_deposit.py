@@ -16,7 +16,7 @@ from ethstaker_deposit.utils.constants import (
     DEFAULT_VALIDATOR_KEYS_FOLDER_NAME,
     EXECUTION_ADDRESS_WITHDRAWAL_PREFIX,
     COMPOUNDING_WITHDRAWAL_PREFIX,
-    MIN_ACTIVATION_AMOUNT,
+    DEFAULT_ACTIVATION_AMOUNT,
     ETH2GWEI,
 )
 from .helpers import clean_folder, clean_key_folder, clean_partial_deposit_folder, get_permissions
@@ -141,7 +141,7 @@ def test_partial_deposit_compounding() -> None:
             COMPOUNDING_WITHDRAWAL_PREFIX + b'\x00' * 11 + decode_hex(withdrawal_address)
         )
         amount = deposit['amount']
-        assert amount == MIN_ACTIVATION_AMOUNT
+        assert amount == DEFAULT_ACTIVATION_AMOUNT * ETH2GWEI
 
     if os.name == 'posix':
         assert get_permissions(partial_deposit_folder, deposit_files[0]) == '0o400'

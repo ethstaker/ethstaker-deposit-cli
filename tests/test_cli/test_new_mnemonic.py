@@ -13,12 +13,13 @@ from eth_utils import decode_hex
 from ethstaker_deposit.cli import new_mnemonic
 from ethstaker_deposit.deposit import cli
 from ethstaker_deposit.key_handling.key_derivation.mnemonic import abbreviate_words
+from ethstaker_deposit.settings import ChiadoSetting, GnosisSetting
 from ethstaker_deposit.utils.constants import (
     BLS_WITHDRAWAL_PREFIX,
     DEFAULT_VALIDATOR_KEYS_FOLDER_NAME,
     EXECUTION_ADDRESS_WITHDRAWAL_PREFIX,
     COMPOUNDING_WITHDRAWAL_PREFIX,
-    MIN_ACTIVATION_AMOUNT,
+    DEFAULT_ACTIVATION_AMOUNT,
     ETH2GWEI,
 )
 from ethstaker_deposit.utils.intl import load_text
@@ -119,7 +120,7 @@ def test_new_mnemonic_withdrawal_address(monkeypatch) -> None:
             EXECUTION_ADDRESS_WITHDRAWAL_PREFIX + b'\x00' * 11 + decode_hex(withdrawal_address)
         )
         amount = deposit['amount']
-        assert amount == MIN_ACTIVATION_AMOUNT
+        assert amount == DEFAULT_ACTIVATION_AMOUNT * ETH2GWEI
 
     all_uuid = [
         get_uuid(validator_keys_folder_path + '/' + key_file)
@@ -178,7 +179,7 @@ def test_new_mnemonic_compounding_validators(monkeypatch) -> None:
             COMPOUNDING_WITHDRAWAL_PREFIX + b'\x00' * 11 + decode_hex(withdrawal_address)
         )
         amount = deposit['amount']
-        assert amount == MIN_ACTIVATION_AMOUNT
+        assert amount == DEFAULT_ACTIVATION_AMOUNT * ETH2GWEI
 
     all_uuid = [
         get_uuid(validator_keys_folder_path + '/' + key_file)
@@ -237,7 +238,7 @@ def test_gnosis_new_mnemonic_compounding_validators(monkeypatch) -> None:
             COMPOUNDING_WITHDRAWAL_PREFIX + b'\x00' * 11 + decode_hex(withdrawal_address)
         )
         amount = deposit['amount']
-        assert amount == MIN_ACTIVATION_AMOUNT
+        assert amount == GnosisSetting.MIN_ACTIVATION_AMOUNT * GnosisSetting.MULTIPLIER * ETH2GWEI
 
     all_uuid = [
         get_uuid(validator_keys_folder_path + '/' + key_file)
@@ -296,7 +297,7 @@ def test_chiado_new_mnemonic_compounding_validators(monkeypatch) -> None:
             COMPOUNDING_WITHDRAWAL_PREFIX + b'\x00' * 11 + decode_hex(withdrawal_address)
         )
         amount = deposit['amount']
-        assert amount == MIN_ACTIVATION_AMOUNT
+        assert amount == ChiadoSetting.MIN_ACTIVATION_AMOUNT * ChiadoSetting.MULTIPLIER * ETH2GWEI
 
     all_uuid = [
         get_uuid(validator_keys_folder_path + '/' + key_file)
@@ -418,7 +419,7 @@ def test_gnosis_new_mnemonic_compounding_custom_amount(monkeypatch) -> None:
             COMPOUNDING_WITHDRAWAL_PREFIX + b'\x00' * 11 + decode_hex(withdrawal_address)
         )
         amount = deposit['amount']
-        assert amount == (custom_amount * 32 * ETH2GWEI)
+        assert amount == custom_amount * GnosisSetting.MULTIPLIER * ETH2GWEI
 
     all_uuid = [
         get_uuid(validator_keys_folder_path + '/' + key_file)
@@ -479,7 +480,7 @@ def test_chiado_new_mnemonic_compounding_custom_amount(monkeypatch) -> None:
             COMPOUNDING_WITHDRAWAL_PREFIX + b'\x00' * 11 + decode_hex(withdrawal_address)
         )
         amount = deposit['amount']
-        assert amount == (custom_amount * 32 * ETH2GWEI)
+        assert amount == custom_amount * ChiadoSetting.MULTIPLIER * ETH2GWEI
 
     all_uuid = [
         get_uuid(validator_keys_folder_path + '/' + key_file)
@@ -1129,12 +1130,14 @@ def test_new_mnemonic_custom_testnet_with_custom_multiplier(monkeypatch) -> None
     if not os.path.exists(my_folder_path):
         os.mkdir(my_folder_path)
 
+    custom_multiplier = 4
+
     devnet_chain = {
         "network_name": "devnet",
         "genesis_fork_version": "01017000",
         "exit_fork_version": "04017000",
         "genesis_validator_root": "9143aa7c615a7f7115e2b6aac319c03529df8242ae705fba9df39b79c59fa8b1",
-        "multiplier": 4,
+        "multiplier": custom_multiplier,
     }
 
     devnet_chain_setting = json.dumps(devnet_chain)
@@ -1167,7 +1170,7 @@ def test_new_mnemonic_custom_testnet_with_custom_multiplier(monkeypatch) -> None
             COMPOUNDING_WITHDRAWAL_PREFIX + b'\x00' * 11 + decode_hex(withdrawal_address)
         )
         amount = deposit['amount']
-        assert amount == (32 * 4 * ETH2GWEI)
+        assert amount == DEFAULT_ACTIVATION_AMOUNT * custom_multiplier * ETH2GWEI
 
     all_uuid = [
         get_uuid(validator_keys_folder_path + '/' + key_file)
@@ -1198,13 +1201,16 @@ def test_new_mnemonic_custom_multiplier_and_min_activation_amount_testnet(monkey
     if not os.path.exists(my_folder_path):
         os.mkdir(my_folder_path)
 
+    custom_min_activation_amount = 2
+    custom_multiplier = 4
+
     devnet_chain = {
         "network_name": "devnet",
         "genesis_fork_version": "01017000",
         "exit_fork_version": "04017000",
         "genesis_validator_root": "9143aa7c615a7f7115e2b6aac319c03529df8242ae705fba9df39b79c59fa8b1",
-        "multiplier": 4,
-        "min_activation_amount": 2
+        "multiplier": custom_min_activation_amount,
+        "min_activation_amount": custom_multiplier
     }
 
     devnet_chain_setting = json.dumps(devnet_chain)
@@ -1237,7 +1243,7 @@ def test_new_mnemonic_custom_multiplier_and_min_activation_amount_testnet(monkey
             COMPOUNDING_WITHDRAWAL_PREFIX + b'\x00' * 11 + decode_hex(withdrawal_address)
         )
         amount = deposit['amount']
-        assert amount == (2 * 4 * ETH2GWEI)
+        assert amount == custom_min_activation_amount * custom_multiplier * ETH2GWEI
 
     all_uuid = [
         get_uuid(validator_keys_folder_path + '/' + key_file)
@@ -1268,13 +1274,16 @@ def test_new_mnemonic_custom_multiplier_and_min_activation_amount_testnet_custom
     if not os.path.exists(my_folder_path):
         os.mkdir(my_folder_path)
 
+    custom_multiplier = 4
+    custom_min_activation_amount = 2
+
     devnet_chain = {
         "network_name": "devnet",
         "genesis_fork_version": "01017000",
         "exit_fork_version": "04017000",
         "genesis_validator_root": "9143aa7c615a7f7115e2b6aac319c03529df8242ae705fba9df39b79c59fa8b1",
-        "multiplier": 4,
-        "min_activation_amount": 2
+        "multiplier": custom_multiplier,
+        "min_activation_amount": custom_min_activation_amount
     }
 
     devnet_chain_setting = json.dumps(devnet_chain)
@@ -1309,7 +1318,7 @@ def test_new_mnemonic_custom_multiplier_and_min_activation_amount_testnet_custom
             COMPOUNDING_WITHDRAWAL_PREFIX + b'\x00' * 11 + decode_hex(withdrawal_address)
         )
         amount = deposit['amount']
-        assert amount == (custom_amount * 4 * ETH2GWEI)
+        assert amount == custom_amount * custom_multiplier * ETH2GWEI
 
     all_uuid = [
         get_uuid(validator_keys_folder_path + '/' + key_file)

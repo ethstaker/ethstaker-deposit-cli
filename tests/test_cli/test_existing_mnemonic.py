@@ -13,7 +13,7 @@ from ethstaker_deposit.utils.constants import (
     EXECUTION_ADDRESS_WITHDRAWAL_PREFIX,
     COMPOUNDING_WITHDRAWAL_PREFIX,
     ETH2GWEI,
-    MIN_ACTIVATION_AMOUNT,
+    DEFAULT_ACTIVATION_AMOUNT,
 )
 from .helpers import clean_key_folder, get_permissions, get_uuid
 
@@ -153,7 +153,7 @@ def test_existing_mnemonic_compounding_validators() -> None:
             COMPOUNDING_WITHDRAWAL_PREFIX + b'\x00' * 11 + decode_hex(withdrawal_address)
         )
         amount = deposit['amount']
-        assert amount == MIN_ACTIVATION_AMOUNT
+        assert amount == DEFAULT_ACTIVATION_AMOUNT * ETH2GWEI
 
     all_uuid = [
         get_uuid(validator_keys_folder_path + '/' + key_file)
