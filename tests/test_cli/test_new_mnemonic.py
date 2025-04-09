@@ -389,7 +389,7 @@ def test_gnosis_new_mnemonic_compounding_custom_amount(monkeypatch) -> None:
     if not os.path.exists(my_folder_path):
         os.mkdir(my_folder_path)
 
-    custom_amount = 1050
+    custom_amount = 50
 
     runner = CliRunner()
     withdrawal_address = '0x00000000219ab540356cBB839Cbe05303d7705Fa'
@@ -450,7 +450,7 @@ def test_chiado_new_mnemonic_compounding_custom_amount(monkeypatch) -> None:
     if not os.path.exists(my_folder_path):
         os.mkdir(my_folder_path)
 
-    custom_amount = 1050
+    custom_amount = 50
 
     runner = CliRunner()
     withdrawal_address = '0x00000000219ab540356cBB839Cbe05303d7705Fa'
@@ -1288,7 +1288,7 @@ def test_new_mnemonic_custom_multiplier_and_min_activation_amount_testnet_custom
 
     devnet_chain_setting = json.dumps(devnet_chain)
 
-    custom_amount = 1050
+    custom_amount = 500
 
     runner = CliRunner()
     withdrawal_address = '0x00000000219ab540356cBB839Cbe05303d7705Fa'

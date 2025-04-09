@@ -6,7 +6,7 @@ from typing import (
 )
 
 from ethstaker_deposit.exceptions import ValidationError
-from ethstaker_deposit.settings import get_chain_setting
+from ethstaker_deposit.settings import get_chain_setting, get_devnet_chain_setting
 from ethstaker_deposit.utils.validation import (
     normalize_input_list,
     validate_int_range,
@@ -84,28 +84,53 @@ def test_validate_int_range(num: Any, low: int, high: int, valid: bool) -> None:
 
 
 @pytest.mark.parametrize(
-    'amount, valid',
+    'amount, valid, chain',
     [
-        ('-1', False),
-        ('0', False),
-        ('0.99999', False),
-        ('1', True),
-        ('1.000000001', True),
-        ('1.0000000001', False),
-        ('32', True),
-        ('2048', True),
-        ('2048.000000001', False),
-        ('2048.0000000001', False),
-        ('a', False),
-        (' ', False)
+        ('-1', False, 'mainnet'),
+        ('0', False, 'mainnet'),
+        ('0.99999', False, 'mainnet'),
+        ('0.99999', True, 'gnosis'),
+        ('0.99999', True, 'chiado'),
+        ('0.99999', False, 'devnet'),
+        ('1', True, 'mainnet'),
+        ('1.000000001', True, 'mainnet'),
+        ('1.0000000001', False, 'mainnet'),
+        ('1', False, 'devnet'),
+        ('32', True, 'mainnet'),
+        ('32', True, 'gnosis'),
+        ('32', True, 'chiado'),
+        ('32', True, 'devnet'),
+        ('2048', True, 'mainnet'),
+        ('2048', False, 'gnosis'),
+        ('2048', False, 'chiado'),
+        ('2048', False, 'devnet'),
+        ('2048.000000001', False, 'mainnet'),
+        ('2048.0000000001', False, 'mainnet'),
+        ('a', False, 'mainnet'),
+        ('a', False, 'gnosis'),
+        ('a', False, 'chiado'),
+        ('a', False, 'devnet'),
+        (' ', False, 'mainnet')
     ]
 )
-def test_validate_deposit_amount(amount: str, valid: bool) -> None:
+def test_validate_deposit_amount(amount: str, valid: bool, chain: str) -> None:
+    if chain == 'devnet':
+        kwargs = {'params': {'devnet_chain_setting': get_devnet_chain_setting(
+        "devnet",
+        "01017000",
+        "04017000",
+        "9143aa7c615a7f7115e2b6aac319c03529df8242ae705fba9df39b79c59fa8b1",
+        5,
+        3,
+        2,
+    )}}
+    else:
+        kwargs = {'params': {'chain': chain}}
     if valid:
-        validate_deposit_amount(amount)
+        validate_deposit_amount(amount, **kwargs)
     else:
         with pytest.raises(ValidationError):
-            validate_deposit_amount(amount)
+            validate_deposit_amount(amount, **kwargs)
 
 
 @pytest.mark.parametrize(

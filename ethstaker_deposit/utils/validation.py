@@ -119,8 +119,9 @@ def validate_deposit(deposit_data_dict: Dict[str, Any], chain_setting: BaseChain
         return False
 
     # Verify deposit amount
-    min_amount = chain_setting.MIN_DEPOSIT_AMOUNT * ETH2GWEI
-    if not min_amount <= amount <= MAX_DEPOSIT_AMOUNT * chain_setting.MULTIPLIER:
+    # on deposit message, the amount should be multiplied by the multiplier
+    min_amount = chain_setting.MIN_DEPOSIT_AMOUNT * chain_setting.MULTIPLIER * ETH2GWEI
+    if not min_amount <= amount <= MAX_DEPOSIT_AMOUNT:
         return False
 
     # Verify deposit signature && pubkey
@@ -228,7 +229,7 @@ def validate_deposit_amount(amount: str, **kwargs: Dict[str, Any]) -> int:
         if amount_gwei < min_amount * ETH2GWEI:
             raise ValidationError(load_text(['err_min_deposit']))
 
-        if amount_gwei > MAX_DEPOSIT_AMOUNT * chain_setting.MULTIPLIER:
+        if amount_gwei > MAX_DEPOSIT_AMOUNT / chain_setting.MULTIPLIER:
             raise ValidationError(load_text(['err_max_deposit']))
 
         return int(amount_gwei)
