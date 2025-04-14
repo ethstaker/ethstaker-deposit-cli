@@ -25,7 +25,7 @@ description = "Secure key generation for deposits"
 readme = "README.md"
 dependencies = [
     "click==8.1.8",
-    "eth-typing==5.1.0",
+    "eth-typing==5.2.0",
     "eth-utils==5.2.0",
     "pycryptodome==3.22.0",
     "pyperclip==1.9.0",
