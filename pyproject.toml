@@ -30,7 +30,7 @@ dependencies = [
     "eth-utils==5.3.0",
     "pycryptodome==3.22.0",
     "pydantic==2.11.3",
-    "pydantic-core==2.33.1",
+    "pydantic-core==2.34.1",
     "pyperclip==1.9.0",
     "py-ecc==7.0.1",
     "ssz==0.5.2",
