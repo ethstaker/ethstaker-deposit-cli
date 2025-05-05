@@ -1,0 +1,26 @@
+FROM python:3.9.12-slim
+
+WORKDIR /app
+
+# Install dependencies
+COPY requirements.txt requirements_api.txt ./
+RUN pip3 install --no-cache-dir -r requirements.txt && \
+    pip3 install --no-cache-dir -r requirements_api.txt
+
+# Copy application code
+COPY ethstaker_deposit ./ethstaker_deposit
+COPY api ./api
+
+# Create keystores directory with proper permissions
+RUN mkdir -p /app/keystores && \
+    chmod 755 /app/keystores
+
+# Create non-root user
+RUN useradd -m -u 65532 -s /bin/bash app && \
+    chown -R app:app /app
+
+USER app
+
+EXPOSE 8000
+
+ENTRYPOINT ["python", "-m", "api.run"]
