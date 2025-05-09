@@ -39,6 +39,7 @@ HOODI = 'hoodi'
 EPHEMERY = 'ephemery'
 GNOSIS = 'gnosis'
 CHIADO = 'chiado'
+KURTOSIS = 'kurtosis'
 
 # Mainnet setting
 MainnetSetting = BaseChainSetting(
@@ -92,6 +93,16 @@ ChiadoSetting = BaseChainSetting(
     MULTIPLIER=32,
     MIN_ACTIVATION_AMOUNT=1,
     MIN_DEPOSIT_AMOUNT=0.03125)
+# Kurtosis setting
+KurtosisSetting = BaseChainSetting(
+    NETWORK_NAME=KURTOSIS,
+    GENESIS_FORK_VERSION=bytes.fromhex('10000038'),
+    EXIT_FORK_VERSION=bytes.fromhex('40000910'),  # Same as Hoodi
+    GENESIS_VALIDATORS_ROOT=bytes.fromhex('088243f664aec6b906743c9142cb2b8a1dc55e0b8f0d2aed841c2371eee0cccd'),
+    MULTIPLIER=1,  # Same as Hoodi (default)
+    MIN_ACTIVATION_AMOUNT=32.0,  # Same as Hoodi (default)
+    MIN_DEPOSIT_AMOUNT=1.0,  # Same as Hoodi (default)
+)
 
 
 ALL_CHAINS: Dict[str, BaseChainSetting] = {
@@ -102,6 +113,7 @@ ALL_CHAINS: Dict[str, BaseChainSetting] = {
     EPHEMERY: EphemerySetting,
     GNOSIS: GnosisSetting,
     CHIADO: ChiadoSetting,
+    KURTOSIS: KurtosisSetting,
 }
 
 ALL_CHAIN_KEYS: tuple[str, ...] = tuple(ALL_CHAINS.keys())
