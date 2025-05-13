@@ -9,6 +9,10 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    groups:
+      pydantic-deps:
+        patterns:
+          - "pydantic*"
   - package-ecosystem: "docker"
     directory: "/"
     schedule:
