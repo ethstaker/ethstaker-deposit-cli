@@ -1,5 +1,8 @@
 name: ci-runner
 run-name: ${{ github.actor }} is testing and measuring code quality
+permissions:
+  contents: read
+  actions: read
 on:
   push:
     branches: [main]
@@ -38,6 +41,9 @@ jobs:
     if: |
       contains(github.event.pull_request.labels.*.name, 'run-tests') ||
       github.event_name == 'push'
+    permissions:
+      contents: read
+      actions: write
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -88,6 +94,9 @@ jobs:
   coverage-combine:
     needs: ci-runner
     if: github.event_name == 'pull_request'
+    permissions:
+      contents: read
+      actions: read
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
