@@ -10,6 +10,8 @@ on:
 jobs:
   completed-coverage:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     if: >
       github.event.workflow_run.event == 'pull_request' &&
       github.event.workflow_run.conclusion == 'success'
