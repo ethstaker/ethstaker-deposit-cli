@@ -1,6 +1,9 @@
 name: docs
 run-name: ${{ github.actor }} is running docs
 
+permissions:
+  contents: write
+
 on:
   push:
     branches:
