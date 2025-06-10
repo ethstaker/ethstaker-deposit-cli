@@ -66,7 +66,7 @@ test = [
     "referencing==0.36.2",
     "rpds-py==0.25.1",
     "typing-extensions==4.13.2",
-    "ruff==0.11.12",
+    "ruff==0.11.13",
 ]
 
 [project.urls]
