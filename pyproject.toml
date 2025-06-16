@@ -32,7 +32,7 @@ dependencies = [
     "pydantic==2.11.5",
     "pydantic-core==2.33.2",
     "pyperclip==1.9.0",
-    "py-ecc==7.0.1",
+    "py-ecc==8.0.0",
     "ssz==0.5.2",
     "cached-property==2.0.1",
     "colorama==0.4.6 ; sys_platform == 'win32'",
