@@ -7,7 +7,7 @@ repos:
     rev: v1.14.1
     hooks:
     - id: mypy
-      additional_dependencies: 
+      additional_dependencies:
         - click==8.1.8
         - eth-typing==5.1.0
         - eth-utils==5.1.0
