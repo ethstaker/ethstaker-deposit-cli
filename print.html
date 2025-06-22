@@ -175,7 +175,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="welcome-to-the-ethstaker-deposit-cli"><a class="header" href="#welcome-to-the-ethstaker-deposit-cli">Welcome to the <code>ethstaker-deposit-cli</code>!</a></h1>
-<p>The <a href="https://github.com/eth-educators/ethstaker-deposit-cli"><code>ethstaker-deposit-cli</code></a> is a command-line tool used to generate validator keys forked from Ethereum's <a href="https://github.com/ethereum/staking-deposit-cli"><code>staking-deposit-cli</code></a> with more functionality and improved performance.</p>
+<p>The <a href="https://github.com/ethstaker/ethstaker-deposit-cli"><code>ethstaker-deposit-cli</code></a> is a command-line tool used to generate validator keys forked from Ethereum's <a href="https://github.com/ethereum/staking-deposit-cli"><code>staking-deposit-cli</code></a> with more functionality and improved performance.</p>
 <h2 id="security-reports"><a class="header" href="#security-reports">Security reports</a></h2>
 <p>You can read <a href="https://github.com/trailofbits/publications/blob/master/reviews/2024-12-ethstaker-depositcli-securityreview.pdf">the security assessment report by Trail of Bits</a> that was completed on December 13, 2024. You can find the security assessment report by Trail of Bits of the original staking-deposit-cli project <a href="https://github.com/trailofbits/publications/blob/master/reviews/ETH2DepositCLI.pdf">here</a>.</p>
 <h2 id="important-concerns"><a class="header" href="#important-concerns">Important Concerns</a></h2>
@@ -291,7 +291,7 @@ Please be sure that your ETH is deposited only to this deposit contract address,
 <h3 id="download-binary-executable-file"><a class="header" href="#download-binary-executable-file">Download binary executable file</a></h3>
 <ol>
 <li>
-<p>Navigate to the <a href="https://github.com/eth-educators/ethstaker-deposit-cli/releases">Releases page</a> of the <code>ethstaker-deposit-cli</code> repository.</p>
+<p>Navigate to the <a href="https://github.com/ethstaker/ethstaker-deposit-cli/releases">Releases page</a> of the <code>ethstaker-deposit-cli</code> repository.</p>
 </li>
 <li>
 <p>Download the corresponding file for your operating system:</p>
@@ -318,7 +318,7 @@ Please be sure that your ETH is deposited only to this deposit contract address,
 <p>Verify the attestation against the corresponding file but be sure to replace the contents with the exact file name:</p>
 </li>
 </ol>
-<pre><code class="language-sh">gh attestation verify ethstaker_deposit-cli-*******-***.*** --repo eth-educators/ethstaker-deposit-cli
+<pre><code class="language-sh">gh attestation verify ethstaker_deposit-cli-*******-***.*** --repo ethstaker/ethstaker-deposit-cli
 </code></pre>
 <p>This step requires you to be online. If you want to perform this offline, follow <a href="https://docs.github.com/en/actions/security-for-github-actions/using-artifact-attestations/verifying-attestations-offline">these instructions from GitHub</a>.</p>
 <ol start="3">
@@ -353,7 +353,7 @@ Please be sure that your ETH is deposited only to this deposit contract address,
 </li>
 </ul>
 <hr />
-<p>If you encounter any issues, please check the <a href="https://github.com/eth-educators/ethstaker-deposit-cli/issues">issues page</a> for help or to report a problem. You may also contact us on the <a href="https://dsc.gg/ethstaker">Ethstaker discord</a>.</p>
+<p>If you encounter any issues, please check the <a href="https://github.com/ethstaker/ethstaker-deposit-cli/issues">issues page</a> for help or to report a problem. You may also contact us on the <a href="https://dsc.gg/ethstaker">Ethstaker discord</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="other-install-options"><a class="header" href="#other-install-options">Other Install Options</a></h1>
 <h2 id="linux-or-macos-users"><a class="header" href="#linux-or-macos-users">Linux or MacOS users</a></h2>
 <h3 id="option-1-build-deposit-cli-with-native-python"><a class="header" href="#option-1-build-deposit-cli-with-native-python">Option 1. Build <code>deposit-cli</code> with native Python</a></h3>
@@ -429,19 +429,19 @@ source .venv/bin/activate
 <li>
 <p><strong>Pull the official docker image</strong></p>
 <p>Run the following command to pull the latest docker image published on the Github repository:</p>
-<pre><code class="language-sh">docker pull ghcr.io/eth-educators/ethstaker-deposit-cli:latest
+<pre><code class="language-sh">docker pull ghcr.io/ethstaker/ethstaker-deposit-cli:latest
 </code></pre>
 </li>
 <li>
 <p><strong>Create keys and <code>deposit_data-*.json</code></strong></p>
 <p>Run the following command to enter the interactive CLI:</p>
-<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ghcr.io/eth-educators/ethstaker-deposit-cli:latest
+<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ghcr.io/ethstaker/ethstaker-deposit-cli:latest
 </code></pre>
 <p>You can also run the tool with optional arguments:</p>
-<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ghcr.io/eth-educators/ethstaker-deposit-cli:latest new-mnemonic --num_validators=&lt;NUM_VALIDATORS&gt; --mnemonic_language=english
+<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ghcr.io/ethstaker/ethstaker-deposit-cli:latest new-mnemonic --num_validators=&lt;NUM_VALIDATORS&gt; --mnemonic_language=english
 </code></pre>
 <p>Example for 1 validator on the <a href="https://holesky.launchpad.ethereum.org/">Holesky testnet</a> using english:</p>
-<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ghcr.io/eth-educators/ethstaker-deposit-cli:latest new-mnemonic --num_validators=1 --mnemonic_language=english --chain=holesky
+<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ghcr.io/ethstaker/ethstaker-deposit-cli:latest new-mnemonic --num_validators=1 --mnemonic_language=english --chain=holesky
 </code></pre>
 </li>
 </ol>
@@ -456,13 +456,13 @@ source .venv/bin/activate
 <li>
 <p><strong>Create keys and <code>deposit_data-*.json</code></strong></p>
 <p>Run the following command to enter the interactive CLI:</p>
-<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys eth-educators/ethstaker-deposit-cli
+<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ethstaker/ethstaker-deposit-cli
 </code></pre>
 <p>You can also run the tool with optional arguments:</p>
-<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys eth-educators/ethstaker-deposit-cli new-mnemonic --num_validators=&lt;NUM_VALIDATORS&gt; --mnemonic_language=english
+<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ethstaker/ethstaker-deposit-cli new-mnemonic --num_validators=&lt;NUM_VALIDATORS&gt; --mnemonic_language=english
 </code></pre>
 <p>Example for 1 validator on the <a href="https://holesky.launchpad.ethereum.org/">Holesky testnet</a> using english:</p>
-<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys eth-educators/ethstaker-deposit-cli new-mnemonic --num_validators=1 --mnemonic_language=english --chain=holesky
+<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ethstaker/ethstaker-deposit-cli new-mnemonic --num_validators=1 --mnemonic_language=english --chain=holesky
 </code></pre>
 </li>
 </ol>
@@ -682,7 +682,7 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 <div style="break-before: page; page-break-before: always;"></div><h1 id="generate-bls-to-execution-change-keystore"><a class="header" href="#generate-bls-to-execution-change-keystore">generate-bls-to-execution-change-keystore</a></h1>
 <div class="warning">
 This command is associated with the a proposed solution to update withdrawal credentials for those who are missing their mnemonic. At this point this has not been approved or implemented and there is no guarantee credentials will be modified in the future.
-<p>The project is located <a href="https://github.com/eth-educators/update-credentials-without-mnemonic">here</a> if you would like to learn more.</p>
+<p>The project is located <a href="https://github.com/ethstaker/update-credentials-without-mnemonic">here</a> if you would like to learn more.</p>
 </div>
 <h2 id="description-3"><a class="header" href="#description-3">Description</a></h2>
 <p>Signs a withdrawal credential update message using the provided keystore. This signature is one of the required proofs of ownership for validators who have lost or are missing their mnemonic and are unable to perform the BLS change needed to update their withdrawal credentials.</p>
@@ -878,7 +878,7 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 <li><strong>deposit_data_root</strong>: The deposit data root value to be passed to the deposit function call.</li>
 <li><strong>fork_version</strong>: The fork version of the network that this deposit file was created for.</li>
 <li><strong>network_name</strong>: The network name of the network that this deposit file was created for.</li>
-<li><strong>deposit_cli_version</strong>: The tool version used to create this file. We are currently faking this value to work around <a href="https://github.com/eth-educators/ethstaker-deposit-cli/issues/216">an issue</a> with the Launchpad.</li>
+<li><strong>deposit_cli_version</strong>: The tool version used to create this file. We are currently faking this value to work around <a href="https://github.com/ethstaker/ethstaker-deposit-cli/issues/216">an issue</a> with the Launchpad.</li>
 </ul>
 <h2 id="example"><a class="header" href="#example">Example</a></h2>
 <pre><code class="language-JSON">[
@@ -932,7 +932,7 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 <p>A BLS to execution change keystore file is created when calling the <strong><a href="generate_bls_to_execution_change_keystore.html">generate-bls-to-execution-change-keystore</a></strong> command.</p>
 <p>The BLS to execution change keystore file is a JSON file. The format is very similar to the <a href="bls_to_execution_change_file.html">BLS to execution change file</a> but with the <code>from_bls_pubkey</code> and <code>metadata</code> attributes removed.</p>
 <h2 id="utilizing"><a class="header" href="#utilizing">Utilizing</a></h2>
-<p>There is currently no integration with this file format with either the execution layer or beacon chain. The <code>signature</code> value must be provided as the <code>keystore_signature</code> for the <a href="https://github.com/eth-educators/update-credentials-without-mnemonic#signature-file-format">Signature file</a>.</p>
+<p>There is currently no integration with this file format with either the execution layer or beacon chain. The <code>signature</code> value must be provided as the <code>keystore_signature</code> for the <a href="https://github.com/ethstaker/update-credentials-without-mnemonic#signature-file-format">Signature file</a>.</p>
 <h2 id="example-2"><a class="header" href="#example-2">Example</a></h2>
 <pre><code class="language-JSON">{
   "message":{
@@ -976,7 +976,7 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 <ol>
 <li>
 <p><strong>Clone the Repository</strong></p>
-<pre><code class="language-sh">git clone https://github.com/eth-educators/ethstaker-deposit-cli.git
+<pre><code class="language-sh">git clone https://github.com/ethstaker/ethstaker-deposit-cli.git
 </code></pre>
 </li>
 <li>
@@ -1024,9 +1024,9 @@ uv run pre-commit install
 python3 -m pytest tests
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="release-process-instructions"><a class="header" href="#release-process-instructions">Release Process Instructions</a></h1>
-<p>This document is meant as a guide on how to perform and publish a new release version of <a href="https://github.com/eth-educators/ethstaker-deposit-cli">ethstaker-deposit-cli</a>. It includes step by step instructions to complete the release process.</p>
+<p>This document is meant as a guide on how to perform and publish a new release version of <a href="https://github.com/ethstaker/ethstaker-deposit-cli">ethstaker-deposit-cli</a>. It includes step by step instructions to complete the release process.</p>
 <ol>
-<li>Make sure all the tests from the latest <a href="https://github.com/eth-educators/ethstaker-deposit-cli/actions/workflows/runner.yml">ci-runner workflow</a> on the latest commit of the main branch are completed. Make sure all tests are passing on all the supported platforms.</li>
+<li>Make sure all the tests from the latest <a href="https://github.com/ethstaker/ethstaker-deposit-cli/actions/workflows/runner.yml">ci-runner workflow</a> on the latest commit of the main branch are completed. Make sure all tests are passing on all the supported platforms.</li>
 <li>Determine a new version number. Version numbers should adhere to <a href="https://semver.org/">Semantic Versioning</a>. For any official release, it should include a major, a minor and a patch identifier like <code>1.0.0</code>.</li>
 <li>Update <code>ethstaker_deposit/__init__.py</code>'s <code>__version__</code> variable with the new version number. Commit this change to the main branch of the main repository.</li>
 <li>Add a tag to the main repository for this changed version commit above. The name of this tag should be a string starting with <code>v</code> concatenated with the version number. With git, the main repository cloned and the commit above being the head, it can look like this:</li>
@@ -1035,7 +1035,7 @@ python3 -m pytest tests
 git push origin v1.0.0
 </code></pre>
 <ol start="5">
-<li>Wait for all the build assets and the draft release to be created by <a href="https://github.com/eth-educators/ethstaker-deposit-cli/actions/workflows/build.yml">the ci-build workflow</a>.</li>
+<li>Wait for all the build assets and the draft release to be created by <a href="https://github.com/ethstaker/ethstaker-deposit-cli/actions/workflows/build.yml">the ci-build workflow</a>.</li>
 <li>Open the draft release and fill in the different sections correctly.</li>
 <li>If this is not a production release, check the <em>Set as a pre-release</em> checkbox.</li>
 <li>Click the <em>Publish release</em> button.</li>
@@ -1043,9 +1043,9 @@ git push origin v1.0.0
 <li>Update <code>ethstaker_deposit/__init__.py</code>'s <code>__version__</code> variable with a new dev version number. Commit this change to the main branch.</li>
 </ol>
 <h2 id="release-notes-template"><a class="header" href="#release-notes-template">Release Notes Template</a></h2>
-<p>You can find the latest release notes template on https://github.com/eth-educators/ethstaker-deposit-cli/blob/main/.github/release_template.md .</p>
+<p>You can find the latest release notes template on https://github.com/ethstaker/ethstaker-deposit-cli/blob/main/.github/release_template.md .</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="reporting-a-vulnerability"><a class="header" href="#reporting-a-vulnerability">Reporting a Vulnerability</a></h1>
-<p>Private vulnerability reporting is enabled on <a href="https://github.com/eth-educators/ethstaker-deposit-cli">the ethstaker-deposit-cli repository</a>. Feel free to report any security vulnerability through <a href="https://docs.github.com/en/code-security/security-advisories/guidance-on-reporting-and-writing-information-about-vulnerabilities/privately-reporting-a-security-vulnerability#privately-reporting-a-security-vulnerability">the GitHub <em>Report a vulnerability</em> feature</a>.</p>
+<p>Private vulnerability reporting is enabled on <a href="https://github.com/ethstaker/ethstaker-deposit-cli">the ethstaker-deposit-cli repository</a>. Feel free to report any security vulnerability through <a href="https://docs.github.com/en/code-security/security-advisories/guidance-on-reporting-and-writing-information-about-vulnerabilities/privately-reporting-a-security-vulnerability#privately-reporting-a-security-vulnerability">the GitHub <em>Report a vulnerability</em> feature</a>.</p>
 
                     </main>
 

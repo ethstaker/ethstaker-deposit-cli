@@ -248,19 +248,19 @@ source .venv/bin/activate
 <li>
 <p><strong>Pull the official docker image</strong></p>
 <p>Run the following command to pull the latest docker image published on the Github repository:</p>
-<pre><code class="language-sh">docker pull ghcr.io/eth-educators/ethstaker-deposit-cli:latest
+<pre><code class="language-sh">docker pull ghcr.io/ethstaker/ethstaker-deposit-cli:latest
 </code></pre>
 </li>
 <li>
 <p><strong>Create keys and <code>deposit_data-*.json</code></strong></p>
 <p>Run the following command to enter the interactive CLI:</p>
-<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ghcr.io/eth-educators/ethstaker-deposit-cli:latest
+<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ghcr.io/ethstaker/ethstaker-deposit-cli:latest
 </code></pre>
 <p>You can also run the tool with optional arguments:</p>
-<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ghcr.io/eth-educators/ethstaker-deposit-cli:latest new-mnemonic --num_validators=&lt;NUM_VALIDATORS&gt; --mnemonic_language=english
+<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ghcr.io/ethstaker/ethstaker-deposit-cli:latest new-mnemonic --num_validators=&lt;NUM_VALIDATORS&gt; --mnemonic_language=english
 </code></pre>
 <p>Example for 1 validator on the <a href="https://holesky.launchpad.ethereum.org/">Holesky testnet</a> using english:</p>
-<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ghcr.io/eth-educators/ethstaker-deposit-cli:latest new-mnemonic --num_validators=1 --mnemonic_language=english --chain=holesky
+<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ghcr.io/ethstaker/ethstaker-deposit-cli:latest new-mnemonic --num_validators=1 --mnemonic_language=english --chain=holesky
 </code></pre>
 </li>
 </ol>
@@ -275,13 +275,13 @@ source .venv/bin/activate
 <li>
 <p><strong>Create keys and <code>deposit_data-*.json</code></strong></p>
 <p>Run the following command to enter the interactive CLI:</p>
-<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys eth-educators/ethstaker-deposit-cli
+<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ethstaker/ethstaker-deposit-cli
 </code></pre>
 <p>You can also run the tool with optional arguments:</p>
-<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys eth-educators/ethstaker-deposit-cli new-mnemonic --num_validators=&lt;NUM_VALIDATORS&gt; --mnemonic_language=english
+<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ethstaker/ethstaker-deposit-cli new-mnemonic --num_validators=&lt;NUM_VALIDATORS&gt; --mnemonic_language=english
 </code></pre>
 <p>Example for 1 validator on the <a href="https://holesky.launchpad.ethereum.org/">Holesky testnet</a> using english:</p>
-<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys eth-educators/ethstaker-deposit-cli new-mnemonic --num_validators=1 --mnemonic_language=english --chain=holesky
+<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ethstaker/ethstaker-deposit-cli new-mnemonic --num_validators=1 --mnemonic_language=english --chain=holesky
 </code></pre>
 </li>
 </ol>
