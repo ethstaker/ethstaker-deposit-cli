@@ -28,7 +28,7 @@ Each deposit from the list will contain this structure:
 - **deposit_data_root**: The deposit data root value to be passed to the deposit function call.
 - **fork_version**: The fork version of the network that this deposit file was created for.
 - **network_name**: The network name of the network that this deposit file was created for.
-- **deposit_cli_version**: The tool version used to create this file. We are currently faking this value to work around [an issue](https://github.com/eth-educators/ethstaker-deposit-cli/issues/216) with the Launchpad.
+- **deposit_cli_version**: The tool version used to create this file. We are currently faking this value to work around [an issue](https://github.com/ethstaker/ethstaker-deposit-cli/issues/216) with the Launchpad.
 
 ## Example
 ```JSON

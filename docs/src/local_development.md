@@ -21,7 +21,7 @@ On Windows, you'll need:
 1. **Clone the Repository**
 
     ```sh
-    git clone https://github.com/eth-educators/ethstaker-deposit-cli.git
+    git clone https://github.com/ethstaker/ethstaker-deposit-cli.git
     ```
 
 2. **Navigate to the Project Directory**

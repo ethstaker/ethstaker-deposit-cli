@@ -11,7 +11,7 @@ This guide will walk you through the steps to download and set up the `ethstaker
 
 ### Download binary executable file
 
-1. Navigate to the [Releases page](https://github.com/eth-educators/ethstaker-deposit-cli/releases) of the `ethstaker-deposit-cli` repository.
+1. Navigate to the [Releases page](https://github.com/ethstaker/ethstaker-deposit-cli/releases) of the `ethstaker-deposit-cli` repository.
 
 2. Download the corresponding file for your operating system:
     - **Windows**: Look for a file with `windows` in the name.
@@ -31,7 +31,7 @@ For other installation options, including building with python or virtualenv and
 
 2. Verify the attestation against the corresponding file but be sure to replace the contents with the exact file name:
 ```sh
-gh attestation verify ethstaker_deposit-cli-*******-***.*** --repo eth-educators/ethstaker-deposit-cli
+gh attestation verify ethstaker_deposit-cli-*******-***.*** --repo ethstaker/ethstaker-deposit-cli
 ```
 
 This step requires you to be online. If you want to perform this offline, follow [these instructions from GitHub](https://docs.github.com/en/actions/security-for-github-actions/using-artifact-attestations/verifying-attestations-offline).
@@ -64,4 +64,4 @@ Determine which command best suits what you would like to accomplish:
 
 ---
 
-If you encounter any issues, please check the [issues page](https://github.com/eth-educators/ethstaker-deposit-cli/issues) for help or to report a problem. You may also contact us on the [Ethstaker discord](https://dsc.gg/ethstaker).
+If you encounter any issues, please check the [issues page](https://github.com/ethstaker/ethstaker-deposit-cli/issues) for help or to report a problem. You may also contact us on the [Ethstaker discord](https://dsc.gg/ethstaker).

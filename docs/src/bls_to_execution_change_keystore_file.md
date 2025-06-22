@@ -6,7 +6,7 @@ The BLS to execution change keystore file is a JSON file. The format is very sim
 
 ## Utilizing
 
-There is currently no integration with this file format with either the execution layer or beacon chain. The `signature` value must be provided as the `keystore_signature` for the [Signature file](https://github.com/eth-educators/update-credentials-without-mnemonic#signature-file-format).
+There is currently no integration with this file format with either the execution layer or beacon chain. The `signature` value must be provided as the `keystore_signature` for the [Signature file](https://github.com/ethstaker/update-credentials-without-mnemonic#signature-file-format).
 
 ## Example
 ```JSON

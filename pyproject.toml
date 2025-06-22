@@ -72,7 +72,7 @@ test = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/eth-educators/ethstaker-deposit-cli"
+"Homepage" = "https://github.com/ethstaker/ethstaker-deposit-cli"
 
 [dependency-groups]
 dev = [

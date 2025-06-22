@@ -20,12 +20,12 @@
 
 # Building process
 
-Release assets were built using Github Actions and [this workflow run](`[WORKFLOW-RUN-URL]`). You can establish the provenance of this build using [our artifact attestations](https://github.com/eth-educators/ethstaker-deposit-cli/attestations).
+Release assets were built using Github Actions and [this workflow run](`[WORKFLOW-RUN-URL]`). You can establish the provenance of this build using [our artifact attestations](https://github.com/ethstaker/ethstaker-deposit-cli/attestations).
 
 With [the GitHub CLI](https://cli.github.com/) installed, a simple way to verify these assets is to run this command while replacing `[filename]` with the path to the downloaded asset:
 
 ```console
-gh attestation verify [filename] --repo eth-educators/ethstaker-deposit-cli
+gh attestation verify [filename] --repo ethstaker/ethstaker-deposit-cli
 ```
 
 This step requires you to be online. If you want to perform this offline, follow [these instructions from GitHub](https://docs.github.com/en/actions/security-for-github-actions/using-artifact-attestations/verifying-attestations-offline).

@@ -21,7 +21,7 @@ elif [[ "$OSTYPE" == "msys" ]] || [[ "$OSTYPE" == "cygwin" ]]; then
     python -m ethstaker_deposit "$@"
 
 else
-    echo "Sorry, to run deposit-cli on" $(uname -s)", please see the trouble-shooting on https://github.com/eth-educators/ethstaker-deposit-cli"
+    echo "Sorry, to run deposit-cli on" $(uname -s)", please see the trouble-shooting on https://github.com/ethstaker/ethstaker-deposit-cli"
     exit 1
 
 fi

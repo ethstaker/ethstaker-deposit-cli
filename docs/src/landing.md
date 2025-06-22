@@ -1,6 +1,6 @@
 # Welcome to the `ethstaker-deposit-cli`!
 
-The [`ethstaker-deposit-cli`](https://github.com/eth-educators/ethstaker-deposit-cli) is a command-line tool used to generate validator keys forked from Ethereum's [`staking-deposit-cli`](https://github.com/ethereum/staking-deposit-cli) with more functionality and improved performance.
+The [`ethstaker-deposit-cli`](https://github.com/ethstaker/ethstaker-deposit-cli) is a command-line tool used to generate validator keys forked from Ethereum's [`staking-deposit-cli`](https://github.com/ethereum/staking-deposit-cli) with more functionality and improved performance.
 
 ## Security reports
 

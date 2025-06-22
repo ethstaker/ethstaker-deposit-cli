@@ -1,7 +1,7 @@
 VENV_NAME?=venv
 VENV_ACTIVATE=. $(VENV_NAME)/bin/activate
 PYTHON=${VENV_NAME}/bin/python3.12
-DOCKER_IMAGE="eth-educators/ethstaker-deposit-cli:latest"
+DOCKER_IMAGE="ghcr.io/ethstaker/ethstaker-deposit-cli:latest"
 
 help:
 	@echo "clean - remove build and Python file artifacts"
