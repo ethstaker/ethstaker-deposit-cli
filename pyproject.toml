@@ -67,7 +67,7 @@ test = [
     "rpds-py==0.25.1",
     "typing-extensions==4.14.0",
     "ruff==0.11.13",
-    "Pygments==2.19.1",
+    "Pygments==2.19.2",
     "pathspec==0.12.1"
 ]
 
