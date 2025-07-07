@@ -55,7 +55,7 @@ test = [
     "mypy==1.16.1",
     "pytest==8.4.1",
     "pytest-asyncio==1.0.0",
-    "coverage==7.9.1",
+    "coverage==7.9.2",
     "tomli==2.2.1",
     "attrs==25.3.0",
     "iniconfig==2.1.0",
@@ -64,9 +64,9 @@ test = [
     "packaging==25.0",
     "pluggy==1.6.0",
     "referencing==0.36.2",
-    "rpds-py==0.25.1",
-    "typing-extensions==4.14.0",
-    "ruff==0.12.1",
+    "rpds-py==0.26.0",
+    "typing-extensions==4.14.1",
+    "ruff==0.12.2",
     "Pygments==2.19.2",
     "pathspec==0.12.1"
 ]
