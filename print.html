@@ -578,7 +578,7 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 <pre><code class="language-sh">./deposit new-mnemonic
 </code></pre>
 <h2 id="note"><a class="header" href="#note">Note</a></h2>
-<p>The newly generated mnemonic <strong>must</strong> be written down, on a piece of paper or transferred to steel. The clipboard is cleared when this command finishes. If the mnemonic is lost and the validator does not have a withdrawal address, funds <strong>cannot</strong> be recovered.</p>
+<p>The newly generated mnemonic <strong>must</strong> be written down, on a piece of paper or transferred to steel. The application will attempt to clear the clipboard when this command finishes. If the mnemonic is lost and the validator does not have a withdrawal address, funds <strong>cannot</strong> be recovered.</p>
 <p>To make a deposit for a different amount other than 32 ETH, you need to have an existing keystore file or create one by using either the above command or <strong><a href="existing_mnemonic.html">existing-mnemonic</a></strong>. Then, use the <strong><a href="partial_deposit.html">partial-deposit</a></strong> command to specify the desired amount for each validator.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="existing-mnemonic"><a class="header" href="#existing-mnemonic">existing-mnemonic</a></h1>
 <div class="warning">
