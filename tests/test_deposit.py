@@ -24,7 +24,7 @@ def test_should_notify_user_and_exit_if_invalid_python_version(monkeypatch) -> N
 
     monkeypatch.setattr(click, 'pause', _mock_click_pause)
     monkeypatch.setattr(sys, 'exit', _mock_sys_exit)
-    monkeypatch.setattr(sys, 'version_info', (3, 8))
+    monkeypatch.setattr(sys, 'version_info', (3, 9))
 
     check_python_version()
 
@@ -40,7 +40,7 @@ def test_should_not_exit_if_valid_python_version(monkeypatch) -> None:
         exit_called = True
 
     monkeypatch.setattr(sys, 'exit', _mock_sys_exit)
-    monkeypatch.setattr(sys, 'version_info', (3, 9))
+    monkeypatch.setattr(sys, 'version_info', (3, 10))
 
     check_python_version()
 
