@@ -215,7 +215,6 @@ def test_partial_deposit_compounding() -> None:
         assert get_permissions(partial_deposit_folder, deposit_files[0]) == '0o400'
 
     clean_partial_deposit_folder(my_folder_path)
-    
 
 
 def test_gnosis_partial_deposit_compounding() -> None:
