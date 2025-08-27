@@ -9,6 +9,7 @@ from ethstaker_deposit.cli.exit_transaction_mnemonic import exit_transaction_mne
 from ethstaker_deposit.cli.generate_bls_to_execution_change import generate_bls_to_execution_change
 from ethstaker_deposit.cli.generate_bls_to_execution_change_keystore import generate_bls_to_execution_change_keystore
 from ethstaker_deposit.cli.new_mnemonic import new_mnemonic
+from ethstaker_deposit.cli.generate_mnemonic import generate_mnemonic
 from ethstaker_deposit.cli.partial_deposit import partial_deposit
 from ethstaker_deposit.cli.test_keystore import test_keystore
 from ethstaker_deposit.exceptions import MultiLanguageError, ValidationError
@@ -56,6 +57,7 @@ def check_connectivity() -> None:
 # Define commands available to the user and their order
 commands = [
     new_mnemonic,
+    generate_mnemonic,
     existing_mnemonic,
     generate_bls_to_execution_change,
     generate_bls_to_execution_change_keystore,

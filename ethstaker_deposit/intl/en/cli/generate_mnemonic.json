@@ -1,0 +1,22 @@
+{
+    "generate_mnemonic": {
+        "arg_generate_mnemonic": {
+            "help": "Generate a new random mnemonic"
+        },
+        "arg_mnemonic_language": {
+            "default": "english",
+            "help": "The language of the mnemonic word list",
+            "prompt": "Please choose the language of the mnemonic word list"
+        },
+        "arg_output_file": {
+            "help": "An optional file path where to write the mnemonic. When used, it will write the mnemonic to the file instead of displaying the mnemonic.",
+            "err_not_found": "Error while trying to write file: Path not found.",
+            "err_perm_denied": "Error while trying to write file: Permission denied to write to the file.",
+            "err_directory_not_file": "Error while trying to write file: The specified path is a directory, not a file.",
+            "err_os": "Error while trying to write file: An OS-related error occurred.",
+            "err_exception": "Error while trying to write file: An unexpected error occurred."
+        },
+        "msg_mnemonic_presentation": "This is your randomly generated mnemonic.",
+        "msg_mnemonic_file_written": "Your randomly generated mnemonic was written in"
+    }
+}
