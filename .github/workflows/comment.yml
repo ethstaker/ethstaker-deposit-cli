@@ -19,7 +19,7 @@ jobs:
       coverage: ${{ steps.output.outputs.coverage }}
     steps:
       - name: Get coverage job success
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         env:
           WORKFLOW_RUN_ID: '${{ github.event.workflow_run.id }}'
         with:
@@ -65,7 +65,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Comment on PR
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
