@@ -530,10 +530,10 @@ def test_existing_mnemonic_custom_testnet() -> None:
         os.mkdir(my_folder_path)
 
     devnet_chain = {
-        "network_name": "holeskycopy",
-        "genesis_fork_version": "01017000",
+        "network_name": "hoodicopy",
+        "genesis_fork_version": "10000910",
         "exit_fork_version": "04017000",
-        "genesis_validator_root": "9143aa7c615a7f7115e2b6aac319c03529df8242ae705fba9df39b79c59fa8b1"
+        "genesis_validator_root": "212f13fc4df078b6cb7db228f1c8307566dcecf900867401a92023d7ba99cb5f"
     }
 
     devnet_chain_setting = json.dumps(devnet_chain)
@@ -593,7 +593,7 @@ def test_existing_mnemonic_multiple_languages() -> None:
         '--language', 'english',
         '--ignore_connectivity',
         'existing-mnemonic',
-        '--chain', 'holesky',
+        '--chain', 'hoodi',
         '--withdrawal_address', '',
         '--folder', my_folder_path,
         '--mnemonic_password', 'TREZOR',
@@ -638,7 +638,7 @@ def test_existing_mnemonic_multiple_languages_argument() -> None:
         '--language', 'english',
         '--ignore_connectivity',
         'existing-mnemonic',
-        '--chain', 'holesky',
+        '--chain', 'hoodi',
         '--withdrawal_address', '',
         '--folder', my_folder_path,
         '--mnemonic_language', '简体中文',

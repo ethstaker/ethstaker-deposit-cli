@@ -119,12 +119,12 @@ async def test_exit_transaction_mnemonic_multiple() -> None:
     'chain, mnemonic, start_index, indices, epoch, assertion',
     [
         ('asdf', "aban aban aban aban aban aban aban aban aban aban aban abou", 0, 0, 0, 1),
-        ('holesky', "this is not valid", 0, 0, 0, 1),
+        ('hoodi', "this is not valid", 0, 0, 0, 1),
         # 2 exit code due to thrown ValidationError
-        ('holesky', "aban aban aban aban aban aban aban aban aban aban aban abou", "a", 0, 0, 2),
-        ('holesky', "aban aban aban aban aban aban aban aban aban aban aban abou", 0, "b", 0, 1),
+        ('hoodi', "aban aban aban aban aban aban aban aban aban aban aban abou", "a", 0, 0, 2),
+        ('hoodi', "aban aban aban aban aban aban aban aban aban aban aban abou", 0, "b", 0, 1),
         # 2 exit code due to thrown ValidationError
-        ('holesky', "aban aban aban aban aban aban aban aban aban aban aban abou", 0, 0, "c", 2),
+        ('hoodi', "aban aban aban aban aban aban aban aban aban aban aban abou", 0, 0, "c", 2),
     ]
 )
 def test_exit_mnemonic_invalid_params(chain, mnemonic, start_index, indices, epoch, assertion) -> None:
@@ -160,10 +160,10 @@ def test_exit_transaction_mnemonic_custom_network() -> None:
         os.mkdir(my_folder_path)
 
     devnet_chain = {
-        "network_name": "holeskycopy",
-        "genesis_fork_version": "01017000",
+        "network_name": "hoodicopy",
+        "genesis_fork_version": "10000910",
         "exit_fork_version": "04017000",
-        "genesis_validator_root": "9143aa7c615a7f7115e2b6aac319c03529df8242ae705fba9df39b79c59fa8b1"
+        "genesis_validator_root": "212f13fc4df078b6cb7db228f1c8307566dcecf900867401a92023d7ba99cb5f"
     }
     devnet_chain_setting = json.dumps(devnet_chain)
 

@@ -129,10 +129,10 @@
     docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ghcr.io/ethstaker/ethstaker-deposit-cli:latest new-mnemonic --num_validators=<NUM_VALIDATORS> --mnemonic_language=english
     ```
 
-    Example for 1 validator on the [Holesky testnet](https://holesky.launchpad.ethereum.org/) using english:
+    Example for 1 validator on the [Hoodi testnet](https://hoodi.launchpad.ethereum.org/) using english:
 
     ```sh
-    docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ghcr.io/ethstaker/ethstaker-deposit-cli:latest new-mnemonic --num_validators=1 --mnemonic_language=english --chain=holesky
+    docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ghcr.io/ethstaker/ethstaker-deposit-cli:latest new-mnemonic --num_validators=1 --mnemonic_language=english --chain=hoodi
     ```
 
 ### Option 4. Use local docker image
@@ -159,10 +159,10 @@
     docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ethstaker/ethstaker-deposit-cli new-mnemonic --num_validators=<NUM_VALIDATORS> --mnemonic_language=english
     ```
 
-    Example for 1 validator on the [Holesky testnet](https://holesky.launchpad.ethereum.org/) using english:
+    Example for 1 validator on the [Hoodi testnet](https://hoodi.launchpad.ethereum.org/) using english:
 
     ```sh
-    docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ethstaker/ethstaker-deposit-cli new-mnemonic --num_validators=1 --mnemonic_language=english --chain=holesky
+    docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ethstaker/ethstaker-deposit-cli new-mnemonic --num_validators=1 --mnemonic_language=english --chain=hoodi
     ```
 
 ----

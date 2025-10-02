@@ -19,9 +19,9 @@ If you have access to a beacon node client running on your target network, you c
     },
     "signature":"0xa1e47e6b1fdf4dd5f1dd3ddb3d47d2dcf446d096d49d90afef06a38dc02fba6b4d16d1dc1184c791e54666dabb8bdedd0660bc9bb3bc5d0e592eaf5f0c978cca4fcafe4037672940d6f1a44d2a33503c30cb98ca695979b1de9e321a8a694bc2",
     "metadata":{
-      "network_name":"holesky",
+      "network_name":"hoodi",
       "genesis_validators_root":"0x9143aa7c615a7f7115e2b6aac319c03529df8242ae705fba9df39b79c59fa8b1",
-      "deposit_cli_version":"0.1.4-dev"
+      "deposit_cli_version":"1.2.2"
     }
   }
 ]

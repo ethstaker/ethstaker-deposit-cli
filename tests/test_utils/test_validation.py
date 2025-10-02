@@ -167,7 +167,7 @@ invalid_signature = (
         # valid
         ('mainnet', 0, 0, valid_pubkey, valid_signature, True),
         # bad chain
-        ('holesky', 0, 0, valid_pubkey, valid_signature, False),
+        ('hoodi', 0, 0, valid_pubkey, valid_signature, False),
         # bad epoch
         ('mainnet', 1, 0, valid_pubkey, valid_signature, False),
         # bad validator_index
@@ -189,18 +189,18 @@ def test_validate_signed_exit(
 def test_validate_devnet_chain_setting_json() -> None:
     # Correct devnet chain value
     corret_devnet_chain = {
-        "network_name": "holeskycopy",
-        "genesis_fork_version": "01017000",
+        "network_name": "hoodicopy",
+        "genesis_fork_version": "10000910",
         "exit_fork_version": "04017000",
-        "genesis_validator_root": "9143aa7c615a7f7115e2b6aac319c03529df8242ae705fba9df39b79c59fa8b1"
+        "genesis_validator_root": "212f13fc4df078b6cb7db228f1c8307566dcecf900867401a92023d7ba99cb5f"
     }
     assert validate_devnet_chain_setting_json(json.dumps(corret_devnet_chain)) is True
 
     # Invalid devnet chain value missing 1 required key
     missing_1_key_devnet_chain = {
-        "network_name": "holeskycopy",
+        "network_name": "hoodicopy",
         "exit_fork_version": "04017000",
-        "genesis_validator_root": "9143aa7c615a7f7115e2b6aac319c03529df8242ae705fba9df39b79c59fa8b1"
+        "genesis_validator_root": "212f13fc4df078b6cb7db228f1c8307566dcecf900867401a92023d7ba99cb5f"
     }
     with pytest.raises(ValidationError):
         assert validate_devnet_chain_setting_json(json.dumps(missing_1_key_devnet_chain)) is False
@@ -215,28 +215,28 @@ def test_validate_devnet_chain_setting_json() -> None:
 
     # Correct devnet chain value missing 1 optional key
     correct_missing_genesis_validator_root_devnet_chain = {
-        "network_name": "holeskycopy",
-        "genesis_fork_version": "01017000",
+        "network_name": "hoodicopy",
+        "genesis_fork_version": "10000910",
         "exit_fork_version": "04017000"
     }
     assert validate_devnet_chain_setting_json(json.dumps(correct_missing_genesis_validator_root_devnet_chain)) is True
 
     # Invalid devnet chain value with wrong fourth key name
     invalid_fourth_key_devnet_chain = {
-        "network_name": "holeskycopy",
-        "genesis_fork_version": "01017000",
+        "network_name": "hoodicopy",
+        "genesis_fork_version": "10000910",
         "exit_fork_version": "04017000",
-        "genesis_validator": "9143aa7c615a7f7115e2b6aac319c03529df8242ae705fba9df39b79c59fa8b1"
+        "genesis_validator": "212f13fc4df078b6cb7db228f1c8307566dcecf900867401a92023d7ba99cb5f"
     }
     with pytest.raises(ValidationError):
         assert validate_devnet_chain_setting_json(json.dumps(invalid_fourth_key_devnet_chain)) is False
 
     # Invalid devnet chain value with too many keys
     invalid_too_many_keys_devnet_chain = {
-        "network_name": "holeskycopy",
-        "genesis_fork_version": "01017000",
+        "network_name": "hoodicopy",
+        "genesis_fork_version": "10000910",
         "exit_fork_version": "04017000",
-        "genesis_validator_root": "9143aa7c615a7f7115e2b6aac319c03529df8242ae705fba9df39b79c59fa8b1",
+        "genesis_validator_root": "212f13fc4df078b6cb7db228f1c8307566dcecf900867401a92023d7ba99cb5f",
         "multiplier": "1",
         "min_deposit_amount": "1",
         "more_key": "value"
@@ -253,19 +253,19 @@ def test_validate_devnet_chain_setting_json() -> None:
         assert validate_devnet_chain_setting_json('[1, 2, 3]') is False
 
     correct_devnet_chain_with_multiplier = {
-        "network_name": "holeskycopy",
-        "genesis_fork_version": "01017000",
+        "network_name": "hoodicopy",
+        "genesis_fork_version": "10000910",
         "exit_fork_version": "04017000",
-        "genesis_validator_root": "9143aa7c615a7f7115e2b6aac319c03529df8242ae705fba9df39b79c59fa8b1",
+        "genesis_validator_root": "212f13fc4df078b6cb7db228f1c8307566dcecf900867401a92023d7ba99cb5f",
         "multiplier": "1"
     }
     assert validate_devnet_chain_setting_json(json.dumps(correct_devnet_chain_with_multiplier)) is True
 
     correct_devnet_chain_with_multiplier_and_min_deposit_amount = {
-        "network_name": "holeskycopy",
-        "genesis_fork_version": "01017000",
+        "network_name": "hoodicopy",
+        "genesis_fork_version": "10000910",
         "exit_fork_version": "04017000",
-        "genesis_validator_root": "9143aa7c615a7f7115e2b6aac319c03529df8242ae705fba9df39b79c59fa8b1",
+        "genesis_validator_root": "212f13fc4df078b6cb7db228f1c8307566dcecf900867401a92023d7ba99cb5f",
         "multiplier": "1",
         "min_deposit_amount": "1"
     }
@@ -273,10 +273,10 @@ def test_validate_devnet_chain_setting_json() -> None:
         json.dumps(correct_devnet_chain_with_multiplier_and_min_deposit_amount)) is True
 
     invalid_devnet_chain_with_min_deposit_amount_and_wrong_key = {
-        "network_name": "holeskycopy",
-        "genesis_fork_version": "01017000",
+        "network_name": "hoodicopy",
+        "genesis_fork_version": "10000910",
         "exit_fork_version": "04017000",
-        "genesis_validator_root": "9143aa7c615a7f7115e2b6aac319c03529df8242ae705fba9df39b79c59fa8b1",
+        "genesis_validator_root": "212f13fc4df078b6cb7db228f1c8307566dcecf900867401a92023d7ba99cb5f",
         "min_deposit_amount": "1",
         "compounding": "true"
     }

@@ -7,7 +7,7 @@ Creates an exit transaction using a mnemonic phrase.
 
 ## Optional Arguments
 
-- **`--chain`**: The chain to use for generating the deposit data. Options are: 'mainnet', 'sepolia', 'holesky', 'hoodi', 'ephemery', 'gnosis', or 'chiado'.
+- **`--chain`**: The chain to use for generating the deposit data. Options are: 'mainnet', 'sepolia', 'hoodi', 'ephemery', 'gnosis', or 'chiado'.
 
 - **`--mnemonic`**: The mnemonic you used during key generation. <span class="warning"></span>
 
