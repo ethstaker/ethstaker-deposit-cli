@@ -1,9 +1,12 @@
-# new-mnemonic
+# generate-mnemonic
 
 {{#include ./snippet/warning_message.md}}
 
 ## Description
-Generates a new random BIP-39 mnemonic. If you also want to create your validator keystore and deposit files, you should be using the **[new-mnemonic](new_mnemonic.md)** or the **[existing-mnemonic](existing_mnemonic.md)** command instead. This command can be used as part of some automation where you can first generate your mnemonic with `generate-mnemonic` and generate the validator keystore and deposit files with `existing-mnemonic` without any interactive prompt.
+
+Generates a new random BIP-39 mnemonic. If you also want to create your validator keystore and deposit files, you should be using the **[new-mnemonic](new_mnemonic.md)**
+or the **[existing-mnemonic](existing_mnemonic.md)** command instead. This command can be used as part of some automation where you can first generate your mnemonic with
+`generate-mnemonic` and generate the validator keystore and deposit files with `existing-mnemonic` without any interactive prompt.
 
 ## Optional Arguments
 
