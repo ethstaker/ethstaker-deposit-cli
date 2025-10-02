@@ -440,8 +440,8 @@ source .venv/bin/activate
 <p>You can also run the tool with optional arguments:</p>
 <pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ghcr.io/ethstaker/ethstaker-deposit-cli:latest new-mnemonic --num_validators=&lt;NUM_VALIDATORS&gt; --mnemonic_language=english
 </code></pre>
-<p>Example for 1 validator on the <a href="https://holesky.launchpad.ethereum.org/">Holesky testnet</a> using english:</p>
-<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ghcr.io/ethstaker/ethstaker-deposit-cli:latest new-mnemonic --num_validators=1 --mnemonic_language=english --chain=holesky
+<p>Example for 1 validator on the <a href="https://hoodi.launchpad.ethereum.org/">Hoodi testnet</a> using english:</p>
+<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ghcr.io/ethstaker/ethstaker-deposit-cli:latest new-mnemonic --num_validators=1 --mnemonic_language=english --chain=hoodi
 </code></pre>
 </li>
 </ol>
@@ -461,8 +461,8 @@ source .venv/bin/activate
 <p>You can also run the tool with optional arguments:</p>
 <pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ethstaker/ethstaker-deposit-cli new-mnemonic --num_validators=&lt;NUM_VALIDATORS&gt; --mnemonic_language=english
 </code></pre>
-<p>Example for 1 validator on the <a href="https://holesky.launchpad.ethereum.org/">Holesky testnet</a> using english:</p>
-<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ethstaker/ethstaker-deposit-cli new-mnemonic --num_validators=1 --mnemonic_language=english --chain=holesky
+<p>Example for 1 validator on the <a href="https://hoodi.launchpad.ethereum.org/">Hoodi testnet</a> using english:</p>
+<pre><code class="language-sh">docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ethstaker/ethstaker-deposit-cli new-mnemonic --num_validators=1 --mnemonic_language=english --chain=hoodi
 </code></pre>
 </li>
 </ol>
@@ -545,7 +545,7 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 <p><strong><code>--mnemonic_language</code></strong>: The language of the BIP-39 mnemonic. Options are: 'chinese_simplified', 'chinese_traditional', 'czech', 'english', 'french', 'italian', 'japanese', 'korean', 'portuguese', 'spanish'.</p>
 </li>
 <li>
-<p><strong><code>--chain</code></strong>: The chain to use for generating the deposit data. Options are: 'mainnet', 'sepolia', 'holesky', 'hoodi', 'ephemery', 'gnosis', or 'chiado'.</p>
+<p><strong><code>--chain</code></strong>: The chain to use for generating the deposit data. Options are: 'mainnet', 'sepolia', 'hoodi', 'ephemery', 'gnosis', or 'chiado'.</p>
 </li>
 <li>
 <p><strong><code>--num_validators</code></strong>: Number of validators to create.</p>
@@ -589,7 +589,7 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 <h2 id="optional-arguments-1"><a class="header" href="#optional-arguments-1">Optional Arguments</a></h2>
 <ul>
 <li>
-<p><strong><code>--chain</code></strong>: The chain to use for generating the deposit data. Options are: 'mainnet', 'sepolia', 'holesky', 'hoodi', 'ephemery', 'gnosis', or 'chiado'.</p>
+<p><strong><code>--chain</code></strong>: The chain to use for generating the deposit data. Options are: 'mainnet', 'sepolia', 'hoodi', 'ephemery', 'gnosis', or 'chiado'.</p>
 </li>
 <li>
 <p><strong><code>--mnemonic</code></strong>: The mnemonic you used to create withdrawal credentials. <span class="warning"></span></p>
@@ -647,7 +647,7 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 <p><strong><code>--bls_to_execution_changes_folder</code></strong>: The path to store the change JSON file.</p>
 </li>
 <li>
-<p><strong><code>--chain</code></strong>: The chain to use for generating the deposit data. Options are: 'mainnet', 'sepolia', 'holesky', 'hoodi', 'ephemery', 'gnosis', or 'chiado'.</p>
+<p><strong><code>--chain</code></strong>: The chain to use for generating the deposit data. Options are: 'mainnet', 'sepolia', 'hoodi', 'ephemery', 'gnosis', or 'chiado'.</p>
 </li>
 <li>
 <p><strong><code>--mnemonic</code></strong>: The mnemonic you used to create withdrawal credentials. <span class="warning"></span></p>
@@ -689,7 +689,7 @@ This command is associated with the a proposed solution to update withdrawal cre
 <h2 id="optional-arguments-3"><a class="header" href="#optional-arguments-3">Optional Arguments</a></h2>
 <ul>
 <li>
-<p><strong><code>--chain</code></strong>: The chain to use for generating the deposit data. Options are: 'mainnet', 'sepolia', 'holesky', 'hoodi', 'ephemery', 'gnosis', or 'chiado'.</p>
+<p><strong><code>--chain</code></strong>: The chain to use for generating the deposit data. Options are: 'mainnet', 'sepolia', 'hoodi', 'ephemery', 'gnosis', or 'chiado'.</p>
 </li>
 <li>
 <p><strong><code>--keystore</code></strong>: The keystore file associating with the validator you wish to sign with. This keystore file should match the provided validator index.</p>
@@ -724,7 +724,7 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 <h2 id="optional-arguments-4"><a class="header" href="#optional-arguments-4">Optional Arguments</a></h2>
 <ul>
 <li>
-<p><strong><code>--chain</code></strong>: The chain to use for generating the deposit data. Options are: 'mainnet', 'sepolia', 'holesky', 'hoodi', 'ephemery', 'gnosis', or 'chiado'.</p>
+<p><strong><code>--chain</code></strong>: The chain to use for generating the deposit data. Options are: 'mainnet', 'sepolia', 'hoodi', 'ephemery', 'gnosis', or 'chiado'.</p>
 </li>
 <li>
 <p><strong><code>--keystore</code></strong>: The keystore file associating with the validator you wish to exit.</p>
@@ -759,7 +759,7 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 <h2 id="optional-arguments-5"><a class="header" href="#optional-arguments-5">Optional Arguments</a></h2>
 <ul>
 <li>
-<p><strong><code>--chain</code></strong>: The chain to use for generating the deposit data. Options are: 'mainnet', 'sepolia', 'holesky', 'hoodi', 'ephemery', 'gnosis', or 'chiado'.</p>
+<p><strong><code>--chain</code></strong>: The chain to use for generating the deposit data. Options are: 'mainnet', 'sepolia', 'hoodi', 'ephemery', 'gnosis', or 'chiado'.</p>
 </li>
 <li>
 <p><strong><code>--mnemonic</code></strong>: The mnemonic you used during key generation. <span class="warning"></span></p>
@@ -801,7 +801,7 @@ If you wish to create a validator with 0x00 credentials, you must use the <stron
 <h2 id="optional-arguments-6"><a class="header" href="#optional-arguments-6">Optional Arguments</a></h2>
 <ul>
 <li>
-<p><strong><code>--chain</code></strong>: The chain to use for generating the deposit data. Options are: 'mainnet', 'sepolia', 'holesky', 'hoodi', 'ephemery', 'gnosis', or 'chiado'.</p>
+<p><strong><code>--chain</code></strong>: The chain to use for generating the deposit data. Options are: 'mainnet', 'sepolia', 'hoodi', 'ephemery', 'gnosis', or 'chiado'.</p>
 </li>
 <li>
 <p><strong><code>--keystore</code></strong>: The keystore file associating with the validator you wish to deposit to.</p>
@@ -890,8 +890,8 @@ Including sensitive arguments when executing CLI commands poses a security risk,
     "deposit_message_root":"f9bdb1e800b8f9f0db98c77271745e3c6140f18bf420543bda84fa92c393ddc7",
     "deposit_data_root":"7cda08cd57c303f8af720b10a0852408bc31e015cb552f0029fc1024b8a1d615",
     "fork_version":"01017000",
-    "network_name":"holesky",
-    "deposit_cli_version":"2.7.0"
+    "network_name":"hoodi",
+    "deposit_cli_version":"1.2.2"
   },
   {
     "pubkey":"86ee0b826d7d5262324ace2fba4ed5f09a1cbef80552e3d945279f19bc4118a98e9a93257eb4c7731ccc10c19835d24f",
@@ -901,8 +901,8 @@ Including sensitive arguments when executing CLI commands poses a security risk,
     "deposit_message_root":"99dbb2392fef277c15e710ca0ead058c024adce15f9e8f369bbaea939c0009ed",
     "deposit_data_root":"0fcb16fdb536b00a037a3ccde67187d21abfb726d677e40709ae6910d44377a5",
     "fork_version":"01017000",
-    "network_name":"holesky",
-    "deposit_cli_version":"2.7.0"
+    "network_name":"hoodi",
+    "deposit_cli_version":"1.2.2"
   }
 ]
 </code></pre>
@@ -921,9 +921,9 @@ Including sensitive arguments when executing CLI commands poses a security risk,
     },
     "signature":"0xa1e47e6b1fdf4dd5f1dd3ddb3d47d2dcf446d096d49d90afef06a38dc02fba6b4d16d1dc1184c791e54666dabb8bdedd0660bc9bb3bc5d0e592eaf5f0c978cca4fcafe4037672940d6f1a44d2a33503c30cb98ca695979b1de9e321a8a694bc2",
     "metadata":{
-      "network_name":"holesky",
+      "network_name":"hoodi",
       "genesis_validators_root":"0x9143aa7c615a7f7115e2b6aac319c03529df8242ae705fba9df39b79c59fa8b1",
-      "deposit_cli_version":"0.1.4-dev"
+      "deposit_cli_version":"1.2.2"
     }
   }
 ]
