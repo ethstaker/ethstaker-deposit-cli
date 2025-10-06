@@ -43,7 +43,7 @@ dependencies = [
     "pyrsistent==0.20.0",
     "six==1.17.0",
     "toolz==1.0.0",
-    "typing-inspection==0.4.1",
+    "typing-inspection==0.4.2",
 ]
 requires-python = ">=3.9,<4"
 dynamic = ["version"]
@@ -67,7 +67,7 @@ test = [
     "referencing==0.36.2",
     "rpds-py==0.27.1",
     "typing-extensions==4.15.0",
-    "ruff==0.13.2",
+    "ruff==0.13.3",
     "Pygments==2.19.2",
     "pathspec==0.12.1"
 ]
