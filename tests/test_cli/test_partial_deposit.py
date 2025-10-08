@@ -125,7 +125,7 @@ def test_gnosis_partial_deposit(amount: str) -> None:
 
     runner = CliRunner()
     inputs = ['english', 'gnosis', password, amount, withdrawal_address, withdrawal_address, '']
-    data = '\n'.join(inputs)
+    data = '\n'.join(inputs) + '\n'
     arguments = [
         '--ignore_connectivity',
         'partial-deposit',
