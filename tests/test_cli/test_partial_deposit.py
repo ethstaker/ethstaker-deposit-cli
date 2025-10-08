@@ -301,7 +301,8 @@ def test_partial_deposit_matches_existing_mnemonic_deposit() -> None:
         '--withdrawal_address', f"{withdrawal_address}",
         '--folder', my_folder_path,
     ]
-    result = runner.invoke(cli, arguments)
+    data = '\n'
+    result = runner.invoke(cli, arguments, input=data)
     assert result.exit_code == 0
 
     _, _, validator_key_files = next(os.walk(validator_key_folder))
@@ -371,7 +372,8 @@ def test_partial_deposit_does_not_match_if_amount_differs() -> None:
         '--withdrawal_address', f"{withdrawal_address}",
         '--folder', my_folder_path,
     ]
-    result = runner.invoke(cli, arguments)
+    data = '\n'
+    result = runner.invoke(cli, arguments, input=data)
     assert result.exit_code == 0
 
     _, _, validator_key_files = next(os.walk(validator_key_folder))
@@ -385,7 +387,7 @@ def test_partial_deposit_does_not_match_if_amount_differs() -> None:
     key_file_location = os.path.join(validator_key_folder, key_files[0])
 
     inputs = ['english', 'mainnet', password, "33", withdrawal_address, withdrawal_address, '']
-    data = '\n'.join(inputs)
+    data = '\n'.join(inputs) + '\n'
     arguments = [
         '--ignore_connectivity',
         'partial-deposit',
@@ -467,7 +469,7 @@ def test_partial_deposit_custom_network(amount: str) -> None:
 
     runner = CliRunner()
     inputs = ['english', password, amount, withdrawal_address, withdrawal_address, '']
-    data = '\n'.join(inputs)
+    data = '\n'.join(inputs) + '\n'
     arguments = [
         '--ignore_connectivity',
         'partial-deposit',
