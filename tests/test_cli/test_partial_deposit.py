@@ -315,7 +315,7 @@ def test_partial_deposit_matches_existing_mnemonic_deposit() -> None:
     key_file_location = os.path.join(validator_key_folder, key_files[0])
 
     inputs = ['english', 'mainnet', password, "32", withdrawal_address, withdrawal_address, '']
-    data = '\n'.join(inputs)
+    data = '\n'.join(inputs) + '\n'
     arguments = [
         '--ignore_connectivity',
         'partial-deposit',
