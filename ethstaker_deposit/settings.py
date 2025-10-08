@@ -1,7 +1,7 @@
 from typing import Dict, NamedTuple, Optional
 from eth_utils import decode_hex
 
-from ethstaker_deposit import __version__
+from ethstaker_deposit.version import __version__
 
 DEPOSIT_CLI_VERSION = __version__
 
