@@ -178,7 +178,7 @@
 <ol>
 <li>Make sure all the tests from the latest <a href="https://github.com/ethstaker/ethstaker-deposit-cli/actions/workflows/runner.yml">ci-runner workflow</a> on the latest commit of the main branch are completed. Make sure all tests are passing on all the supported platforms.</li>
 <li>Determine a new version number. Version numbers should adhere to <a href="https://semver.org/">Semantic Versioning</a>. For any official release, it should include a major, a minor and a patch identifier like <code>1.0.0</code>.</li>
-<li>Update <code>ethstaker_deposit/__init__.py</code>'s <code>__version__</code> variable with the new version number. Commit this change to the main branch of the main repository.</li>
+<li>Update <code>ethstaker_deposit/VERSION</code>'s content with the new version number. Commit this change to the main branch of the main repository.</li>
 <li>Add a tag to the main repository for this changed version commit above. The name of this tag should be a string starting with <code>v</code> concatenated with the version number. With git, the main repository cloned and the commit above being the head, it can look like this:</li>
 </ol>
 <pre><code class="language-console">git tag -a -m 'Version 1.0.0' v1.0.0
@@ -190,7 +190,7 @@ git push origin v1.0.0
 <li>If this is not a production release, check the <em>Set as a pre-release</em> checkbox.</li>
 <li>Click the <em>Publish release</em> button.</li>
 <li>Determine a new dev version number. You can try to guess the next version number to the best of your ability. This will always be subject to change. Add a <code>dev</code> identifier to the version number to clearly indicate this is a dev version number.</li>
-<li>Update <code>ethstaker_deposit/__init__.py</code>'s <code>__version__</code> variable with a new dev version number. Commit this change to the main branch.</li>
+<li>Update <code>ethstaker_deposit/VERSION</code>'s content with a new dev version number. Commit this change to the main branch.</li>
 </ol>
 <h2 id="release-notes-template"><a class="header" href="#release-notes-template">Release Notes Template</a></h2>
 <p>You can find the latest release notes template on https://github.com/ethstaker/ethstaker-deposit-cli/blob/main/.github/release_template.md .</p>
