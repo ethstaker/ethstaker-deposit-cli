@@ -63,7 +63,7 @@ def verify_deposit_data_json(filefolder: str, credentials: Sequence[Credential],
     with open(filefolder, 'r', encoding='utf-8') as f:
         deposit_json = json.load(f)
 
-    with click.progressbar(length=len(deposit_json),  # type: ignore[var-annotated]
+    with click.progressbar(length=len(deposit_json),
                            label=load_text(['msg_deposit_verification']),
                            show_percent=False, show_pos=True) as bar:
 
@@ -259,7 +259,7 @@ def verify_bls_to_execution_change_json(filefolder: str,
         btec_json = json.load(f)
 
     all_valid_bls_changes = True
-    with click.progressbar(length=len(btec_json),  # type: ignore[var-annotated]
+    with click.progressbar(length=len(btec_json),
                            label=load_text(['msg_bls_to_execution_change_verification']),
                            show_percent=False, show_pos=True) as bar:
 

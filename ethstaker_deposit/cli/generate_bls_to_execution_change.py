@@ -186,7 +186,7 @@ def generate_bls_to_execution_change(
     )
 
     # Check if the given old bls_withdrawal_credentials is as same as the mnemonic generated
-    with click.progressbar(length=len(credentials.credentials),  # type: ignore[var-annotated]
+    with click.progressbar(length=len(credentials.credentials),
                            label=load_text(['msg_credentials_verification']),
                            show_percent=False, show_pos=True) as bar:
         executor_kwargs = [{

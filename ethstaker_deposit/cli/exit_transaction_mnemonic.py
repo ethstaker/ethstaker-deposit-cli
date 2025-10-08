@@ -135,7 +135,7 @@ def exit_transaction_mnemonic(
 
     # We are not using CredentialList because from_mnemonic assumes key generation flow
     credentials = []
-    with click.progressbar(length=num_keys, label=load_text(['msg_key_creation']),  # type: ignore[var-annotated]
+    with click.progressbar(length=num_keys, label=load_text(['msg_key_creation']),
                            show_percent=False, show_pos=True) as bar:
 
         executor_kwargs = [{
@@ -154,7 +154,7 @@ def exit_transaction_mnemonic(
                 bar.update(1)
 
     transaction_filefolders = []
-    with click.progressbar(length=num_keys,  # type: ignore[var-annotated]
+    with click.progressbar(length=num_keys,
                            label=load_text(['msg_exit_transaction_creation']),
                            show_percent=False, show_pos=True) as bar:
 
@@ -171,7 +171,7 @@ def exit_transaction_mnemonic(
                 transaction_filefolders.append(filefolder)
                 bar.update(1)
 
-    with click.progressbar(length=num_keys,  # type: ignore[var-annotated]
+    with click.progressbar(length=num_keys,
                            label=load_text(['msg_verify_exit_transaction']),
                            show_percent=False, show_pos=True) as bar:
 
