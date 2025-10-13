@@ -64,7 +64,7 @@ test = [
     "mypy-extensions==1.1.0",
     "packaging==25.0",
     "pluggy==1.6.0",
-    "referencing==0.36.2",
+    "referencing==0.37.0",
     "rpds-py==0.27.1",
     "typing-extensions==4.15.0",
     "ruff==0.14.0",
