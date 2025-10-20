@@ -28,7 +28,7 @@ jobs:
       - name: Run linter
         run: ruff check ./ethstaker_deposit ./tests
       - name: Setup Node.js
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version: 'latest'
       - name: Install jsonlint
