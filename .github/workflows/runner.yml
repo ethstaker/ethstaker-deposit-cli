@@ -68,7 +68,7 @@ jobs:
         run: |
           coverage run --data-file=.coverage.${{ matrix.os }}.${{ matrix.python-version }} -m pytest tests
       - name: Upload coverage data
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: coverage-${{ matrix.os }}-${{ matrix.python-version }}
           path: .coverage.${{ matrix.os }}.${{ matrix.python-version }}
@@ -90,7 +90,7 @@ jobs:
           python-version: 3.12
           cache: 'pip'
       - name: Download coverage data
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v6
       - name: Merge coverage data
         id: merge
         run: |
@@ -99,7 +99,7 @@ jobs:
           coverage combine coverage*
           coverage html
       - name: Upload final coverage html report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         id: upload-html
         with:
           name: coverage-html-report
@@ -116,7 +116,7 @@ jobs:
           } >> results/coverage-text-report
           echo ${{ github.event.number }} > results/issue_number
       - name: Upload final coverage text report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: results
           path: results/
