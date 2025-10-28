@@ -58,7 +58,7 @@ def generate_mnemonic(ctx: click.Context, mnemonic_language: str, **kwargs: Any)
 
     filepath = ctx.params.get('output_file', None)
     if filepath is not None:
-        # We are writting the mnemonic in a file
+        # We are writing the mnemonic in a file
         try:
             with open(filepath, 'w', encoding='utf-8', opener=sensitive_opener) as f:
                 f.write(mnemonic)

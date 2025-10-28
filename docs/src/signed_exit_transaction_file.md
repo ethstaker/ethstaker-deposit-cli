@@ -2,7 +2,7 @@
 
 A signed exit transaction file is created when calling the **[exit-transaction-keystore](exit_transaction_keystore.md)** or the **[exit-transaction-mnemonic](exit_transaction_mnemonic.md)** command.
 
-The signed exit transaction file is a JSON file. It contains a single message to exit a validator. The format of the signed exit transaction file is loosly based on the input for the POST `/eth/v1/beacon/pool/voluntary_exits` [API endpoint](https://ethereum.github.io/beacon-APIs/#/Beacon/submitPoolVoluntaryExit) as defined by [the Ethereum Beacon APIs](https://github.com/ethereum/beacon-APIs). Part of this content is based on the [SignedVoluntaryExit](https://github.com/ethereum/consensus-specs/blob/dev/specs/phase0/beacon-chain.md#signedvoluntaryexit) signed envelope as defined in the [Ethereum Consensus Specifications](https://github.com/ethereum/consensus-specs/).
+The signed exit transaction file is a JSON file. It contains a single message to exit a validator. The format of the signed exit transaction file is loosely based on the input for the POST `/eth/v1/beacon/pool/voluntary_exits` [API endpoint](https://ethereum.github.io/beacon-APIs/#/Beacon/submitPoolVoluntaryExit) as defined by [the Ethereum Beacon APIs](https://github.com/ethereum/beacon-APIs). Part of this content is based on the [SignedVoluntaryExit](https://github.com/ethereum/consensus-specs/blob/dev/specs/phase0/beacon-chain.md#signedvoluntaryexit) signed envelope as defined in the [Ethereum Consensus Specifications](https://github.com/ethereum/consensus-specs/).
 
 ## Broadcasting
 

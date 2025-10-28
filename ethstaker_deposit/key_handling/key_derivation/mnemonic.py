@@ -113,7 +113,7 @@ def abbreviate_words(words: Sequence[str]) -> list[str]:
 
 def reconstruct_mnemonic(mnemonic: str, words_path: str, language: Optional[str] = None) -> Optional[str]:
     """
-    Given a mnemonic, a reconstructed the full version (incase the abbreviated words were used)
+    Given a mnemonic, a reconstructed the full version (in case the abbreviated words were used)
     then verify it against its own checksum
     """
     try:
