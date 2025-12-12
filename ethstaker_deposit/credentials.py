@@ -4,7 +4,7 @@ from enum import Enum
 import time
 import json
 import concurrent.futures
-from typing import Dict, Optional, Any, Sequence
+from typing import Dict, Optional, Any, Sequence, Tuple
 
 from eth_typing import Address, HexAddress
 from eth_utils import to_canonical_address
@@ -176,23 +176,35 @@ class Credential:
         datum_dict.update({'deposit_cli_version': DEPOSIT_CLI_VERSION})
         return datum_dict
 
-    def signing_keystore(self, password: str) -> Keystore:
+    def signing_keystore(self, password: str, kdf_salt: Optional[bytes] = None,
+                         decryption_key: Optional[bytes] = None) -> Keystore:
         secret = self.signing_sk.to_bytes(32, 'big')
-        if self.use_pbkdf2:
-            return Pbkdf2Keystore.encrypt(secret=secret, password=password, path=self.signing_key_path)
-        else:
-            return ScryptKeystore.encrypt(secret=secret, password=password, path=self.signing_key_path)
+        keystore = Pbkdf2Keystore if self.use_pbkdf2 else ScryptKeystore
+        return keystore.encrypt(
+            secret=secret,
+            password=password,
+            path=self.signing_key_path,
+            kdf_salt=kdf_salt,
+            decryption_key=decryption_key)
 
-    def save_signing_keystore(self, password: str, folder: str, timestamp: float) -> str:
-        keystore = self.signing_keystore(password)
+    def save_signing_keystore(self, password: str, folder: str, timestamp: float,
+                              kdf_salt: Optional[bytes] = None,
+                              decryption_key: Optional[bytes] = None) -> str:
+        keystore = self.signing_keystore(password, kdf_salt, decryption_key)
         filefolder = os.path.join(folder, 'keystore-%s-%i.json' % (keystore.path.replace('/', '_'), timestamp))
         keystore.save(filefolder)
         return filefolder
 
-    def verify_keystore(self, keystore_filefolder: str, password: str) -> bool:
+    def verify_keystore(self, keystore_filefolder: str, password: str, kdf_salt: Optional[bytes] = None,
+                              decryption_key: Optional[bytes] = None) -> bool:
         saved_keystore = Keystore.from_file(keystore_filefolder)
-        secret_bytes = saved_keystore.decrypt(password)
+        secret_bytes = saved_keystore.decrypt(password, kdf_salt, decryption_key)
         return self.signing_sk == int.from_bytes(secret_bytes, 'big')
+
+    def _get_keystore_key(self, keystore_filefolder: str, password: str) -> Tuple[bytes, bytes]:
+        saved_keystore = Keystore.from_file(keystore_filefolder)
+        decryption_key = saved_keystore._get_decryption_key(password=password)
+        return (decryption_key, saved_keystore.crypto.kdf.params['salt'])
 
     def get_bls_to_execution_change(self, validator_index: int) -> SignedBLSToExecutionChange:
         if self.withdrawal_address is None:
@@ -326,6 +338,19 @@ class CredentialList:
 
     def export_keystores(self, password: str, folder: str, timestamp: float) -> list[str]:
         filefolders: list[str] = []
+        # Re-use same decryption key and salt
+        if len(self.credentials) < 1:
+            return filefolders
+        decryption_key = None
+        kdf_salt = None
+        is_pbkdf2 = self.credentials[0].use_pbkdf2
+        # NOTE: we can re-use pbkdf2 too
+        reuse_kdf_key = not is_pbkdf2
+        if reuse_kdf_key:
+            keystore_cls = Pbkdf2Keystore if is_pbkdf2 else ScryptKeystore
+            keystore = keystore_cls()
+            decryption_key = keystore._get_decryption_key(password=password)
+            kdf_salt = keystore.crypto.kdf.params['salt']
         with click.progressbar(length=len(self.credentials),
                                label=load_text(['msg_keystore_creation']),
                                show_percent=False, show_pos=True) as bar:
@@ -334,6 +359,8 @@ class CredentialList:
                 'password': password,
                 'folder': folder,
                 'timestamp': timestamp,
+                'kdf_salt': kdf_salt,
+                'decryption_key': decryption_key
             } for credential in self.credentials]
 
             with concurrent.futures.ProcessPoolExecutor() as executor:
@@ -357,6 +384,10 @@ class CredentialList:
 
     def verify_keystores(self, keystore_filefolders: list[str], password: str) -> bool:
         all_valid_keystores = True
+        if len(self.credentials) < 1:
+            return all_valid_keystores
+        # Try to use first decryption key if salt is same, if different will use actual salt (as before)
+        (decryption_key, kdf_salt) = self.credentials[0]._get_keystore_key(keystore_filefolders[0], password)
         with click.progressbar(length=len(self.credentials),
                                label=load_text(['msg_keystore_verification']),
                                show_percent=False, show_pos=True) as bar:
@@ -364,6 +395,8 @@ class CredentialList:
                 'credential': credential,
                 'keystore_filefolder': fileholder,
                 'password': password,
+                'decryption_key': decryption_key,
+                'kdf_salt': kdf_salt,
             } for credential, fileholder in zip(self.credentials, keystore_filefolders)]
 
             with concurrent.futures.ProcessPoolExecutor() as executor:
