@@ -177,7 +177,8 @@ def captive_prompt_callback(
         default_value = _value_of(default) if default is not None else param.default
         if (prompt_if is not None
                 and ctx.get_parameter_source(param.name) == click.core.ParameterSource.DEFAULT
-                and prompt_if(ctx, param, user_input)):
+                and prompt_if(ctx, param, user_input)
+                and not config.non_interactive):
             user_input = click.prompt(prompt(), hide_input=hide_input, default=default_value)
         if config.non_interactive:
             return process_with_optional_context(ctx, processing_func, user_input, prompt_marker)
@@ -185,8 +186,10 @@ def captive_prompt_callback(
             try:
                 processed_input = process_with_optional_context(ctx, processing_func, user_input,
                                                                 prompt_marker)
-                # Logic for confirming user input:
-                if confirmation_prompt is not None and processed_input not in ('', None):
+                # Logic for confirming user input (skip confirmation in non-interactive mode):
+                if (confirmation_prompt is not None 
+                        and processed_input not in ('', None)
+                        and not config.non_interactive):
                     confirmation_input = click.prompt(confirmation_prompt(), hide_input=hide_input)
                     processed_value = process_with_optional_context(ctx, processing_func, confirmation_input,
                                                                     prompt_marker)
