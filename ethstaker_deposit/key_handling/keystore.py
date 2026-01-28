@@ -127,20 +127,31 @@ class Keystore(BytesDataclass):
         password = ''.join(c for c in password if ord(c) not in UNICODE_CONTROL_CHARS)
         return password.encode('UTF-8')
 
+    def _get_decryption_key(self, password: str, kdf_salt: Optional[bytes] = None,
+                decryption_key: Optional[bytes] = None) -> bytes:
+        """
+        Return decryption key, if salt same and cached decryption key is provided returns cached.
+        """
+        if 'salt' not in self.crypto.kdf.params:
+            self.crypto.kdf.params['salt'] = kdf_salt if kdf_salt is not None else randbits(256).to_bytes(32, 'big')
+        if decryption_key is None or self.crypto.kdf.params['salt'] != kdf_salt:
+            decryption_key = self.kdf(
+                password=self._process_password(password),
+                **self.crypto.kdf.params
+            )
+        return decryption_key
+
     @classmethod
     def encrypt(cls, *, secret: bytes, password: str, path: str = '',
                 kdf_salt: Optional[bytes] = None,
-                aes_iv: Optional[bytes] = None) -> 'Keystore':
+                aes_iv: Optional[bytes] = None,
+                decryption_key: Optional[bytes] = None) -> 'Keystore':
         """
         Encrypt a secret (BLS SK) as an EIP 2335 Keystore.
         """
         keystore = cls()
         keystore.uuid = str(uuid4())
-        keystore.crypto.kdf.params['salt'] = kdf_salt if kdf_salt is not None else randbits(256).to_bytes(32, 'big')
-        decryption_key = keystore.kdf(
-            password=cls._process_password(password),
-            **keystore.crypto.kdf.params
-        )
+        decryption_key = keystore._get_decryption_key(password, kdf_salt=kdf_salt, decryption_key=decryption_key)
         keystore.crypto.cipher.params['iv'] = aes_iv if aes_iv is not None else randbits(128).to_bytes(16, 'big')
         cipher = AES_128_CTR(key=decryption_key[:16], **keystore.crypto.cipher.params)
         keystore.crypto.cipher.message = cipher.encrypt(secret)
@@ -149,14 +160,17 @@ class Keystore(BytesDataclass):
         keystore.path = path
         return keystore
 
-    def decrypt(self, password: str) -> bytes:
+    def decrypt(self, password: str, kdf_salt: Optional[bytes] = None,
+                decryption_key: Optional[bytes] = None) -> bytes:
         """
         Retrieve the secret (BLS SK) from the self keystore by decrypting it with `password`
         """
-        decryption_key = self.kdf(
-            password=self._process_password(password),
-            **self.crypto.kdf.params
-        )
+        if (kdf_salt is None) != (decryption_key is None):
+            raise ValueError("kdf_salt and decryption_key must either both be set or both be None")
+        if 'salt' not in self.crypto.kdf.params:
+            raise ValueError("Missing kdf salt on decryption")
+        decryption_key = self._get_decryption_key(password, kdf_salt=kdf_salt, decryption_key=decryption_key)
+
         if SHA256(decryption_key[16:32] + self.crypto.cipher.message) != self.crypto.checksum.message:
             raise ValueError("Checksum message error")
 
