@@ -2,21 +2,19 @@ FROM python:3.9.12-slim
 
 WORKDIR /app
 
-# Install dependencies
+# Install dependencies (env vars handle Zscaler SSL bypass without mutating pip config)
 COPY requirements.txt requirements_api.txt ./
-RUN pip3 install --no-cache-dir -r requirements.txt && \
-    pip3 install --no-cache-dir -r requirements_api.txt
+RUN PIP_TRUSTED_HOST="pypi.org files.pythonhosted.org pypi.python.org" \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    pip3 install --no-cache-dir -r requirements.txt -r requirements_api.txt
 
 # Copy application code
 COPY ethstaker_deposit ./ethstaker_deposit
 COPY api ./api
 
-# Create keystores directory with proper permissions
-RUN mkdir -p /app/keystores && \
-    chmod 755 /app/keystores
-
-# Create non-root user
+# Create keystores directory and non-root user
 RUN useradd -m -u 65532 -s /bin/bash app && \
+    mkdir -p /app/keystores && \
     chown -R app:app /app
 
 USER app
