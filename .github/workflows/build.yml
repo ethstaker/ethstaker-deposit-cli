@@ -103,11 +103,11 @@ jobs:
           $env:CHECKSUM_FILE_NAME_PATH = ("output\artifacts\" + $env:ZIP_FILE_NAME + ".sha256")
           certUtil -hashfile $env:ZIP_FILE_NAME SHA256 | findstr /i /v "SHA256" | findstr /i /v "CertUtil" > $env:CHECKSUM_FILE_NAME_PATH
       - name: Generate artifacts attestation
-        uses: actions/attest-build-provenance@v3
+        uses: actions/attest-build-provenance@v4
         with:
           subject-path: output/artifacts/*
       - name: Archive production artifacts
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: binary-${{ matrix.os }}-${{ github.sha }}-${{ github.run_id }}
           path: output/artifacts
@@ -127,7 +127,7 @@ jobs:
       # Uses the `docker/login-action` action to log in to the Container registry registry using the account and password that will publish the packages. Once published, the packages are scoped to the account defined here.
       - name: Log in to the Container registry
         # This pinned action came from docker/login-action@v3, releases can be found on https://github.com/docker/login-action/releases
-        uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9
+        uses: docker/login-action@b45d80f862d83dbcd57f89517bcf500b2ab88fb2
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
@@ -136,24 +136,24 @@ jobs:
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         # This pinned action came from docker/metadata-action@v5, releases can be found on https://github.com/docker/metadata-action/releases
-        uses: docker/metadata-action@c299e40c65443455700f0fdfc63efafe5b349051
+        uses: docker/metadata-action@030e881283bb7a6894de51c315a6bfe6a94e05cf
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
       # Set up Qemu for multi-arch build
       - name: Set up Qemu
         # This pinned action came from docker/setup-qemu-action@v3, releases can be found on https://github.com/docker/setup-qemu-action/releases
-        uses: docker/setup-qemu-action@c7c53464625b32c7a7e944ae62b3e17d2b600130
+        uses: docker/setup-qemu-action@ce360397dd3f832beb865e1373c09c0e9f86d70a
       # Set up buildx for multi-arch build
       - name: Set up Docker Buildx
         # This pinned action came from docker/setup-buildx-action@v3, releases can be found on https://github.com/docker/setup-buildx-action/releases
-        uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f
+        uses: docker/setup-buildx-action@4d04d5d9486b7bd6fa91e7baf45bbb4f8b9deedd
       # This step uses the `docker/build-push-action` action to build the image, based on your repository's `Dockerfile`. If the build succeeds, it pushes the image to GitHub Packages.
       # It uses the `context` parameter to define the build's context as the set of files located in the specified path. For more information, see "[Usage](https://github.com/docker/build-push-action#usage)" in the README of the `docker/build-push-action` repository.
       # It uses the `tags` and `labels` parameters to tag and label the image with the output from the "meta" step.
       - name: Build and push Docker image
         id: push
         # This pinned action came from docker/build-push-action@v6, releases can be found on https://github.com/docker/build-push-action/releases
-        uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8
+        uses: docker/build-push-action@d08e5c354a6adb9ed34480a06d141179aa583294
         with:
           context: .
           platforms: linux/amd64,linux/arm64
@@ -163,7 +163,7 @@ jobs:
 
       # This step generates an artifact attestation for the image, which is an unforgeable statement about where and how it was built. It increases supply chain security for people who consume the image. For more information, see "[AUTOTITLE](/actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds)."
       - name: Generate artifact attestation
-        uses: actions/attest-build-provenance@v3
+        uses: actions/attest-build-provenance@v4
         with:
           subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME}}
           subject-digest: ${{ steps.push.outputs.digest }}
@@ -176,7 +176,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: Download build binaries
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           path: assets/
           pattern: binary-*
