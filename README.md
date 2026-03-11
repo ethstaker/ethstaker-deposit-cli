@@ -17,7 +17,10 @@
 
 Please read [Launchpad Validator FAQs](https://launchpad.ethereum.org/faq#keys) before generating the keys.
 
-You can read [the security assessment report by Trail of Bits](https://github.com/trailofbits/publications/blob/master/reviews/2024-12-ethstaker-depositcli-securityreview.pdf) that was completed on December 13, 2024. You can find the security assessment report by Trail of Bits of the original staking-deposit-cli project [here](https://github.com/trailofbits/publications/blob/master/reviews/ETH2DepositCLI.pdf).
+The project has been through various security audits over the years. You can find them here:
+- March 4, 2026: [Security assessment report by Trail of Bits](https://github.com/trailofbits/publications/blob/master/reviews/2026-03-ethstaker-deposit-cli-securityreview.pdf)
+- December 13, 2024: [Security assessment report by Trail of Bits](https://github.com/trailofbits/publications/blob/master/reviews/2024-12-ethstaker-depositcli-securityreview.pdf)
+- September 4, 2020: [Security assessment report by Trail of Bits](https://github.com/trailofbits/publications/blob/master/reviews/ETH2DepositCLI.pdf) of the original staking-deposit-cli project
 
 ## Canonical Deposit Contract and Launchpad
 
