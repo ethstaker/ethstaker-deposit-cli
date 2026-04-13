@@ -127,7 +127,7 @@ jobs:
       # Uses the `docker/login-action` action to log in to the Container registry registry using the account and password that will publish the packages. Once published, the packages are scoped to the account defined here.
       - name: Log in to the Container registry
         # This pinned action came from docker/login-action@v3, releases can be found on https://github.com/docker/login-action/releases
-        uses: docker/login-action@b45d80f862d83dbcd57f89517bcf500b2ab88fb2
+        uses: docker/login-action@4907a6ddec9925e35a0a9e82d7399ccc52663121
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
@@ -153,7 +153,7 @@ jobs:
       - name: Build and push Docker image
         id: push
         # This pinned action came from docker/build-push-action@v6, releases can be found on https://github.com/docker/build-push-action/releases
-        uses: docker/build-push-action@d08e5c354a6adb9ed34480a06d141179aa583294
+        uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f
         with:
           context: .
           platforms: linux/amd64,linux/arm64
@@ -181,7 +181,7 @@ jobs:
           path: assets/
           pattern: binary-*
       - name: Create draft release
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         env:
           DOCKER_IMAGE_METADATA: '${{ needs.build-and-push-docker.outputs.metadata }}'
         with:
