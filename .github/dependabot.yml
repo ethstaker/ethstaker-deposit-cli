@@ -7,7 +7,7 @@ version: 2
 updates:
   - package-ecosystem: "pip"
     cooldown:
-      default-days: "7"
+      default-days: 7
     directory: "/"
     schedule:
       interval: "weekly"
@@ -20,7 +20,7 @@ updates:
           - "*"
   - package-ecosystem: "docker"
     cooldown:
-      default-days: "7"
+      default-days: 7
     directory: "/"
     schedule:
       interval: "weekly"
@@ -30,7 +30,7 @@ updates:
           - "*"
   - package-ecosystem: "github-actions"
     cooldown:
-      default-days: "7"
+      default-days: 7
     directory: "/"
     schedule:
       interval: "weekly"
@@ -40,7 +40,7 @@ updates:
           - "*"
   - package-ecosystem: "uv"
     cooldown:
-      default-days: "7"
+      default-days: 7
     directory: "/"
     schedule:
       interval: "weekly"
