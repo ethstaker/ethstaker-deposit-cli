@@ -19,7 +19,7 @@ Generates a new random BIP-39 mnemonic along with validator keystore and deposit
 
 - **`--compounding / --regular-withdrawal`**: Generates compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance or generate regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance. Use of this option requires a withdrawal address. This feature is only supported on networks that have undergone the Pectra fork. Defaults to regular withdrawal.
 
-- **`--amount`**: The amount to deposit to these validators in ether denomination. Must be at least 1 ether and can not have greater precision than 1 gwei. Use of this option requires compounding validators. Defaults to 32 ether.
+- **`--amount`**: The amount to deposit per validator in ether. Only applies to compounding validators (0x02 withdrawal credentials). Must be at least the chain's minimum deposit amount (1 ETH on mainnet) with no greater precision than 1 gwei. Defaults to the chain's minimum activation amount (32 ETH on mainnet).
 
 - **`--pbkdf2`**: Will use pbkdf2 key encryption instead of scrypt for generated keystore files as defined in [EIP-2335](https://eips.ethereum.org/EIPS/eip-2335#decryption-key). This can be a good alternative if you intend to work with a large number of keys, as it can improve performance. pbkdf2 encryption is, however, less secure than scrypt. You should only use this option if you understand the associated risks and have familiarity with encryption.
 
@@ -28,7 +28,7 @@ Generates a new random BIP-39 mnemonic along with validator keystore and deposit
 - **`--devnet_chain_setting`**: The custom chain setting of a devnet or testnet. Note that it will override your `--chain` choice. This should be a JSON string containing an object with the following keys: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount and min_deposit_amount.
 
 ## Output files
-A successful call to this command will result in one or many [keystore files](keystore_file.md) created, one per validator created, and one [deposit data file](deposit_data_file.md) created. The amount for each deposit in the deposit data file should always be 32 Ethers (`32000000000` in GWEI) with this command.
+A successful call to this command will result in one or many [keystore files](keystore_file.md) created, one per validator created, and one [deposit data file](deposit_data_file.md) created. Non-compounding validators always deposit the chain's minimum activation amount (32 ETH on mainnet).
 
 ## Example Usage
 
@@ -40,4 +40,4 @@ A successful call to this command will result in one or many [keystore files](ke
 
 The newly generated mnemonic **must** be written down, on a piece of paper or transferred to steel. The application will attempt to clear the clipboard when this command finishes. If the mnemonic is lost and the validator does not have a withdrawal address, funds **cannot** be recovered.
 
-To make a deposit for a different amount other than 32 ETH, you need to have an existing keystore file or create one by using either the above command or **[existing-mnemonic](existing_mnemonic.md)**. Then, use the **[partial-deposit](partial_deposit.md)** command to specify the desired amount for each validator.
+For non-compounding validators, a custom deposit amount requires an existing keystore file and the **[partial-deposit](partial_deposit.md)** command. Compounding validators (0x02 withdrawal credentials) can set a custom deposit amount directly using `--amount`.
