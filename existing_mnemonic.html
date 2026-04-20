@@ -209,7 +209,7 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 <p><strong><code>--compounding / --regular-withdrawal</code></strong>: Generates compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance or generate regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance. Use of this option requires a withdrawal address. This feature is only supported on networks that have undergone the Pectra fork. Defaults to regular withdrawal.</p>
 </li>
 <li>
-<p><strong><code>--amount</code></strong>: The amount to deposit to these validators in ether denomination. Must be at least 1 ether and can not have greater precision than 1 gwei. Use of this option requires compounding validators. Defaults to 32 ether.</p>
+<p><strong><code>--amount</code></strong>: The amount to deposit per validator in ether. Only applies to compounding validators (0x02 withdrawal credentials). Must be at least the chain's minimum deposit amount (1 ETH on mainnet) with no greater precision than 1 gwei. Defaults to the chain's minimum activation amount (32 ETH on mainnet).</p>
 </li>
 <li>
 <p><strong><code>--pbkdf2</code></strong>: Will use pbkdf2 key derivation instead of scrypt for generated keystore files as defined in <a href="https://eips.ethereum.org/EIPS/eip-2335#decryption-key">EIP-2335</a>. This can be a good alternative if you intend to work with a large number of keys, as it can improve performance however it is less secure. You should only use this option if you understand the associated risks and have familiarity with encryption.</p>
@@ -222,12 +222,12 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 </li>
 </ul>
 <h2 id="output-files"><a class="header" href="#output-files">Output files</a></h2>
-<p>A successful call to this command will result in one or many <a href="keystore_file.html">keystore files</a> created, one per validator created, and one <a href="deposit_data_file.html">deposit data file</a> created. The amount for each deposit in the deposit data file should always be 32 Ethers (<code>32000000000</code> in GWEI) with this command.</p>
+<p>A successful call to this command will result in one or many <a href="keystore_file.html">keystore files</a> created, one per validator created, and one <a href="deposit_data_file.html">deposit data file</a> created. Non-compounding validators always deposit the chain's minimum activation amount (32 ETH on mainnet).</p>
 <h2 id="example-usage"><a class="header" href="#example-usage">Example Usage</a></h2>
 <pre><code class="language-sh">./deposit existing-mnemonic
 </code></pre>
 <h2 id="note"><a class="header" href="#note">Note</a></h2>
-<p>To make a deposit for a different amount other than 32 ETH, you need to have an existing keystore file or create one by using either the above command or <strong><a href="new_mnemonic.html">new-mnemonic</a></strong>. Then, use the <strong><a href="partial_deposit.html">partial-deposit</a></strong> command to specify the desired amount for each validator.</p>
+<p>For non-compounding validators, a custom deposit amount requires an existing keystore file and the <strong><a href="partial_deposit.html">partial-deposit</a></strong> command. Compounding validators (0x02 withdrawal credentials) can set a custom deposit amount directly using <code>--amount</code>.</p>
 
                     </main>
 

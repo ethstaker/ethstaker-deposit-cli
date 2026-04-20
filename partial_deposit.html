@@ -192,7 +192,7 @@ If you wish to create a validator with 0x00 credentials, you must use the <stron
 <p><strong><code>--keystore_password</code></strong>: The password that is used to encrypt the provided keystore. Note: It's not your mnemonic password. <span class="warning"></span></p>
 </li>
 <li>
-<p><strong><code>--amount</code></strong>: The amount you wish to deposit in ether. Must be at least 1 and can not have precision beyond 1 gwei. Defaults to 32 ether.</p>
+<p><strong><code>--amount</code></strong>: The amount to deposit per validator in ether. Must be at least the chain's minimum deposit amount (1 ETH on mainnet) with no greater precision than 1 gwei. Defaults to the chain's minimum activation amount (32 ETH on mainnet).</p>
 </li>
 <li>
 <p><strong><code>--withdrawal_address</code></strong>: The withdrawal address of the existing validator or the desired withdrawal address.</p>
