@@ -4,6 +4,7 @@ from PyInstaller.utils.hooks import copy_metadata
 datas = [
     ('../../ethstaker_deposit/key_handling/key_derivation/word_lists/*.txt', './ethstaker_deposit/key_handling/key_derivation/word_lists/'),
     ('../../ethstaker_deposit/intl', './ethstaker_deposit/intl'),
+    ('../../ethstaker_deposit/VERSION', './ethstaker_deposit/'),
 ]
 datas += copy_metadata('py_ecc')
 datas += copy_metadata('ssz')

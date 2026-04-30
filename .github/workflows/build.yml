@@ -83,6 +83,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r "${BUILD_CONFIGS_PATH}"/requirements.txt -r requirements.txt
           pyinstaller --distpath ./"${BUILD_FILE_NAME}" "${BUILD_CONFIGS_PATH}"/build.spec
+      - name: Smoke test on Linux & macOS
+        if: ${{ startsWith(matrix.os, 'ubuntu-') || startsWith(matrix.os, 'macos-') }}
+        run: ./"${BUILD_FILE_NAME}"/deposit --version
+      - name: Package on Linux & macOS
+        if: ${{ startsWith(matrix.os, 'ubuntu-') || startsWith(matrix.os, 'macos-') }}
+        run: |
           export ARCHIVE_FILE_NAME="${BUILD_FILE_NAME}".tar.gz
           echo "ARCHIVE_FILE_NAME=${ARCHIVE_FILE_NAME}" >> "$GITHUB_ENV"
           tar -zcvf "${ARCHIVE_FILE_NAME}" ./"${BUILD_FILE_NAME}"
@@ -95,6 +101,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r build_configs/windows/requirements.txt -r requirements.txt
           pyinstaller --distpath $env:BUILD_FILE_NAME .\build_configs\windows\build.spec
+      - name: Smoke test on Windows
+        if: ${{ startsWith(matrix.os, 'windows-') }}
+        run: |
+          & "$env:BUILD_FILE_NAME\deposit.exe" --version
+      - name: Package on Windows
+        if: ${{ startsWith(matrix.os, 'windows-') }}
+        run: |
           $env:ZIP_FILE_NAME = ($env:BUILD_FILE_NAME + ".zip")
           echo ("ZIP_FILE_NAME=" + $env:ZIP_FILE_NAME) | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
           Compress-Archive -Path $env:BUILD_FILE_NAME_PATH -DestinationPath $env:ZIP_FILE_NAME
