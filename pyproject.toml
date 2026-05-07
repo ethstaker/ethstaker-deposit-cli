@@ -64,12 +64,12 @@ test = [
     "tomli==2.4.1",
     "iniconfig==2.3.0",
     "mypy-extensions==1.1.0",
-    "packaging==26.1",
+    "packaging==26.2",
     "pluggy==1.6.0",
     "typing-extensions==4.15.0",
-    "ruff==0.15.11",
+    "ruff==0.15.12",
     "Pygments==2.20.0",
-    "pathspec==1.1.0",
+    "pathspec==1.1.1",
 ]
 
 [project.urls]
