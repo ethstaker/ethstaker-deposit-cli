@@ -67,7 +67,7 @@ test = [
     "packaging==26.2",
     "pluggy==1.6.0",
     "typing-extensions==4.15.0",
-    "ruff==0.15.15",
+    "ruff==0.15.16",
     "Pygments==2.20.0",
     "pathspec==1.1.1",
 ]
