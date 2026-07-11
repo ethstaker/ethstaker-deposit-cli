@@ -60,7 +60,7 @@ test = [
     "pytest==9.1.1",
     "pytest-asyncio==1.4.0",
     "backports-asyncio-runner==1.2.0 ; python_version < '3.11'",
-    "coverage==7.14.3",
+    "coverage==7.15.0",
     "tomli==2.4.1",
     "iniconfig==2.3.0",
     "mypy-extensions==1.1.0",
