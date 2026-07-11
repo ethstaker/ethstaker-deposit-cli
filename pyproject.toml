@@ -66,8 +66,8 @@ test = [
     "mypy-extensions==1.1.0",
     "packaging==26.2",
     "pluggy==1.6.0",
-    "typing-extensions==4.15.0",
-    "ruff==0.15.19",
+    "typing-extensions==4.16.0",
+    "ruff==0.15.20",
     "Pygments==2.20.0",
     "pathspec==1.1.1",
 ]
