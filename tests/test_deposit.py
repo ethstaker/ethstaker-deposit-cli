@@ -40,7 +40,7 @@ def test_should_not_exit_if_valid_python_version(monkeypatch) -> None:
         exit_called = True
 
     monkeypatch.setattr(sys, 'exit', _mock_sys_exit)
-    monkeypatch.setattr(sys, 'version_info', (3, 10))
+    monkeypatch.setattr(sys, 'version_info', (3, 11))
 
     check_python_version()
 
