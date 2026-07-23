@@ -6,7 +6,7 @@
 
 1. **Python version checking**
 
-    Ensure you are using Python version >= Python3.10:
+    Ensure you are using Python version >= Python3.11:
 
     ```sh
     python3 -V
@@ -54,7 +54,7 @@
 
 1. **Python version checking**
 
-    Ensure you are using Python version >= Python3.10:
+    Ensure you are using Python version >= Python3.11:
 
     ```sh
     python3 -V
@@ -222,7 +222,7 @@
 
 1. **Python version checking**
 
-    Ensure you are using Python version >= Python3.10 (Assume that you've installed Python 3 as the main Python):
+    Ensure you are using Python version >= Python3.11 (Assume that you've installed Python 3 as the main Python):
 
     ```cmd
     python -V

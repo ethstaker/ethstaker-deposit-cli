@@ -50,7 +50,7 @@ dependencies = [
     "referencing==0.37.0",
     "rpds-py==0.30.0",
 ]
-requires-python = ">=3.10,<4"
+requires-python = ">=3.11,<4"
 dynamic = ["version"]
 
 [project.optional-dependencies]
