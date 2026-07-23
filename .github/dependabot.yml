@@ -5,7 +5,7 @@
 
 version: 2
 updates:
-  - package-ecosystem: "pip"
+  - package-ecosystem: "uv"
     cooldown:
       default-days: 7
     directory: "/"
@@ -15,7 +15,7 @@ updates:
       pydantic-deps:
         patterns:
           - "pydantic*"
-      pip-deps:
+      uv-deps:
         patterns:
           - "*"
   - package-ecosystem: "docker"
@@ -36,15 +36,5 @@ updates:
       interval: "weekly"
     groups:
       actions-deps:
-        patterns:
-          - "*"
-  - package-ecosystem: "uv"
-    cooldown:
-      default-days: 7
-    directory: "/"
-    schedule:
-      interval: "weekly"
-    groups:
-      uv-deps:
         patterns:
           - "*"
