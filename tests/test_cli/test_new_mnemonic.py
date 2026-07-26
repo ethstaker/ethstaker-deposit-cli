@@ -111,7 +111,7 @@ def test_new_mnemonic_withdrawal_address(monkeypatch) -> None:
     _, _, key_files = next(os.walk(validator_keys_folder_path))
 
     deposit_file = [key_file for key_file in key_files if key_file.startswith('deposit_data')][0]
-    with open(validator_keys_folder_path + '/' + deposit_file, 'r', encoding='utf-8') as f:
+    with open(validator_keys_folder_path + '/' + deposit_file, encoding='utf-8') as f:
         deposits_dict = json.load(f)
     for deposit in deposits_dict:
         withdrawal_credentials = bytes.fromhex(deposit['withdrawal_credentials'])
@@ -170,7 +170,7 @@ def test_new_mnemonic_compounding_validators(monkeypatch) -> None:
     _, _, key_files = next(os.walk(validator_keys_folder_path))
 
     deposit_file = [key_file for key_file in key_files if key_file.startswith('deposit_data')][0]
-    with open(validator_keys_folder_path + '/' + deposit_file, 'r', encoding='utf-8') as f:
+    with open(validator_keys_folder_path + '/' + deposit_file, encoding='utf-8') as f:
         deposits_dict = json.load(f)
     for deposit in deposits_dict:
         withdrawal_credentials = bytes.fromhex(deposit['withdrawal_credentials'])
@@ -229,7 +229,7 @@ def test_gnosis_new_mnemonic_compounding_validators(monkeypatch) -> None:
     _, _, key_files = next(os.walk(validator_keys_folder_path))
 
     deposit_file = [key_file for key_file in key_files if key_file.startswith('deposit_data')][0]
-    with open(validator_keys_folder_path + '/' + deposit_file, 'r', encoding='utf-8') as f:
+    with open(validator_keys_folder_path + '/' + deposit_file, encoding='utf-8') as f:
         deposits_dict = json.load(f)
     for deposit in deposits_dict:
         withdrawal_credentials = bytes.fromhex(deposit['withdrawal_credentials'])
@@ -288,7 +288,7 @@ def test_chiado_new_mnemonic_compounding_validators(monkeypatch) -> None:
     _, _, key_files = next(os.walk(validator_keys_folder_path))
 
     deposit_file = [key_file for key_file in key_files if key_file.startswith('deposit_data')][0]
-    with open(validator_keys_folder_path + '/' + deposit_file, 'r', encoding='utf-8') as f:
+    with open(validator_keys_folder_path + '/' + deposit_file, encoding='utf-8') as f:
         deposits_dict = json.load(f)
     for deposit in deposits_dict:
         withdrawal_credentials = bytes.fromhex(deposit['withdrawal_credentials'])
@@ -349,7 +349,7 @@ def test_new_mnemonic_compounding_custom_amount(monkeypatch) -> None:
     _, _, key_files = next(os.walk(validator_keys_folder_path))
 
     deposit_file = [key_file for key_file in key_files if key_file.startswith('deposit_data')][0]
-    with open(validator_keys_folder_path + '/' + deposit_file, 'r', encoding='utf-8') as f:
+    with open(validator_keys_folder_path + '/' + deposit_file, encoding='utf-8') as f:
         deposits_dict = json.load(f)
     for deposit in deposits_dict:
         withdrawal_credentials = bytes.fromhex(deposit['withdrawal_credentials'])
@@ -410,7 +410,7 @@ def test_gnosis_new_mnemonic_compounding_custom_amount(monkeypatch) -> None:
     _, _, key_files = next(os.walk(validator_keys_folder_path))
 
     deposit_file = [key_file for key_file in key_files if key_file.startswith('deposit_data')][0]
-    with open(validator_keys_folder_path + '/' + deposit_file, 'r', encoding='utf-8') as f:
+    with open(validator_keys_folder_path + '/' + deposit_file, encoding='utf-8') as f:
         deposits_dict = json.load(f)
     for deposit in deposits_dict:
         withdrawal_credentials = bytes.fromhex(deposit['withdrawal_credentials'])
@@ -471,7 +471,7 @@ def test_chiado_new_mnemonic_compounding_custom_amount(monkeypatch) -> None:
     _, _, key_files = next(os.walk(validator_keys_folder_path))
 
     deposit_file = [key_file for key_file in key_files if key_file.startswith('deposit_data')][0]
-    with open(validator_keys_folder_path + '/' + deposit_file, 'r', encoding='utf-8') as f:
+    with open(validator_keys_folder_path + '/' + deposit_file, encoding='utf-8') as f:
         deposits_dict = json.load(f)
     for deposit in deposits_dict:
         withdrawal_credentials = bytes.fromhex(deposit['withdrawal_credentials'])
@@ -532,7 +532,7 @@ def test_new_mnemonic_compounding_custom_amount_decimal(monkeypatch) -> None:
     _, _, key_files = next(os.walk(validator_keys_folder_path))
 
     deposit_file = [key_file for key_file in key_files if key_file.startswith('deposit_data')][0]
-    with open(validator_keys_folder_path + '/' + deposit_file, 'r', encoding='utf-8') as f:
+    with open(validator_keys_folder_path + '/' + deposit_file, encoding='utf-8') as f:
         deposits_dict = json.load(f)
     for deposit in deposits_dict:
         withdrawal_credentials = bytes.fromhex(deposit['withdrawal_credentials'])
@@ -595,7 +595,7 @@ def test_new_mnemonic_withdrawal_address_bad_checksum(monkeypatch) -> None:
     _, _, key_files = next(os.walk(validator_keys_folder_path))
 
     deposit_file = [key_file for key_file in key_files if key_file.startswith('deposit_data')][0]
-    with open(validator_keys_folder_path + '/' + deposit_file, 'r', encoding='utf-8') as f:
+    with open(validator_keys_folder_path + '/' + deposit_file, encoding='utf-8') as f:
         deposits_dict = json.load(f)
     for deposit in deposits_dict:
         withdrawal_credentials = bytes.fromhex(deposit['withdrawal_credentials'])
@@ -652,7 +652,7 @@ def test_new_mnemonic_withdrawal_address_parameter(monkeypatch) -> None:
     _, _, key_files = next(os.walk(validator_keys_folder_path))
 
     deposit_file = [key_file for key_file in key_files if key_file.startswith('deposit_data')][0]
-    with open(validator_keys_folder_path + '/' + deposit_file, 'r', encoding='utf-8') as f:
+    with open(validator_keys_folder_path + '/' + deposit_file, encoding='utf-8') as f:
         deposits_dict = json.load(f)
     for deposit in deposits_dict:
         withdrawal_credentials = bytes.fromhex(deposit['withdrawal_credentials'])
@@ -710,7 +710,7 @@ def test_new_mnemonic_eth1_withdrawal_address_param(monkeypatch) -> None:
     _, _, key_files = next(os.walk(validator_keys_folder_path))
 
     deposit_file = [key_file for key_file in key_files if key_file.startswith('deposit_data')][0]
-    with open(validator_keys_folder_path + '/' + deposit_file, 'r', encoding='utf-8') as f:
+    with open(validator_keys_folder_path + '/' + deposit_file, encoding='utf-8') as f:
         deposits_dict = json.load(f)
     for deposit in deposits_dict:
         withdrawal_credentials = bytes.fromhex(deposit['withdrawal_credentials'])
@@ -768,7 +768,7 @@ def test_new_mnemonic_execution_address_param(monkeypatch) -> None:
     _, _, key_files = next(os.walk(validator_keys_folder_path))
 
     deposit_file = [key_file for key_file in key_files if key_file.startswith('deposit_data')][0]
-    with open(validator_keys_folder_path + '/' + deposit_file, 'r', encoding='utf-8') as f:
+    with open(validator_keys_folder_path + '/' + deposit_file, encoding='utf-8') as f:
         deposits_dict = json.load(f)
     for deposit in deposits_dict:
         withdrawal_credentials = bytes.fromhex(deposit['withdrawal_credentials'])
@@ -840,22 +840,22 @@ def test_pbkdf2_new_mnemonic(monkeypatch) -> None:
     _, _, key_files = next(os.walk(validator_keys_folder_path))
 
     deposit_file = [key_file for key_file in key_files if key_file.startswith('deposit_data')][0]
-    with open(validator_keys_folder_path + '/' + deposit_file, 'r', encoding='utf-8') as f:
+    with open(validator_keys_folder_path + '/' + deposit_file, encoding='utf-8') as f:
         pbkdf2_deposit_dict = json.load(f)[0]
 
     keystore_file = [key_file for key_file in key_files if key_file.startswith('keystore-m_')][0]
-    with open(validator_keys_folder_path + '/' + keystore_file, 'r', encoding='utf-8') as f:
+    with open(validator_keys_folder_path + '/' + keystore_file, encoding='utf-8') as f:
         pbkdf2_keystore_dict = json.load(f)
 
     validator_keys_folder_path = os.path.join(scrypt_folder_path, DEFAULT_VALIDATOR_KEYS_FOLDER_NAME)
     _, _, key_files = next(os.walk(validator_keys_folder_path))
 
     deposit_file = [key_file for key_file in key_files if key_file.startswith('deposit_data')][0]
-    with open(validator_keys_folder_path + '/' + deposit_file, 'r', encoding='utf-8') as f:
+    with open(validator_keys_folder_path + '/' + deposit_file, encoding='utf-8') as f:
         scrypt_deposit_dict = json.load(f)[0]
 
     keystore_file = [key_file for key_file in key_files if key_file.startswith('keystore-m_')][0]
-    with open(validator_keys_folder_path + '/' + keystore_file, 'r', encoding='utf-8') as f:
+    with open(validator_keys_folder_path + '/' + keystore_file, encoding='utf-8') as f:
         scrypt_keystore_dict = json.load(f)
 
     # Verify deposit files
@@ -945,7 +945,7 @@ async def test_script_bls_withdrawal() -> None:
     _, _, key_files = next(os.walk(validator_keys_folder_path))
 
     deposit_file = [key_file for key_file in key_files if key_file.startswith('deposit_data')][0]
-    with open(validator_keys_folder_path + '/' + deposit_file, 'r', encoding='utf-8') as f:
+    with open(validator_keys_folder_path + '/' + deposit_file, encoding='utf-8') as f:
         deposits_dict = json.load(f)
     for deposit in deposits_dict:
         withdrawal_credentials = bytes.fromhex(deposit['withdrawal_credentials'])
@@ -1157,7 +1157,7 @@ def test_new_mnemonic_custom_testnet_with_custom_multiplier(monkeypatch) -> None
     _, _, key_files = next(os.walk(validator_keys_folder_path))
 
     deposit_file = [key_file for key_file in key_files if key_file.startswith('deposit_data')][0]
-    with open(validator_keys_folder_path + '/' + deposit_file, 'r', encoding='utf-8') as f:
+    with open(validator_keys_folder_path + '/' + deposit_file, encoding='utf-8') as f:
         deposits_dict = json.load(f)
     for deposit in deposits_dict:
         withdrawal_credentials = bytes.fromhex(deposit['withdrawal_credentials'])
@@ -1230,7 +1230,7 @@ def test_new_mnemonic_custom_multiplier_and_min_activation_amount_testnet(monkey
     _, _, key_files = next(os.walk(validator_keys_folder_path))
 
     deposit_file = [key_file for key_file in key_files if key_file.startswith('deposit_data')][0]
-    with open(validator_keys_folder_path + '/' + deposit_file, 'r', encoding='utf-8') as f:
+    with open(validator_keys_folder_path + '/' + deposit_file, encoding='utf-8') as f:
         deposits_dict = json.load(f)
     for deposit in deposits_dict:
         withdrawal_credentials = bytes.fromhex(deposit['withdrawal_credentials'])
@@ -1305,7 +1305,7 @@ def test_new_mnemonic_custom_multiplier_and_min_activation_amount_testnet_custom
     _, _, key_files = next(os.walk(validator_keys_folder_path))
 
     deposit_file = [key_file for key_file in key_files if key_file.startswith('deposit_data')][0]
-    with open(validator_keys_folder_path + '/' + deposit_file, 'r', encoding='utf-8') as f:
+    with open(validator_keys_folder_path + '/' + deposit_file, encoding='utf-8') as f:
         deposits_dict = json.load(f)
     for deposit in deposits_dict:
         withdrawal_credentials = bytes.fromhex(deposit['withdrawal_credentials'])

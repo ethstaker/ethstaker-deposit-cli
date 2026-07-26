@@ -9,7 +9,7 @@ from jsonschema import validate as js_validate
 
 from py_ecc.bls import G2ProofOfPossession as bls
 from secrets import randbits
-from typing import Any, Dict, Union, Optional
+from typing import Any
 from unicodedata import normalize
 from uuid import uuid4
 
@@ -30,7 +30,7 @@ from ethstaker_deposit.schema.keystore import KEYSTORE_JSON_SCHEMA
 hexdigits = set('0123456789abcdef')
 
 
-def encode_bytes(obj: Union[str, Dict[str, Any]]) -> Union[bytes, str, Dict[str, Any]]:
+def encode_bytes(obj: str | dict[str, Any]) -> bytes | str | dict[str, Any]:
     """
     Recursively encodes objects that contain hexstrings into objects that contain bytes.
     """
@@ -50,7 +50,7 @@ class BytesDataclass:
     """
     def __post_init__(self) -> None:
         for field in fields(self):
-            if field.type in (bytes, Dict[str, Any]):
+            if field.type in (bytes, dict[str, Any]):
                 # Convert hexstring to bytes
                 self.__setattr__(field.name, encode_bytes(self.__getattribute__(field.name)))
 
@@ -61,8 +61,8 @@ class BytesDataclass:
 @dataclass
 class KeystoreModule(BytesDataclass):
     function: str = ''
-    params: Dict[str, Any] = dataclass_field(default_factory=dict)
-    message: bytes = bytes()
+    params: dict[str, Any] = dataclass_field(default_factory=dict)
+    message: bytes = b''
 
 
 @dataclass
@@ -72,7 +72,7 @@ class KeystoreCrypto(BytesDataclass):
     cipher: KeystoreModule = dataclass_field(default_factory=KeystoreModule)
 
     @classmethod
-    def from_json(cls, json_dict: Dict[Any, Any]) -> 'KeystoreCrypto':
+    def from_json(cls, json_dict: dict[Any, Any]) -> 'KeystoreCrypto':
         kdf = KeystoreModule(**json_dict['kdf'])
         checksum = KeystoreModule(**json_dict['checksum'])
         cipher = KeystoreModule(**json_dict['cipher'])
@@ -105,7 +105,7 @@ class Keystore(BytesDataclass):
             f.write(self.as_json())
 
     @classmethod
-    def from_json(cls, json_dict: Dict[Any, Any]) -> 'Keystore':
+    def from_json(cls, json_dict: dict[Any, Any]) -> 'Keystore':
         js_validate(instance=json_dict, schema=KEYSTORE_JSON_SCHEMA)
         crypto = KeystoreCrypto.from_json(json_dict['crypto'])
         path = json_dict['path']
@@ -117,7 +117,7 @@ class Keystore(BytesDataclass):
 
     @classmethod
     def from_file(cls, path: str) -> 'Keystore':
-        with open(path, 'r', encoding='utf-8') as f:
+        with open(path, encoding='utf-8') as f:
             return cls.from_json(json.load(f))
 
     @staticmethod
@@ -130,8 +130,8 @@ class Keystore(BytesDataclass):
         password = ''.join(c for c in password if ord(c) not in UNICODE_CONTROL_CHARS)
         return password.encode('UTF-8')
 
-    def _get_decryption_key(self, password: str, kdf_salt: Optional[bytes] = None,
-                decryption_key: Optional[bytes] = None) -> bytes:
+    def _get_decryption_key(self, password: str, kdf_salt: bytes | None = None,
+                decryption_key: bytes | None = None) -> bytes:
         """
         Return decryption key, if salt same and cached decryption key is provided returns cached.
         """
@@ -146,9 +146,9 @@ class Keystore(BytesDataclass):
 
     @classmethod
     def encrypt(cls, *, secret: bytes, password: str, path: str = '',
-                kdf_salt: Optional[bytes] = None,
-                aes_iv: Optional[bytes] = None,
-                decryption_key: Optional[bytes] = None) -> 'Keystore':
+                kdf_salt: bytes | None = None,
+                aes_iv: bytes | None = None,
+                decryption_key: bytes | None = None) -> 'Keystore':
         """
         Encrypt a secret (BLS SK) as an EIP 2335 Keystore.
         """
@@ -163,8 +163,8 @@ class Keystore(BytesDataclass):
         keystore.path = path
         return keystore
 
-    def decrypt(self, password: str, kdf_salt: Optional[bytes] = None,
-                decryption_key: Optional[bytes] = None) -> bytes:
+    def decrypt(self, password: str, kdf_salt: bytes | None = None,
+                decryption_key: bytes | None = None) -> bytes:
         """
         Retrieve the secret (BLS SK) from the self keystore by decrypting it with `password`
         """

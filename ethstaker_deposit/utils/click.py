@@ -1,12 +1,6 @@
 import click
-from typing import (
-    Any,
-    Callable,
-    Optional,
-    Sequence,
-    Tuple,
-    Union,
-)
+from typing import Any
+from collections.abc import Callable, Sequence
 
 from ethstaker_deposit.exceptions import ValidationError
 from ethstaker_deposit.settings import get_chain_setting
@@ -18,7 +12,7 @@ from ethstaker_deposit.utils.intl import (
 )
 
 
-def _value_of(f: Union[Callable[[], Any], Any]) -> Any:
+def _value_of(f: Callable[[], Any] | Any) -> Any:
     '''
     If the input, f, is a function, return f(), else return f.
     '''
@@ -31,10 +25,10 @@ class JITOption(click.Option):
     '''
     def __init__(
         self,
-        param_decls: Union[str, Sequence[str]],
-        default: Union[Callable[[], Any], None, Any] = None,
-        help: Union[Callable[[], str], str, None] = None,
-        prompt: Union[Callable[[], str], str, None] = None,
+        param_decls: str | Sequence[str],
+        default: Callable[[], Any] | None | Any = None,
+        help: Callable[[], str] | str | None = None,
+        prompt: Callable[[], str] | str | None = None,
         **kwargs: Any,
     ):
 
@@ -58,7 +52,7 @@ class JITOption(click.Option):
         self.prompt = _value_of(self.callable_prompt)
         return super().prompt_for_value(ctx)
 
-    def get_help_record(self, ctx: click.Context) -> Tuple[str, str]:
+    def get_help_record(self, ctx: click.Context) -> tuple[str, str]:
         self.help = _value_of(self.callable_help)
         return super().get_help_record(ctx)
 
@@ -148,11 +142,11 @@ def process_with_optional_context(ctx: click.Context, processing_func: Callable[
 def captive_prompt_callback(
     processing_func: Callable[[str, dict[str, Any]], Any],
     prompt: Callable[[], str],
-    confirmation_prompt: Optional[Callable[[], str]] = None,
+    confirmation_prompt: Callable[[], str] | None = None,
     confirmation_mismatch_msg: Callable[[], str] = lambda: '',
     hide_input: bool = False,
-    default: Optional[Union[Callable[[], str], str]] = None,
-    prompt_if: Optional[Callable[[click.Context, Any, str], bool]] = None,
+    default: Callable[[], str] | str | None = None,
+    prompt_if: Callable[[click.Context, Any, str], bool] | None = None,
     prompt_marker: str = '',
 ) -> Callable[[click.Context, str, str], Any]:
     '''
@@ -216,7 +210,7 @@ def choice_prompt_func(prompt_func: Callable[[], str],
             else:
                 output = output + ', '
     output = output + ']'
-    return lambda: '%s %s%s' % (prompt_func(), output, ': ' if add_colon else '')
+    return lambda: f'{prompt_func()} {output}{": " if add_colon else ""}'
 
 
 def deactivate_prompts_callback(param_names: list[str]) -> Callable[[click.Context, str, str], Any]:

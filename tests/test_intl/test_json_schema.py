@@ -3,9 +3,6 @@ import jsonschema
 import os
 import pytest
 import re
-from typing import (
-    List,
-)
 
 from ethstaker_deposit.utils.constants import INTL_CONTENT_PATH
 
@@ -13,7 +10,7 @@ from ethstaker_deposit.utils.constants import INTL_CONTENT_PATH
 TEST_SCHEMAS_FOLDER = os.path.join(os.path.dirname(__file__), 'schemas')
 
 
-def files_to_check(root_dir: str) -> List[str]:
+def files_to_check(root_dir: str) -> list[str]:
     file_list = []
     for dir_, _, files in os.walk(root_dir):
         for file_name in files:
@@ -23,7 +20,7 @@ def files_to_check(root_dir: str) -> List[str]:
     return file_list
 
 
-def languages_to_check(root_dir: str) -> List[str]:
+def languages_to_check(root_dir: str) -> list[str]:
     dirs = next(os.walk(root_dir))[1]
     regex = re.compile('([A-Za-z]){2}(-([A-Za-z]){2})?')
     return [d for d in dirs if re.fullmatch(regex, d)]

@@ -1,50 +1,11 @@
 import os
 import socket
-import sys
 
 import click
 from click.testing import CliRunner
 
-from ethstaker_deposit.deposit import check_connectivity, check_python_version, cli
+from ethstaker_deposit.deposit import check_connectivity, cli
 from tests.test_cli.helpers import clean_key_folder
-
-
-def test_should_notify_user_and_exit_if_invalid_python_version(monkeypatch) -> None:
-    exit_called = False
-
-    def _mock_sys_exit(arg):
-        nonlocal exit_called
-        exit_called = True
-
-    pause_called = False
-
-    def _mock_click_pause(text):
-        nonlocal pause_called
-        pause_called = True
-
-    monkeypatch.setattr(click, 'pause', _mock_click_pause)
-    monkeypatch.setattr(sys, 'exit', _mock_sys_exit)
-    monkeypatch.setattr(sys, 'version_info', (3, 9))
-
-    check_python_version()
-
-    assert exit_called is True
-    assert pause_called is True
-
-
-def test_should_not_exit_if_valid_python_version(monkeypatch) -> None:
-    exit_called = False
-
-    def _mock_sys_exit():
-        nonlocal exit_called
-        exit_called = True
-
-    monkeypatch.setattr(sys, 'exit', _mock_sys_exit)
-    monkeypatch.setattr(sys, 'version_info', (3, 10))
-
-    check_python_version()
-
-    assert exit_called is False
 
 
 def test_should_pause_if_connected(monkeypatch) -> None:

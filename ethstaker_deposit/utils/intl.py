@@ -2,13 +2,8 @@ import inspect
 import difflib
 from functools import reduce
 import json
-from typing import (
-    Any,
-    Dict,
-    Iterable,
-    Mapping,
-    Sequence,
-)
+from typing import Any
+from collections.abc import Iterable, Mapping, Sequence
 import os
 
 from ethstaker_deposit.utils import config
@@ -21,7 +16,7 @@ from ethstaker_deposit.utils.file_handling import (
 from ethstaker_deposit.exceptions import ValidationError
 
 
-def _get_from_dict(dataDict: Dict[str, Any], mapList: Iterable[str]) -> str:
+def _get_from_dict(dataDict: dict[str, Any], mapList: Iterable[str]) -> str:
     '''
     Iterate nested dictionaries
     '''
@@ -31,9 +26,9 @@ def _get_from_dict(dataDict: Dict[str, Any], mapList: Iterable[str]) -> str:
             raise ValidationError('Incomplete')
         return ans
     except TypeError:
-        raise KeyError('%s not in internationalisation json file.' % mapList)
+        raise KeyError(f'{mapList} not in internationalisation json file.')
     except ValidationError:
-        raise KeyError('The provided params (%s) were incomplete.' % mapList)
+        raise KeyError(f'The provided params ({mapList}) were incomplete.')
 
 
 def load_text(params: list[str], file_path: str = '', func: str = '', lang: str = '') -> str:
@@ -74,7 +69,7 @@ def load_text(params: list[str], file_path: str = '', func: str = '', lang: str 
     except (KeyError, FileNotFoundError):
         # If text not found in lang, try return English version
         if lang == 'en':
-            raise KeyError('%s not in %s file' % ([func] + params, json_path))
+            raise KeyError(f'{[func] + params} not in {json_path} file')
         return load_text(params, file_path, func, 'en')
 
 
@@ -91,7 +86,7 @@ def closest_match(text: str, options: Iterable[str]) -> str:
     '''
     match = difflib.get_close_matches(text, options, n=1, cutoff=0.6)
     if len(match) == 0:
-        raise ValidationError('%s is not a valid language option' % text)
+        raise ValidationError(f'{text} is not a valid language option')
     return match[0]
 
 

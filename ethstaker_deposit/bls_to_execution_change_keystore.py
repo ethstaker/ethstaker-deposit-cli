@@ -1,6 +1,6 @@
 import json
 import os
-from typing import Any, Dict
+from typing import Any
 from eth_typing import HexAddress
 from eth_utils import to_canonical_address
 from py_ecc.bls import G2ProofOfPossession as bls
@@ -49,7 +49,7 @@ def bls_to_execution_change_keystore_generation(
 def export_bls_to_execution_change_keystore_json(folder: str,
                                                  signed_execution_change: SignedBLSToExecutionChangeKeystore,
                                                  timestamp: float) -> str:
-    signed_bls_to_execution_change_keystore_json: Dict[str, Any] = {}
+    signed_bls_to_execution_change_keystore_json: dict[str, Any] = {}
 
     address = '0x' + signed_execution_change.message.to_execution_address.hex()  # type: ignore[attr-defined]
     index = signed_execution_change.message.validator_index  # type: ignore[attr-defined]
@@ -64,7 +64,7 @@ def export_bls_to_execution_change_keystore_json(folder: str,
 
     filefolder = os.path.join(
         folder,
-        'bls_to_execution_change_keystore_signature-%s-%i.json' % (index, timestamp)
+        f'bls_to_execution_change_keystore_signature-{index}-{int(timestamp)}.json'
     )
 
     with open(filefolder, 'w', encoding='utf-8', opener=sensitive_opener) as f:

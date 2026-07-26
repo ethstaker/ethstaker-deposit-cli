@@ -1,8 +1,5 @@
 import os
 import pytest
-from typing import (
-    List,
-)
 
 from ethstaker_deposit.utils.constants import (
     INTL_LANG_OPTIONS,
@@ -23,7 +20,7 @@ from ethstaker_deposit.utils.intl import (
          'new_mnemonic', 'ja', 'ニーモニックの言語を選択してください'),
     ]
 )
-def test_load_text(params: List[str], file_path: str, func: str, lang: str, found_str: str) -> None:
+def test_load_text(params: list[str], file_path: str, func: str, lang: str, found_str: str) -> None:
     assert found_str in load_text(params, file_path, func, lang)
 
 
@@ -39,7 +36,7 @@ def test_load_text(params: List[str], file_path: str, func: str, lang: str, foun
          'new_mnemonic', 'zz', False),  # invalid json path in invalid language
     ]
 )
-def test_load_text_en_fallover(params: List[str], file_path: str, func: str, lang: str, valid: bool) -> None:
+def test_load_text_en_fallover(params: list[str], file_path: str, func: str, lang: str, valid: bool) -> None:
     if valid:
         assert load_text(params, file_path, func, lang) == load_text(params, file_path, func, 'en')
     else:

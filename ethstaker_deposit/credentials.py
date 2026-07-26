@@ -4,7 +4,8 @@ from enum import Enum
 import time
 import json
 import concurrent.futures
-from typing import Dict, Optional, Any, Sequence, Tuple
+from typing import Any
+from collections.abc import Sequence
 
 from eth_typing import Address, HexAddress
 from eth_utils import to_canonical_address
@@ -59,9 +60,9 @@ class Credential:
     """
     def __init__(self, *, mnemonic: str, mnemonic_password: str,
                  index: int, amount: int, chain_setting: BaseChainSetting,
-                 hex_withdrawal_address: Optional[HexAddress],
-                 compounding: Optional[bool] = False,
-                 use_pbkdf2: Optional[bool] = False):
+                 hex_withdrawal_address: HexAddress | None,
+                 compounding: bool | None = False,
+                 use_pbkdf2: bool | None = False):
         # Set path as EIP-2334 format
         # https://eips.ethereum.org/EIPS/eip-2334
         purpose = '12381'
@@ -89,7 +90,7 @@ class Credential:
         return bls.SkToPk(self.withdrawal_sk)
 
     @property
-    def withdrawal_address(self) -> Optional[Address]:
+    def withdrawal_address(self) -> Address | None:
         if self.hex_withdrawal_address is None:
             return None
         return to_canonical_address(self.hex_withdrawal_address)
@@ -162,7 +163,7 @@ class Credential:
         return signed_deposit
 
     @property
-    def deposit_datum_dict(self) -> Dict[str, bytes]:
+    def deposit_datum_dict(self) -> dict[str, bytes]:
         """
         Return a single deposit datum for 1 validator including all
         the information needed to verify and process the deposit.
@@ -176,8 +177,8 @@ class Credential:
         datum_dict.update({'deposit_cli_version': DEPOSIT_CLI_VERSION})
         return datum_dict
 
-    def signing_keystore(self, password: str, kdf_salt: Optional[bytes] = None,
-                         decryption_key: Optional[bytes] = None) -> Keystore:
+    def signing_keystore(self, password: str, kdf_salt: bytes | None = None,
+                         decryption_key: bytes | None = None) -> Keystore:
         secret = self.signing_sk.to_bytes(32, 'big')
         keystore = Pbkdf2Keystore if self.use_pbkdf2 else ScryptKeystore
         return keystore.encrypt(
@@ -188,20 +189,20 @@ class Credential:
             decryption_key=decryption_key)
 
     def save_signing_keystore(self, password: str, folder: str, timestamp: float,
-                              kdf_salt: Optional[bytes] = None,
-                              decryption_key: Optional[bytes] = None) -> str:
+                              kdf_salt: bytes | None = None,
+                              decryption_key: bytes | None = None) -> str:
         keystore = self.signing_keystore(password, kdf_salt, decryption_key)
-        filefolder = os.path.join(folder, 'keystore-%s-%i.json' % (keystore.path.replace('/', '_'), timestamp))
+        filefolder = os.path.join(folder, f'keystore-{keystore.path.replace("/", "_")}-{int(timestamp)}.json')
         keystore.save(filefolder)
         return filefolder
 
-    def verify_keystore(self, keystore_filefolder: str, password: str, kdf_salt: Optional[bytes] = None,
-                              decryption_key: Optional[bytes] = None) -> bool:
+    def verify_keystore(self, keystore_filefolder: str, password: str, kdf_salt: bytes | None = None,
+                              decryption_key: bytes | None = None) -> bool:
         saved_keystore = Keystore.from_file(keystore_filefolder)
         secret_bytes = saved_keystore.decrypt(password, kdf_salt, decryption_key)
         return self.signing_sk == int.from_bytes(secret_bytes, 'big')
 
-    def _get_keystore_key(self, keystore_filefolder: str, password: str) -> Tuple[bytes, bytes]:
+    def _get_keystore_key(self, keystore_filefolder: str, password: str) -> tuple[bytes, bytes]:
         saved_keystore = Keystore.from_file(keystore_filefolder)
         decryption_key = saved_keystore._get_decryption_key(password=password)
         return (decryption_key, saved_keystore.crypto.kdf.params['salt'])
@@ -230,8 +231,8 @@ class Credential:
             signature=signature,
         )
 
-    def get_bls_to_execution_change_dict(self, validator_index: int) -> Dict[str, bytes]:
-        result_dict: Dict[str, Any] = {}
+    def get_bls_to_execution_change_dict(self, validator_index: int) -> dict[str, bytes]:
+        result_dict: dict[str, Any] = {}
         signed_bls_to_execution_change = self.get_bls_to_execution_change(validator_index)
         message = {
             'validator_index':
@@ -246,7 +247,7 @@ class Credential:
                             + signed_bls_to_execution_change.signature.hex()})  # type: ignore[attr-defined]
 
         # metadata
-        metadata: Dict[str, Any] = {
+        metadata: dict[str, Any] = {
             'network_name': self.chain_setting.NETWORK_NAME,
             'genesis_validators_root': '0x' + self.chain_setting.GENESIS_VALIDATORS_ROOT.hex(),
             'deposit_cli_version': DEPOSIT_CLI_VERSION,
@@ -268,25 +269,25 @@ class Credential:
         return export_exit_transaction_json(folder=folder, signed_exit=signed_voluntary_exit, timestamp=timestamp)
 
 
-def _credential_builder(kwargs: Dict[str, Any]) -> Credential:
+def _credential_builder(kwargs: dict[str, Any]) -> Credential:
     return Credential(**kwargs)
 
 
-def _keystore_exporter(kwargs: Dict[str, Any]) -> str:
+def _keystore_exporter(kwargs: dict[str, Any]) -> str:
     credential: Credential = kwargs.pop('credential')
     return credential.save_signing_keystore(**kwargs)
 
 
-def _deposit_data_builder(credential: Credential) -> Dict[str, bytes]:
+def _deposit_data_builder(credential: Credential) -> dict[str, bytes]:
     return credential.deposit_datum_dict
 
 
-def _keystore_verifier(kwargs: Dict[str, Any]) -> bool:
+def _keystore_verifier(kwargs: dict[str, Any]) -> bool:
     credential: Credential = kwargs.pop('credential')
     return credential.verify_keystore(**kwargs)
 
 
-def _bls_to_execution_change_builder(kwargs: Dict[str, Any]) -> Dict[str, bytes]:
+def _bls_to_execution_change_builder(kwargs: dict[str, Any]) -> dict[str, bytes]:
     credential: Credential = kwargs.pop('credential')
     return credential.get_bls_to_execution_change_dict(**kwargs)
 
@@ -307,9 +308,9 @@ class CredentialList:
                       amounts: list[float],
                       chain_setting: BaseChainSetting,
                       start_index: int,
-                      hex_withdrawal_address: Optional[HexAddress],
-                      compounding: Optional[bool] = False,
-                      use_pbkdf2: Optional[bool] = False) -> 'CredentialList':
+                      hex_withdrawal_address: HexAddress | None,
+                      compounding: bool | None = False,
+                      use_pbkdf2: bool | None = False) -> 'CredentialList':
         if len(amounts) != num_keys:
             raise ValueError(
                 f"The number of keys ({num_keys}) doesn't equal to the corresponding deposit amounts ({len(amounts)})."
@@ -422,7 +423,7 @@ class CredentialList:
                     bls_to_execution_changes.append(bls_to_execution_change)
                     bar.update(1)
 
-        filefolder = os.path.join(folder, 'bls_to_execution_change-%i.json' % time.time())
+        filefolder = os.path.join(folder, f'bls_to_execution_change-{int(time.time())}.json')
         with open(filefolder, 'w', encoding='utf-8', opener=sensitive_opener) as f:
             json.dump(bls_to_execution_changes, f)
         return filefolder

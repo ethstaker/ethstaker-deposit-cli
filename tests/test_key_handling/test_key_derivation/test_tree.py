@@ -13,7 +13,7 @@ from ethstaker_deposit.key_handling.key_derivation.tree import (
 
 test_vector_filefolder = os.path.join(os.getcwd(), 'tests', 'test_key_handling',
                                       'test_key_derivation', 'test_vectors', 'tree_kdf.json')
-with open(test_vector_filefolder, 'r', encoding='utf-8') as f:
+with open(test_vector_filefolder, encoding='utf-8') as f:
     test_vectors = json.load(f)['kdf_tests']
 
 

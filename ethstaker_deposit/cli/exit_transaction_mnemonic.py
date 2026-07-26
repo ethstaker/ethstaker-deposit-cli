@@ -4,7 +4,8 @@ import os
 import time
 import sys
 
-from typing import Any, Sequence, Dict, Optional
+from typing import Any
+from collections.abc import Sequence
 from ethstaker_deposit.cli.existing_mnemonic import load_mnemonic_arguments_decorator
 from ethstaker_deposit.credentials import Credential
 from ethstaker_deposit.exceptions import ValidationError
@@ -35,16 +36,16 @@ from ethstaker_deposit.utils.validation import (
 from ethstaker_deposit.utils.terminal import clear_terminal
 
 
-def _credential_builder(kwargs: Dict[str, Any]) -> Credential:
+def _credential_builder(kwargs: dict[str, Any]) -> Credential:
     return Credential(**kwargs)
 
 
-def _exit_exporter(kwargs: Dict[str, Any]) -> str:
+def _exit_exporter(kwargs: dict[str, Any]) -> str:
     credential: Credential = kwargs.pop('credential')
     return credential.save_exit_transaction(**kwargs)
 
 
-def _exit_verifier(kwargs: Dict[str, Any]) -> bool:
+def _exit_verifier(kwargs: dict[str, Any]) -> bool:
     credential: Credential = kwargs.pop('credential')
     kwargs['pubkey'] = credential.signing_pk.hex()
     kwargs['chain_setting'] = credential.chain_setting
@@ -120,7 +121,7 @@ def exit_transaction_mnemonic(
         validator_indices: Sequence[int],
         epoch: int,
         output_folder: str,
-        devnet_chain_setting: Optional[BaseChainSetting],
+        devnet_chain_setting: BaseChainSetting | None,
         **kwargs: Any) -> None:
 
     folder = os.path.join(output_folder, DEFAULT_EXIT_TRANSACTION_FOLDER_NAME)

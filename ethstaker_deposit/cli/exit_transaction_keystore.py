@@ -2,7 +2,7 @@ import click
 import os
 import sys
 import time
-from typing import Any, Optional
+from typing import Any
 
 from ethstaker_deposit.exceptions import ValidationError
 from ethstaker_deposit.utils.exit_transaction import exit_transaction_generation, export_exit_transaction_json
@@ -114,7 +114,7 @@ def exit_transaction_keystore(
         validator_index: int,
         epoch: int,
         output_folder: str,
-        devnet_chain_setting: Optional[BaseChainSetting],
+        devnet_chain_setting: BaseChainSetting | None,
         **kwargs: Any) -> None:
     try:
         secret_bytes = keystore.decrypt(keystore_password)

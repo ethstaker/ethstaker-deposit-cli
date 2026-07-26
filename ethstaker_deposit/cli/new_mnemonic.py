@@ -59,7 +59,7 @@ def new_mnemonic(ctx: click.Context, mnemonic_language: str, **kwargs: Any) -> N
             + load_text(['msg_mnemonic_clipboard_warning'])
             + '\n********************'
         )
-        click.echo('\n\n%s\n\n' % mnemonic)
+        click.echo(f'\n\n{mnemonic}\n\n')
         click.pause(load_text(['msg_press_any_key']))
 
         clear_terminal()

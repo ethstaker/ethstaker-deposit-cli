@@ -74,7 +74,7 @@ def test_partial_deposit(amount: str) -> None:
     assert len(deposit_files) == 1
 
     deposit_file = deposit_files[0]
-    with open(partial_deposit_folder + '/' + deposit_file, 'r', encoding='utf-8') as f:
+    with open(partial_deposit_folder + '/' + deposit_file, encoding='utf-8') as f:
         deposits_dict = json.load(f)
     for deposit in deposits_dict:
         withdrawal_credentials = bytes.fromhex(deposit['withdrawal_credentials'])
@@ -142,7 +142,7 @@ def test_gnosis_partial_deposit(amount: str) -> None:
     assert len(deposit_files) == 1
 
     deposit_file = deposit_files[0]
-    with open(partial_deposit_folder + '/' + deposit_file, 'r', encoding='utf-8') as f:
+    with open(partial_deposit_folder + '/' + deposit_file, encoding='utf-8') as f:
         deposits_dict = json.load(f)
     for deposit in deposits_dict:
         withdrawal_credentials = bytes.fromhex(deposit['withdrawal_credentials'])
@@ -201,7 +201,7 @@ def test_partial_deposit_compounding() -> None:
     assert len(deposit_files) == 1
 
     deposit_file = deposit_files[0]
-    with open(partial_deposit_folder + '/' + deposit_file, 'r', encoding='utf-8') as f:
+    with open(partial_deposit_folder + '/' + deposit_file, encoding='utf-8') as f:
         deposits_dict = json.load(f)
     for deposit in deposits_dict:
         withdrawal_credentials = bytes.fromhex(deposit['withdrawal_credentials'])
@@ -260,7 +260,7 @@ def test_gnosis_partial_deposit_compounding() -> None:
     assert len(deposit_files) == 1
 
     deposit_file = deposit_files[0]
-    with open(partial_deposit_folder + '/' + deposit_file, 'r', encoding='utf-8') as f:
+    with open(partial_deposit_folder + '/' + deposit_file, encoding='utf-8') as f:
         deposits_dict = json.load(f)
     for deposit in deposits_dict:
         withdrawal_credentials = bytes.fromhex(deposit['withdrawal_credentials'])
@@ -332,10 +332,10 @@ def test_partial_deposit_matches_existing_mnemonic_deposit() -> None:
 
     assert len(partial_deposit_files) == 1
 
-    with open(os.path.join(validator_key_folder, deposit_files[0]), 'r', encoding='utf-8') as file1:
+    with open(os.path.join(validator_key_folder, deposit_files[0]), encoding='utf-8') as file1:
         deposit_contents = file1.read()
 
-    with open(os.path.join(partial_deposit_folder, partial_deposit_files[0]), 'r', encoding='utf-8') as file2:
+    with open(os.path.join(partial_deposit_folder, partial_deposit_files[0]), encoding='utf-8') as file2:
         partial_deposit_contents = file2.read()
 
     assert deposit_contents == partial_deposit_contents
@@ -403,10 +403,10 @@ def test_partial_deposit_does_not_match_if_amount_differs() -> None:
 
     assert len(partial_deposit_files) == 1
 
-    with open(os.path.join(validator_key_folder, deposit_files[0]), 'r', encoding='utf-8') as file1:
+    with open(os.path.join(validator_key_folder, deposit_files[0]), encoding='utf-8') as file1:
         deposit_contents = file1.read()
 
-    with open(os.path.join(partial_deposit_folder, partial_deposit_files[0]), 'r', encoding='utf-8') as file2:
+    with open(os.path.join(partial_deposit_folder, partial_deposit_files[0]), encoding='utf-8') as file2:
         partial_deposit_contents = file2.read()
 
     assert deposit_contents != partial_deposit_contents

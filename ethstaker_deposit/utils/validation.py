@@ -4,7 +4,8 @@ import json
 import re
 import sys
 import concurrent.futures
-from typing import Any, Dict, Sequence, Optional
+from typing import Any
+from collections.abc import Sequence
 from jsonschema.exceptions import ValidationError as JSValidationError
 
 from click.types import BoolParamType
@@ -71,7 +72,7 @@ def verify_deposit_data_json(filefolder: str, credentials: Sequence[Credential],
     """
     all_valid_deposits = True
     deposit_json = []
-    with open(filefolder, 'r', encoding='utf-8') as f:
+    with open(filefolder, encoding='utf-8') as f:
         deposit_json = json.load(f)
 
     with click.progressbar(length=len(deposit_json),
@@ -87,7 +88,7 @@ def verify_deposit_data_json(filefolder: str, credentials: Sequence[Credential],
     return all_valid_deposits
 
 
-def validate_deposit(deposit_data_dict: Dict[str, Any], chain_setting: BaseChainSetting,
+def validate_deposit(deposit_data_dict: dict[str, Any], chain_setting: BaseChainSetting,
                      credential: Credential = None) -> bool:
     '''
     Checks whether a deposit is valid based on the staking deposit rules.
@@ -197,7 +198,7 @@ def validate_withdrawal_address(cts: click.Context, param: Any, address: str, re
         raise ValidationError(load_text(['err_invalid_ECDSA_hex_addr_checksum']))
 
     normalized_address = to_normalized_address(address)
-    click.echo('\n%s\n' % load_text(['msg_ECDSA_hex_addr_withdrawal']))
+    click.echo(f'\n{load_text(["msg_ECDSA_hex_addr_withdrawal"])}\n')
     return normalized_address
 
 
@@ -213,7 +214,7 @@ def validate_yesno(ctx: click.Context, param: Any, value: str) -> bool:
         raise ValidationError(load_text(['err_invalid_bool_value']))
 
 
-def validate_deposit_amount(amount: str, **kwargs: Dict[str, Any]) -> int:
+def validate_deposit_amount(amount: str, **kwargs: dict[str, Any]) -> int:
     '''
     Verifies that `amount` is a valid gwei denomination and 1 ether <= amount <= MAX_DEPOSIT_AMOUNT gwei
     Amount is expected to be in ether and the returned value will be converted to gwei and represented as an int
@@ -255,7 +256,7 @@ def validate_deposit_amount(amount: str, **kwargs: Dict[str, Any]) -> int:
 # BLSToExecutionChange
 #
 
-def _bls_to_execution_change_validator(kwargs: Dict[str, Any]) -> bool:
+def _bls_to_execution_change_validator(kwargs: dict[str, Any]) -> bool:
     return validate_bls_to_execution_change(**kwargs)
 
 
@@ -269,7 +270,7 @@ def verify_bls_to_execution_change_json(filefolder: str,
     Validate every BLSToExecutionChange found in the bls_to_execution_change JSON file folder.
     """
     btec_json = []
-    with open(filefolder, 'r', encoding='utf-8') as f:
+    with open(filefolder, encoding='utf-8') as f:
         btec_json = json.load(f)
 
     all_valid_bls_changes = True
@@ -293,7 +294,7 @@ def verify_bls_to_execution_change_json(filefolder: str,
     return all_valid_bls_changes
 
 
-def validate_bls_to_execution_change(btec_dict: Dict[str, Any],
+def validate_bls_to_execution_change(btec_dict: dict[str, Any],
                                      credential: Credential,
                                      *,
                                      input_validator_index: int,
@@ -414,7 +415,7 @@ def validate_keystore_file(file_path: str) -> Keystore:
 
 
 def verify_signed_exit_json(file_folder: str, pubkey: str, chain_setting: BaseChainSetting) -> bool:
-    with open(file_folder, 'r', encoding='utf-8') as f:
+    with open(file_folder, encoding='utf-8') as f:
         deposit_json: SignedVoluntaryExit = json.load(f)
         signature = deposit_json["signature"]
         message = deposit_json["message"]
@@ -450,7 +451,7 @@ def validate_signed_exit(validator_index: str,
 def verify_bls_to_execution_change_keystore_json(file_folder: str,
                                                  pubkey: str,
                                                  chain_setting: BaseChainSetting) -> bool:
-    with open(file_folder, 'r', encoding='utf-8') as f:
+    with open(file_folder, encoding='utf-8') as f:
         deposit_json: SignedBLSToExecutionChangeKeystore = json.load(f)
         signature = deposit_json["signature"]
         message = deposit_json["message"]
@@ -486,7 +487,7 @@ def validate_bls_to_execution_change_keystore(validator_index: str,
 # Devnet Chain Setting Validation
 #
 
-def validate_devnet_chain_setting(ctx: click.Context, param: Any, value: Optional[str]) -> Optional[BaseChainSetting]:
+def validate_devnet_chain_setting(ctx: click.Context, param: Any, value: str | None) -> BaseChainSetting | None:
     if value is None:
         return None
 
@@ -494,7 +495,7 @@ def validate_devnet_chain_setting(ctx: click.Context, param: Any, value: Optiona
     trimmed_value = value[:400]
 
     if validate_devnet_chain_setting_json(trimmed_value):
-        click.echo('\n%s\n' % load_text(['arg_devnet_chain_setting_warning']))
+        click.echo(f'\n{load_text(["arg_devnet_chain_setting_warning"])}\n')
         devnet_chain_setting_dict = json.loads(trimmed_value)
         chain_setting = get_devnet_chain_setting(
             network_name=devnet_chain_setting_dict['network_name'],

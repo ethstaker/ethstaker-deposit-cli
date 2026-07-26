@@ -2,7 +2,7 @@ import click
 import os
 import sys
 import time
-from typing import Any, Optional
+from typing import Any
 
 from eth_typing import HexAddress
 
@@ -129,7 +129,7 @@ def generate_bls_to_execution_change_keystore(
         validator_index: int,
         withdrawal_address: HexAddress,
         output_folder: str,
-        devnet_chain_setting: Optional[BaseChainSetting],
+        devnet_chain_setting: BaseChainSetting | None,
         **kwargs: Any) -> None:
     try:
         secret_bytes = keystore.decrypt(keystore_password)

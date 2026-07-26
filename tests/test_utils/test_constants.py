@@ -1,8 +1,4 @@
 import pytest
-from typing import (
-    Dict,
-    List,
-)
 
 from ethstaker_deposit.utils.constants import _add_index_to_options
 
@@ -14,5 +10,5 @@ from ethstaker_deposit.utils.constants import _add_index_to_options
          {'a': ['1. a', '1', 'a'], 'b': ['2. b', '2', 'b'], 'c': ['3. c', '3', 'c']})
     ]
 )
-def test_add_index_to_options(arg: Dict[str, List[str]], test: Dict[str, List[str]]) -> None:
+def test_add_index_to_options(arg: dict[str, list[str]], test: dict[str, list[str]]) -> None:
     assert _add_index_to_options(arg) == test

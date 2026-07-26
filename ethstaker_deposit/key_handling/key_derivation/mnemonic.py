@@ -2,10 +2,7 @@ from collections import defaultdict
 import os
 from unicodedata import normalize
 from secrets import randbits
-from typing import (
-    Optional,
-    Sequence,
-)
+from collections.abc import Sequence
 
 from ethstaker_deposit.exceptions import MultiLanguageError
 from ethstaker_deposit.utils.constants import (
@@ -27,7 +24,7 @@ def _get_word_list(language: str, path: str) -> Sequence[str]:
     Ref: https://github.com/bitcoin/bips/blob/master/bip-0039/bip-0039-wordlists.md
     """
     path = resource_path(path)
-    dirty_list = open(os.path.join(path, '%s.txt' % language), encoding='utf-8').readlines()
+    dirty_list = open(os.path.join(path, f'{language}.txt'), encoding='utf-8').readlines()
     return [word.replace('\n', '') for word in dirty_list]
 
 
@@ -44,7 +41,7 @@ def _word_to_index(word_list: Sequence[str], word: str) -> int:
     try:
         return word_list.index(word)
     except ValueError:
-        raise ValueError('Word %s not in BIP39 word-list' % word)
+        raise ValueError(f'Word {word} not in BIP39 word-list')
 
 
 def _uint11_array_to_uint(uint11_array: Sequence[int]) -> int:
@@ -111,7 +108,7 @@ def abbreviate_words(words: Sequence[str]) -> list[str]:
     return [normalize('NFKC', word)[:4] for word in words]
 
 
-def reconstruct_mnemonic(mnemonic: str, words_path: str, language: Optional[str] = None) -> Optional[str]:
+def reconstruct_mnemonic(mnemonic: str, words_path: str, language: str | None = None) -> str | None:
     """
     Given a mnemonic, a reconstructed the full version (in case the abbreviated words were used)
     then verify it against its own checksum
@@ -150,7 +147,7 @@ def reconstruct_mnemonic(mnemonic: str, words_path: str, language: Optional[str]
     return reconstructed_mnemonic
 
 
-def get_mnemonic(*, language: str, words_path: str, entropy: Optional[bytes] = None) -> str:
+def get_mnemonic(*, language: str, words_path: str, entropy: bytes | None = None) -> str:
     """
     Return a mnemonic string in a given `language` based on `entropy` via the calculated checksum.
 

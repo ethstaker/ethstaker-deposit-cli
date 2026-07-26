@@ -65,7 +65,7 @@ def test_generate_mnemonic_to_file(language) -> None:
 
     assert os.path.exists(output_file)
 
-    with open(output_file, 'r', encoding='utf-8') as f:
+    with open(output_file, encoding='utf-8') as f:
         output_mnemonic = f.read(2000).strip()
 
     assert reconstruct_mnemonic(output_mnemonic, WORD_LISTS_PATH, language) == output_mnemonic

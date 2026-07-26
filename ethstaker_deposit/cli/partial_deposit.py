@@ -7,7 +7,7 @@ import time
 from eth_typing import HexAddress
 from eth_utils import to_canonical_address
 from py_ecc.bls import G2ProofOfPossession as bls
-from typing import Any, Optional
+from typing import Any
 
 from ethstaker_deposit.cli.generate_keys import get_default_amount, get_amount_prompt_from_template
 from ethstaker_deposit.key_handling.keystore import Keystore
@@ -159,7 +159,7 @@ def partial_deposit(
         withdrawal_address: HexAddress,
         compounding: bool,
         output_folder: str,
-        devnet_chain_setting: Optional[BaseChainSetting],
+        devnet_chain_setting: BaseChainSetting | None,
         **kwargs: Any) -> None:
     try:
         secret_bytes = keystore.decrypt(keystore_password)
@@ -213,7 +213,7 @@ def partial_deposit(
 
     click.echo(load_text(['msg_verify_partial_deposit']))
     deposit_json = []
-    with open(saved_folder, 'r', encoding='utf-8') as f:
+    with open(saved_folder, encoding='utf-8') as f:
         deposit_json = json.load(f)
 
     if (not validate_deposit(deposit_json[0], chain_setting)):

@@ -1,12 +1,8 @@
 import os
 import click
 import concurrent.futures
-from typing import (
-    Any,
-    Sequence,
-    Dict,
-    Optional
-)
+from typing import Any
+from collections.abc import Sequence
 
 from eth_typing import HexAddress
 
@@ -53,7 +49,7 @@ from .existing_mnemonic import (
 )
 
 
-def _validate_credentials_match(kwargs: Dict[str, Any]) -> Optional[ValidationError]:
+def _validate_credentials_match(kwargs: dict[str, Any]) -> ValidationError | None:
     credential: Credential = kwargs.pop('credential')
     bls_withdrawal_credentials: bytes = kwargs.pop('bls_withdrawal_credentials')
 
@@ -152,7 +148,7 @@ def generate_bls_to_execution_change(
         validator_indices: Sequence[int],
         bls_withdrawal_credentials_list: Sequence[bytes],
         withdrawal_address: HexAddress,
-        devnet_chain_setting: Optional[BaseChainSetting],
+        devnet_chain_setting: BaseChainSetting | None,
         **kwargs: Any) -> None:
     # Generate folder
     bls_to_execution_changes_folder = os.path.join(
@@ -167,8 +163,8 @@ def generate_bls_to_execution_change(
 
     if len(validator_indices) != len(bls_withdrawal_credentials_list):
         raise ValueError(
-            "The size of `validator_indices` (%d) should be as same as `bls_withdrawal_credentials_list` (%d)."
-            % (len(validator_indices), len(bls_withdrawal_credentials_list))
+            f"The size of `validator_indices` ({len(validator_indices)}) should be the same as "
+            f"`bls_withdrawal_credentials_list` ({len(bls_withdrawal_credentials_list)})."
         )
 
     num_validators = len(validator_indices)

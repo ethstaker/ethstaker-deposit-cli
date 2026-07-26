@@ -1,10 +1,7 @@
 import click
 import pyperclip
-from typing import (
-    Any,
-    Callable,
-    Optional,
-)
+from typing import Any
+from collections.abc import Callable
 
 from ethstaker_deposit.exceptions import MultiLanguageError, ValidationError
 from ethstaker_deposit.key_handling.key_derivation.mnemonic import (
@@ -75,7 +72,7 @@ def load_mnemonic_arguments_decorator(function: Callable[..., Any]) -> Callable[
     return function
 
 
-def validate_mnemonic(mnemonic: str, language: Optional[str] = None) -> str:
+def validate_mnemonic(mnemonic: str, language: str | None = None) -> str:
     try:
         reconstructed_mnemonic = reconstruct_mnemonic(mnemonic, WORD_LISTS_PATH, language)
     except MultiLanguageError as e:
@@ -94,7 +91,7 @@ def validate_mnemonic(mnemonic: str, language: Optional[str] = None) -> str:
         raise ValidationError(load_text(['err_invalid_mnemonic']))
 
 
-def validate_mnemonic_language(ctx: click.Context, param: Any, language: str) -> Optional[str]:
+def validate_mnemonic_language(ctx: click.Context, param: Any, language: str) -> str | None:
     return fuzzy_reverse_dict_lookup(language, MNEMONIC_LANG_OPTIONS) if language else None
 
 

@@ -63,38 +63,33 @@ def generate_mnemonic(ctx: click.Context, mnemonic_language: str, **kwargs: Any)
             with open(filepath, 'w', encoding='utf-8', opener=sensitive_opener) as f:
                 f.write(mnemonic)
             if not config.non_interactive:
-                click.echo('\n%s %s\n' % (load_text(['msg_mnemonic_file_written']), filepath))
+                click.echo(f'\n{load_text(["msg_mnemonic_file_written"])} {filepath}\n')
         except FileNotFoundError as e:
-            click.echo("\n%s\n%s\n" % (
-                load_text(['arg_output_file', 'err_not_found'], func='generate_mnemonic'),
-                str(e)), err=True)
+            err_msg = load_text(['arg_output_file', 'err_not_found'], func='generate_mnemonic')
+            click.echo(f"\n{err_msg}\n{e}\n", err=True)
             sys.exit(1)
         except PermissionError as e:
-            click.echo("\n%s\n%s\n" % (
-                load_text(['arg_output_file', 'err_perm_denied'], func='generate_mnemonic'),
-                str(e)), err=True)
+            err_msg = load_text(['arg_output_file', 'err_perm_denied'], func='generate_mnemonic')
+            click.echo(f"\n{err_msg}\n{e}\n", err=True)
             sys.exit(1)
         except IsADirectoryError as e:
-            click.echo("\n%s\n%s\n" % (
-                load_text(['arg_output_file', 'err_directory_not_file'], func='generate_mnemonic'),
-                str(e)), err=True)
+            err_msg = load_text(['arg_output_file', 'err_directory_not_file'], func='generate_mnemonic')
+            click.echo(f"\n{err_msg}\n{e}\n", err=True)
             sys.exit(1)
         except OSError as e:
-            click.echo("\n%s\n%s\n" % (
-                load_text(['arg_output_file', 'err_os',], func='generate_mnemonic'),
-                str(e)), err=True)
+            err_msg = load_text(['arg_output_file', 'err_os'], func='generate_mnemonic')
+            click.echo(f"\n{err_msg}\n{e}\n", err=True)
             sys.exit(1)
         except Exception as e:
-            click.echo("\n%s\n%s\n" % (
-                load_text(['arg_output_file', 'err_exception'], func='generate_mnemonic'),
-                str(e)), err=True)
+            err_msg = load_text(['arg_output_file', 'err_exception'], func='generate_mnemonic')
+            click.echo(f"\n{err_msg}\n{e}\n", err=True)
             sys.exit(1)
 
     else:
         # We are displaying the mnemonic on screen
         if not config.non_interactive:
-            click.echo('\n%s\n' % load_text(['msg_mnemonic_presentation']))
+            click.echo(f'\n{load_text(["msg_mnemonic_presentation"])}\n')
         click.echo(mnemonic)
 
     if not config.non_interactive:
-        click.echo('\n%s' % load_text(['msg_mnemonic_next']))
+        click.echo(f'\n{load_text(["msg_mnemonic_next"])}')

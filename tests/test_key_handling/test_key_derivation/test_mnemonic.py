@@ -2,9 +2,7 @@ import os
 from ethstaker_deposit.exceptions import MultiLanguageError
 import pytest
 import json
-from typing import (
-    Sequence,
-)
+from collections.abc import Sequence
 
 from ethstaker_deposit.utils.constants import (
     MNEMONIC_LANG_OPTIONS,
@@ -25,11 +23,11 @@ all_languages = MNEMONIC_LANG_OPTIONS.keys()
 
 test_vector_filefolder = os.path.join('tests', 'test_key_handling',
                                       'test_key_derivation', 'test_vectors', 'mnemonic.json')
-with open(test_vector_filefolder, 'r', encoding='utf-8') as f:
+with open(test_vector_filefolder, encoding='utf-8') as f:
     test_vectors = json.load(f)
 multi_lang_mnemonic_filefolder = os.path.join('tests', 'test_key_handling',
                                               'test_key_derivation', 'test_vectors', 'multi_lang_mnemonic.json')
-with open(multi_lang_mnemonic_filefolder, 'r', encoding='utf-8') as f:
+with open(multi_lang_mnemonic_filefolder, encoding='utf-8') as f:
     multi_lang_mnemonics = json.load(f)
 
 

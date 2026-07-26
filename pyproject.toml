@@ -17,7 +17,7 @@ preview = true
 line-length = 120
 
 [tool.ruff.lint]
-select = ["E", "W", "F"]
+select = ["E", "W", "F", "UP"]
 
 [project]
 name = "ethstaker_deposit"

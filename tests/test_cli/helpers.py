@@ -86,5 +86,5 @@ def prepare_testing_folder(os_ref, testing_folder_name='TESTING_TEMP_FOLDER'):
 
 
 def read_json_file(path: str, file_name: str):
-    with open(os.path.join(path, file_name), 'r', encoding='utf-8') as f:
+    with open(os.path.join(path, file_name), encoding='utf-8') as f:
         return json.load(f)

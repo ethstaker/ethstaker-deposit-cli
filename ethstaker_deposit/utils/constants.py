@@ -1,7 +1,4 @@
 import os
-from typing import (
-    Dict,
-)
 
 
 ZERO_BYTES32 = b'\x00' * 32
@@ -35,7 +32,7 @@ CONTEXT_REQUIRING_PROMPTS = [
 ]
 
 
-def _add_index_to_options(d: Dict[str, list[str]]) -> Dict[str, list[str]]:
+def _add_index_to_options(d: dict[str, list[str]]) -> dict[str, list[str]]:
     '''
     Adds the (1 indexed) index (in the dict) to the first element of value list.
     eg. {'en': ['English', 'en']} -> {'en': ['1. English', '1', 'English', 'en']}
@@ -43,7 +40,7 @@ def _add_index_to_options(d: Dict[str, list[str]]) -> Dict[str, list[str]]:
     '''
     keys = list(d.keys())  # Force copy dictionary keys top prevent iteration over changing dict
     for i, key in enumerate(keys):
-        d.update({key: ['%s. %s' % (i + 1, d[key][0]), str(i + 1)] + d[key]})
+        d.update({key: [f'{i + 1}. {d[key][0]}', str(i + 1)] + d[key]})
     return d
 
 

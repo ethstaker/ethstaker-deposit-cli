@@ -1,6 +1,6 @@
 import json
 import os
-from typing import Any, Dict
+from typing import Any
 from py_ecc.bls import G2ProofOfPossession as bls
 
 from ethstaker_deposit.settings import BaseChainSetting
@@ -42,7 +42,7 @@ def exit_transaction_generation(
 
 
 def export_exit_transaction_json(folder: str, signed_exit: SignedVoluntaryExit, timestamp: float) -> str:
-    signed_exit_json: Dict[str, Any] = {}
+    signed_exit_json: dict[str, Any] = {}
     message = {
         'epoch': str(signed_exit.message.epoch),  # type: ignore[attr-defined]
         'validator_index': str(signed_exit.message.validator_index),  # type: ignore[attr-defined]
@@ -52,10 +52,7 @@ def export_exit_transaction_json(folder: str, signed_exit: SignedVoluntaryExit, 
 
     filefolder = os.path.join(
         folder,
-        'signed_exit_transaction-%s-%i.json' % (
-            signed_exit.message.validator_index,  # type: ignore[attr-defined]
-            timestamp,
-        )
+        f'signed_exit_transaction-{signed_exit.message.validator_index}-{int(timestamp)}.json'  # type: ignore[attr-defined]
     )
 
     with open(filefolder, 'w', encoding='utf-8', opener=sensitive_opener) as f:

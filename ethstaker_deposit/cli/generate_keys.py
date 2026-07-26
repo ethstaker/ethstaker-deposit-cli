@@ -1,11 +1,8 @@
 import click
 import os
 import time
-from typing import (
-    Any,
-    Callable,
-    Optional,
-)
+from typing import Any
+from collections.abc import Callable
 
 from eth_typing import HexAddress
 from ethstaker_deposit.credentials import (
@@ -189,7 +186,7 @@ def get_default_amount() -> str:
 def generate_keys(ctx: click.Context, validator_start_index: int,
                   num_validators: int, folder: str, chain: str, keystore_password: str,
                   withdrawal_address: HexAddress, compounding: bool, amount: float, pbkdf2: bool,
-                  devnet_chain_setting: Optional[BaseChainSetting], **kwargs: Any) -> None:
+                  devnet_chain_setting: BaseChainSetting | None, **kwargs: Any) -> None:
     mnemonic = ctx.obj['mnemonic']
     mnemonic_password = ctx.obj['mnemonic_password']
 

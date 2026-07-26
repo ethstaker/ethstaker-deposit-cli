@@ -1,4 +1,4 @@
-from typing import Dict, NamedTuple, Optional
+from typing import NamedTuple
 from eth_utils import decode_hex
 
 from ethstaker_deposit import __version__
@@ -10,7 +10,7 @@ class BaseChainSetting(NamedTuple):
     NETWORK_NAME: str
     GENESIS_FORK_VERSION: bytes
     EXIT_FORK_VERSION: bytes  # capella fork version for voluntary exits (EIP-7044)
-    GENESIS_VALIDATORS_ROOT: Optional[bytes] = None
+    GENESIS_VALIDATORS_ROOT: bytes | None = None
     MULTIPLIER: int = 1
     MIN_ACTIVATION_AMOUNT: float = 32
     MIN_DEPOSIT_AMOUNT: float = 1
@@ -81,7 +81,7 @@ ChiadoSetting = BaseChainSetting(
     MIN_DEPOSIT_AMOUNT=0.03125)
 
 
-ALL_CHAINS: Dict[str, BaseChainSetting] = {
+ALL_CHAINS: dict[str, BaseChainSetting] = {
     MAINNET: MainnetSetting,
     SEPOLIA: SepoliaSetting,
     HOODI: HoodiSetting,
@@ -100,10 +100,10 @@ def get_chain_setting(chain_name: str = MAINNET) -> BaseChainSetting:
 def get_devnet_chain_setting(network_name: str,
                              genesis_fork_version: str,
                              exit_fork_version: str,
-                             genesis_validator_root: Optional[str],
-                             multiplier: Optional[int] = 1,
-                             min_activation_amount: Optional[float] = 32,
-                             min_deposit_amount: Optional[float] = 1) -> BaseChainSetting:
+                             genesis_validator_root: str | None,
+                             multiplier: int | None = 1,
+                             min_activation_amount: float | None = 32,
+                             min_deposit_amount: float | None = 1) -> BaseChainSetting:
 
     return BaseChainSetting(
         NETWORK_NAME=network_name,
