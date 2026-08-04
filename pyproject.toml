@@ -50,7 +50,7 @@ dependencies = [
     "referencing==0.37.0",
     "rpds-py==0.30.0",
 ]
-requires-python = ">=3.10,<4"
+requires-python = ">=3.11,<4"
 dynamic = ["version"]
 
 [project.optional-dependencies]
@@ -59,7 +59,6 @@ test = [
     "mypy==2.3.0",
     "pytest==9.1.1",
     "pytest-asyncio==1.4.0",
-    "backports-asyncio-runner==1.2.0 ; python_version < '3.11'",
     "coverage==7.15.2",
     "tomli==2.4.1",
     "iniconfig==2.3.0",
