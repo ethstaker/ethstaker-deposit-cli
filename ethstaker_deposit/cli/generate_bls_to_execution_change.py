@@ -18,30 +18,22 @@ from ethstaker_deposit.utils.validation import (
     validate_int_range,
     verify_bls_to_execution_change_json,
     validate_validator_indices,
-    validate_devnet_chain_setting,
 )
 from ethstaker_deposit.utils.constants import (
     DEFAULT_BLS_TO_EXECUTION_CHANGES_FOLDER_NAME,
     ETH2GWEI
 )
 from ethstaker_deposit.utils.click import (
+    chain_arguments_decorator,
     captive_prompt_callback,
-    choice_prompt_func,
     jit_option,
     prompt_if_none,
-    prompt_if_other_is_none,
 )
 from ethstaker_deposit.exceptions import ValidationError
-from ethstaker_deposit.utils.intl import (
-    closest_match,
-    load_text,
-)
+from ethstaker_deposit.utils.intl import load_text
 from ethstaker_deposit.utils import config
 from ethstaker_deposit.utils.terminal import clear_terminal
 from ethstaker_deposit.settings import (
-    MAINNET,
-    ALL_CHAIN_KEYS,
-    get_chain_setting,
     BaseChainSetting,
 )
 from .existing_mnemonic import (
@@ -72,21 +64,7 @@ FUNC_NAME = 'generate_bls_to_execution_change'
     param_decls='--bls_to_execution_changes_folder',
     type=click.Path(exists=True, file_okay=False, dir_okay=True),
 )
-@jit_option(
-    callback=captive_prompt_callback(
-        lambda x, _: closest_match(x, ALL_CHAIN_KEYS),
-        choice_prompt_func(
-            lambda: load_text(['arg_chain', 'prompt'], func=FUNC_NAME),
-            ALL_CHAIN_KEYS
-        ),
-        prompt_if=prompt_if_other_is_none('devnet_chain_setting'),
-        default=MAINNET,
-    ),
-    default=MAINNET,
-    help=lambda: load_text(['arg_chain', 'help'], func=FUNC_NAME),
-    param_decls='--chain',
-    prompt=False,  # the callback handles the prompt
-)
+@chain_arguments_decorator(FUNC_NAME, __file__, 'arg_chain')
 @load_mnemonic_arguments_decorator
 @jit_option(
     callback=captive_prompt_callback(
@@ -130,25 +108,17 @@ FUNC_NAME = 'generate_bls_to_execution_change'
     param_decls=['--withdrawal_address'],
     prompt=False,  # the callback handles the prompt
 )
-@jit_option(
-    callback=validate_devnet_chain_setting,
-    default=None,
-    help=lambda: load_text(['arg_devnet_chain_setting', 'help'], func=FUNC_NAME),
-    param_decls='--devnet_chain_setting',
-    is_eager=True,
-)
 @click.pass_context
 def generate_bls_to_execution_change(
         ctx: click.Context,
         bls_to_execution_changes_folder: str,
-        chain: str,
+        chain_setting: BaseChainSetting,
         mnemonic: str,
         mnemonic_password: str,
         validator_start_index: int,
         validator_indices: Sequence[int],
         bls_withdrawal_credentials_list: Sequence[bytes],
         withdrawal_address: HexAddress,
-        devnet_chain_setting: BaseChainSetting | None,
         **kwargs: Any) -> None:
     # Generate folder
     bls_to_execution_changes_folder = os.path.join(
@@ -157,9 +127,6 @@ def generate_bls_to_execution_change(
     )
     if not os.path.exists(bls_to_execution_changes_folder):
         os.mkdir(bls_to_execution_changes_folder)
-
-    # Get chain setting
-    chain_setting = devnet_chain_setting if devnet_chain_setting is not None else get_chain_setting(chain)
 
     if len(validator_indices) != len(bls_withdrawal_credentials_list):
         raise ValueError(

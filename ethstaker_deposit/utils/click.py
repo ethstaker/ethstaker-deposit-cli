@@ -3,13 +3,21 @@ from typing import Any
 from collections.abc import Callable, Sequence
 
 from ethstaker_deposit.exceptions import ValidationError
-from ethstaker_deposit.settings import get_chain_setting
+from ethstaker_deposit.settings import (
+    ALL_CHAIN_KEYS,
+    MAINNET,
+    BaseChainSetting,
+    get_chain_setting,
+)
 from ethstaker_deposit.utils import config
 # To work around an issue with disabling language prompt and CLIRunner() isolation
 from ethstaker_deposit.utils.constants import CONTEXT_REQUIRING_PROMPTS, INTL_LANG_OPTIONS
 from ethstaker_deposit.utils.intl import (
+    closest_match,
     get_first_options,
+    load_text,
 )
+from ethstaker_deposit.utils.validation import validate_devnet_chain_setting
 
 
 def _value_of(f: Callable[[], Any] | Any) -> Any:
@@ -59,12 +67,16 @@ class JITOption(click.Option):
     def get_default(self, ctx: click.Context, call: bool = True) -> Any:
         self.default = _value_of(self.callable_default)
         if self.name == "amount":
-            chain = ctx.params.get('chain', 'mainnet')
-            devnet_chain_setting = ctx.params.get('devnet_chain_setting', None)
-            if devnet_chain_setting is not None:
-                chain_setting = devnet_chain_setting
-            else:
-                chain_setting = get_chain_setting(chain)
+            chain_setting = ctx.params.get('chain_setting')
+            if chain_setting is None:
+                chain = ctx.params.get('chain', 'mainnet')
+                devnet_chain_setting = ctx.params.get('devnet_chain_setting', None)
+                if devnet_chain_setting is not None:
+                    chain_setting = devnet_chain_setting
+                elif not isinstance(chain, BaseChainSetting):
+                    chain_setting = get_chain_setting(chain)
+                else:
+                    chain_setting = chain
             self.default = chain_setting.MIN_ACTIVATION_AMOUNT
         return super().get_default(ctx, call)
 
@@ -84,6 +96,58 @@ def jit_option(*args: Any, **kwargs: Any) -> Callable[[Any], Any]:
         click.decorators._param_memo(f, JITOption(*args, **kwargs))
         return f
 
+    return decorator
+
+
+def chain_arguments_decorators(
+    func: str = 'generate_keys_arguments_decorator', file_path: str = '',
+        chain_text_key: str = 'chain') -> list[Callable[[Any], Any]]:
+    chain_prompt_callback = captive_prompt_callback(
+        lambda value, _: get_chain_setting(closest_match(value, ALL_CHAIN_KEYS)),
+        choice_prompt_func(
+            lambda: load_text([chain_text_key, 'prompt'], file_path=file_path, func=func),
+            ALL_CHAIN_KEYS,
+        ),
+        prompt_if=prompt_if_other_is_none('devnet_chain_setting'),
+        default=MAINNET,
+    )
+
+    def resolve_chain(ctx: click.Context, param: Any, value: str) -> BaseChainSetting:
+        named_chain = chain_prompt_callback(ctx, param, value)
+        return ctx.params.get('devnet_chain_setting') or named_chain
+
+    return [
+        jit_option(
+            callback=validate_devnet_chain_setting,
+            default=None,
+            help=lambda: load_text(['arg_devnet_chain_setting', 'help'], file_path=file_path, func=func),
+            param_decls='--devnet_chain_setting',
+            is_eager=True,
+        ),
+        jit_option(
+            callback=resolve_chain,
+            default=MAINNET,
+            help=lambda: load_text([chain_text_key, 'help'], file_path=file_path, func=func),
+            param_decls=['chain_setting', '--chain'],
+            prompt=False,
+        ),
+    ]
+
+
+def chain_arguments_decorator(
+        func: str = 'generate_keys_arguments_decorator', file_path: str = '',
+        chain_text_key: str = 'chain') -> Callable[[Any], Any]:
+    '''
+    Adds the options used to select a chain and normalizes them to one setting.
+
+    A custom devnet setting is eager so it is available while the named-chain
+    option decides whether it needs to prompt. The named-chain callback also
+    resolves its value, leaving command functions with one chain_setting.
+    '''
+    def decorator(function: Callable[..., Any]) -> Callable[..., Any]:
+        for option_decorator in reversed(chain_arguments_decorators(func, file_path, chain_text_key)):
+            function = option_decorator(function)
+        return function
     return decorator
 
 

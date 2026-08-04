@@ -13,18 +13,14 @@ from ethstaker_deposit.cli.generate_keys import get_default_amount, get_amount_p
 from ethstaker_deposit.key_handling.keystore import Keystore
 from ethstaker_deposit.settings import (
     DEPOSIT_CLI_VERSION,
-    MAINNET,
-    ALL_CHAIN_KEYS,
-    get_chain_setting,
     BaseChainSetting,
 )
 from ethstaker_deposit.utils import config
 from ethstaker_deposit.utils.click import (
+    chain_arguments_decorator,
     captive_prompt_callback,
-    choice_prompt_func,
     jit_option,
     prompt_if_none,
-    prompt_if_other_is_none,
     prompt_if_other_exists,
 )
 from ethstaker_deposit.utils.constants import (
@@ -33,10 +29,7 @@ from ethstaker_deposit.utils.constants import (
     COMPOUNDING_WITHDRAWAL_PREFIX,
 )
 from ethstaker_deposit.utils.deposit import export_deposit_data_json
-from ethstaker_deposit.utils.intl import (
-    closest_match,
-    load_text,
-)
+from ethstaker_deposit.utils.intl import load_text
 from ethstaker_deposit.utils.ssz import (
     DepositData,
     DepositMessage,
@@ -49,7 +42,6 @@ from ethstaker_deposit.utils.validation import (
     validate_deposit_amount,
     validate_withdrawal_address,
     validate_yesno,
-    validate_devnet_chain_setting,
 )
 
 
@@ -59,21 +51,7 @@ FUNC_NAME = 'partial_deposit'
 @click.command(
     help=load_text(['arg_partial_deposit', 'help'], func=FUNC_NAME),
 )
-@jit_option(
-    callback=captive_prompt_callback(
-        lambda x, _: closest_match(x, ALL_CHAIN_KEYS),
-        choice_prompt_func(
-            lambda: load_text(['arg_partial_deposit_chain', 'prompt'], func=FUNC_NAME),
-            ALL_CHAIN_KEYS
-        ),
-        prompt_if=prompt_if_other_is_none('devnet_chain_setting'),
-        default=MAINNET,
-    ),
-    default=MAINNET,
-    help=lambda: load_text(['arg_partial_deposit_chain', 'help'], func=FUNC_NAME),
-    param_decls='--chain',
-    prompt=False,  # the callback handles the prompt
-)
+@chain_arguments_decorator(FUNC_NAME, __file__, 'arg_partial_deposit_chain')
 @jit_option(
     callback=captive_prompt_callback(
         lambda file, _: validate_keystore_file(file),
@@ -142,24 +120,16 @@ FUNC_NAME = 'partial_deposit'
     param_decls='--output_folder',
     type=click.Path(exists=True, file_okay=False, dir_okay=True),
 )
-@jit_option(
-    callback=validate_devnet_chain_setting,
-    default=None,
-    help=lambda: load_text(['arg_devnet_chain_setting', 'help'], func=FUNC_NAME),
-    param_decls='--devnet_chain_setting',
-    is_eager=True,
-)
 @click.pass_context
 def partial_deposit(
         ctx: click.Context,
-        chain: str,
+        chain_setting: BaseChainSetting,
         keystore: Keystore,
         keystore_password: str,
         amount: int,
         withdrawal_address: HexAddress,
         compounding: bool,
         output_folder: str,
-        devnet_chain_setting: BaseChainSetting | None,
         **kwargs: Any) -> None:
     try:
         secret_bytes = keystore.decrypt(keystore_password)
@@ -168,9 +138,6 @@ def partial_deposit(
         sys.exit(1)
 
     signing_key = int.from_bytes(secret_bytes, 'big')
-
-    # Get chain setting
-    chain_setting = devnet_chain_setting if devnet_chain_setting is not None else get_chain_setting(chain)
 
     if compounding:
         withdrawal_credentials = COMPOUNDING_WITHDRAWAL_PREFIX
