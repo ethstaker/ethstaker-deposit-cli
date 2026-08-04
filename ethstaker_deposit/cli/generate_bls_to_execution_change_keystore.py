@@ -23,6 +23,7 @@ from ethstaker_deposit.utils.validation import (
 from ethstaker_deposit.utils.constants import (
     DEFAULT_BLS_TO_EXECUTION_CHANGES_KEYSTORE_FOLDER_NAME,
 )
+from ethstaker_deposit.utils.symlink import warn_if_output_directory_symlink
 from ethstaker_deposit.utils.click import (
     captive_prompt_callback,
     choice_prompt_func,
@@ -131,6 +132,9 @@ def generate_bls_to_execution_change_keystore(
         output_folder: str,
         devnet_chain_setting: BaseChainSetting | None,
         **kwargs: Any) -> None:
+    folder = os.path.join(output_folder, DEFAULT_BLS_TO_EXECUTION_CHANGES_KEYSTORE_FOLDER_NAME)
+    warn_if_output_directory_symlink(folder)
+
     try:
         secret_bytes = keystore.decrypt(keystore_password)
     except ValueError:
@@ -149,7 +153,6 @@ def generate_bls_to_execution_change_keystore(
         withdrawal_address=withdrawal_address,
     )
 
-    folder = os.path.join(output_folder, DEFAULT_BLS_TO_EXECUTION_CHANGES_KEYSTORE_FOLDER_NAME)
     if not os.path.exists(folder):
         os.mkdir(folder)
 
