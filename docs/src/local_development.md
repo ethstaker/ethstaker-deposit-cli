@@ -87,7 +87,7 @@ python3 -m pytest tests
 
 ## Building Local Binaries
 
-The standalone binary targets use Python 3.12, matching the official release workflow and the Python version supported by the pinned PyInstaller toolchain.
+The standalone binary targets use Python 3.14, matching the official release workflow and the Python version supported by the pinned PyInstaller toolchain.
 
 Build a Linux or macOS binary with:
 
@@ -96,18 +96,18 @@ make build_linux
 make build_macos
 ```
 
-These targets look for `python3.12`, create or reuse the `venv/` environment with that interpreter, and install the pinned build dependencies. If an existing `venv/` was created with another Python version, it is recreated automatically.
+These targets look for `python3.14`, create or reuse the `venv/` environment with that interpreter, and install the pinned build dependencies. If an existing `venv/` was created with another Python version, it is recreated automatically.
 
-If Python 3.12 is installed under a non-standard path, provide it explicitly:
+If Python 3.14 is installed under a non-standard path, provide it explicitly:
 
 ```sh
-make BUILD_PYTHON=/path/to/python3.12 build_linux
+make BUILD_PYTHON=/path/to/python3.14 build_linux
 ```
 
 The general development targets, such as `venv_test` and `venv_lint`, use `python3` by default. That interpreter must satisfy the `requires-python` range in `pyproject.toml`; override it with `PYTHON` when needed:
 
 ```sh
-make PYTHON=python3.12 venv_test
+make PYTHON=python3.14 venv_test
 ```
 
-The official release workflow builds binaries with Python 3.12. Windows binaries are currently built by GitHub Actions using `build_configs/windows/build.spec`.
+The official release workflow builds binaries with Python 3.14. Windows binaries are currently built by GitHub Actions using `build_configs/windows/build.spec`.

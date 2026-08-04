@@ -1,10 +1,10 @@
 VENV_NAME?=venv
 PYTHON?=python3
-BUILD_PYTHON?=python3.12
+BUILD_PYTHON?=python3.14
 VENV_PYTHON=$(VENV_NAME)/bin/python
 PYPROJECT=pyproject.toml
 BUILD_PYTHON_MAJOR=3
-BUILD_PYTHON_MINOR=12
+BUILD_PYTHON_MINOR=14
 DOCKER_IMAGE="ghcr.io/ethstaker/ethstaker-deposit-cli:latest"
 
 .PHONY: help clean venv_build venv_build_test venv_test venv_lint venv_deposit \
@@ -54,26 +54,26 @@ venv_deposit: venv_build
 
 build_macos: PYTHON=$(BUILD_PYTHON)
 build_macos: binary_venv
-	@command -v $(BUILD_PYTHON) >/dev/null 2>&1 || { echo "Binary builds require Python 3.12. Install python3.12 or run make BUILD_PYTHON=/path/to/python3.12 build_macos." >&2; exit 1; }
+	@command -v $(BUILD_PYTHON) >/dev/null 2>&1 || { echo "Binary builds require Python 3.14. Install python3.14 or run make BUILD_PYTHON=/path/to/python3.14 build_macos." >&2; exit 1; }
 	$(VENV_PYTHON) -m pip install -r ./build_configs/macos/requirements.txt
 	PYTHONHASHSEED=42 $(VENV_PYTHON) -m PyInstaller ./build_configs/macos/build.spec
 
 build_linux: PYTHON=$(BUILD_PYTHON)
 build_linux: binary_venv
-	@command -v $(BUILD_PYTHON) >/dev/null 2>&1 || { echo "Binary builds require Python 3.12. Install python3.12 or run make BUILD_PYTHON=/path/to/python3.12 build_linux." >&2; exit 1; }
+	@command -v $(BUILD_PYTHON) >/dev/null 2>&1 || { echo "Binary builds require Python 3.14. Install python3.14 or run make BUILD_PYTHON=/path/to/python3.14 build_linux." >&2; exit 1; }
 	$(VENV_PYTHON) -m pip install -r ./build_configs/linux/requirements.txt
 	PYTHONHASHSEED=42 $(VENV_PYTHON) -m PyInstaller ./build_configs/linux/build.spec
 
 binary_venv: PYTHON=$(BUILD_PYTHON)
 binary_venv:
-	@command -v $(BUILD_PYTHON) >/dev/null 2>&1 || { echo "Binary builds require Python 3.12. Install python3.12 or run make BUILD_PYTHON=/path/to/python3.12." >&2; exit 1; }
+	@command -v $(BUILD_PYTHON) >/dev/null 2>&1 || { echo "Binary builds require Python 3.14. Install python3.14 or run make BUILD_PYTHON=/path/to/python3.14." >&2; exit 1; }
 	@$(PYTHON) scripts/check_python_version.py $(PYPROJECT)
 	@if test -x $(VENV_PYTHON) && test "$$($(VENV_PYTHON) -c 'import sys; print(sys.version_info[:2])')" != "$$($(PYTHON) -c 'import sys; print(sys.version_info[:2])')"; then \
 		echo "$(VENV_NAME) was created with a different Python version; recreating it."; \
 		rm -rf $(VENV_NAME); \
 	fi
 	@test -d $(VENV_NAME) || $(PYTHON) -m venv $(VENV_NAME)
-	@$(VENV_PYTHON) -c 'import sys; expected=($(BUILD_PYTHON_MAJOR), $(BUILD_PYTHON_MINOR)); actual=sys.version_info[:2]; sys.exit(0 if actual == expected else "Binary builds require Python 3.12")'
+	@$(VENV_PYTHON) -c 'import sys; expected=($(BUILD_PYTHON_MAJOR), $(BUILD_PYTHON_MINOR)); actual=sys.version_info[:2]; sys.exit(0 if actual == expected else "Binary builds require Python 3.14")'
 	$(VENV_PYTHON) -m pip install -r requirements.txt
 
 build_docker:
