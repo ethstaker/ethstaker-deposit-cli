@@ -62,7 +62,7 @@ jobs:
     permissions:
       actions: read
       issues: write
-      pull-requests: read
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - name: Download artifacts
