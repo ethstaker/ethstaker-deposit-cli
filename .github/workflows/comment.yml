@@ -16,9 +16,10 @@ jobs:
       github.event.workflow_run.event == 'pull_request' &&
       github.event.workflow_run.conclusion == 'success'
     outputs:
-      coverage: ${{ steps.output.outputs.coverage }}
+      coverage: ${{ steps.coverage.outputs.coverage }}
     steps:
       - name: Get coverage job success
+        id: coverage
         uses: actions/github-script@v9
         env:
           WORKFLOW_RUN_ID: '${{ github.event.workflow_run.id }}'
@@ -27,7 +28,7 @@ jobs:
           script: |
             const { WORKFLOW_RUN_ID } = process.env;
 
-            core.exportVariable('COVERAGE', 'unknown');
+            let coverage = 'unknown';
 
             const allJobs = await github.paginate(
               github.rest.actions.listJobsForWorkflowRun,
@@ -45,13 +46,12 @@ jobs:
                 job.status == 'completed' &&
                 job.conclusion == 'success'
               ) {
-                core.exportVariable('COVERAGE', 'completed');
+                coverage = 'completed';
                 break;
               }
-            });
-      - name: Output coverage status
-        id: output
-        run: echo "coverage=${COVERAGE}" >> "$GITHUB_OUTPUT"
+            }
+
+            core.setOutput('coverage', coverage);
   comment:
     needs: completed-coverage
     # Runs only if we have a completed coverage job from the ci-runner workflow
