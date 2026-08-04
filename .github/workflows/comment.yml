@@ -1,6 +1,9 @@
 # Safely comment on the PR - https://securitylab.github.com/resources/github-actions-preventing-pwn-requests/
 name: ci-comment
 run-name: ${{ github.actor }} is adding coverage report comment on PR
+concurrency:
+  group: ci-comment-${{ github.event.workflow_run.pull_requests[0].number || github.run_id }}
+  cancel-in-progress: true
 on:
   workflow_run:
     workflows: [ "ci-runner" ]
@@ -11,7 +14,7 @@ jobs:
   completed-coverage:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      actions: read
     if: >
       github.event.workflow_run.event == 'pull_request' &&
       github.event.workflow_run.conclusion == 'success'
@@ -57,9 +60,8 @@ jobs:
     # Runs only if we have a completed coverage job from the ci-runner workflow
     if: ${{ needs.completed-coverage.outputs.coverage == 'completed' }}
     permissions:
+      actions: read
       issues: write
-      contents: write
-      pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - name: Download artifacts
@@ -74,16 +76,44 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            var fs = require('fs');
-            const issueNumberPath = './issue_number'
-            if (!fs.existsSync(issueNumberPath)) {
-              console.log("Coverage artifacts were not downloaded, succeeding early");
-              return;
+            const fs = require('fs');
+            const pullRequest = context.payload.workflow_run.pull_requests?.[0];
+            if (!pullRequest?.number) {
+              throw new Error('Could not determine the pull request number from the workflow run event');
             }
-            var issueNumber = Number(fs.readFileSync(issueNumberPath));
-            await github.rest.issues.createComment({
+
+            const issueNumber = pullRequest.number;
+            const marker = '<!-- ethstaker-coverage-report -->';
+            const reportPath = './coverage-text-report';
+            if (!fs.existsSync(reportPath)) {
+              throw new Error('Coverage report artifact was not downloaded');
+            }
+
+            const body = `${marker}\n${fs.readFileSync(reportPath).toString()}`;
+            const comments = await github.paginate(github.rest.issues.listComments, {
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: issueNumber,
-              body: fs.readFileSync('./coverage-text-report').toString()
+              per_page: 100,
             });
+            const existingComment = comments.find(
+              (comment) =>
+                comment.user?.login === 'github-actions[bot]' &&
+                comment.body?.includes(marker)
+            );
+
+            if (existingComment) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existingComment.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                body,
+              });
+            }

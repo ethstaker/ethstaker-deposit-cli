@@ -114,7 +114,6 @@ jobs:
             coverage report ;
             echo \`\`\` ;
           } >> results/coverage-text-report
-          echo ${{ github.event.number }} > results/issue_number
       - name: Upload final coverage text report
         uses: actions/upload-artifact@v7
         with:
