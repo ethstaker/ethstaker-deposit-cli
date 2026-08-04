@@ -38,6 +38,7 @@ from ethstaker_deposit.utils.intl import (
     load_text,
 )
 from ethstaker_deposit.utils.terminal import clear_terminal
+from ethstaker_deposit.utils.symlink import warn_if_output_directory_symlink
 from ethstaker_deposit.settings import (
     MAINNET,
     ALL_CHAIN_KEYS,
@@ -197,6 +198,7 @@ def generate_keys(ctx: click.Context, validator_start_index: int,
         amount = chain_setting.MIN_ACTIVATION_AMOUNT * ETH2GWEI
     amounts = [amount] * num_validators
     folder = os.path.join(folder, DEFAULT_VALIDATOR_KEYS_FOLDER_NAME)
+    warn_if_output_directory_symlink(folder)
 
     amounts = [amount * chain_setting.MULTIPLIER for amount in amounts]
 
