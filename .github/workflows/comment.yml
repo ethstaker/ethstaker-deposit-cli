@@ -29,19 +29,24 @@ jobs:
 
             core.exportVariable('COVERAGE', 'unknown');
 
-            const { data: allJobs } = await github.rest.actions.listJobsForWorkflowRun({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              run_id: WORKFLOW_RUN_ID,
-            });
+            const allJobs = await github.paginate(
+              github.rest.actions.listJobsForWorkflowRun,
+              {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                run_id: WORKFLOW_RUN_ID,
+                per_page: 100,
+              }
+            );
 
-            allJobs.jobs.forEach((job) => {
+            for (const job of allJobs) {
               if (
                 job.name === 'coverage-combine' &&
                 job.status == 'completed' &&
                 job.conclusion == 'success'
               ) {
                 core.exportVariable('COVERAGE', 'completed');
+                break;
               }
             });
       - name: Output coverage status
