@@ -28,19 +28,27 @@
                         }
                     }
                 },
-                "chain": {
+                "dynamic": {
                     "type": "object",
                     "properties": {
-                        "help": {
-                            "type": "string"
-                        },
-                        "prompt": {
-                            "type": "string"
+                        "chain": {
+                            "type": "object",
+                            "properties": {
+                                "help": {
+                                    "type": "string"
+                                },
+                                "prompt": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "help",
+                                "prompt"
+                            ]
                         }
                     },
                     "required": [
-                        "help",
-                        "prompt"
+                        "chain"
                     ]
                 },
                 "keystore_password": {
@@ -69,7 +77,7 @@
             },
             "required": [
                 "num_validators",
-                "chain",
+                "dynamic",
                 "keystore_password"
             ]
         },

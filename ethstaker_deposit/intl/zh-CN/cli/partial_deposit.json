@@ -3,10 +3,6 @@
     "arg_partial_deposit": {
       "help": "生成金额至少为 1 ether 的部分存款，该存款将由所提供的验证者密钥库签名。这会增加所提供验证者的余额，或开始创建一个验证者。"
     },
-    "arg_partial_deposit_chain": {
-      "help": "您的验证者运行所在的 Ethereum PoS 链名称。默认值为 \"mainnet\"。",
-      "prompt": "请选择（mainnet 或 testnet）网络/链名称"
-    },
     "arg_partial_deposit_amount": {
       "help": "向此验证者存入的 ether 数量。必须至少为 1 ether，精度不能高于 1 gwei。默认值为 32 ether。"
     },
@@ -32,13 +28,19 @@
       "help": "生成具有 0x02 提取凭证、最大有效余额为 2048 ETH 的复利验证者，或生成具有 0x01 提取凭证、最大有效余额为 32 ETH 的普通验证者。此功能仅支持已完成 Pectra 分叉的网络。",
       "prompt": "如果您要生成具有 0x02 提取凭证、最大有效余额为 2048 ETH 的复利验证者，请输入 yes。复利验证者和 0x02 提取凭证仅支持已完成 Pectra 分叉的网络。如果要生成具有 0x01 提取凭证、最大有效余额为 32 ETH 的普通验证者，请输入 no 或留空。"
     },
-    "arg_devnet_chain_setting": {
-      "help": "[DEVNET ONLY] 设置特定的 GENESIS_FORK_VERSION 值。该值应为包含以下键的对象的 JSON 字符串：network_name、genesis_fork_version、exit_fork_version、genesis_validator_root、multiplier、min_activation_amount 和 min_deposit_amount。其格式应类似于 settings.py 中的设置。这将覆盖所选链。"
-    },
     "msg_partial_deposit_creation": "\n正在创建您的部分存款...",
     "msg_verify_partial_deposit": "\n正在验证您的部分存款...",
     "err_verify_partial_deposit": "\n验证您的部分存款时出现问题。\n请重试",
     "msg_creation_success": "\n成功！\n您的部分存款文件位于：",
-    "msg_pause": "\n\n请按任意键。"
+    "msg_pause": "\n\n请按任意键。",
+    "dynamic": {
+      "arg_partial_deposit_chain": {
+        "help": "您的验证者运行所在的 Ethereum PoS 链名称。默认值为 \"mainnet\"。",
+        "prompt": "请选择（mainnet 或 testnet）网络/链名称"
+      },
+      "arg_devnet_chain_setting": {
+        "help": "[DEVNET ONLY] 设置特定的 GENESIS_FORK_VERSION 值。该值应为包含以下键的对象的 JSON 字符串：network_name、genesis_fork_version、exit_fork_version、genesis_validator_root、multiplier、min_activation_amount 和 min_deposit_amount。其格式应类似于 settings.py 中的设置。这将覆盖所选链。"
+      }
+    }
   }
 }

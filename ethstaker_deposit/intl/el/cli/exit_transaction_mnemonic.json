@@ -3,10 +3,6 @@
     "arg_exit_transaction_mnemonic": {
       "help": "Δημιουργήστε μια συναλλαγή εξόδου που μπορεί να χρησιμοποιηθεί για την έξοδο επαληθευτών από το Ethereum Beacon Chain."
     },
-    "arg_exit_transaction_mnemonic_chain": {
-      "help": "Το όνομα της αλυσίδας Ethereum PoS στην οποία εκτελείται ο επαληθευτής σας. Το \"mainnet\" είναι η προεπιλογή.",
-      "prompt": "Επιλέξτε το όνομα του δικτύου/της αλυσίδας (mainnet ή testnet)"
-    },
     "arg_exit_transaction_mnemonic_start_index": {
       "help": "Εισαγάγετε τον δείκτη (αριθμό κλειδιού) που χρησιμοποιήσατε όταν δημιουργήσατε τα κλειδιά σας. Η προεπιλεγμένη τιμή είναι 0.",
       "prompt": "Εισαγάγετε τον δείκτη (αριθμό κλειδιού) που χρησιμοποιήσατε όταν δημιουργήσατε τα κλειδιά σας. Η προεπιλεγμένη τιμή είναι 0."
@@ -21,14 +17,20 @@
     "arg_exit_transaction_mnemonic_output_folder": {
       "help": "Η διαδρομή του φακέλου όπου θα αποθηκευτούν οι συναλλαγές εξόδου. Από προεπιλογή δείχνει στο `./exit_transactions`."
     },
-    "arg_devnet_chain_setting": {
-      "help": "[DEVNET ONLY] Ορίστε συγκεκριμένες τιμές για τα EXIT_FORK_VERSION και GENESIS_VALIDATORS_ROOT. Αυτό πρέπει να είναι μια συμβολοσειρά JSON που περιέχει ένα αντικείμενο με τα εξής κλειδιά: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount και min_deposit_amount. Πρέπει να είναι παρόμοιο με αυτό που μπορείτε να βρείτε στο settings.py. Αυτό θα παρακάμψει οποιαδήποτε επιλεγμένη αλυσίδα."
-    },
     "msg_key_creation": "Δημιουργία των κλειδιών σας:\t",
     "msg_exit_transaction_creation": "Δημιουργία των συναλλαγών εξόδου σας:\t",
     "msg_verify_exit_transaction": "Επαλήθευση των συναλλαγών εξόδου σας:\t",
     "err_verify_exit_transactions": "\nΠαρουσιάστηκε πρόβλημα κατά την επαλήθευση των συναλλαγών εξόδου σας.\nΔοκιμάστε ξανά",
     "msg_creation_success": "\nΕπιτυχία!\nΤα αρχεία των συναλλαγών εξόδου σας βρίσκονται στη διαδρομή: ",
-    "msg_pause": "\n\nΠατήστε οποιοδήποτε πλήκτρο."
+    "msg_pause": "\n\nΠατήστε οποιοδήποτε πλήκτρο.",
+    "dynamic": {
+      "arg_exit_transaction_mnemonic_chain": {
+        "help": "Το όνομα της αλυσίδας Ethereum PoS στην οποία εκτελείται ο επαληθευτής σας. Το \"mainnet\" είναι η προεπιλογή.",
+        "prompt": "Επιλέξτε το όνομα του δικτύου/της αλυσίδας (mainnet ή testnet)"
+      },
+      "arg_devnet_chain_setting": {
+        "help": "[DEVNET ONLY] Ορίστε συγκεκριμένες τιμές για τα EXIT_FORK_VERSION και GENESIS_VALIDATORS_ROOT. Αυτό πρέπει να είναι μια συμβολοσειρά JSON που περιέχει ένα αντικείμενο με τα εξής κλειδιά: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount και min_deposit_amount. Πρέπει να είναι παρόμοιο με αυτό που μπορείτε να βρείτε στο settings.py. Αυτό θα παρακάμψει οποιαδήποτε επιλεγμένη αλυσίδα."
+      }
+    }
   }
 }

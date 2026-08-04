@@ -9,9 +9,6 @@
       "confirm": "أعد إدخال عنوان السحب للتأكيد.",
       "mismatch": "خطأ: القيمتان اللتان أدخلتهما غير متطابقتين. يرجى الكتابة مرة أخرى."
     },
-    "arg_devnet_chain_setting": {
-      "help": "[لشبكات التطوير فقط] عيّن قيمة محددة لـ GENESIS_FORK_VERSION وGENESIS_VALIDATORS_ROOT. يجب أن تكون هذه سلسلة JSON تحتوي على كائن بالمفاتيح التالية: network_name وgenesis_fork_version وexit_fork_versio وgenesis_validator_root وmultiplier وmin_activation_amount وmin_deposit_amount. يجب أن تكون مشابهة لما تجده في settings.py. سيؤدي ذلك إلى تجاوز أي سلسلة محددة."
-    },
     "arg_validator_indices": {
       "help": "قائمة بأرقام فهارس المدقّق أو المدقّقين المعنيين",
       "prompt": "يرجى إدخال قائمة بأرقام فهارس مدقّقك أو مدقّقيك كما هي محددة على سلسلة المنارة. افصل العناصر المتعددة بمسافات بيضاء أو فواصل."
@@ -24,16 +21,21 @@
       "help": "موضع الفهرس الذي تبدأ منه المفاتيح إنشاء بيانات اعتماد السحب بتنسيق ERC-2334",
       "prompt": "يرجى إدخال موضع الفهرس الذي تبدأ منه المفاتيح إنشاء بيانات اعتماد السحب بتنسيق ERC-2334."
     },
-    "arg_chain": {
-      "help": "اسم سلسلة Ethereum PoS التي تستهدفها. استخدم \"mainnet\" إذا كنت تودع ETH",
-      "prompt": "يرجى اختيار اسم الشبكة/السلسلة (mainnet أو testnet)"
-    },
     "arg_bls_to_execution_changes_folder": {
       "help": "مسار مجلد متجر أو متاجر المفاتيح. يشير افتراضيًا إلى `./bls_to_execution_changes`."
     },
     "msg_credentials_verification": "جارٍ التحقق من بيانات اعتماد السحب الخاصة بك.",
     "msg_creation_success": "\nنجح الأمر!\nيمكن العثور على ملف JSON الخاص بـ SignedBLSToExecutionChange في: ",
     "msg_pause": "\n\nاضغط على أي مفتاح.",
-    "err_verify_btec": "تعذّر التحقق من ملفات JSON الخاصة بـ bls_to_execution_change."
+    "err_verify_btec": "تعذّر التحقق من ملفات JSON الخاصة بـ bls_to_execution_change.",
+    "dynamic": {
+      "arg_devnet_chain_setting": {
+        "help": "[لشبكات التطوير فقط] عيّن قيمة محددة لـ GENESIS_FORK_VERSION وGENESIS_VALIDATORS_ROOT. يجب أن تكون هذه سلسلة JSON تحتوي على كائن بالمفاتيح التالية: network_name وgenesis_fork_version وexit_fork_versio وgenesis_validator_root وmultiplier وmin_activation_amount وmin_deposit_amount. يجب أن تكون مشابهة لما تجده في settings.py. سيؤدي ذلك إلى تجاوز أي سلسلة محددة."
+      },
+      "arg_chain": {
+        "help": "اسم سلسلة Ethereum PoS التي تستهدفها. استخدم \"mainnet\" إذا كنت تودع ETH",
+        "prompt": "يرجى اختيار اسم الشبكة/السلسلة (mainnet أو testnet)"
+      }
+    }
   }
 }

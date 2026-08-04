@@ -9,9 +9,6 @@
       "confirm": "확인을 위해 출금 주소를 다시 입력하세요.",
       "mismatch": "오류: 입력한 두 값이 일치하지 않습니다. 다시 입력하세요."
     },
-    "arg_devnet_chain_setting": {
-      "help": "[DEVNET ONLY] 특정 GENESIS_FORK_VERSION 및 GENESIS_VALIDATORS_ROOT 값을 설정합니다. 다음 키를 포함하는 객체가 담긴 JSON 문자열이어야 합니다: network_name, genesis_fork_version, exit_fork_versio, genesis_validator_root, multiplier, min_activation_amount 및 min_deposit_amount. settings.py에서 확인할 수 있는 형식과 유사해야 합니다. 이 설정은 선택한 체인을 재정의합니다."
-    },
     "arg_validator_indices": {
       "help": "특정 검증자의 검증자 인덱스 번호 목록입니다.",
       "prompt": "Beacon Chain에서 확인되는 검증자의 인덱스 번호 목록을 입력하세요. 여러 항목은 공백 또는 쉼표로 구분하세요."
@@ -24,16 +21,21 @@
       "help": "ERC-2334 형식의 출금 자격 증명 생성을 시작할 키의 인덱스 위치입니다.",
       "prompt": "ERC-2334 형식의 출금 자격 증명 생성을 시작할 키의 인덱스 위치를 입력하세요."
     },
-    "arg_chain": {
-      "help": "대상으로 하는 Ethereum PoS 체인의 이름입니다. ETH를 예치한다면 \"mainnet\"을 사용하세요.",
-      "prompt": "(mainnet 또는 testnet) 네트워크/체인 이름을 선택하세요."
-    },
     "arg_bls_to_execution_changes_folder": {
       "help": "keystore의 폴더 경로입니다. 기본값은 `./bls_to_execution_changes`입니다."
     },
     "msg_credentials_verification": "출금 자격 증명 검증 중입니다.",
     "msg_creation_success": "\n성공!\nSignedBLSToExecutionChange JSON 파일을 찾을 수 있는 위치: ",
     "msg_pause": "\n\n아무 키나 누르세요.",
-    "err_verify_btec": "bls_to_execution_change JSON 파일을 검증하지 못했습니다."
+    "err_verify_btec": "bls_to_execution_change JSON 파일을 검증하지 못했습니다.",
+    "dynamic": {
+      "arg_devnet_chain_setting": {
+        "help": "[DEVNET ONLY] 특정 GENESIS_FORK_VERSION 및 GENESIS_VALIDATORS_ROOT 값을 설정합니다. 다음 키를 포함하는 객체가 담긴 JSON 문자열이어야 합니다: network_name, genesis_fork_version, exit_fork_versio, genesis_validator_root, multiplier, min_activation_amount 및 min_deposit_amount. settings.py에서 확인할 수 있는 형식과 유사해야 합니다. 이 설정은 선택한 체인을 재정의합니다."
+      },
+      "arg_chain": {
+        "help": "대상으로 하는 Ethereum PoS 체인의 이름입니다. ETH를 예치한다면 \"mainnet\"을 사용하세요.",
+        "prompt": "(mainnet 또는 testnet) 네트워크/체인 이름을 선택하세요."
+      }
+    }
   }
 }

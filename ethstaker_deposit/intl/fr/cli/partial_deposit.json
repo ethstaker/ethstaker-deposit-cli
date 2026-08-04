@@ -3,10 +3,6 @@
     "arg_partial_deposit": {
       "help": "Génère un dépôt partiel d'un montant d'au moins 1 ether, qui sera signé par le keystore du validateur fourni. Il sera ajouté au solde du validateur fourni ou lancera la création d'un validateur."
     },
-    "arg_partial_deposit_chain": {
-      "help": "Le nom de la chaîne Ethereum PoS sur laquelle votre validateur fonctionne. \"mainnet\" est la valeur par défaut.",
-      "prompt": "Veuillez choisir le nom du réseau ou de la chaîne (mainnet ou testnet)"
-    },
     "arg_partial_deposit_amount": {
       "help": "Le montant à déposer sur ce validateur, en ether. Il doit être d'au moins 1 ether et ne peut pas avoir une précision supérieure à 1 gwei. La valeur par défaut est de 32 ether."
     },
@@ -32,13 +28,19 @@
       "help": "Génère des validateurs à composition avec des identifiants de retrait 0x02 pour un solde effectif maximal de 2048 ETH, ou des validateurs classiques avec des identifiants de retrait 0x01 pour un solde effectif maximal de 32 ETH. Cette fonctionnalité n'est prise en charge que sur les réseaux ayant effectué le fork Pectra.",
       "prompt": "Saisissez yes si vous souhaitez générer des validateurs à composition avec des identifiants de retrait 0x02 pour un solde effectif maximal de 2048 ETH. Les validateurs à composition et les identifiants de retrait 0x02 ne sont pris en charge que sur les réseaux ayant effectué le fork Pectra. Saisissez no ou ne saisissez rien pour générer des validateurs classiques avec des identifiants de retrait 0x01 pour un solde effectif maximal de 32 ETH."
     },
-    "arg_devnet_chain_setting": {
-      "help": "[DEVNET UNIQUEMENT] Définit une valeur spécifique pour GENESIS_FORK_VERSION. Il doit s'agir d'une chaîne JSON contenant un objet avec les clés suivantes : network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount et min_deposit_amount. Elle doit être similaire à ce que vous pouvez trouver dans settings.py. Cela remplacera toute chaîne sélectionnée."
-    },
     "msg_partial_deposit_creation": "\nCréation de votre dépôt partiel...",
     "msg_verify_partial_deposit": "\nVérification de votre dépôt partiel...",
     "err_verify_partial_deposit": "\nUn problème est survenu lors de la vérification de votre dépôt partiel.\nVeuillez réessayer",
     "msg_creation_success": "\nOpération réussie !\nVotre fichier de dépôt partiel se trouve à l'emplacement suivant : ",
-    "msg_pause": "\n\nAppuyez sur une touche."
+    "msg_pause": "\n\nAppuyez sur une touche.",
+    "dynamic": {
+      "arg_partial_deposit_chain": {
+        "help": "Le nom de la chaîne Ethereum PoS sur laquelle votre validateur fonctionne. \"mainnet\" est la valeur par défaut.",
+        "prompt": "Veuillez choisir le nom du réseau ou de la chaîne (mainnet ou testnet)"
+      },
+      "arg_devnet_chain_setting": {
+        "help": "[DEVNET UNIQUEMENT] Définit une valeur spécifique pour GENESIS_FORK_VERSION. Il doit s'agir d'une chaîne JSON contenant un objet avec les clés suivantes : network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount et min_deposit_amount. Elle doit être similaire à ce que vous pouvez trouver dans settings.py. Cela remplacera toute chaîne sélectionnée."
+      }
+    }
   }
 }

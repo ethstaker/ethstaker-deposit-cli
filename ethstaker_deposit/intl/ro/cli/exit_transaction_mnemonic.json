@@ -3,10 +3,6 @@
     "arg_exit_transaction_mnemonic": {
       "help": "Generează o tranzacție de ieșire care poate fi folosită pentru a retrage validatorii de pe Ethereum Beacon Chain."
     },
-    "arg_exit_transaction_mnemonic_chain": {
-      "help": "Numele lanțului Ethereum PoS pe care rulează validatorul tău. \"mainnet\" este valoarea implicită.",
-      "prompt": "Alege numele rețelei/lanțului (mainnet sau testnet)"
-    },
     "arg_exit_transaction_mnemonic_start_index": {
       "help": "Introdu indexul (numărul cheii) folosit când ți-ai creat cheile. Valoarea implicită este 0.",
       "prompt": "Introdu indexul (numărul cheii) folosit când ți-ai creat cheile. Valoarea implicită este 0."
@@ -21,14 +17,20 @@
     "arg_exit_transaction_mnemonic_output_folder": {
       "help": "Calea către directorul în care vor fi salvate tranzacțiile de ieșire. Implicit este `./exit_transactions`."
     },
-    "arg_devnet_chain_setting": {
-      "help": "[DOAR DEVNET] Setează valorile specifice EXIT_FORK_VERSION și GENESIS_VALIDATORS_ROOT. Acesta trebuie să fie un șir JSON care conține un obiect cu următoarele chei: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount și min_deposit_amount. Ar trebui să fie similar cu ceea ce găsești în settings.py. Aceasta va suprascrie orice lanț selectat."
-    },
     "msg_key_creation": "Se creează cheile tale:\t",
     "msg_exit_transaction_creation": "Se creează tranzacțiile tale de ieșire:\t",
     "msg_verify_exit_transaction": "Se verifică tranzacțiile tale de ieșire:\t",
     "err_verify_exit_transactions": "\nA apărut o problemă la verificarea tranzacțiilor tale de ieșire.\nÎncearcă din nou",
     "msg_creation_success": "\nSucces!\nFișierele tranzacțiilor tale de ieșire pot fi găsite la: ",
-    "msg_pause": "\n\nApasă orice tastă."
+    "msg_pause": "\n\nApasă orice tastă.",
+    "dynamic": {
+      "arg_exit_transaction_mnemonic_chain": {
+        "help": "Numele lanțului Ethereum PoS pe care rulează validatorul tău. \"mainnet\" este valoarea implicită.",
+        "prompt": "Alege numele rețelei/lanțului (mainnet sau testnet)"
+      },
+      "arg_devnet_chain_setting": {
+        "help": "[DOAR DEVNET] Setează valorile specifice EXIT_FORK_VERSION și GENESIS_VALIDATORS_ROOT. Acesta trebuie să fie un șir JSON care conține un obiect cu următoarele chei: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount și min_deposit_amount. Ar trebui să fie similar cu ceea ce găsești în settings.py. Aceasta va suprascrie orice lanț selectat."
+      }
+    }
   }
 }

@@ -24,6 +24,15 @@ def test_load_text(params: list[str], file_path: str, func: str, lang: str, foun
     assert found_str in load_text(params, file_path, func, lang)
 
 
+def test_load_text_source_path_matches_json_path() -> None:
+    params = ['arg_mnemonic_language', 'prompt']
+    func = 'new_mnemonic'
+    source_path = os.path.join('ethstaker_deposit', 'cli', 'new_mnemonic.py')
+    json_path = os.path.join('ethstaker_deposit', 'cli', 'new_mnemonic.json')
+
+    assert load_text(params, source_path, func, 'en') == load_text(params, json_path, func, 'en')
+
+
 @pytest.mark.parametrize(
     'params, file_path, func, lang, valid', [
         (['arg_mnemonic_language', 'prompt'], os.path.join('ethstaker_deposit', 'cli', 'new_mnemonic.json'),

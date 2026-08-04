@@ -4,9 +4,14 @@
       "help": "A quantidade de chaves de validadores que você deseja gerar (poderá gerar mais depois)",
       "prompt": "Por favor, escolha quantos validadores deseja executar"
     },
-    "chain": {
-      "help": "A versão de Ethereum PoS do seu interesse. Use \"mainnet\" se estiver depositando ETH",
-      "prompt": "Selecione o nome da rede/cadeia (mainnet ou testnet)"
+    "dynamic": {
+      "chain": {
+        "help": "A versão de Ethereum PoS do seu interesse. Use \"mainnet\" se estiver depositando ETH",
+        "prompt": "Selecione o nome da rede/cadeia (mainnet ou testnet)"
+      },
+      "arg_devnet_chain_setting": {
+        "help": "[SOMENTE DEVNET] Defina um valor específico para GENESIS_FORK_VERSION. Deve ser uma string JSON contendo um objeto com as seguintes chaves: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount e min_deposit_amount. Deve ser semelhante ao que você encontra em settings.py. Isso substituirá qualquer cadeia selecionada."
+      }
     },
     "keystore_password": {
       "help": "A senha que protegerá seus keystores. Você precisará digitá-la para descriptografá-los ao configurar seus validadores Ethereum PoS. (Recomenda-se não usar esse argumento e esperar que a CLI solicite o seu mnemônico; caso contrário, aparecerá no histórico do shell.)",
@@ -33,9 +38,6 @@
     },
     "arg_pbkdf2": {
       "help": "Usa a função de hash pbkdf2 em vez de scrypt nos arquivos keystore gerados. "
-    },
-    "arg_devnet_chain_setting": {
-      "help": "[SOMENTE DEVNET] Defina um valor específico para GENESIS_FORK_VERSION. Deve ser uma string JSON contendo um objeto com as seguintes chaves: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount e min_deposit_amount. Deve ser semelhante ao que você encontra em settings.py. Isso substituirá qualquer cadeia selecionada."
     }
   },
   "generate_keys": {

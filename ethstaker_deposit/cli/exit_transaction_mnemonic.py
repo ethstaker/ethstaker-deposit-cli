@@ -9,29 +9,21 @@ from ethstaker_deposit.cli.existing_mnemonic import load_mnemonic_arguments_deco
 from ethstaker_deposit.credentials import Credential
 from ethstaker_deposit.exceptions import ValidationError
 from ethstaker_deposit.settings import (
-    MAINNET,
-    ALL_CHAIN_KEYS,
-    get_chain_setting,
     BaseChainSetting,
 )
 from ethstaker_deposit.utils import config
 from ethstaker_deposit.utils.click import (
+    chain_arguments_decorator,
     captive_prompt_callback,
-    choice_prompt_func,
     jit_option,
-    prompt_if_other_is_none,
 )
 from ethstaker_deposit.utils.constants import DEFAULT_EXIT_TRANSACTION_FOLDER_NAME
 from ethstaker_deposit.utils.symlink import warn_if_output_directory_symlink
-from ethstaker_deposit.utils.intl import (
-    closest_match,
-    load_text,
-)
+from ethstaker_deposit.utils.intl import load_text
 from ethstaker_deposit.utils.validation import (
     validate_int_range,
     validate_validator_indices,
     verify_signed_exit_json,
-    validate_devnet_chain_setting,
     validate_genesis_validators_root,
 )
 from ethstaker_deposit.utils.terminal import clear_terminal
@@ -59,21 +51,7 @@ FUNC_NAME = 'exit_transaction_mnemonic'
 @click.command(
     help=load_text(['arg_exit_transaction_mnemonic', 'help'], func=FUNC_NAME),
 )
-@jit_option(
-    callback=captive_prompt_callback(
-        lambda x, _: closest_match(x, ALL_CHAIN_KEYS),
-        choice_prompt_func(
-            lambda: load_text(['arg_exit_transaction_mnemonic_chain', 'prompt'], func=FUNC_NAME),
-            ALL_CHAIN_KEYS
-        ),
-        prompt_if=prompt_if_other_is_none('devnet_chain_setting'),
-        default=MAINNET,
-    ),
-    default=MAINNET,
-    help=lambda: load_text(['arg_exit_transaction_mnemonic_chain', 'help'], func=FUNC_NAME),
-    param_decls='--chain',
-    prompt=False,  # the callback handles the prompt
-)
+@chain_arguments_decorator(FUNC_NAME, __file__, 'arg_exit_transaction_mnemonic_chain')
 @load_mnemonic_arguments_decorator
 @jit_option(
     callback=captive_prompt_callback(
@@ -105,24 +83,16 @@ FUNC_NAME = 'exit_transaction_mnemonic'
     param_decls='--output_folder',
     type=click.Path(exists=True, file_okay=False, dir_okay=True),
 )
-@jit_option(
-    callback=validate_devnet_chain_setting,
-    default=None,
-    help=lambda: load_text(['arg_devnet_chain_setting', 'help'], func=FUNC_NAME),
-    param_decls='--devnet_chain_setting',
-    is_eager=True,
-)
 @click.pass_context
 def exit_transaction_mnemonic(
         ctx: click.Context,
-        chain: str,
+        chain_setting: BaseChainSetting,
         mnemonic: str,
         mnemonic_password: str,
         validator_start_index: int,
         validator_indices: Sequence[int],
         epoch: int,
         output_folder: str,
-        devnet_chain_setting: BaseChainSetting | None,
         **kwargs: Any) -> None:
 
     folder = os.path.join(output_folder, DEFAULT_EXIT_TRANSACTION_FOLDER_NAME)
@@ -131,8 +101,6 @@ def exit_transaction_mnemonic(
         os.mkdir(folder)
     clear_terminal()
 
-    # Get chain setting
-    chain_setting = devnet_chain_setting if devnet_chain_setting is not None else get_chain_setting(chain)
     validate_genesis_validators_root(chain_setting)
 
     num_keys = len(validator_indices)
