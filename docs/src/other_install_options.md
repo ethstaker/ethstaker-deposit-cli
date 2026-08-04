@@ -6,7 +6,7 @@
 
 1. **Python version checking**
 
-    Ensure you are using Python version >= Python3.10:
+    Ensure you are using a Python version supported by the current release:
 
     ```sh
     python3 -V
@@ -17,7 +17,7 @@
     Install the dependencies:
 
     ```sh
-    pip3 install -r requirements.txt
+    python3 -m pip install -r requirements.txt
     ```
 
     Or use the helper script:
@@ -54,7 +54,7 @@
 
 1. **Python version checking**
 
-    Ensure you are using Python version >= Python3.10:
+    Ensure you are using a Python version supported by the current release:
 
     ```sh
     python3 -V
@@ -78,7 +78,7 @@
     and install the dependencies:
 
     ```sh
-    pip3 install -r requirements.txt
+    python3 -m pip install -r requirements.txt
     ```
 
 3. **Create keys and `deposit_data-*.json`**
@@ -169,12 +169,14 @@
 
 ## For Windows users
 
+The helper script requires Bash. Use it from Git Bash as `./deposit.sh`; from
+Command Prompt or PowerShell, use the direct Python commands in Option 2.
 
 ### Option 1. Build `deposit-cli` with native Python
 
 1. **Python version checking**
 
-    Ensure you are using Python version >= Python12 (Assume that you've installed Python 3 as the main Python):
+    Ensure you are using a Python version supported by the current release (assume Python 3 is your main Python):
 
     ```sh
     python -V
@@ -185,13 +187,13 @@
     Install the dependencies:
 
     ```sh
-    pip3 install -r requirements.txt
+    python -m pip install -r requirements.txt
     ```
 
     Or use the helper script:
 
     ```sh
-    sh deposit.sh install
+    ./deposit.sh install
     ```
 
 3. **Create keys and `deposit_data-*.json`**
@@ -222,7 +224,7 @@
 
 1. **Python version checking**
 
-    Ensure you are using Python version >= Python3.10 (Assume that you've installed Python 3 as the main Python):
+    Ensure you are using a Python version supported by the current release (assume Python 3 is your main Python):
 
     ```cmd
     python -V
@@ -240,7 +242,7 @@
     and install the dependencies:
 
     ```cmd
-    pip3 install -r requirements.txt
+    python -m pip install -r requirements.txt
     ```
 
 3. **Create keys and `deposit_data-*.json`**

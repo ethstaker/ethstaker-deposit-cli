@@ -11,7 +11,7 @@ async def main():
         os.mkdir(my_folder_path)
 
     if os.name == 'nt':  # Windows
-        run_script_cmd = 'sh deposit.sh'
+        run_script_cmd = 'bash deposit.sh'
     else:  # Mac or Linux
         run_script_cmd = './deposit.sh'
 
@@ -20,49 +20,40 @@ async def main():
     proc = await asyncio.create_subprocess_shell(
         install_cmd,
     )
-    await proc.wait()
+    await asyncio.wait_for(proc.wait(), timeout=120)
+    assert proc.returncode == 0
     print('[INFO] Installed')
 
     cmd_args = [
         run_script_cmd,
         '--language', 'english',
         '--non_interactive',
-        'new-mnemonic',
+        'existing-mnemonic',
         '--num_validators', '1',
-        '--mnemonic_language', 'english',
+        '--mnemonic', '"abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about"',
+        '--mnemonic_password', 'TREZOR',
+        '--validator_start_index', '1',
         '--chain', 'mainnet',
-        '--keystore_password', 'MyPassword',
+        '--keystore_password', 'TheirPassword',
+        '--withdrawal_address', '""',
         '--folder', my_folder_path,
     ]
     proc = await asyncio.create_subprocess_shell(
         ' '.join(cmd_args),
-        stdin=asyncio.subprocess.PIPE,
         stdout=asyncio.subprocess.PIPE,
-        stderr=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.STDOUT,
     )
-    seed_phrase = ''
-    parsing = False
     async for out in proc.stdout:
-        output = out.decode('utf-8').rstrip()
-        if output.startswith("This is your mnemonic"):
-            parsing = True
-        elif output.startswith("Please type your mnemonic"):
-            parsing = False
-        elif parsing:
-            seed_phrase += output
-            if len(seed_phrase) > 0:
-                encoded_phrase = seed_phrase.encode()
-                proc.stdin.write(encoded_phrase)
-                proc.stdin.write(b'\n')
-        print(output)
+        print(out.decode('utf-8').rstrip())
 
-    async for out in proc.stderr:
-        output = out.decode('utf-8').rstrip()
-        print(f'[stderr] {output}')
+    try:
+        await asyncio.wait_for(proc.wait(), timeout=10)
+    except asyncio.TimeoutError:
+        proc.kill()
+        await proc.wait()
+        raise AssertionError('deposit-cli subprocess timed out')
 
-    assert len(seed_phrase) > 0
-
-    await proc.wait()
+    assert proc.returncode == 0
 
     # Check files
     validator_keys_folder_path = os.path.join(my_folder_path, DEFAULT_VALIDATOR_KEYS_FOLDER_NAME)

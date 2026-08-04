@@ -7,13 +7,13 @@ To install the `ethstaker-deposit-cli`, follow these steps:
 Ensure you have the following software installed on your system:
 
 - **Git**: Version control system to clone the repository. [Download Git](https://git-scm.com/downloads)
-- **Python 3.10+**: The programming language required to run the tool. [Download Python](https://www.python.org/downloads/)
+- **Supported Python version**: The required version is declared in `pyproject.toml`. [Download Python](https://www.python.org/downloads/)
 - **pip**: Package installer for Python, which is included with Python 3.
 
 On Windows, you'll need:
 - **Git for Windows**: Version control system to clone the repository. Configure it to associate `.sh` files with `bash`. [Download GfW](https://git-scm.com/download/win)
 - **Windows Terminal**: Optional but recommended command line console. Configure GfW to install a Git Bash profile. [Download Windows Terminal](https://apps.microsoft.com/detail/9n0dx20hk701)
-- **Python 3.10+**: The programming language required to run the tool. [Download Python](https://apps.microsoft.com/detail/9ncvdn91xzqp)
+- **Supported Python version**: The required version is declared in `pyproject.toml`. [Download Python](https://apps.microsoft.com/detail/9ncvdn91xzqp)
 - **Visual Studio C++**: The compiler required to build some of the dependencies of the tool. [Download VS C++](https://visualstudio.microsoft.com/vs/features/cplusplus/)
 
 ## Local Development Steps
@@ -48,7 +48,7 @@ On Windows, you'll need:
 4. **Install Dependencies**
 
     ```sh
-    pip3 install -r requirements.txt
+    python3 -m pip install -r requirements.txt
     ```
 
 5. **Run the CLI**

@@ -4,7 +4,7 @@ This guide will walk you through the steps to download and set up the `ethstaker
 
 **Build requirements**
 
-- [Python **3.10+**](https://www.python.org/about/gettingstarted/)
+- [A Python version supported by the current release](https://www.python.org/about/gettingstarted/)
 - [pip3](https://pip.pypa.io/en/stable/installing/)
 
 ## Step 1: Download the Latest Release

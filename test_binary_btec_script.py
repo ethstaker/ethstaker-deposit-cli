@@ -36,7 +36,7 @@ async def main(argv):
         ' '.join(cmd_args),
         stdin=asyncio.subprocess.PIPE,
         stdout=asyncio.subprocess.PIPE,
-        stderr=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.STDOUT,
     )
     seed_phrase = ''
     parsing = False
@@ -55,10 +55,6 @@ async def main(argv):
                 proc.stdin.write(encoded_phrase)
                 proc.stdin.write(b'\n')
         print(output)
-
-    async for out in proc.stderr:
-        output = out.decode('utf-8').rstrip()
-        print(f'[stderr] {output}')
 
     assert len(seed_phrase) > 0
 

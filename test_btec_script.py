@@ -11,7 +11,7 @@ async def main():
         os.mkdir(my_folder_path)
 
     if os.name == 'nt':  # Windows
-        run_script_cmd = 'sh deposit.sh'
+        run_script_cmd = 'bash deposit.sh'
     else:  # Mac or Linux
         run_script_cmd = './deposit.sh'
 
@@ -43,31 +43,16 @@ async def main():
         stdout=asyncio.subprocess.PIPE,
         stderr=asyncio.subprocess.PIPE,
     )
-    seed_phrase = ''
-    parsing = False
     async for out in proc.stdout:
         output = out.decode('utf-8').rstrip()
-        if output.startswith("***Using the tool"):
-            parsing = True
-        elif output.startswith("This is your mnemonic"):
-            parsing = True
-        elif output.startswith("Please type your mnemonic"):
-            parsing = False
-        elif parsing:
-            seed_phrase += output
-            if len(seed_phrase) > 0:
-                encoded_phrase = seed_phrase.encode()
-                proc.stdin.write(encoded_phrase)
-                proc.stdin.write(b'\n')
         print(output)
 
     async for out in proc.stderr:
         output = out.decode('utf-8').rstrip()
         print(f'[stderr] {output}')
 
-    assert len(seed_phrase) > 0
-
     await proc.wait()
+    assert proc.returncode == 0
 
     # Check files
     validator_keys_folder_path = os.path.join(my_folder_path, DEFAULT_VALIDATOR_KEYS_FOLDER_NAME)

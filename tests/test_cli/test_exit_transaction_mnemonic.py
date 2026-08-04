@@ -65,7 +65,7 @@ async def test_exit_transaction_mnemonic_multiple() -> None:
         os.mkdir(my_folder_path)
 
     if os.name == 'nt':  # Windows
-        run_script_cmd = 'sh deposit.sh'
+        run_script_cmd = 'bash deposit.sh'
     else:  # Mac or Linux
         run_script_cmd = './deposit.sh'
 
