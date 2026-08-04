@@ -1,5 +1,8 @@
 name: ci-runner
 run-name: ${{ github.actor }} is testing and measuring code quality
+concurrency:
+  group: ci-runner-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
   actions: read
