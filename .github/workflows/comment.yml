@@ -2,7 +2,7 @@
 name: ci-comment
 run-name: ${{ github.actor }} is adding coverage report comment on PR
 concurrency:
-  group: ci-comment-${{ github.event.workflow_run.pull_requests[0].number || github.run_id }}
+  group: ci-comment-${{ github.event.workflow_run.head_repository.full_name || github.repository }}-${{ github.event.workflow_run.head_branch || github.run_id }}
   cancel-in-progress: true
 on:
   workflow_run:
@@ -62,6 +62,7 @@ jobs:
     permissions:
       actions: read
       issues: write
+      pull-requests: read
     runs-on: ubuntu-latest
     steps:
       - name: Download artifacts
@@ -77,12 +78,26 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const fs = require('fs');
-            const pullRequest = context.payload.workflow_run.pull_requests?.[0];
-            if (!pullRequest?.number) {
-              throw new Error('Could not determine the pull request number from the workflow run event');
+            const workflowRun = context.payload.workflow_run;
+            const headRepository = workflowRun.head_repository?.full_name;
+            const headBranch = workflowRun.head_branch;
+            if (!headRepository || !headBranch) {
+              throw new Error('Could not determine the workflow run head repository and branch');
             }
 
-            const issueNumber = pullRequest.number;
+            const [headOwner] = headRepository.split('/');
+            const { data: pullRequests } = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'all',
+              head: `${headOwner}:${headBranch}`,
+              per_page: 100,
+            });
+            if (pullRequests.length === 0) {
+              throw new Error(`Could not find a pull request for ${headRepository}:${headBranch}`);
+            }
+
+            const issueNumber = pullRequests[0].number;
             const marker = '<!-- ethstaker-coverage-report -->';
             const reportPath = './coverage-text-report';
             if (!fs.existsSync(reportPath)) {
