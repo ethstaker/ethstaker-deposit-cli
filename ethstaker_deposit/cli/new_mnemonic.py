@@ -74,7 +74,7 @@ def new_mnemonic(ctx: click.Context, mnemonic_language: str, **kwargs: Any) -> N
     try:  # Failing this on headless Linux is expected
         click.pause(load_text(['msg_confirm_clipboard_clearing']))
         pyperclip.copy(' ')
-    except Exception:
+    except Exception:  # noqa: S110
         pass
     # Do NOT use mnemonic_password.
     ctx.obj = {'mnemonic': mnemonic, 'mnemonic_password': ''}

@@ -1,6 +1,6 @@
 from typing import Any
 
-from Crypto.Hash import (
+from Crypto.Hash import (  # noqa: S413
     SHA256 as _sha256,
     SHA512 as _sha512,
 )
@@ -9,7 +9,7 @@ from Crypto.Protocol.KDF import (
     HKDF as _HKDF,
     PBKDF2 as _PBKDF2,
 )
-from Crypto.Cipher import (
+from Crypto.Cipher import (  # noqa: S413
     AES as _AES
 )
 

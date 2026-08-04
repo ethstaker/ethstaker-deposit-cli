@@ -121,6 +121,6 @@ def existing_mnemonic(ctx: click.Context, mnemonic: str, mnemonic_password: str,
         if not config.non_interactive:
             click.pause(load_text(['msg_confirm_clipboard_clearing']))
         pyperclip.copy(' ')
-    except Exception:
+    except Exception:  # noqa: S110
         pass
     ctx.forward(generate_keys)
