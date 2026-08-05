@@ -284,7 +284,10 @@ def _deposit_data_builder(credential: Credential) -> dict[str, bytes]:
 
 def _keystore_verifier(kwargs: dict[str, Any]) -> bool:
     credential: Credential = kwargs.pop('credential')
-    return credential.verify_keystore(**kwargs)
+    try:
+        return credential.verify_keystore(**kwargs)
+    except (ValueError, TypeError):
+        return False
 
 
 def _bls_to_execution_change_builder(kwargs: dict[str, Any]) -> dict[str, bytes]:

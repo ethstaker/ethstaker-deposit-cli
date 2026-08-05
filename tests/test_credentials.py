@@ -1,10 +1,12 @@
 import json
 import os
+import stat
 
 import pytest
 from py_ecc.bls import G2ProofOfPossession as bls
 
 from ethstaker_deposit.credentials import Credential, CredentialList
+from ethstaker_deposit.key_handling.keystore import Keystore
 from ethstaker_deposit.settings import DEPOSIT_CLI_VERSION, MainnetSetting
 from ethstaker_deposit.utils.constants import (
     BLS_WITHDRAWAL_PREFIX,
@@ -53,6 +55,85 @@ def test_from_mnemonic() -> None:
             hex_withdrawal_address=None,
             compounding=False,
         )
+
+
+@pytest.mark.parametrize('use_pbkdf2', [False, True])
+def test_verify_keystore_passwords_and_get_key(tmp_path, use_pbkdf2: bool) -> None:
+    credential = Credential(
+        mnemonic=MNEMONIC,
+        mnemonic_password='',
+        index=0,
+        amount=32 * ETH2GWEI,
+        chain_setting=MainnetSetting,
+        hex_withdrawal_address=None,
+        use_pbkdf2=use_pbkdf2,
+    )
+    password = 'correct-password'
+    filepath = credential.save_signing_keystore(password, str(tmp_path), 123)
+
+    assert credential.verify_keystore(filepath, password)
+    with pytest.raises(ValueError):
+        credential.verify_keystore(filepath, 'incorrect-password')
+
+    decryption_key, kdf_salt = credential._get_keystore_key(filepath, password)
+    keystore = Keystore.from_file(filepath)
+    assert len(decryption_key) == 32
+    assert kdf_salt == keystore.crypto.kdf.params['salt']
+    assert keystore.decrypt(password, kdf_salt, decryption_key) == credential.signing_sk.to_bytes(32, 'big')
+
+
+@pytest.mark.parametrize('use_pbkdf2', [False, True])
+def test_credential_list_export_and_verify_keystores(tmp_path, use_pbkdf2: bool) -> None:
+    credentials = CredentialList([
+        Credential(
+            mnemonic=MNEMONIC,
+            mnemonic_password='',
+            index=index,
+            amount=32 * ETH2GWEI,
+            chain_setting=MainnetSetting,
+            hex_withdrawal_address=None,
+            use_pbkdf2=use_pbkdf2,
+        )
+        for index in range(2)
+    ])
+    password = 'correct-password'
+    filepaths = credentials.export_keystores(password, str(tmp_path), 123)
+
+    assert len(filepaths) == 2
+    assert credentials.verify_keystores(filepaths, password)
+    assert not credentials.verify_keystores(filepaths, 'incorrect-password')
+
+    with open(filepaths[0], encoding='utf-8') as file:
+        tampered = json.load(file)
+    ciphertext = tampered['crypto']['cipher']['message']
+    tampered['crypto']['cipher']['message'] = ciphertext[:-2] + ('00' if ciphertext[-2:] != '00' else 'ff')
+    os.chmod(filepaths[0], stat.S_IRUSR | stat.S_IWUSR)
+    with open(filepaths[0], 'w', encoding='utf-8') as file:
+        json.dump(tampered, file)
+
+    assert not credentials.verify_keystores(filepaths, password)
+
+
+def test_empty_credential_list_workflows(tmp_path) -> None:
+    credentials = CredentialList([])
+
+    assert credentials.export_keystores('password', str(tmp_path), 123) == []
+    assert credentials.verify_keystores([], 'password')
+    assert credentials.export_deposit_data_json(str(tmp_path), 123)
+
+
+def test_export_bls_to_execution_change_rejects_mismatched_indices(tmp_path) -> None:
+    credential = Credential(
+        mnemonic=MNEMONIC,
+        mnemonic_password='',
+        index=0,
+        amount=32 * ETH2GWEI,
+        chain_setting=MainnetSetting,
+        hex_withdrawal_address=WITHDRAWAL_ADDRESS,
+    )
+
+    with pytest.raises(IndexError):
+        CredentialList([credential]).export_bls_to_execution_change_json(str(tmp_path), [])
 
 
 def test_credential_withdrawal_credentials_variants() -> None:
