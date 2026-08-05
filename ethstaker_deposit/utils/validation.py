@@ -177,13 +177,15 @@ def validate_int_range(num: Any, low: int, high: int) -> int:
     Verifies that `num` is an `int` and low <= num < high
     '''
     try:
+        if isinstance(num, bool):
+            raise ValidationError('Num is bool')
         num_int = int(num)  # Try cast to int
         if num_int != float(num):  # Check num is not float
             raise ValidationError('Num is float')
         if not (low <= num_int < high):  # Check num in range
             raise ValidationError('Num is not in range')
         return num_int
-    except (ValueError, ValidationError):
+    except (TypeError, ValueError, ValidationError):
         raise ValidationError(load_text(['err_not_positive_integer']))
 
 
@@ -209,8 +211,11 @@ def validate_yesno(ctx: click.Context, param: Any, value: str) -> bool:
     '''
     try:
         param = BoolParamType()
-        return param.convert(value, param, ctx)
-    except BadParameter:
+        converted = param.convert(value, param, ctx)
+        if converted is None:
+            raise BadParameter('Invalid boolean value')
+        return converted
+    except (AttributeError, BadParameter):
         raise ValidationError(load_text(['err_invalid_bool_value']))
 
 
@@ -336,12 +341,11 @@ def validate_bls_to_execution_change(btec_dict: dict[str, Any],
 
 
 def normalize_bls_withdrawal_credentials_to_bytes(bls_withdrawal_credentials: str) -> bytes:
-    if bls_withdrawal_credentials.startswith('0x'):
-        bls_withdrawal_credentials = bls_withdrawal_credentials[2:]
-
     try:
+        if bls_withdrawal_credentials.startswith('0x'):
+            bls_withdrawal_credentials = bls_withdrawal_credentials[2:]
         bls_withdrawal_credentials_bytes = bytes.fromhex(bls_withdrawal_credentials)
-    except Exception:
+    except (AttributeError, TypeError, ValueError):
         raise ValidationError(load_text(['err_incorrect_hex_form']) + '\n')
     return bls_withdrawal_credentials_bytes
 

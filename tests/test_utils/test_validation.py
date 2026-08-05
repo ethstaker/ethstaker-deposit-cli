@@ -9,11 +9,20 @@ from ethstaker_deposit.exceptions import ValidationError
 from ethstaker_deposit.settings import get_chain_setting, get_devnet_chain_setting
 from ethstaker_deposit.utils.validation import (
     normalize_input_list,
+    normalize_bls_withdrawal_credentials_to_bytes,
     validate_int_range,
     validate_deposit_amount,
+    validate_bls_withdrawal_credentials,
+    validate_withdrawal_address,
+    validate_yesno,
     validate_password_strength,
     validate_signed_exit,
     validate_devnet_chain_setting_json,
+)
+from ethstaker_deposit.utils.constants import (
+    BLS_WITHDRAWAL_PREFIX,
+    ETH2GWEI,
+    MAX_DEPOSIT_AMOUNT,
 )
 
 
@@ -83,6 +92,68 @@ def test_validate_int_range(num: Any, low: int, high: int, valid: bool) -> None:
             validate_int_range(num, low, high)
 
 
+@pytest.mark.parametrize('value', ['0x' + '00' * 32, '00' * 32])
+def test_normalize_bls_withdrawal_credentials(value: str) -> None:
+    assert normalize_bls_withdrawal_credentials_to_bytes(value) == b'\x00' * 32
+
+
+@pytest.mark.parametrize('value', ['0x123', '0xzz', None])
+def test_normalize_bls_withdrawal_credentials_rejects_malformed(value: Any) -> None:
+    with pytest.raises(ValidationError):
+        normalize_bls_withdrawal_credentials_to_bytes(value)
+
+
+def test_validate_bls_withdrawal_credentials_accepts_bls_form() -> None:
+    credentials = BLS_WITHDRAWAL_PREFIX + b'\x01' * 31
+
+    assert validate_bls_withdrawal_credentials('0x' + credentials.hex()) == credentials
+
+
+@pytest.mark.parametrize(
+    'credentials',
+    [
+        '01' + '00' * 31,
+        '02' + '00' * 31,
+        '00' + '00' * 30,
+        '00' + '00' * 32,
+    ],
+)
+def test_validate_bls_withdrawal_credentials_rejects_non_bls_forms(credentials: str) -> None:
+    with pytest.raises(ValidationError):
+        validate_bls_withdrawal_credentials(credentials)
+
+
+@pytest.mark.parametrize(
+    'address, require, expected',
+    [
+        ('0x00000000219ab540356cBB839Cbe05303d7705Fa', False, '0x00000000219ab540356cbb839cbe05303d7705fa'),
+        ('', False, None),
+        (None, False, None),
+    ],
+)
+def test_validate_withdrawal_address(address: str | None, require: bool, expected: str | None) -> None:
+    assert validate_withdrawal_address(None, None, address, require) == expected
+
+
+@pytest.mark.parametrize('address', ['', None])
+def test_validate_withdrawal_address_required(address: str | None) -> None:
+    with pytest.raises(ValidationError):
+        validate_withdrawal_address(None, None, address, require=True)
+
+
+@pytest.mark.parametrize(
+    'address',
+    [
+        '0x1234',
+        'not-an-address',
+        '0x00000000219ab540356cBB839Cbe05303d7705FA',
+    ],
+)
+def test_validate_withdrawal_address_rejects_invalid(address: str) -> None:
+    with pytest.raises(ValidationError):
+        validate_withdrawal_address(None, None, address)
+
+
 @pytest.mark.parametrize(
     'amount, valid, chain',
     [
@@ -131,6 +202,62 @@ def test_validate_deposit_amount(amount: str, valid: bool, chain: str) -> None:
     else:
         with pytest.raises(ValidationError):
             validate_deposit_amount(amount, **kwargs)
+
+
+@pytest.mark.parametrize(
+    'amount, expected',
+    [
+        ('1', ETH2GWEI),
+        ('1.000000001', ETH2GWEI + 1),
+        ('2048', MAX_DEPOSIT_AMOUNT),
+    ],
+)
+def test_validate_deposit_amount_returns_gwei(amount: str, expected: int) -> None:
+    assert validate_deposit_amount(amount) == expected
+
+
+@pytest.mark.parametrize(
+    'amount',
+    [
+        '0.0000000001',
+        '1.0000000001',
+        '2048.000000001',
+        'NaN',
+        'Infinity',
+        '',
+        None,
+    ],
+)
+def test_validate_deposit_amount_rejects_invalid_boundaries(amount: Any) -> None:
+    with pytest.raises((ValidationError, TypeError)):
+        validate_deposit_amount(amount)
+
+
+@pytest.mark.parametrize('num', [0, 1, 2**32 - 1, '0', '4294967295'])
+def test_validate_int_range_accepts_lower_inclusive_upper_exclusive(num: Any) -> None:
+    assert validate_int_range(num, 0, 2**32) == int(num)
+
+
+@pytest.mark.parametrize('num', [-1, 2**32, 0.5, True, None, '1.0', 'nan', 'inf'])
+def test_validate_int_range_rejects_invalid_values(num: Any) -> None:
+    with pytest.raises(ValidationError):
+        validate_int_range(num, 0, 2**32)
+
+
+@pytest.mark.parametrize('value', ['1', 'true', 't', 'yes', 'y', 'on', 'TRUE', 'Yes'])
+def test_validate_yesno_true_values(value: str) -> None:
+    assert validate_yesno(None, None, value) is True
+
+
+@pytest.mark.parametrize('value', ['0', 'false', 'f', 'no', 'n', 'off', 'FALSE', 'No'])
+def test_validate_yesno_false_values(value: str) -> None:
+    assert validate_yesno(None, None, value) is False
+
+
+@pytest.mark.parametrize('value', ['maybe', '2', None])
+def test_validate_yesno_rejects_invalid_values(value: Any) -> None:
+    with pytest.raises(ValidationError):
+        validate_yesno(None, None, value)
 
 
 @pytest.mark.parametrize(
