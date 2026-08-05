@@ -1,23 +1,23 @@
 {
     "generate_mnemonic": {
         "arg_generate_mnemonic": {
-            "help": "Generate a new random mnemonic. If you also want to create your validator keystore and deposit files, you should be using the new-mnemonic or the existing-mnemonic command instead."
+            "help": "Génère une nouvelle phrase mnémonique aléatoire. Si vous souhaitez également créer les fichiers keystore et de dépôt de votre validateur, utilisez plutôt la commande new-mnemonic ou existing-mnemonic."
         },
         "arg_mnemonic_language": {
-            "default": "english",
-            "help": "The language of the mnemonic word list",
-            "prompt": "Please choose the language of the mnemonic word list"
+            "default": "french",
+            "help": "La langue de la liste de mots mnémonique",
+            "prompt": "Veuillez choisir la langue de la liste de mots mnémonique"
         },
         "arg_output_file": {
-            "help": "An optional file path where to write the mnemonic. When used, it will write the mnemonic to the file instead of displaying the mnemonic.",
-            "err_not_found": "Error while trying to write file: Path not found.",
-            "err_perm_denied": "Error while trying to write file: Permission denied to write to the file.",
-            "err_directory_not_file": "Error while trying to write file: The specified path is a directory, not a file.",
-            "err_os": "Error while trying to write file: An OS-related error occurred.",
-            "err_exception": "Error while trying to write file: An unexpected error occurred."
+            "help": "Chemin de fichier facultatif dans lequel écrire la phrase mnémonique. Lorsqu'il est utilisé, la phrase mnémonique est écrite dans le fichier au lieu d'être affichée.",
+            "err_not_found": "Erreur lors de l'écriture du fichier : chemin introuvable.",
+            "err_perm_denied": "Erreur lors de l'écriture du fichier : permission refusée pour écrire dans le fichier.",
+            "err_directory_not_file": "Erreur lors de l'écriture du fichier : le chemin indiqué est un dossier et non un fichier.",
+            "err_os": "Erreur lors de l'écriture du fichier : une erreur liée au système d'exploitation s'est produite.",
+            "err_exception": "Erreur lors de l'écriture du fichier : une erreur inattendue s'est produite."
         },
-        "msg_mnemonic_presentation": "This is your randomly generated mnemonic:",
-        "msg_mnemonic_file_written": "Your randomly generated mnemonic was written in",
-        "msg_mnemonic_next": "If you also want to generate your validator keystore and deposit files you can now use the existing-mnemonic command."
+        "msg_mnemonic_presentation": "Voici votre phrase mnémonique générée aléatoirement :",
+        "msg_mnemonic_file_written": "Votre phrase mnémonique générée aléatoirement a été écrite dans",
+        "msg_mnemonic_next": "Si vous souhaitez également générer les fichiers keystore et de dépôt de votre validateur, vous pouvez maintenant utiliser la commande existing-mnemonic."
     }
 }

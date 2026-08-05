@@ -23,9 +23,6 @@ Keep these exactly unchanged wherever they occur:
 - Technical identifiers such as `BIP39`, `SignedBLSToExecutionChange`, `GENESIS_FORK_VERSION`, `GENESIS_VALIDATORS_ROOT`, `0x00`, `0x01`, `0x02`, `ETH`, `gwei`, `scrypt`, and `PBKDF2`.
 - CLI flags, network names, JSON keys, directory names, and file patterns such as `keystore-*.json`.
 - Security meaning, warnings, capitalization used for emphasis, and imperative tone.
-- The key "arg_mnemonic_language": {
-            "default": "english",
-
 
 ## Translation Guidance
 
@@ -36,11 +33,12 @@ Keep these exactly unchanged wherever they occur:
 - For `pt-BR`, use Brazilian Portuguese rather than European Portuguese.
 - For `zh-CN`, use Simplified Chinese.
 - Preserve gender, politeness, and punctuation conventions appropriate to the target language.
+- Use stable internal mnemonic-language keys as the default value in both generate-mnemonic and new-mnemonic locale files. Set each locale’s default to its corresponding key, such as english, french, italian, japanese, korean, portuguese, or chinese_simplified. Do not use translated display labels such as Français, Italiano, or 日本語; display labels belong only in prompts and choices. Preserve the English locale’s english default and leave unsupported mnemonic languages unchanged.
 
 ## Workflow
 
-0. Already done: `it`
-1. Select one locale directory at a time: `ar`, `el`, `fr`, `id`, `ja`, `ko`, `pt-BR`, `ro`, `tr`, or `zh-CN`.
+0. Already done: `it, ar, el, fr`
+1. Select one locale directory at a time: `id`, `ja`, `ko`, `pt-BR`, `ro`, `tr`, or `zh-CN`.
 2. Compare its JSON leaves with the corresponding English JSON leaves.
 3. Translate only missing or English-fallback values.
 4. Translate 40 placeholders and wait for the operator to prompt for another 40

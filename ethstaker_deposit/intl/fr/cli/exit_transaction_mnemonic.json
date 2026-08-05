@@ -1,35 +1,35 @@
 {
     "exit_transaction_mnemonic": {
         "arg_exit_transaction_mnemonic": {
-            "help": "Generate an exit transaction that can be used to exit validators on Ethereum Beacon Chain."
+            "help": "Génère une transaction de sortie permettant de faire sortir des validateurs de la chaîne Beacon Ethereum."
         },
         "arg_exit_transaction_mnemonic_chain": {
-            "help": "The name of the Ethereum PoS chain your validator is running on. \"mainnet\" is the default.",
-            "prompt": "Please choose the (mainnet or testnet) network/chain name"
+            "help": "Le nom de la chaîne Ethereum PoS sur laquelle votre validateur fonctionne. \"mainnet\" est la valeur par défaut.",
+            "prompt": "Veuillez choisir le nom du réseau ou de la chaîne (mainnet ou testnet)"
         },
         "arg_exit_transaction_mnemonic_start_index": {
-            "help": "Enter the index (key number) which you used when you created your keys. The default value is 0.",
-            "prompt": "Enter the index (key number) which you used when you created your keys. The default value is 0."
+            "help": "Saisissez l'index (numéro de clé) utilisé lors de la création de vos clés. La valeur par défaut est 0.",
+            "prompt": "Saisissez l'index (numéro de clé) utilisé lors de la création de vos clés. La valeur par défaut est 0."
         },
         "arg_exit_transaction_mnemonic_indices": {
-            "help": "A list of the validator index number(s) of the certain validator(s)",
-            "prompt": "Please enter a list of the validator index number(s) of your validator(s) as identified on the beacon chain. Split multiple items with whitespaces or commas."
+            "help": "Une liste des numéros d'index des validateurs concernés",
+            "prompt": "Veuillez saisir une liste des numéros d'index de vos validateurs tels qu'ils sont identifiés sur la chaîne Beacon. Séparez les éléments multiples par des espaces ou des virgules."
         },
         "arg_exit_transaction_mnemonic_epoch": {
-            "help": "The epoch of when the exit transaction will be valid. The transaction will always be valid by default."
+            "help": "L'époque à partir de laquelle la transaction de sortie sera valide. Par défaut, la transaction sera toujours valide."
         },
         "arg_exit_transaction_mnemonic_output_folder": {
-            "help": "The folder path where the exit transactions will be saved to. Pointing to `./exit_transactions` by default."
+            "help": "Le chemin du dossier où les transactions de sortie seront enregistrées. Pointe par défaut vers `./exit_transactions`."
         },
         "arg_devnet_chain_setting": {
-            "help": "[DEVNET ONLY] Set a specific EXIT_FORK_VERSION and GENESIS_VALIDATORS_ROOT value. This should be a JSON string containing an object with the following keys: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount and min_deposit_amount. It should be similar to what you can find in settings.py. This will override any selected chain.",
-            "missing_genesis_validators_root": "The chain setting is missing a GENESIS_VALIDATORS_ROOT value. That value is needed to create the exit transaction."
+            "help": "[DEVNET UNIQUEMENT] Définit une valeur spécifique pour EXIT_FORK_VERSION et GENESIS_VALIDATORS_ROOT. Il doit s'agir d'une chaîne JSON contenant un objet avec les clés suivantes : network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount et min_deposit_amount. Elle doit être similaire à ce que vous pouvez trouver dans settings.py. Cela remplacera toute chaîne sélectionnée.",
+            "missing_genesis_validators_root": "Le paramètre de chaîne ne contient pas de valeur GENESIS_VALIDATORS_ROOT. Cette valeur est nécessaire pour créer la transaction de sortie."
         },
-        "msg_key_creation": "Creating your keys:\t",
-        "msg_exit_transaction_creation": "Creating your exit transactions:\t",
-        "msg_verify_exit_transaction": "Verifying your exit transactions:\t",
-        "err_verify_exit_transactions": "\nThere was a problem verifying your exit transactions.\nPlease try again",
-        "msg_creation_success": "\nSuccess!\nYour exit transaction files can be found at: ",
-        "msg_pause": "\n\nPress any key."
+        "msg_key_creation": "Création de vos clés :\t",
+        "msg_exit_transaction_creation": "Création de vos transactions de sortie :\t",
+        "msg_verify_exit_transaction": "Vérification de vos transactions de sortie :\t",
+        "err_verify_exit_transactions": "\nUn problème est survenu lors de la vérification de vos transactions de sortie.\nVeuillez réessayer",
+        "msg_creation_success": "\nOpération réussie !\nVos fichiers de transactions de sortie se trouvent à l'emplacement suivant : ",
+        "msg_pause": "\n\nAppuyez sur une touche."
     }
 }

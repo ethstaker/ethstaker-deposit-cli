@@ -4,7 +4,7 @@
             "help": "Genera una nuova mnemonica casuale. Se vuoi creare anche il keystore del validatore e i file di deposito, usa invece il comando new-mnemonic o existing-mnemonic."
         },
         "arg_mnemonic_language": {
-            "default": "english",
+            "default": "italian",
             "help": "La lingua dell'elenco di parole della mnemonica",
             "prompt": "Scegli la lingua dell'elenco di parole della mnemonica"
         },
