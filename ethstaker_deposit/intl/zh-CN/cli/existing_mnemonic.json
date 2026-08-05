@@ -1,6 +1,7 @@
 {
     "validate_mnemonic": {
-        "err_invalid_mnemonic": "这不是一个有效的助记符，请检查有无打字错误。"
+        "err_invalid_mnemonic": "这不是一个有效的助记符，请检查有无打字错误。",
+        "arg_mnemonic_language": "We couldn't detect the language of your mnemonic phrase. Please select one of the available language options"
     },
     "existing_mnemonic": {
         "arg_existing_mnemonic": {
@@ -12,12 +13,18 @@
         },
         "arg_mnemonic_password": {
             "help": "这几乎肯定不是您想要的参数：这里要的是助记密码，而不是密钥库密码。如果您在这里提供一个密码（若您起初没有启用密码），则可能会导致密钥丢失（从而造成资金损失）！ 还请注意，如果您起初使用此工具生成了您的助记符，则说明您就没有启用助记密码。然而，如果您确定使用了密码来“增加”您助记符的安全性，则您可以在这里提供一个密码。",
-            "confirm": "您是否绝对肯定您启用了助记密码？（这不同于密钥库密码！） 如果您不确定启用了助记密码而硬要输入，则可能会造成资金损失！ 重复输入以确认"
+            "confirm": "您是否绝对肯定您启用了助记密码？（这不同于密钥库密码！） 如果您不确定启用了助记密码而硬要输入，则可能会造成资金损失！ 重复输入以确认",
+            "prompt": "Enter your mnemonic password (if you used one). Make sure you won't forget it, it can not be recovered.",
+            "mismatch": "The mnemonic password you entered doesn't match, please try again."
         },
         "arg_validator_start_index": {
             "help": "输入您想要开始生成更多密钥的索引（密钥号码）。例如，如果您在过去生成了 4 个密钥，请在此处输入 4。",
             "prompt": "输入您想要开始生成更多密钥的索引（密钥号码）。例如，如果您在过去生成了 4 个密钥，请在此处输入 4。",
             "confirm": "重复输入以确认"
-        }
+        },
+        "arg_mnemonic_language": {
+            "help": "The language of your mnemonic. If this is not provided we will attempt to determine it based on the mnemonic provided."
+        },
+        "msg_confirm_clipboard_clearing": "WARNING: Your clipboard will be CLEARED. Some applications or configurations may prevent this. Press any key to clear the clipboard."
     }
 }

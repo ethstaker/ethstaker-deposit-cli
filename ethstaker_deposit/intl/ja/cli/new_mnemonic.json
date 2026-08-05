@@ -10,6 +10,8 @@
         },
         "msg_mnemonic_presentation": "これはあなたのニーモニック (シードフレーズ) です。書き留めて安全な場所に保管してください。これはあなたのデポジットを取得するための唯一の方法です。",
         "msg_press_any_key": "ニーモニックを書き留めたら任意のキーを押してください。",
-        "msg_mnemonic_retype_prompt": "書き留めた内容を確認するには、スペースで区切ってニーモニックを入力してください。"
+        "msg_mnemonic_retype_prompt": "書き留めた内容を確認するには、スペースで区切ってニーモニックを入力してください。",
+        "msg_mnemonic_clipboard_warning": "WARNING: You MUST write the mnemonic down, as we will attempt to clear the clipboard after this step.",
+        "msg_confirm_clipboard_clearing": "WARNING: Your clipboard will be CLEARED. Some applications or configurations may prevent this. Press any key to clear the clipboard."
     }
 }

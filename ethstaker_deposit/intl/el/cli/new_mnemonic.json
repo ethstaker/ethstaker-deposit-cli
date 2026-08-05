@@ -10,6 +10,8 @@
         },
         "msg_mnemonic_presentation": "Αυτό είναι το μνημονικό σας (σειρά λέξεων). Γράψτε την και αποθηκεύστε την με ασφάλεια, είναι ο ΜΟΝΟΣ τρόπος για να ανακτήσετε την κατάθεσή σας.",
         "msg_press_any_key": "Πιέστε οποιοδήποτε πλήκτρο όταν έχετε καταγράψει το μνημονικό σας.",
-        "msg_mnemonic_retype_prompt": "Πληκτρολογήστε το μνημονικό σας (διαχωρισμένο με κενά) για να επιβεβαιώσετε ότι το έχετε καταγράψει"
+        "msg_mnemonic_retype_prompt": "Πληκτρολογήστε το μνημονικό σας (διαχωρισμένο με κενά) για να επιβεβαιώσετε ότι το έχετε καταγράψει",
+        "msg_mnemonic_clipboard_warning": "WARNING: You MUST write the mnemonic down, as we will attempt to clear the clipboard after this step.",
+        "msg_confirm_clipboard_clearing": "WARNING: Your clipboard will be CLEARED. Some applications or configurations may prevent this. Press any key to clear the clipboard."
     }
 }

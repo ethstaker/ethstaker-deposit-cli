@@ -10,6 +10,8 @@
         },
         "msg_mnemonic_presentation": "Ceci est votre phrase mnémonique (seed). Notez-la et conservez-la en sécurité. Elle constitue le SEUL moyen de récupérer votre dépôt.",
         "msg_press_any_key": "Une fois que vous avez écrit votre phrase mnémonique, appuyez sur n'importe quelle touche.",
-        "msg_mnemonic_retype_prompt": "Veuillez saisir votre phrase mnémonique (avec les mots séparés par des espaces) pour confirmer que vous l'avez écrite."
+        "msg_mnemonic_retype_prompt": "Veuillez saisir votre phrase mnémonique (avec les mots séparés par des espaces) pour confirmer que vous l'avez écrite.",
+        "msg_mnemonic_clipboard_warning": "WARNING: You MUST write the mnemonic down, as we will attempt to clear the clipboard after this step.",
+        "msg_confirm_clipboard_clearing": "WARNING: Your clipboard will be CLEARED. Some applications or configurations may prevent this. Press any key to clear the clipboard."
     }
 }

@@ -10,6 +10,8 @@
         },
         "msg_mnemonic_presentation": "هذا هو مساعد الذاكرة الخاصة بك (العبارة الأصلية). قم بكتابتها وتخزينها بأمان، وهي الطريقة الوحيدة لاسترداد وديعتك.",
         "msg_press_any_key": "اضغط على أي مفتاح عندما تكون قد دونت مساعد الذاكرة الخاص بك.",
-        "msg_mnemonic_retype_prompt": "الرجاء كتابة مساعد الذاكرة الخاص بك (مفصولاً بمسافات) لتأكيد أنك دونته"
+        "msg_mnemonic_retype_prompt": "الرجاء كتابة مساعد الذاكرة الخاص بك (مفصولاً بمسافات) لتأكيد أنك دونته",
+        "msg_mnemonic_clipboard_warning": "WARNING: You MUST write the mnemonic down, as we will attempt to clear the clipboard after this step.",
+        "msg_confirm_clipboard_clearing": "WARNING: Your clipboard will be CLEARED. Some applications or configurations may prevent this. Press any key to clear the clipboard."
     }
 }

@@ -10,6 +10,8 @@
         },
         "msg_mnemonic_presentation": "귀하의 니모닉(시드 문구)입니다. 적어두고 안전한 곳에 보관하세요. 예치금을 찾을 수 있는 유일한 수단입니다.",
         "msg_press_any_key": "니모닉을 다 적으면 아무 키나 누르세요.",
-        "msg_mnemonic_retype_prompt": "니모닉을 입력(공백으로 구분)하여 적은 내용을 확인하세요."
+        "msg_mnemonic_retype_prompt": "니모닉을 입력(공백으로 구분)하여 적은 내용을 확인하세요.",
+        "msg_mnemonic_clipboard_warning": "WARNING: You MUST write the mnemonic down, as we will attempt to clear the clipboard after this step.",
+        "msg_confirm_clipboard_clearing": "WARNING: Your clipboard will be CLEARED. Some applications or configurations may prevent this. Press any key to clear the clipboard."
     }
 }

@@ -10,6 +10,8 @@
         },
         "msg_mnemonic_presentation": "这是您的助记符（助记词）。请记下它并存放在安全的地方，它是取回您存款的唯一方式。",
         "msg_press_any_key": "在您记下助记符后，按任意键。",
-        "msg_mnemonic_retype_prompt": "请输入您的助记符（用空格分隔）以确认您已记下了"
+        "msg_mnemonic_retype_prompt": "请输入您的助记符（用空格分隔）以确认您已记下了",
+        "msg_mnemonic_clipboard_warning": "WARNING: You MUST write the mnemonic down, as we will attempt to clear the clipboard after this step.",
+        "msg_confirm_clipboard_clearing": "WARNING: Your clipboard will be CLEARED. Some applications or configurations may prevent this. Press any key to clear the clipboard."
     }
 }
