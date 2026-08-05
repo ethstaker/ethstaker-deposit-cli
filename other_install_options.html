@@ -179,14 +179,14 @@
 <ol>
 <li>
 <p><strong>Python version checking</strong></p>
-<p>Ensure you are using Python version &gt;= Python3.10:</p>
+<p>Ensure you are using a Python version supported by the current release:</p>
 <pre><code class="language-sh">python3 -V
 </code></pre>
 </li>
 <li>
 <p><strong>Installation</strong></p>
 <p>Install the dependencies:</p>
-<pre><code class="language-sh">pip3 install -r requirements.txt
+<pre><code class="language-sh">python3 -m pip install -r requirements.txt
 </code></pre>
 <p>Or use the helper script:</p>
 <pre><code class="language-sh">./deposit.sh install
@@ -211,7 +211,7 @@
 <ol>
 <li>
 <p><strong>Python version checking</strong></p>
-<p>Ensure you are using Python version &gt;= Python3.10:</p>
+<p>Ensure you are using a Python version supported by the current release:</p>
 <pre><code class="language-sh">python3 -V
 </code></pre>
 </li>
@@ -225,7 +225,7 @@
 source .venv/bin/activate
 </code></pre>
 <p>and install the dependencies:</p>
-<pre><code class="language-sh">pip3 install -r requirements.txt
+<pre><code class="language-sh">python3 -m pip install -r requirements.txt
 </code></pre>
 </li>
 <li>
@@ -287,21 +287,23 @@ source .venv/bin/activate
 </ol>
 <hr />
 <h2 id="for-windows-users"><a class="header" href="#for-windows-users">For Windows users</a></h2>
+<p>The helper script requires Bash. Use it from Git Bash as <code>./deposit.sh</code>; from
+Command Prompt or PowerShell, use the direct Python commands in Option 2.</p>
 <h3 id="option-1-build-deposit-cli-with-native-python-1"><a class="header" href="#option-1-build-deposit-cli-with-native-python-1">Option 1. Build <code>deposit-cli</code> with native Python</a></h3>
 <ol>
 <li>
 <p><strong>Python version checking</strong></p>
-<p>Ensure you are using Python version &gt;= Python12 (Assume that you've installed Python 3 as the main Python):</p>
+<p>Ensure you are using a Python version supported by the current release (assume Python 3 is your main Python):</p>
 <pre><code class="language-sh">python -V
 </code></pre>
 </li>
 <li>
 <p><strong>Installation</strong></p>
 <p>Install the dependencies:</p>
-<pre><code class="language-sh">pip3 install -r requirements.txt
+<pre><code class="language-sh">python -m pip install -r requirements.txt
 </code></pre>
 <p>Or use the helper script:</p>
-<pre><code class="language-sh">sh deposit.sh install
+<pre><code class="language-sh">./deposit.sh install
 </code></pre>
 </li>
 <li>
@@ -323,7 +325,7 @@ source .venv/bin/activate
 <ol>
 <li>
 <p><strong>Python version checking</strong></p>
-<p>Ensure you are using Python version &gt;= Python3.10 (Assume that you've installed Python 3 as the main Python):</p>
+<p>Ensure you are using a Python version supported by the current release (assume Python 3 is your main Python):</p>
 <pre><code class="language-cmd">python -V
 </code></pre>
 </li>
@@ -334,7 +336,7 @@ source .venv/bin/activate
 .\.venv\Scripts\activate
 </code></pre>
 <p>and install the dependencies:</p>
-<pre><code class="language-cmd">pip3 install -r requirements.txt
+<pre><code class="language-cmd">python -m pip install -r requirements.txt
 </code></pre>
 </li>
 <li>
