@@ -1,23 +1,23 @@
 {
     "generate_mnemonic": {
         "arg_generate_mnemonic": {
-            "help": "Generate a new random mnemonic. If you also want to create your validator keystore and deposit files, you should be using the new-mnemonic or the existing-mnemonic command instead."
+            "help": "Δημιουργήστε ένα νέο τυχαίο μνημονικό. Αν θέλετε επίσης να δημιουργήσετε το keystore του επαληθευτή σας και τα αρχεία κατάθεσης, χρησιμοποιήστε αντί αυτού την εντολή new-mnemonic ή existing-mnemonic."
         },
         "arg_mnemonic_language": {
             "default": "english",
-            "help": "The language of the mnemonic word list",
-            "prompt": "Please choose the language of the mnemonic word list"
+            "help": "Η γλώσσα της λίστας λέξεων του μνημονικού",
+            "prompt": "Επιλέξτε τη γλώσσα της λίστας λέξεων του μνημονικού"
         },
         "arg_output_file": {
-            "help": "An optional file path where to write the mnemonic. When used, it will write the mnemonic to the file instead of displaying the mnemonic.",
-            "err_not_found": "Error while trying to write file: Path not found.",
-            "err_perm_denied": "Error while trying to write file: Permission denied to write to the file.",
-            "err_directory_not_file": "Error while trying to write file: The specified path is a directory, not a file.",
-            "err_os": "Error while trying to write file: An OS-related error occurred.",
-            "err_exception": "Error while trying to write file: An unexpected error occurred."
+            "help": "Μια προαιρετική διαδρομή αρχείου στην οποία θα γραφτεί το μνημονικό. Όταν χρησιμοποιείται, το μνημονικό θα γραφτεί στο αρχείο αντί να εμφανιστεί.",
+            "err_not_found": "Σφάλμα κατά την προσπάθεια εγγραφής του αρχείου: Η διαδρομή δεν βρέθηκε.",
+            "err_perm_denied": "Σφάλμα κατά την προσπάθεια εγγραφής του αρχείου: Δεν επιτρέπεται η εγγραφή στο αρχείο.",
+            "err_directory_not_file": "Σφάλμα κατά την προσπάθεια εγγραφής του αρχείου: Η καθορισμένη διαδρομή είναι κατάλογος και όχι αρχείο.",
+            "err_os": "Σφάλμα κατά την προσπάθεια εγγραφής του αρχείου: Παρουσιάστηκε σφάλμα που σχετίζεται με το λειτουργικό σύστημα.",
+            "err_exception": "Σφάλμα κατά την προσπάθεια εγγραφής του αρχείου: Παρουσιάστηκε απρόσμενο σφάλμα."
         },
-        "msg_mnemonic_presentation": "This is your randomly generated mnemonic:",
-        "msg_mnemonic_file_written": "Your randomly generated mnemonic was written in",
-        "msg_mnemonic_next": "If you also want to generate your validator keystore and deposit files you can now use the existing-mnemonic command."
+        "msg_mnemonic_presentation": "Αυτό είναι το τυχαία δημιουργημένο μνημονικό σας:",
+        "msg_mnemonic_file_written": "Το τυχαία δημιουργημένο μνημονικό σας γράφτηκε στο",
+        "msg_mnemonic_next": "Αν θέλετε επίσης να δημιουργήσετε το keystore του επαληθευτή σας και τα αρχεία κατάθεσης, μπορείτε τώρα να χρησιμοποιήσετε την εντολή existing-mnemonic."
     }
 }

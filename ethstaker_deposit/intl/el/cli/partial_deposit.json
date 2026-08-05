@@ -1,45 +1,45 @@
 {
     "partial_deposit": {
         "arg_partial_deposit": {
-            "help": "Generate a partial deposit with any amount at least 1 ether which will be signed by the provided validator keystore. This will append to the balance of the provided validator or initiate the creation of one."
+            "help": "Δημιουργήστε μια μερική κατάθεση οποιουδήποτε ποσού τουλάχιστον 1 ether, η οποία θα υπογραφεί από το παρεχόμενο keystore του επαληθευτή. Αυτό θα προστεθεί στο υπόλοιπο του παρεχόμενου επαληθευτή ή θα ξεκινήσει τη δημιουργία ενός νέου."
         },
         "arg_partial_deposit_chain": {
-            "help": "The name of the Ethereum PoS chain your validator is running on. \"mainnet\" is the default.",
-            "prompt": "Please choose the (mainnet or testnet) network/chain name"
+            "help": "Το όνομα της αλυσίδας Ethereum PoS στην οποία εκτελείται ο επαληθευτής σας. Το \"mainnet\" είναι η προεπιλογή.",
+            "prompt": "Επιλέξτε το όνομα του δικτύου/της αλυσίδας (mainnet ή testnet)"
         },
         "arg_partial_deposit_amount": {
-            "help": "The amount to deposit to this validator in ether denomination. Must be at least 1 ether and can not have greater precision than 1 gwei. Default is 32 ether.",
-            "prompt": "Please enter the amount you wish to deposit to this validator. Must be at least {min_deposit} and can not have greater precision than 1 gwei. {activation_amount} is required to activate a new validator"
+            "help": "Το ποσό που θα καταθέσετε σε αυτόν τον validator, σε μονάδες ether. Πρέπει να είναι τουλάχιστον 1 ether και δεν μπορεί να έχει ακρίβεια μεγαλύτερη από 1 gwei. Η προεπιλογή είναι 32 ether.",
+            "prompt": "Εισαγάγετε το ποσό που θέλετε να καταθέσετε σε αυτόν τον validator. Πρέπει να είναι τουλάχιστον {min_deposit} και δεν μπορεί να έχει ακρίβεια μεγαλύτερη από 1 gwei. Απαιτούνται {activation_amount} για την ενεργοποίηση ενός νέου validator"
         },
         "arg_partial_deposit_keystore": {
-            "help": "The keystore file associated with the validator you wish to sign with and deposit to.",
-            "prompt": "Please enter the location of your keystore file."
+            "help": "Το αρχείο keystore που σχετίζεται με τον validator με τον οποίο θέλετε να υπογράψετε και στον οποίο θέλετε να καταθέσετε.",
+            "prompt": "Εισαγάγετε την τοποθεσία του αρχείου keystore σας."
         },
         "arg_partial_deposit_keystore_password": {
-            "help": "The password that is used to encrypt the provided keystore. Note: It's not your mnemonic password. (It is recommended not to use this argument, and wait for the CLI to ask you for your password as otherwise it will appear in your shell history.)",
-            "prompt": "Enter the password that is used to encrypt the provided keystore.",
-            "mismatch": "Error: The provided keystore password was unable to decrypt this keystore file. Make sure you have the correct password and try again."
+            "help": "Ο κωδικός πρόσβασης που χρησιμοποιείται για την κρυπτογράφηση του παρεχόμενου keystore. Σημείωση: Δεν είναι ο κωδικός πρόσβασης της mnemonic σας. (Συνιστάται να μη χρησιμοποιήσετε αυτό το όρισμα και να περιμένετε να σας ζητήσει το CLI τον κωδικό πρόσβασής σας, καθώς διαφορετικά θα εμφανιστεί στο ιστορικό του shell σας.)",
+            "prompt": "Εισαγάγετε τον κωδικό πρόσβασης που χρησιμοποιείται για την κρυπτογράφηση του παρεχόμενου keystore.",
+            "mismatch": "Σφάλμα: Ο παρεχόμενος κωδικός πρόσβασης keystore δεν μπόρεσε να αποκρυπτογραφήσει αυτό το αρχείο keystore. Βεβαιωθείτε ότι έχετε τον σωστό κωδικό πρόσβασης και δοκιμάστε ξανά."
         },
         "arg_partial_deposit_output_folder": {
-            "help": "The folder path where the partial deposit will be saved to. Pointing to `./partial_deposits` by default."
+            "help": "Η διαδρομή του φακέλου όπου θα αποθηκευτεί η μερική κατάθεση. Από προεπιλογή δείχνει στο `./partial_deposits`."
         },
         "arg_withdrawal_address": {
-            "help": "The withdrawal address of the validator. If you wish to create a validator with 0x00 credentials use the new-mnemonic or existing-mnemonic command.",
-            "confirm": "Repeat the withdrawal address for confirmation.",
-            "prompt": "Please enter the withdrawal address. If you wish to create a validator with 0x00 credentials use the new-mnemonic or existing-mnemonic command.",
-            "mismatch": "Error: the two entered addresses do not match. Please type again."
+            "help": "Η διεύθυνση ανάληψης του επαληθευτή. Αν θέλετε να δημιουργήσετε επαληθευτή με διαπιστευτήρια 0x00, χρησιμοποιήστε την εντολή new-mnemonic ή existing-mnemonic.",
+            "confirm": "Επαναλάβετε τη διεύθυνση ανάληψης για επιβεβαίωση.",
+            "prompt": "Εισαγάγετε τη διεύθυνση ανάληψης. Αν θέλετε να δημιουργήσετε επαληθευτή με διαπιστευτήρια 0x00, χρησιμοποιήστε την εντολή new-mnemonic ή existing-mnemonic.",
+            "mismatch": "Σφάλμα: οι δύο διευθύνσεις που εισαγάγατε δεν ταιριάζουν. Πληκτρολογήστε ξανά."
         },
         "arg_compounding": {
-            "help": "Generates compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance or generate regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance. This feature is only supported on networks that have undergone the Pectra fork.",
-            "prompt": "Please enter yes if you want to generate compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance. Compounding validators and 0x02 withdrawal credentials are only supported on networks that have undergone the Pectra fork. Please type no or nothing if you want regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance."
+            "help": "Δημιουργεί validators compounding με διαπιστευτήρια ανάληψης 0x02 για μέγιστο effective balance 2048 ETH ή κανονικούς validators με διαπιστευτήρια ανάληψης 0x01 για μέγιστο effective balance 32 ETH. Αυτή η λειτουργία υποστηρίζεται μόνο σε δίκτυα που έχουν υποστεί το fork Pectra.",
+            "prompt": "Εισαγάγετε yes αν θέλετε να δημιουργήσετε validators compounding με διαπιστευτήρια ανάληψης 0x02 για μέγιστο effective balance 2048 ETH. Οι validators compounding και τα διαπιστευτήρια ανάληψης 0x02 υποστηρίζονται μόνο σε δίκτυα που έχουν υποστεί το fork Pectra. Πληκτρολογήστε no ή τίποτα αν θέλετε κανονικούς validators με διαπιστευτήρια ανάληψης 0x01 για μέγιστο effective balance 32 ETH."
         },
         "arg_devnet_chain_setting": {
-            "help": "[DEVNET ONLY] Set specific GENESIS_FORK_VERSION value. This should be a JSON string containing an object with the following keys: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount and min_deposit_amount. It should be similar to what you can find in settings.py. This will override any selected chain."
+            "help": "[DEVNET ONLY] Ορίστε συγκεκριμένη τιμή GENESIS_FORK_VERSION. Αυτό πρέπει να είναι μια συμβολοσειρά JSON που περιέχει ένα αντικείμενο με τα ακόλουθα κλειδιά: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount και min_deposit_amount. Πρέπει να είναι παρόμοιο με αυτό που θα βρείτε στο settings.py. Αυτό θα παρακάμψει οποιαδήποτε επιλεγμένη αλυσίδα."
         },
-        "msg_partial_deposit_creation": "\nCreating your partial deposit...",
-        "msg_verify_partial_deposit": "\nVerifying your partial deposit...",
-        "err_verify_partial_deposit": "\nThere was a problem verifying your partial deposit.\nPlease try again",
-        "msg_creation_success": "\nSuccess!\nYour partial deposit file can be found at: ",
-        "msg_pause": "\n\nPress any key."
+        "msg_partial_deposit_creation": "\nΔημιουργία της μερικής κατάθεσής σας...",
+        "msg_verify_partial_deposit": "\nΕπαλήθευση της μερικής κατάθεσής σας...",
+        "err_verify_partial_deposit": "\nΠαρουσιάστηκε πρόβλημα κατά την επαλήθευση της μερικής κατάθεσής σας.\nΔοκιμάστε ξανά",
+        "msg_creation_success": "\nΕπιτυχία!\nΤο αρχείο της μερικής κατάθεσής σας βρίσκεται στη διεύθυνση: ",
+        "msg_pause": "\n\nΠατήστε οποιοδήποτε πλήκτρο."
     }
 }
