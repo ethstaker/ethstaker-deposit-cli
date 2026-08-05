@@ -23,6 +23,9 @@ Keep these exactly unchanged wherever they occur:
 - Technical identifiers such as `BIP39`, `SignedBLSToExecutionChange`, `GENESIS_FORK_VERSION`, `GENESIS_VALIDATORS_ROOT`, `0x00`, `0x01`, `0x02`, `ETH`, `gwei`, `scrypt`, and `PBKDF2`.
 - CLI flags, network names, JSON keys, directory names, and file patterns such as `keystore-*.json`.
 - Security meaning, warnings, capitalization used for emphasis, and imperative tone.
+- The key "arg_mnemonic_language": {
+            "default": "english",
+
 
 ## Translation Guidance
 
@@ -36,9 +39,11 @@ Keep these exactly unchanged wherever they occur:
 
 ## Workflow
 
-1. Select one locale directory at a time: `ar`, `el`, `fr`, `id`, `it`, `ja`, `ko`, `pt-BR`, `ro`, `tr`, or `zh-CN`.
+0. Already done: `it`
+1. Select one locale directory at a time: `ar`, `el`, `fr`, `id`, `ja`, `ko`, `pt-BR`, `ro`, `tr`, or `zh-CN`.
 2. Compare its JSON leaves with the corresponding English JSON leaves.
 3. Translate only missing or English-fallback values.
+4. Translate 40 placeholders and wait for the operator to prompt for another 40
 4. Validate that every English leaf key exists in the locale.
 5. Validate that each translated value contains exactly the same placeholders as its English source.
 6. Parse every edited JSON file.

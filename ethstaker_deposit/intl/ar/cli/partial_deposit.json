@@ -1,45 +1,45 @@
 {
     "partial_deposit": {
         "arg_partial_deposit": {
-            "help": "Generate a partial deposit with any amount at least 1 ether which will be signed by the provided validator keystore. This will append to the balance of the provided validator or initiate the creation of one."
+            "help": "إنشاء إيداع جزئي بأي مبلغ لا يقل عن 1 ether، وسيُوقّع باستخدام متجر مفاتيح المدقّق المُقدّم. سيُضاف هذا إلى رصيد المدقّق المُقدّم أو يبدأ إنشاء مدقّق جديد."
         },
         "arg_partial_deposit_chain": {
-            "help": "The name of the Ethereum PoS chain your validator is running on. \"mainnet\" is the default.",
-            "prompt": "Please choose the (mainnet or testnet) network/chain name"
+            "help": "اسم سلسلة Ethereum PoS التي يعمل عليها مدقّقك. القيمة الافتراضية هي \"mainnet\".",
+            "prompt": "يرجى اختيار اسم الشبكة/السلسلة (mainnet أو testnet)"
         },
         "arg_partial_deposit_amount": {
-            "help": "The amount to deposit to this validator in ether denomination. Must be at least 1 ether and can not have greater precision than 1 gwei. Default is 32 ether.",
-            "prompt": "Please enter the amount you wish to deposit to this validator. Must be at least {min_deposit} and can not have greater precision than 1 gwei. {activation_amount} is required to activate a new validator"
+            "help": "مبلغ الإيداع لهذا المدقّق بوحدة ether. يجب ألا يقل عن 1 ether وألا تتجاوز دقته 1 gwei. القيمة الافتراضية هي 32 ether.",
+            "prompt": "يرجى إدخال المبلغ الذي تريد إيداعه لهذا المدقّق. يجب ألا يقل عن {min_deposit} وألا تتجاوز دقته 1 gwei. يلزم {activation_amount} لتفعيل مدقّق جديد"
         },
         "arg_partial_deposit_keystore": {
-            "help": "The keystore file associated with the validator you wish to sign with and deposit to.",
-            "prompt": "Please enter the location of your keystore file."
+            "help": "ملف متجر المفاتيح المرتبط بالمدقّق الذي تريد التوقيع باستخدامه والإيداع إليه.",
+            "prompt": "يرجى إدخال موقع ملف متجر المفاتيح."
         },
         "arg_partial_deposit_keystore_password": {
-            "help": "The password that is used to encrypt the provided keystore. Note: It's not your mnemonic password. (It is recommended not to use this argument, and wait for the CLI to ask you for your password as otherwise it will appear in your shell history.)",
-            "prompt": "Enter the password that is used to encrypt the provided keystore.",
-            "mismatch": "Error: The provided keystore password was unable to decrypt this keystore file. Make sure you have the correct password and try again."
+            "help": "كلمة المرور المستخدمة لتشفير متجر المفاتيح المُقدّم. ملاحظة: ليست كلمة مرور عبارة التذكّر. (يُوصى بعدم استخدام هذا الوسيط والانتظار حتى يطلب منك CLI كلمة المرور، وإلا فستظهر في سجل shell الخاص بك.)",
+            "prompt": "أدخل كلمة المرور المستخدمة لتشفير متجر المفاتيح المُقدّم.",
+            "mismatch": "خطأ: تعذّر على كلمة مرور متجر المفاتيح المُقدّمة فك تشفير ملف متجر المفاتيح هذا. تأكد من أن لديك كلمة المرور الصحيحة وحاول مرة أخرى."
         },
         "arg_partial_deposit_output_folder": {
-            "help": "The folder path where the partial deposit will be saved to. Pointing to `./partial_deposits` by default."
+            "help": "مسار المجلد الذي سيُحفظ فيه الإيداع الجزئي. يشير افتراضيًا إلى `./partial_deposits`."
         },
         "arg_withdrawal_address": {
-            "help": "The withdrawal address of the validator. If you wish to create a validator with 0x00 credentials use the new-mnemonic or existing-mnemonic command.",
-            "confirm": "Repeat the withdrawal address for confirmation.",
-            "prompt": "Please enter the withdrawal address. If you wish to create a validator with 0x00 credentials use the new-mnemonic or existing-mnemonic command.",
-            "mismatch": "Error: the two entered addresses do not match. Please type again."
+            "help": "عنوان سحب المدقّق. إذا كنت تريد إنشاء مدقّق ببيانات اعتماد 0x00، فاستخدم الأمر new-mnemonic أو existing-mnemonic.",
+            "confirm": "أعد إدخال عنوان السحب للتأكيد.",
+            "prompt": "يرجى إدخال عنوان السحب. إذا كنت تريد إنشاء مدقّق ببيانات اعتماد 0x00، فاستخدم الأمر new-mnemonic أو existing-mnemonic.",
+            "mismatch": "خطأ: عنوانا السحب اللذان أدخلتهما غير متطابقين. يرجى الكتابة مرة أخرى."
         },
         "arg_compounding": {
-            "help": "Generates compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance or generate regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance. This feature is only supported on networks that have undergone the Pectra fork.",
-            "prompt": "Please enter yes if you want to generate compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance. Compounding validators and 0x02 withdrawal credentials are only supported on networks that have undergone the Pectra fork. Please type no or nothing if you want regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance."
+            "help": "ينشئ مدقّقين تراكميين ببيانات اعتماد سحب 0x02 لرصيد فعّال أقصى قدره 2048 ETH، أو ينشئ مدقّقين عاديين ببيانات اعتماد سحب 0x01 لرصيد فعّال أقصى قدره 32 ETH. هذه الميزة مدعومة فقط على الشبكات التي خضعت لتفرّع Pectra.",
+            "prompt": "أدخل yes إذا كنت تريد إنشاء مدقّقين تراكميين ببيانات اعتماد سحب 0x02 لرصيد فعّال أقصى قدره 2048 ETH. المدقّقون التراكميون وبيانات اعتماد السحب 0x02 مدعومون فقط على الشبكات التي خضعت لتفرّع Pectra. اكتب no أو اتركه فارغًا إذا كنت تريد مدقّقين عاديين ببيانات اعتماد سحب 0x01 لرصيد فعّال أقصى قدره 32 ETH."
         },
         "arg_devnet_chain_setting": {
-            "help": "[DEVNET ONLY] Set specific GENESIS_FORK_VERSION value. This should be a JSON string containing an object with the following keys: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount and min_deposit_amount. It should be similar to what you can find in settings.py. This will override any selected chain."
+            "help": "[لشبكات التطوير فقط] عيّن قيمة محددة لـ GENESIS_FORK_VERSION. يجب أن تكون هذه سلسلة JSON تحتوي على كائن بالمفاتيح التالية: network_name وgenesis_fork_version وexit_fork_version وgenesis_validator_root وmultiplier وmin_activation_amount وmin_deposit_amount. يجب أن تكون مشابهة لما تجده في settings.py. سيؤدي ذلك إلى تجاوز أي سلسلة محددة."
         },
-        "msg_partial_deposit_creation": "\nCreating your partial deposit...",
-        "msg_verify_partial_deposit": "\nVerifying your partial deposit...",
-        "err_verify_partial_deposit": "\nThere was a problem verifying your partial deposit.\nPlease try again",
-        "msg_creation_success": "\nSuccess!\nYour partial deposit file can be found at: ",
-        "msg_pause": "\n\nPress any key."
+        "msg_partial_deposit_creation": "\nجارٍ إنشاء الإيداع الجزئي الخاص بك...",
+        "msg_verify_partial_deposit": "\nجارٍ التحقق من الإيداع الجزئي الخاص بك...",
+        "err_verify_partial_deposit": "\nحدثت مشكلة أثناء التحقق من الإيداع الجزئي الخاص بك.\nيرجى المحاولة مرة أخرى",
+        "msg_creation_success": "\nنجح الأمر!\nيمكن العثور على ملف الإيداع الجزئي الخاص بك في: ",
+        "msg_pause": "\n\nاضغط على أي مفتاح."
     }
 }
