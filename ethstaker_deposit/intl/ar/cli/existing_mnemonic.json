@@ -1,6 +1,7 @@
 {
     "validate_mnemonic": {
-        "err_invalid_mnemonic": "هذا ليس مساعد ذاكرة صالحا، يرجى التحقق من الأخطاء المطبعية."
+        "err_invalid_mnemonic": "هذا ليس مساعد ذاكرة صالحا، يرجى التحقق من الأخطاء المطبعية.",
+        "arg_mnemonic_language": "We couldn't detect the language of your mnemonic phrase. Please select one of the available language options"
     },
     "existing_mnemonic": {
         "arg_existing_mnemonic": {
@@ -12,12 +13,18 @@
         },
         "arg_mnemonic_password": {
             "help": "من المؤكد تقريبًا أن هذه ليست الوسيطة التي تبحث عنها: فهي لكلمات مرور مساعد الذاكرة، وليس كلمات مرور متجر المفاتيح. وقد يؤدي توفير كلمة مرور هنا عند عدم استخدامك لواحدة في البداية إلى فقدان المفاتيح (وبالتالي الأموال)! لاحظ أيضًا أنه إذا كنت تستخدم هذه الأداة لتوليد مساعد الذاكرة في البداية، فإنك لم تستخدم كلمة مرور مساعد الذاكرة. ومع ذلك، إذا كنت متأكداً من أنك استخدمت كلمة مرور \"لزيادة\" أمان مساعدة الذاكرة الخاصة بك، فهذا هو المكان حيث أدخلتها.",
-            "confirm": "هل أنت متأكد تماما من أنك استخدمت كلمة مرور مساعد الذاكرة؟ (هذا مختلف عن كلمة مرور متجر المفاتيح!) من المفترض أن يؤدي استخدام واحدة عند عدم افتراض استخدامها إلى فقدان الأموال! كرر للتأكيد"
+            "confirm": "هل أنت متأكد تماما من أنك استخدمت كلمة مرور مساعد الذاكرة؟ (هذا مختلف عن كلمة مرور متجر المفاتيح!) من المفترض أن يؤدي استخدام واحدة عند عدم افتراض استخدامها إلى فقدان الأموال! كرر للتأكيد",
+            "prompt": "Enter your mnemonic password (if you used one). Make sure you won't forget it, it can not be recovered.",
+            "mismatch": "The mnemonic password you entered doesn't match, please try again."
         },
         "arg_validator_start_index": {
             "help": "أدخل الفهرس (الرقم الرئيسي) الذي تريد بدء توليد المزيد من المفاتيح منه. على سبيل المثال، إذا قمت بتوليد 4 مفاتيح في الماضي، فإنك ستدخل 4 هنا.",
             "prompt": "أدخل الفهرس (الرقم الرئيسي) الذي تريد بدء توليد المزيد من المفاتيح منه. على سبيل المثال، إذا قمت بتوليد 4 مفاتيح في الماضي، فإنك ستدخل 4 هنا.",
             "confirm": "كرر للتأكيد"
-        }
+        },
+        "arg_mnemonic_language": {
+            "help": "The language of your mnemonic. If this is not provided we will attempt to determine it based on the mnemonic provided."
+        },
+        "msg_confirm_clipboard_clearing": "WARNING: Your clipboard will be CLEARED. Some applications or configurations may prevent this. Press any key to clear the clipboard."
     }
 }
