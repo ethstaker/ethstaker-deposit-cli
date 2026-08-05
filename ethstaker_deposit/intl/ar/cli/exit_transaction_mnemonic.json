@@ -1,35 +1,35 @@
 {
     "exit_transaction_mnemonic": {
         "arg_exit_transaction_mnemonic": {
-            "help": "Generate an exit transaction that can be used to exit validators on Ethereum Beacon Chain."
+            "help": "إنشاء معاملة خروج يمكن استخدامها لإخراج المدقّقين على سلسلة Ethereum Beacon Chain."
         },
         "arg_exit_transaction_mnemonic_chain": {
-            "help": "The name of the Ethereum PoS chain your validator is running on. \"mainnet\" is the default.",
-            "prompt": "Please choose the (mainnet or testnet) network/chain name"
+            "help": "اسم سلسلة Ethereum PoS التي يعمل عليها مدقّقك. القيمة الافتراضية هي \"mainnet\".",
+            "prompt": "يرجى اختيار اسم الشبكة/السلسلة (mainnet أو testnet)"
         },
         "arg_exit_transaction_mnemonic_start_index": {
-            "help": "Enter the index (key number) which you used when you created your keys. The default value is 0.",
-            "prompt": "Enter the index (key number) which you used when you created your keys. The default value is 0."
+            "help": "أدخل الفهرس (رقم المفتاح) الذي استخدمته عند إنشاء مفاتيحك. القيمة الافتراضية هي 0.",
+            "prompt": "أدخل الفهرس (رقم المفتاح) الذي استخدمته عند إنشاء مفاتيحك. القيمة الافتراضية هي 0."
         },
         "arg_exit_transaction_mnemonic_indices": {
-            "help": "A list of the validator index number(s) of the certain validator(s)",
-            "prompt": "Please enter a list of the validator index number(s) of your validator(s) as identified on the beacon chain. Split multiple items with whitespaces or commas."
+            "help": "قائمة بأرقام فهارس المدقّق أو المدقّقين المعنيين",
+            "prompt": "يرجى إدخال قائمة بأرقام فهارس مدقّقك أو مدقّقيك كما هي محددة على سلسلة المنارة. افصل العناصر المتعددة بمسافات بيضاء أو فواصل."
         },
         "arg_exit_transaction_mnemonic_epoch": {
-            "help": "The epoch of when the exit transaction will be valid. The transaction will always be valid by default."
+            "help": "العصر الذي تصبح فيه معاملة الخروج صالحة. تكون المعاملة صالحة دائمًا افتراضيًا."
         },
         "arg_exit_transaction_mnemonic_output_folder": {
-            "help": "The folder path where the exit transactions will be saved to. Pointing to `./exit_transactions` by default."
+            "help": "مسار المجلد الذي ستُحفظ فيه معاملات الخروج. يشير افتراضيًا إلى `./exit_transactions`."
         },
         "arg_devnet_chain_setting": {
-            "help": "[DEVNET ONLY] Set a specific EXIT_FORK_VERSION and GENESIS_VALIDATORS_ROOT value. This should be a JSON string containing an object with the following keys: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount and min_deposit_amount. It should be similar to what you can find in settings.py. This will override any selected chain.",
-            "missing_genesis_validators_root": "The chain setting is missing a GENESIS_VALIDATORS_ROOT value. That value is needed to create the exit transaction."
+            "help": "[لشبكات التطوير فقط] عيّن قيمة محددة لـ EXIT_FORK_VERSION وGENESIS_VALIDATORS_ROOT. يجب أن تكون هذه سلسلة JSON تحتوي على كائن بالمفاتيح التالية: network_name وgenesis_fork_version وexit_fork_version وgenesis_validator_root وmultiplier وmin_activation_amount وmin_deposit_amount. يجب أن تكون مشابهة لما تجده في settings.py. سيؤدي ذلك إلى تجاوز أي سلسلة محددة.",
+            "missing_genesis_validators_root": "يفتقد إعداد السلسلة قيمة GENESIS_VALIDATORS_ROOT. هذه القيمة مطلوبة لإنشاء معاملة الخروج."
         },
-        "msg_key_creation": "Creating your keys:\t",
-        "msg_exit_transaction_creation": "Creating your exit transactions:\t",
-        "msg_verify_exit_transaction": "Verifying your exit transactions:\t",
-        "err_verify_exit_transactions": "\nThere was a problem verifying your exit transactions.\nPlease try again",
-        "msg_creation_success": "\nSuccess!\nYour exit transaction files can be found at: ",
-        "msg_pause": "\n\nPress any key."
+        "msg_key_creation": "جارٍ إنشاء مفاتيحك:\t",
+        "msg_exit_transaction_creation": "جارٍ إنشاء معاملات الخروج الخاصة بك:\t",
+        "msg_verify_exit_transaction": "جارٍ التحقق من معاملات الخروج الخاصة بك:\t",
+        "err_verify_exit_transactions": "\nحدثت مشكلة أثناء التحقق من معاملات الخروج الخاصة بك.\nيرجى المحاولة مرة أخرى",
+        "msg_creation_success": "\nنجح الأمر!\nيمكن العثور على ملفات معاملات الخروج الخاصة بك في: ",
+        "msg_pause": "\n\nاضغط على أي مفتاح."
     }
 }

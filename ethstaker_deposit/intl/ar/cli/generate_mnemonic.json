@@ -1,23 +1,23 @@
 {
     "generate_mnemonic": {
         "arg_generate_mnemonic": {
-            "help": "Generate a new random mnemonic. If you also want to create your validator keystore and deposit files, you should be using the new-mnemonic or the existing-mnemonic command instead."
+            "help": "إنشاء عبارة تذكّر عشوائية جديدة. إذا كنت تريد أيضًا إنشاء متجر مفاتيح المدقّق وملفات الإيداع، فاستخدم الأمر new-mnemonic أو existing-mnemonic بدلًا من ذلك."
         },
         "arg_mnemonic_language": {
             "default": "english",
-            "help": "The language of the mnemonic word list",
-            "prompt": "Please choose the language of the mnemonic word list"
+            "help": "لغة قائمة كلمات عبارة التذكّر",
+            "prompt": "يرجى اختيار لغة قائمة كلمات عبارة التذكّر"
         },
         "arg_output_file": {
-            "help": "An optional file path where to write the mnemonic. When used, it will write the mnemonic to the file instead of displaying the mnemonic.",
-            "err_not_found": "Error while trying to write file: Path not found.",
-            "err_perm_denied": "Error while trying to write file: Permission denied to write to the file.",
-            "err_directory_not_file": "Error while trying to write file: The specified path is a directory, not a file.",
-            "err_os": "Error while trying to write file: An OS-related error occurred.",
-            "err_exception": "Error while trying to write file: An unexpected error occurred."
+            "help": "مسار ملف اختياري لكتابة عبارة التذكّر. عند استخدامه، ستُكتب العبارة في الملف بدلًا من عرضها.",
+            "err_not_found": "حدث خطأ أثناء محاولة كتابة الملف: المسار غير موجود.",
+            "err_perm_denied": "حدث خطأ أثناء محاولة كتابة الملف: ليس لديك إذن بالكتابة إلى الملف.",
+            "err_directory_not_file": "حدث خطأ أثناء محاولة كتابة الملف: المسار المحدد مجلد وليس ملفًا.",
+            "err_os": "حدث خطأ أثناء محاولة كتابة الملف: حدث خطأ متعلق بنظام التشغيل.",
+            "err_exception": "حدث خطأ أثناء محاولة كتابة الملف: حدث خطأ غير متوقع."
         },
-        "msg_mnemonic_presentation": "This is your randomly generated mnemonic:",
-        "msg_mnemonic_file_written": "Your randomly generated mnemonic was written in",
-        "msg_mnemonic_next": "If you also want to generate your validator keystore and deposit files you can now use the existing-mnemonic command."
+        "msg_mnemonic_presentation": "هذه هي عبارة التذكّر التي أُنشئت عشوائيًا:",
+        "msg_mnemonic_file_written": "كُتبت عبارة التذكّر التي أُنشئت عشوائيًا في",
+        "msg_mnemonic_next": "إذا كنت تريد أيضًا إنشاء متجر مفاتيح المدقّق وملفات الإيداع، يمكنك الآن استخدام الأمر existing-mnemonic."
     }
 }

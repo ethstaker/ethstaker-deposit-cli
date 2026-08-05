@@ -1,7 +1,7 @@
 {
     "validate_mnemonic": {
         "err_invalid_mnemonic": "هذا ليس مساعد ذاكرة صالحا، يرجى التحقق من الأخطاء المطبعية.",
-        "arg_mnemonic_language": "We couldn't detect the language of your mnemonic phrase. Please select one of the available language options"
+        "arg_mnemonic_language": "تعذّر علينا اكتشاف لغة عبارة التذكّر الخاصة بك. يرجى اختيار أحد خيارات اللغة المتاحة"
     },
     "existing_mnemonic": {
         "arg_existing_mnemonic": {
@@ -14,8 +14,8 @@
         "arg_mnemonic_password": {
             "help": "من المؤكد تقريبًا أن هذه ليست الوسيطة التي تبحث عنها: فهي لكلمات مرور مساعد الذاكرة، وليس كلمات مرور متجر المفاتيح. وقد يؤدي توفير كلمة مرور هنا عند عدم استخدامك لواحدة في البداية إلى فقدان المفاتيح (وبالتالي الأموال)! لاحظ أيضًا أنه إذا كنت تستخدم هذه الأداة لتوليد مساعد الذاكرة في البداية، فإنك لم تستخدم كلمة مرور مساعد الذاكرة. ومع ذلك، إذا كنت متأكداً من أنك استخدمت كلمة مرور \"لزيادة\" أمان مساعدة الذاكرة الخاصة بك، فهذا هو المكان حيث أدخلتها.",
             "confirm": "هل أنت متأكد تماما من أنك استخدمت كلمة مرور مساعد الذاكرة؟ (هذا مختلف عن كلمة مرور متجر المفاتيح!) من المفترض أن يؤدي استخدام واحدة عند عدم افتراض استخدامها إلى فقدان الأموال! كرر للتأكيد",
-            "prompt": "Enter your mnemonic password (if you used one). Make sure you won't forget it, it can not be recovered.",
-            "mismatch": "The mnemonic password you entered doesn't match, please try again."
+            "prompt": "أدخل كلمة مرور عبارة التذكّر (إذا كنت قد استخدمت واحدة). تأكد من أنك لن تنساها، إذ لا يمكن استردادها.",
+            "mismatch": "كلمة مرور عبارة التذكّر التي أدخلتها غير متطابقة، يرجى المحاولة مرة أخرى."
         },
         "arg_validator_start_index": {
             "help": "أدخل الفهرس (الرقم الرئيسي) الذي تريد بدء توليد المزيد من المفاتيح منه. على سبيل المثال، إذا قمت بتوليد 4 مفاتيح في الماضي، فإنك ستدخل 4 هنا.",
@@ -23,8 +23,8 @@
             "confirm": "كرر للتأكيد"
         },
         "arg_mnemonic_language": {
-            "help": "The language of your mnemonic. If this is not provided we will attempt to determine it based on the mnemonic provided."
+            "help": "لغة عبارة التذكّر الخاصة بك. إذا لم تُحدَّد، فسنحاول تحديدها بناءً على العبارة المقدمة."
         },
-        "msg_confirm_clipboard_clearing": "WARNING: Your clipboard will be CLEARED. Some applications or configurations may prevent this. Press any key to clear the clipboard."
+        "msg_confirm_clipboard_clearing": "تحذير: ستُمسح حافظةك. قد تمنع بعض التطبيقات أو الإعدادات ذلك. اضغط على أي مفتاح لمسح الحافظة."
     }
 }
