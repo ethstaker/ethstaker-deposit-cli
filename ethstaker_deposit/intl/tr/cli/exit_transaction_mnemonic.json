@@ -1,35 +1,35 @@
 {
-    "exit_transaction_mnemonic": {
-        "arg_exit_transaction_mnemonic": {
-            "help": "Generate an exit transaction that can be used to exit validators on Ethereum Beacon Chain."
-        },
-        "arg_exit_transaction_mnemonic_chain": {
-            "help": "The name of the Ethereum PoS chain your validator is running on. \"mainnet\" is the default.",
-            "prompt": "Please choose the (mainnet or testnet) network/chain name"
-        },
-        "arg_exit_transaction_mnemonic_start_index": {
-            "help": "Enter the index (key number) which you used when you created your keys. The default value is 0.",
-            "prompt": "Enter the index (key number) which you used when you created your keys. The default value is 0."
-        },
-        "arg_exit_transaction_mnemonic_indices": {
-            "help": "A list of the validator index number(s) of the certain validator(s)",
-            "prompt": "Please enter a list of the validator index number(s) of your validator(s) as identified on the beacon chain. Split multiple items with whitespaces or commas."
-        },
-        "arg_exit_transaction_mnemonic_epoch": {
-            "help": "The epoch of when the exit transaction will be valid. The transaction will always be valid by default."
-        },
-        "arg_exit_transaction_mnemonic_output_folder": {
-            "help": "The folder path where the exit transactions will be saved to. Pointing to `./exit_transactions` by default."
-        },
-        "arg_devnet_chain_setting": {
-            "help": "[DEVNET ONLY] Set a specific EXIT_FORK_VERSION and GENESIS_VALIDATORS_ROOT value. This should be a JSON string containing an object with the following keys: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount and min_deposit_amount. It should be similar to what you can find in settings.py. This will override any selected chain.",
-            "missing_genesis_validators_root": "The chain setting is missing a GENESIS_VALIDATORS_ROOT value. That value is needed to create the exit transaction."
-        },
-        "msg_key_creation": "Creating your keys:\t",
-        "msg_exit_transaction_creation": "Creating your exit transactions:\t",
-        "msg_verify_exit_transaction": "Verifying your exit transactions:\t",
-        "err_verify_exit_transactions": "\nThere was a problem verifying your exit transactions.\nPlease try again",
-        "msg_creation_success": "\nSuccess!\nYour exit transaction files can be found at: ",
-        "msg_pause": "\n\nPress any key."
-    }
+  "exit_transaction_mnemonic": {
+    "arg_exit_transaction_mnemonic": {
+      "help": "Ethereum Beacon Chain üzerindeki doğrulayıcıları çıkarmak için kullanılabilecek bir çıkış işlemi oluşturun."
+    },
+    "arg_exit_transaction_mnemonic_chain": {
+      "help": "Doğrulayıcınızın çalıştığı Ethereum PoS zincirinin adı. Varsayılan \"mainnet\"tir.",
+      "prompt": "Lütfen (mainnet veya testnet) ağ/zincir adını seçin"
+    },
+    "arg_exit_transaction_mnemonic_start_index": {
+      "help": "Anahtarlarınızı oluştururken kullandığınız dizini (anahtar numarasını) girin. Varsayılan değer 0dır.",
+      "prompt": "Anahtarlarınızı oluştururken kullandığınız dizini (anahtar numarasını) girin. Varsayılan değer 0dır."
+    },
+    "arg_exit_transaction_mnemonic_indices": {
+      "help": "Belirli doğrulayıcıların doğrulayıcı dizin numaralarının listesi",
+      "prompt": "Lütfen beacon chain üzerinde tanımlanan doğrulayıcılarınızın dizin numaralarının listesini girin. Birden fazla öğeyi boşluk veya virgülle ayırın."
+    },
+    "arg_exit_transaction_mnemonic_epoch": {
+      "help": "Çıkış işleminin geçerli olacağı epoch. Varsayılan olarak işlem her zaman geçerli olacaktır."
+    },
+    "arg_exit_transaction_mnemonic_output_folder": {
+      "help": "Çıkış işlemlerinin kaydedileceği klasör yolu. Varsayılan olarak `./exit_transactions` kullanılır."
+    },
+    "arg_devnet_chain_setting": {
+      "help": "[DEVNET ONLY] Belirli bir EXIT_FORK_VERSION ve GENESIS_VALIDATORS_ROOT değeri ayarlayın. Bu, şu anahtarlara sahip bir nesne içeren JSON dizesi olmalıdır: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount ve min_deposit_amount. settings.py dosyasında bulabileceğiniz yapıya benzer olmalıdır. Bu, seçilen zinciri geçersiz kılar.",
+      "missing_genesis_validators_root": "Zincir ayarında GENESIS_VALIDATORS_ROOT değeri eksik. Bu değer, çıkış işlemini oluşturmak için gereklidir."
+    },
+    "msg_key_creation": "Anahtarlarınız oluşturuluyor:\t",
+    "msg_exit_transaction_creation": "Çıkış işlemleriniz oluşturuluyor:\t",
+    "msg_verify_exit_transaction": "Çıkış işlemleriniz doğrulanıyor:\t",
+    "err_verify_exit_transactions": "\nÇıkış işlemleriniz doğrulanırken bir sorun oluştu.\nLütfen tekrar deneyin",
+    "msg_creation_success": "\nBaşarılı!\nÇıkış işlemi dosyalarınızın bulunduğu yer: ",
+    "msg_pause": "\n\nDevam etmek için bir tuşa basın."
+  }
 }

@@ -4,7 +4,7 @@
             "help": "Generate a new random mnemonic. If you also want to create your validator keystore and deposit files, you should be using the new-mnemonic or the existing-mnemonic command instead."
         },
         "arg_mnemonic_language": {
-            "default": "english",
+            "default": "chinese_simplified",
             "help": "The language of the mnemonic word list",
             "prompt": "Please choose the language of the mnemonic word list"
         },
