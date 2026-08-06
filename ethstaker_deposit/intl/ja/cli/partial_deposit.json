@@ -1,45 +1,45 @@
 {
     "partial_deposit": {
         "arg_partial_deposit": {
-            "help": "Generate a partial deposit with any amount at least 1 ether which will be signed by the provided validator keystore. This will append to the balance of the provided validator or initiate the creation of one."
+            "help": "指定されたバリデーターキーストアで署名する、1 ether 以上の任意の額の部分デポジットを生成します。指定されたバリデーターの残高に追加するか、新しいバリデーターの作成を開始します。"
         },
         "arg_partial_deposit_chain": {
-            "help": "The name of the Ethereum PoS chain your validator is running on. \"mainnet\" is the default.",
-            "prompt": "Please choose the (mainnet or testnet) network/chain name"
+            "help": "バリデーターが稼働している Ethereum PoS チェーンの名前。デフォルトは \"mainnet\" です。",
+            "prompt": "(mainnet または testnet) ネットワーク/チェーン名を選択してください"
         },
         "arg_partial_deposit_amount": {
-            "help": "The amount to deposit to this validator in ether denomination. Must be at least 1 ether and can not have greater precision than 1 gwei. Default is 32 ether.",
-            "prompt": "Please enter the amount you wish to deposit to this validator. Must be at least {min_deposit} and can not have greater precision than 1 gwei. {activation_amount} is required to activate a new validator"
+            "help": "このバリデーターに入金する ether 単位の額。最低1 etherで、1 gweiを超える精度は指定できません。デフォルトは32 etherです。",
+            "prompt": "このバリデーターに入金する額を入力してください。{min_deposit} 以上で、1 gweiを超える精度は指定できません。新しいバリデーターの有効化には {activation_amount} が必要です"
         },
         "arg_partial_deposit_keystore": {
-            "help": "The keystore file associated with the validator you wish to sign with and deposit to.",
-            "prompt": "Please enter the location of your keystore file."
+            "help": "署名して入金する対象のバリデーターに関連付けられたキーストアファイル。",
+            "prompt": "キーストアファイルの場所を入力してください。"
         },
         "arg_partial_deposit_keystore_password": {
-            "help": "The password that is used to encrypt the provided keystore. Note: It's not your mnemonic password. (It is recommended not to use this argument, and wait for the CLI to ask you for your password as otherwise it will appear in your shell history.)",
-            "prompt": "Enter the password that is used to encrypt the provided keystore.",
-            "mismatch": "Error: The provided keystore password was unable to decrypt this keystore file. Make sure you have the correct password and try again."
+            "help": "指定されたキーストアの暗号化に使用するパスワード。注：ニーモニックのパスワードではありません。（この引数は使用せず、CLI からパスワードの入力を求められるまで待つことをお勧めします。使用するとシェル履歴に表示されます。）",
+            "prompt": "指定されたキーストアの暗号化に使用するパスワードを入力してください。",
+            "mismatch": "エラー：指定されたキーストアのパスワードではこのキーストアファイルを復号できませんでした。正しいパスワードを確認して、もう一度お試しください。"
         },
         "arg_partial_deposit_output_folder": {
-            "help": "The folder path where the partial deposit will be saved to. Pointing to `./partial_deposits` by default."
+            "help": "部分デポジットの保存先フォルダーのパス。デフォルトでは `./partial_deposits` を指します。"
         },
         "arg_withdrawal_address": {
-            "help": "The withdrawal address of the validator. If you wish to create a validator with 0x00 credentials use the new-mnemonic or existing-mnemonic command.",
-            "confirm": "Repeat the withdrawal address for confirmation.",
-            "prompt": "Please enter the withdrawal address. If you wish to create a validator with 0x00 credentials use the new-mnemonic or existing-mnemonic command.",
-            "mismatch": "Error: the two entered addresses do not match. Please type again."
+            "help": "バリデーターの払い戻しアドレス。0x00 認証情報を持つバリデーターを作成する場合は、new-mnemonic または existing-mnemonic コマンドを使用してください。",
+            "confirm": "確認のため払い戻しアドレスをもう一度入力してください。",
+            "prompt": "払い戻しアドレスを入力してください。0x00 認証情報を持つバリデーターを作成する場合は、new-mnemonic または existing-mnemonic コマンドを使用してください。",
+            "mismatch": "エラー：入力された2つのアドレスが一致しません。もう一度入力してください。"
         },
         "arg_compounding": {
-            "help": "Generates compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance or generate regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance. This feature is only supported on networks that have undergone the Pectra fork.",
-            "prompt": "Please enter yes if you want to generate compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance. Compounding validators and 0x02 withdrawal credentials are only supported on networks that have undergone the Pectra fork. Please type no or nothing if you want regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance."
+            "help": "最大有効残高2048 ETH用の0x02払い戻し認証情報を持つ複利バリデーター、または最大有効残高32 ETH用の0x01払い戻し認証情報を持つ通常のバリデーターを生成します。この機能は Pectra フォークを実施したネットワークでのみサポートされます。",
+            "prompt": "最大有効残高2048 ETH用の0x02払い戻し認証情報を持つ複利バリデーターを生成する場合は yes と入力してください。複利バリデーターと0x02払い戻し認証情報は、Pectra フォークを実施したネットワークでのみサポートされます。最大有効残高32 ETH用の0x01払い戻し認証情報を持つ通常のバリデーターを生成する場合は、no または何も入力せずにください。"
         },
         "arg_devnet_chain_setting": {
-            "help": "[DEVNET ONLY] Set specific GENESIS_FORK_VERSION value. This should be a JSON string containing an object with the following keys: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount and min_deposit_amount. It should be similar to what you can find in settings.py. This will override any selected chain."
+            "help": "[DEVNET ONLY] 特定の GENESIS_FORK_VERSION 値を設定します。network_name、genesis_fork_version、exit_fork_version、genesis_validator_root、multiplier、min_activation_amount、min_deposit_amount のキーを含むオブジェクトの JSON 文字列を指定してください。settings.py にあるものと同様です。選択したチェーンの設定は上書きされます。"
         },
-        "msg_partial_deposit_creation": "\nCreating your partial deposit...",
-        "msg_verify_partial_deposit": "\nVerifying your partial deposit...",
-        "err_verify_partial_deposit": "\nThere was a problem verifying your partial deposit.\nPlease try again",
-        "msg_creation_success": "\nSuccess!\nYour partial deposit file can be found at: ",
-        "msg_pause": "\n\nPress any key."
+        "msg_partial_deposit_creation": "\n部分デポジットを作成しています...",
+        "msg_verify_partial_deposit": "\n部分デポジットを確認しています...",
+        "err_verify_partial_deposit": "\n部分デポジットの確認中に問題が発生しました。\nもう一度お試しください",
+        "msg_creation_success": "\n成功しました！\n部分デポジットファイルは次の場所にあります： ",
+        "msg_pause": "\n\n任意のキーを押してください。"
     }
 }

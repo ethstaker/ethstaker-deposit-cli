@@ -1,45 +1,45 @@
 {
     "generate_bls_to_execution_change": {
         "arg_generate_bls_to_execution_change": {
-            "help": "Generating the SignedBLSToExecutionChange data to enable withdrawals on Ethereum Beacon Chain."
+            "help": "Ethereum Beacon Chain で払い戻しを有効にする SignedBLSToExecutionChange データを生成しています。"
         },
         "arg_withdrawal_address": {
-            "help": "The Ethereum address that will be used in withdrawal. It typically starts with '0x' followed by 40 hexadecimal characters. Please make sure you have full control over the address you choose here. Once you set a withdrawal address on chain, it cannot be changed.",
-            "prompt": "Please enter the withdrawal address. Note that you CANNOT change it once you have set it on chain.",
-            "confirm": "Repeat your withdrawal address for confirmation.",
-            "mismatch": "Error: the two entered values do not match. Please type again."
+            "help": "払い戻しに使用する Ethereum アドレス。通常は '0x' に続く40個の16進文字で始まります。ここで選択するアドレスを完全に管理できることを確認してください。チェーン上で払い戻しアドレスを設定すると、変更できません。",
+            "prompt": "払い戻しアドレスを入力してください。チェーン上で設定すると変更できないことに注意してください。",
+            "confirm": "確認のため払い戻しアドレスをもう一度入力してください。",
+            "mismatch": "エラー：入力された2つの値が一致しません。もう一度入力してください。"
         },
         "arg_devnet_chain_setting": {
-            "help": "[DEVNET ONLY] Set a specific GENESIS_FORK_VERSION and GENESIS_VALIDATORS_ROOT value. This should be a JSON string containing an object with the following keys: network_name, genesis_fork_version, exit_fork_versio, genesis_validator_root, multiplier, min_activation_amount and min_deposit_amount. It should be similar to what you can find in settings.py. This will override any selected chain."
+            "help": "[DEVNET ONLY] 特定の GENESIS_FORK_VERSION と GENESIS_VALIDATORS_ROOT の値を設定します。network_name、genesis_fork_version、exit_fork_versio、genesis_validator_root、multiplier、min_activation_amount、min_deposit_amount のキーを含むオブジェクトの JSON 文字列を指定してください。settings.py にあるものと同様です。選択したチェーンの設定は上書きされます。"
         },
         "arg_validator_indices": {
-            "help": "A list of the validator index number(s) of the certain validator(s)",
-            "prompt": "Please enter a list of the validator index number(s) of your validator(s) as identified on the beacon chain. Split multiple items with whitespaces or commas."
+            "help": "対象バリデーターのバリデーターインデックス番号の一覧",
+            "prompt": "Beacon Chain 上で識別されるバリデーターのインデックス番号の一覧を入力してください。複数の項目は空白またはカンマで区切ってください。"
         },
         "arg_bls_withdrawal_credentials_list": {
-            "help": "A list of 32-byte old BLS withdrawal credentials of the certain validator(s)",
-            "prompt": "Please enter a list of the old BLS withdrawal credentials of your validator(s). Split multiple items with whitespaces or commas. The withdrawal credentials are in hexadecimal encoded form."
+            "help": "対象バリデーターの32バイトの古い BLS 払い戻し認証情報の一覧",
+            "prompt": "バリデーターの古い BLS 払い戻し認証情報の一覧を入力してください。複数の項目は空白またはカンマで区切ってください。払い戻し認証情報は16進数でエンコードされた形式です。"
         },
         "arg_validator_start_index": {
-            "help": "The index position for the keys to start generating withdrawal credentials in ERC-2334 format",
-            "prompt": "Please enter the index position for the keys to start generating withdrawal credentials in ERC-2334 format.",
-            "confirm": "Please repeat the index to confirm"
+            "help": "ERC-2334 形式で払い戻し認証情報の生成を開始するキーのインデックス位置",
+            "prompt": "ERC-2334 形式で払い戻し認証情報の生成を開始するキーのインデックス位置を入力してください。",
+            "confirm": "確認のためインデックスをもう一度入力してください"
         },
         "arg_chain": {
-            "help": "The name of Ethereum PoS chain you are targeting. Use \"mainnet\" if you are depositing ETH",
-            "prompt": "Please choose the (mainnet or testnet) network/chain name"
+            "help": "対象とする Ethereum PoS チェーンの名前。ETH を入金する場合は \"mainnet\" を使用してください",
+            "prompt": "(mainnet または testnet) ネットワーク/チェーン名を選択してください"
         },
         "arg_fork": {
-            "help": "The fork name of the fork you want to signing the message with.",
-            "prompt": "Please choose the fork name of the fork you want to signing the message with."
+            "help": "メッセージへの署名に使用するフォークの名前。",
+            "prompt": "メッセージへの署名に使用するフォークの名前を選択してください。"
         },
         "arg_bls_to_execution_changes_folder": {
-            "help": "The folder path for the keystore(s). Pointing to `./bls_to_execution_changes` by default."
+            "help": "キーストアのフォルダーのパス。デフォルトでは `./bls_to_execution_changes` を指します。"
         },
-        "msg_key_creation": "Creating your SignedBLSToExecutionChange.",
-        "msg_credentials_verification": "Verifying your withdrawal credentials.",
-        "msg_creation_success": "\nSuccess!\nYour SignedBLSToExecutionChange JSON file can be found at: ",
-        "msg_pause": "\n\nPress any key.",
-        "err_verify_btec": "Failed to verify the bls_to_execution_change JSON files."
+        "msg_key_creation": "SignedBLSToExecutionChange を作成しています。",
+        "msg_credentials_verification": "払い戻し認証情報を確認しています。",
+        "msg_creation_success": "\n成功しました！\nSignedBLSToExecutionChange JSON ファイルは次の場所にあります： ",
+        "msg_pause": "\n\n任意のキーを押してください。",
+        "err_verify_btec": "bls_to_execution_change JSON ファイルの確認に失敗しました。"
     }
 }

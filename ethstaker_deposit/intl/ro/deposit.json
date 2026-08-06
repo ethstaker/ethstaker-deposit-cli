@@ -1,5 +1,5 @@
 {
     "check_connectivity": {
-        "connectivity_warning": "\n*** Internet connectivity detected ***\n\nTo mitigate the risk of unauthorized access and safeguard generated key material, it is strongly advised to run this tool in an offline, airgapped environment. Operating online increases susceptibility to potential theft or compromise.\n\nBy continuing, you are accepting responsibility for the risk.\n\nPress any key to continue..."
+        "connectivity_warning": "\n*** Conectivitate la internet detectată ***\n\nPentru a reduce riscul accesului neautorizat și a proteja materialul de chei generat, se recomandă insistent să rulezi acest instrument într-un mediu offline, izolat de rețea. Rularea online crește riscul unui posibil furt sau al compromiterii.\n\nContinuând, îți asumi responsabilitatea pentru acest risc.\n\nApasă orice tastă pentru a continua..."
     }
 }
