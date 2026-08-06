@@ -37,8 +37,7 @@ Keep these exactly unchanged wherever they occur:
 
 ## Editing Workflow
 
-- Already done: `it`, `ar`, `el`, `fr`, `id`, `de`, `tr`, `ja`, `ko`, `ro`
-- Select one locale directory at a time: `pt-BR`, or `zh-CN`.
+- Select one locale directory at a time: `it`, `ar`, `el`, `fr`, `id`, `de`, `tr`, `ja`, `ko`, `ro`, `pt-BR`, `zh-CN`
 - Compare its JSON leaves with the corresponding English JSON leaves.
 - Translate only missing or English-fallback values.
 - Inspect the exact current contents of each target JSON file before editing.

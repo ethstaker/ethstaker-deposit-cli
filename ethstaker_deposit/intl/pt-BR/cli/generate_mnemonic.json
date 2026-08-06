@@ -1,23 +1,23 @@
 {
     "generate_mnemonic": {
         "arg_generate_mnemonic": {
-            "help": "Generate a new random mnemonic. If you also want to create your validator keystore and deposit files, you should be using the new-mnemonic or the existing-mnemonic command instead."
+            "help": "Gere um novo mnemônico aleatório. Se também quiser criar seu keystore de validador e arquivos de depósito, use o comando new-mnemonic ou existing-mnemonic."
         },
         "arg_mnemonic_language": {
             "default": "portuguese",
-            "help": "The language of the mnemonic word list",
-            "prompt": "Please choose the language of the mnemonic word list"
+            "help": "O idioma da lista de palavras do mnemônico",
+            "prompt": "Escolha o idioma da lista de palavras do mnemônico"
         },
         "arg_output_file": {
-            "help": "An optional file path where to write the mnemonic. When used, it will write the mnemonic to the file instead of displaying the mnemonic.",
-            "err_not_found": "Error while trying to write file: Path not found.",
-            "err_perm_denied": "Error while trying to write file: Permission denied to write to the file.",
-            "err_directory_not_file": "Error while trying to write file: The specified path is a directory, not a file.",
-            "err_os": "Error while trying to write file: An OS-related error occurred.",
-            "err_exception": "Error while trying to write file: An unexpected error occurred."
+            "help": "Um caminho de arquivo opcional onde o mnemônico será gravado. Quando usado, o mnemônico será gravado no arquivo em vez de ser exibido.",
+            "err_not_found": "Erro ao tentar gravar o arquivo: caminho não encontrado.",
+            "err_perm_denied": "Erro ao tentar gravar o arquivo: não há permissão para gravar no arquivo.",
+            "err_directory_not_file": "Erro ao tentar gravar o arquivo: o caminho especificado é uma pasta, não um arquivo.",
+            "err_os": "Erro ao tentar gravar o arquivo: ocorreu um erro relacionado ao sistema operacional.",
+            "err_exception": "Erro ao tentar gravar o arquivo: ocorreu um erro inesperado."
         },
-        "msg_mnemonic_presentation": "This is your randomly generated mnemonic:",
-        "msg_mnemonic_file_written": "Your randomly generated mnemonic was written in",
-        "msg_mnemonic_next": "If you also want to generate your validator keystore and deposit files you can now use the existing-mnemonic command."
+        "msg_mnemonic_presentation": "Este é o seu mnemônico gerado aleatoriamente:",
+        "msg_mnemonic_file_written": "Seu mnemônico gerado aleatoriamente foi gravado em",
+        "msg_mnemonic_next": "Se também quiser gerar seu keystore de validador e arquivos de depósito, use agora o comando existing-mnemonic."
     }
 }
