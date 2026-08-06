@@ -1,7 +1,7 @@
 {
     "validate_mnemonic": {
         "err_invalid_mnemonic": "Isso não é um mnemônico válido. Verifique se há erros de digitação.",
-        "arg_mnemonic_language": "We couldn't detect the language of your mnemonic phrase. Please select one of the available language options"
+        "arg_mnemonic_language": "Não foi possível detectar o idioma da sua frase mnemônica. Selecione uma das opções de idioma disponíveis"
     },
     "existing_mnemonic": {
         "arg_existing_mnemonic": {
@@ -14,8 +14,8 @@
         "arg_mnemonic_password": {
             "help": "Este, quase com certeza, não é o argumento que você está procurando: é para senhas mnemônicas, não para senhas do keystore. Se você fornecer uma senha aqui e não tiver usado uma inicialmente, poderá perder suas chaves (e, portanto, seus fundos!). Note também que se você tiver usado essa ferramenta para gerar seu mnemônico inicial, então não usou uma senha mnemônica. Porém, se tiver certeza de ter usado uma senha para \"aumentar\" a segurança do seu mnemônico, digite-a aqui.",
             "confirm": "Você tem certeza absoluta de ter usado uma senha mnemônica? (não é igual a uma senha do keystore!). Se você usar uma num momento inadequado, pode sofrer uma perda de fundos! Repita para confirmar",
-            "prompt": "Enter your mnemonic password (if you used one). Make sure you won't forget it, it can not be recovered.",
-            "mismatch": "The mnemonic password you entered doesn't match, please try again."
+            "prompt": "Digite a senha do seu mnemônico (se você usou uma). Não a esqueça, pois ela não pode ser recuperada.",
+            "mismatch": "A senha mnemônica digitada não corresponde. Tente novamente."
         },
         "arg_validator_start_index": {
             "help": "Digite o índice (número de chave) a partir do qual deseja gerar mais chaves. Por exemplo, se você gerou 4 chaves antes, digite 4 aqui.",
@@ -23,8 +23,8 @@
             "confirm": "Repita para confirmar"
         },
         "arg_mnemonic_language": {
-            "help": "The language of your mnemonic. If this is not provided we will attempt to determine it based on the mnemonic provided."
+            "help": "O idioma do seu mnemônico. Se não for informado, tentaremos determiná-lo com base no mnemônico fornecido."
         },
-        "msg_confirm_clipboard_clearing": "WARNING: Your clipboard will be CLEARED. Some applications or configurations may prevent this. Press any key to clear the clipboard."
+        "msg_confirm_clipboard_clearing": "AVISO: Sua área de transferência será LIMPA. Alguns aplicativos ou configurações podem impedir isso. Pressione qualquer tecla para limpar a área de transferência."
     }
 }

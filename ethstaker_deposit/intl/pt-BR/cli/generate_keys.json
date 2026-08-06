@@ -15,27 +15,27 @@
             "mismatch": "Erro: os dois valores inseridos não coincidem. Digite-os novamente."
         },
         "folder": {
-            "help": "The folder path for the keystore(s) and deposit(s). Pointing to `./validator_keys` by default."
+            "help": "O caminho da pasta dos keystores e depósitos. Por padrão, aponta para `./validator_keys`."
         },
         "arg_withdrawal_address": {
-            "help": "The Ethereum address that will be used in withdrawal. It typically starts with '0x' followed by 40 hexadecimal characters. Please make sure you have full control over the address you choose here. Once you set a withdrawal address on chain, it cannot be changed.",
-            "prompt": "Please enter the optional withdrawal address. Note that you CANNOT change it once you have set it on chain.",
-            "confirm": "Repeat your withdrawal address for confirmation.",
-            "mismatch": "Error: the two entered values do not match. Please type again."
+            "help": "O endereço Ethereum que será usado para saque. Normalmente começa com '0x', seguido de 40 caracteres hexadecimais. Certifique-se de ter controle total sobre o endereço escolhido. Depois que um endereço de saque for definido na cadeia, ele não poderá ser alterado.",
+            "prompt": "Digite o endereço de saque opcional. Observe que você NÃO poderá alterá-lo depois que for definido na cadeia.",
+            "confirm": "Repita o endereço de saque para confirmação.",
+            "mismatch": "Erro: os dois valores digitados não coincidem. Digite novamente."
         },
         "arg_compounding": {
-            "help": "Generates compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance or generate regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance. Use of this option requires a withdrawal address. This feature is only supported on networks that have undergone the Pectra fork.",
-            "prompt": "Please enter yes if you want to generate compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance. Compounding validators and 0x02 withdrawal credentials are only supported on networks that have undergone the Pectra fork. Please type no or nothing if you want regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance."
+            "help": "Gera validadores com saldo composto e credenciais de saque 0x02 para um saldo efetivo máximo de 2048 ETH, ou validadores regulares com credenciais de saque 0x01 para um saldo efetivo máximo de 32 ETH. Esta opção exige um endereço de saque. Esse recurso só é compatível com redes que passaram pela fork Pectra.",
+            "prompt": "Digite yes se quiser gerar validadores com saldo composto e credenciais de saque 0x02 para um saldo efetivo máximo de 2048 ETH. Validadores com saldo composto e credenciais de saque 0x02 só são compatíveis com redes que passaram pela fork Pectra. Digite no ou nada se quiser validadores regulares com credenciais de saque 0x01 para um saldo efetivo máximo de 32 ETH."
         },
         "arg_amount": {
-            "help": "The amount to deposit to these validators in ether denomination. Must be at least 1 ether and can not have greater precision than 1 gwei. Use of this option requires compounding validators.",
-            "prompt": "Please enter the amount you wish to deposit to these validators. Must be at least {min_deposit} and can not have greater precision than 1 gwei. {activation_amount} is required to activate a new validator"
+            "help": "O valor a depositar nesses validadores, denominado em ether. Deve ser de pelo menos 1 ether e não pode ter precisão maior que 1 gwei. Esta opção exige validadores com saldo composto.",
+            "prompt": "Digite o valor que deseja depositar nesses validadores. Deve ser de pelo menos {min_deposit} e não pode ter precisão maior que 1 gwei. {activation_amount} é necessário para ativar um novo validador"
         },
         "arg_pbkdf2": {
-            "help": "Uses the pbkdf2 hashing function instead of scrypt for generated keystore files. "
+            "help": "Usa a função de hash pbkdf2 em vez de scrypt nos arquivos keystore gerados. "
         },
         "arg_devnet_chain_setting": {
-            "help": "[DEVNET ONLY] Set specific GENESIS_FORK_VERSION value. This should be a JSON string containing an object with the following keys: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount and min_deposit_amount. It should be similar to what you can find in settings.py. This will override any selected chain."
+            "help": "[SOMENTE DEVNET] Defina um valor específico para GENESIS_FORK_VERSION. Deve ser uma string JSON contendo um objeto com as seguintes chaves: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount e min_deposit_amount. Deve ser semelhante ao que você encontra em settings.py. Isso substituirá qualquer cadeia selecionada."
         }
     },
     "generate_keys": {

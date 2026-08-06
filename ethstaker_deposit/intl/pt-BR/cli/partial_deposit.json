@@ -1,45 +1,45 @@
 {
     "partial_deposit": {
         "arg_partial_deposit": {
-            "help": "Generate a partial deposit with any amount at least 1 ether which will be signed by the provided validator keystore. This will append to the balance of the provided validator or initiate the creation of one."
+            "help": "Gere um depósito parcial com qualquer valor de pelo menos 1 ether, que será assinado pelo keystore de validador fornecido. Isso acrescentará ao saldo do validador fornecido ou iniciará a criação de um."
         },
         "arg_partial_deposit_chain": {
-            "help": "The name of the Ethereum PoS chain your validator is running on. \"mainnet\" is the default.",
-            "prompt": "Please choose the (mainnet or testnet) network/chain name"
+            "help": "O nome da cadeia Ethereum PoS em que seu validador está sendo executado. \"mainnet\" é o padrão.",
+            "prompt": "Escolha o nome da rede/cadeia (mainnet ou testnet)"
         },
         "arg_partial_deposit_amount": {
-            "help": "The amount to deposit to this validator in ether denomination. Must be at least 1 ether and can not have greater precision than 1 gwei. Default is 32 ether.",
-            "prompt": "Please enter the amount you wish to deposit to this validator. Must be at least {min_deposit} and can not have greater precision than 1 gwei. {activation_amount} is required to activate a new validator"
+            "help": "O valor a depositar neste validador, denominado em ether. Deve ser de pelo menos 1 ether e não pode ter precisão maior que 1 gwei. O padrão é 32 ether.",
+            "prompt": "Digite o valor que deseja depositar neste validador. Deve ser de pelo menos {min_deposit} e não pode ter precisão maior que 1 gwei. {activation_amount} é necessário para ativar um novo validador"
         },
         "arg_partial_deposit_keystore": {
-            "help": "The keystore file associated with the validator you wish to sign with and deposit to.",
-            "prompt": "Please enter the location of your keystore file."
+            "help": "O arquivo keystore associado ao validador com o qual você deseja assinar e fazer o depósito.",
+            "prompt": "Digite a localização do seu arquivo keystore."
         },
         "arg_partial_deposit_keystore_password": {
-            "help": "The password that is used to encrypt the provided keystore. Note: It's not your mnemonic password. (It is recommended not to use this argument, and wait for the CLI to ask you for your password as otherwise it will appear in your shell history.)",
-            "prompt": "Enter the password that is used to encrypt the provided keystore.",
-            "mismatch": "Error: The provided keystore password was unable to decrypt this keystore file. Make sure you have the correct password and try again."
+            "help": "A senha usada para criptografar o keystore fornecido. Observação: ela não é a senha do seu mnemônico. (Recomenda-se não usar este argumento e esperar que a CLI solicite sua senha, caso contrário ela aparecerá no histórico do shell.)",
+            "prompt": "Digite a senha usada para criptografar o keystore fornecido.",
+            "mismatch": "Erro: a senha do keystore fornecida não conseguiu descriptografar este arquivo keystore. Verifique se a senha está correta e tente novamente."
         },
         "arg_partial_deposit_output_folder": {
-            "help": "The folder path where the partial deposit will be saved to. Pointing to `./partial_deposits` by default."
+            "help": "O caminho da pasta onde o depósito parcial será salvo. Por padrão, aponta para `./partial_deposits`."
         },
         "arg_withdrawal_address": {
-            "help": "The withdrawal address of the validator. If you wish to create a validator with 0x00 credentials use the new-mnemonic or existing-mnemonic command.",
-            "confirm": "Repeat the withdrawal address for confirmation.",
-            "prompt": "Please enter the withdrawal address. If you wish to create a validator with 0x00 credentials use the new-mnemonic or existing-mnemonic command.",
-            "mismatch": "Error: the two entered addresses do not match. Please type again."
+            "help": "O endereço de saque do validador. Se quiser criar um validador com credenciais 0x00, use o comando new-mnemonic ou existing-mnemonic.",
+            "confirm": "Repita o endereço de saque para confirmação.",
+            "prompt": "Digite o endereço de saque. Se quiser criar um validador com credenciais 0x00, use o comando new-mnemonic ou existing-mnemonic.",
+            "mismatch": "Erro: os dois endereços digitados não coincidem. Digite novamente."
         },
         "arg_compounding": {
-            "help": "Generates compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance or generate regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance. This feature is only supported on networks that have undergone the Pectra fork.",
-            "prompt": "Please enter yes if you want to generate compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance. Compounding validators and 0x02 withdrawal credentials are only supported on networks that have undergone the Pectra fork. Please type no or nothing if you want regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance."
+            "help": "Gera validadores com saldo composto e credenciais de saque 0x02 para um saldo efetivo máximo de 2048 ETH, ou validadores regulares com credenciais de saque 0x01 para um saldo efetivo máximo de 32 ETH. Esse recurso só é compatível com redes que passaram pela fork Pectra.",
+            "prompt": "Digite yes se quiser gerar validadores com saldo composto e credenciais de saque 0x02 para um saldo efetivo máximo de 2048 ETH. Validadores com saldo composto e credenciais de saque 0x02 só são compatíveis com redes que passaram pela fork Pectra. Digite no ou nada se quiser validadores regulares com credenciais de saque 0x01 para um saldo efetivo máximo de 32 ETH."
         },
         "arg_devnet_chain_setting": {
-            "help": "[DEVNET ONLY] Set specific GENESIS_FORK_VERSION value. This should be a JSON string containing an object with the following keys: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount and min_deposit_amount. It should be similar to what you can find in settings.py. This will override any selected chain."
+            "help": "[SOMENTE DEVNET] Defina um valor específico para GENESIS_FORK_VERSION. Deve ser uma string JSON contendo um objeto com as seguintes chaves: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount e min_deposit_amount. Deve ser semelhante ao que você encontra em settings.py. Isso substituirá qualquer cadeia selecionada."
         },
-        "msg_partial_deposit_creation": "\nCreating your partial deposit...",
-        "msg_verify_partial_deposit": "\nVerifying your partial deposit...",
-        "err_verify_partial_deposit": "\nThere was a problem verifying your partial deposit.\nPlease try again",
-        "msg_creation_success": "\nSuccess!\nYour partial deposit file can be found at: ",
-        "msg_pause": "\n\nPress any key."
+        "msg_partial_deposit_creation": "\nCriando seu depósito parcial...",
+        "msg_verify_partial_deposit": "\nVerificando seu depósito parcial...",
+        "err_verify_partial_deposit": "\nHouve um problema ao verificar seu depósito parcial.\nTente novamente",
+        "msg_creation_success": "\nSucesso!\nO arquivo do seu depósito parcial pode ser encontrado em: ",
+        "msg_pause": "\n\nPressione qualquer tecla."
     }
 }
