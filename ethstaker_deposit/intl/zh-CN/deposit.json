@@ -1,5 +1,5 @@
 {
     "check_connectivity": {
-        "connectivity_warning": "\n*** Internet connectivity detected ***\n\nTo mitigate the risk of unauthorized access and safeguard generated key material, it is strongly advised to run this tool in an offline, airgapped environment. Operating online increases susceptibility to potential theft or compromise.\n\nBy continuing, you are accepting responsibility for the risk.\n\nPress any key to continue..."
+        "connectivity_warning": "\n*** 检测到互联网连接 ***\n\n为降低未经授权访问的风险并保护生成的密钥材料，强烈建议您在离线、隔离网络的环境中运行此工具。在线运行会增加密钥被窃取或泄露的风险。\n\n继续操作即表示您接受相关风险并承担责任。\n\n请按任意键继续..."
     }
 }

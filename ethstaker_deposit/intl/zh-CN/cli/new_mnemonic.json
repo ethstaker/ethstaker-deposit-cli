@@ -11,7 +11,7 @@
         "msg_mnemonic_presentation": "这是您的助记符（助记词）。请记下它并存放在安全的地方，它是取回您存款的唯一方式。",
         "msg_press_any_key": "在您记下助记符后，按任意键。",
         "msg_mnemonic_retype_prompt": "请输入您的助记符（用空格分隔）以确认您已记下了",
-        "msg_mnemonic_clipboard_warning": "WARNING: You MUST write the mnemonic down, as we will attempt to clear the clipboard after this step.",
-        "msg_confirm_clipboard_clearing": "WARNING: Your clipboard will be CLEARED. Some applications or configurations may prevent this. Press any key to clear the clipboard."
+        "msg_mnemonic_clipboard_warning": "警告：您必须记下助记词，因为我们将在此步骤后尝试清空剪贴板。",
+        "msg_confirm_clipboard_clearing": "警告：您的剪贴板将被清空。某些应用程序或配置可能会阻止此操作。请按任意键清空剪贴板。"
     }
 }

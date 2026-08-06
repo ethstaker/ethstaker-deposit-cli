@@ -1,45 +1,45 @@
 {
     "partial_deposit": {
         "arg_partial_deposit": {
-            "help": "Generate a partial deposit with any amount at least 1 ether which will be signed by the provided validator keystore. This will append to the balance of the provided validator or initiate the creation of one."
+            "help": "生成金额至少为 1 ether 的部分存款，该存款将由所提供的验证者密钥库签名。这会增加所提供验证者的余额，或开始创建一个验证者。"
         },
         "arg_partial_deposit_chain": {
-            "help": "The name of the Ethereum PoS chain your validator is running on. \"mainnet\" is the default.",
-            "prompt": "Please choose the (mainnet or testnet) network/chain name"
+            "help": "您的验证者运行所在的 Ethereum PoS 链名称。默认值为 \"mainnet\"。",
+            "prompt": "请选择（mainnet 或 testnet）网络/链名称"
         },
         "arg_partial_deposit_amount": {
-            "help": "The amount to deposit to this validator in ether denomination. Must be at least 1 ether and can not have greater precision than 1 gwei. Default is 32 ether.",
-            "prompt": "Please enter the amount you wish to deposit to this validator. Must be at least {min_deposit} and can not have greater precision than 1 gwei. {activation_amount} is required to activate a new validator"
+            "help": "向此验证者存入的 ether 数量。必须至少为 1 ether，精度不能高于 1 gwei。默认值为 32 ether。",
+            "prompt": "请输入您要向此验证者存入的数量。必须至少为 {min_deposit}，精度不能高于 1 gwei。激活新验证者需要 {activation_amount}"
         },
         "arg_partial_deposit_keystore": {
-            "help": "The keystore file associated with the validator you wish to sign with and deposit to.",
-            "prompt": "Please enter the location of your keystore file."
+            "help": "与您希望用于签名和存款的验证者关联的密钥库文件。",
+            "prompt": "请输入密钥库文件的位置。"
         },
         "arg_partial_deposit_keystore_password": {
-            "help": "The password that is used to encrypt the provided keystore. Note: It's not your mnemonic password. (It is recommended not to use this argument, and wait for the CLI to ask you for your password as otherwise it will appear in your shell history.)",
-            "prompt": "Enter the password that is used to encrypt the provided keystore.",
-            "mismatch": "Error: The provided keystore password was unable to decrypt this keystore file. Make sure you have the correct password and try again."
+            "help": "用于加密所提供密钥库的密码。注意：这不是您的助记词密码。（建议不要使用此参数，而是等待 CLI 要求您输入密码，否则密码会出现在 shell 历史记录中。）",
+            "prompt": "请输入用于加密所提供密钥库的密码。",
+            "mismatch": "错误：提供的密钥库密码无法解密此密钥库文件。请确认密码正确后重试。"
         },
         "arg_partial_deposit_output_folder": {
-            "help": "The folder path where the partial deposit will be saved to. Pointing to `./partial_deposits` by default."
+            "help": "保存部分存款的文件夹路径。默认指向 `./partial_deposits`。"
         },
         "arg_withdrawal_address": {
-            "help": "The withdrawal address of the validator. If you wish to create a validator with 0x00 credentials use the new-mnemonic or existing-mnemonic command.",
-            "confirm": "Repeat the withdrawal address for confirmation.",
-            "prompt": "Please enter the withdrawal address. If you wish to create a validator with 0x00 credentials use the new-mnemonic or existing-mnemonic command.",
-            "mismatch": "Error: the two entered addresses do not match. Please type again."
+            "help": "验证者的提取地址。如果您希望创建具有 0x00 凭证的验证者，请使用 new-mnemonic 或 existing-mnemonic 命令。",
+            "confirm": "请再次输入提取地址以确认。",
+            "prompt": "请输入提取地址。如果您希望创建具有 0x00 凭证的验证者，请使用 new-mnemonic 或 existing-mnemonic 命令。",
+            "mismatch": "错误：两次输入的地址不匹配。请重新输入。"
         },
         "arg_compounding": {
-            "help": "Generates compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance or generate regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance. This feature is only supported on networks that have undergone the Pectra fork.",
-            "prompt": "Please enter yes if you want to generate compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance. Compounding validators and 0x02 withdrawal credentials are only supported on networks that have undergone the Pectra fork. Please type no or nothing if you want regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance."
+            "help": "生成具有 0x02 提取凭证、最大有效余额为 2048 ETH 的复利验证者，或生成具有 0x01 提取凭证、最大有效余额为 32 ETH 的普通验证者。此功能仅支持已完成 Pectra 分叉的网络。",
+            "prompt": "如果您要生成具有 0x02 提取凭证、最大有效余额为 2048 ETH 的复利验证者，请输入 yes。复利验证者和 0x02 提取凭证仅支持已完成 Pectra 分叉的网络。如果要生成具有 0x01 提取凭证、最大有效余额为 32 ETH 的普通验证者，请输入 no 或留空。"
         },
         "arg_devnet_chain_setting": {
-            "help": "[DEVNET ONLY] Set specific GENESIS_FORK_VERSION value. This should be a JSON string containing an object with the following keys: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount and min_deposit_amount. It should be similar to what you can find in settings.py. This will override any selected chain."
+            "help": "[DEVNET ONLY] 设置特定的 GENESIS_FORK_VERSION 值。该值应为包含以下键的对象的 JSON 字符串：network_name、genesis_fork_version、exit_fork_version、genesis_validator_root、multiplier、min_activation_amount 和 min_deposit_amount。其格式应类似于 settings.py 中的设置。这将覆盖所选链。"
         },
-        "msg_partial_deposit_creation": "\nCreating your partial deposit...",
-        "msg_verify_partial_deposit": "\nVerifying your partial deposit...",
-        "err_verify_partial_deposit": "\nThere was a problem verifying your partial deposit.\nPlease try again",
-        "msg_creation_success": "\nSuccess!\nYour partial deposit file can be found at: ",
-        "msg_pause": "\n\nPress any key."
+        "msg_partial_deposit_creation": "\n正在创建您的部分存款...",
+        "msg_verify_partial_deposit": "\n正在验证您的部分存款...",
+        "err_verify_partial_deposit": "\n验证您的部分存款时出现问题。\n请重试",
+        "msg_creation_success": "\n成功！\n您的部分存款文件位于：",
+        "msg_pause": "\n\n请按任意键。"
     }
 }

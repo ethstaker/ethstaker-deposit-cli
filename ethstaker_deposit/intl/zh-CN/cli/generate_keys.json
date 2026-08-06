@@ -15,27 +15,27 @@
             "mismatch": "错误：输入的两个值不匹配。请再次输入。"
         },
         "folder": {
-            "help": "The folder path for the keystore(s) and deposit(s). Pointing to `./validator_keys` by default."
+            "help": "密钥库和存款文件夹路径。默认指向 `./validator_keys`。"
         },
         "arg_withdrawal_address": {
-            "help": "The Ethereum address that will be used in withdrawal. It typically starts with '0x' followed by 40 hexadecimal characters. Please make sure you have full control over the address you choose here. Once you set a withdrawal address on chain, it cannot be changed.",
-            "prompt": "Please enter the optional withdrawal address. Note that you CANNOT change it once you have set it on chain.",
-            "confirm": "Repeat your withdrawal address for confirmation.",
-            "mismatch": "Error: the two entered values do not match. Please type again."
+            "help": "用于提取的 Ethereum 地址。通常以 '0x' 开头，后跟 40 个十六进制字符。请确保您完全控制所选地址。链上设置提取地址后无法更改。",
+            "prompt": "请输入可选的提取地址。请注意，链上设置后您无法更改该地址。",
+            "confirm": "请再次输入提取地址以确认。",
+            "mismatch": "错误：两次输入的值不匹配。请重新输入。"
         },
         "arg_compounding": {
-            "help": "Generates compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance or generate regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance. Use of this option requires a withdrawal address. This feature is only supported on networks that have undergone the Pectra fork.",
-            "prompt": "Please enter yes if you want to generate compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance. Compounding validators and 0x02 withdrawal credentials are only supported on networks that have undergone the Pectra fork. Please type no or nothing if you want regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance."
+            "help": "生成具有 0x02 提取凭证、最大有效余额为 2048 ETH 的复利验证者，或生成具有 0x01 提取凭证、最大有效余额为 32 ETH 的普通验证者。使用此选项需要提供提取地址。此功能仅支持已完成 Pectra 分叉的网络。",
+            "prompt": "如果您要生成具有 0x02 提取凭证、最大有效余额为 2048 ETH 的复利验证者，请输入 yes。复利验证者和 0x02 提取凭证仅支持已完成 Pectra 分叉的网络。如果要生成具有 0x01 提取凭证、最大有效余额为 32 ETH 的普通验证者，请输入 no 或留空。"
         },
         "arg_amount": {
-            "help": "The amount to deposit to these validators in ether denomination. Must be at least 1 ether and can not have greater precision than 1 gwei. Use of this option requires compounding validators.",
-            "prompt": "Please enter the amount you wish to deposit to these validators. Must be at least {min_deposit} and can not have greater precision than 1 gwei. {activation_amount} is required to activate a new validator"
+            "help": "向这些验证者存入的 ether 数量。必须至少为 1 ether，精度不能高于 1 gwei。使用此选项需要生成复利验证者。",
+            "prompt": "请输入您要向这些验证者存入的数量。必须至少为 {min_deposit}，精度不能高于 1 gwei。激活新验证者需要 {activation_amount}"
         },
         "arg_pbkdf2": {
-            "help": "Uses the pbkdf2 hashing function instead of scrypt for generated keystore files. "
+            "help": "为生成的密钥库文件使用 pbkdf2 哈希函数而不是 scrypt。 "
         },
         "arg_devnet_chain_setting": {
-            "help": "[DEVNET ONLY] Set specific GENESIS_FORK_VERSION value. This should be a JSON string containing an object with the following keys: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount and min_deposit_amount. It should be similar to what you can find in settings.py. This will override any selected chain."
+            "help": "[DEVNET ONLY] 设置特定的 GENESIS_FORK_VERSION 值。该值应为包含以下键的对象的 JSON 字符串：network_name、genesis_fork_version、exit_fork_version、genesis_validator_root、multiplier、min_activation_amount 和 min_deposit_amount。其格式应类似于 settings.py 中的设置。这将覆盖所选链。"
         }
     },
     "generate_keys": {
