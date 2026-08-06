@@ -19,6 +19,7 @@ from ethstaker_deposit.utils.validation import (
     verify_bls_to_execution_change_json,
     validate_validator_indices,
     validate_devnet_chain_setting,
+    validate_genesis_validators_root,
 )
 from ethstaker_deposit.utils.constants import (
     DEFAULT_BLS_TO_EXECUTION_CHANGES_FOLDER_NAME,
@@ -160,6 +161,7 @@ def generate_bls_to_execution_change(
 
     # Get chain setting
     chain_setting = devnet_chain_setting if devnet_chain_setting is not None else get_chain_setting(chain)
+    validate_genesis_validators_root(chain_setting)
 
     if len(validator_indices) != len(bls_withdrawal_credentials_list):
         raise ValueError(

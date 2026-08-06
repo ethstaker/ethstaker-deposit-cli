@@ -1,4 +1,5 @@
 from decimal import Decimal, InvalidOperation
+import math
 import click
 import json
 import re
@@ -491,8 +492,12 @@ def validate_devnet_chain_setting(ctx: click.Context, param: Any, value: str | N
     if value is None:
         return None
 
-    # Trimming to protect against unnecessaryly large JSON payload, see https://docs.python.org/3/library/json.html
-    trimmed_value = value[:400]
+    # Protect against unnecessarily large JSON payloads, see https://docs.python.org/3/library/json.html
+    if len(value) > 400:
+        raise ValidationError(
+            load_text(['err_devnet_chain_setting_too_large'], func='validate_devnet_chain_setting_json') + '\n'
+        )
+    trimmed_value = value
 
     if validate_devnet_chain_setting_json(trimmed_value):
         click.echo(f'\n{load_text(["arg_devnet_chain_setting_warning"])}\n')
@@ -527,22 +532,38 @@ def validate_devnet_chain_setting_json(json_value: str) -> bool:
         if not all_keys:
             raise ValidationError(load_text(['err_devnet_chain_setting_missing_keys']) + '\n')
 
-        genesis_fork_version = decode_hex(devnet_chain_setting_dict['genesis_fork_version'])
+        network_name = devnet_chain_setting_dict['network_name']
+        if not isinstance(network_name, str) or not network_name.strip():
+            raise ValidationError(
+                load_text(['err_devnet_chain_setting_invalid_network_name'],
+                          func='validate_devnet_chain_setting_json') + '\n'
+            )
+
+        genesis_fork_version = _decode_fixed_hex(
+            devnet_chain_setting_dict['genesis_fork_version'], 4,
+            'err_devnet_chain_setting_invalid_genesis_fork_version',
+        )
         if genesis_fork_version in ALL_FORK_VERSIONS:
             known_network = ALL_FORK_VERSIONS[genesis_fork_version]
             raise ValidationError(load_text(['err_devnet_known_genesis_fork_version']) + f' ({known_network})' + '\n')
 
-        if len(devnet_chain_setting_dict) not in (3, 4, 5, 6, 7):
-            raise ValidationError(load_text(['err_devnet_chain_setting_key_length']) + '\n')
+        _decode_fixed_hex(
+            devnet_chain_setting_dict['exit_fork_version'], 4,
+            'err_devnet_chain_setting_invalid_exit_fork_version',
+        )
+
+        if 'genesis_validator_root' in devnet_chain_setting_dict:
+            _decode_fixed_hex(
+                devnet_chain_setting_dict['genesis_validator_root'], 32,
+                'err_devnet_chain_setting_invalid_genesis_validator_root',
+            )
 
         if 'multiplier' in devnet_chain_setting_dict:
-            multiplier = int(devnet_chain_setting_dict['multiplier'])
+            _validate_positive_integer(devnet_chain_setting_dict['multiplier'], 'multiplier')
 
-            if multiplier == 0:
-                raise ValidationError(load_text(['err_devnet_chain_setting_zero_multiplier']) + '\n')
-
-            if multiplier < 0:
-                raise ValidationError(load_text(['err_devnet_chain_setting_negative_multiplier']) + '\n')
+        for key in ('min_activation_amount', 'min_deposit_amount'):
+            if key in devnet_chain_setting_dict:
+                _validate_positive_number(devnet_chain_setting_dict[key], key)
 
         allowed_keys = set(required_keys + optional_keys)
         unknown_keys = set(devnet_chain_setting_dict) - allowed_keys
@@ -553,4 +574,66 @@ def validate_devnet_chain_setting_json(json_value: str) -> bool:
     except json.JSONDecodeError:
         raise ValidationError(load_text(['err_devnet_chain_setting_invalid_json']) + '\n')
 
-        return False
+
+def _decode_fixed_hex(value: Any, size: int, message_key: str) -> bytes:
+    if not isinstance(value, str):
+        raise ValidationError(load_text([message_key], func='validate_devnet_chain_setting_json') + '\n')
+    try:
+        decoded = decode_hex(value)
+    except (TypeError, ValueError):
+        raise ValidationError(load_text([message_key], func='validate_devnet_chain_setting_json') + '\n')
+    if len(decoded) != size:
+        raise ValidationError(load_text([message_key], func='validate_devnet_chain_setting_json') + '\n')
+    return decoded
+
+
+def _validate_positive_integer(value: Any, field_name: str) -> int:
+    if isinstance(value, bool):
+        raise ValidationError(
+            load_text(['err_devnet_chain_setting_invalid_number'],
+                      func='validate_devnet_chain_setting_json') + f' ({field_name})\n'
+        )
+    try:
+        integer = int(value)
+    except (TypeError, ValueError):
+        raise ValidationError(
+            load_text(['err_devnet_chain_setting_invalid_number'],
+                      func='validate_devnet_chain_setting_json') + f' ({field_name})\n'
+        )
+    if isinstance(value, float) and not value.is_integer():
+        raise ValidationError(
+            load_text(['err_devnet_chain_setting_invalid_number'],
+                      func='validate_devnet_chain_setting_json') + f' ({field_name})\n'
+        )
+    if integer <= 0:
+        raise ValidationError(
+            load_text(['err_devnet_chain_setting_positive_number'],
+                      func='validate_devnet_chain_setting_json') + f' ({field_name})\n'
+        )
+    return integer
+
+
+def _validate_positive_number(value: Any, field_name: str) -> Decimal:
+    if isinstance(value, bool):
+        raise ValidationError(
+            load_text(['err_devnet_chain_setting_invalid_number'],
+                      func='validate_devnet_chain_setting_json') + f' ({field_name})\n'
+        )
+    try:
+        number = Decimal(str(value))
+    except (InvalidOperation, ValueError):
+        raise ValidationError(
+            load_text(['err_devnet_chain_setting_invalid_number'],
+                      func='validate_devnet_chain_setting_json') + f' ({field_name})\n'
+        )
+    if not number.is_finite() or number <= 0 or (isinstance(value, float) and not math.isfinite(value)):
+        raise ValidationError(
+            load_text(['err_devnet_chain_setting_positive_number'],
+                      func='validate_devnet_chain_setting_json') + f' ({field_name})\n'
+        )
+    return number
+
+
+def validate_genesis_validators_root(chain_setting: BaseChainSetting) -> None:
+    if chain_setting.GENESIS_VALIDATORS_ROOT is None:
+        raise ValidationError('The chain setting is missing a GENESIS_VALIDATORS_ROOT value.')

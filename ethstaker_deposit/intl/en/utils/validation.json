@@ -62,6 +62,13 @@
         "err_devnet_chain_setting_key_length": "Invalid JSON string for devnet_chain_setting. The root object should only contain 3, 4, 5 or 6 keys.",
         "err_devnet_chain_setting_unknown_keys": "The devnet chain setting contains unrecognized keys.",
         "err_devnet_chain_setting_zero_multiplier": "Invalid multiplier value in devnet chain setting. It cannot be zero.",
-        "err_devnet_chain_setting_negative_multiplier": "Invalid multiplier value in devnet chain setting. It cannot be negative."
+        "err_devnet_chain_setting_negative_multiplier": "Invalid multiplier value in devnet chain setting. It cannot be negative.",
+        "err_devnet_chain_setting_too_large": "Invalid JSON string for devnet_chain_setting. It exceeds the maximum size.",
+        "err_devnet_chain_setting_invalid_network_name": "Invalid network_name in devnet chain setting. It must be a non-empty string.",
+        "err_devnet_chain_setting_invalid_genesis_fork_version": "Invalid genesis_fork_version in devnet chain setting. It must be exactly 4 bytes of hex.",
+        "err_devnet_chain_setting_invalid_exit_fork_version": "Invalid exit_fork_version in devnet chain setting. It must be exactly 4 bytes of hex.",
+        "err_devnet_chain_setting_invalid_genesis_validator_root": "Invalid genesis_validator_root in devnet chain setting. It must be exactly 32 bytes of hex.",
+        "err_devnet_chain_setting_invalid_number": "Invalid numeric value in devnet chain setting.",
+        "err_devnet_chain_setting_positive_number": "Numeric values in devnet chain setting must be positive."
     }
 }
