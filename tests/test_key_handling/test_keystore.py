@@ -68,6 +68,21 @@ def test_encrypt_decrypt_incorrect_password() -> None:
 
 
 @pytest.mark.parametrize(
+    'kdf_salt, decryption_key',
+    [
+        (b'\x00' * 31, b'\x00' * 32),
+        (b'\x00' * 33, b'\x00' * 32),
+        (b'\x00' * 32, b'\x00' * 31),
+        (b'\x00' * 32, b'\x00' * 33),
+    ],
+)
+def test_decrypt_rejects_invalid_cached_key_lengths(kdf_salt: bytes, decryption_key: bytes) -> None:
+    generated_keystore = ScryptKeystore.encrypt(secret=test_vector_secret, password=test_vector_password)
+    with pytest.raises(ValueError):
+        generated_keystore.decrypt(test_vector_password, kdf_salt, decryption_key)
+
+
+@pytest.mark.parametrize(
     'password,processed_password',
     [
         ['\a', b''], ['\b', b''], ['\t', b''],

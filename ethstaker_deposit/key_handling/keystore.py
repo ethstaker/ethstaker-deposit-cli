@@ -170,6 +170,10 @@ class Keystore(BytesDataclass):
         """
         if (kdf_salt is None) != (decryption_key is None):
             raise ValueError("kdf_salt and decryption_key must either both be set or both be None")
+        if kdf_salt is not None and len(kdf_salt) != 32:
+            raise ValueError("kdf_salt must be 32 bytes")
+        if decryption_key is not None and len(decryption_key) != 32:
+            raise ValueError("decryption_key must be 32 bytes")
         if 'salt' not in self.crypto.kdf.params:
             raise ValueError("Missing kdf salt on decryption")
         decryption_key = self._get_decryption_key(password, kdf_salt=kdf_salt, decryption_key=decryption_key)
