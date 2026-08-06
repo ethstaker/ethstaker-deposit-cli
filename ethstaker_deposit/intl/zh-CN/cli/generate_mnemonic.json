@@ -1,23 +1,23 @@
 {
     "generate_mnemonic": {
         "arg_generate_mnemonic": {
-            "help": "Generate a new random mnemonic. If you also want to create your validator keystore and deposit files, you should be using the new-mnemonic or the existing-mnemonic command instead."
+            "help": "生成新的随机助记词。如果您还想创建验证者密钥库和存款文件，应改用 new-mnemonic 或 existing-mnemonic 命令。"
         },
         "arg_mnemonic_language": {
             "default": "chinese_simplified",
-            "help": "The language of the mnemonic word list",
-            "prompt": "Please choose the language of the mnemonic word list"
+            "help": "助记词单词列表的语言",
+            "prompt": "请选择助记词单词列表的语言"
         },
         "arg_output_file": {
-            "help": "An optional file path where to write the mnemonic. When used, it will write the mnemonic to the file instead of displaying the mnemonic.",
-            "err_not_found": "Error while trying to write file: Path not found.",
-            "err_perm_denied": "Error while trying to write file: Permission denied to write to the file.",
-            "err_directory_not_file": "Error while trying to write file: The specified path is a directory, not a file.",
-            "err_os": "Error while trying to write file: An OS-related error occurred.",
-            "err_exception": "Error while trying to write file: An unexpected error occurred."
+            "help": "用于写入助记词的可选文件路径。使用后，助记词将写入文件，而不是显示出来。",
+            "err_not_found": "尝试写入文件时出错：找不到路径。",
+            "err_perm_denied": "尝试写入文件时出错：没有写入文件的权限。",
+            "err_directory_not_file": "尝试写入文件时出错：指定路径是目录而不是文件。",
+            "err_os": "尝试写入文件时出错：发生了操作系统相关错误。",
+            "err_exception": "尝试写入文件时出错：发生了意外错误。"
         },
-        "msg_mnemonic_presentation": "This is your randomly generated mnemonic:",
-        "msg_mnemonic_file_written": "Your randomly generated mnemonic was written in",
-        "msg_mnemonic_next": "If you also want to generate your validator keystore and deposit files you can now use the existing-mnemonic command."
+        "msg_mnemonic_presentation": "这是您随机生成的助记词：",
+        "msg_mnemonic_file_written": "您随机生成的助记词已写入",
+        "msg_mnemonic_next": "如果您还想生成验证者密钥库和存款文件，现在可以使用 existing-mnemonic 命令。"
     }
 }
