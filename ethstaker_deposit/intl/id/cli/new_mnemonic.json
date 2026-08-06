@@ -11,7 +11,7 @@
         "msg_mnemonic_presentation": "Ini adalah mnemonik Anda (frasa benih). Catat dan simpan dengan aman, ini adalah SATU-SATUNYA cara untuk mengambil deposit Anda.",
         "msg_press_any_key": "Tekan sembarang tombol setelah Anda menuliskan mnemonik Anda.",
         "msg_mnemonic_retype_prompt": "Harap ketik mnemonik Anda (dipisahkan dengan spasi) untuk mengonfirmasi bahwa Anda telah menuliskannya",
-        "msg_mnemonic_clipboard_warning": "WARNING: You MUST write the mnemonic down, as we will attempt to clear the clipboard after this step.",
-        "msg_confirm_clipboard_clearing": "WARNING: Your clipboard will be CLEARED. Some applications or configurations may prevent this. Press any key to clear the clipboard."
+        "msg_mnemonic_clipboard_warning": "PERINGATAN: Anda HARUS menuliskan mnemonik, karena kami akan mencoba menghapus papan klip setelah langkah ini.",
+        "msg_confirm_clipboard_clearing": "PERINGATAN: Papan klip Anda akan DIHAPUS. Beberapa aplikasi atau konfigurasi mungkin mencegahnya. Tekan tombol apa saja untuk menghapus papan klip."
     }
 }

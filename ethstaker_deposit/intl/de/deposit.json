@@ -1,0 +1,5 @@
+{
+    "check_connectivity": {
+        "connectivity_warning": "\n*** Internetverbindung erkannt ***\n\nUm das Risiko eines unbefugten Zugriffs zu mindern und die erzeugten Schlüsselmaterialien zu schützen, wird dringend empfohlen, dieses Tool in einer Offline-Umgebung ohne Netzwerkverbindung auszuführen. Der Online-Betrieb erhöht die Gefahr eines möglichen Diebstahls oder einer Kompromittierung.\n\nWenn Sie fortfahren, übernehmen Sie die Verantwortung für dieses Risiko.\n\nDrücken Sie eine beliebige Taste, um fortzufahren..."
+    }
+}
