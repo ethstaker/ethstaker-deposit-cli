@@ -35,24 +35,31 @@ Keep these exactly unchanged wherever they occur:
 - Preserve gender, politeness, and punctuation conventions appropriate to the target language.
 - Use stable internal mnemonic-language keys as the default value in both generate-mnemonic and new-mnemonic locale files. Set each locale’s default to its corresponding key, such as english, french, italian, japanese, korean, portuguese, or chinese_simplified. Do not use translated display labels such as Français, Italiano, or 日本語; display labels belong only in prompts and choices. Preserve the English locale’s english default and leave unsupported mnemonic languages unchanged.
 
-## Workflow
+## Editing Workflow
 
-0. Already done: `it, ar, el, fr`
-1. Select one locale directory at a time: `id`, `ja`, `ko`, `pt-BR`, `ro`, `tr`, or `zh-CN`.
-2. Compare its JSON leaves with the corresponding English JSON leaves.
-3. Translate only missing or English-fallback values.
-4. Translate 40 placeholders and wait for the operator to prompt for another 40
-4. Validate that every English leaf key exists in the locale.
-5. Validate that each translated value contains exactly the same placeholders as its English source.
-6. Parse every edited JSON file.
-7. Run:
+- Already done: `it, ar, el, fr, id, de`
+- Select one locale directory at a time: `ja`, `ko`, `pt-BR`, `ro`, `tr`, or `zh-CN`.
+- Compare its JSON leaves with the corresponding English JSON leaves.
+- Translate only missing or English-fallback values.
+- Inspect the exact current contents of each target JSON file before editing.
+- Apply changes in small file-scoped patches rather than one large multi-file patch.
+- Use stable JSON key paths as patch context; do not rely on indentation or large surrounding blocks.
+- Preserve the file’s existing indentation and formatting. Do not reformat unrelated content.
+- If a patch fails, do not retry the same patch unchanged. Re-read the affected file, locate the exact current key, and apply a smaller targeted patch.
+- After each patch, verify that the intended keys changed and that no unrelated lines were modified.
+- Do not count a translation as complete until the target value is confirmed to differ from the English source.
+- Treat a failed patch as having made no changes unless verified otherwise.
+- Validate that every English leaf key exists in the locale.
+- Validate that each translated value contains exactly the same placeholders as its English source.
+- Parse every edited JSON file.
+- Run:
 
    ```bash
    python scripts/check_translations.py
    pytest -q tests/test_intl/test_json_schema.py
    ```
 
-8. Report the locale, files changed, keys translated, keys intentionally left unchanged as technical text, and any uncertain terminology requiring native-speaker review.
+- Report the locale, files changed, keys translated, keys intentionally left unchanged as technical text, and any uncertain terminology requiring native-speaker review.
 
 ## Quality Bar
 

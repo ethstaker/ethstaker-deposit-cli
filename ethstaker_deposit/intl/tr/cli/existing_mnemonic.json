@@ -1,30 +1,30 @@
 {
-    "validate_mnemonic": {
-        "err_invalid_mnemonic": "İpucu kelimeleri doğru değil, lütfen yazım hatalarını kontrol edin.",
-        "arg_mnemonic_language": "We couldn't detect the language of your mnemonic phrase. Please select one of the available language options"
+  "validate_mnemonic": {
+    "err_invalid_mnemonic": "İpucu kelimeleri doğru değil, lütfen yazım hatalarını kontrol edin.",
+    "arg_mnemonic_language": "Anımsatma ifadenizin dilini algılayamadık. Lütfen mevcut dil seçeneklerinden birini seçin"
+  },
+  "existing_mnemonic": {
+    "arg_existing_mnemonic": {
+      "help": "Mevcut ipucu kelimelerinden anahtar oluşturun (veya kurtarın)"
     },
-    "existing_mnemonic": {
-        "arg_existing_mnemonic": {
-            "help": "Mevcut ipucu kelimelerinden anahtar oluşturun (veya kurtarın)"
-        },
-        "arg_mnemonic": {
-            "help": "Anahtarlarınız oluştururken kullandığınız ipucu kelimeleri. (Bu parametreyi kullanmamanız ve size sorulduğunda ipucu kelimelerini girmeniz tavsiye edilir, aksi taktirde ipucu kelimeleriniz komut satırı geçmişinde gözükecektir.)",
-            "prompt": "İpucu kelimelerinizin arasında boşluk bırakarak giriniz (\" \"). Not: her kelimenin ilk 4 harfini girmeniz yeterli olacaktır."
-        },
-        "arg_mnemonic_password": {
-            "help": "Büyük ihtimalle aradığınız parametre bu değil: bu parametre ipucu kelimeleri için şifredir, anahtar deposu şifresi değildir. Daha önce şifre vermediyseniz burada şifre girmeniz anahtarlarınızın (yani varlıklarınızın) kaybolmasına neden olabilir! Eğer ipucu kelimelerinizi bu aracı kullanarak oluşturduysanız, şifre vermemişsiniz demektir. Fakat ipucu kelimelerinizin güvenliğini \"arttırmak\" için şifre verdiğinize eminseniz, şifrenizi buraya girmelisiniz.",
-            "prompt": "İpucu kelime şifrenizi giriniz (daha önce sağladıysanız). Unutmayacağınıza emin olun, bu şifre kurtarılamaz.",
-            "confirm": "Onaylamak için ipucu kelime şifrenizi tekrar giriniz. Daha önce şifre vermediyseniz burada şifre girmeniz anahtarlarınızın (yani varlıklarınızın) kaybolmasına neden olabilir! Eğer ipucu kelimelerinizi bu aracı kullanarak oluşturduysanız, şifre vermemişsiniz demektir. Fakat ipucu kelimelerinizin güvenliğini \"arttırmak\" için şifre verdiğinize eminseniz, şifrenizi buraya girmelisiniz.",
-            "mismatch": "Girdiğiniz ipucu kelime şifresi eşleşmiyor, lütfen tekrar deneyiniz."
-        },
-        "arg_validator_start_index": {
-            "help": "Daha fazla anahtar oluşturmaya başlamak istediğiniz sırayı (anahtar numarası) giriniz. Örneğin, daha önce 4 anahtar oluşturduysanız, buraya 4 girmeniz gerekir.",
-            "prompt": "Daha fazla anahtar oluşturmaya başlamak istediğiniz sırayı (anahtar numarası) giriniz. Örneğin, daha önce 4 anahtar oluşturduysanız, buraya 4 girmeniz gerekir.",
-            "confirm": "Lütfen onaylamak için sırayı tekrar girin"
-        },
-        "arg_mnemonic_language": {
-            "help": "The language of your mnemonic. If this is not provided we will attempt to determine it based on the mnemonic provided."
-        },
-        "msg_confirm_clipboard_clearing": "WARNING: Your clipboard will be CLEARED. Some applications or configurations may prevent this. Press any key to clear the clipboard."
-    }
+    "arg_mnemonic": {
+      "help": "Anahtarlarınız oluştururken kullandığınız ipucu kelimeleri. (Bu parametreyi kullanmamanız ve size sorulduğunda ipucu kelimelerini girmeniz tavsiye edilir, aksi taktirde ipucu kelimeleriniz komut satırı geçmişinde gözükecektir.)",
+      "prompt": "İpucu kelimelerinizin arasında boşluk bırakarak giriniz (\" \"). Not: her kelimenin ilk 4 harfini girmeniz yeterli olacaktır."
+    },
+    "arg_mnemonic_password": {
+      "help": "Büyük ihtimalle aradığınız parametre bu değil: bu parametre ipucu kelimeleri için şifredir, anahtar deposu şifresi değildir. Daha önce şifre vermediyseniz burada şifre girmeniz anahtarlarınızın (yani varlıklarınızın) kaybolmasına neden olabilir! Eğer ipucu kelimelerinizi bu aracı kullanarak oluşturduysanız, şifre vermemişsiniz demektir. Fakat ipucu kelimelerinizin güvenliğini \"arttırmak\" için şifre verdiğinize eminseniz, şifrenizi buraya girmelisiniz.",
+      "prompt": "İpucu kelime şifrenizi giriniz (daha önce sağladıysanız). Unutmayacağınıza emin olun, bu şifre kurtarılamaz.",
+      "confirm": "Onaylamak için ipucu kelime şifrenizi tekrar giriniz. Daha önce şifre vermediyseniz burada şifre girmeniz anahtarlarınızın (yani varlıklarınızın) kaybolmasına neden olabilir! Eğer ipucu kelimelerinizi bu aracı kullanarak oluşturduysanız, şifre vermemişsiniz demektir. Fakat ipucu kelimelerinizin güvenliğini \"arttırmak\" için şifre verdiğinize eminseniz, şifrenizi buraya girmelisiniz.",
+      "mismatch": "Girdiğiniz ipucu kelime şifresi eşleşmiyor, lütfen tekrar deneyiniz."
+    },
+    "arg_validator_start_index": {
+      "help": "Daha fazla anahtar oluşturmaya başlamak istediğiniz sırayı (anahtar numarası) giriniz. Örneğin, daha önce 4 anahtar oluşturduysanız, buraya 4 girmeniz gerekir.",
+      "prompt": "Daha fazla anahtar oluşturmaya başlamak istediğiniz sırayı (anahtar numarası) giriniz. Örneğin, daha önce 4 anahtar oluşturduysanız, buraya 4 girmeniz gerekir.",
+      "confirm": "Lütfen onaylamak için sırayı tekrar girin"
+    },
+    "arg_mnemonic_language": {
+      "help": "Anımsatma ifadenizin dili. Belirtilmezse, sağlanan anımsatma ifadesine göre belirlemeye çalışacağız."
+    },
+    "msg_confirm_clipboard_clearing": "UYARI: Panonuz TEMİZLENECEK. Bazı uygulamalar veya yapılandırmalar bunu engelleyebilir. Panoyu temizlemek için bir tuşa basın."
+  }
 }

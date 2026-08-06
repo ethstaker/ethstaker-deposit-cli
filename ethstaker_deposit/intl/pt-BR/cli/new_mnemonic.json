@@ -4,7 +4,7 @@
             "help": "Gerar um novo mnemônico e chaves"
         },
         "arg_mnemonic_language": {
-            "default": "Português",
+            "default": "portuguese",
             "help": "A linguagem do seu mnemônico",
             "prompt": "Por favor, escolha o idioma do seu mnemônico"
         },
