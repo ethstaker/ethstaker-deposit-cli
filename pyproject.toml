@@ -28,7 +28,7 @@ name = "ethstaker_deposit"
 description = "Secure key generation for deposits"
 readme = "README.md"
 dependencies = [
-    "annotated-types==0.7.0",
+    "annotated-types==0.8.0",
     "click==8.4.2",
     "eth-typing==6.0.0",
     "eth-utils==6.0.0",
@@ -71,7 +71,7 @@ test = [
     "packaging==26.2",
     "pluggy==1.6.0",
     "typing-extensions==4.16.0",
-    "ruff==0.15.22",
+    "ruff==0.16.0",
     "Pygments==2.20.0",
     "pathspec==1.1.1",
 ]
