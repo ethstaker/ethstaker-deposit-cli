@@ -1,0 +1,8 @@
+{
+    "generate_mnemonic": {
+        "arg_generate_mnemonic": {"help": "Eine neue zufällige Mnemonik erzeugen. Wenn Sie außerdem Ihren Validator-Keystore und Ihre Deposit-Dateien erstellen möchten, sollten Sie stattdessen den Befehl new-mnemonic oder existing-mnemonic verwenden."},
+        "arg_mnemonic_language": {"default": "english", "help": "Die Sprache der Mnemonik-Wortliste", "prompt": "Bitte wählen Sie die Sprache der Mnemonik-Wortliste"},
+        "arg_output_file": {"help": "Ein optionaler Dateipfad, in den die Mnemonik geschrieben wird. Bei Verwendung wird die Mnemonik in die Datei geschrieben, anstatt angezeigt zu werden.", "err_not_found": "Fehler beim Schreiben der Datei: Pfad nicht gefunden.", "err_perm_denied": "Fehler beim Schreiben der Datei: Keine Berechtigung zum Schreiben in die Datei.", "err_directory_not_file": "Fehler beim Schreiben der Datei: Der angegebene Pfad ist ein Verzeichnis und keine Datei.", "err_os": "Fehler beim Schreiben der Datei: Ein Betriebssystemfehler ist aufgetreten.", "err_exception": "Fehler beim Schreiben der Datei: Ein unerwarteter Fehler ist aufgetreten."},
+        "msg_mnemonic_presentation": "Dies ist Ihre zufällig erzeugte Mnemonik:", "msg_mnemonic_file_written": "Ihre zufällig erzeugte Mnemonik wurde geschrieben in", "msg_mnemonic_next": "Wenn Sie außerdem Ihren Validator-Keystore und Ihre Deposit-Dateien erzeugen möchten, können Sie jetzt den Befehl existing-mnemonic verwenden."
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "validate_mnemonic": {
+        "err_invalid_mnemonic": "Dies ist keine gültige Mnemonik. Bitte überprüfen Sie die Schreibweise.",
+        "arg_mnemonic_language": "Die Sprache Ihrer Mnemonik konnte nicht erkannt werden. Bitte wählen Sie eine der verfügbaren Sprachoptionen aus"
+    },
+    "existing_mnemonic": {
+        "arg_existing_mnemonic": {
+            "help": "Schlüssel aus einer vorhandenen Mnemonik erzeugen (oder wiederherstellen)"
+        },
+        "arg_mnemonic": {
+            "help": "Die Mnemonik, die Sie zur Erzeugung Ihrer Schlüssel verwendet haben. (Es wird empfohlen, dieses Argument nicht zu verwenden und zu warten, bis die CLI Sie nach Ihrer Mnemonik fragt, da sie sonst in Ihrer Shell-Historie erscheint.)",
+            "prompt": "Bitte geben Sie Ihre Mnemonik durch Leerzeichen getrennt ein (\" \" ). Hinweis: Sie müssen auf Wunsch nur die ersten 4 Buchstaben jedes Wortes eingeben."
+        },
+        "arg_mnemonic_language": {
+            "help": "Die Sprache Ihrer Mnemonik. Wenn diese nicht angegeben wird, versuchen wir, sie anhand der angegebenen Mnemonik zu bestimmen."
+        },
+        "arg_mnemonic_password": {
+            "help": "Dies ist mit ziemlicher Sicherheit nicht das Argument, das Sie suchen: Es ist für Mnemonik-Passwörter gedacht, nicht für Keystore-Passwörter. Wenn Sie hier ein Passwort angeben, obwohl Sie ursprünglich keines verwendet haben, können Schlüssel (und damit Guthaben) verloren gehen! Wenn Sie dieses Tool jedoch ursprünglich zum Erzeugen Ihrer Mnemonik verwendet haben, haben Sie kein Mnemonik-Passwort verwendet. Wenn Sie sich aber sicher sind, dass Sie ein Passwort zur \"Erhöhung\" der Sicherheit Ihrer Mnemonik verwendet haben, geben Sie es hier ein.",
+            "prompt": "Geben Sie Ihr Mnemonik-Passwort ein (falls Sie eines verwendet haben). Stellen Sie sicher, dass Sie es nicht vergessen, da es nicht wiederhergestellt werden kann.",
+            "confirm": "Wiederholen Sie Ihr Mnemonik-Passwort zur Bestätigung. Wenn Sie hier ein Passwort angeben, obwohl Sie ursprünglich keines verwendet haben, können Schlüssel (und damit Guthaben) verloren gehen! Wenn Sie dieses Tool jedoch ursprünglich zum Erzeugen Ihrer Mnemonik verwendet haben, haben Sie kein Mnemonik-Passwort verwendet. Wenn Sie sich aber sicher sind, dass Sie ein Passwort zur \"Erhöhung\" der Sicherheit Ihrer Mnemonik verwendet haben, geben Sie es hier ein.",
+            "mismatch": "Das eingegebene Mnemonik-Passwort stimmt nicht überein. Bitte versuchen Sie es erneut."
+        },
+        "arg_validator_start_index": {
+            "help": "Geben Sie den Index (die Schlüsselnummer) ein, ab dem Sie weitere Schlüssel erzeugen möchten. Wenn Sie beispielsweise zuvor 4 Schlüssel erzeugt haben, geben Sie hier 4 ein.",
+            "prompt": "Geben Sie den Index (die Schlüsselnummer) ein, ab dem Sie weitere Schlüssel erzeugen möchten. Wenn Sie beispielsweise zuvor 4 Schlüssel erzeugt haben, geben Sie hier 4 ein.",
+            "confirm": "Bitte wiederholen Sie den Startindex des Validators zur Bestätigung"
+        },
+        "msg_confirm_clipboard_clearing": "WARNUNG: Ihre Zwischenablage wird GELÖSCHT. Einige Anwendungen oder Konfigurationen können dies verhindern. Drücken Sie eine beliebige Taste, um die Zwischenablage zu löschen."
+    }
+}

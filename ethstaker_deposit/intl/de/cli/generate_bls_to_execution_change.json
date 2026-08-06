@@ -1,0 +1,45 @@
+{
+    "generate_bls_to_execution_change": {
+        "arg_generate_bls_to_execution_change": {
+            "help": "Die SignedBLSToExecutionChange-Daten werden erzeugt, um Auszahlungen auf der Ethereum Beacon Chain zu ermöglichen."
+        },
+        "arg_withdrawal_address": {
+            "help": "Die Ethereum-Adresse, die für die Auszahlung verwendet wird. Sie beginnt normalerweise mit '0x', gefolgt von 40 hexadezimalen Zeichen. Stellen Sie sicher, dass Sie die vollständige Kontrolle über die hier ausgewählte Adresse haben. Sobald Sie eine Auszahlungsadresse auf der Chain festgelegt haben, kann sie nicht mehr geändert werden.",
+            "prompt": "Bitte geben Sie die Auszahlungsadresse ein. Beachten Sie, dass Sie sie nach dem Festlegen auf der Chain NICHT ändern können.",
+            "confirm": "Wiederholen Sie Ihre Auszahlungsadresse zur Bestätigung.",
+            "mismatch": "Fehler: Die beiden eingegebenen Werte stimmen nicht überein. Bitte geben Sie sie erneut ein."
+        },
+        "arg_devnet_chain_setting": {
+            "help": "[NUR DEVNET] Einen bestimmten Wert für GENESIS_FORK_VERSION und GENESIS_VALIDATORS_ROOT festlegen. Dies muss ein JSON-String sein, der ein Objekt mit den folgenden Schlüsseln enthält: network_name, genesis_fork_version, exit_fork_versio, genesis_validator_root, multiplier, min_activation_amount und min_deposit_amount. Er sollte dem entsprechen, was Sie in settings.py finden. Dadurch wird jede ausgewählte Chain überschrieben."
+        },
+        "arg_validator_indices": {
+            "help": "Eine Liste der Validator-Indexnummer(n) der betreffenden Validator(en)",
+            "prompt": "Bitte geben Sie eine Liste der Validator-Indexnummer(n) Ihres bzw. Ihrer Validators(en) ein, wie er bzw. sie auf der Beacon Chain identifiziert wird bzw. werden. Trennen Sie mehrere Einträge durch Leerzeichen oder Kommas."
+        },
+        "arg_bls_withdrawal_credentials_list": {
+            "help": "Eine Liste der alten BLS-Auszahlungs-Credentials der betreffenden Validator(en) mit 32 Byte",
+            "prompt": "Bitte geben Sie eine Liste der alten BLS-Auszahlungs-Credentials Ihres bzw. Ihrer Validators(en) ein. Trennen Sie mehrere Einträge durch Leerzeichen oder Kommas. Die Withdrawal-Credentials liegen hexadezimal codiert vor."
+        },
+        "arg_validator_start_index": {
+            "help": "Die Indexposition, ab der die Schlüssel für Auszahlungs-Credentials im ERC-2334-Format erzeugt werden",
+            "prompt": "Bitte geben Sie die Indexposition ein, ab der die Schlüssel für Auszahlungs-Credentials im ERC-2334-Format erzeugt werden.",
+            "confirm": "Bitte wiederholen Sie den Index zur Bestätigung"
+        },
+        "arg_chain": {
+            "help": "Der Name der Ethereum-PoS-Chain, für die Sie eine Aktion durchführen. Verwenden Sie \"mainnet\", wenn Sie ETH einzahlen.",
+            "prompt": "Bitte wählen Sie den Namen des Netzwerks bzw. der Chain (mainnet oder testnet)"
+        },
+        "arg_fork": {
+            "help": "Der Name des Forks, mit dem Sie die Nachricht signieren möchten.",
+            "prompt": "Bitte wählen Sie den Namen des Forks, mit dem Sie die Nachricht signieren möchten."
+        },
+        "arg_bls_to_execution_changes_folder": {
+            "help": "Der Ordnerpfad für die Keystore(s). Standardmäßig wird auf `./bls_to_execution_changes` verwiesen."
+        },
+        "msg_key_creation": "Ihre SignedBLSToExecutionChange wird erstellt.",
+        "msg_credentials_verification": "Ihre Withdrawal-Credentials werden überprüft.",
+        "msg_creation_success": "\nErfolg!\nIhre SignedBLSToExecutionChange-JSON-Datei befindet sich unter: ",
+        "msg_pause": "\n\nDrücken Sie eine beliebige Taste.",
+        "err_verify_btec": "Die bls_to_execution_change-JSON-Dateien konnten nicht überprüft werden."
+    }
+}

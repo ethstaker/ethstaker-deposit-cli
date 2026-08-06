@@ -1,7 +1,7 @@
 {
     "validate_mnemonic": {
         "err_invalid_mnemonic": "Bukan mnemonik yang valid, harap pastikan tidak ada kesalahan ketik.",
-        "arg_mnemonic_language": "We couldn't detect the language of your mnemonic phrase. Please select one of the available language options"
+        "arg_mnemonic_language": "Kami tidak dapat mendeteksi bahasa frasa mnemonik Anda. Silakan pilih salah satu opsi bahasa yang tersedia"
     },
     "existing_mnemonic": {
         "arg_existing_mnemonic": {
@@ -14,8 +14,8 @@
         "arg_mnemonic_password": {
             "help": "Ini kemungkinan bukan argumen yang Anda cari: ini untuk kata sandi mnemonik, bukan kata sandi keystore. Memasukkan kata sandi di sini ketika pada awalnya Anda tidak menggunakannya, dapat mengakibatkan kunci hilang (dan karenanya dana pun hilang)! Perhatikan juga bahwa jika Anda menggunakan alat ini untuk membuat mnemonik Anda pada awalnya, maka Anda tidak menggunakan kata sandi mnemonik. Namun, jika yakin Anda menggunakan kata sandi untuk \"meningkatkan\" keamanan mnemonik Anda, di sinilah Anda memasukkannya.",
             "confirm": "Apakah Anda benar-benar yakin bahwa Anda menggunakan kata sandi mnemonik? (Ini berbeda dari kata sandi keystore!) Menggunakan kata sandi saat Anda tidak seharusnya melakukannya dapat mengakibatkan hilangnya dana! Ulangi untuk konfirmasi",
-            "prompt": "Enter your mnemonic password (if you used one). Make sure you won't forget it, it can not be recovered.",
-            "mismatch": "The mnemonic password you entered doesn't match, please try again."
+            "prompt": "Masukkan kata sandi mnemonik Anda (jika Anda menggunakannya). Pastikan Anda tidak melupakannya, karena kata sandi ini tidak dapat dipulihkan.",
+            "mismatch": "Kata sandi mnemonik yang Anda masukkan tidak cocok, silakan coba lagi."
         },
         "arg_validator_start_index": {
             "help": "Masukkan indeks (nomor kunci) yang Anda inginkan untuk mulai membuat lebih banyak kunci. Misalnya, jika Anda pernah membuat 4 kunci sebelumnya, masukkan 4 di sini.",
@@ -23,8 +23,8 @@
             "confirm": "Ulangi untuk konfirmasi"
         },
         "arg_mnemonic_language": {
-            "help": "The language of your mnemonic. If this is not provided we will attempt to determine it based on the mnemonic provided."
+            "help": "Bahasa mnemonik Anda. Jika tidak diberikan, kami akan mencoba menentukannya berdasarkan mnemonik yang diberikan."
         },
-        "msg_confirm_clipboard_clearing": "WARNING: Your clipboard will be CLEARED. Some applications or configurations may prevent this. Press any key to clear the clipboard."
+        "msg_confirm_clipboard_clearing": "PERINGATAN: Papan klip Anda akan DIHAPUS. Beberapa aplikasi atau konfigurasi mungkin mencegahnya. Tekan tombol apa saja untuk menghapus papan klip."
     }
 }

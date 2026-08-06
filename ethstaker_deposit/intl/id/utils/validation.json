@@ -4,64 +4,64 @@
     },
     "validate_password_strength": {
         "msg_password_length": "Panjang kata sandi minimal harus 12. Harap ketik ulang",
-        "msg_password_utf8_win32": "Your terminal is not UTF-8 encoded. To ensure the keystore file can be imported on Linux, the password should contain only English-language characters. Please retype.",
-        "msg_password_utf8": "Your terminal is not UTF-8 encoded. To ensure the keystore file can be imported on Linux, the password should contain only English-language characters. Please retype.\nAlternatively, you can quit this program and relaunch it from a UTF-8 encoded terminal."
+        "msg_password_utf8_win32": "Terminal Anda tidak dikodekan dalam UTF-8. Untuk memastikan file keystore dapat diimpor di Linux, kata sandi harus hanya berisi karakter bahasa Inggris. Silakan ketik ulang.",
+        "msg_password_utf8": "Terminal Anda tidak dikodekan dalam UTF-8. Untuk memastikan file keystore dapat diimpor di Linux, kata sandi harus hanya berisi karakter bahasa Inggris. Silakan ketik ulang.\nAtau, Anda dapat keluar dari program ini dan menjalankannya kembali dari terminal yang dikodekan dalam UTF-8."
     },
     "validate_int_range": {
-        "err_not_positive_integer": "That is not a positive integer. Please retype."
+        "err_not_positive_integer": "Itu bukan bilangan bulat positif. Silakan ketik ulang."
     },
     "validate_choice": {
-        "err_invalid_choice": "That is not one of the valid choices. Please retype your choice."
+        "err_invalid_choice": "Itu bukan salah satu pilihan yang valid. Silakan ketik ulang pilihan Anda."
     },
     "validate_withdrawal_address": {
-        "err_invalid_ECDSA_hex_addr": "The given withdrawal address is not in hexadecimal encoded form.",
-        "err_invalid_ECDSA_hex_addr_checksum": "The given withdrawal address is not in checksum form.",
-        "err_missing_address": "An address must be provided",
-        "msg_ECDSA_hex_addr_withdrawal": "**[Warning] you are setting a withdrawal address. Please ensure that you have full control over this address.**"
+        "err_invalid_ECDSA_hex_addr": "Alamat penarikan yang diberikan bukan dalam bentuk yang dikodekan secara heksadesimal.",
+        "err_invalid_ECDSA_hex_addr_checksum": "Alamat penarikan yang diberikan bukan dalam bentuk checksum.",
+        "err_missing_address": "Alamat harus diberikan",
+        "msg_ECDSA_hex_addr_withdrawal": "**[Peringatan] Anda sedang menetapkan alamat penarikan. Pastikan Anda memiliki kendali penuh atas alamat ini.**"
     },
     "validate_yesno": {
-        "err_invalid_bool_value": "This is an invalid value for a yes/no question."
+        "err_invalid_bool_value": "Ini adalah nilai yang tidak valid untuk pertanyaan ya/tidak."
     },
     "validate_deposit_amount": {
-        "err_invalid_amount": "Invalid amount provided. Please provide a value of at least 1 ether of how much you wish to deposit.",
-        "err_not_gwei_denomination": "Invalid amount provided. Please provide a value can not have precision beyond 1 gwei.",
-        "err_min_deposit": "Invalid amount provided. Please provide a value of at least 1 ether.",
-        "err_max_deposit": "Invalid amount provided. The max deposit amount is 2048 ether. Please provide a lesser or equal amount.",
-        "err_zero_multiplier": "This chain setting is using a multiplier with a value of zero which is invalid."
+        "err_invalid_amount": "Jumlah yang diberikan tidak valid. Silakan berikan nilai minimal 1 ether untuk jumlah yang ingin Anda depositkan.",
+        "err_not_gwei_denomination": "Jumlah yang diberikan tidak valid. Silakan berikan nilai yang tidak memiliki presisi lebih dari 1 gwei.",
+        "err_min_deposit": "Jumlah yang diberikan tidak valid. Silakan berikan nilai minimal 1 ether.",
+        "err_max_deposit": "Jumlah yang diberikan tidak valid. Jumlah deposit maksimum adalah 2048 ether. Silakan berikan jumlah yang lebih kecil atau sama dengan nilai tersebut.",
+        "err_zero_multiplier": "Pengaturan chain ini menggunakan multiplier dengan nilai nol, yang tidak valid."
     },
     "validate_bls_withdrawal_credentials": {
-        "err_is_already_01_form": "The given withdrawal credentials is already in 0x01 form. Have you already set the withdrawal address?",
-        "err_not_bls_form": "The given withdrawal credentials is not in BLS_WITHDRAWAL_PREFIX form."
+        "err_is_already_01_form": "Withdrawal credentials yang diberikan sudah dalam bentuk 0x01. Apakah Anda sudah menetapkan alamat penarikan?",
+        "err_not_bls_form": "Withdrawal credentials yang diberikan bukan dalam bentuk BLS_WITHDRAWAL_PREFIX."
     },
     "validate_bls_withdrawal_credentials_matching": {
-        "err_not_matching": "The given withdrawal credentials does not match the old BLS withdrawal credentials that mnemonic generated."
+        "err_not_matching": "Withdrawal credentials yang diberikan tidak cocok dengan withdrawal credentials BLS lama yang dibuat oleh mnemonik."
     },
     "verify_bls_to_execution_change_json": {
-        "msg_bls_to_execution_change_verification": "Verifying your BLSToExecutionChange file:\t"
+        "msg_bls_to_execution_change_verification": "Memverifikasi file BLSToExecutionChange Anda:\t"
     },
     "normalize_bls_withdrawal_credentials_to_bytes": {
-        "err_incorrect_hex_form": "The given input is not in hexadecimal encoded form."
+        "err_incorrect_hex_form": "Input yang diberikan bukan dalam bentuk yang dikodekan secara heksadesimal."
     },
     "normalize_input_list": {
-        "err_incorrect_list": "The given input should be a list of the old BLS withdrawal credentials of your validator(s). Split multiple items with whitespaces or commas."
+        "err_incorrect_list": "Input yang diberikan harus berupa daftar withdrawal credentials BLS lama dari validator Anda. Pisahkan beberapa item dengan spasi atau koma."
     },
     "validate_keystore_file": {
-        "err_file_not_found": "No file was found. Please verify the provided path and try again.",
-        "err_invalid_keystore_file": "The discovered file is not the correct keystore file format. Please verify the provided path is to a keystore file and try again.",
-        "err_unknown_keystore_file": "There was an unexpected error trying to parse or load the keystore file. Please verify the provided path is to a keystore file and try again."
+        "err_file_not_found": "Tidak ada file yang ditemukan. Silakan verifikasi jalur yang diberikan dan coba lagi.",
+        "err_invalid_keystore_file": "File yang ditemukan bukan dalam format file keystore yang benar. Silakan verifikasi bahwa jalur yang diberikan mengarah ke file keystore dan coba lagi.",
+        "err_unknown_keystore_file": "Terjadi kesalahan yang tidak terduga saat mencoba mengurai atau memuat file keystore. Silakan verifikasi bahwa jalur yang diberikan mengarah ke file keystore dan coba lagi."
     },
     "validate_devnet_chain_setting": {
-        "err_invalid_devnet_chain_setting": "Invalid JSON string for devnet_chain_setting. It should be a valide JSON object that contains at least the following keys: network_name, genesis_fork_version and exit_fork_version.",
-        "arg_devnet_chain_setting_warning": "**[Warning] Using devnet chain setting with this command.**"
+        "err_invalid_devnet_chain_setting": "String JSON untuk devnet_chain_setting tidak valid. String tersebut harus berupa objek JSON valid yang setidaknya berisi kunci berikut: network_name, genesis_fork_version dan exit_fork_version.",
+        "arg_devnet_chain_setting_warning": "**[Peringatan] Menggunakan pengaturan chain devnet dengan perintah ini.**"
     },
     "validate_devnet_chain_setting_json": {
-        "err_devnet_chain_setting_not_object": "Invalid JSON string for devnet_chain_setting. The JSON string does not contain an object at root.",
-        "err_devnet_chain_setting_missing_keys": "Invalid JSON string for devnet_chain_setting. It is missing one or more of these key in the root object: network_name, genesis_fork_version or exit_fork_version.",
-        "err_devnet_known_genesis_fork_version": "The devnet chain setting is using a known genesis fork version from an existing network.",
-        "err_devnet_chain_setting_invalid_json": "Invalid JSON string for devnet_chain_setting. Decoding the JSON string was impossible. Make sure to pass a valid JSON string.",
-        "err_devnet_chain_setting_key_length": "Invalid JSON string for devnet_chain_setting. The root object should only contain 3, 4, 5 or 6 keys.",
-        "err_devnet_chain_setting_unknown_keys": "The devnet chain setting contains unrecognized keys.",
-        "err_devnet_chain_setting_zero_multiplier": "Invalid multiplier value in devnet chain setting. It cannot be zero.",
-        "err_devnet_chain_setting_negative_multiplier": "Invalid multiplier value in devnet chain setting. It cannot be negative."
+        "err_devnet_chain_setting_not_object": "String JSON untuk devnet_chain_setting tidak valid. String JSON tersebut tidak berisi objek pada root.",
+        "err_devnet_chain_setting_missing_keys": "String JSON untuk devnet_chain_setting tidak valid. Satu atau beberapa kunci berikut tidak ada pada objek root: network_name, genesis_fork_version atau exit_fork_version.",
+        "err_devnet_known_genesis_fork_version": "Pengaturan chain devnet menggunakan genesis fork version yang sudah dikenal dari jaringan yang ada.",
+        "err_devnet_chain_setting_invalid_json": "String JSON untuk devnet_chain_setting tidak valid. String tersebut tidak dapat didekodekan. Pastikan Anda memberikan string JSON yang valid.",
+        "err_devnet_chain_setting_key_length": "String JSON untuk devnet_chain_setting tidak valid. Objek root hanya boleh berisi 3, 4, 5 atau 6 kunci.",
+        "err_devnet_chain_setting_unknown_keys": "Pengaturan chain devnet berisi kunci yang tidak dikenali.",
+        "err_devnet_chain_setting_zero_multiplier": "Nilai multiplier dalam pengaturan chain devnet tidak valid. Nilainya tidak boleh nol.",
+        "err_devnet_chain_setting_negative_multiplier": "Nilai multiplier dalam pengaturan chain devnet tidak valid. Nilainya tidak boleh negatif."
     }
 }
