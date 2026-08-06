@@ -4,7 +4,7 @@ from enum import Enum
 import time
 import json
 import concurrent.futures
-from typing import Any
+from typing import Any, Self
 from collections.abc import Sequence
 
 from eth_typing import Address, HexAddress
@@ -362,7 +362,7 @@ class CredentialList:
                       hex_withdrawal_address: HexAddress,
                       compounding: bool | None = False,
                       use_pbkdf2: bool | None = False,
-                      is_builder: bool | None = False) -> 'CredentialList':
+                      is_builder: bool | None = False) -> Self:
         if len(amounts) != num_keys:
             raise ValueError(
                 f"The number of keys ({num_keys}) doesn't equal to the corresponding deposit amounts ({len(amounts)})."

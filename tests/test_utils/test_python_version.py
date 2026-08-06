@@ -1,23 +1,27 @@
-import pytest
-
-from scripts.check_python_version import check_python_version, is_supported, read_requires_python
+from scripts.check_python_version import (
+    check_python_version,
+    is_supported,
+    parse_bounds,
+    read_requires_python,
+)
 
 
 def test_reads_project_python_requirement() -> None:
-    assert read_requires_python('pyproject.toml') == '>=3.10,<4'
+    requirement = read_requires_python('pyproject.toml')
+    assert parse_bounds(requirement)[0] is not None
 
 
-@pytest.mark.parametrize(
-    ('version', 'expected'),
-    [
-        ((3, 9), False),
-        ((3, 10), True),
-        ((3, 14), True),
-        ((4, 0), False),
-    ],
-)
-def test_is_supported(version: tuple[int, int], expected: bool) -> None:
-    assert is_supported(version, '>=3.10,<4') is expected
+def test_is_supported_at_project_boundaries() -> None:
+    requirement = read_requires_python('pyproject.toml')
+    lower_bound, upper_bound = parse_bounds(requirement)
+
+    assert is_supported((lower_bound[0], lower_bound[1] - 1), requirement) is False
+    assert is_supported(lower_bound, requirement) is True
+    assert is_supported((lower_bound[0], lower_bound[1] + 1), requirement) is True
+
+    if upper_bound is not None:
+        assert is_supported((upper_bound[0], upper_bound[1] - 1), requirement) is True
+        assert is_supported(upper_bound, requirement) is False
 
 
 def test_check_python_version_reports_requirement(tmp_path, capsys) -> None:

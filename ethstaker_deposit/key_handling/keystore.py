@@ -9,7 +9,7 @@ from jsonschema import validate as js_validate
 
 from py_ecc.bls import G2ProofOfPossession as bls
 from secrets import randbits
-from typing import Any
+from typing import Any, Self
 from unicodedata import normalize
 from uuid import uuid4
 
@@ -72,7 +72,7 @@ class KeystoreCrypto(BytesDataclass):
     cipher: KeystoreModule = dataclass_field(default_factory=KeystoreModule)
 
     @classmethod
-    def from_json(cls, json_dict: dict[Any, Any]) -> 'KeystoreCrypto':
+    def from_json(cls, json_dict: dict[Any, Any]) -> Self:
         kdf = KeystoreModule(**json_dict['kdf'])
         checksum = KeystoreModule(**json_dict['checksum'])
         cipher = KeystoreModule(**json_dict['cipher'])
@@ -105,7 +105,7 @@ class Keystore(BytesDataclass):
             f.write(self.as_json())
 
     @classmethod
-    def from_json(cls, json_dict: dict[Any, Any]) -> 'Keystore':
+    def from_json(cls, json_dict: dict[Any, Any]) -> Self:
         js_validate(instance=json_dict, schema=KEYSTORE_JSON_SCHEMA)
         crypto = KeystoreCrypto.from_json(json_dict['crypto'])
         path = json_dict['path']
@@ -116,7 +116,7 @@ class Keystore(BytesDataclass):
         return cls(crypto=crypto, description=description, pubkey=pubkey, path=path, uuid=uuid, version=version)
 
     @classmethod
-    def from_file(cls, path: str) -> 'Keystore':
+    def from_file(cls, path: str) -> Self:
         with open(path, encoding='utf-8') as f:
             return cls.from_json(json.load(f))
 
@@ -148,7 +148,7 @@ class Keystore(BytesDataclass):
     def encrypt(cls, *, secret: bytes, password: str, path: str = '',
                 kdf_salt: bytes | None = None,
                 aes_iv: bytes | None = None,
-                decryption_key: bytes | None = None) -> 'Keystore':
+                decryption_key: bytes | None = None) -> Self:
         """
         Encrypt a secret (BLS SK) as an EIP 2335 Keystore.
         """

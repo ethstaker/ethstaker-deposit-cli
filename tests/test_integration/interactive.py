@@ -1,6 +1,7 @@
 import asyncio
 import os
 import re
+from typing import Self
 
 ANSI_ESCAPE_PATTERN = re.compile(
     r'\x1b(?:'
@@ -52,7 +53,7 @@ class InteractiveProcess:
         self.transcript: list[str] = []
         self._process: asyncio.subprocess.Process | None = None
 
-    async def __aenter__(self) -> 'InteractiveProcess':
+    async def __aenter__(self) -> Self:
         env = os.environ.copy()
         # PYTEST_CURRENT_TEST is deliberately kept in the child environment:
         # ethstaker_deposit.utils.terminal.clear_terminal() skips clearing under
@@ -92,7 +93,7 @@ class InteractiveProcess:
                 self._process.stdout.readline(),
                 timeout=self._read_timeout,
             )
-        except asyncio.TimeoutError as e:
+        except TimeoutError as e:
             raise self.fail(
                 f'Timed out after {self._read_timeout}s waiting for subprocess output'
             ) from e
@@ -148,7 +149,7 @@ class InteractiveProcess:
         '''
         try:
             await asyncio.wait_for(self._process.wait(), timeout=self._exit_timeout)
-        except asyncio.TimeoutError as e:
+        except TimeoutError as e:
             self._process.kill()
             await self._process.wait()
             raise self.fail(
