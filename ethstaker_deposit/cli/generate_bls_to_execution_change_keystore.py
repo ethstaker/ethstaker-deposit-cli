@@ -19,6 +19,7 @@ from ethstaker_deposit.utils.validation import (
     validate_keystore_file,
     verify_bls_to_execution_change_keystore_json,
     validate_devnet_chain_setting,
+    validate_genesis_validators_root,
 )
 from ethstaker_deposit.utils.constants import (
     DEFAULT_BLS_TO_EXECUTION_CHANGES_KEYSTORE_FOLDER_NAME,
@@ -141,6 +142,7 @@ def generate_bls_to_execution_change_keystore(
 
     # Get chain setting
     chain_setting = devnet_chain_setting if devnet_chain_setting is not None else get_chain_setting(chain)
+    validate_genesis_validators_root(chain_setting)
 
     signed_btec = bls_to_execution_change_keystore_generation(
         chain_setting=chain_setting,

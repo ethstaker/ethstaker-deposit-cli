@@ -444,3 +444,67 @@ def test_validate_devnet_chain_setting_json() -> None:
     with pytest.raises(ValidationError):
         assert validate_devnet_chain_setting_json(
             json.dumps(invalid_devnet_chain_with_min_deposit_amount_and_wrong_key)) is False
+
+
+@pytest.mark.parametrize('field, value', [
+    ('genesis_fork_version', '2000'),
+    ('genesis_fork_version', 'not-hex'),
+    ('exit_fork_version', '0401700000'),
+    ('exit_fork_version', 4017000),
+    ('genesis_validator_root', '00'),
+    ('genesis_validator_root', 'not-hex'),
+])
+def test_validate_devnet_chain_setting_rejects_invalid_fixed_width_fields(field, value) -> None:
+    setting = {
+        'network_name': 'custom',
+        'genesis_fork_version': '20000910',
+        'exit_fork_version': '04017000',
+        'genesis_validator_root': '21' * 32,
+    }
+    setting[field] = value
+    with pytest.raises(ValidationError):
+        validate_devnet_chain_setting_json(json.dumps(setting))
+
+
+@pytest.mark.parametrize('field, value', [
+    ('network_name', ''),
+    ('network_name', None),
+    ('multiplier', 0),
+    ('multiplier', -1),
+    ('multiplier', 1.5),
+    ('multiplier', True),
+    ('min_activation_amount', 0),
+    ('min_activation_amount', -1),
+    ('min_activation_amount', 'invalid'),
+    ('min_deposit_amount', True),
+])
+def test_validate_devnet_chain_setting_rejects_invalid_values(field, value) -> None:
+    setting = {
+        'network_name': 'custom',
+        'genesis_fork_version': '20000910',
+        'exit_fork_version': '04017000',
+        'genesis_validator_root': '21' * 32,
+    }
+    setting[field] = value
+    with pytest.raises(ValidationError):
+        validate_devnet_chain_setting_json(json.dumps(setting))
+
+
+def test_validate_devnet_chain_setting_allows_missing_root() -> None:
+    setting = {
+        'network_name': 'custom',
+        'genesis_fork_version': '20000910',
+        'exit_fork_version': '04017000',
+    }
+    assert validate_devnet_chain_setting_json(json.dumps(setting)) is True
+
+
+def test_validate_devnet_chain_setting_rejects_oversized_input() -> None:
+    setting = {
+        'network_name': 'custom',
+        'genesis_fork_version': '20000910',
+        'exit_fork_version': '04017000',
+        'padding': 'x' * 400,
+    }
+    with pytest.raises(ValidationError):
+        validate_devnet_chain_setting_json(json.dumps(setting))
