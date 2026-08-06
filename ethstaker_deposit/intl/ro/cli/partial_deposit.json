@@ -1,45 +1,45 @@
 {
     "partial_deposit": {
         "arg_partial_deposit": {
-            "help": "Generate a partial deposit with any amount at least 1 ether which will be signed by the provided validator keystore. This will append to the balance of the provided validator or initiate the creation of one."
+            "help": "Generează o depunere parțială de cel puțin 1 ether, care va fi semnată de keystore-ul validatorului furnizat. Aceasta va adăuga la soldul validatorului furnizat sau va iniția crearea unuia."
         },
         "arg_partial_deposit_chain": {
-            "help": "The name of the Ethereum PoS chain your validator is running on. \"mainnet\" is the default.",
-            "prompt": "Please choose the (mainnet or testnet) network/chain name"
+            "help": "Numele lanțului Ethereum PoS pe care rulează validatorul tău. \"mainnet\" este valoarea implicită.",
+            "prompt": "Alege numele rețelei/lanțului (mainnet sau testnet)"
         },
         "arg_partial_deposit_amount": {
-            "help": "The amount to deposit to this validator in ether denomination. Must be at least 1 ether and can not have greater precision than 1 gwei. Default is 32 ether.",
-            "prompt": "Please enter the amount you wish to deposit to this validator. Must be at least {min_deposit} and can not have greater precision than 1 gwei. {activation_amount} is required to activate a new validator"
+            "help": "Suma de depus pentru acest validator, exprimată în ether. Trebuie să fie de cel puțin 1 ether și nu poate avea o precizie mai mare de 1 gwei. Valoarea implicită este 32 ether.",
+            "prompt": "Introdu suma pe care vrei să o depui pentru acest validator. Trebuie să fie de cel puțin {min_deposit} și nu poate avea o precizie mai mare de 1 gwei. Pentru activarea unui validator nou sunt necesari {activation_amount}"
         },
         "arg_partial_deposit_keystore": {
-            "help": "The keystore file associated with the validator you wish to sign with and deposit to.",
-            "prompt": "Please enter the location of your keystore file."
+            "help": "Fișierul keystore asociat validatorului cu care vrei să semnezi și în care vrei să depui.",
+            "prompt": "Introdu locația fișierului tău keystore."
         },
         "arg_partial_deposit_keystore_password": {
-            "help": "The password that is used to encrypt the provided keystore. Note: It's not your mnemonic password. (It is recommended not to use this argument, and wait for the CLI to ask you for your password as otherwise it will appear in your shell history.)",
-            "prompt": "Enter the password that is used to encrypt the provided keystore.",
-            "mismatch": "Error: The provided keystore password was unable to decrypt this keystore file. Make sure you have the correct password and try again."
+            "help": "Parola folosită pentru criptarea keystore-ului furnizat. Notă: nu este parola mnemonic-ului tău. (Se recomandă să nu folosești acest argument și să aștepți ca interfața linie de comandă să îți ceară parola, deoarece altfel aceasta va apărea în istoricul shell-ului.)",
+            "prompt": "Introdu parola folosită pentru criptarea keystore-ului furnizat.",
+            "mismatch": "Eroare: parola keystore-ului furnizat nu a putut decripta acest fișier keystore. Asigură-te că ai parola corectă și încearcă din nou."
         },
         "arg_partial_deposit_output_folder": {
-            "help": "The folder path where the partial deposit will be saved to. Pointing to `./partial_deposits` by default."
+            "help": "Calea către directorul în care va fi salvată depunerea parțială. Implicit este `./partial_deposits`."
         },
         "arg_withdrawal_address": {
-            "help": "The withdrawal address of the validator. If you wish to create a validator with 0x00 credentials use the new-mnemonic or existing-mnemonic command.",
-            "confirm": "Repeat the withdrawal address for confirmation.",
-            "prompt": "Please enter the withdrawal address. If you wish to create a validator with 0x00 credentials use the new-mnemonic or existing-mnemonic command.",
-            "mismatch": "Error: the two entered addresses do not match. Please type again."
+            "help": "Adresa de retragere a validatorului. Dacă vrei să creezi un validator cu credențiale 0x00, folosește comanda new-mnemonic sau existing-mnemonic.",
+            "confirm": "Reintrodu adresa de retragere pentru confirmare.",
+            "prompt": "Introdu adresa de retragere. Dacă vrei să creezi un validator cu credențiale 0x00, folosește comanda new-mnemonic sau existing-mnemonic.",
+            "mismatch": "Eroare: cele două adrese introduse sunt diferite. Te rugăm să tastezi din nou."
         },
         "arg_compounding": {
-            "help": "Generates compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance or generate regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance. This feature is only supported on networks that have undergone the Pectra fork.",
-            "prompt": "Please enter yes if you want to generate compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance. Compounding validators and 0x02 withdrawal credentials are only supported on networks that have undergone the Pectra fork. Please type no or nothing if you want regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance."
+            "help": "Generează validatori cu capitalizare, cu credențiale de retragere 0x02 și un sold efectiv maxim de 2048 ETH, sau validatori obișnuiți, cu credențiale de retragere 0x01 și un sold efectiv maxim de 32 ETH. Funcția este acceptată numai pe rețelele care au trecut prin fork-ul Pectra.",
+            "prompt": "Introdu yes dacă vrei să generezi validatori cu capitalizare, cu credențiale de retragere 0x02 și un sold efectiv maxim de 2048 ETH. Validatorii cu capitalizare și credențialele de retragere 0x02 sunt acceptate numai pe rețelele care au trecut prin fork-ul Pectra. Tastează no sau nu introduce nimic dacă vrei validatori obișnuiți, cu credențiale de retragere 0x01 și un sold efectiv maxim de 32 ETH."
         },
         "arg_devnet_chain_setting": {
-            "help": "[DEVNET ONLY] Set specific GENESIS_FORK_VERSION value. This should be a JSON string containing an object with the following keys: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount and min_deposit_amount. It should be similar to what you can find in settings.py. This will override any selected chain."
+            "help": "[DOAR DEVNET] Setează valoarea specifică GENESIS_FORK_VERSION. Acesta trebuie să fie un șir JSON care conține un obiect cu următoarele chei: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount și min_deposit_amount. Ar trebui să fie similar cu ceea ce găsești în settings.py. Aceasta va suprascrie orice lanț selectat."
         },
-        "msg_partial_deposit_creation": "\nCreating your partial deposit...",
-        "msg_verify_partial_deposit": "\nVerifying your partial deposit...",
-        "err_verify_partial_deposit": "\nThere was a problem verifying your partial deposit.\nPlease try again",
-        "msg_creation_success": "\nSuccess!\nYour partial deposit file can be found at: ",
-        "msg_pause": "\n\nPress any key."
+        "msg_partial_deposit_creation": "\nSe creează depunerea ta parțială...",
+        "msg_verify_partial_deposit": "\nSe verifică depunerea ta parțială...",
+        "err_verify_partial_deposit": "\nA apărut o problemă la verificarea depunerii tale parțiale.\nÎncearcă din nou",
+        "msg_creation_success": "\nSucces!\nFișierul depunerii tale parțiale poate fi găsit la: ",
+        "msg_pause": "\n\nApasă orice tastă."
     }
 }

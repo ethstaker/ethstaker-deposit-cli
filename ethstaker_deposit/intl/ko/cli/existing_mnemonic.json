@@ -1,7 +1,7 @@
 {
     "validate_mnemonic": {
         "err_invalid_mnemonic": "유효한 니모닉이 아닙니다. 오타가 있는지 확인하세요.",
-        "arg_mnemonic_language": "We couldn't detect the language of your mnemonic phrase. Please select one of the available language options"
+        "arg_mnemonic_language": "니모닉 문구의 언어를 감지할 수 없습니다. 사용 가능한 언어 옵션 중 하나를 선택하세요."
     },
     "existing_mnemonic": {
         "arg_existing_mnemonic": {
@@ -14,8 +14,8 @@
         "arg_mnemonic_password": {
             "help": "찾고 계신 인수가 확실히 아닌 것 같습니다. 니모닉 비밀번호이지, 키스토어 비밀번호가 아닙니다. 초기에 사용하지 않은 비밀번호를 여기 입력하면 키(당연히 자금도!)를 잃어버릴 수 있습니다. 이 도구를 사용하여 니모닉을 처음 생성한다면 니모닉 비밀번호를 사용한 적이 없을 것입니다. 니모닉의 보안을 \"강화\"하려는 목적으로 비밀번호를 사용했다는 것이 확실할 때만 이 도구를 사용하시기 바랍니다.",
             "confirm": "니모닉 비밀번호를 사용한 적이 있다고 확실히 확신하십니까? (키스토어 비밀번호와 다른 것입니다!) 착오로 인해 사용하면 자금을 잃어버릴 수 있습니다! 확인을 위해 동일하게 입력",
-            "prompt": "Enter your mnemonic password (if you used one). Make sure you won't forget it, it can not be recovered.",
-            "mismatch": "The mnemonic password you entered doesn't match, please try again."
+            "prompt": "니모닉 비밀번호를 입력하세요(사용한 경우). 잊지 않도록 주의하세요. 복구할 수 없습니다.",
+            "mismatch": "입력한 니모닉 비밀번호가 일치하지 않습니다. 다시 시도하세요."
         },
         "arg_validator_start_index": {
             "help": "키를 추가로 생성하기 시작할 인덱스(생성 완료된 키 개수)를 입력하세요. 과거에 생성한 키가 총 4개라면 여기에 4를 입력하면 됩니다.",
@@ -23,8 +23,8 @@
             "confirm": "확인을 위해 동일하게 입력"
         },
         "arg_mnemonic_language": {
-            "help": "The language of your mnemonic. If this is not provided we will attempt to determine it based on the mnemonic provided."
+            "help": "니모닉의 언어입니다. 지정하지 않으면 입력한 니모닉을 바탕으로 언어를 확인합니다."
         },
-        "msg_confirm_clipboard_clearing": "WARNING: Your clipboard will be CLEARED. Some applications or configurations may prevent this. Press any key to clear the clipboard."
+        "msg_confirm_clipboard_clearing": "경고: 클립보드가 삭제됩니다. 일부 애플리케이션이나 설정으로 인해 삭제되지 않을 수 있습니다. 클립보드를 삭제하려면 아무 키나 누르세요."
     }
 }

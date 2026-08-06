@@ -1,5 +1,5 @@
 {
     "check_connectivity": {
-        "connectivity_warning": "\n*** Internet connectivity detected ***\n\nTo mitigate the risk of unauthorized access and safeguard generated key material, it is strongly advised to run this tool in an offline, airgapped environment. Operating online increases susceptibility to potential theft or compromise.\n\nBy continuing, you are accepting responsibility for the risk.\n\nPress any key to continue..."
+        "connectivity_warning": "\n*** 인터넷 연결이 감지되었습니다 ***\n\n무단 접근 위험을 줄이고 생성된 키 자료를 보호하려면 이 도구를 오프라인 에어갭 환경에서 실행하는 것이 강력히 권장됩니다. 온라인으로 실행하면 도난 또는 손상 위험이 커집니다.\n\n계속하면 이 위험에 대한 책임을 수락하는 것입니다.\n\n계속하려면 아무 키나 누르세요..."
     }
 }

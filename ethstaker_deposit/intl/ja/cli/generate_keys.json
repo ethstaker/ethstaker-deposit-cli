@@ -15,27 +15,27 @@
             "mismatch": "エラー：入力された2つの値が一致しません。もう一度入力してください。"
         },
         "folder": {
-            "help": "The folder path for the keystore(s) and deposit(s). Pointing to `./validator_keys` by default."
+            "help": "キーストアとデポジットのフォルダーのパス。デフォルトでは `./validator_keys` を指します。"
         },
         "arg_withdrawal_address": {
-            "help": "The Ethereum address that will be used in withdrawal. It typically starts with '0x' followed by 40 hexadecimal characters. Please make sure you have full control over the address you choose here. Once you set a withdrawal address on chain, it cannot be changed.",
-            "prompt": "Please enter the optional withdrawal address. Note that you CANNOT change it once you have set it on chain.",
-            "confirm": "Repeat your withdrawal address for confirmation.",
-            "mismatch": "Error: the two entered values do not match. Please type again."
+            "help": "払い戻しに使用する Ethereum アドレス。通常は '0x' に続く40個の16進文字で始まります。ここで選択するアドレスを完全に管理できることを確認してください。チェーン上で払い戻しアドレスを設定すると、変更できません。",
+            "prompt": "任意の払い戻しアドレスを入力してください。チェーン上で設定すると変更できないことに注意してください。",
+            "confirm": "確認のため払い戻しアドレスをもう一度入力してください。",
+            "mismatch": "エラー：入力された2つの値が一致しません。もう一度入力してください。"
         },
         "arg_compounding": {
-            "help": "Generates compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance or generate regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance. Use of this option requires a withdrawal address. This feature is only supported on networks that have undergone the Pectra fork.",
-            "prompt": "Please enter yes if you want to generate compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance. Compounding validators and 0x02 withdrawal credentials are only supported on networks that have undergone the Pectra fork. Please type no or nothing if you want regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance."
+            "help": "最大有効残高2048 ETH用の0x02払い戻し認証情報を持つ複利バリデーター、または最大有効残高32 ETH用の0x01払い戻し認証情報を持つ通常のバリデーターを生成します。このオプションには払い戻しアドレスが必要です。この機能は Pectra フォークを実施したネットワークでのみサポートされます。",
+            "prompt": "最大有効残高2048 ETH用の0x02払い戻し認証情報を持つ複利バリデーターを生成する場合は yes と入力してください。複利バリデーターと0x02払い戻し認証情報は、Pectra フォークを実施したネットワークでのみサポートされます。最大有効残高32 ETH用の0x01払い戻し認証情報を持つ通常のバリデーターを生成する場合は、no または何も入力せずにください。"
         },
         "arg_amount": {
-            "help": "The amount to deposit to these validators in ether denomination. Must be at least 1 ether and can not have greater precision than 1 gwei. Use of this option requires compounding validators.",
-            "prompt": "Please enter the amount you wish to deposit to these validators. Must be at least {min_deposit} and can not have greater precision than 1 gwei. {activation_amount} is required to activate a new validator"
+            "help": "これらのバリデーターに入金する ether 単位の額。最低1 etherで、1 gweiを超える精度は指定できません。このオプションには複利バリデーターが必要です。",
+            "prompt": "これらのバリデーターに入金する額を入力してください。{min_deposit} 以上で、1 gweiを超える精度は指定できません。新しいバリデーターの有効化には {activation_amount} が必要です"
         },
         "arg_pbkdf2": {
-            "help": "Uses the pbkdf2 hashing function instead of scrypt for generated keystore files. "
+            "help": "生成されたキーストアファイルに scrypt ではなく pbkdf2 ハッシュ関数を使用します。 "
         },
         "arg_devnet_chain_setting": {
-            "help": "[DEVNET ONLY] Set specific GENESIS_FORK_VERSION value. This should be a JSON string containing an object with the following keys: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount and min_deposit_amount. It should be similar to what you can find in settings.py. This will override any selected chain."
+            "help": "[DEVNET ONLY] 特定の GENESIS_FORK_VERSION 値を設定します。network_name、genesis_fork_version、exit_fork_version、genesis_validator_root、multiplier、min_activation_amount、min_deposit_amount のキーを含むオブジェクトの JSON 文字列を指定してください。settings.py にあるものと同様です。選択したチェーンの設定は上書きされます。"
         }
     },
     "generate_keys": {

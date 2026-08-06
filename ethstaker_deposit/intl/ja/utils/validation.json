@@ -4,64 +4,64 @@
     },
     "validate_password_strength": {
         "msg_password_length": "パスワードの長さは少なくとも12文字でなければなりません。再入力してください",
-        "msg_password_utf8_win32": "Your terminal is not UTF-8 encoded. To ensure the keystore file can be imported on Linux, the password should contain only English-language characters. Please retype.",
-        "msg_password_utf8": "Your terminal is not UTF-8 encoded. To ensure the keystore file can be imported on Linux, the password should contain only English-language characters. Please retype.\nAlternatively, you can quit this program and relaunch it from a UTF-8 encoded terminal."
+        "msg_password_utf8_win32": "端末は UTF-8 エンコードされていません。キーストアファイルを Linux にインポートできるよう、パスワードには英語の文字のみを使用してください。再入力してください。",
+        "msg_password_utf8": "端末は UTF-8 エンコードされていません。キーストアファイルを Linux にインポートできるよう、パスワードには英語の文字のみを使用してください。再入力してください。\nまたは、このプログラムを終了して UTF-8 エンコードされた端末から再起動してください。"
     },
     "validate_int_range": {
-        "err_not_positive_integer": "That is not a positive integer. Please retype."
+        "err_not_positive_integer": "正の整数ではありません。再入力してください。"
     },
     "validate_choice": {
-        "err_invalid_choice": "That is not one of the valid choices. Please retype your choice."
+        "err_invalid_choice": "有効な選択肢ではありません。選択内容を再入力してください。"
     },
     "validate_withdrawal_address": {
-        "err_invalid_ECDSA_hex_addr": "The given withdrawal address is not in hexadecimal encoded form.",
-        "err_invalid_ECDSA_hex_addr_checksum": "The given withdrawal address is not in checksum form.",
-        "err_missing_address": "An address must be provided",
-        "msg_ECDSA_hex_addr_withdrawal": "**[Warning] you are setting a withdrawal address. Please ensure that you have full control over this address.**"
+        "err_invalid_ECDSA_hex_addr": "指定された払い戻しアドレスは16進数形式でエンコードされていません。",
+        "err_invalid_ECDSA_hex_addr_checksum": "指定された払い戻しアドレスはチェックサム形式ではありません。",
+        "err_missing_address": "アドレスを指定する必要があります",
+        "msg_ECDSA_hex_addr_withdrawal": "**[警告] 払い戻しアドレスを設定しています。このアドレスを完全に管理できることを確認してください。**"
     },
     "validate_yesno": {
-        "err_invalid_bool_value": "This is an invalid value for a yes/no question."
+        "err_invalid_bool_value": "yes/no の質問に対する無効な値です。"
     },
     "validate_deposit_amount": {
-        "err_invalid_amount": "Invalid amount provided. Please provide a value of at least 1 ether of how much you wish to deposit.",
-        "err_not_gwei_denomination": "Invalid amount provided. Please provide a value can not have precision beyond 1 gwei.",
-        "err_min_deposit": "Invalid amount provided. Please provide a value of at least 1 ether.",
-        "err_max_deposit": "Invalid amount provided. The max deposit amount is 2048 ether. Please provide a lesser or equal amount.",
-        "err_zero_multiplier": "This chain setting is using a multiplier with a value of zero which is invalid."
+        "err_invalid_amount": "無効な額です。入金額として1 ether以上の値を指定してください。",
+        "err_not_gwei_denomination": "無効な額です。1 gweiを超える精度の値は指定できません。",
+        "err_min_deposit": "無効な額です。1 ether以上の値を指定してください。",
+        "err_max_deposit": "無効な額です。最大入金額は2048 etherです。これ以下の値を指定してください。",
+        "err_zero_multiplier": "このチェーン設定では値が0の乗数が使用されているため無効です。"
     },
     "validate_bls_withdrawal_credentials": {
-        "err_is_already_01_form": "The given withdrawal credentials is already in 0x01 form. Have you already set the withdrawal address?",
-        "err_not_bls_form": "The given withdrawal credentials is not in BLS_WITHDRAWAL_PREFIX form."
+        "err_is_already_01_form": "指定された払い戻し認証情報はすでに 0x01 形式です。払い戻しアドレスをすでに設定していませんか？",
+        "err_not_bls_form": "指定された払い戻し認証情報は BLS_WITHDRAWAL_PREFIX 形式ではありません。"
     },
     "validate_bls_withdrawal_credentials_matching": {
-        "err_not_matching": "The given withdrawal credentials does not match the old BLS withdrawal credentials that mnemonic generated."
+        "err_not_matching": "指定された払い戻し認証情報が、ニーモニックから生成された古い BLS 払い戻し認証情報と一致しません。"
     },
     "verify_bls_to_execution_change_json": {
-        "msg_bls_to_execution_change_verification": "Verifying your BLSToExecutionChange file:\t"
+        "msg_bls_to_execution_change_verification": "BLSToExecutionChange ファイルを確認しています：\t"
     },
     "normalize_bls_withdrawal_credentials_to_bytes": {
-        "err_incorrect_hex_form": "The given input is not in hexadecimal encoded form."
+        "err_incorrect_hex_form": "指定された入力は16進数形式でエンコードされていません。"
     },
     "normalize_input_list": {
-        "err_incorrect_list": "The given input should be a list of the old BLS withdrawal credentials of your validator(s). Split multiple items with whitespaces or commas."
+        "err_incorrect_list": "指定された入力はバリデーターの古い BLS 払い戻し認証情報の一覧である必要があります。複数の項目は空白またはカンマで区切ってください。"
     },
     "validate_keystore_file": {
-        "err_file_not_found": "No file was found. Please verify the provided path and try again.",
-        "err_invalid_keystore_file": "The discovered file is not the correct keystore file format. Please verify the provided path is to a keystore file and try again.",
-        "err_unknown_keystore_file": "There was an unexpected error trying to parse or load the keystore file. Please verify the provided path is to a keystore file and try again."
+        "err_file_not_found": "ファイルが見つかりませんでした。指定されたパスを確認して、もう一度お試しください。",
+        "err_invalid_keystore_file": "見つかったファイルは正しいキーストアファイル形式ではありません。指定されたパスがキーストアファイルを指していることを確認して、もう一度お試しください。",
+        "err_unknown_keystore_file": "キーストアファイルの解析または読み込み中に予期しないエラーが発生しました。指定されたパスがキーストアファイルを指していることを確認して、もう一度お試しください。"
     },
     "validate_devnet_chain_setting": {
-        "err_invalid_devnet_chain_setting": "Invalid JSON string for devnet_chain_setting. It should be a valide JSON object that contains at least the following keys: network_name, genesis_fork_version and exit_fork_version.",
-        "arg_devnet_chain_setting_warning": "**[Warning] Using devnet chain setting with this command.**"
+        "err_invalid_devnet_chain_setting": "devnet_chain_setting の JSON 文字列が無効です。network_name、genesis_fork_version、exit_fork_version のキーを少なくとも含む有効な JSON オブジェクトである必要があります。",
+        "arg_devnet_chain_setting_warning": "**[警告] このコマンドでは devnet chain setting を使用しています。**"
     },
     "validate_devnet_chain_setting_json": {
-        "err_devnet_chain_setting_not_object": "Invalid JSON string for devnet_chain_setting. The JSON string does not contain an object at root.",
-        "err_devnet_chain_setting_missing_keys": "Invalid JSON string for devnet_chain_setting. It is missing one or more of these key in the root object: network_name, genesis_fork_version or exit_fork_version.",
-        "err_devnet_known_genesis_fork_version": "The devnet chain setting is using a known genesis fork version from an existing network.",
-        "err_devnet_chain_setting_invalid_json": "Invalid JSON string for devnet_chain_setting. Decoding the JSON string was impossible. Make sure to pass a valid JSON string.",
-        "err_devnet_chain_setting_key_length": "Invalid JSON string for devnet_chain_setting. The root object should only contain 3, 4, 5 or 6 keys.",
-        "err_devnet_chain_setting_unknown_keys": "The devnet chain setting contains unrecognized keys.",
-        "err_devnet_chain_setting_zero_multiplier": "Invalid multiplier value in devnet chain setting. It cannot be zero.",
-        "err_devnet_chain_setting_negative_multiplier": "Invalid multiplier value in devnet chain setting. It cannot be negative."
+        "err_devnet_chain_setting_not_object": "devnet_chain_setting の JSON 文字列が無効です。JSON 文字列のルートにオブジェクトがありません。",
+        "err_devnet_chain_setting_missing_keys": "devnet_chain_setting の JSON 文字列が無効です。ルートオブジェクトに network_name、genesis_fork_version、exit_fork_version のいずれか1つ以上のキーがありません。",
+        "err_devnet_known_genesis_fork_version": "devnet chain setting で既存ネットワークの既知の genesis fork version が使用されています。",
+        "err_devnet_chain_setting_invalid_json": "devnet_chain_setting の JSON 文字列が無効です。JSON 文字列をデコードできませんでした。有効な JSON 文字列を渡していることを確認してください。",
+        "err_devnet_chain_setting_key_length": "devnet_chain_setting の JSON 文字列が無効です。ルートオブジェクトには3、4、5、または6個のキーのみを含める必要があります。",
+        "err_devnet_chain_setting_unknown_keys": "devnet chain setting に認識されないキーが含まれています。",
+        "err_devnet_chain_setting_zero_multiplier": "devnet chain setting の乗数が無効です。0にすることはできません。",
+        "err_devnet_chain_setting_negative_multiplier": "devnet chain setting の乗数が無効です。負の値にすることはできません。"
     }
 }
