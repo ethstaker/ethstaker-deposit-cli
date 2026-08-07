@@ -1,7 +1,14 @@
 VENV_NAME?=venv
-VENV_ACTIVATE=. $(VENV_NAME)/bin/activate
-PYTHON=${VENV_NAME}/bin/python3.12
+PYTHON?=python3
+BUILD_PYTHON?=python3.12
+VENV_PYTHON=$(VENV_NAME)/bin/python
+PYPROJECT=pyproject.toml
+BUILD_PYTHON_MAJOR=3
+BUILD_PYTHON_MINOR=12
 DOCKER_IMAGE="ghcr.io/ethstaker/ethstaker-deposit-cli:latest"
+
+.PHONY: help clean venv_build venv_build_test venv_test venv_lint venv_deposit \
+	build_macos build_linux build_docker run_docker binary_venv
 
 help:
 	@echo "clean - remove build and Python file artifacts"
@@ -18,38 +25,56 @@ clean:
 	rm -rf dist/
 	rm -rf *.egg-info
 	rm -rf .tox/
-	find . -name __pycache__ -exec rm -rf {} \;
-	find . -name .mypy_cache -exec rm -rf {} \;
-	find . -name .pytest_cache -exec rm -rf {} \;
+	find . -path './.venv' -prune -o -type d \( -name __pycache__ -o -name .mypy_cache -o -name .pytest_cache \) -prune -exec rm -rf {} +
 
-$(VENV_NAME)/bin/activate: requirements.txt
-	@test -d $(VENV_NAME) || python3 -m venv --clear $(VENV_NAME)
-	${VENV_NAME}/bin/python -m pip install -r requirements.txt -r requirements_test.txt
+$(VENV_NAME)/bin/activate: requirements.txt $(PYPROJECT)
+	@$(PYTHON) scripts/check_python_version.py $(PYPROJECT)
+	@if test -x $(VENV_PYTHON) && test "$$($(VENV_PYTHON) -c 'import sys; print(sys.executable)')" != "$$($(PYTHON) -c 'import sys; print(sys.executable)')"; then \
+		echo "$(VENV_NAME) was created with a different Python interpreter; recreating it."; \
+		rm -rf $(VENV_NAME); \
+	fi
+	@test -d $(VENV_NAME) || $(PYTHON) -m venv $(VENV_NAME)
+	@$(VENV_PYTHON) scripts/check_python_version.py $(PYPROJECT)
+	$(VENV_PYTHON) -m pip install -r requirements.txt -r requirements_test.txt
 	@touch $(VENV_NAME)/bin/activate
 
 venv_build: $(VENV_NAME)/bin/activate
 
 venv_build_test: venv_build
-	${VENV_NAME}/bin/python -m pip install -r requirements.txt -r requirements_test.txt
+	$(VENV_PYTHON) -m pip install -r requirements.txt -r requirements_test.txt
 
 venv_test: venv_build_test
-	$(VENV_ACTIVATE) && python -m pytest ./tests
+	$(VENV_PYTHON) -m pytest ./tests
 
 venv_lint: venv_build_test
-	$(VENV_ACTIVATE) && ruff check ./ethstaker_deposit ./tests && mypy --config-file mypy.ini -p ethstaker_deposit
+	$(VENV_PYTHON) -m ruff check ./ethstaker_deposit ./tests && $(VENV_PYTHON) -m mypy --config-file mypy.ini -p ethstaker_deposit
 
 venv_deposit: venv_build
-	$(VENV_ACTIVATE) && python -m ethstaker_deposit $(filter-out $@,$(MAKECMDGOALS))
+	$(VENV_PYTHON) -m ethstaker_deposit $(filter-out $@,$(MAKECMDGOALS))
 
-build_macos: venv_build
-	${VENV_NAME}/bin/python -m pip install -r ./build_configs/macos/requirements.txt
-	export PYTHONHASHSEED=42; \
-	$(VENV_ACTIVATE) && pyinstaller ./build_configs/macos/build.spec;
+build_macos: PYTHON=$(BUILD_PYTHON)
+build_macos: binary_venv
+	@command -v $(BUILD_PYTHON) >/dev/null 2>&1 || { echo "Binary builds require Python 3.12. Install python3.12 or run make BUILD_PYTHON=/path/to/python3.12 build_macos." >&2; exit 1; }
+	$(VENV_PYTHON) -m pip install -r ./build_configs/macos/requirements.txt
+	PYTHONHASHSEED=42 $(VENV_PYTHON) -m PyInstaller ./build_configs/macos/build.spec
 
-build_linux: venv_build
-	${VENV_NAME}/bin/python -m pip install -r ./build_configs/linux/requirements.txt
-	export PYTHONHASHSEED=42; \
-	$(VENV_ACTIVATE) && pyinstaller ./build_configs/linux/build.spec
+build_linux: PYTHON=$(BUILD_PYTHON)
+build_linux: binary_venv
+	@command -v $(BUILD_PYTHON) >/dev/null 2>&1 || { echo "Binary builds require Python 3.12. Install python3.12 or run make BUILD_PYTHON=/path/to/python3.12 build_linux." >&2; exit 1; }
+	$(VENV_PYTHON) -m pip install -r ./build_configs/linux/requirements.txt
+	PYTHONHASHSEED=42 $(VENV_PYTHON) -m PyInstaller ./build_configs/linux/build.spec
+
+binary_venv: PYTHON=$(BUILD_PYTHON)
+binary_venv:
+	@command -v $(BUILD_PYTHON) >/dev/null 2>&1 || { echo "Binary builds require Python 3.12. Install python3.12 or run make BUILD_PYTHON=/path/to/python3.12." >&2; exit 1; }
+	@$(PYTHON) scripts/check_python_version.py $(PYPROJECT)
+	@if test -x $(VENV_PYTHON) && test "$$($(VENV_PYTHON) -c 'import sys; print(sys.version_info[:2])')" != "$$($(PYTHON) -c 'import sys; print(sys.version_info[:2])')"; then \
+		echo "$(VENV_NAME) was created with a different Python version; recreating it."; \
+		rm -rf $(VENV_NAME); \
+	fi
+	@test -d $(VENV_NAME) || $(PYTHON) -m venv $(VENV_NAME)
+	@$(VENV_PYTHON) -c 'import sys; expected=($(BUILD_PYTHON_MAJOR), $(BUILD_PYTHON_MINOR)); actual=sys.version_info[:2]; sys.exit(0 if actual == expected else "Binary builds require Python 3.12")'
+	$(VENV_PYTHON) -m pip install -r requirements.txt
 
 build_docker:
 	@docker build --pull -t $(DOCKER_IMAGE) .
