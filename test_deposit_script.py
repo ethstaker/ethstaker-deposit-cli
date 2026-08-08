@@ -48,7 +48,7 @@ async def main():
 
     try:
         await asyncio.wait_for(proc.wait(), timeout=10)
-    except asyncio.TimeoutError:
+    except TimeoutError:
         proc.kill()
         await proc.wait()
         raise AssertionError('deposit-cli subprocess timed out')
