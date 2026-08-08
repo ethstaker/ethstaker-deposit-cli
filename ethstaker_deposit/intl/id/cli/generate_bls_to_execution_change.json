@@ -1,0 +1,45 @@
+{
+    "generate_bls_to_execution_change": {
+        "arg_generate_bls_to_execution_change": {
+            "help": "Membuat data SignedBLSToExecutionChange untuk mengaktifkan penarikan di Ethereum Beacon Chain."
+        },
+        "arg_withdrawal_address": {
+            "help": "Alamat Ethereum yang akan digunakan untuk penarikan. Biasanya diawali dengan '0x' diikuti 40 karakter heksadesimal. Pastikan Anda memiliki kendali penuh atas alamat yang dipilih. Setelah alamat penarikan ditetapkan di chain, alamat tersebut tidak dapat diubah.",
+            "prompt": "Silakan masukkan alamat penarikan. Perhatikan bahwa Anda TIDAK DAPAT mengubahnya setelah ditetapkan di chain.",
+            "confirm": "Masukkan kembali alamat penarikan Anda untuk konfirmasi.",
+            "mismatch": "Kesalahan: kedua nilai yang dimasukkan tidak cocok. Silakan ketik ulang."
+        },
+        "arg_devnet_chain_setting": {
+            "help": "[DEVNET ONLY] Tetapkan nilai GENESIS_FORK_VERSION dan GENESIS_VALIDATORS_ROOT tertentu. Ini harus berupa string JSON yang berisi objek dengan kunci berikut: network_name, genesis_fork_version, exit_fork_versio, genesis_validator_root, multiplier, min_activation_amount dan min_deposit_amount. Isinya harus serupa dengan yang dapat Anda temukan di settings.py. Ini akan menggantikan chain yang dipilih."
+        },
+        "arg_validator_indices": {
+            "help": "Daftar nomor indeks validator tertentu",
+            "prompt": "Silakan masukkan daftar nomor indeks validator Anda seperti yang teridentifikasi di beacon chain. Pisahkan beberapa item dengan spasi atau koma."
+        },
+        "arg_bls_withdrawal_credentials_list": {
+            "help": "Daftar withdrawal credentials BLS lama berukuran 32 byte dari validator tertentu",
+            "prompt": "Silakan masukkan daftar withdrawal credentials BLS lama dari validator Anda. Pisahkan beberapa item dengan spasi atau koma. Withdrawal credentials tersebut dalam bentuk yang dikodekan secara heksadesimal."
+        },
+        "arg_validator_start_index": {
+            "help": "Posisi indeks untuk memulai pembuatan withdrawal credentials dalam format ERC-2334",
+            "prompt": "Silakan masukkan posisi indeks untuk memulai pembuatan withdrawal credentials dalam format ERC-2334.",
+            "confirm": "Silakan masukkan kembali indeks untuk konfirmasi"
+        },
+        "arg_chain": {
+            "help": "Nama chain Ethereum PoS yang Anda targetkan. Gunakan \"mainnet\" jika Anda melakukan deposit ETH",
+            "prompt": "Silakan pilih nama jaringan/chain (mainnet atau testnet)"
+        },
+        "arg_fork": {
+            "help": "Nama fork yang akan digunakan untuk menandatangani pesan.",
+            "prompt": "Silakan pilih nama fork yang akan digunakan untuk menandatangani pesan."
+        },
+        "arg_bls_to_execution_changes_folder": {
+            "help": "Jalur folder untuk keystore. Secara default mengarah ke `./bls_to_execution_changes`."
+        },
+        "msg_key_creation": "Membuat SignedBLSToExecutionChange Anda.",
+        "msg_credentials_verification": "Memverifikasi withdrawal credentials Anda.",
+        "msg_creation_success": "\nBerhasil!\nFile JSON SignedBLSToExecutionChange Anda dapat ditemukan di: ",
+        "msg_pause": "\n\nTekan tombol apa saja.",
+        "err_verify_btec": "Gagal memverifikasi file JSON bls_to_execution_change."
+    }
+}

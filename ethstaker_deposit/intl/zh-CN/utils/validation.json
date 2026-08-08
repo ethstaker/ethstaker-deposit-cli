@@ -3,6 +3,65 @@
         "msg_deposit_verification": "正在验证您的存款：\t"
     },
     "validate_password_strength": {
-        "msg_password_length": "密码长度至少应为 12。请重新输入"
+        "msg_password_length": "密码长度至少应为 12。请重新输入",
+        "msg_password_utf8_win32": "您的终端不是 UTF-8 编码。为确保密钥库文件可以在 Linux 上导入，密码只能包含英文字符。请重新输入。",
+        "msg_password_utf8": "您的终端不是 UTF-8 编码。为确保密钥库文件可以在 Linux 上导入，密码只能包含英文字符。请重新输入。\n或者，您可以退出此程序，并从 UTF-8 编码的终端重新启动。"
+    },
+    "validate_int_range": {
+        "err_not_positive_integer": "这不是正整数。请重新输入。"
+    },
+    "validate_choice": {
+        "err_invalid_choice": "这不是有效选项之一。请重新输入您的选择。"
+    },
+    "validate_withdrawal_address": {
+        "err_invalid_ECDSA_hex_addr": "给定的提取地址不是十六进制编码格式。",
+        "err_invalid_ECDSA_hex_addr_checksum": "给定的提取地址不是校验和格式。",
+        "err_missing_address": "必须提供地址",
+        "msg_ECDSA_hex_addr_withdrawal": "**[警告] 您正在设置提取地址。请确保您完全控制此地址。**"
+    },
+    "validate_yesno": {
+        "err_invalid_bool_value": "这是 yes/no 问题的无效值。"
+    },
+    "validate_deposit_amount": {
+        "err_invalid_amount": "提供的数量无效。请输入至少为 1 ether 的存款数量。",
+        "err_not_gwei_denomination": "提供的数量无效。请输入精度不超过 1 gwei 的数值。",
+        "err_min_deposit": "提供的数量无效。请输入至少为 1 ether 的数值。",
+        "err_max_deposit": "提供的数量无效。最大存款数量为 2048 ether。请输入小于或等于该数量的值。",
+        "err_zero_multiplier": "此链设置使用了值为零的乘数，该值无效。"
+    },
+    "validate_bls_withdrawal_credentials": {
+        "err_is_already_01_form": "给定的提取凭证已经是 0x01 格式。您是否已经设置了提取地址？",
+        "err_not_bls_form": "给定的提取凭证不是 BLS_WITHDRAWAL_PREFIX 格式。"
+    },
+    "validate_bls_withdrawal_credentials_matching": {
+        "err_not_matching": "给定的提取凭证与助记词生成的旧 BLS 提取凭证不匹配。"
+    },
+    "verify_bls_to_execution_change_json": {
+        "msg_bls_to_execution_change_verification": "正在验证您的 BLSToExecutionChange 文件：\t"
+    },
+    "normalize_bls_withdrawal_credentials_to_bytes": {
+        "err_incorrect_hex_form": "给定的输入不是十六进制编码格式。"
+    },
+    "normalize_input_list": {
+        "err_incorrect_list": "给定的输入应为您的验证者的旧 BLS 提取凭证列表。多个项目请使用空格或逗号分隔。"
+    },
+    "validate_keystore_file": {
+        "err_file_not_found": "未找到文件。请检查提供的路径后重试。",
+        "err_invalid_keystore_file": "找到的文件不是正确的密钥库文件格式。请确认提供的路径指向密钥库文件后重试。",
+        "err_unknown_keystore_file": "解析或加载密钥库文件时发生意外错误。请确认提供的路径指向密钥库文件后重试。"
+    },
+    "validate_devnet_chain_setting": {
+        "err_invalid_devnet_chain_setting": "devnet_chain_setting 的 JSON 字符串无效。它应为至少包含以下键的有效 JSON 对象：network_name、genesis_fork_version 和 exit_fork_version。",
+        "arg_devnet_chain_setting_warning": "**[警告] 此命令正在使用 devnet 链设置。**"
+    },
+    "validate_devnet_chain_setting_json": {
+        "err_devnet_chain_setting_not_object": "devnet_chain_setting 的 JSON 字符串无效。JSON 字符串的根部不包含对象。",
+        "err_devnet_chain_setting_missing_keys": "devnet_chain_setting 的 JSON 字符串无效。根对象缺少以下一个或多个键：network_name、genesis_fork_version 或 exit_fork_version。",
+        "err_devnet_known_genesis_fork_version": "devnet 链设置使用了现有网络中的已知 genesis fork version。",
+        "err_devnet_chain_setting_invalid_json": "devnet_chain_setting 的 JSON 字符串无效。无法解析 JSON 字符串。请确保传入有效的 JSON 字符串。",
+        "err_devnet_chain_setting_key_length": "devnet_chain_setting 的 JSON 字符串无效。根对象只能包含 3、4、5 或 6 个键。",
+        "err_devnet_chain_setting_unknown_keys": "devnet 链设置包含无法识别的键。",
+        "err_devnet_chain_setting_zero_multiplier": "devnet 链设置中的 multiplier 值无效，不能为零。",
+        "err_devnet_chain_setting_negative_multiplier": "devnet 链设置中的 multiplier 值无效，不能为负数。"
     }
 }

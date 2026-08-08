@@ -1,0 +1,23 @@
+{
+    "generate_mnemonic": {
+        "arg_generate_mnemonic": {
+            "help": "Buat mnemonik acak baru. Jika Anda juga ingin membuat keystore validator dan file deposit, gunakan perintah new-mnemonic atau existing-mnemonic."
+        },
+        "arg_mnemonic_language": {
+            "default": "english",
+            "help": "Bahasa daftar kata mnemonik",
+            "prompt": "Silakan pilih bahasa daftar kata mnemonik"
+        },
+        "arg_output_file": {
+            "help": "Jalur file opsional untuk menulis mnemonik. Jika digunakan, mnemonik akan ditulis ke file, bukan ditampilkan.",
+            "err_not_found": "Kesalahan saat mencoba menulis file: Jalur tidak ditemukan.",
+            "err_perm_denied": "Kesalahan saat mencoba menulis file: Izin untuk menulis ke file ditolak.",
+            "err_directory_not_file": "Kesalahan saat mencoba menulis file: Jalur yang ditentukan adalah folder, bukan file.",
+            "err_os": "Kesalahan saat mencoba menulis file: Terjadi kesalahan terkait OS.",
+            "err_exception": "Kesalahan saat mencoba menulis file: Terjadi kesalahan yang tidak terduga."
+        },
+        "msg_mnemonic_presentation": "Ini adalah mnemonik acak yang dibuat untuk Anda:",
+        "msg_mnemonic_file_written": "Mnemonik acak Anda telah ditulis di",
+        "msg_mnemonic_next": "Jika Anda juga ingin membuat keystore validator dan file deposit, sekarang Anda dapat menggunakan perintah existing-mnemonic."
+    }
+}

@@ -1,0 +1,45 @@
+{
+    "partial_deposit": {
+        "arg_partial_deposit": {
+            "help": "Buat deposit sebagian dengan jumlah minimal 1 ether yang akan ditandatangani oleh keystore validator yang diberikan. Ini akan menambahkan saldo validator yang diberikan atau memulai pembuatan validator baru."
+        },
+        "arg_partial_deposit_chain": {
+            "help": "Nama chain Ethereum PoS tempat validator Anda berjalan. \"mainnet\" adalah nilai default.",
+            "prompt": "Silakan pilih nama jaringan/chain (mainnet atau testnet)"
+        },
+        "arg_partial_deposit_amount": {
+            "help": "Jumlah yang akan didepositkan ke validator ini dalam denominasi ether. Harus setidaknya 1 ether dan tidak boleh memiliki presisi lebih dari 1 gwei. Nilai defaultnya adalah 32 ether.",
+            "prompt": "Silakan masukkan jumlah yang ingin Anda depositkan ke validator ini. Harus setidaknya {min_deposit} dan tidak boleh memiliki presisi lebih dari 1 gwei. {activation_amount} diperlukan untuk mengaktifkan validator baru"
+        },
+        "arg_partial_deposit_keystore": {
+            "help": "File keystore yang terkait dengan validator yang ingin Anda gunakan untuk menandatangani dan melakukan deposit.",
+            "prompt": "Silakan masukkan lokasi file keystore Anda."
+        },
+        "arg_partial_deposit_keystore_password": {
+            "help": "Kata sandi yang digunakan untuk mengenkripsi keystore yang diberikan. Catatan: Ini bukan kata sandi mnemonik Anda. (Disarankan untuk tidak menggunakan argumen ini dan menunggu CLI meminta kata sandi Anda karena jika tidak, kata sandi akan muncul di riwayat shell.)",
+            "prompt": "Masukkan kata sandi yang digunakan untuk mengenkripsi keystore yang diberikan.",
+            "mismatch": "Kesalahan: Kata sandi keystore yang diberikan tidak dapat mendekripsi file keystore ini. Pastikan Anda memiliki kata sandi yang benar dan coba lagi."
+        },
+        "arg_partial_deposit_output_folder": {
+            "help": "Jalur folder tempat deposit sebagian akan disimpan. Secara default mengarah ke `./partial_deposits`."
+        },
+        "arg_withdrawal_address": {
+            "help": "Alamat penarikan validator. Jika Anda ingin membuat validator dengan credentials 0x00, gunakan perintah new-mnemonic atau existing-mnemonic.",
+            "confirm": "Masukkan kembali alamat penarikan untuk konfirmasi.",
+            "prompt": "Silakan masukkan alamat penarikan. Jika Anda ingin membuat validator dengan credentials 0x00, gunakan perintah new-mnemonic atau existing-mnemonic.",
+            "mismatch": "Kesalahan: kedua alamat yang dimasukkan tidak cocok. Silakan ketik ulang."
+        },
+        "arg_compounding": {
+            "help": "Buat validator compounding dengan withdrawal credentials 0x02 untuk saldo efektif maksimum 2048 ETH atau validator biasa dengan withdrawal credentials 0x01 untuk saldo efektif maksimum 32 ETH. Fitur ini hanya didukung pada jaringan yang telah menjalani fork Pectra.",
+            "prompt": "Masukkan yes jika Anda ingin membuat validator compounding dengan withdrawal credentials 0x02 untuk saldo efektif maksimum 2048 ETH. Validator compounding dan withdrawal credentials 0x02 hanya didukung pada jaringan yang telah menjalani fork Pectra. Ketik no atau biarkan kosong jika Anda ingin validator biasa dengan withdrawal credentials 0x01 untuk saldo efektif maksimum 32 ETH."
+        },
+        "arg_devnet_chain_setting": {
+            "help": "[DEVNET ONLY] Tetapkan nilai GENESIS_FORK_VERSION tertentu. Ini harus berupa string JSON yang berisi objek dengan kunci berikut: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount dan min_deposit_amount. Isinya harus serupa dengan yang dapat Anda temukan di settings.py. Ini akan menggantikan chain yang dipilih."
+        },
+        "msg_partial_deposit_creation": "\nMembuat deposit sebagian Anda...",
+        "msg_verify_partial_deposit": "\nMemverifikasi deposit sebagian Anda...",
+        "err_verify_partial_deposit": "\nTerjadi masalah saat memverifikasi deposit sebagian Anda.\nSilakan coba lagi",
+        "msg_creation_success": "\nBerhasil!\nFile deposit sebagian Anda dapat ditemukan di: ",
+        "msg_pause": "\n\nTekan tombol apa saja."
+    }
+}

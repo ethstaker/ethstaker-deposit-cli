@@ -13,6 +13,29 @@
             "prompt": "Kata sandi yang akan mengamankan keystore Anda. Anda perlu memasukkan ulang ini untuk mendekripsinya ketika Anda mengatur validator Ethereum PoS Anda.",
             "confirm": "Ulangi untuk konfirmasi",
             "mismatch": "Kesalahan: dua nilai yang dimasukkan tidak cocok. Silakan ketik ulang."
+        },
+        "folder": {
+            "help": "Jalur folder untuk keystore dan deposit. Secara default mengarah ke `./validator_keys`."
+        },
+        "arg_withdrawal_address": {
+            "help": "Alamat Ethereum yang akan digunakan untuk penarikan. Biasanya diawali dengan '0x' diikuti 40 karakter heksadesimal. Pastikan Anda memiliki kendali penuh atas alamat yang dipilih. Setelah alamat penarikan ditetapkan di chain, alamat tersebut tidak dapat diubah.",
+            "prompt": "Silakan masukkan alamat penarikan opsional. Perhatikan bahwa Anda TIDAK DAPAT mengubahnya setelah ditetapkan di chain.",
+            "confirm": "Masukkan kembali alamat penarikan Anda untuk konfirmasi.",
+            "mismatch": "Kesalahan: kedua nilai yang dimasukkan tidak cocok. Silakan ketik ulang."
+        },
+        "arg_compounding": {
+            "help": "Buat validator compounding dengan withdrawal credentials 0x02 untuk saldo efektif maksimum 2048 ETH atau validator biasa dengan withdrawal credentials 0x01 untuk saldo efektif maksimum 32 ETH. Opsi ini memerlukan alamat penarikan. Fitur ini hanya didukung pada jaringan yang telah menjalani fork Pectra.",
+            "prompt": "Masukkan yes jika Anda ingin membuat validator compounding dengan withdrawal credentials 0x02 untuk saldo efektif maksimum 2048 ETH. Validator compounding dan withdrawal credentials 0x02 hanya didukung pada jaringan yang telah menjalani fork Pectra. Ketik no atau biarkan kosong jika Anda ingin validator biasa dengan withdrawal credentials 0x01 untuk saldo efektif maksimum 32 ETH."
+        },
+        "arg_amount": {
+            "help": "Jumlah yang akan didepositkan ke validator ini dalam denominasi ether. Harus setidaknya 1 ether dan tidak boleh memiliki presisi lebih dari 1 gwei. Penggunaan opsi ini memerlukan validator compounding.",
+            "prompt": "Silakan masukkan jumlah yang ingin Anda depositkan ke validator ini. Harus setidaknya {min_deposit} dan tidak boleh memiliki presisi lebih dari 1 gwei. {activation_amount} diperlukan untuk mengaktifkan validator baru"
+        },
+        "arg_pbkdf2": {
+            "help": "Menggunakan fungsi hash pbkdf2, bukan scrypt, untuk file keystore yang dibuat. "
+        },
+        "arg_devnet_chain_setting": {
+            "help": "[DEVNET ONLY] Tetapkan nilai GENESIS_FORK_VERSION tertentu. Ini harus berupa string JSON yang berisi objek dengan kunci berikut: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount dan min_deposit_amount. Isinya harus serupa dengan yang dapat Anda temukan di settings.py. Ini akan menggantikan chain yang dipilih."
         }
     },
     "generate_keys": {

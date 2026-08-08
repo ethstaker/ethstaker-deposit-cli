@@ -61,6 +61,7 @@ def test_get_first_options(options, first_options):
     'test, match, options', [
         ('English', 'english', MNEMONIC_LANG_OPTIONS),
         ('한국어', 'korean', MNEMONIC_LANG_OPTIONS),
+        ('Deutsch', 'de', INTL_LANG_OPTIONS),
         ('Roman', 'ro', INTL_LANG_OPTIONS),
     ]
 )

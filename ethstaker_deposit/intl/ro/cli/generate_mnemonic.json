@@ -1,0 +1,23 @@
+{
+    "generate_mnemonic": {
+        "arg_generate_mnemonic": {
+            "help": "Generează un mnemonic aleatoriu nou. Dacă vrei să creezi și depozitul de chei al validatorului și fișierele de depunere, folosește în schimb comanda new-mnemonic sau existing-mnemonic."
+        },
+        "arg_mnemonic_language": {
+            "default": "english",
+            "help": "Limba listei de cuvinte pentru mnemonic",
+            "prompt": "Alege limba listei de cuvinte pentru mnemonic"
+        },
+        "arg_output_file": {
+            "help": "O cale opțională către fișierul în care se scrie mnemonic-ul. Când este folosită, mnemonic-ul va fi scris în fișier în loc să fie afișat.",
+            "err_not_found": "Eroare la încercarea de a scrie fișierul: calea nu a fost găsită.",
+            "err_perm_denied": "Eroare la încercarea de a scrie fișierul: nu ai permisiunea de a scrie în fișier.",
+            "err_directory_not_file": "Eroare la încercarea de a scrie fișierul: calea specificată este un director, nu un fișier.",
+            "err_os": "Eroare la încercarea de a scrie fișierul: a apărut o eroare asociată sistemului de operare.",
+            "err_exception": "Eroare la încercarea de a scrie fișierul: a apărut o eroare neașteptată."
+        },
+        "msg_mnemonic_presentation": "Acesta este mnemonic-ul tău generat aleatoriu:",
+        "msg_mnemonic_file_written": "Mnemonic-ul tău generat aleatoriu a fost scris în",
+        "msg_mnemonic_next": "Dacă vrei să generezi și depozitul de chei al validatorului și fișierele de depunere, poți folosi acum comanda existing-mnemonic."
+    }
+}

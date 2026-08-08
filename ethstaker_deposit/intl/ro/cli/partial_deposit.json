@@ -1,0 +1,45 @@
+{
+    "partial_deposit": {
+        "arg_partial_deposit": {
+            "help": "Generează o depunere parțială de cel puțin 1 ether, care va fi semnată de keystore-ul validatorului furnizat. Aceasta va adăuga la soldul validatorului furnizat sau va iniția crearea unuia."
+        },
+        "arg_partial_deposit_chain": {
+            "help": "Numele lanțului Ethereum PoS pe care rulează validatorul tău. \"mainnet\" este valoarea implicită.",
+            "prompt": "Alege numele rețelei/lanțului (mainnet sau testnet)"
+        },
+        "arg_partial_deposit_amount": {
+            "help": "Suma de depus pentru acest validator, exprimată în ether. Trebuie să fie de cel puțin 1 ether și nu poate avea o precizie mai mare de 1 gwei. Valoarea implicită este 32 ether.",
+            "prompt": "Introdu suma pe care vrei să o depui pentru acest validator. Trebuie să fie de cel puțin {min_deposit} și nu poate avea o precizie mai mare de 1 gwei. Pentru activarea unui validator nou sunt necesari {activation_amount}"
+        },
+        "arg_partial_deposit_keystore": {
+            "help": "Fișierul keystore asociat validatorului cu care vrei să semnezi și în care vrei să depui.",
+            "prompt": "Introdu locația fișierului tău keystore."
+        },
+        "arg_partial_deposit_keystore_password": {
+            "help": "Parola folosită pentru criptarea keystore-ului furnizat. Notă: nu este parola mnemonic-ului tău. (Se recomandă să nu folosești acest argument și să aștepți ca interfața linie de comandă să îți ceară parola, deoarece altfel aceasta va apărea în istoricul shell-ului.)",
+            "prompt": "Introdu parola folosită pentru criptarea keystore-ului furnizat.",
+            "mismatch": "Eroare: parola keystore-ului furnizat nu a putut decripta acest fișier keystore. Asigură-te că ai parola corectă și încearcă din nou."
+        },
+        "arg_partial_deposit_output_folder": {
+            "help": "Calea către directorul în care va fi salvată depunerea parțială. Implicit este `./partial_deposits`."
+        },
+        "arg_withdrawal_address": {
+            "help": "Adresa de retragere a validatorului. Dacă vrei să creezi un validator cu credențiale 0x00, folosește comanda new-mnemonic sau existing-mnemonic.",
+            "confirm": "Reintrodu adresa de retragere pentru confirmare.",
+            "prompt": "Introdu adresa de retragere. Dacă vrei să creezi un validator cu credențiale 0x00, folosește comanda new-mnemonic sau existing-mnemonic.",
+            "mismatch": "Eroare: cele două adrese introduse sunt diferite. Te rugăm să tastezi din nou."
+        },
+        "arg_compounding": {
+            "help": "Generează validatori cu capitalizare, cu credențiale de retragere 0x02 și un sold efectiv maxim de 2048 ETH, sau validatori obișnuiți, cu credențiale de retragere 0x01 și un sold efectiv maxim de 32 ETH. Funcția este acceptată numai pe rețelele care au trecut prin fork-ul Pectra.",
+            "prompt": "Introdu yes dacă vrei să generezi validatori cu capitalizare, cu credențiale de retragere 0x02 și un sold efectiv maxim de 2048 ETH. Validatorii cu capitalizare și credențialele de retragere 0x02 sunt acceptate numai pe rețelele care au trecut prin fork-ul Pectra. Tastează no sau nu introduce nimic dacă vrei validatori obișnuiți, cu credențiale de retragere 0x01 și un sold efectiv maxim de 32 ETH."
+        },
+        "arg_devnet_chain_setting": {
+            "help": "[DOAR DEVNET] Setează valoarea specifică GENESIS_FORK_VERSION. Acesta trebuie să fie un șir JSON care conține un obiect cu următoarele chei: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount și min_deposit_amount. Ar trebui să fie similar cu ceea ce găsești în settings.py. Aceasta va suprascrie orice lanț selectat."
+        },
+        "msg_partial_deposit_creation": "\nSe creează depunerea ta parțială...",
+        "msg_verify_partial_deposit": "\nSe verifică depunerea ta parțială...",
+        "err_verify_partial_deposit": "\nA apărut o problemă la verificarea depunerii tale parțiale.\nÎncearcă din nou",
+        "msg_creation_success": "\nSucces!\nFișierul depunerii tale parțiale poate fi găsit la: ",
+        "msg_pause": "\n\nApasă orice tastă."
+    }
+}

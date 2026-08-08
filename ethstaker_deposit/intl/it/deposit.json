@@ -1,1 +1,5 @@
-{}
+{
+    "check_connectivity": {
+        "connectivity_warning": "\n*** Connettività Internet rilevata ***\n\nPer ridurre il rischio di accessi non autorizzati e proteggere il materiale delle chiavi generate, si consiglia vivamente di eseguire questo strumento in un ambiente offline e isolato. L'esecuzione online aumenta il rischio di furto o compromissione.\n\nContinuando, accetti la responsabilità per il rischio.\n\nPremi un tasto qualsiasi per continuare..."
+    }
+}

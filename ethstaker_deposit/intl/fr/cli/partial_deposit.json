@@ -1,0 +1,45 @@
+{
+    "partial_deposit": {
+        "arg_partial_deposit": {
+            "help": "Génère un dépôt partiel d'un montant d'au moins 1 ether, qui sera signé par le keystore du validateur fourni. Il sera ajouté au solde du validateur fourni ou lancera la création d'un validateur."
+        },
+        "arg_partial_deposit_chain": {
+            "help": "Le nom de la chaîne Ethereum PoS sur laquelle votre validateur fonctionne. \"mainnet\" est la valeur par défaut.",
+        "prompt": "Veuillez choisir le nom du réseau ou de la chaîne (mainnet ou testnet)"
+        },
+        "arg_partial_deposit_amount": {
+        "help": "Le montant à déposer sur ce validateur, en ether. Il doit être d'au moins 1 ether et ne peut pas avoir une précision supérieure à 1 gwei. La valeur par défaut est de 32 ether.",
+        "prompt": "Veuillez saisir le montant que vous souhaitez déposer sur ce validateur. Il doit être d'au moins {min_deposit} et ne peut pas avoir une précision supérieure à 1 gwei. {activation_amount} est requis pour activer un nouveau validateur"
+        },
+        "arg_partial_deposit_keystore": {
+        "help": "Le fichier keystore associé au validateur avec lequel vous souhaitez signer et sur lequel vous souhaitez effectuer un dépôt.",
+        "prompt": "Veuillez saisir l'emplacement de votre fichier keystore."
+        },
+        "arg_partial_deposit_keystore_password": {
+        "help": "Le mot de passe utilisé pour chiffrer le keystore fourni. Remarque : il ne s'agit pas du mot de passe de votre phrase mnémonique. (Il est recommandé de ne pas utiliser cet argument et d'attendre que la CLI vous demande votre mot de passe, car il apparaîtrait sinon dans l'historique de votre shell.)",
+        "prompt": "Saisissez le mot de passe utilisé pour chiffrer le keystore fourni.",
+        "mismatch": "Erreur : le mot de passe du keystore fourni n'a pas permis de déchiffrer ce fichier keystore. Assurez-vous d'utiliser le bon mot de passe et réessayez."
+        },
+        "arg_partial_deposit_output_folder": {
+        "help": "Le chemin du dossier où le dépôt partiel sera enregistré. Pointe par défaut vers `./partial_deposits`."
+        },
+        "arg_withdrawal_address": {
+        "help": "L'adresse de retrait du validateur. Si vous souhaitez créer un validateur avec des identifiants 0x00, utilisez la commande new-mnemonic ou existing-mnemonic.",
+        "confirm": "Saisissez à nouveau l'adresse de retrait pour confirmation.",
+        "prompt": "Veuillez saisir l'adresse de retrait. Si vous souhaitez créer un validateur avec des identifiants 0x00, utilisez la commande new-mnemonic ou existing-mnemonic.",
+        "mismatch": "Erreur : les deux adresses saisies ne correspondent pas. Veuillez recommencer."
+        },
+        "arg_compounding": {
+        "help": "Génère des validateurs à composition avec des identifiants de retrait 0x02 pour un solde effectif maximal de 2048 ETH, ou des validateurs classiques avec des identifiants de retrait 0x01 pour un solde effectif maximal de 32 ETH. Cette fonctionnalité n'est prise en charge que sur les réseaux ayant effectué le fork Pectra.",
+        "prompt": "Saisissez yes si vous souhaitez générer des validateurs à composition avec des identifiants de retrait 0x02 pour un solde effectif maximal de 2048 ETH. Les validateurs à composition et les identifiants de retrait 0x02 ne sont pris en charge que sur les réseaux ayant effectué le fork Pectra. Saisissez no ou ne saisissez rien pour générer des validateurs classiques avec des identifiants de retrait 0x01 pour un solde effectif maximal de 32 ETH."
+        },
+        "arg_devnet_chain_setting": {
+        "help": "[DEVNET UNIQUEMENT] Définit une valeur spécifique pour GENESIS_FORK_VERSION. Il doit s'agir d'une chaîne JSON contenant un objet avec les clés suivantes : network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount et min_deposit_amount. Elle doit être similaire à ce que vous pouvez trouver dans settings.py. Cela remplacera toute chaîne sélectionnée."
+        },
+    "msg_partial_deposit_creation": "\nCréation de votre dépôt partiel...",
+    "msg_verify_partial_deposit": "\nVérification de votre dépôt partiel...",
+    "err_verify_partial_deposit": "\nUn problème est survenu lors de la vérification de votre dépôt partiel.\nVeuillez réessayer",
+    "msg_creation_success": "\nOpération réussie !\nVotre fichier de dépôt partiel se trouve à l'emplacement suivant : ",
+    "msg_pause": "\n\nAppuyez sur une touche."
+    }
+}

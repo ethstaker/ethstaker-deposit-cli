@@ -1,0 +1,23 @@
+{
+    "generate_mnemonic": {
+        "arg_generate_mnemonic": {
+            "help": "Yeni, rastgele bir anımsatma ifadesi oluşturun. Doğrulayıcı keystore ve para yatırma dosyalarınızı da oluşturmak istiyorsanız bunun yerine new-mnemonic veya existing-mnemonic komutunu kullanmalısınız."
+        },
+        "arg_mnemonic_language": {
+            "default": "english",
+            "help": "Anımsatma kelime listesinin dili",
+            "prompt": "Lütfen anımsatma kelime listesinin dilini seçin"
+        },
+        "arg_output_file": {
+            "help": "Anımsatma ifadesinin yazılacağı isteğe bağlı dosya yolu. Kullanıldığında anımsatma ifadesini görüntülemek yerine dosyaya yazar.",
+            "err_not_found": "Dosyaya yazmaya çalışırken hata: Yol bulunamadı.",
+            "err_perm_denied": "Dosyaya yazmaya çalışırken hata: Dosyaya yazma izni reddedildi.",
+            "err_directory_not_file": "Dosyaya yazmaya çalışırken hata: Belirtilen yol bir dosya değil, dizin.",
+            "err_os": "Dosyaya yazmaya çalışırken hata: İşletim sistemiyle ilgili bir hata oluştu.",
+            "err_exception": "Dosyaya yazmaya çalışırken hata: Beklenmeyen bir hata oluştu."
+        },
+        "msg_mnemonic_presentation": "Rastgele oluşturulan anımsatma ifadeniz:",
+        "msg_mnemonic_file_written": "Rastgele oluşturulan anımsatma ifadeniz şu dosyaya yazıldı:",
+        "msg_mnemonic_next": "Doğrulayıcı keystore ve para yatırma dosyalarınızı da oluşturmak istiyorsanız şimdi existing-mnemonic komutunu kullanabilirsiniz."
+    }
+}

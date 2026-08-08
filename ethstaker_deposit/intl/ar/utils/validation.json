@@ -3,6 +3,65 @@
         "msg_deposit_verification": "التحقق من الإيداعات الخاصة بك:\t"
     },
     "validate_password_strength": {
-        "msg_password_length": "يجب أن يكون طول كلمة المرور 12 على الأقل. الرجاء إعادة الكتابة"
+        "msg_password_length": "يجب أن يكون طول كلمة المرور 12 على الأقل. الرجاء إعادة الكتابة",
+        "msg_password_utf8_win32": "طرفيتك غير مشفّرة بترميز UTF-8. لضمان إمكانية استيراد ملف متجر المفاتيح على Linux، يجب أن تحتوي كلمة المرور على أحرف إنجليزية فقط. يرجى إعادة الكتابة.",
+        "msg_password_utf8": "طرفيتك غير مشفّرة بترميز UTF-8. لضمان إمكانية استيراد ملف متجر المفاتيح على Linux، يجب أن تحتوي كلمة المرور على أحرف إنجليزية فقط. يرجى إعادة الكتابة.\nبدلًا من ذلك، يمكنك إنهاء البرنامج وإعادة تشغيله من طرفية مشفّرة بترميز UTF-8."
+    },
+    "validate_int_range": {
+        "err_not_positive_integer": "هذه ليست قيمة صحيحة موجبة. يرجى إعادة الكتابة."
+    },
+    "validate_choice": {
+        "err_invalid_choice": "هذا ليس أحد الخيارات الصالحة. يرجى إعادة كتابة اختيارك."
+    },
+    "validate_withdrawal_address": {
+        "err_invalid_ECDSA_hex_addr": "عنوان السحب المُعطى ليس بصيغة سداسية عشرية مشفّرة.",
+        "err_invalid_ECDSA_hex_addr_checksum": "عنوان السحب المُعطى ليس بصيغة تحقق.",
+        "err_missing_address": "يجب تقديم عنوان",
+        "msg_ECDSA_hex_addr_withdrawal": "**[تحذير] أنت تضبط عنوان سحب. يرجى التأكد من أن لديك سيطرة كاملة على هذا العنوان.**"
+    },
+    "validate_yesno": {
+        "err_invalid_bool_value": "هذه قيمة غير صالحة لسؤال بنعم/لا."
+    },
+    "validate_deposit_amount": {
+        "err_invalid_amount": "المبلغ المُقدّم غير صالح. يرجى تقديم قيمة لا تقل عن 1 ether للمبلغ الذي تريد إيداعه.",
+        "err_not_gwei_denomination": "المبلغ المُقدّم غير صالح. يرجى تقديم قيمة لا تتجاوز دقتها 1 gwei.",
+        "err_min_deposit": "المبلغ المُقدّم غير صالح. يرجى تقديم قيمة لا تقل عن 1 ether.",
+        "err_max_deposit": "المبلغ المُقدّم غير صالح. الحد الأقصى للإيداع هو 2048 ether. يرجى تقديم مبلغ أقل من ذلك أو مساويًا له.",
+        "err_zero_multiplier": "يستخدم إعداد هذه السلسلة مُضاعفًا قيمته صفر، وهذا غير صالح."
+    },
+    "validate_bls_withdrawal_credentials": {
+        "err_is_already_01_form": "بيانات اعتماد السحب المُعطاة هي بالفعل بصيغة 0x01. هل سبق أن ضبطت عنوان السحب؟",
+        "err_not_bls_form": "بيانات اعتماد السحب المُعطاة ليست بصيغة BLS_WITHDRAWAL_PREFIX."
+    },
+    "validate_bls_withdrawal_credentials_matching": {
+        "err_not_matching": "بيانات اعتماد السحب المُعطاة لا تطابق بيانات اعتماد سحب BLS القديمة التي أنشأتها عبارة التذكّر."
+    },
+    "verify_bls_to_execution_change_json": {
+        "msg_bls_to_execution_change_verification": "التحقق من ملف BLSToExecutionChange الخاص بك:\t"
+    },
+    "normalize_bls_withdrawal_credentials_to_bytes": {
+        "err_incorrect_hex_form": "الإدخال المُعطى ليس بصيغة سداسية عشرية مشفّرة."
+    },
+    "normalize_input_list": {
+        "err_incorrect_list": "يجب أن يكون الإدخال المُعطى قائمة ببيانات اعتماد سحب BLS القديمة الخاصة بمدقّقك أو مدقّقيك. افصل العناصر المتعددة بمسافات بيضاء أو فواصل."
+    },
+    "validate_keystore_file": {
+        "err_file_not_found": "لم يُعثر على أي ملف. يرجى التحقق من المسار المُقدّم والمحاولة مرة أخرى.",
+        "err_invalid_keystore_file": "الملف الذي عُثر عليه ليس بالتنسيق الصحيح لملف متجر المفاتيح. يرجى التحقق من أن المسار المُقدّم يشير إلى ملف متجر مفاتيح والمحاولة مرة أخرى.",
+        "err_unknown_keystore_file": "حدث خطأ غير متوقع أثناء تحليل ملف متجر المفاتيح أو تحميله. يرجى التحقق من أن المسار المُقدّم يشير إلى ملف متجر مفاتيح والمحاولة مرة أخرى."
+    },
+    "validate_devnet_chain_setting": {
+        "err_invalid_devnet_chain_setting": "سلسلة JSON الخاصة بـ devnet_chain_setting غير صالحة. يجب أن تكون كائن JSON صالحًا يحتوي على المفاتيح التالية على الأقل: network_name وgenesis_fork_version وexit_fork_version.",
+        "arg_devnet_chain_setting_warning": "**[تحذير] استخدام إعداد شبكة التطوير مع هذا الأمر.**"
+    },
+    "validate_devnet_chain_setting_json": {
+        "err_devnet_chain_setting_not_object": "سلسلة JSON الخاصة بـ devnet_chain_setting غير صالحة. لا تحتوي سلسلة JSON على كائن في الجذر.",
+        "err_devnet_chain_setting_missing_keys": "سلسلة JSON الخاصة بـ devnet_chain_setting غير صالحة. ينقصها مفتاح واحد أو أكثر من هذه المفاتيح في الكائن الجذري: network_name أو genesis_fork_version أو exit_fork_version.",
+        "err_devnet_known_genesis_fork_version": "يستخدم إعداد شبكة التطوير إصدار تفرّع نشأة معروفًا من شبكة موجودة.",
+        "err_devnet_chain_setting_invalid_json": "سلسلة JSON الخاصة بـ devnet_chain_setting غير صالحة. تعذّر فك ترميز سلسلة JSON. تأكد من تمرير سلسلة JSON صالحة.",
+        "err_devnet_chain_setting_key_length": "سلسلة JSON الخاصة بـ devnet_chain_setting غير صالحة. يجب أن يحتوي الكائن الجذري على 3 أو 4 أو 5 أو 6 مفاتيح فقط.",
+        "err_devnet_chain_setting_unknown_keys": "يحتوي إعداد شبكة التطوير على مفاتيح غير معروفة.",
+        "err_devnet_chain_setting_zero_multiplier": "قيمة المُضاعف في إعداد شبكة التطوير غير صالحة. لا يمكن أن تكون صفرًا.",
+        "err_devnet_chain_setting_negative_multiplier": "قيمة المُضاعف في إعداد شبكة التطوير غير صالحة. لا يمكن أن تكون سالبة."
     }
 }

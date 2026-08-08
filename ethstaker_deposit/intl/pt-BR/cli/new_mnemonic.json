@@ -4,12 +4,14 @@
             "help": "Gerar um novo mnemônico e chaves"
         },
         "arg_mnemonic_language": {
-            "default": "Português",
+            "default": "portuguese",
             "help": "A linguagem do seu mnemônico",
             "prompt": "Por favor, escolha o idioma do seu mnemônico"
         },
         "msg_mnemonic_presentation": "Este é o seu mnemônico (frase semente). Anote-o e armazene-o de maneira segura, pois será a ÚNICA maneira de recuperar o seu depósito.",
         "msg_press_any_key": "Pressione qualquer tecla quando tiver anotado o mnemônico.",
-        "msg_mnemonic_retype_prompt": "Por favor, digite seu mnemônico (separado por espaços) para confirmar que o anotou"
+        "msg_mnemonic_retype_prompt": "Por favor, digite seu mnemônico (separado por espaços) para confirmar que o anotou",
+        "msg_mnemonic_clipboard_warning": "AVISO: Você DEVE anotar o mnemônico, pois tentaremos limpar a área de transferência após esta etapa.",
+        "msg_confirm_clipboard_clearing": "AVISO: Sua área de transferência será LIMPA. Alguns aplicativos ou configurações podem impedir isso. Pressione qualquer tecla para limpar a área de transferência."
     }
 }

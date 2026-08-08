@@ -48,6 +48,7 @@ INTL_LANG_OPTIONS = _add_index_to_options({
     'ar': ['\u202bالعربية\u202c', 'ar', 'Arabic'],
     'el': ['ελληνικά', 'el', 'Greek'],
     'en': ['English', 'en'],
+    'de': ['Deutsch', 'de', 'German'],
     'fr': ['Français', 'Francais', 'fr', 'French'],
     'id': ['Bahasa melayu', 'Melayu', 'id', 'Malay'],
     'it': ['Italiano', 'it', 'Italian'],

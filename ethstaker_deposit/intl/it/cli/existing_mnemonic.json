@@ -1,6 +1,7 @@
 {
     "validate_mnemonic": {
-        "err_invalid_mnemonic": "Questo non è un mnemonico valido. Controlla che la grafia sia corretta."
+        "err_invalid_mnemonic": "Questo non è un mnemonico valido. Controlla che la grafia sia corretta.",
+        "arg_mnemonic_language": "Non è stato possibile rilevare la lingua della frase mnemonica. Seleziona una delle lingue disponibili."
     },
     "existing_mnemonic": {
         "arg_existing_mnemonic": {
@@ -12,12 +13,18 @@
         },
         "arg_mnemonic_password": {
             "help": "Quasi sicuramente questo non è l'argomento che stai cercando: è per le password mnemoniche, non per le password dell'archivio chiavi. Fornire una password qui se non ne hai utilizzata una inizialmente può causare la perdita di chiavi (e quindi fondi)! Tieni presente inoltre che se hai usato questo strumento per generare il tuo mnemonico inizialmente, significa che non hai usato una password mnemonica. Se invece hai la certezza di aver usato una password per \"aumentare\" la sicurezza del tuo mnemonico, inseriscila qui.",
-            "confirm": "Hai la certezza assoluta di aver usato una password mnemonica? È diversa da una password dell'archivio chiavi. Se non devi utilizzarne una ma lo fai, potresti perdere fondi! Ripeti per conferma"
+            "confirm": "Hai la certezza assoluta di aver usato una password mnemonica? È diversa da una password dell'archivio chiavi. Se non devi utilizzarne una ma lo fai, potresti perdere fondi! Ripeti per conferma",
+            "prompt": "Inserisci la password della mnemonica (se ne hai usata una). Assicurati di non dimenticarla: non può essere recuperata.",
+            "mismatch": "La password della mnemonica inserita non corrisponde. Riprova."
         },
         "arg_validator_start_index": {
             "help": "Inserisci l'indice (numero di chiave) da cui desideri iniziare a generare ulteriori chiavi. Ad esempio, se hai generato 4 chiavi in passato, inserisci 4.",
             "prompt": "Inserisci l'indice (numero di chiave) da cui desideri iniziare a generare ulteriori chiavi. Ad esempio, se hai generato 4 chiavi in passato, inserisci 4.",
             "confirm": "Ripeti per conferma"
-        }
+        },
+        "arg_mnemonic_language": {
+            "help": "La lingua della frase mnemonica. Se non viene indicata, proveremo a determinarla in base alla mnemonica fornita."
+        },
+        "msg_confirm_clipboard_clearing": "ATTENZIONE: gli appunti verranno CANCELLATI. Alcune applicazioni o configurazioni potrebbero impedirlo. Premi un tasto qualsiasi per cancellare gli appunti."
     }
 }

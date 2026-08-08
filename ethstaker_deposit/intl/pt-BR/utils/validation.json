@@ -3,6 +3,65 @@
         "msg_deposit_verification": "Verificação dos seus depósitos:\t"
     },
     "validate_password_strength": {
-        "msg_password_length": "A senha deve ter pelo menos 12 caracteres. Por favor, digite-a novamente"
+        "msg_password_length": "A senha deve ter pelo menos 12 caracteres. Por favor, digite-a novamente",
+        "msg_password_utf8_win32": "Seu terminal não está codificado em UTF-8. Para garantir que o arquivo keystore possa ser importado no Linux, a senha deve conter apenas caracteres do idioma inglês. Digite novamente.",
+        "msg_password_utf8": "Seu terminal não está codificado em UTF-8. Para garantir que o arquivo keystore possa ser importado no Linux, a senha deve conter apenas caracteres do idioma inglês. Digite novamente.\nComo alternativa, encerre este programa e reinicie-o em um terminal codificado em UTF-8."
+    },
+    "validate_int_range": {
+        "err_not_positive_integer": "Esse não é um número inteiro positivo. Digite novamente."
+    },
+    "validate_choice": {
+        "err_invalid_choice": "Essa não é uma das opções válidas. Digite sua escolha novamente."
+    },
+    "validate_withdrawal_address": {
+        "err_invalid_ECDSA_hex_addr": "O endereço de saque informado não está codificado em formato hexadecimal.",
+        "err_invalid_ECDSA_hex_addr_checksum": "O endereço de saque informado não está no formato de checksum.",
+        "err_missing_address": "É necessário fornecer um endereço",
+        "msg_ECDSA_hex_addr_withdrawal": "**[Aviso] você está definindo um endereço de saque. Certifique-se de ter controle total sobre esse endereço.**"
+    },
+    "validate_yesno": {
+        "err_invalid_bool_value": "Este é um valor inválido para uma pergunta de sim/não."
+    },
+    "validate_deposit_amount": {
+        "err_invalid_amount": "Valor inválido fornecido. Informe um valor de pelo menos 1 ether para o depósito.",
+        "err_not_gwei_denomination": "Valor inválido fornecido. Informe um valor que não tenha precisão maior que 1 gwei.",
+        "err_min_deposit": "Valor inválido fornecido. Informe um valor de pelo menos 1 ether.",
+        "err_max_deposit": "Valor inválido fornecido. O valor máximo do depósito é 2048 ether. Informe um valor menor ou igual a esse.",
+        "err_zero_multiplier": "Esta configuração de cadeia usa um multiplicador com valor zero, o que é inválido."
+    },
+    "validate_bls_withdrawal_credentials": {
+        "err_is_already_01_form": "As credenciais de saque informadas já estão no formato 0x01. Você já definiu o endereço de saque?",
+        "err_not_bls_form": "As credenciais de saque informadas não estão no formato BLS_WITHDRAWAL_PREFIX."
+    },
+    "validate_bls_withdrawal_credentials_matching": {
+        "err_not_matching": "As credenciais de saque informadas não correspondem às credenciais de saque BLS antigas geradas pelo mnemônico."
+    },
+    "verify_bls_to_execution_change_json": {
+        "msg_bls_to_execution_change_verification": "Verificando seu arquivo BLSToExecutionChange:\t"
+    },
+    "normalize_bls_withdrawal_credentials_to_bytes": {
+        "err_incorrect_hex_form": "A entrada informada não está codificada em formato hexadecimal."
+    },
+    "normalize_input_list": {
+        "err_incorrect_list": "A entrada informada deve ser uma lista das credenciais de saque BLS antigas dos seus validadores. Separe vários itens com espaços em branco ou vírgulas."
+    },
+    "validate_keystore_file": {
+        "err_file_not_found": "Nenhum arquivo foi encontrado. Verifique o caminho fornecido e tente novamente.",
+        "err_invalid_keystore_file": "O arquivo encontrado não está no formato correto de arquivo keystore. Verifique se o caminho fornecido aponta para um arquivo keystore e tente novamente.",
+        "err_unknown_keystore_file": "Ocorreu um erro inesperado ao tentar analisar ou carregar o arquivo keystore. Verifique se o caminho fornecido aponta para um arquivo keystore e tente novamente."
+    },
+    "validate_devnet_chain_setting": {
+        "err_invalid_devnet_chain_setting": "String JSON inválida para devnet_chain_setting. Deve ser um objeto JSON válido que contenha pelo menos as seguintes chaves: network_name, genesis_fork_version e exit_fork_version.",
+        "arg_devnet_chain_setting_warning": "**[Aviso] Usando a configuração de cadeia devnet com este comando.**"
+    },
+    "validate_devnet_chain_setting_json": {
+        "err_devnet_chain_setting_not_object": "String JSON inválida para devnet_chain_setting. A string JSON não contém um objeto na raiz.",
+        "err_devnet_chain_setting_missing_keys": "String JSON inválida para devnet_chain_setting. Faltam uma ou mais destas chaves no objeto raiz: network_name, genesis_fork_version ou exit_fork_version.",
+        "err_devnet_known_genesis_fork_version": "A configuração de cadeia devnet usa uma versão de fork de gênese conhecida de uma rede existente.",
+        "err_devnet_chain_setting_invalid_json": "String JSON inválida para devnet_chain_setting. Não foi possível decodificar a string JSON. Certifique-se de fornecer uma string JSON válida.",
+        "err_devnet_chain_setting_key_length": "String JSON inválida para devnet_chain_setting. O objeto raiz deve conter apenas 3, 4, 5 ou 6 chaves.",
+        "err_devnet_chain_setting_unknown_keys": "A configuração de cadeia devnet contém chaves não reconhecidas.",
+        "err_devnet_chain_setting_zero_multiplier": "Valor de multiplicador inválido na configuração de cadeia devnet. Ele não pode ser zero.",
+        "err_devnet_chain_setting_negative_multiplier": "Valor de multiplicador inválido na configuração de cadeia devnet. Ele não pode ser negativo."
     }
 }

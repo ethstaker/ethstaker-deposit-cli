@@ -10,6 +10,8 @@
         },
         "msg_mnemonic_presentation": "Acesta este mnemonicul (fraza sămânță). Scrie-l și păstrează-l în siguranță, este SINGURA cale de a prelua depunerea.",
         "msg_press_any_key": "După ce ți-ai notat mnemonicul, apasă orice tastă.",
-        "msg_mnemonic_retype_prompt": "Tastează mnemonicul (separat cu spații) pentru a confirma faptul că ți l-ai notat"
+        "msg_mnemonic_retype_prompt": "Tastează mnemonicul (separat cu spații) pentru a confirma faptul că ți l-ai notat",
+        "msg_mnemonic_clipboard_warning": "AVERTISMENT: TREBUIE să notezi mnemonic-ul, deoarece vom încerca să ștergem clipboard-ul după acest pas.",
+        "msg_confirm_clipboard_clearing": "AVERTISMENT: Clipboard-ul va fi ȘTERS. Unele aplicații sau configurații pot împiedica acest lucru. Apasă orice tastă pentru a șterge clipboard-ul."
     }
 }

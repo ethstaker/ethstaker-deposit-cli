@@ -1,0 +1,11 @@
+{
+    "new_mnemonic": {
+        "arg_new_mnemonic": {"help": "Eine neue Mnemonik und Schlüssel erzeugen"},
+        "arg_mnemonic_language": {"default": "english", "help": "Die Sprache der Mnemonik-Wortliste", "prompt": "Bitte wählen Sie die Sprache der Mnemonik-Wortliste"},
+        "msg_mnemonic_presentation": "Dies ist Ihre Mnemonik (Seed-Phrase). Schreiben Sie sie auf und bewahren Sie sie sicher auf. Sie ist die EINZIGE Möglichkeit, Ihre Einzahlung wiederherzustellen.",
+        "msg_press_any_key": "Drücken Sie eine beliebige Taste, sobald Sie Ihre Mnemonik aufgeschrieben haben.",
+        "msg_mnemonic_retype_prompt": "Bitte geben Sie Ihre Mnemonik (durch Leerzeichen getrennt) ein, um zu bestätigen, dass Sie sie aufgeschrieben haben. Hinweis: Sie müssen auf Wunsch nur die ersten 4 Buchstaben jedes Wortes eingeben.",
+        "msg_mnemonic_clipboard_warning": "WARNUNG: Sie MÜSSEN die Mnemonik aufschreiben, da wir nach diesem Schritt versuchen werden, die Zwischenablage zu löschen.",
+        "msg_confirm_clipboard_clearing": "WARNUNG: Ihre Zwischenablage wird GELÖSCHT. Einige Anwendungen oder Konfigurationen können dies verhindern. Drücken Sie eine beliebige Taste, um die Zwischenablage zu löschen."
+    }
+}

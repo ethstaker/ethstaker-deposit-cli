@@ -10,6 +10,8 @@
         },
         "msg_mnemonic_presentation": "Bunlar ipucu kelimelerinizdir (tohum ifadeleri). Bir yere not alın ve güvenli bir şekilde saklayın. Depozitoyu YALNIZCA bununla geri alabilirsiniz.",
         "msg_press_any_key": "İpucu kelimelerinizi not aldığınızda bir tuşa basın.",
-        "msg_mnemonic_retype_prompt": "Lütfen ipucu kelimelerinizi not aldığınızı doğrulamak amacıyla (aralarında boşluk bırakarak) yazın. Not: kelimelerin yalnızca ilk 4 harfini yazmanız yeterlidir."
+        "msg_mnemonic_retype_prompt": "Lütfen ipucu kelimelerinizi not aldığınızı doğrulamak amacıyla (aralarında boşluk bırakarak) yazın. Not: kelimelerin yalnızca ilk 4 harfini yazmanız yeterlidir.",
+            "msg_mnemonic_clipboard_warning": "UYARI: Bu adımdan sonra panoyu temizlemeye çalışacağımız için anımsatma ifadesini MUTLAKA yazın.",
+            "msg_confirm_clipboard_clearing": "UYARI: Panonuz TEMİZLENECEK. Bazı uygulamalar veya yapılandırmalar bunu engelleyebilir. Panoyu temizlemek için bir tuşa basın."
     }
 }

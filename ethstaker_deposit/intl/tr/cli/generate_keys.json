@@ -19,6 +19,26 @@
         },
         "withdrawal_address": {
             "help": "Eğer bu alan girilmiş ve geçerliyse, verilen Ethereum adresi varlık çekme adresi olarak kullanılacaktır. Aksi taktirde, ipucu kelimelerinden üretilmiş bir genel anahtar kullanılır."
+        },
+        "arg_withdrawal_address": {
+            "help": "Para çekmede kullanılacak Ethereum adresi. Genellikle '0x' ile başlar ve ardından 40 onaltılık karakter gelir. Burada seçtiğiniz adres üzerinde tam kontrolünüz olduğundan emin olun. Zincirde bir para çekme adresi belirledikten sonra değiştirilemez.",
+            "prompt": "İsteğe bağlı para çekme adresini girin. Zincirde belirledikten sonra bunu DEĞİŞTİREMEYECEĞİNİZİ unutmayın.",
+            "confirm": "Onaylamak için para çekme adresinizi tekrar girin.",
+            "mismatch": "Hata: girilen iki değer eşleşmiyor. Lütfen tekrar yazın."
+        },
+        "arg_compounding": {
+            "help": "2048 ETH maksimum etkin bakiye için 0x02 para çekme kimlik bilgilerine sahip bileşik doğrulayıcılar veya 32 ETH maksimum etkin bakiye için 0x01 para çekme kimlik bilgilerine sahip normal doğrulayıcılar oluşturur. Bu seçeneğin kullanılması bir para çekme adresi gerektirir. Bu özellik yalnızca Pectra fork'unu gerçekleştirmiş ağlarda desteklenir.",
+            "prompt": "2048 ETH maksimum etkin bakiye için 0x02 para çekme kimlik bilgilerine sahip bileşik doğrulayıcılar oluşturmak istiyorsanız yes girin. Bileşik doğrulayıcılar ve 0x02 para çekme kimlik bilgileri yalnızca Pectra fork'unu gerçekleştirmiş ağlarda desteklenir. 32 ETH maksimum etkin bakiye için 0x01 para çekme kimlik bilgilerine sahip normal doğrulayıcılar istiyorsanız no veya hiçbir şey yazmayın."
+        },
+        "arg_amount": {
+            "help": "Bu doğrulayıcılara ether cinsinden yatırılacak miktar. En az 1 ether olmalı ve 1 gwei'den daha yüksek hassasiyete sahip olamaz. Bu seçeneğin kullanılması bileşik doğrulayıcılar gerektirir.",
+            "prompt": "Bu doğrulayıcılara yatırmak istediğiniz miktarı girin. En az {min_deposit} olmalı ve 1 gwei'den daha yüksek hassasiyete sahip olamaz. Yeni bir doğrulayıcıyı etkinleştirmek için {activation_amount} gereklidir"
+        },
+        "arg_pbkdf2": {
+            "help": "Oluşturulan keystore dosyaları için scrypt yerine pbkdf2 karma işlevini kullanır. "
+        },
+        "arg_devnet_chain_setting": {
+            "help": "[DEVNET ONLY] Belirli bir GENESIS_FORK_VERSION değeri ayarlayın. Bu, şu anahtarlara sahip bir nesne içeren JSON dizesi olmalıdır: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount ve min_deposit_amount. settings.py dosyasında bulabileceğiniz yapıya benzer olmalıdır. Bu, seçilen zinciri geçersiz kılar."
         }
     },
     "generate_keys": {

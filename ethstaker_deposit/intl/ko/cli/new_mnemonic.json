@@ -4,12 +4,14 @@
             "help": "새 니모닉 및 키 생성"
         },
         "arg_mnemonic_language": {
-            "default": "한국어",
+            "default": "korean",
             "help": "니모닉이 작성된 언어",
             "prompt": "니모닉 언어를 선택하세요."
         },
         "msg_mnemonic_presentation": "귀하의 니모닉(시드 문구)입니다. 적어두고 안전한 곳에 보관하세요. 예치금을 찾을 수 있는 유일한 수단입니다.",
         "msg_press_any_key": "니모닉을 다 적으면 아무 키나 누르세요.",
-        "msg_mnemonic_retype_prompt": "니모닉을 입력(공백으로 구분)하여 적은 내용을 확인하세요."
+        "msg_mnemonic_retype_prompt": "니모닉을 입력(공백으로 구분)하여 적은 내용을 확인하세요.",
+        "msg_mnemonic_clipboard_warning": "경고: 이 단계 후 클립보드를 삭제하려고 하므로 니모닉을 반드시 적어 두세요.",
+        "msg_confirm_clipboard_clearing": "경고: 클립보드가 삭제됩니다. 일부 애플리케이션이나 설정으로 인해 삭제되지 않을 수 있습니다. 클립보드를 삭제하려면 아무 키나 누르세요."
     }
 }

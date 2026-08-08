@@ -1,0 +1,45 @@
+{
+    "partial_deposit": {
+        "arg_partial_deposit": {
+            "help": "제공된 검증자 keystore로 서명할 최소 1 ether 이상의 부분 예치금을 생성합니다. 제공된 검증자의 잔액에 금액을 추가하거나 검증자 생성을 시작합니다."
+        },
+        "arg_partial_deposit_chain": {
+            "help": "검증자가 실행 중인 Ethereum PoS 체인의 이름입니다. 기본값은 \"mainnet\"입니다.",
+            "prompt": "(mainnet 또는 testnet) 네트워크/체인 이름을 선택하세요."
+        },
+        "arg_partial_deposit_amount": {
+            "help": "이 검증자에게 예치할 금액(ether 단위)입니다. 최소 1 ether 이상이어야 하며 1 gwei보다 정밀할 수 없습니다. 기본값은 32 ether입니다.",
+            "prompt": "이 검증자에게 예치할 금액을 입력하세요. 최소 {min_deposit} 이상이어야 하며 1 gwei보다 정밀할 수 없습니다. 새 검증자를 활성화하려면 {activation_amount}이(가) 필요합니다."
+        },
+        "arg_partial_deposit_keystore": {
+            "help": "서명하고 예치할 검증자와 연결된 keystore 파일입니다.",
+            "prompt": "keystore 파일의 위치를 입력하세요."
+        },
+        "arg_partial_deposit_keystore_password": {
+            "help": "제공된 keystore를 암호화하는 데 사용되는 비밀번호입니다. 참고: 니모닉 비밀번호가 아닙니다. (이 인수를 사용하지 말고 CLI가 비밀번호를 요청할 때까지 기다리는 것이 좋습니다. 그렇지 않으면 셸 기록에 표시됩니다.)",
+            "prompt": "제공된 keystore를 암호화하는 데 사용되는 비밀번호를 입력하세요.",
+            "mismatch": "오류: 제공된 keystore 비밀번호로 이 keystore 파일을 복호화할 수 없습니다. 올바른 비밀번호인지 확인하고 다시 시도하세요."
+        },
+        "arg_partial_deposit_output_folder": {
+            "help": "부분 예치금을 저장할 폴더 경로입니다. 기본값은 `./partial_deposits`입니다."
+        },
+        "arg_withdrawal_address": {
+            "help": "검증자의 출금 주소입니다. 0x00 자격 증명의 검증자를 생성하려면 new-mnemonic 또는 existing-mnemonic 명령을 사용하세요.",
+            "confirm": "확인을 위해 출금 주소를 다시 입력하세요.",
+            "prompt": "출금 주소를 입력하세요. 0x00 자격 증명의 검증자를 생성하려면 new-mnemonic 또는 existing-mnemonic 명령을 사용하세요.",
+            "mismatch": "오류: 입력한 두 주소가 일치하지 않습니다. 다시 입력하세요."
+        },
+        "arg_compounding": {
+            "help": "최대 유효 잔액이 2048 ETH인 0x02 출금 자격 증명의 복리형 검증자를 생성하거나, 최대 유효 잔액이 32 ETH인 0x01 출금 자격 증명의 일반 검증자를 생성합니다. 이 기능은 Pectra 포크가 적용된 네트워크에서만 지원됩니다.",
+            "prompt": "최대 유효 잔액이 2048 ETH인 0x02 출금 자격 증명의 복리형 검증자를 생성하려면 yes를 입력하세요. 복리형 검증자와 0x02 출금 자격 증명은 Pectra 포크가 적용된 네트워크에서만 지원됩니다. 최대 유효 잔액이 32 ETH인 0x01 출금 자격 증명의 일반 검증자를 생성하려면 no 또는 아무것도 입력하지 마세요."
+        },
+        "arg_devnet_chain_setting": {
+            "help": "[DEVNET ONLY] 특정 GENESIS_FORK_VERSION 값을 설정합니다. 다음 키를 포함하는 객체가 담긴 JSON 문자열이어야 합니다: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount 및 min_deposit_amount. settings.py에서 확인할 수 있는 형식과 유사해야 합니다. 이 설정은 선택한 체인을 재정의합니다."
+        },
+        "msg_partial_deposit_creation": "\n부분 예치금 생성 중...",
+        "msg_verify_partial_deposit": "\n부분 예치금 검증 중...",
+        "err_verify_partial_deposit": "\n부분 예치금을 검증하는 중 문제가 발생했습니다.\n다시 시도하세요",
+        "msg_creation_success": "\n성공!\n부분 예치금 파일을 찾을 수 있는 위치: ",
+        "msg_pause": "\n\n아무 키나 누르세요."
+    }
+}

@@ -1,1 +1,5 @@
-{}
+{
+    "check_connectivity": {
+        "connectivity_warning": "\n*** Connectivité Internet détectée ***\n\nPour réduire le risque d'accès non autorisé et protéger le matériel cryptographique généré, il est fortement recommandé d'exécuter cet outil dans un environnement hors ligne et isolé. L'utilisation en ligne augmente le risque de vol ou de compromission.\n\nEn continuant, vous acceptez la responsabilité de ce risque.\n\nAppuyez sur une touche pour continuer..."
+    }
+}

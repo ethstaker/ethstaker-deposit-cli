@@ -1,0 +1,23 @@
+{
+    "generate_mnemonic": {
+        "arg_generate_mnemonic": {
+            "help": "Génère une nouvelle phrase mnémonique aléatoire. Si vous souhaitez également créer les fichiers keystore et de dépôt de votre validateur, utilisez plutôt la commande new-mnemonic ou existing-mnemonic."
+        },
+        "arg_mnemonic_language": {
+            "default": "french",
+            "help": "La langue de la liste de mots mnémonique",
+            "prompt": "Veuillez choisir la langue de la liste de mots mnémonique"
+        },
+        "arg_output_file": {
+            "help": "Chemin de fichier facultatif dans lequel écrire la phrase mnémonique. Lorsqu'il est utilisé, la phrase mnémonique est écrite dans le fichier au lieu d'être affichée.",
+            "err_not_found": "Erreur lors de l'écriture du fichier : chemin introuvable.",
+            "err_perm_denied": "Erreur lors de l'écriture du fichier : permission refusée pour écrire dans le fichier.",
+            "err_directory_not_file": "Erreur lors de l'écriture du fichier : le chemin indiqué est un dossier et non un fichier.",
+            "err_os": "Erreur lors de l'écriture du fichier : une erreur liée au système d'exploitation s'est produite.",
+            "err_exception": "Erreur lors de l'écriture du fichier : une erreur inattendue s'est produite."
+        },
+        "msg_mnemonic_presentation": "Voici votre phrase mnémonique générée aléatoirement :",
+        "msg_mnemonic_file_written": "Votre phrase mnémonique générée aléatoirement a été écrite dans",
+        "msg_mnemonic_next": "Si vous souhaitez également générer les fichiers keystore et de dépôt de votre validateur, vous pouvez maintenant utiliser la commande existing-mnemonic."
+    }
+}

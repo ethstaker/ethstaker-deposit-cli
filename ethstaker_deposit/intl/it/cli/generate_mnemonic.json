@@ -1,0 +1,23 @@
+{
+    "generate_mnemonic": {
+        "arg_generate_mnemonic": {
+            "help": "Genera una nuova mnemonica casuale. Se vuoi creare anche il keystore del validatore e i file di deposito, usa invece il comando new-mnemonic o existing-mnemonic."
+        },
+        "arg_mnemonic_language": {
+            "default": "italian",
+            "help": "La lingua dell'elenco di parole della mnemonica",
+            "prompt": "Scegli la lingua dell'elenco di parole della mnemonica"
+        },
+        "arg_output_file": {
+            "help": "Percorso facoltativo del file in cui scrivere la mnemonica. Se utilizzato, la mnemonica verrà scritta nel file invece di essere visualizzata.",
+            "err_not_found": "Errore durante la scrittura del file: percorso non trovato.",
+            "err_perm_denied": "Errore durante la scrittura del file: permesso negato.",
+            "err_directory_not_file": "Errore durante la scrittura del file: il percorso specificato è una directory, non un file.",
+            "err_os": "Errore durante la scrittura del file: si è verificato un errore relativo al sistema operativo.",
+            "err_exception": "Errore durante la scrittura del file: si è verificato un errore imprevisto."
+        },
+        "msg_mnemonic_presentation": "Questa è la tua mnemonica generata casualmente:",
+        "msg_mnemonic_file_written": "La tua mnemonica generata casualmente è stata scritta in",
+        "msg_mnemonic_next": "Se vuoi generare anche il keystore del validatore e i file di deposito, ora puoi usare il comando existing-mnemonic."
+    }
+}
