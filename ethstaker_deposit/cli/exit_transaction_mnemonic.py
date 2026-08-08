@@ -23,6 +23,7 @@ from ethstaker_deposit.utils.click import (
     prompt_if_other_is_none,
 )
 from ethstaker_deposit.utils.constants import DEFAULT_EXIT_TRANSACTION_FOLDER_NAME
+from ethstaker_deposit.utils.symlink import warn_if_output_directory_symlink
 from ethstaker_deposit.utils.intl import (
     closest_match,
     load_text,
@@ -125,6 +126,7 @@ def exit_transaction_mnemonic(
         **kwargs: Any) -> None:
 
     folder = os.path.join(output_folder, DEFAULT_EXIT_TRANSACTION_FOLDER_NAME)
+    warn_if_output_directory_symlink(folder)
     if not os.path.exists(folder):
         os.mkdir(folder)
     clear_terminal()

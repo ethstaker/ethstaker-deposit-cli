@@ -33,6 +33,7 @@ from ethstaker_deposit.utils.constants import (
     COMPOUNDING_WITHDRAWAL_PREFIX,
 )
 from ethstaker_deposit.utils.deposit import export_deposit_data_json
+from ethstaker_deposit.utils.symlink import warn_if_output_directory_symlink
 from ethstaker_deposit.utils.intl import (
     closest_match,
     load_text,
@@ -161,6 +162,9 @@ def partial_deposit(
         output_folder: str,
         devnet_chain_setting: BaseChainSetting | None,
         **kwargs: Any) -> None:
+    folder = os.path.join(output_folder, DEFAULT_PARTIAL_DEPOSIT_FOLDER_NAME)
+    warn_if_output_directory_symlink(folder)
+
     try:
         secret_bytes = keystore.decrypt(keystore_password)
     except ValueError:
@@ -198,7 +202,6 @@ def partial_deposit(
         signature=signature
     )
 
-    folder = os.path.join(output_folder, DEFAULT_PARTIAL_DEPOSIT_FOLDER_NAME)
     if not os.path.exists(folder):
         os.mkdir(folder)
 

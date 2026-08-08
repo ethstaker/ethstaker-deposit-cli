@@ -36,6 +36,7 @@ from ethstaker_deposit.utils.intl import (
     closest_match,
     load_text,
 )
+from ethstaker_deposit.utils.symlink import warn_if_output_directory_symlink
 from ethstaker_deposit.utils import config
 from ethstaker_deposit.utils.terminal import clear_terminal
 from ethstaker_deposit.settings import (
@@ -155,6 +156,7 @@ def generate_bls_to_execution_change(
         bls_to_execution_changes_folder,
         DEFAULT_BLS_TO_EXECUTION_CHANGES_FOLDER_NAME,
     )
+    warn_if_output_directory_symlink(bls_to_execution_changes_folder)
     if not os.path.exists(bls_to_execution_changes_folder):
         os.mkdir(bls_to_execution_changes_folder)
 
