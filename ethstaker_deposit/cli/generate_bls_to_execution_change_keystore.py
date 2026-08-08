@@ -18,26 +18,18 @@ from ethstaker_deposit.utils.validation import (
     validate_int_range,
     validate_keystore_file,
     verify_bls_to_execution_change_keystore_json,
-    validate_devnet_chain_setting,
 )
 from ethstaker_deposit.utils.constants import (
     DEFAULT_BLS_TO_EXECUTION_CHANGES_KEYSTORE_FOLDER_NAME,
 )
 from ethstaker_deposit.utils.click import (
+    chain_arguments_decorator,
     captive_prompt_callback,
-    choice_prompt_func,
     jit_option,
     prompt_if_none,
-    prompt_if_other_is_none,
 )
-from ethstaker_deposit.utils.intl import (
-    closest_match,
-    load_text,
-)
+from ethstaker_deposit.utils.intl import load_text
 from ethstaker_deposit.settings import (
-    MAINNET,
-    ALL_CHAIN_KEYS,
-    get_chain_setting,
     BaseChainSetting,
 )
 
@@ -48,21 +40,7 @@ FUNC_NAME = 'generate_bls_to_execution_change_keystore'
 @click.command(
     help=load_text(['arg_generate_bls_to_execution_change', 'help'], func=FUNC_NAME),
 )
-@jit_option(
-    callback=captive_prompt_callback(
-        lambda x, _: closest_match(x, ALL_CHAIN_KEYS),
-        choice_prompt_func(
-            lambda: load_text(['arg_chain', 'prompt'], func=FUNC_NAME),
-            ALL_CHAIN_KEYS
-        ),
-        prompt_if=prompt_if_other_is_none('devnet_chain_setting'),
-        default=MAINNET,
-    ),
-    default=MAINNET,
-    help=lambda: load_text(['arg_chain', 'help'], func=FUNC_NAME),
-    param_decls='--chain',
-    prompt=False,  # the callback handles the prompt
-)
+@chain_arguments_decorator(FUNC_NAME, __file__, 'arg_chain')
 @jit_option(
     callback=captive_prompt_callback(
         lambda file, _: validate_keystore_file(file),
@@ -113,23 +91,15 @@ FUNC_NAME = 'generate_bls_to_execution_change_keystore'
     param_decls='--output_folder',
     type=click.Path(exists=True, file_okay=False, dir_okay=True),
 )
-@jit_option(
-    callback=validate_devnet_chain_setting,
-    default=None,
-    help=lambda: load_text(['arg_devnet_chain_setting', 'help'], func=FUNC_NAME),
-    param_decls='--devnet_chain_setting',
-    is_eager=True,
-)
 @click.pass_context
 def generate_bls_to_execution_change_keystore(
         ctx: click.Context,
-        chain: str,
+        chain_setting: BaseChainSetting,
         keystore: Keystore,
         keystore_password: str,
         validator_index: int,
         withdrawal_address: HexAddress,
         output_folder: str,
-        devnet_chain_setting: BaseChainSetting | None,
         **kwargs: Any) -> None:
     try:
         secret_bytes = keystore.decrypt(keystore_password)
@@ -138,9 +108,6 @@ def generate_bls_to_execution_change_keystore(
         sys.exit(1)
 
     signing_key = int.from_bytes(secret_bytes, 'big')
-
-    # Get chain setting
-    chain_setting = devnet_chain_setting if devnet_chain_setting is not None else get_chain_setting(chain)
 
     signed_btec = bls_to_execution_change_keystore_generation(
         chain_setting=chain_setting,

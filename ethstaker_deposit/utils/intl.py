@@ -45,6 +45,12 @@ def load_text(params: list[str], file_path: str = '', func: str = '', lang: str 
         else:
             raise KeyError("Wrong file_path %s", file_path)
 
+    # Callers may provide a source module path when requesting its localized text.
+    if file_path.endswith('.pyc'):
+        file_path = file_path[:-4] + '.json'
+    elif file_path.endswith('.py'):
+        file_path = file_path[:-3] + '.json'
+
     if func == '':
         # Auto-detect function based on call stack
         func = inspect.stack()[1].function
