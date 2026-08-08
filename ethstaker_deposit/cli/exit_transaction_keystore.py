@@ -31,6 +31,7 @@ from ethstaker_deposit.utils.validation import (
     validate_keystore_file,
     verify_signed_exit_json,
     validate_devnet_chain_setting,
+    validate_genesis_validators_root,
 )
 
 
@@ -126,10 +127,7 @@ def exit_transaction_keystore(
 
     # Get chain setting
     chain_setting = devnet_chain_setting if devnet_chain_setting is not None else get_chain_setting(chain)
-
-    if chain_setting.GENESIS_VALIDATORS_ROOT is None:
-        click.echo(load_text(['arg_devnet_chain_setting', 'missing_genesis_validators_root']), err=True)
-        sys.exit(1)
+    validate_genesis_validators_root(chain_setting)
 
     signed_exit = exit_transaction_generation(
         chain_setting=chain_setting,
