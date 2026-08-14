@@ -240,6 +240,20 @@ uv run pre-commit install
 <pre><code class="language-sh">python3 -m pip install -r requirements.txt -r requirements_test.txt
 python3 -m pytest tests
 </code></pre>
+<h2 id="building-local-binaries"><a class="header" href="#building-local-binaries">Building Local Binaries</a></h2>
+<p>The standalone binary targets use Python 3.12, matching the official release workflow and the Python version supported by the pinned PyInstaller toolchain.</p>
+<p>Build a Linux or macOS binary with:</p>
+<pre><code class="language-sh">make build_linux
+make build_macos
+</code></pre>
+<p>These targets look for <code>python3.12</code>, create or reuse the <code>venv/</code> environment with that interpreter, and install the pinned build dependencies. If an existing <code>venv/</code> was created with another Python version, it is recreated automatically.</p>
+<p>If Python 3.12 is installed under a non-standard path, provide it explicitly:</p>
+<pre><code class="language-sh">make BUILD_PYTHON=/path/to/python3.12 build_linux
+</code></pre>
+<p>The general development targets, such as <code>venv_test</code> and <code>venv_lint</code>, use <code>python3</code> by default. That interpreter must satisfy the <code>requires-python</code> range in <code>pyproject.toml</code>; override it with <code>PYTHON</code> when needed:</p>
+<pre><code class="language-sh">make PYTHON=python3.12 venv_test
+</code></pre>
+<p>The official release workflow builds binaries with Python 3.12. Windows binaries are currently built by GitHub Actions using <code>build_configs/windows/build.spec</code>.</p>
 
                     </main>
 
