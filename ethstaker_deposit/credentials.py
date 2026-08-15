@@ -27,17 +27,25 @@ from ethstaker_deposit.utils.constants import (
     BLS_WITHDRAWAL_PREFIX,
     EXECUTION_ADDRESS_WITHDRAWAL_PREFIX,
     COMPOUNDING_WITHDRAWAL_PREFIX,
+    BUILDER_WITHDRAWAL_PREFIX,
+    BUILDER_MIN_DEPOSIT,
     ETH2GWEI,
     MAX_DEPOSIT_AMOUNT,
 )
 from ethstaker_deposit.utils.crypto import SHA256
-from ethstaker_deposit.utils.deposit import export_deposit_data_json as export_deposit_data_json_util
+from ethstaker_deposit.utils.export_data import (
+    export_builder_deposit_data_json as export_builder_deposit_data_json_util,
+    export_deposit_data_json as export_deposit_data_json_util,
+)
 from ethstaker_deposit.utils.intl import load_text
 from ethstaker_deposit.utils.ssz import (
     compute_deposit_domain,
+    compute_builder_deposit_domain,
     compute_bls_to_execution_change_domain,
     compute_signing_root,
     BLSToExecutionChange,
+    BuilderDepositData,
+    BuilderDepositMessage,
     DepositData,
     DepositMessage,
     SignedBLSToExecutionChange,
@@ -51,6 +59,7 @@ class WithdrawalType(Enum):
     BLS_WITHDRAWAL = 0
     EXECUTION_ADDRESS_WITHDRAWAL = 1
     COMPOUNDING_WITHDRAWAL = 2
+    BUILDER_WITHDRAWAL = 0xB0
 
 
 class Credential:
@@ -62,9 +71,11 @@ class Credential:
                  index: int, amount: int, chain_setting: BaseChainSetting,
                  hex_withdrawal_address: HexAddress | None,
                  compounding: bool | None = False,
-                 use_pbkdf2: bool | None = False):
+                 use_pbkdf2: bool | None = False,
+                 is_builder: bool | None = False):
         # Set path as EIP-2334 format
         # https://eips.ethereum.org/EIPS/eip-2334
+        # Builders reuse this same derivation path
         purpose = '12381'
         coin_type = '3600'
         account = str(index)
@@ -80,6 +91,7 @@ class Credential:
         self.hex_withdrawal_address = hex_withdrawal_address
         self.compounding = compounding
         self.use_pbkdf2 = use_pbkdf2
+        self.is_builder = is_builder
 
     @property
     def signing_pk(self) -> bytes:
@@ -97,7 +109,11 @@ class Credential:
 
     @property
     def withdrawal_prefix(self) -> bytes:
-        if self.withdrawal_address is not None:
+        if self.is_builder:
+            if self.withdrawal_address is None:
+                raise ValueError("Builder credentials require an execution (withdrawal) address.")
+            return BUILDER_WITHDRAWAL_PREFIX
+        elif self.withdrawal_address is not None:
             if self.compounding:
                 return COMPOUNDING_WITHDRAWAL_PREFIX
             else:
@@ -113,6 +129,8 @@ class Credential:
             return WithdrawalType.EXECUTION_ADDRESS_WITHDRAWAL
         elif self.withdrawal_prefix == COMPOUNDING_WITHDRAWAL_PREFIX:
             return WithdrawalType.COMPOUNDING_WITHDRAWAL
+        elif self.withdrawal_prefix == BUILDER_WITHDRAWAL_PREFIX:
+            return WithdrawalType.BUILDER_WITHDRAWAL
         else:
             raise ValueError(f"Invalid withdrawal_prefix {self.withdrawal_prefix.hex()}")
 
@@ -133,6 +151,13 @@ class Credential:
             and self.withdrawal_address is not None
         ):
             withdrawal_credentials = COMPOUNDING_WITHDRAWAL_PREFIX
+            withdrawal_credentials += b'\x00' * 11
+            withdrawal_credentials += self.withdrawal_address
+        elif (
+            self.withdrawal_type == WithdrawalType.BUILDER_WITHDRAWAL
+            and self.withdrawal_address is not None
+        ):
+            withdrawal_credentials = BUILDER_WITHDRAWAL_PREFIX
             withdrawal_credentials += b'\x00' * 11
             withdrawal_credentials += self.withdrawal_address
         else:
@@ -161,6 +186,48 @@ class Credential:
             signature=bls.Sign(self.signing_sk, signing_root)
         )
         return signed_deposit
+
+    @property
+    def builder_deposit_message(self) -> BuilderDepositMessage:
+        """
+        Ref: https://github.com/ethereum/consensus-specs/blob/master/specs/gloas/beacon-chain.md#builderdepositrequest
+        """
+        if not self.is_builder:
+            raise ValueError("builder_deposit_message is only valid for builder credentials.")
+        if self.amount < BUILDER_MIN_DEPOSIT:
+            raise ValidationError(
+                f"{self.amount / ETH2GWEI} ETH is below the {BUILDER_MIN_DEPOSIT / ETH2GWEI} ETH builder minimum."
+            )
+        return BuilderDepositMessage(  # type: ignore[no-untyped-call]
+            pubkey=self.signing_pk,
+            withdrawal_credentials=self.withdrawal_credentials,
+            amount=self.amount,
+        )
+
+    @property
+    def signed_builder_deposit(self) -> BuilderDepositData:
+        domain = compute_builder_deposit_domain(fork_version=self.chain_setting.GENESIS_FORK_VERSION)
+        signing_root = compute_signing_root(self.builder_deposit_message, domain)
+        signed_builder_deposit = BuilderDepositData(  # type: ignore[no-untyped-call]
+            **self.builder_deposit_message.as_dict(),  # type: ignore[no-untyped-call]
+            signature=bls.Sign(self.signing_sk, signing_root)
+        )
+        return signed_builder_deposit
+
+    @property
+    def builder_deposit_datum_dict(self) -> dict[str, Any]:
+        """
+        Return a single builder deposit datum for 1 builder including the information needed
+        to verify and submit the deposit.
+        """
+        signed_builder_deposit = self.signed_builder_deposit
+        datum_dict = signed_builder_deposit.as_dict()  # type: ignore[no-untyped-call]
+        datum_dict.update({'deposit_message_root': self.builder_deposit_message.hash_tree_root})
+        datum_dict.update({'deposit_data_root': signed_builder_deposit.hash_tree_root})
+        datum_dict.update({'fork_version': self.chain_setting.GENESIS_FORK_VERSION})
+        datum_dict.update({'network_name': self.chain_setting.NETWORK_NAME})
+        datum_dict.update({'deposit_cli_version': DEPOSIT_CLI_VERSION})
+        return datum_dict
 
     @property
     def deposit_datum_dict(self) -> dict[str, bytes]:
@@ -282,6 +349,10 @@ def _deposit_data_builder(credential: Credential) -> dict[str, bytes]:
     return credential.deposit_datum_dict
 
 
+def _builder_deposit_data_builder(credential: Credential) -> dict[str, Any]:
+    return credential.builder_deposit_datum_dict
+
+
 def _keystore_verifier(kwargs: dict[str, Any]) -> bool:
     credential: Credential = kwargs.pop('credential')
     try:
@@ -313,7 +384,8 @@ class CredentialList:
                       start_index: int,
                       hex_withdrawal_address: HexAddress | None,
                       compounding: bool | None = False,
-                      use_pbkdf2: bool | None = False) -> 'CredentialList':
+                      use_pbkdf2: bool | None = False,
+                      is_builder: bool | None = False) -> 'CredentialList':
         if len(amounts) != num_keys:
             raise ValueError(
                 f"The number of keys ({num_keys}) doesn't equal to the corresponding deposit amounts ({len(amounts)})."
@@ -332,6 +404,7 @@ class CredentialList:
                 'hex_withdrawal_address': hex_withdrawal_address,
                 'compounding': compounding,
                 'use_pbkdf2': use_pbkdf2,
+                'is_builder': is_builder,
             } for index in key_indices]
 
             with concurrent.futures.ProcessPoolExecutor() as executor:
@@ -385,6 +458,19 @@ class CredentialList:
                     bar.update(1)
 
         return export_deposit_data_json_util(folder, timestamp, deposit_data)
+
+    def export_builder_deposit_data_json(self, folder: str, timestamp: float) -> str:
+        builder_deposit_data = []
+        with click.progressbar(length=len(self.credentials),
+                               label=load_text(['msg_depositdata_creation']),
+                               show_percent=False, show_pos=True) as bar:
+
+            with concurrent.futures.ProcessPoolExecutor() as executor:
+                for datum_dict in executor.map(_builder_deposit_data_builder, self.credentials):
+                    builder_deposit_data.append(datum_dict)
+                    bar.update(1)
+
+        return export_builder_deposit_data_json_util(folder, timestamp, builder_deposit_data)
 
     def verify_keystores(self, keystore_filefolders: list[str], password: str) -> bool:
         all_valid_keystores = True

@@ -1,0 +1,34 @@
+{
+    "builder": {
+        "arg_builder": {
+            "help": "Generate builder keys and a builder deposit, per EIP-8282. You will be asked whether you have an existing mnemonic to enter interactively."
+        },
+        "arg_mnemonic": {
+            "help": "An existing mnemonic to derive builder keys from. If omitted, you will be asked whether you have an existing mnemonic to enter interactively, or whether a brand new one should be generated instead. (It is recommended not to use this argument, and wait for the CLI to ask you for your mnemonic as otherwise it will appear in your shell history.)",
+            "existing_confirm": "Do you have an existing mnemonic you'd like to use for this builder? If not, a new mnemonic will be generated.",
+            "prompt": "Please enter your mnemonic separated by spaces (\" \"). Note: you only need to enter the first 4 letters of each word if you'd prefer."
+        },
+        "arg_mnemonic_password": {
+            "help": "This is almost certainly not the argument you are looking for: it is for mnemonic passwords, not keystore passwords. It can only be used when reusing an existing mnemonic; it is not allowed when generating a new mnemonic.",
+            "prompt": "Enter your mnemonic password (if you used one). Make sure you won't forget it, it can not be recovered.",
+            "confirm": "Repeat your mnemonic password for confirmation.",
+            "mismatch": "The mnemonic password you entered doesn't match, please try again."
+        },
+        "arg_mnemonic_language": {
+            "default": "english",
+            "help": "The language of the mnemonic word list. If reusing an existing mnemonic (--mnemonic) and this is not provided, we will attempt to determine it based on the mnemonic provided. If generating a new mnemonic, this chooses the wordlist language.",
+            "prompt": "Please choose the language of the mnemonic word list"
+        },
+        "arg_builder_start_index": {
+            "help": "Enter the index (key number) you wish to start generating builder keys from.",
+            "prompt": "Enter the index (key number) you wish to start generating builder keys from.",
+            "confirm": "Please repeat the builder start index to confirm"
+        },
+        "err_mnemonic_password_not_allowed": "--mnemonic_password can only be used when reusing an existing mnemonic (--mnemonic); it is not allowed when generating a new mnemonic.",
+        "msg_mnemonic_presentation": "This is your mnemonic (seed phrase). Write it down and store it safely. It is the ONLY way to retrieve your builder deposit.",
+        "msg_press_any_key": "Press any key when you have written down your mnemonic.",
+        "msg_mnemonic_retype_prompt": "Please type your mnemonic (separated by spaces) to confirm you have written it down. Note: you only need to enter the first 4 letters of each word if you'd prefer.",
+        "msg_mnemonic_clipboard_warning": "WARNING: You MUST write the mnemonic down, as we will attempt to clear the clipboard after this step.",
+        "msg_confirm_clipboard_clearing": "WARNING: Your clipboard will be CLEARED. Some applications or configurations may prevent this. Press any key to clear the clipboard."
+    }
+}
