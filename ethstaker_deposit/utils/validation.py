@@ -25,6 +25,8 @@ from ethstaker_deposit.utils.intl import load_text
 from ethstaker_deposit.utils.ssz import (
     BLSToExecutionChange,
     BLSToExecutionChangeKeystore,
+    BuilderDepositData,
+    BuilderDepositMessage,
     DepositData,
     DepositMessage,
     SignedBLSToExecutionChangeKeystore,
@@ -32,6 +34,7 @@ from ethstaker_deposit.utils.ssz import (
     VoluntaryExit,
     compute_bls_to_execution_change_domain,
     compute_bls_to_execution_change_keystore_domain,
+    compute_builder_deposit_domain,
     compute_deposit_domain,
     compute_signing_root,
     compute_voluntary_exit_domain,
@@ -41,6 +44,8 @@ from ethstaker_deposit.credentials import (
 )
 from ethstaker_deposit.utils.constants import (
     BLS_WITHDRAWAL_PREFIX,
+    BUILDER_MIN_DEPOSIT,
+    BUILDER_WITHDRAWAL_PREFIX,
     COMPOUNDING_WITHDRAWAL_PREFIX,
     ETH2GWEI,
     EXECUTION_ADDRESS_WITHDRAWAL_PREFIX,
@@ -158,6 +163,89 @@ def validate_deposit(deposit_data_dict: dict[str, Any], chain_setting: BaseChain
     return signed_deposit.hash_tree_root == deposit_message_root
 
 
+def verify_builder_deposit_data_json(filefolder: str, credentials: Sequence[Credential]) -> bool:
+    """
+    Validate every builder deposit found in the builder_deposit_data JSON file folder.
+    """
+    all_valid_deposits = True
+    with open(filefolder, encoding='utf-8') as f:
+        deposit_json = json.load(f)
+
+    with click.progressbar(length=len(deposit_json),
+                           label=load_text(['msg_deposit_verification']),
+                           show_percent=False, show_pos=True) as bar:
+
+        with concurrent.futures.ProcessPoolExecutor() as executor:
+            for valid_deposit in executor.map(validate_builder_deposit, deposit_json, credentials):
+                all_valid_deposits &= valid_deposit
+                bar.update(1)
+
+    return all_valid_deposits
+
+
+def validate_builder_deposit(builder_deposit_data_dict: dict[str, Any], credential: Credential = None) -> bool:
+    '''
+    Checks whether a builder deposit is valid, per EIP-8282:
+    https://github.com/ethereum/consensus-specs/blob/master/specs/gloas/beacon-chain.md
+    Unlike validator deposits, there is no maximum amount.
+    deposit_message_root and deposit_data_root are used purely as file-integrity checks
+    '''
+    pubkey = BLSPubkey(bytes.fromhex(builder_deposit_data_dict['pubkey']))
+    withdrawal_credentials = bytes.fromhex(builder_deposit_data_dict['withdrawal_credentials'])
+    amount = builder_deposit_data_dict['amount']
+    signature = BLSSignature(bytes.fromhex(builder_deposit_data_dict['signature']))
+    deposit_message_root = bytes.fromhex(builder_deposit_data_dict['deposit_message_root'])
+    deposit_data_root = bytes.fromhex(builder_deposit_data_dict['deposit_data_root'])
+    fork_version = bytes.fromhex(builder_deposit_data_dict['fork_version'])
+
+    # Verify pubkey
+    if len(pubkey) != 48:
+        return False
+    if credential and pubkey != credential.signing_pk:
+        return False
+
+    # Verify withdrawal credential: builders always use the execution-address form
+    if len(withdrawal_credentials) != 32:
+        return False
+    if withdrawal_credentials[:1] != BUILDER_WITHDRAWAL_PREFIX:
+        return False
+    if credential and withdrawal_credentials[:1] != credential.withdrawal_prefix:
+        return False
+    if withdrawal_credentials[1:12] != b'\x00' * 11:
+        return False
+    if credential and credential.withdrawal_address is None:
+        return False
+    if credential and withdrawal_credentials[12:] != credential.withdrawal_address:
+        return False
+
+    # Verify deposit amount; no upper bound for builders
+    if amount < BUILDER_MIN_DEPOSIT:
+        return False
+
+    # Verify deposit signature && pubkey
+    builder_deposit_message = BuilderDepositMessage(  # type: ignore[no-untyped-call]
+        pubkey=pubkey,
+        withdrawal_credentials=withdrawal_credentials,
+        amount=amount,
+    )
+
+    if builder_deposit_message.hash_tree_root != deposit_message_root:
+        return False
+
+    domain = compute_builder_deposit_domain(fork_version)
+    signing_root = compute_signing_root(builder_deposit_message, domain)
+    if not bls.Verify(pubkey, signing_root, signature):
+        return False
+
+    builder_deposit_data = BuilderDepositData(  # type: ignore[no-untyped-call]
+        pubkey=pubkey,
+        withdrawal_credentials=withdrawal_credentials,
+        amount=amount,
+        signature=signature,
+    )
+    return builder_deposit_data.hash_tree_root == deposit_data_root
+
+
 def validate_password_strength(password: str) -> str:
     if len(password) < 12:
         raise ValidationError(load_text(['msg_password_length']))
@@ -251,6 +339,27 @@ def validate_deposit_amount(amount: str, **kwargs: dict[str, Any]) -> int:
 
         if amount_gwei > MAX_DEPOSIT_AMOUNT / chain_setting.MULTIPLIER:
             raise ValidationError(load_text(['err_max_deposit']))
+
+        return int(amount_gwei)
+    except InvalidOperation:
+        raise ValidationError(load_text(['err_invalid_amount']))
+
+
+def validate_builder_deposit_amount(amount: str, **kwargs: dict[str, Any]) -> int:
+    '''
+    Verifies that `amount` is a valid gwei denomination and amount >= BUILDER_MIN_DEPOSIT gwei.
+    Amount is expected to be in ether and the returned value will be converted to gwei and
+    represented as an int. There is no upper bound for builders
+    '''
+    try:
+        decimal_ether = Decimal(amount)
+        amount_gwei = decimal_ether * Decimal(ETH2GWEI)
+
+        if amount_gwei % 1 != 0:
+            raise ValidationError(load_text(['err_not_gwei_denomination']))
+
+        if amount_gwei < BUILDER_MIN_DEPOSIT:
+            raise ValidationError(load_text(['err_min_deposit']))
 
         return int(amount_gwei)
     except InvalidOperation:

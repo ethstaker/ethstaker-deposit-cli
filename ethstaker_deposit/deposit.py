@@ -3,6 +3,7 @@ import socket
 import sys
 from multiprocessing import freeze_support
 
+from ethstaker_deposit.cli.builder import builder
 from ethstaker_deposit.cli.existing_mnemonic import existing_mnemonic
 from ethstaker_deposit.cli.exit_transaction_keystore import exit_transaction_keystore
 from ethstaker_deposit.cli.exit_transaction_mnemonic import exit_transaction_mnemonic
@@ -56,6 +57,7 @@ commands = [
     exit_transaction_mnemonic,
     partial_deposit,
     test_keystore,
+    builder,
 ]
 
 

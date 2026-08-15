@@ -32,7 +32,7 @@ from ethstaker_deposit.utils.constants import (
     EXECUTION_ADDRESS_WITHDRAWAL_PREFIX,
     COMPOUNDING_WITHDRAWAL_PREFIX,
 )
-from ethstaker_deposit.utils.deposit import export_deposit_data_json
+from ethstaker_deposit.utils.export_data import export_deposit_data_json
 from ethstaker_deposit.utils.intl import (
     closest_match,
     load_text,

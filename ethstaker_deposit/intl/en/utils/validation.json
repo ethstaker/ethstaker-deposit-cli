@@ -2,6 +2,9 @@
     "verify_deposit_data_json": {
         "msg_deposit_verification": "Verifying your deposit_data-*.json file(s):\t"
     },
+    "verify_builder_deposit_data_json": {
+        "msg_deposit_verification": "Verifying your builder_deposit_data-*.json file(s):\t"
+    },
     "validate_password_strength": {
         "msg_password_length": "The password length should be at least 12. Please retype.",
         "msg_password_utf8_win32": "Your terminal is not UTF-8 encoded. To ensure the keystore file can be imported on Linux, the password should contain only English-language characters. Please retype.",
@@ -28,6 +31,11 @@
         "err_min_deposit": "Invalid amount provided. Please provide a value of at least 1 ether.",
         "err_max_deposit": "Invalid amount provided. The max deposit amount is 2048 ether. Please provide a lesser or equal amount.",
         "err_zero_multiplier": "This chain setting is using a multiplier with a value of zero which is invalid."
+    },
+    "validate_builder_deposit_amount": {
+        "err_invalid_amount": "Invalid amount provided. Please provide a value of at least 1 ether for a builder deposit.",
+        "err_not_gwei_denomination": "Invalid amount provided. Please provide a value can not have precision beyond 1 gwei.",
+        "err_min_deposit": "Invalid amount provided. Please provide a value of at least 1 ether. There is no maximum builder deposit amount."
     },
     "validate_bls_withdrawal_credentials": {
         "err_is_already_01_form": "The given withdrawal credentials is already in 0x01 form. Have you already set the withdrawal address?",
