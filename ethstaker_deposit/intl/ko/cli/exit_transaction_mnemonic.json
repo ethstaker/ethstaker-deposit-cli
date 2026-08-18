@@ -1,35 +1,35 @@
 {
-    "exit_transaction_mnemonic": {
-        "arg_exit_transaction_mnemonic": {
-            "help": "Ethereum Beacon Chain에서 검증자를 종료하는 데 사용할 수 있는 종료 트랜잭션을 생성합니다."
-        },
-        "arg_exit_transaction_mnemonic_chain": {
-            "help": "검증자가 실행 중인 Ethereum PoS 체인의 이름입니다. 기본값은 \"mainnet\"입니다.",
-            "prompt": "(mainnet 또는 testnet) 네트워크/체인 이름을 선택하세요."
-        },
-        "arg_exit_transaction_mnemonic_start_index": {
-            "help": "키를 생성할 때 사용한 인덱스(키 번호)를 입력하세요. 기본값은 0입니다.",
-            "prompt": "키를 생성할 때 사용한 인덱스(키 번호)를 입력하세요. 기본값은 0입니다."
-        },
-        "arg_exit_transaction_mnemonic_indices": {
-            "help": "특정 검증자의 검증자 인덱스 번호 목록입니다.",
-            "prompt": "Beacon Chain에서 확인되는 검증자의 인덱스 번호 목록을 입력하세요. 여러 항목은 공백 또는 쉼표로 구분하세요."
-        },
-        "arg_exit_transaction_mnemonic_epoch": {
-            "help": "종료 트랜잭션이 유효해지는 에포크입니다. 기본적으로 트랜잭션은 항상 유효합니다."
-        },
-        "arg_exit_transaction_mnemonic_output_folder": {
-            "help": "종료 트랜잭션을 저장할 폴더 경로입니다. 기본값은 `./exit_transactions`입니다."
-        },
-        "arg_devnet_chain_setting": {
-            "help": "[DEVNET ONLY] 특정 EXIT_FORK_VERSION 및 GENESIS_VALIDATORS_ROOT 값을 설정합니다. 다음 키를 포함하는 객체가 담긴 JSON 문자열이어야 합니다: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount 및 min_deposit_amount. settings.py에서 확인할 수 있는 형식과 유사해야 합니다. 이 설정은 선택한 체인을 재정의합니다.",
-            "missing_genesis_validators_root": "체인 설정에 GENESIS_VALIDATORS_ROOT 값이 없습니다. 종료 트랜잭션을 생성하려면 이 값이 필요합니다."
-        },
-        "msg_key_creation": "키 생성 중:\t",
-        "msg_exit_transaction_creation": "종료 트랜잭션 생성 중:\t",
-        "msg_verify_exit_transaction": "종료 트랜잭션 검증 중:\t",
-        "err_verify_exit_transactions": "\n종료 트랜잭션을 검증하는 중 문제가 발생했습니다.\n다시 시도하세요",
-        "msg_creation_success": "\n성공!\n종료 트랜잭션 파일을 찾을 수 있는 위치: ",
-        "msg_pause": "\n\n아무 키나 누르세요."
-    }
+  "exit_transaction_mnemonic": {
+    "arg_exit_transaction_mnemonic": {
+      "help": "Ethereum Beacon Chain에서 검증자를 종료하는 데 사용할 수 있는 종료 트랜잭션을 생성합니다."
+    },
+    "arg_exit_transaction_mnemonic_chain": {
+      "help": "검증자가 실행 중인 Ethereum PoS 체인의 이름입니다. 기본값은 \"mainnet\"입니다.",
+      "prompt": "(mainnet 또는 testnet) 네트워크/체인 이름을 선택하세요."
+    },
+    "arg_exit_transaction_mnemonic_start_index": {
+      "help": "키를 생성할 때 사용한 인덱스(키 번호)를 입력하세요. 기본값은 0입니다.",
+      "prompt": "키를 생성할 때 사용한 인덱스(키 번호)를 입력하세요. 기본값은 0입니다."
+    },
+    "arg_exit_transaction_mnemonic_indices": {
+      "help": "특정 검증자의 검증자 인덱스 번호 목록입니다.",
+      "prompt": "Beacon Chain에서 확인되는 검증자의 인덱스 번호 목록을 입력하세요. 여러 항목은 공백 또는 쉼표로 구분하세요."
+    },
+    "arg_exit_transaction_mnemonic_epoch": {
+      "help": "종료 트랜잭션이 유효해지는 에포크입니다. 기본적으로 트랜잭션은 항상 유효합니다."
+    },
+    "arg_exit_transaction_mnemonic_output_folder": {
+      "help": "종료 트랜잭션을 저장할 폴더 경로입니다. 기본값은 `./exit_transactions`입니다."
+    },
+    "arg_devnet_chain_setting": {
+      "help": "[DEVNET ONLY] 특정 EXIT_FORK_VERSION 및 GENESIS_VALIDATORS_ROOT 값을 설정합니다. 다음 키를 포함하는 객체가 담긴 JSON 문자열이어야 합니다: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount 및 min_deposit_amount. settings.py에서 확인할 수 있는 형식과 유사해야 합니다. 이 설정은 선택한 체인을 재정의합니다.",
+      "missing_genesis_validators_root": "체인 설정에 GENESIS_VALIDATORS_ROOT 값이 없습니다. 종료 트랜잭션을 생성하려면 이 값이 필요합니다."
+    },
+    "msg_key_creation": "키 생성 중:\t",
+    "msg_exit_transaction_creation": "종료 트랜잭션 생성 중:\t",
+    "msg_verify_exit_transaction": "종료 트랜잭션 검증 중:\t",
+    "err_verify_exit_transactions": "\n종료 트랜잭션을 검증하는 중 문제가 발생했습니다.\n다시 시도하세요",
+    "msg_creation_success": "\n성공!\n종료 트랜잭션 파일을 찾을 수 있는 위치: ",
+    "msg_pause": "\n\n아무 키나 누르세요."
+  }
 }

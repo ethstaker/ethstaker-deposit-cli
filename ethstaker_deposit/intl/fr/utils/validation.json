@@ -1,67 +1,67 @@
 {
-    "verify_deposit_data_json": {
-        "msg_deposit_verification": "Vérification de vos dépôts :\t"
-    },
-    "validate_password_strength": {
-        "msg_password_length": "Le mot de passe doit comporter au moins 12 caractères. Veuillez recommencer.",
-        "msg_password_utf8_win32": "Votre terminal n'est pas encodé en UTF-8. Pour garantir que le fichier keystore puisse être importé sous Linux, le mot de passe doit contenir uniquement des caractères anglais. Veuillez recommencer.",
-        "msg_password_utf8": "Votre terminal n'est pas encodé en UTF-8. Pour garantir que le fichier keystore puisse être importé sous Linux, le mot de passe doit contenir uniquement des caractères anglais. Veuillez recommencer.\nVous pouvez également quitter ce programme et le relancer depuis un terminal encodé en UTF-8."
-    },
-    "validate_int_range": {
-        "err_not_positive_integer": "Ce n'est pas un entier positif. Veuillez recommencer."
-    },
-    "validate_choice": {
-        "err_invalid_choice": "Ce choix ne fait pas partie des choix valides. Veuillez saisir à nouveau votre choix."
-    },
-    "validate_withdrawal_address": {
-        "err_invalid_ECDSA_hex_addr": "L'adresse de retrait fournie n'est pas encodée au format hexadécimal.",
-        "err_invalid_ECDSA_hex_addr_checksum": "L'adresse de retrait fournie n'est pas au format checksum.",
-        "err_missing_address": "Une adresse doit être fournie",
-        "msg_ECDSA_hex_addr_withdrawal": "**[Avertissement] vous définissez une adresse de retrait. Assurez-vous d'en avoir le contrôle total.**"
-    },
-    "validate_yesno": {
-        "err_invalid_bool_value": "Cette valeur n'est pas valide pour une question oui/non."
-    },
-    "validate_deposit_amount": {
-        "err_invalid_amount": "Montant fourni invalide. Veuillez fournir un montant d'au moins 1 ether à déposer.",
-        "err_not_gwei_denomination": "Montant fourni invalide. Veuillez fournir une valeur dont la précision ne dépasse pas 1 gwei.",
-        "err_min_deposit": "Montant fourni invalide. Veuillez fournir un montant d'au moins 1 ether.",
-        "err_max_deposit": "Montant fourni invalide. Le montant maximal du dépôt est de 2048 ether. Veuillez fournir un montant inférieur ou égal.",
-        "err_zero_multiplier": "Ce paramètre de chaîne utilise un multiplicateur nul, ce qui est invalide."
-    },
-    "validate_bls_withdrawal_credentials": {
-        "err_is_already_01_form": "Les identifiants de retrait fournis sont déjà au format 0x01. Avez-vous déjà défini l'adresse de retrait ?",
-        "err_not_bls_form": "Les identifiants de retrait fournis ne sont pas au format BLS_WITHDRAWAL_PREFIX."
-    },
-    "validate_bls_withdrawal_credentials_matching": {
-        "err_not_matching": "Les identifiants de retrait fournis ne correspondent pas aux anciens identifiants de retrait BLS générés par la phrase mnémonique."
-    },
-    "verify_bls_to_execution_change_json": {
-        "msg_bls_to_execution_change_verification": "Vérification de votre fichier BLSToExecutionChange :\t"
-    },
-    "normalize_bls_withdrawal_credentials_to_bytes": {
-        "err_incorrect_hex_form": "L'entrée fournie n'est pas encodée au format hexadécimal."
-    },
-    "normalize_input_list": {
-        "err_incorrect_list": "L'entrée fournie doit être une liste des anciens identifiants de retrait BLS de votre ou vos validateurs. Séparez les éléments multiples par des espaces ou des virgules."
-    },
-    "validate_keystore_file": {
-        "err_file_not_found": "Aucun fichier n'a été trouvé. Vérifiez le chemin fourni et réessayez.",
-        "err_invalid_keystore_file": "Le fichier trouvé n'est pas au format keystore correct. Vérifiez que le chemin fourni pointe vers un fichier keystore et réessayez.",
-        "err_unknown_keystore_file": "Une erreur inattendue s'est produite lors de l'analyse ou du chargement du fichier keystore. Vérifiez que le chemin fourni pointe vers un fichier keystore et réessayez."
-    },
-    "validate_devnet_chain_setting": {
-        "err_invalid_devnet_chain_setting": "Chaîne JSON invalide pour devnet_chain_setting. Elle doit être un objet JSON valide contenant au moins les clés suivantes : network_name, genesis_fork_version et exit_fork_version.",
-        "arg_devnet_chain_setting_warning": "**[Avertissement] Paramètre de chaîne devnet utilisé avec cette commande.**"
-    },
-    "validate_devnet_chain_setting_json": {
-        "err_devnet_chain_setting_not_object": "Chaîne JSON invalide pour devnet_chain_setting. La chaîne JSON ne contient pas d'objet à la racine.",
-        "err_devnet_chain_setting_missing_keys": "Chaîne JSON invalide pour devnet_chain_setting. Une ou plusieurs des clés suivantes manquent dans l'objet racine : network_name, genesis_fork_version ou exit_fork_version.",
-        "err_devnet_known_genesis_fork_version": "Le paramètre de chaîne devnet utilise une version de fork de genèse connue provenant d'un réseau existant.",
-        "err_devnet_chain_setting_invalid_json": "Chaîne JSON invalide pour devnet_chain_setting. Le décodage de la chaîne JSON est impossible. Veillez à fournir une chaîne JSON valide.",
-        "err_devnet_chain_setting_key_length": "Chaîne JSON invalide pour devnet_chain_setting. L'objet racine doit contenir uniquement 3, 4, 5 ou 6 clés.",
-        "err_devnet_chain_setting_unknown_keys": "Le paramètre de chaîne devnet contient des clés non reconnues.",
-        "err_devnet_chain_setting_zero_multiplier": "Valeur de multiplicateur invalide dans le paramètre de chaîne devnet. Elle ne peut pas être nulle.",
-        "err_devnet_chain_setting_negative_multiplier": "Valeur de multiplicateur invalide dans le paramètre de chaîne devnet. Elle ne peut pas être négative."
-    }
+  "verify_deposit_data_json": {
+    "msg_deposit_verification": "Vérification de vos dépôts :\t"
+  },
+  "validate_password_strength": {
+    "msg_password_length": "Le mot de passe doit comporter au moins 12 caractères. Veuillez recommencer.",
+    "msg_password_utf8_win32": "Votre terminal n'est pas encodé en UTF-8. Pour garantir que le fichier keystore puisse être importé sous Linux, le mot de passe doit contenir uniquement des caractères anglais. Veuillez recommencer.",
+    "msg_password_utf8": "Votre terminal n'est pas encodé en UTF-8. Pour garantir que le fichier keystore puisse être importé sous Linux, le mot de passe doit contenir uniquement des caractères anglais. Veuillez recommencer.\nVous pouvez également quitter ce programme et le relancer depuis un terminal encodé en UTF-8."
+  },
+  "validate_int_range": {
+    "err_not_positive_integer": "Ce n'est pas un entier positif. Veuillez recommencer."
+  },
+  "validate_choice": {
+    "err_invalid_choice": "Ce choix ne fait pas partie des choix valides. Veuillez saisir à nouveau votre choix."
+  },
+  "validate_withdrawal_address": {
+    "err_invalid_ECDSA_hex_addr": "L'adresse de retrait fournie n'est pas encodée au format hexadécimal.",
+    "err_invalid_ECDSA_hex_addr_checksum": "L'adresse de retrait fournie n'est pas au format checksum.",
+    "err_missing_address": "Une adresse doit être fournie",
+    "msg_ECDSA_hex_addr_withdrawal": "**[Avertissement] vous définissez une adresse de retrait. Assurez-vous d'en avoir le contrôle total.**"
+  },
+  "validate_yesno": {
+    "err_invalid_bool_value": "Cette valeur n'est pas valide pour une question oui/non."
+  },
+  "validate_deposit_amount": {
+    "err_invalid_amount": "Montant fourni invalide. Veuillez fournir un montant d'au moins 1 ether à déposer.",
+    "err_not_gwei_denomination": "Montant fourni invalide. Veuillez fournir une valeur dont la précision ne dépasse pas 1 gwei.",
+    "err_min_deposit": "Montant fourni invalide. Veuillez fournir un montant d'au moins 1 ether.",
+    "err_max_deposit": "Montant fourni invalide. Le montant maximal du dépôt est de 2048 ether. Veuillez fournir un montant inférieur ou égal.",
+    "err_zero_multiplier": "Ce paramètre de chaîne utilise un multiplicateur nul, ce qui est invalide."
+  },
+  "validate_bls_withdrawal_credentials": {
+    "err_is_already_01_form": "Les identifiants de retrait fournis sont déjà au format 0x01. Avez-vous déjà défini l'adresse de retrait ?",
+    "err_not_bls_form": "Les identifiants de retrait fournis ne sont pas au format BLS_WITHDRAWAL_PREFIX."
+  },
+  "validate_bls_withdrawal_credentials_matching": {
+    "err_not_matching": "Les identifiants de retrait fournis ne correspondent pas aux anciens identifiants de retrait BLS générés par la phrase mnémonique."
+  },
+  "verify_bls_to_execution_change_json": {
+    "msg_bls_to_execution_change_verification": "Vérification de votre fichier BLSToExecutionChange :\t"
+  },
+  "normalize_bls_withdrawal_credentials_to_bytes": {
+    "err_incorrect_hex_form": "L'entrée fournie n'est pas encodée au format hexadécimal."
+  },
+  "normalize_input_list": {
+    "err_incorrect_list": "L'entrée fournie doit être une liste des anciens identifiants de retrait BLS de votre ou vos validateurs. Séparez les éléments multiples par des espaces ou des virgules."
+  },
+  "validate_keystore_file": {
+    "err_file_not_found": "Aucun fichier n'a été trouvé. Vérifiez le chemin fourni et réessayez.",
+    "err_invalid_keystore_file": "Le fichier trouvé n'est pas au format keystore correct. Vérifiez que le chemin fourni pointe vers un fichier keystore et réessayez.",
+    "err_unknown_keystore_file": "Une erreur inattendue s'est produite lors de l'analyse ou du chargement du fichier keystore. Vérifiez que le chemin fourni pointe vers un fichier keystore et réessayez."
+  },
+  "validate_devnet_chain_setting": {
+    "err_invalid_devnet_chain_setting": "Chaîne JSON invalide pour devnet_chain_setting. Elle doit être un objet JSON valide contenant au moins les clés suivantes : network_name, genesis_fork_version et exit_fork_version.",
+    "arg_devnet_chain_setting_warning": "**[Avertissement] Paramètre de chaîne devnet utilisé avec cette commande.**"
+  },
+  "validate_devnet_chain_setting_json": {
+    "err_devnet_chain_setting_not_object": "Chaîne JSON invalide pour devnet_chain_setting. La chaîne JSON ne contient pas d'objet à la racine.",
+    "err_devnet_chain_setting_missing_keys": "Chaîne JSON invalide pour devnet_chain_setting. Une ou plusieurs des clés suivantes manquent dans l'objet racine : network_name, genesis_fork_version ou exit_fork_version.",
+    "err_devnet_known_genesis_fork_version": "Le paramètre de chaîne devnet utilise une version de fork de genèse connue provenant d'un réseau existant.",
+    "err_devnet_chain_setting_invalid_json": "Chaîne JSON invalide pour devnet_chain_setting. Le décodage de la chaîne JSON est impossible. Veillez à fournir une chaîne JSON valide.",
+    "err_devnet_chain_setting_key_length": "Chaîne JSON invalide pour devnet_chain_setting. L'objet racine doit contenir uniquement 3, 4, 5 ou 6 clés.",
+    "err_devnet_chain_setting_unknown_keys": "Le paramètre de chaîne devnet contient des clés non reconnues.",
+    "err_devnet_chain_setting_zero_multiplier": "Valeur de multiplicateur invalide dans le paramètre de chaîne devnet. Elle ne peut pas être nulle.",
+    "err_devnet_chain_setting_negative_multiplier": "Valeur de multiplicateur invalide dans le paramètre de chaîne devnet. Elle ne peut pas être négative."
+  }
 }

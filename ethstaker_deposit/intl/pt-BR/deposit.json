@@ -1,5 +1,5 @@
 {
-    "check_connectivity": {
-        "connectivity_warning": "\n*** Conectividade com a Internet detectada ***\n\nPara reduzir o risco de acesso não autorizado e proteger o material de chaves gerado, recomenda-se executar esta ferramenta em um ambiente offline e isolado. Operar online aumenta a vulnerabilidade a possíveis roubos ou comprometimentos.\n\nAo continuar, você assume a responsabilidade pelo risco.\n\nPressione qualquer tecla para continuar..."
-    }
+  "check_connectivity": {
+    "connectivity_warning": "\n*** Conectividade com a Internet detectada ***\n\nPara reduzir o risco de acesso não autorizado e proteger o material de chaves gerado, recomenda-se executar esta ferramenta em um ambiente offline e isolado. Operar online aumenta a vulnerabilidade a possíveis roubos ou comprometimentos.\n\nAo continuar, você assume a responsabilidade pelo risco.\n\nPressione qualquer tecla para continuar..."
+  }
 }

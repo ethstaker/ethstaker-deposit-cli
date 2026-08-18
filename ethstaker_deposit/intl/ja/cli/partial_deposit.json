@@ -1,45 +1,45 @@
 {
-    "partial_deposit": {
-        "arg_partial_deposit": {
-            "help": "指定されたバリデーターキーストアで署名する、1 ether 以上の任意の額の部分デポジットを生成します。指定されたバリデーターの残高に追加するか、新しいバリデーターの作成を開始します。"
-        },
-        "arg_partial_deposit_chain": {
-            "help": "バリデーターが稼働している Ethereum PoS チェーンの名前。デフォルトは \"mainnet\" です。",
-            "prompt": "(mainnet または testnet) ネットワーク/チェーン名を選択してください"
-        },
-        "arg_partial_deposit_amount": {
-            "help": "このバリデーターに入金する ether 単位の額。最低1 etherで、1 gweiを超える精度は指定できません。デフォルトは32 etherです。",
-            "prompt": "このバリデーターに入金する額を入力してください。{min_deposit} 以上で、1 gweiを超える精度は指定できません。新しいバリデーターの有効化には {activation_amount} が必要です"
-        },
-        "arg_partial_deposit_keystore": {
-            "help": "署名して入金する対象のバリデーターに関連付けられたキーストアファイル。",
-            "prompt": "キーストアファイルの場所を入力してください。"
-        },
-        "arg_partial_deposit_keystore_password": {
-            "help": "指定されたキーストアの暗号化に使用するパスワード。注：ニーモニックのパスワードではありません。（この引数は使用せず、CLI からパスワードの入力を求められるまで待つことをお勧めします。使用するとシェル履歴に表示されます。）",
-            "prompt": "指定されたキーストアの暗号化に使用するパスワードを入力してください。",
-            "mismatch": "エラー：指定されたキーストアのパスワードではこのキーストアファイルを復号できませんでした。正しいパスワードを確認して、もう一度お試しください。"
-        },
-        "arg_partial_deposit_output_folder": {
-            "help": "部分デポジットの保存先フォルダーのパス。デフォルトでは `./partial_deposits` を指します。"
-        },
-        "arg_withdrawal_address": {
-            "help": "バリデーターの払い戻しアドレス。0x00 認証情報を持つバリデーターを作成する場合は、new-mnemonic または existing-mnemonic コマンドを使用してください。",
-            "confirm": "確認のため払い戻しアドレスをもう一度入力してください。",
-            "prompt": "払い戻しアドレスを入力してください。0x00 認証情報を持つバリデーターを作成する場合は、new-mnemonic または existing-mnemonic コマンドを使用してください。",
-            "mismatch": "エラー：入力された2つのアドレスが一致しません。もう一度入力してください。"
-        },
-        "arg_compounding": {
-            "help": "最大有効残高2048 ETH用の0x02払い戻し認証情報を持つ複利バリデーター、または最大有効残高32 ETH用の0x01払い戻し認証情報を持つ通常のバリデーターを生成します。この機能は Pectra フォークを実施したネットワークでのみサポートされます。",
-            "prompt": "最大有効残高2048 ETH用の0x02払い戻し認証情報を持つ複利バリデーターを生成する場合は yes と入力してください。複利バリデーターと0x02払い戻し認証情報は、Pectra フォークを実施したネットワークでのみサポートされます。最大有効残高32 ETH用の0x01払い戻し認証情報を持つ通常のバリデーターを生成する場合は、no または何も入力せずにください。"
-        },
-        "arg_devnet_chain_setting": {
-            "help": "[DEVNET ONLY] 特定の GENESIS_FORK_VERSION 値を設定します。network_name、genesis_fork_version、exit_fork_version、genesis_validator_root、multiplier、min_activation_amount、min_deposit_amount のキーを含むオブジェクトの JSON 文字列を指定してください。settings.py にあるものと同様です。選択したチェーンの設定は上書きされます。"
-        },
-        "msg_partial_deposit_creation": "\n部分デポジットを作成しています...",
-        "msg_verify_partial_deposit": "\n部分デポジットを確認しています...",
-        "err_verify_partial_deposit": "\n部分デポジットの確認中に問題が発生しました。\nもう一度お試しください",
-        "msg_creation_success": "\n成功しました！\n部分デポジットファイルは次の場所にあります： ",
-        "msg_pause": "\n\n任意のキーを押してください。"
-    }
+  "partial_deposit": {
+    "arg_partial_deposit": {
+      "help": "指定されたバリデーターキーストアで署名する、1 ether 以上の任意の額の部分デポジットを生成します。指定されたバリデーターの残高に追加するか、新しいバリデーターの作成を開始します。"
+    },
+    "arg_partial_deposit_chain": {
+      "help": "バリデーターが稼働している Ethereum PoS チェーンの名前。デフォルトは \"mainnet\" です。",
+      "prompt": "(mainnet または testnet) ネットワーク/チェーン名を選択してください"
+    },
+    "arg_partial_deposit_amount": {
+      "help": "このバリデーターに入金する ether 単位の額。最低1 etherで、1 gweiを超える精度は指定できません。デフォルトは32 etherです。",
+      "prompt": "このバリデーターに入金する額を入力してください。{min_deposit} 以上で、1 gweiを超える精度は指定できません。新しいバリデーターの有効化には {activation_amount} が必要です"
+    },
+    "arg_partial_deposit_keystore": {
+      "help": "署名して入金する対象のバリデーターに関連付けられたキーストアファイル。",
+      "prompt": "キーストアファイルの場所を入力してください。"
+    },
+    "arg_partial_deposit_keystore_password": {
+      "help": "指定されたキーストアの暗号化に使用するパスワード。注：ニーモニックのパスワードではありません。（この引数は使用せず、CLI からパスワードの入力を求められるまで待つことをお勧めします。使用するとシェル履歴に表示されます。）",
+      "prompt": "指定されたキーストアの暗号化に使用するパスワードを入力してください。",
+      "mismatch": "エラー：指定されたキーストアのパスワードではこのキーストアファイルを復号できませんでした。正しいパスワードを確認して、もう一度お試しください。"
+    },
+    "arg_partial_deposit_output_folder": {
+      "help": "部分デポジットの保存先フォルダーのパス。デフォルトでは `./partial_deposits` を指します。"
+    },
+    "arg_withdrawal_address": {
+      "help": "バリデーターの払い戻しアドレス。0x00 認証情報を持つバリデーターを作成する場合は、new-mnemonic または existing-mnemonic コマンドを使用してください。",
+      "confirm": "確認のため払い戻しアドレスをもう一度入力してください。",
+      "prompt": "払い戻しアドレスを入力してください。0x00 認証情報を持つバリデーターを作成する場合は、new-mnemonic または existing-mnemonic コマンドを使用してください。",
+      "mismatch": "エラー：入力された2つのアドレスが一致しません。もう一度入力してください。"
+    },
+    "arg_compounding": {
+      "help": "最大有効残高2048 ETH用の0x02払い戻し認証情報を持つ複利バリデーター、または最大有効残高32 ETH用の0x01払い戻し認証情報を持つ通常のバリデーターを生成します。この機能は Pectra フォークを実施したネットワークでのみサポートされます。",
+      "prompt": "最大有効残高2048 ETH用の0x02払い戻し認証情報を持つ複利バリデーターを生成する場合は yes と入力してください。複利バリデーターと0x02払い戻し認証情報は、Pectra フォークを実施したネットワークでのみサポートされます。最大有効残高32 ETH用の0x01払い戻し認証情報を持つ通常のバリデーターを生成する場合は、no または何も入力せずにください。"
+    },
+    "arg_devnet_chain_setting": {
+      "help": "[DEVNET ONLY] 特定の GENESIS_FORK_VERSION 値を設定します。network_name、genesis_fork_version、exit_fork_version、genesis_validator_root、multiplier、min_activation_amount、min_deposit_amount のキーを含むオブジェクトの JSON 文字列を指定してください。settings.py にあるものと同様です。選択したチェーンの設定は上書きされます。"
+    },
+    "msg_partial_deposit_creation": "\n部分デポジットを作成しています...",
+    "msg_verify_partial_deposit": "\n部分デポジットを確認しています...",
+    "err_verify_partial_deposit": "\n部分デポジットの確認中に問題が発生しました。\nもう一度お試しください",
+    "msg_creation_success": "\n成功しました！\n部分デポジットファイルは次の場所にあります： ",
+    "msg_pause": "\n\n任意のキーを押してください。"
+  }
 }

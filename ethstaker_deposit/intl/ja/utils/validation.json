@@ -1,67 +1,67 @@
 {
-    "verify_deposit_data_json": {
-        "msg_deposit_verification": "入金確認中:"
-    },
-    "validate_password_strength": {
-        "msg_password_length": "パスワードの長さは少なくとも12文字でなければなりません。再入力してください",
-        "msg_password_utf8_win32": "端末は UTF-8 エンコードされていません。キーストアファイルを Linux にインポートできるよう、パスワードには英語の文字のみを使用してください。再入力してください。",
-        "msg_password_utf8": "端末は UTF-8 エンコードされていません。キーストアファイルを Linux にインポートできるよう、パスワードには英語の文字のみを使用してください。再入力してください。\nまたは、このプログラムを終了して UTF-8 エンコードされた端末から再起動してください。"
-    },
-    "validate_int_range": {
-        "err_not_positive_integer": "正の整数ではありません。再入力してください。"
-    },
-    "validate_choice": {
-        "err_invalid_choice": "有効な選択肢ではありません。選択内容を再入力してください。"
-    },
-    "validate_withdrawal_address": {
-        "err_invalid_ECDSA_hex_addr": "指定された払い戻しアドレスは16進数形式でエンコードされていません。",
-        "err_invalid_ECDSA_hex_addr_checksum": "指定された払い戻しアドレスはチェックサム形式ではありません。",
-        "err_missing_address": "アドレスを指定する必要があります",
-        "msg_ECDSA_hex_addr_withdrawal": "**[警告] 払い戻しアドレスを設定しています。このアドレスを完全に管理できることを確認してください。**"
-    },
-    "validate_yesno": {
-        "err_invalid_bool_value": "yes/no の質問に対する無効な値です。"
-    },
-    "validate_deposit_amount": {
-        "err_invalid_amount": "無効な額です。入金額として1 ether以上の値を指定してください。",
-        "err_not_gwei_denomination": "無効な額です。1 gweiを超える精度の値は指定できません。",
-        "err_min_deposit": "無効な額です。1 ether以上の値を指定してください。",
-        "err_max_deposit": "無効な額です。最大入金額は2048 etherです。これ以下の値を指定してください。",
-        "err_zero_multiplier": "このチェーン設定では値が0の乗数が使用されているため無効です。"
-    },
-    "validate_bls_withdrawal_credentials": {
-        "err_is_already_01_form": "指定された払い戻し認証情報はすでに 0x01 形式です。払い戻しアドレスをすでに設定していませんか？",
-        "err_not_bls_form": "指定された払い戻し認証情報は BLS_WITHDRAWAL_PREFIX 形式ではありません。"
-    },
-    "validate_bls_withdrawal_credentials_matching": {
-        "err_not_matching": "指定された払い戻し認証情報が、ニーモニックから生成された古い BLS 払い戻し認証情報と一致しません。"
-    },
-    "verify_bls_to_execution_change_json": {
-        "msg_bls_to_execution_change_verification": "BLSToExecutionChange ファイルを確認しています：\t"
-    },
-    "normalize_bls_withdrawal_credentials_to_bytes": {
-        "err_incorrect_hex_form": "指定された入力は16進数形式でエンコードされていません。"
-    },
-    "normalize_input_list": {
-        "err_incorrect_list": "指定された入力はバリデーターの古い BLS 払い戻し認証情報の一覧である必要があります。複数の項目は空白またはカンマで区切ってください。"
-    },
-    "validate_keystore_file": {
-        "err_file_not_found": "ファイルが見つかりませんでした。指定されたパスを確認して、もう一度お試しください。",
-        "err_invalid_keystore_file": "見つかったファイルは正しいキーストアファイル形式ではありません。指定されたパスがキーストアファイルを指していることを確認して、もう一度お試しください。",
-        "err_unknown_keystore_file": "キーストアファイルの解析または読み込み中に予期しないエラーが発生しました。指定されたパスがキーストアファイルを指していることを確認して、もう一度お試しください。"
-    },
-    "validate_devnet_chain_setting": {
-        "err_invalid_devnet_chain_setting": "devnet_chain_setting の JSON 文字列が無効です。network_name、genesis_fork_version、exit_fork_version のキーを少なくとも含む有効な JSON オブジェクトである必要があります。",
-        "arg_devnet_chain_setting_warning": "**[警告] このコマンドでは devnet chain setting を使用しています。**"
-    },
-    "validate_devnet_chain_setting_json": {
-        "err_devnet_chain_setting_not_object": "devnet_chain_setting の JSON 文字列が無効です。JSON 文字列のルートにオブジェクトがありません。",
-        "err_devnet_chain_setting_missing_keys": "devnet_chain_setting の JSON 文字列が無効です。ルートオブジェクトに network_name、genesis_fork_version、exit_fork_version のいずれか1つ以上のキーがありません。",
-        "err_devnet_known_genesis_fork_version": "devnet chain setting で既存ネットワークの既知の genesis fork version が使用されています。",
-        "err_devnet_chain_setting_invalid_json": "devnet_chain_setting の JSON 文字列が無効です。JSON 文字列をデコードできませんでした。有効な JSON 文字列を渡していることを確認してください。",
-        "err_devnet_chain_setting_key_length": "devnet_chain_setting の JSON 文字列が無効です。ルートオブジェクトには3、4、5、または6個のキーのみを含める必要があります。",
-        "err_devnet_chain_setting_unknown_keys": "devnet chain setting に認識されないキーが含まれています。",
-        "err_devnet_chain_setting_zero_multiplier": "devnet chain setting の乗数が無効です。0にすることはできません。",
-        "err_devnet_chain_setting_negative_multiplier": "devnet chain setting の乗数が無効です。負の値にすることはできません。"
-    }
+  "verify_deposit_data_json": {
+    "msg_deposit_verification": "入金確認中:"
+  },
+  "validate_password_strength": {
+    "msg_password_length": "パスワードの長さは少なくとも12文字でなければなりません。再入力してください",
+    "msg_password_utf8_win32": "端末は UTF-8 エンコードされていません。キーストアファイルを Linux にインポートできるよう、パスワードには英語の文字のみを使用してください。再入力してください。",
+    "msg_password_utf8": "端末は UTF-8 エンコードされていません。キーストアファイルを Linux にインポートできるよう、パスワードには英語の文字のみを使用してください。再入力してください。\nまたは、このプログラムを終了して UTF-8 エンコードされた端末から再起動してください。"
+  },
+  "validate_int_range": {
+    "err_not_positive_integer": "正の整数ではありません。再入力してください。"
+  },
+  "validate_choice": {
+    "err_invalid_choice": "有効な選択肢ではありません。選択内容を再入力してください。"
+  },
+  "validate_withdrawal_address": {
+    "err_invalid_ECDSA_hex_addr": "指定された払い戻しアドレスは16進数形式でエンコードされていません。",
+    "err_invalid_ECDSA_hex_addr_checksum": "指定された払い戻しアドレスはチェックサム形式ではありません。",
+    "err_missing_address": "アドレスを指定する必要があります",
+    "msg_ECDSA_hex_addr_withdrawal": "**[警告] 払い戻しアドレスを設定しています。このアドレスを完全に管理できることを確認してください。**"
+  },
+  "validate_yesno": {
+    "err_invalid_bool_value": "yes/no の質問に対する無効な値です。"
+  },
+  "validate_deposit_amount": {
+    "err_invalid_amount": "無効な額です。入金額として1 ether以上の値を指定してください。",
+    "err_not_gwei_denomination": "無効な額です。1 gweiを超える精度の値は指定できません。",
+    "err_min_deposit": "無効な額です。1 ether以上の値を指定してください。",
+    "err_max_deposit": "無効な額です。最大入金額は2048 etherです。これ以下の値を指定してください。",
+    "err_zero_multiplier": "このチェーン設定では値が0の乗数が使用されているため無効です。"
+  },
+  "validate_bls_withdrawal_credentials": {
+    "err_is_already_01_form": "指定された払い戻し認証情報はすでに 0x01 形式です。払い戻しアドレスをすでに設定していませんか？",
+    "err_not_bls_form": "指定された払い戻し認証情報は BLS_WITHDRAWAL_PREFIX 形式ではありません。"
+  },
+  "validate_bls_withdrawal_credentials_matching": {
+    "err_not_matching": "指定された払い戻し認証情報が、ニーモニックから生成された古い BLS 払い戻し認証情報と一致しません。"
+  },
+  "verify_bls_to_execution_change_json": {
+    "msg_bls_to_execution_change_verification": "BLSToExecutionChange ファイルを確認しています：\t"
+  },
+  "normalize_bls_withdrawal_credentials_to_bytes": {
+    "err_incorrect_hex_form": "指定された入力は16進数形式でエンコードされていません。"
+  },
+  "normalize_input_list": {
+    "err_incorrect_list": "指定された入力はバリデーターの古い BLS 払い戻し認証情報の一覧である必要があります。複数の項目は空白またはカンマで区切ってください。"
+  },
+  "validate_keystore_file": {
+    "err_file_not_found": "ファイルが見つかりませんでした。指定されたパスを確認して、もう一度お試しください。",
+    "err_invalid_keystore_file": "見つかったファイルは正しいキーストアファイル形式ではありません。指定されたパスがキーストアファイルを指していることを確認して、もう一度お試しください。",
+    "err_unknown_keystore_file": "キーストアファイルの解析または読み込み中に予期しないエラーが発生しました。指定されたパスがキーストアファイルを指していることを確認して、もう一度お試しください。"
+  },
+  "validate_devnet_chain_setting": {
+    "err_invalid_devnet_chain_setting": "devnet_chain_setting の JSON 文字列が無効です。network_name、genesis_fork_version、exit_fork_version のキーを少なくとも含む有効な JSON オブジェクトである必要があります。",
+    "arg_devnet_chain_setting_warning": "**[警告] このコマンドでは devnet chain setting を使用しています。**"
+  },
+  "validate_devnet_chain_setting_json": {
+    "err_devnet_chain_setting_not_object": "devnet_chain_setting の JSON 文字列が無効です。JSON 文字列のルートにオブジェクトがありません。",
+    "err_devnet_chain_setting_missing_keys": "devnet_chain_setting の JSON 文字列が無効です。ルートオブジェクトに network_name、genesis_fork_version、exit_fork_version のいずれか1つ以上のキーがありません。",
+    "err_devnet_known_genesis_fork_version": "devnet chain setting で既存ネットワークの既知の genesis fork version が使用されています。",
+    "err_devnet_chain_setting_invalid_json": "devnet_chain_setting の JSON 文字列が無効です。JSON 文字列をデコードできませんでした。有効な JSON 文字列を渡していることを確認してください。",
+    "err_devnet_chain_setting_key_length": "devnet_chain_setting の JSON 文字列が無効です。ルートオブジェクトには3、4、5、または6個のキーのみを含める必要があります。",
+    "err_devnet_chain_setting_unknown_keys": "devnet chain setting に認識されないキーが含まれています。",
+    "err_devnet_chain_setting_zero_multiplier": "devnet chain setting の乗数が無効です。0にすることはできません。",
+    "err_devnet_chain_setting_negative_multiplier": "devnet chain setting の乗数が無効です。負の値にすることはできません。"
+  }
 }

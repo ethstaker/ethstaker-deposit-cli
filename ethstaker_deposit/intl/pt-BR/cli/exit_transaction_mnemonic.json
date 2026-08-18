@@ -1,35 +1,35 @@
 {
-    "exit_transaction_mnemonic": {
-        "arg_exit_transaction_mnemonic": {
-            "help": "Gere uma transação de saída que pode ser usada para retirar validadores da Ethereum Beacon Chain."
-        },
-        "arg_exit_transaction_mnemonic_chain": {
-            "help": "O nome da cadeia Ethereum PoS em que seu validador está sendo executado. \"mainnet\" é o padrão.",
-            "prompt": "Escolha o nome da rede/cadeia (mainnet ou testnet)"
-        },
-        "arg_exit_transaction_mnemonic_start_index": {
-            "help": "Digite o índice (número da chave) usado quando você criou suas chaves. O valor padrão é 0.",
-            "prompt": "Digite o índice (número da chave) usado quando você criou suas chaves. O valor padrão é 0."
-        },
-        "arg_exit_transaction_mnemonic_indices": {
-            "help": "Uma lista dos números de índice dos validadores em questão",
-            "prompt": "Digite uma lista dos números de índice dos seus validadores, conforme identificados na beacon chain. Separe vários itens com espaços em branco ou vírgulas."
-        },
-        "arg_exit_transaction_mnemonic_epoch": {
-            "help": "O epoch a partir do qual a transação de saída será válida. Por padrão, a transação será sempre válida."
-        },
-        "arg_exit_transaction_mnemonic_output_folder": {
-            "help": "O caminho da pasta onde as transações de saída serão salvas. Por padrão, aponta para `./exit_transactions`."
-        },
-        "arg_devnet_chain_setting": {
-            "help": "[SOMENTE DEVNET] Defina valores específicos para EXIT_FORK_VERSION e GENESIS_VALIDATORS_ROOT. Deve ser uma string JSON contendo um objeto com as seguintes chaves: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount e min_deposit_amount. Deve ser semelhante ao que você encontra em settings.py. Isso substituirá qualquer cadeia selecionada.",
-            "missing_genesis_validators_root": "A configuração da cadeia não contém um valor para GENESIS_VALIDATORS_ROOT. Esse valor é necessário para criar a transação de saída."
-        },
-        "msg_key_creation": "Criando suas chaves:\t",
-        "msg_exit_transaction_creation": "Criando suas transações de saída:\t",
-        "msg_verify_exit_transaction": "Verificando suas transações de saída:\t",
-        "err_verify_exit_transactions": "\nHouve um problema ao verificar suas transações de saída.\nTente novamente",
-        "msg_creation_success": "\nSucesso!\nOs arquivos das suas transações de saída podem ser encontrados em: ",
-        "msg_pause": "\n\nPressione qualquer tecla."
-    }
+  "exit_transaction_mnemonic": {
+    "arg_exit_transaction_mnemonic": {
+      "help": "Gere uma transação de saída que pode ser usada para retirar validadores da Ethereum Beacon Chain."
+    },
+    "arg_exit_transaction_mnemonic_chain": {
+      "help": "O nome da cadeia Ethereum PoS em que seu validador está sendo executado. \"mainnet\" é o padrão.",
+      "prompt": "Escolha o nome da rede/cadeia (mainnet ou testnet)"
+    },
+    "arg_exit_transaction_mnemonic_start_index": {
+      "help": "Digite o índice (número da chave) usado quando você criou suas chaves. O valor padrão é 0.",
+      "prompt": "Digite o índice (número da chave) usado quando você criou suas chaves. O valor padrão é 0."
+    },
+    "arg_exit_transaction_mnemonic_indices": {
+      "help": "Uma lista dos números de índice dos validadores em questão",
+      "prompt": "Digite uma lista dos números de índice dos seus validadores, conforme identificados na beacon chain. Separe vários itens com espaços em branco ou vírgulas."
+    },
+    "arg_exit_transaction_mnemonic_epoch": {
+      "help": "O epoch a partir do qual a transação de saída será válida. Por padrão, a transação será sempre válida."
+    },
+    "arg_exit_transaction_mnemonic_output_folder": {
+      "help": "O caminho da pasta onde as transações de saída serão salvas. Por padrão, aponta para `./exit_transactions`."
+    },
+    "arg_devnet_chain_setting": {
+      "help": "[SOMENTE DEVNET] Defina valores específicos para EXIT_FORK_VERSION e GENESIS_VALIDATORS_ROOT. Deve ser uma string JSON contendo um objeto com as seguintes chaves: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount e min_deposit_amount. Deve ser semelhante ao que você encontra em settings.py. Isso substituirá qualquer cadeia selecionada.",
+      "missing_genesis_validators_root": "A configuração da cadeia não contém um valor para GENESIS_VALIDATORS_ROOT. Esse valor é necessário para criar a transação de saída."
+    },
+    "msg_key_creation": "Criando suas chaves:\t",
+    "msg_exit_transaction_creation": "Criando suas transações de saída:\t",
+    "msg_verify_exit_transaction": "Verificando suas transações de saída:\t",
+    "err_verify_exit_transactions": "\nHouve um problema ao verificar suas transações de saída.\nTente novamente",
+    "msg_creation_success": "\nSucesso!\nOs arquivos das suas transações de saída podem ser encontrados em: ",
+    "msg_pause": "\n\nPressione qualquer tecla."
+  }
 }

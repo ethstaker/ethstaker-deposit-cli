@@ -1,17 +1,17 @@
 {
-    "new_mnemonic": {
-        "arg_new_mnemonic": {
-            "help": "Buat mnemonik dan kunci baru"
-        },
-        "arg_mnemonic_language": {
-            "default": "english",
-            "help": "Bahasa mnemonik Anda",
-            "prompt": "Silakan pilih bahasa mnemonik Anda"
-        },
-        "msg_mnemonic_presentation": "Ini adalah mnemonik Anda (frasa benih). Catat dan simpan dengan aman, ini adalah SATU-SATUNYA cara untuk mengambil deposit Anda.",
-        "msg_press_any_key": "Tekan sembarang tombol setelah Anda menuliskan mnemonik Anda.",
-        "msg_mnemonic_retype_prompt": "Harap ketik mnemonik Anda (dipisahkan dengan spasi) untuk mengonfirmasi bahwa Anda telah menuliskannya",
-        "msg_mnemonic_clipboard_warning": "PERINGATAN: Anda HARUS menuliskan mnemonik, karena kami akan mencoba menghapus papan klip setelah langkah ini.",
-        "msg_confirm_clipboard_clearing": "PERINGATAN: Papan klip Anda akan DIHAPUS. Beberapa aplikasi atau konfigurasi mungkin mencegahnya. Tekan tombol apa saja untuk menghapus papan klip."
-    }
+  "new_mnemonic": {
+    "arg_new_mnemonic": {
+      "help": "Buat mnemonik dan kunci baru"
+    },
+    "arg_mnemonic_language": {
+      "default": "english",
+      "help": "Bahasa mnemonik Anda",
+      "prompt": "Silakan pilih bahasa mnemonik Anda"
+    },
+    "msg_mnemonic_presentation": "Ini adalah mnemonik Anda (frasa benih). Catat dan simpan dengan aman, ini adalah SATU-SATUNYA cara untuk mengambil deposit Anda.",
+    "msg_press_any_key": "Tekan sembarang tombol setelah Anda menuliskan mnemonik Anda.",
+    "msg_mnemonic_retype_prompt": "Harap ketik mnemonik Anda (dipisahkan dengan spasi) untuk mengonfirmasi bahwa Anda telah menuliskannya",
+    "msg_mnemonic_clipboard_warning": "PERINGATAN: Anda HARUS menuliskan mnemonik, karena kami akan mencoba menghapus papan klip setelah langkah ini.",
+    "msg_confirm_clipboard_clearing": "PERINGATAN: Papan klip Anda akan DIHAPUS. Beberapa aplikasi atau konfigurasi mungkin mencegahnya. Tekan tombol apa saja untuk menghapus papan klip."
+  }
 }

@@ -1,45 +1,45 @@
 {
-    "generate_bls_to_execution_change": {
-        "arg_generate_bls_to_execution_change": {
-            "help": "Generazione dei dati SignedBLSToExecutionChange per abilitare i prelievi sulla Beacon Chain di Ethereum."
-        },
-        "arg_withdrawal_address": {
-            "help": "L'indirizzo Ethereum che verrà utilizzato per il prelievo. In genere inizia con '0x' seguito da 40 caratteri esadecimali. Assicurati di avere il pieno controllo dell'indirizzo scelto. Una volta impostato on-chain, non può essere modificato.",
-            "prompt": "Inserisci l'indirizzo di prelievo. Nota: NON PUOI modificarlo dopo averlo impostato on-chain.",
-            "confirm": "Ripeti l'indirizzo di prelievo per conferma.",
-            "mismatch": "Errore: i due valori inseriti non corrispondono. Riprova."
-        },
-        "arg_devnet_chain_setting": {
-            "help": "[SOLO DEVNET] Imposta i valori GENESIS_FORK_VERSION e GENESIS_VALIDATORS_ROOT. Deve essere una stringa JSON contenente un oggetto con le chiavi network_name, genesis_fork_version, exit_fork_versio, genesis_validator_root, multiplier, min_activation_amount e min_deposit_amount. Deve essere simile a quanto indicato in settings.py. Sovrascriverà la catena selezionata."
-        },
-        "arg_validator_indices": {
-            "help": "Un elenco degli indici dei validatori interessati",
-            "prompt": "Inserisci un elenco degli indici dei tuoi validatori, come identificati sulla Beacon Chain. Separa più elementi con spazi o virgole."
-        },
-        "arg_bls_withdrawal_credentials_list": {
-            "help": "Un elenco delle vecchie withdrawal credential BLS di 32 byte dei validatori interessati",
-            "prompt": "Inserisci un elenco delle vecchie withdrawal credential BLS dei tuoi validatori. Separa più elementi con spazi o virgole. Le withdrawal credential sono in formato esadecimale."
-        },
-        "arg_validator_start_index": {
-            "help": "La posizione iniziale degli indici delle chiavi per generare le withdrawal credential nel formato ERC-2334",
-            "prompt": "Inserisci la posizione iniziale degli indici delle chiavi per generare le withdrawal credential nel formato ERC-2334.",
-            "confirm": "Ripeti l'indice per conferma"
-        },
-        "arg_chain": {
-            "help": "Il nome della catena Ethereum PoS di destinazione. Usa \"mainnet\" se stai depositando ETH",
-            "prompt": "Scegli il nome della rete/catena (mainnet o testnet)"
-        },
-        "arg_fork": {
-            "help": "Il nome del fork con cui vuoi firmare il messaggio.",
-            "prompt": "Scegli il nome del fork con cui vuoi firmare il messaggio."
-        },
-        "arg_bls_to_execution_changes_folder": {
-            "help": "Il percorso della cartella per i keystore. Per impostazione predefinita punta a `./bls_to_execution_changes`."
-        },
-        "msg_key_creation": "Creazione del SignedBLSToExecutionChange.",
-        "msg_credentials_verification": "Verifica delle withdrawal credential.",
-        "msg_creation_success": "\nOperazione riuscita!\nIl file JSON SignedBLSToExecutionChange è disponibile in: ",
-        "msg_pause": "\n\nPremi un tasto qualsiasi.",
-        "err_verify_btec": "Impossibile verificare i file JSON bls_to_execution_change."
-    }
+  "generate_bls_to_execution_change": {
+    "arg_generate_bls_to_execution_change": {
+      "help": "Generazione dei dati SignedBLSToExecutionChange per abilitare i prelievi sulla Beacon Chain di Ethereum."
+    },
+    "arg_withdrawal_address": {
+      "help": "L'indirizzo Ethereum che verrà utilizzato per il prelievo. In genere inizia con '0x' seguito da 40 caratteri esadecimali. Assicurati di avere il pieno controllo dell'indirizzo scelto. Una volta impostato on-chain, non può essere modificato.",
+      "prompt": "Inserisci l'indirizzo di prelievo. Nota: NON PUOI modificarlo dopo averlo impostato on-chain.",
+      "confirm": "Ripeti l'indirizzo di prelievo per conferma.",
+      "mismatch": "Errore: i due valori inseriti non corrispondono. Riprova."
+    },
+    "arg_devnet_chain_setting": {
+      "help": "[SOLO DEVNET] Imposta i valori GENESIS_FORK_VERSION e GENESIS_VALIDATORS_ROOT. Deve essere una stringa JSON contenente un oggetto con le chiavi network_name, genesis_fork_version, exit_fork_versio, genesis_validator_root, multiplier, min_activation_amount e min_deposit_amount. Deve essere simile a quanto indicato in settings.py. Sovrascriverà la catena selezionata."
+    },
+    "arg_validator_indices": {
+      "help": "Un elenco degli indici dei validatori interessati",
+      "prompt": "Inserisci un elenco degli indici dei tuoi validatori, come identificati sulla Beacon Chain. Separa più elementi con spazi o virgole."
+    },
+    "arg_bls_withdrawal_credentials_list": {
+      "help": "Un elenco delle vecchie withdrawal credential BLS di 32 byte dei validatori interessati",
+      "prompt": "Inserisci un elenco delle vecchie withdrawal credential BLS dei tuoi validatori. Separa più elementi con spazi o virgole. Le withdrawal credential sono in formato esadecimale."
+    },
+    "arg_validator_start_index": {
+      "help": "La posizione iniziale degli indici delle chiavi per generare le withdrawal credential nel formato ERC-2334",
+      "prompt": "Inserisci la posizione iniziale degli indici delle chiavi per generare le withdrawal credential nel formato ERC-2334.",
+      "confirm": "Ripeti l'indice per conferma"
+    },
+    "arg_chain": {
+      "help": "Il nome della catena Ethereum PoS di destinazione. Usa \"mainnet\" se stai depositando ETH",
+      "prompt": "Scegli il nome della rete/catena (mainnet o testnet)"
+    },
+    "arg_fork": {
+      "help": "Il nome del fork con cui vuoi firmare il messaggio.",
+      "prompt": "Scegli il nome del fork con cui vuoi firmare il messaggio."
+    },
+    "arg_bls_to_execution_changes_folder": {
+      "help": "Il percorso della cartella per i keystore. Per impostazione predefinita punta a `./bls_to_execution_changes`."
+    },
+    "msg_key_creation": "Creazione del SignedBLSToExecutionChange.",
+    "msg_credentials_verification": "Verifica delle withdrawal credential.",
+    "msg_creation_success": "\nOperazione riuscita!\nIl file JSON SignedBLSToExecutionChange è disponibile in: ",
+    "msg_pause": "\n\nPremi un tasto qualsiasi.",
+    "err_verify_btec": "Impossibile verificare i file JSON bls_to_execution_change."
+  }
 }

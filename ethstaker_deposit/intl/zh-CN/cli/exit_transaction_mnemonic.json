@@ -1,35 +1,35 @@
 {
-    "exit_transaction_mnemonic": {
-        "arg_exit_transaction_mnemonic": {
-            "help": "生成可用于退出 Ethereum Beacon Chain 验证者的退出交易。"
-        },
-        "arg_exit_transaction_mnemonic_chain": {
-            "help": "您的验证者运行所在的 Ethereum PoS 链名称。默认值为 \"mainnet\"。",
-            "prompt": "请选择（mainnet 或 testnet）网络/链名称"
-        },
-        "arg_exit_transaction_mnemonic_start_index": {
-            "help": "请输入您创建密钥时使用的索引（密钥编号）。默认值为 0。",
-            "prompt": "请输入您创建密钥时使用的索引（密钥编号）。默认值为 0。"
-        },
-        "arg_exit_transaction_mnemonic_indices": {
-            "help": "指定验证者的验证者索引编号列表",
-            "prompt": "请输入 beacon chain 上标识的验证者索引编号列表。多个项目请使用空格或逗号分隔。"
-        },
-        "arg_exit_transaction_mnemonic_epoch": {
-            "help": "退出交易生效的 epoch。默认情况下交易始终有效。"
-        },
-        "arg_exit_transaction_mnemonic_output_folder": {
-            "help": "保存退出交易的文件夹路径。默认指向 `./exit_transactions`。"
-        },
-        "arg_devnet_chain_setting": {
-            "help": "[DEVNET ONLY] 设置特定的 EXIT_FORK_VERSION 和 GENESIS_VALIDATORS_ROOT 值。该值应为包含以下键的对象的 JSON 字符串：network_name、genesis_fork_version、exit_fork_version、genesis_validator_root、multiplier、min_activation_amount 和 min_deposit_amount。其格式应类似于 settings.py 中的设置。这将覆盖所选链。",
-            "missing_genesis_validators_root": "链设置缺少 GENESIS_VALIDATORS_ROOT 值。创建退出交易需要此值。"
-        },
-        "msg_key_creation": "正在创建您的密钥：\t",
-        "msg_exit_transaction_creation": "正在创建您的退出交易：\t",
-        "msg_verify_exit_transaction": "正在验证您的退出交易：\t",
-        "err_verify_exit_transactions": "\n验证您的退出交易时出现问题。\n请重试",
-        "msg_creation_success": "\n成功！\n您的退出交易文件位于：",
-        "msg_pause": "\n\n请按任意键。"
-    }
+  "exit_transaction_mnemonic": {
+    "arg_exit_transaction_mnemonic": {
+      "help": "生成可用于退出 Ethereum Beacon Chain 验证者的退出交易。"
+    },
+    "arg_exit_transaction_mnemonic_chain": {
+      "help": "您的验证者运行所在的 Ethereum PoS 链名称。默认值为 \"mainnet\"。",
+      "prompt": "请选择（mainnet 或 testnet）网络/链名称"
+    },
+    "arg_exit_transaction_mnemonic_start_index": {
+      "help": "请输入您创建密钥时使用的索引（密钥编号）。默认值为 0。",
+      "prompt": "请输入您创建密钥时使用的索引（密钥编号）。默认值为 0。"
+    },
+    "arg_exit_transaction_mnemonic_indices": {
+      "help": "指定验证者的验证者索引编号列表",
+      "prompt": "请输入 beacon chain 上标识的验证者索引编号列表。多个项目请使用空格或逗号分隔。"
+    },
+    "arg_exit_transaction_mnemonic_epoch": {
+      "help": "退出交易生效的 epoch。默认情况下交易始终有效。"
+    },
+    "arg_exit_transaction_mnemonic_output_folder": {
+      "help": "保存退出交易的文件夹路径。默认指向 `./exit_transactions`。"
+    },
+    "arg_devnet_chain_setting": {
+      "help": "[DEVNET ONLY] 设置特定的 EXIT_FORK_VERSION 和 GENESIS_VALIDATORS_ROOT 值。该值应为包含以下键的对象的 JSON 字符串：network_name、genesis_fork_version、exit_fork_version、genesis_validator_root、multiplier、min_activation_amount 和 min_deposit_amount。其格式应类似于 settings.py 中的设置。这将覆盖所选链。",
+      "missing_genesis_validators_root": "链设置缺少 GENESIS_VALIDATORS_ROOT 值。创建退出交易需要此值。"
+    },
+    "msg_key_creation": "正在创建您的密钥：\t",
+    "msg_exit_transaction_creation": "正在创建您的退出交易：\t",
+    "msg_verify_exit_transaction": "正在验证您的退出交易：\t",
+    "err_verify_exit_transactions": "\n验证您的退出交易时出现问题。\n请重试",
+    "msg_creation_success": "\n成功！\n您的退出交易文件位于：",
+    "msg_pause": "\n\n请按任意键。"
+  }
 }

@@ -1,67 +1,67 @@
 {
-    "verify_deposit_data_json": {
-        "msg_deposit_verification": "Επαλήθευση των καταθέσεών σας:\t"
-    },
-    "validate_password_strength": {
-        "msg_password_length": "Το μήκος του κωδικού πρόσβασης πρέπει να είναι τουλάχιστον 12. Πληκτρολογήστε ξανά",
-        "msg_password_utf8_win32": "Το τερματικό σας δεν είναι κωδικοποιημένο σε UTF-8. Για να διασφαλιστεί ότι το αρχείο keystore μπορεί να εισαχθεί στο Linux, ο κωδικός πρόσβασης πρέπει να περιέχει μόνο χαρακτήρες του αγγλικού αλφαβήτου. Πληκτρολογήστε ξανά.",
-        "msg_password_utf8": "Το τερματικό σας δεν είναι κωδικοποιημένο σε UTF-8. Για να διασφαλιστεί ότι το αρχείο keystore μπορεί να εισαχθεί στο Linux, ο κωδικός πρόσβασης πρέπει να περιέχει μόνο χαρακτήρες του αγγλικού αλφαβήτου. Πληκτρολογήστε ξανά.\nΕναλλακτικά, μπορείτε να τερματίσετε αυτό το πρόγραμμα και να το επανεκκινήσετε από τερματικό κωδικοποιημένο σε UTF-8."
-    },
-    "validate_int_range": {
-        "err_not_positive_integer": "Αυτός δεν είναι θετικός ακέραιος αριθμός. Πληκτρολογήστε ξανά."
-    },
-    "validate_choice": {
-        "err_invalid_choice": "Αυτή δεν είναι έγκυρη επιλογή. Πληκτρολογήστε ξανά την επιλογή σας."
-    },
-    "validate_withdrawal_address": {
-        "err_invalid_ECDSA_hex_addr": "Η δοθείσα διεύθυνση ανάληψης δεν είναι σε δεκαεξαδική κωδικοποιημένη μορφή.",
-        "err_invalid_ECDSA_hex_addr_checksum": "Η δοθείσα διεύθυνση ανάληψης δεν έχει μορφή checksum.",
-        "err_missing_address": "Πρέπει να δοθεί μια διεύθυνση",
-        "msg_ECDSA_hex_addr_withdrawal": "**[Προειδοποίηση] ορίζετε μια διεύθυνση ανάληψης. Βεβαιωθείτε ότι έχετε τον πλήρη έλεγχο αυτής της διεύθυνσης.**"
-    },
-    "validate_yesno": {
-        "err_invalid_bool_value": "Αυτή είναι μη έγκυρη τιμή για ερώτηση ναι/όχι."
-    },
-    "validate_deposit_amount": {
-        "err_invalid_amount": "Δόθηκε μη έγκυρο ποσό. Δώστε μια τιμή τουλάχιστον 1 ether για το ποσό που θέλετε να καταθέσετε.",
-        "err_not_gwei_denomination": "Δόθηκε μη έγκυρο ποσό. Η τιμή δεν μπορεί να έχει ακρίβεια μεγαλύτερη από 1 gwei.",
-        "err_min_deposit": "Δόθηκε μη έγκυρο ποσό. Δώστε μια τιμή τουλάχιστον 1 ether.",
-        "err_max_deposit": "Δόθηκε μη έγκυρο ποσό. Το μέγιστο ποσό κατάθεσης είναι 2048 ether. Δώστε μικρότερο ή ίσο ποσό.",
-        "err_zero_multiplier": "Αυτή η ρύθμιση αλυσίδας χρησιμοποιεί πολλαπλασιαστή με μηδενική τιμή, η οποία δεν είναι έγκυρη."
-    },
-    "validate_bls_withdrawal_credentials": {
-        "err_is_already_01_form": "Τα δοθέντα διαπιστευτήρια ανάληψης είναι ήδη σε μορφή 0x01. Έχετε ήδη ορίσει τη διεύθυνση ανάληψης;",
-        "err_not_bls_form": "Τα δοθέντα διαπιστευτήρια ανάληψης δεν είναι σε μορφή BLS_WITHDRAWAL_PREFIX."
-    },
-    "validate_bls_withdrawal_credentials_matching": {
-        "err_not_matching": "Τα δοθέντα διαπιστευτήρια ανάληψης δεν ταιριάζουν με τα παλιά διαπιστευτήρια ανάληψης BLS που δημιούργησε το μνημονικό."
-    },
-    "verify_bls_to_execution_change_json": {
-        "msg_bls_to_execution_change_verification": "Επαλήθευση του αρχείου BLSToExecutionChange σας:\t"
-    },
-    "normalize_bls_withdrawal_credentials_to_bytes": {
-        "err_incorrect_hex_form": "Η δοθείσα είσοδος δεν είναι σε δεκαεξαδική κωδικοποιημένη μορφή."
-    },
-    "normalize_input_list": {
-        "err_incorrect_list": "Η δοθείσα είσοδος πρέπει να είναι λίστα με τα παλιά BLS διαπιστευτήρια ανάληψης των επικυρωτών σας. Διαχωρίστε πολλά στοιχεία με κενά ή κόμματα."
-    },
-    "validate_keystore_file": {
-        "err_file_not_found": "Δεν βρέθηκε αρχείο. Επαληθεύστε τη διαδρομή που δόθηκε και δοκιμάστε ξανά.",
-        "err_invalid_keystore_file": "Το αρχείο που βρέθηκε δεν έχει τη σωστή μορφή αρχείου keystore. Επαληθεύστε ότι η διαδρομή που δόθηκε οδηγεί σε αρχείο keystore και δοκιμάστε ξανά.",
-        "err_unknown_keystore_file": "Παρουσιάστηκε απροσδόκητο σφάλμα κατά την ανάλυση ή τη φόρτωση του αρχείου keystore. Επαληθεύστε ότι η διαδρομή που δόθηκε οδηγεί σε αρχείο keystore και δοκιμάστε ξανά."
-    },
-    "validate_devnet_chain_setting": {
-        "err_invalid_devnet_chain_setting": "Μη έγκυρη συμβολοσειρά JSON για το devnet_chain_setting. Πρέπει να είναι έγκυρο αντικείμενο JSON που περιέχει τουλάχιστον τα ακόλουθα κλειδιά: network_name, genesis_fork_version και exit_fork_version.",
-        "arg_devnet_chain_setting_warning": "**[Προειδοποίηση] Χρησιμοποιείται ρύθμιση αλυσίδας devnet με αυτή την εντολή.**"
-    },
-    "validate_devnet_chain_setting_json": {
-        "err_devnet_chain_setting_not_object": "Μη έγκυρη συμβολοσειρά JSON για το devnet_chain_setting. Η συμβολοσειρά JSON δεν περιέχει αντικείμενο στη ρίζα.",
-        "err_devnet_chain_setting_missing_keys": "Μη έγκυρη συμβολοσειρά JSON για το devnet_chain_setting. Από το αντικείμενο ρίζας λείπει ένα ή περισσότερα από τα ακόλουθα κλειδιά: network_name, genesis_fork_version ή exit_fork_version.",
-        "err_devnet_known_genesis_fork_version": "Η ρύθμιση αλυσίδας devnet χρησιμοποιεί γνωστή έκδοση fork γένεσης από υπάρχον δίκτυο.",
-        "err_devnet_chain_setting_invalid_json": "Μη έγκυρη συμβολοσειρά JSON για το devnet_chain_setting. Δεν ήταν δυνατή η αποκωδικοποίηση της συμβολοσειράς JSON. Βεβαιωθείτε ότι δώσατε έγκυρη συμβολοσειρά JSON.",
-        "err_devnet_chain_setting_key_length": "Μη έγκυρη συμβολοσειρά JSON για το devnet_chain_setting. Το αντικείμενο ρίζας πρέπει να περιέχει μόνο 3, 4, 5 ή 6 κλειδιά.",
-        "err_devnet_chain_setting_unknown_keys": "Η ρύθμιση αλυσίδας devnet περιέχει μη αναγνωρισμένα κλειδιά.",
-        "err_devnet_chain_setting_zero_multiplier": "Μη έγκυρη τιμή πολλαπλασιαστή στη ρύθμιση αλυσίδας devnet. Δεν μπορεί να είναι μηδέν.",
-        "err_devnet_chain_setting_negative_multiplier": "Μη έγκυρη τιμή πολλαπλασιαστή στη ρύθμιση αλυσίδας devnet. Δεν μπορεί να είναι αρνητική."
-    }
+  "verify_deposit_data_json": {
+    "msg_deposit_verification": "Επαλήθευση των καταθέσεών σας:\t"
+  },
+  "validate_password_strength": {
+    "msg_password_length": "Το μήκος του κωδικού πρόσβασης πρέπει να είναι τουλάχιστον 12. Πληκτρολογήστε ξανά",
+    "msg_password_utf8_win32": "Το τερματικό σας δεν είναι κωδικοποιημένο σε UTF-8. Για να διασφαλιστεί ότι το αρχείο keystore μπορεί να εισαχθεί στο Linux, ο κωδικός πρόσβασης πρέπει να περιέχει μόνο χαρακτήρες του αγγλικού αλφαβήτου. Πληκτρολογήστε ξανά.",
+    "msg_password_utf8": "Το τερματικό σας δεν είναι κωδικοποιημένο σε UTF-8. Για να διασφαλιστεί ότι το αρχείο keystore μπορεί να εισαχθεί στο Linux, ο κωδικός πρόσβασης πρέπει να περιέχει μόνο χαρακτήρες του αγγλικού αλφαβήτου. Πληκτρολογήστε ξανά.\nΕναλλακτικά, μπορείτε να τερματίσετε αυτό το πρόγραμμα και να το επανεκκινήσετε από τερματικό κωδικοποιημένο σε UTF-8."
+  },
+  "validate_int_range": {
+    "err_not_positive_integer": "Αυτός δεν είναι θετικός ακέραιος αριθμός. Πληκτρολογήστε ξανά."
+  },
+  "validate_choice": {
+    "err_invalid_choice": "Αυτή δεν είναι έγκυρη επιλογή. Πληκτρολογήστε ξανά την επιλογή σας."
+  },
+  "validate_withdrawal_address": {
+    "err_invalid_ECDSA_hex_addr": "Η δοθείσα διεύθυνση ανάληψης δεν είναι σε δεκαεξαδική κωδικοποιημένη μορφή.",
+    "err_invalid_ECDSA_hex_addr_checksum": "Η δοθείσα διεύθυνση ανάληψης δεν έχει μορφή checksum.",
+    "err_missing_address": "Πρέπει να δοθεί μια διεύθυνση",
+    "msg_ECDSA_hex_addr_withdrawal": "**[Προειδοποίηση] ορίζετε μια διεύθυνση ανάληψης. Βεβαιωθείτε ότι έχετε τον πλήρη έλεγχο αυτής της διεύθυνσης.**"
+  },
+  "validate_yesno": {
+    "err_invalid_bool_value": "Αυτή είναι μη έγκυρη τιμή για ερώτηση ναι/όχι."
+  },
+  "validate_deposit_amount": {
+    "err_invalid_amount": "Δόθηκε μη έγκυρο ποσό. Δώστε μια τιμή τουλάχιστον 1 ether για το ποσό που θέλετε να καταθέσετε.",
+    "err_not_gwei_denomination": "Δόθηκε μη έγκυρο ποσό. Η τιμή δεν μπορεί να έχει ακρίβεια μεγαλύτερη από 1 gwei.",
+    "err_min_deposit": "Δόθηκε μη έγκυρο ποσό. Δώστε μια τιμή τουλάχιστον 1 ether.",
+    "err_max_deposit": "Δόθηκε μη έγκυρο ποσό. Το μέγιστο ποσό κατάθεσης είναι 2048 ether. Δώστε μικρότερο ή ίσο ποσό.",
+    "err_zero_multiplier": "Αυτή η ρύθμιση αλυσίδας χρησιμοποιεί πολλαπλασιαστή με μηδενική τιμή, η οποία δεν είναι έγκυρη."
+  },
+  "validate_bls_withdrawal_credentials": {
+    "err_is_already_01_form": "Τα δοθέντα διαπιστευτήρια ανάληψης είναι ήδη σε μορφή 0x01. Έχετε ήδη ορίσει τη διεύθυνση ανάληψης;",
+    "err_not_bls_form": "Τα δοθέντα διαπιστευτήρια ανάληψης δεν είναι σε μορφή BLS_WITHDRAWAL_PREFIX."
+  },
+  "validate_bls_withdrawal_credentials_matching": {
+    "err_not_matching": "Τα δοθέντα διαπιστευτήρια ανάληψης δεν ταιριάζουν με τα παλιά διαπιστευτήρια ανάληψης BLS που δημιούργησε το μνημονικό."
+  },
+  "verify_bls_to_execution_change_json": {
+    "msg_bls_to_execution_change_verification": "Επαλήθευση του αρχείου BLSToExecutionChange σας:\t"
+  },
+  "normalize_bls_withdrawal_credentials_to_bytes": {
+    "err_incorrect_hex_form": "Η δοθείσα είσοδος δεν είναι σε δεκαεξαδική κωδικοποιημένη μορφή."
+  },
+  "normalize_input_list": {
+    "err_incorrect_list": "Η δοθείσα είσοδος πρέπει να είναι λίστα με τα παλιά BLS διαπιστευτήρια ανάληψης των επικυρωτών σας. Διαχωρίστε πολλά στοιχεία με κενά ή κόμματα."
+  },
+  "validate_keystore_file": {
+    "err_file_not_found": "Δεν βρέθηκε αρχείο. Επαληθεύστε τη διαδρομή που δόθηκε και δοκιμάστε ξανά.",
+    "err_invalid_keystore_file": "Το αρχείο που βρέθηκε δεν έχει τη σωστή μορφή αρχείου keystore. Επαληθεύστε ότι η διαδρομή που δόθηκε οδηγεί σε αρχείο keystore και δοκιμάστε ξανά.",
+    "err_unknown_keystore_file": "Παρουσιάστηκε απροσδόκητο σφάλμα κατά την ανάλυση ή τη φόρτωση του αρχείου keystore. Επαληθεύστε ότι η διαδρομή που δόθηκε οδηγεί σε αρχείο keystore και δοκιμάστε ξανά."
+  },
+  "validate_devnet_chain_setting": {
+    "err_invalid_devnet_chain_setting": "Μη έγκυρη συμβολοσειρά JSON για το devnet_chain_setting. Πρέπει να είναι έγκυρο αντικείμενο JSON που περιέχει τουλάχιστον τα ακόλουθα κλειδιά: network_name, genesis_fork_version και exit_fork_version.",
+    "arg_devnet_chain_setting_warning": "**[Προειδοποίηση] Χρησιμοποιείται ρύθμιση αλυσίδας devnet με αυτή την εντολή.**"
+  },
+  "validate_devnet_chain_setting_json": {
+    "err_devnet_chain_setting_not_object": "Μη έγκυρη συμβολοσειρά JSON για το devnet_chain_setting. Η συμβολοσειρά JSON δεν περιέχει αντικείμενο στη ρίζα.",
+    "err_devnet_chain_setting_missing_keys": "Μη έγκυρη συμβολοσειρά JSON για το devnet_chain_setting. Από το αντικείμενο ρίζας λείπει ένα ή περισσότερα από τα ακόλουθα κλειδιά: network_name, genesis_fork_version ή exit_fork_version.",
+    "err_devnet_known_genesis_fork_version": "Η ρύθμιση αλυσίδας devnet χρησιμοποιεί γνωστή έκδοση fork γένεσης από υπάρχον δίκτυο.",
+    "err_devnet_chain_setting_invalid_json": "Μη έγκυρη συμβολοσειρά JSON για το devnet_chain_setting. Δεν ήταν δυνατή η αποκωδικοποίηση της συμβολοσειράς JSON. Βεβαιωθείτε ότι δώσατε έγκυρη συμβολοσειρά JSON.",
+    "err_devnet_chain_setting_key_length": "Μη έγκυρη συμβολοσειρά JSON για το devnet_chain_setting. Το αντικείμενο ρίζας πρέπει να περιέχει μόνο 3, 4, 5 ή 6 κλειδιά.",
+    "err_devnet_chain_setting_unknown_keys": "Η ρύθμιση αλυσίδας devnet περιέχει μη αναγνωρισμένα κλειδιά.",
+    "err_devnet_chain_setting_zero_multiplier": "Μη έγκυρη τιμή πολλαπλασιαστή στη ρύθμιση αλυσίδας devnet. Δεν μπορεί να είναι μηδέν.",
+    "err_devnet_chain_setting_negative_multiplier": "Μη έγκυρη τιμή πολλαπλασιαστή στη ρύθμιση αλυσίδας devnet. Δεν μπορεί να είναι αρνητική."
+  }
 }

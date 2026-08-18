@@ -1,45 +1,45 @@
 {
-    "partial_deposit": {
-        "arg_partial_deposit": {
-            "help": "Genera un deposito parziale di almeno 1 ether, firmato dal keystore del validatore fornito. L'importo verrà aggiunto al saldo del validatore fornito oppure avvierà la creazione di un nuovo validatore."
-        },
-        "arg_partial_deposit_chain": {
-            "help": "Il nome della catena Ethereum PoS su cui è in esecuzione il validatore. \"mainnet\" è l'impostazione predefinita.",
-            "prompt": "Scegli il nome della rete/catena (mainnet o testnet)"
-        },
-        "arg_partial_deposit_amount": {
-            "help": "L'importo da depositare per questo validatore, espresso in ether. Deve essere almeno 1 ether e non può avere una precisione superiore a 1 gwei. Il valore predefinito è 32 ether.",
-            "prompt": "Inserisci l'importo da depositare per questo validatore. Deve essere almeno {min_deposit} e non può avere una precisione superiore a 1 gwei. Sono necessari {activation_amount} per attivare un nuovo validatore"
-        },
-        "arg_partial_deposit_keystore": {
-            "help": "Il file keystore associato al validatore con cui vuoi firmare ed effettuare il deposito.",
-            "prompt": "Inserisci il percorso del file keystore."
-        },
-        "arg_partial_deposit_keystore_password": {
-            "help": "La password utilizzata per cifrare il keystore fornito. Nota: non è la password della mnemonica. È consigliato non usare questo argomento e attendere che la CLI richieda la password, altrimenti apparirà nella cronologia della shell.",
-            "prompt": "Inserisci la password utilizzata per cifrare il keystore fornito.",
-            "mismatch": "Errore: la password del keystore fornita non ha consentito di decifrare questo file keystore. Verifica di avere la password corretta e riprova."
-        },
-        "arg_partial_deposit_output_folder": {
-            "help": "Il percorso della cartella in cui verrà salvato il deposito parziale. Per impostazione predefinita punta a `./partial_deposits`."
-        },
-        "arg_withdrawal_address": {
-            "help": "L'indirizzo di prelievo del validatore. Se vuoi creare un validatore con withdrawal credential 0x00, usa il comando new-mnemonic o existing-mnemonic.",
-            "confirm": "Ripeti l'indirizzo di prelievo per conferma.",
-            "prompt": "Inserisci l'indirizzo di prelievo. Se vuoi creare un validatore con withdrawal credential 0x00, usa il comando new-mnemonic o existing-mnemonic.",
-            "mismatch": "Errore: i due indirizzi inseriti non corrispondono. Riprova."
-        },
-        "arg_compounding": {
-            "help": "Genera validatori compounding con withdrawal credential 0x02 per un saldo effettivo massimo di 2048 ETH oppure validatori normali con withdrawal credential 0x01 per un saldo effettivo massimo di 32 ETH. Questa funzionalità è supportata solo sulle reti che hanno eseguito il fork Pectra.",
-            "prompt": "Inserisci yes se vuoi generare validatori compounding con withdrawal credential 0x02 per un saldo effettivo massimo di 2048 ETH. I validatori compounding e le withdrawal credential 0x02 sono supportati solo sulle reti che hanno eseguito il fork Pectra. Inserisci no o lascia vuoto per generare validatori normali con withdrawal credential 0x01 e saldo effettivo massimo di 32 ETH."
-        },
-        "arg_devnet_chain_setting": {
-            "help": "[SOLO DEVNET] Imposta il valore GENESIS_FORK_VERSION. Deve essere una stringa JSON contenente un oggetto con le chiavi network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount e min_deposit_amount. Deve essere simile a quanto indicato in settings.py. Sovrascriverà la catena selezionata."
-        },
-        "msg_partial_deposit_creation": "\nCreazione del deposito parziale...",
-        "msg_verify_partial_deposit": "\nVerifica del deposito parziale...",
-        "err_verify_partial_deposit": "\nSi è verificato un problema durante la verifica del deposito parziale.\nRiprova",
-        "msg_creation_success": "\nOperazione riuscita!\nIl file del deposito parziale è disponibile in: ",
-        "msg_pause": "\n\nPremi un tasto qualsiasi."
-    }
+  "partial_deposit": {
+    "arg_partial_deposit": {
+      "help": "Genera un deposito parziale di almeno 1 ether, firmato dal keystore del validatore fornito. L'importo verrà aggiunto al saldo del validatore fornito oppure avvierà la creazione di un nuovo validatore."
+    },
+    "arg_partial_deposit_chain": {
+      "help": "Il nome della catena Ethereum PoS su cui è in esecuzione il validatore. \"mainnet\" è l'impostazione predefinita.",
+      "prompt": "Scegli il nome della rete/catena (mainnet o testnet)"
+    },
+    "arg_partial_deposit_amount": {
+      "help": "L'importo da depositare per questo validatore, espresso in ether. Deve essere almeno 1 ether e non può avere una precisione superiore a 1 gwei. Il valore predefinito è 32 ether.",
+      "prompt": "Inserisci l'importo da depositare per questo validatore. Deve essere almeno {min_deposit} e non può avere una precisione superiore a 1 gwei. Sono necessari {activation_amount} per attivare un nuovo validatore"
+    },
+    "arg_partial_deposit_keystore": {
+      "help": "Il file keystore associato al validatore con cui vuoi firmare ed effettuare il deposito.",
+      "prompt": "Inserisci il percorso del file keystore."
+    },
+    "arg_partial_deposit_keystore_password": {
+      "help": "La password utilizzata per cifrare il keystore fornito. Nota: non è la password della mnemonica. È consigliato non usare questo argomento e attendere che la CLI richieda la password, altrimenti apparirà nella cronologia della shell.",
+      "prompt": "Inserisci la password utilizzata per cifrare il keystore fornito.",
+      "mismatch": "Errore: la password del keystore fornita non ha consentito di decifrare questo file keystore. Verifica di avere la password corretta e riprova."
+    },
+    "arg_partial_deposit_output_folder": {
+      "help": "Il percorso della cartella in cui verrà salvato il deposito parziale. Per impostazione predefinita punta a `./partial_deposits`."
+    },
+    "arg_withdrawal_address": {
+      "help": "L'indirizzo di prelievo del validatore. Se vuoi creare un validatore con withdrawal credential 0x00, usa il comando new-mnemonic o existing-mnemonic.",
+      "confirm": "Ripeti l'indirizzo di prelievo per conferma.",
+      "prompt": "Inserisci l'indirizzo di prelievo. Se vuoi creare un validatore con withdrawal credential 0x00, usa il comando new-mnemonic o existing-mnemonic.",
+      "mismatch": "Errore: i due indirizzi inseriti non corrispondono. Riprova."
+    },
+    "arg_compounding": {
+      "help": "Genera validatori compounding con withdrawal credential 0x02 per un saldo effettivo massimo di 2048 ETH oppure validatori normali con withdrawal credential 0x01 per un saldo effettivo massimo di 32 ETH. Questa funzionalità è supportata solo sulle reti che hanno eseguito il fork Pectra.",
+      "prompt": "Inserisci yes se vuoi generare validatori compounding con withdrawal credential 0x02 per un saldo effettivo massimo di 2048 ETH. I validatori compounding e le withdrawal credential 0x02 sono supportati solo sulle reti che hanno eseguito il fork Pectra. Inserisci no o lascia vuoto per generare validatori normali con withdrawal credential 0x01 e saldo effettivo massimo di 32 ETH."
+    },
+    "arg_devnet_chain_setting": {
+      "help": "[SOLO DEVNET] Imposta il valore GENESIS_FORK_VERSION. Deve essere una stringa JSON contenente un oggetto con le chiavi network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount e min_deposit_amount. Deve essere simile a quanto indicato in settings.py. Sovrascriverà la catena selezionata."
+    },
+    "msg_partial_deposit_creation": "\nCreazione del deposito parziale...",
+    "msg_verify_partial_deposit": "\nVerifica del deposito parziale...",
+    "err_verify_partial_deposit": "\nSi è verificato un problema durante la verifica del deposito parziale.\nRiprova",
+    "msg_creation_success": "\nOperazione riuscita!\nIl file del deposito parziale è disponibile in: ",
+    "msg_pause": "\n\nPremi un tasto qualsiasi."
+  }
 }

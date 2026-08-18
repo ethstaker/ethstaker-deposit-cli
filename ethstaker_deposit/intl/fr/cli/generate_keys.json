@@ -1,48 +1,48 @@
 {
-    "generate_keys_arguments_decorator": {
-        "num_validators": {
-            "help": "Nombre de clés de validateurs que vous souhaitez générer (vous pourrez en générer davantage plus tard)",
-            "prompt": "Veuillez choisir le nombre de validateurs que vous souhaitez exécuter"
-        },
-        "chain": {
-            "help": "Version Ethereum Proof of Stake que vous ciblez. Utilisez \"mainnet\" si vous déposez de l'ETH.",
-            "prompt": "Veuillez choisir un nom de chaîne/réseau : mainnet (réseau principal) ou testnet (réseau de test)."
-        },
-        "keystore_password": {
-            "help": "Mot de passe qui sécurisera vos keystores. Vous devrez le saisir de nouveau pour les décrypter quand vous configurerez vos validateurs Proof of Stake. (Il est recommandé de ne pas utiliser cet argument et d'attendre que l'ILC vous demande votre phrase mnémonique, sinon il apparaîtra dans l'historique de votre interpréteur.)",
-            "prompt": "Mot de passe qui sécurisera vos keystores. Vous devrez le saisir de nouveau pour les décrypter quand vous configurerez vos validateurs Proof of Stake.",
-            "confirm": "Veuillez confirmer le mot de passe.",
-            "mismatch": "Erreur : Les deux valeurs saisies ne correspondent pas. Veuillez réessayer."
-        },
-        "folder": {
-            "help": "Le chemin du dossier des keystores et des dépôts. Pointe par défaut vers `./validator_keys`."
-        },
-        "arg_withdrawal_address": {
-            "help": "L'adresse Ethereum qui sera utilisée pour le retrait. Elle commence généralement par '0x', suivi de 40 caractères hexadécimaux. Assurez-vous d'avoir le contrôle total de l'adresse choisie. Une fois l'adresse de retrait définie sur la chaîne, elle ne peut plus être modifiée.",
-            "prompt": "Veuillez saisir l'adresse de retrait facultative. Notez que vous NE POURREZ PAS la modifier une fois définie sur la chaîne.",
-            "confirm": "Saisissez à nouveau votre adresse de retrait pour confirmation.",
-            "mismatch": "Erreur : les deux valeurs saisies ne correspondent pas. Veuillez recommencer."
-        },
-        "arg_compounding": {
-            "help": "Génère des validateurs à composition avec des identifiants de retrait 0x02 pour un solde effectif maximal de 2048 ETH, ou des validateurs classiques avec des identifiants de retrait 0x01 pour un solde effectif maximal de 32 ETH. L'utilisation de cette option nécessite une adresse de retrait. Cette fonctionnalité n'est prise en charge que sur les réseaux ayant effectué le fork Pectra.",
-            "prompt": "Saisissez yes si vous souhaitez générer des validateurs à composition avec des identifiants de retrait 0x02 pour un solde effectif maximal de 2048 ETH. Les validateurs à composition et les identifiants de retrait 0x02 ne sont pris en charge que sur les réseaux ayant effectué le fork Pectra. Saisissez no ou ne saisissez rien pour générer des validateurs classiques avec des identifiants de retrait 0x01 pour un solde effectif maximal de 32 ETH."
-        },
-        "arg_amount": {
-            "help": "Le montant à déposer sur ces validateurs, en ether. Il doit être d'au moins 1 ether et ne peut pas avoir une précision supérieure à 1 gwei. L'utilisation de cette option nécessite des validateurs à composition.",
-            "prompt": "Veuillez saisir le montant que vous souhaitez déposer sur ces validateurs. Il doit être d'au moins {min_deposit} et ne peut pas avoir une précision supérieure à 1 gwei. {activation_amount} est requis pour activer un nouveau validateur"
-        },
-        "arg_pbkdf2": {
-            "help": "Utilise la fonction de hachage pbkdf2 au lieu de scrypt pour les fichiers keystore générés. "
-        },
-        "arg_devnet_chain_setting": {
-            "help": "[DEVNET UNIQUEMENT] Définit une valeur spécifique pour GENESIS_FORK_VERSION. Il doit s'agir d'une chaîne JSON contenant un objet avec les clés suivantes : network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount et min_deposit_amount. Elle doit être similaire à ce que vous pouvez trouver dans settings.py. Cela remplacera toute chaîne sélectionnée."
-        }
+  "generate_keys_arguments_decorator": {
+    "num_validators": {
+      "help": "Nombre de clés de validateurs que vous souhaitez générer (vous pourrez en générer davantage plus tard)",
+      "prompt": "Veuillez choisir le nombre de validateurs que vous souhaitez exécuter"
     },
-    "generate_keys": {
-        "msg_key_creation": "Création de vos clés.",
-        "msg_creation_success": "\nOpération terminée !\nVos clés sont disponibles ici : ",
-        "msg_pause": "\n\nAppuyez sur n'importe quelle touche.",
-        "err_verify_keystores": "Impossible de vérifier les keystores.",
-        "err_verify_deposit": "Impossible de vérifier les fichiers JSON des données de dépôt."
+    "chain": {
+      "help": "Version Ethereum Proof of Stake que vous ciblez. Utilisez \"mainnet\" si vous déposez de l'ETH.",
+      "prompt": "Veuillez choisir un nom de chaîne/réseau : mainnet (réseau principal) ou testnet (réseau de test)."
+    },
+    "keystore_password": {
+      "help": "Mot de passe qui sécurisera vos keystores. Vous devrez le saisir de nouveau pour les décrypter quand vous configurerez vos validateurs Proof of Stake. (Il est recommandé de ne pas utiliser cet argument et d'attendre que l'ILC vous demande votre phrase mnémonique, sinon il apparaîtra dans l'historique de votre interpréteur.)",
+      "prompt": "Mot de passe qui sécurisera vos keystores. Vous devrez le saisir de nouveau pour les décrypter quand vous configurerez vos validateurs Proof of Stake.",
+      "confirm": "Veuillez confirmer le mot de passe.",
+      "mismatch": "Erreur : Les deux valeurs saisies ne correspondent pas. Veuillez réessayer."
+    },
+    "folder": {
+      "help": "Le chemin du dossier des keystores et des dépôts. Pointe par défaut vers `./validator_keys`."
+    },
+    "arg_withdrawal_address": {
+      "help": "L'adresse Ethereum qui sera utilisée pour le retrait. Elle commence généralement par '0x', suivi de 40 caractères hexadécimaux. Assurez-vous d'avoir le contrôle total de l'adresse choisie. Une fois l'adresse de retrait définie sur la chaîne, elle ne peut plus être modifiée.",
+      "prompt": "Veuillez saisir l'adresse de retrait facultative. Notez que vous NE POURREZ PAS la modifier une fois définie sur la chaîne.",
+      "confirm": "Saisissez à nouveau votre adresse de retrait pour confirmation.",
+      "mismatch": "Erreur : les deux valeurs saisies ne correspondent pas. Veuillez recommencer."
+    },
+    "arg_compounding": {
+      "help": "Génère des validateurs à composition avec des identifiants de retrait 0x02 pour un solde effectif maximal de 2048 ETH, ou des validateurs classiques avec des identifiants de retrait 0x01 pour un solde effectif maximal de 32 ETH. L'utilisation de cette option nécessite une adresse de retrait. Cette fonctionnalité n'est prise en charge que sur les réseaux ayant effectué le fork Pectra.",
+      "prompt": "Saisissez yes si vous souhaitez générer des validateurs à composition avec des identifiants de retrait 0x02 pour un solde effectif maximal de 2048 ETH. Les validateurs à composition et les identifiants de retrait 0x02 ne sont pris en charge que sur les réseaux ayant effectué le fork Pectra. Saisissez no ou ne saisissez rien pour générer des validateurs classiques avec des identifiants de retrait 0x01 pour un solde effectif maximal de 32 ETH."
+    },
+    "arg_amount": {
+      "help": "Le montant à déposer sur ces validateurs, en ether. Il doit être d'au moins 1 ether et ne peut pas avoir une précision supérieure à 1 gwei. L'utilisation de cette option nécessite des validateurs à composition.",
+      "prompt": "Veuillez saisir le montant que vous souhaitez déposer sur ces validateurs. Il doit être d'au moins {min_deposit} et ne peut pas avoir une précision supérieure à 1 gwei. {activation_amount} est requis pour activer un nouveau validateur"
+    },
+    "arg_pbkdf2": {
+      "help": "Utilise la fonction de hachage pbkdf2 au lieu de scrypt pour les fichiers keystore générés. "
+    },
+    "arg_devnet_chain_setting": {
+      "help": "[DEVNET UNIQUEMENT] Définit une valeur spécifique pour GENESIS_FORK_VERSION. Il doit s'agir d'une chaîne JSON contenant un objet avec les clés suivantes : network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount et min_deposit_amount. Elle doit être similaire à ce que vous pouvez trouver dans settings.py. Cela remplacera toute chaîne sélectionnée."
     }
+  },
+  "generate_keys": {
+    "msg_key_creation": "Création de vos clés.",
+    "msg_creation_success": "\nOpération terminée !\nVos clés sont disponibles ici : ",
+    "msg_pause": "\n\nAppuyez sur n'importe quelle touche.",
+    "err_verify_keystores": "Impossible de vérifier les keystores.",
+    "err_verify_deposit": "Impossible de vérifier les fichiers JSON des données de dépôt."
+  }
 }

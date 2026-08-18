@@ -1,67 +1,67 @@
 {
-    "verify_deposit_data_json": {
-        "msg_deposit_verification": "Se verifică depozitele tale:\t"
-    },
-    "validate_password_strength": {
-        "msg_password_length": "Parola trebuie să aibă o lungime de cel puțin 12. Te rugăm să o reintroduci",
-        "msg_password_utf8_win32": "Terminalul tău nu este codificat în UTF-8. Pentru a te asigura că fișierul keystore poate fi importat pe Linux, parola trebuie să conțină doar caractere din limba engleză. Tastează din nou.",
-        "msg_password_utf8": "Terminalul tău nu este codificat în UTF-8. Pentru a te asigura că fișierul keystore poate fi importat pe Linux, parola trebuie să conțină doar caractere din limba engleză. Tastează din nou.\nAlternativ, poți închide acest program și să îl relansezi dintr-un terminal codificat în UTF-8."
-    },
-    "validate_int_range": {
-        "err_not_positive_integer": "Aceasta nu este o valoare întreagă pozitivă. Tastează din nou."
-    },
-    "validate_choice": {
-        "err_invalid_choice": "Aceasta nu este una dintre opțiunile valide. Tastează din nou alegerea."
-    },
-    "validate_withdrawal_address": {
-        "err_invalid_ECDSA_hex_addr": "Adresa de retragere furnizată nu este codificată în format hexazecimal.",
-        "err_invalid_ECDSA_hex_addr_checksum": "Adresa de retragere furnizată nu este în format checksum.",
-        "err_missing_address": "Trebuie furnizată o adresă",
-        "msg_ECDSA_hex_addr_withdrawal": "**[Avertisment] setezi o adresă de retragere. Asigură-te că deții controlul deplin asupra acestei adrese.**"
-    },
-    "validate_yesno": {
-        "err_invalid_bool_value": "Aceasta este o valoare invalidă pentru o întrebare yes/no."
-    },
-    "validate_deposit_amount": {
-        "err_invalid_amount": "Suma furnizată nu este validă. Furnizează o valoare de cel puțin 1 ether pentru suma pe care vrei să o depui.",
-        "err_not_gwei_denomination": "Suma furnizată nu este validă. Furnizează o valoare cu o precizie de cel mult 1 gwei.",
-        "err_min_deposit": "Suma furnizată nu este validă. Furnizează o valoare de cel puțin 1 ether.",
-        "err_max_deposit": "Suma furnizată nu este validă. Suma maximă a depunerii este 2048 ether. Furnizează o sumă mai mică sau egală.",
-        "err_zero_multiplier": "Setarea acestui lanț folosește un multiplicator cu valoarea zero, ceea ce nu este valid."
-    },
-    "validate_bls_withdrawal_credentials": {
-        "err_is_already_01_form": "Credențialele de retragere furnizate sunt deja în format 0x01. Ai setat deja adresa de retragere?",
-        "err_not_bls_form": "Credențialele de retragere furnizate nu sunt în formatul BLS_WITHDRAWAL_PREFIX."
-    },
-    "validate_bls_withdrawal_credentials_matching": {
-        "err_not_matching": "Credențialele de retragere furnizate nu corespund vechilor credențiale de retragere BLS generate de mnemonic."
-    },
-    "verify_bls_to_execution_change_json": {
-        "msg_bls_to_execution_change_verification": "Se verifică fișierul tău BLSToExecutionChange:\t"
-    },
-    "normalize_bls_withdrawal_credentials_to_bytes": {
-        "err_incorrect_hex_form": "Datele de intrare furnizate nu sunt codificate în format hexazecimal."
-    },
-    "normalize_input_list": {
-        "err_incorrect_list": "Datele de intrare furnizate trebuie să fie o listă cu vechile credențiale de retragere BLS ale validatorului (validatorilor) tău (tăi). Separă elementele multiple prin spații sau virgule."
-    },
-    "validate_keystore_file": {
-        "err_file_not_found": "Nu a fost găsit niciun fișier. Verifică calea furnizată și încearcă din nou.",
-        "err_invalid_keystore_file": "Fișierul găsit nu are formatul corect de fișier keystore. Verifică dacă calea furnizată indică un fișier keystore și încearcă din nou.",
-        "err_unknown_keystore_file": "A apărut o eroare neașteptată la analizarea sau încărcarea fișierului keystore. Verifică dacă calea furnizată indică un fișier keystore și încearcă din nou."
-    },
-    "validate_devnet_chain_setting": {
-        "err_invalid_devnet_chain_setting": "Șir JSON invalid pentru devnet_chain_setting. Trebuie să fie un obiect JSON valid care conține cel puțin următoarele chei: network_name, genesis_fork_version și exit_fork_version.",
-        "arg_devnet_chain_setting_warning": "**[Avertisment] Se folosește setarea de lanț devnet cu această comandă.**"
-    },
-    "validate_devnet_chain_setting_json": {
-        "err_devnet_chain_setting_not_object": "Șir JSON invalid pentru devnet_chain_setting. Șirul JSON nu conține un obiect la rădăcină.",
-        "err_devnet_chain_setting_missing_keys": "Șir JSON invalid pentru devnet_chain_setting. Lipsesc una sau mai multe dintre aceste chei din obiectul rădăcină: network_name, genesis_fork_version sau exit_fork_version.",
-        "err_devnet_known_genesis_fork_version": "Setarea de lanț devnet folosește o versiune cunoscută de genesis fork de la o rețea existentă.",
-        "err_devnet_chain_setting_invalid_json": "Șir JSON invalid pentru devnet_chain_setting. Decodificarea șirului JSON nu a fost posibilă. Asigură-te că transmiți un șir JSON valid.",
-        "err_devnet_chain_setting_key_length": "Șir JSON invalid pentru devnet_chain_setting. Obiectul rădăcină trebuie să conțină doar 3, 4, 5 sau 6 chei.",
-        "err_devnet_chain_setting_unknown_keys": "Setarea de lanț devnet conține chei nerecunoscute.",
-        "err_devnet_chain_setting_zero_multiplier": "Valoare invalidă a multiplicatorului în setarea de lanț devnet. Nu poate fi zero.",
-        "err_devnet_chain_setting_negative_multiplier": "Valoare invalidă a multiplicatorului în setarea de lanț devnet. Nu poate fi negativă."
-    }
+  "verify_deposit_data_json": {
+    "msg_deposit_verification": "Se verifică depozitele tale:\t"
+  },
+  "validate_password_strength": {
+    "msg_password_length": "Parola trebuie să aibă o lungime de cel puțin 12. Te rugăm să o reintroduci",
+    "msg_password_utf8_win32": "Terminalul tău nu este codificat în UTF-8. Pentru a te asigura că fișierul keystore poate fi importat pe Linux, parola trebuie să conțină doar caractere din limba engleză. Tastează din nou.",
+    "msg_password_utf8": "Terminalul tău nu este codificat în UTF-8. Pentru a te asigura că fișierul keystore poate fi importat pe Linux, parola trebuie să conțină doar caractere din limba engleză. Tastează din nou.\nAlternativ, poți închide acest program și să îl relansezi dintr-un terminal codificat în UTF-8."
+  },
+  "validate_int_range": {
+    "err_not_positive_integer": "Aceasta nu este o valoare întreagă pozitivă. Tastează din nou."
+  },
+  "validate_choice": {
+    "err_invalid_choice": "Aceasta nu este una dintre opțiunile valide. Tastează din nou alegerea."
+  },
+  "validate_withdrawal_address": {
+    "err_invalid_ECDSA_hex_addr": "Adresa de retragere furnizată nu este codificată în format hexazecimal.",
+    "err_invalid_ECDSA_hex_addr_checksum": "Adresa de retragere furnizată nu este în format checksum.",
+    "err_missing_address": "Trebuie furnizată o adresă",
+    "msg_ECDSA_hex_addr_withdrawal": "**[Avertisment] setezi o adresă de retragere. Asigură-te că deții controlul deplin asupra acestei adrese.**"
+  },
+  "validate_yesno": {
+    "err_invalid_bool_value": "Aceasta este o valoare invalidă pentru o întrebare yes/no."
+  },
+  "validate_deposit_amount": {
+    "err_invalid_amount": "Suma furnizată nu este validă. Furnizează o valoare de cel puțin 1 ether pentru suma pe care vrei să o depui.",
+    "err_not_gwei_denomination": "Suma furnizată nu este validă. Furnizează o valoare cu o precizie de cel mult 1 gwei.",
+    "err_min_deposit": "Suma furnizată nu este validă. Furnizează o valoare de cel puțin 1 ether.",
+    "err_max_deposit": "Suma furnizată nu este validă. Suma maximă a depunerii este 2048 ether. Furnizează o sumă mai mică sau egală.",
+    "err_zero_multiplier": "Setarea acestui lanț folosește un multiplicator cu valoarea zero, ceea ce nu este valid."
+  },
+  "validate_bls_withdrawal_credentials": {
+    "err_is_already_01_form": "Credențialele de retragere furnizate sunt deja în format 0x01. Ai setat deja adresa de retragere?",
+    "err_not_bls_form": "Credențialele de retragere furnizate nu sunt în formatul BLS_WITHDRAWAL_PREFIX."
+  },
+  "validate_bls_withdrawal_credentials_matching": {
+    "err_not_matching": "Credențialele de retragere furnizate nu corespund vechilor credențiale de retragere BLS generate de mnemonic."
+  },
+  "verify_bls_to_execution_change_json": {
+    "msg_bls_to_execution_change_verification": "Se verifică fișierul tău BLSToExecutionChange:\t"
+  },
+  "normalize_bls_withdrawal_credentials_to_bytes": {
+    "err_incorrect_hex_form": "Datele de intrare furnizate nu sunt codificate în format hexazecimal."
+  },
+  "normalize_input_list": {
+    "err_incorrect_list": "Datele de intrare furnizate trebuie să fie o listă cu vechile credențiale de retragere BLS ale validatorului (validatorilor) tău (tăi). Separă elementele multiple prin spații sau virgule."
+  },
+  "validate_keystore_file": {
+    "err_file_not_found": "Nu a fost găsit niciun fișier. Verifică calea furnizată și încearcă din nou.",
+    "err_invalid_keystore_file": "Fișierul găsit nu are formatul corect de fișier keystore. Verifică dacă calea furnizată indică un fișier keystore și încearcă din nou.",
+    "err_unknown_keystore_file": "A apărut o eroare neașteptată la analizarea sau încărcarea fișierului keystore. Verifică dacă calea furnizată indică un fișier keystore și încearcă din nou."
+  },
+  "validate_devnet_chain_setting": {
+    "err_invalid_devnet_chain_setting": "Șir JSON invalid pentru devnet_chain_setting. Trebuie să fie un obiect JSON valid care conține cel puțin următoarele chei: network_name, genesis_fork_version și exit_fork_version.",
+    "arg_devnet_chain_setting_warning": "**[Avertisment] Se folosește setarea de lanț devnet cu această comandă.**"
+  },
+  "validate_devnet_chain_setting_json": {
+    "err_devnet_chain_setting_not_object": "Șir JSON invalid pentru devnet_chain_setting. Șirul JSON nu conține un obiect la rădăcină.",
+    "err_devnet_chain_setting_missing_keys": "Șir JSON invalid pentru devnet_chain_setting. Lipsesc una sau mai multe dintre aceste chei din obiectul rădăcină: network_name, genesis_fork_version sau exit_fork_version.",
+    "err_devnet_known_genesis_fork_version": "Setarea de lanț devnet folosește o versiune cunoscută de genesis fork de la o rețea existentă.",
+    "err_devnet_chain_setting_invalid_json": "Șir JSON invalid pentru devnet_chain_setting. Decodificarea șirului JSON nu a fost posibilă. Asigură-te că transmiți un șir JSON valid.",
+    "err_devnet_chain_setting_key_length": "Șir JSON invalid pentru devnet_chain_setting. Obiectul rădăcină trebuie să conțină doar 3, 4, 5 sau 6 chei.",
+    "err_devnet_chain_setting_unknown_keys": "Setarea de lanț devnet conține chei nerecunoscute.",
+    "err_devnet_chain_setting_zero_multiplier": "Valoare invalidă a multiplicatorului în setarea de lanț devnet. Nu poate fi zero.",
+    "err_devnet_chain_setting_negative_multiplier": "Valoare invalidă a multiplicatorului în setarea de lanț devnet. Nu poate fi negativă."
+  }
 }

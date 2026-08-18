@@ -1,48 +1,48 @@
 {
-    "generate_keys_arguments_decorator": {
-        "num_validators": {
-            "help": "生成するバリデーターキーの数 (後からいつでも追加で生成できます)",
-            "prompt": "実行したいバリデーターの数を選択してください"
-        },
-        "chain": {
-            "help": "ターゲットとしている Ethereum PoS のバージョン。ETH を入金する場合は \"mainnet\" を使用してください。",
-            "prompt": "(mainnet または testnet) ネットワーク/チェーン名を選択してください"
-        },
-        "keystore_password": {
-            "help": "キーを生成するために使用したニーモニック。 (この引数を使用せずにCLIからニーモニックの入力が求められるのを待つことをお勧めします。そうしないとシェル履歴に表示されます。)",
-            "prompt": "キーストアを保護するパスワード。Ethereum PoS バリデーターをセットアップする際に復号化するためにこれを再入力する必要があります。",
-            "confirm": "確認のために繰り返し入力してください。",
-            "mismatch": "エラー：入力された2つの値が一致しません。もう一度入力してください。"
-        },
-        "folder": {
-            "help": "キーストアとデポジットのフォルダーのパス。デフォルトでは `./validator_keys` を指します。"
-        },
-        "arg_withdrawal_address": {
-            "help": "払い戻しに使用する Ethereum アドレス。通常は '0x' に続く40個の16進文字で始まります。ここで選択するアドレスを完全に管理できることを確認してください。チェーン上で払い戻しアドレスを設定すると、変更できません。",
-            "prompt": "任意の払い戻しアドレスを入力してください。チェーン上で設定すると変更できないことに注意してください。",
-            "confirm": "確認のため払い戻しアドレスをもう一度入力してください。",
-            "mismatch": "エラー：入力された2つの値が一致しません。もう一度入力してください。"
-        },
-        "arg_compounding": {
-            "help": "最大有効残高2048 ETH用の0x02払い戻し認証情報を持つ複利バリデーター、または最大有効残高32 ETH用の0x01払い戻し認証情報を持つ通常のバリデーターを生成します。このオプションには払い戻しアドレスが必要です。この機能は Pectra フォークを実施したネットワークでのみサポートされます。",
-            "prompt": "最大有効残高2048 ETH用の0x02払い戻し認証情報を持つ複利バリデーターを生成する場合は yes と入力してください。複利バリデーターと0x02払い戻し認証情報は、Pectra フォークを実施したネットワークでのみサポートされます。最大有効残高32 ETH用の0x01払い戻し認証情報を持つ通常のバリデーターを生成する場合は、no または何も入力せずにください。"
-        },
-        "arg_amount": {
-            "help": "これらのバリデーターに入金する ether 単位の額。最低1 etherで、1 gweiを超える精度は指定できません。このオプションには複利バリデーターが必要です。",
-            "prompt": "これらのバリデーターに入金する額を入力してください。{min_deposit} 以上で、1 gweiを超える精度は指定できません。新しいバリデーターの有効化には {activation_amount} が必要です"
-        },
-        "arg_pbkdf2": {
-            "help": "生成されたキーストアファイルに scrypt ではなく pbkdf2 ハッシュ関数を使用します。 "
-        },
-        "arg_devnet_chain_setting": {
-            "help": "[DEVNET ONLY] 特定の GENESIS_FORK_VERSION 値を設定します。network_name、genesis_fork_version、exit_fork_version、genesis_validator_root、multiplier、min_activation_amount、min_deposit_amount のキーを含むオブジェクトの JSON 文字列を指定してください。settings.py にあるものと同様です。選択したチェーンの設定は上書きされます。"
-        }
+  "generate_keys_arguments_decorator": {
+    "num_validators": {
+      "help": "生成するバリデーターキーの数 (後からいつでも追加で生成できます)",
+      "prompt": "実行したいバリデーターの数を選択してください"
     },
-    "generate_keys": {
-        "msg_key_creation": "キーを作成しています。",
-        "msg_creation_success": "\n成功しました！\nあなたのキーは次の場所で見つけることができます：",
-        "msg_pause": "\n任意のキーを押してください。",
-        "err_verify_keystores": "キーストアの確認に失敗しました。",
-        "err_verify_deposit": "入金データ JSON ファイルの確認に失敗しました。"
+    "chain": {
+      "help": "ターゲットとしている Ethereum PoS のバージョン。ETH を入金する場合は \"mainnet\" を使用してください。",
+      "prompt": "(mainnet または testnet) ネットワーク/チェーン名を選択してください"
+    },
+    "keystore_password": {
+      "help": "キーを生成するために使用したニーモニック。 (この引数を使用せずにCLIからニーモニックの入力が求められるのを待つことをお勧めします。そうしないとシェル履歴に表示されます。)",
+      "prompt": "キーストアを保護するパスワード。Ethereum PoS バリデーターをセットアップする際に復号化するためにこれを再入力する必要があります。",
+      "confirm": "確認のために繰り返し入力してください。",
+      "mismatch": "エラー：入力された2つの値が一致しません。もう一度入力してください。"
+    },
+    "folder": {
+      "help": "キーストアとデポジットのフォルダーのパス。デフォルトでは `./validator_keys` を指します。"
+    },
+    "arg_withdrawal_address": {
+      "help": "払い戻しに使用する Ethereum アドレス。通常は '0x' に続く40個の16進文字で始まります。ここで選択するアドレスを完全に管理できることを確認してください。チェーン上で払い戻しアドレスを設定すると、変更できません。",
+      "prompt": "任意の払い戻しアドレスを入力してください。チェーン上で設定すると変更できないことに注意してください。",
+      "confirm": "確認のため払い戻しアドレスをもう一度入力してください。",
+      "mismatch": "エラー：入力された2つの値が一致しません。もう一度入力してください。"
+    },
+    "arg_compounding": {
+      "help": "最大有効残高2048 ETH用の0x02払い戻し認証情報を持つ複利バリデーター、または最大有効残高32 ETH用の0x01払い戻し認証情報を持つ通常のバリデーターを生成します。このオプションには払い戻しアドレスが必要です。この機能は Pectra フォークを実施したネットワークでのみサポートされます。",
+      "prompt": "最大有効残高2048 ETH用の0x02払い戻し認証情報を持つ複利バリデーターを生成する場合は yes と入力してください。複利バリデーターと0x02払い戻し認証情報は、Pectra フォークを実施したネットワークでのみサポートされます。最大有効残高32 ETH用の0x01払い戻し認証情報を持つ通常のバリデーターを生成する場合は、no または何も入力せずにください。"
+    },
+    "arg_amount": {
+      "help": "これらのバリデーターに入金する ether 単位の額。最低1 etherで、1 gweiを超える精度は指定できません。このオプションには複利バリデーターが必要です。",
+      "prompt": "これらのバリデーターに入金する額を入力してください。{min_deposit} 以上で、1 gweiを超える精度は指定できません。新しいバリデーターの有効化には {activation_amount} が必要です"
+    },
+    "arg_pbkdf2": {
+      "help": "生成されたキーストアファイルに scrypt ではなく pbkdf2 ハッシュ関数を使用します。 "
+    },
+    "arg_devnet_chain_setting": {
+      "help": "[DEVNET ONLY] 特定の GENESIS_FORK_VERSION 値を設定します。network_name、genesis_fork_version、exit_fork_version、genesis_validator_root、multiplier、min_activation_amount、min_deposit_amount のキーを含むオブジェクトの JSON 文字列を指定してください。settings.py にあるものと同様です。選択したチェーンの設定は上書きされます。"
     }
+  },
+  "generate_keys": {
+    "msg_key_creation": "キーを作成しています。",
+    "msg_creation_success": "\n成功しました！\nあなたのキーは次の場所で見つけることができます：",
+    "msg_pause": "\n任意のキーを押してください。",
+    "err_verify_keystores": "キーストアの確認に失敗しました。",
+    "err_verify_deposit": "入金データ JSON ファイルの確認に失敗しました。"
+  }
 }

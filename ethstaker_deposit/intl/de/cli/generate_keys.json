@@ -1,14 +1,48 @@
 {
-    "generate_keys_arguments_decorator": {
-        "num_validators": {"help": "Die Anzahl der neuen Validator-Schlüssel, die Sie erzeugen möchten (Sie können später jederzeit weitere erzeugen)", "prompt": "Bitte wählen Sie, wie viele neue Validatoren Sie betreiben möchten"},
-        "folder": {"help": "Der Ordnerpfad für die Keystore(s) und Deposit(s). Standardmäßig wird auf `./validator_keys` verwiesen."},
-        "chain": {"help": "Der Name der Ethereum-PoS-Chain, für die Sie eine Aktion durchführen. Verwenden Sie \"mainnet\", wenn Sie ETH einzahlen.", "prompt": "Bitte wählen Sie den Namen des Netzwerks bzw. der Chain (mainnet oder testnet)"},
-        "keystore_password": {"help": "Das Passwort, mit dem Ihre Keystores geschützt werden. Sie müssen es erneut eingeben, um sie beim Einrichten Ihrer Ethereum-Validatoren zu entschlüsseln. (Es wird empfohlen, dieses Argument nicht zu verwenden und zu warten, bis die CLI Sie nach Ihrem Passwort fragt, da es sonst in Ihrer Shell-Historie erscheint.)", "prompt": "Erstellen Sie ein Passwort, das Ihre Validator-Keystore(s) schützt. Sie müssen es erneut eingeben, um sie beim Einrichten Ihrer Ethereum-Validatoren zu entschlüsseln.", "confirm": "Wiederholen Sie Ihr Keystore-Passwort zur Bestätigung", "mismatch": "Fehler: Die beiden eingegebenen Werte stimmen nicht überein. Bitte geben Sie sie erneut ein."},
-        "arg_withdrawal_address": {"help": "Die Ethereum-Adresse, die für die Auszahlung verwendet wird. Sie beginnt normalerweise mit '0x', gefolgt von 40 hexadezimalen Zeichen. Stellen Sie sicher, dass Sie die vollständige Kontrolle über die hier ausgewählte Adresse haben. Sobald Sie eine Auszahlungsadresse auf der Chain festgelegt haben, kann sie nicht mehr geändert werden.", "prompt": "Bitte geben Sie die optionale Auszahlungsadresse ein. Beachten Sie, dass Sie sie nach dem Festlegen auf der Chain NICHT ändern können.", "confirm": "Wiederholen Sie Ihre Auszahlungsadresse zur Bestätigung.", "mismatch": "Fehler: Die beiden eingegebenen Werte stimmen nicht überein. Bitte geben Sie sie erneut ein."},
-        "arg_compounding": {"help": "Erzeugt Compounder-Validatoren mit 0x02-Auszahlungs-Credentials für ein maximales effektives Guthaben von 2048 ETH oder reguläre Validatoren mit 0x01-Auszahlungs-Credentials für ein maximales effektives Guthaben von 32 ETH. Für diese Option ist eine Auszahlungsadresse erforderlich. Diese Funktion wird nur von Netzwerken unterstützt, auf denen der Pectra-Fork durchgeführt wurde.", "prompt": "Geben Sie yes ein, wenn Sie Compounder-Validatoren mit 0x02-Auszahlungs-Credentials für ein maximales effektives Guthaben von 2048 ETH erzeugen möchten. Compounder-Validatoren und 0x02-Auszahlungs-Credentials werden nur von Netzwerken unterstützt, auf denen der Pectra-Fork durchgeführt wurde. Geben Sie no oder nichts ein, wenn Sie reguläre Validatoren mit 0x01-Auszahlungs-Credentials für ein maximales effektives Guthaben von 32 ETH möchten."},
-        "arg_amount": {"help": "Der Einzahlungsbetrag für diese Validatoren in Ether. Er muss mindestens 1 Ether betragen und darf keine höhere Genauigkeit als 1 gwei haben. Diese Option erfordert Compounder-Validatoren.", "prompt": "Bitte geben Sie den Betrag ein, den Sie bei diesen Validatoren einzahlen möchten. Er muss mindestens {min_deposit} betragen und darf keine höhere Genauigkeit als 1 gwei haben. {activation_amount} ist erforderlich, um einen neuen Validator zu aktivieren"},
-        "arg_pbkdf2": {"help": "Verwendet für erzeugte Keystore-Dateien die Hash-Funktion pbkdf2 anstelle von scrypt. "},
-        "arg_devnet_chain_setting": {"help": "[NUR DEVNET] Einen bestimmten Wert für GENESIS_FORK_VERSION festlegen. Dies muss ein JSON-String sein, der ein Objekt mit den folgenden Schlüsseln enthält: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount und min_deposit_amount. Er sollte dem entsprechen, was Sie in settings.py finden. Dadurch wird jede ausgewählte Chain überschrieben."}
+  "generate_keys_arguments_decorator": {
+    "num_validators": {
+      "help": "Die Anzahl der neuen Validator-Schlüssel, die Sie erzeugen möchten (Sie können später jederzeit weitere erzeugen)",
+      "prompt": "Bitte wählen Sie, wie viele neue Validatoren Sie betreiben möchten"
     },
-    "generate_keys": {"msg_key_creation": "Ihre Schlüssel werden erstellt.", "msg_creation_success": "\nErfolg!\nIhre Schlüssel befinden sich unter: ", "msg_pause": "\n\nDrücken Sie eine beliebige Taste.", "err_verify_keystores": "Die Keystores konnten nicht überprüft werden.", "err_verify_deposit": "Die Deposit-Daten-JSON-Dateien konnten nicht überprüft werden."}
+    "folder": {
+      "help": "Der Ordnerpfad für die Keystore(s) und Deposit(s). Standardmäßig wird auf `./validator_keys` verwiesen."
+    },
+    "chain": {
+      "help": "Der Name der Ethereum-PoS-Chain, für die Sie eine Aktion durchführen. Verwenden Sie \"mainnet\", wenn Sie ETH einzahlen.",
+      "prompt": "Bitte wählen Sie den Namen des Netzwerks bzw. der Chain (mainnet oder testnet)"
+    },
+    "keystore_password": {
+      "help": "Das Passwort, mit dem Ihre Keystores geschützt werden. Sie müssen es erneut eingeben, um sie beim Einrichten Ihrer Ethereum-Validatoren zu entschlüsseln. (Es wird empfohlen, dieses Argument nicht zu verwenden und zu warten, bis die CLI Sie nach Ihrem Passwort fragt, da es sonst in Ihrer Shell-Historie erscheint.)",
+      "prompt": "Erstellen Sie ein Passwort, das Ihre Validator-Keystore(s) schützt. Sie müssen es erneut eingeben, um sie beim Einrichten Ihrer Ethereum-Validatoren zu entschlüsseln.",
+      "confirm": "Wiederholen Sie Ihr Keystore-Passwort zur Bestätigung",
+      "mismatch": "Fehler: Die beiden eingegebenen Werte stimmen nicht überein. Bitte geben Sie sie erneut ein."
+    },
+    "arg_withdrawal_address": {
+      "help": "Die Ethereum-Adresse, die für die Auszahlung verwendet wird. Sie beginnt normalerweise mit '0x', gefolgt von 40 hexadezimalen Zeichen. Stellen Sie sicher, dass Sie die vollständige Kontrolle über die hier ausgewählte Adresse haben. Sobald Sie eine Auszahlungsadresse auf der Chain festgelegt haben, kann sie nicht mehr geändert werden.",
+      "prompt": "Bitte geben Sie die optionale Auszahlungsadresse ein. Beachten Sie, dass Sie sie nach dem Festlegen auf der Chain NICHT ändern können.",
+      "confirm": "Wiederholen Sie Ihre Auszahlungsadresse zur Bestätigung.",
+      "mismatch": "Fehler: Die beiden eingegebenen Werte stimmen nicht überein. Bitte geben Sie sie erneut ein."
+    },
+    "arg_compounding": {
+      "help": "Erzeugt Compounder-Validatoren mit 0x02-Auszahlungs-Credentials für ein maximales effektives Guthaben von 2048 ETH oder reguläre Validatoren mit 0x01-Auszahlungs-Credentials für ein maximales effektives Guthaben von 32 ETH. Für diese Option ist eine Auszahlungsadresse erforderlich. Diese Funktion wird nur von Netzwerken unterstützt, auf denen der Pectra-Fork durchgeführt wurde.",
+      "prompt": "Geben Sie yes ein, wenn Sie Compounder-Validatoren mit 0x02-Auszahlungs-Credentials für ein maximales effektives Guthaben von 2048 ETH erzeugen möchten. Compounder-Validatoren und 0x02-Auszahlungs-Credentials werden nur von Netzwerken unterstützt, auf denen der Pectra-Fork durchgeführt wurde. Geben Sie no oder nichts ein, wenn Sie reguläre Validatoren mit 0x01-Auszahlungs-Credentials für ein maximales effektives Guthaben von 32 ETH möchten."
+    },
+    "arg_amount": {
+      "help": "Der Einzahlungsbetrag für diese Validatoren in Ether. Er muss mindestens 1 Ether betragen und darf keine höhere Genauigkeit als 1 gwei haben. Diese Option erfordert Compounder-Validatoren.",
+      "prompt": "Bitte geben Sie den Betrag ein, den Sie bei diesen Validatoren einzahlen möchten. Er muss mindestens {min_deposit} betragen und darf keine höhere Genauigkeit als 1 gwei haben. {activation_amount} ist erforderlich, um einen neuen Validator zu aktivieren"
+    },
+    "arg_pbkdf2": {
+      "help": "Verwendet für erzeugte Keystore-Dateien die Hash-Funktion pbkdf2 anstelle von scrypt. "
+    },
+    "arg_devnet_chain_setting": {
+      "help": "[NUR DEVNET] Einen bestimmten Wert für GENESIS_FORK_VERSION festlegen. Dies muss ein JSON-String sein, der ein Objekt mit den folgenden Schlüsseln enthält: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount und min_deposit_amount. Er sollte dem entsprechen, was Sie in settings.py finden. Dadurch wird jede ausgewählte Chain überschrieben."
+    }
+  },
+  "generate_keys": {
+    "msg_key_creation": "Ihre Schlüssel werden erstellt.",
+    "msg_creation_success": "\nErfolg!\nIhre Schlüssel befinden sich unter: ",
+    "msg_pause": "\n\nDrücken Sie eine beliebige Taste.",
+    "err_verify_keystores": "Die Keystores konnten nicht überprüft werden.",
+    "err_verify_deposit": "Die Deposit-Daten-JSON-Dateien konnten nicht überprüft werden."
+  }
 }

@@ -1,23 +1,23 @@
 {
-    "generate_mnemonic": {
-        "arg_generate_mnemonic": {
-            "help": "새 무작위 니모닉을 생성합니다. 검증자 keystore와 예치금 파일도 만들려면 대신 new-mnemonic 또는 existing-mnemonic 명령을 사용하세요."
-        },
-        "arg_mnemonic_language": {
-            "default": "korean",
-            "help": "니모닉 단어 목록의 언어",
-            "prompt": "니모닉 단어 목록의 언어를 선택하세요."
-        },
-        "arg_output_file": {
-            "help": "니모닉을 기록할 선택적 파일 경로입니다. 사용하면 니모닉을 화면에 표시하는 대신 파일에 기록합니다.",
-            "err_not_found": "파일 기록 중 오류: 경로를 찾을 수 없습니다.",
-            "err_perm_denied": "파일 기록 중 오류: 파일에 기록할 권한이 없습니다.",
-            "err_directory_not_file": "파일 기록 중 오류: 지정한 경로가 파일이 아니라 디렉터리입니다.",
-            "err_os": "파일 기록 중 오류: 운영 체제 관련 오류가 발생했습니다.",
-            "err_exception": "파일 기록 중 오류: 예기치 않은 오류가 발생했습니다."
-        },
-        "msg_mnemonic_presentation": "다음은 무작위로 생성된 니모닉입니다:",
-        "msg_mnemonic_file_written": "무작위로 생성된 니모닉이 다음 위치에 기록되었습니다",
-        "msg_mnemonic_next": "검증자 keystore와 예치금 파일도 생성하려면 이제 existing-mnemonic 명령을 사용할 수 있습니다."
-    }
+  "generate_mnemonic": {
+    "arg_generate_mnemonic": {
+      "help": "새 무작위 니모닉을 생성합니다. 검증자 keystore와 예치금 파일도 만들려면 대신 new-mnemonic 또는 existing-mnemonic 명령을 사용하세요."
+    },
+    "arg_mnemonic_language": {
+      "default": "korean",
+      "help": "니모닉 단어 목록의 언어",
+      "prompt": "니모닉 단어 목록의 언어를 선택하세요."
+    },
+    "arg_output_file": {
+      "help": "니모닉을 기록할 선택적 파일 경로입니다. 사용하면 니모닉을 화면에 표시하는 대신 파일에 기록합니다.",
+      "err_not_found": "파일 기록 중 오류: 경로를 찾을 수 없습니다.",
+      "err_perm_denied": "파일 기록 중 오류: 파일에 기록할 권한이 없습니다.",
+      "err_directory_not_file": "파일 기록 중 오류: 지정한 경로가 파일이 아니라 디렉터리입니다.",
+      "err_os": "파일 기록 중 오류: 운영 체제 관련 오류가 발생했습니다.",
+      "err_exception": "파일 기록 중 오류: 예기치 않은 오류가 발생했습니다."
+    },
+    "msg_mnemonic_presentation": "다음은 무작위로 생성된 니모닉입니다:",
+    "msg_mnemonic_file_written": "무작위로 생성된 니모닉이 다음 위치에 기록되었습니다",
+    "msg_mnemonic_next": "검증자 keystore와 예치금 파일도 생성하려면 이제 existing-mnemonic 명령을 사용할 수 있습니다."
+  }
 }

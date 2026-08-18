@@ -1,48 +1,48 @@
 {
-    "generate_keys_arguments_decorator": {
-        "num_validators": {
-            "help": "A quantidade de chaves de validadores que você deseja gerar (poderá gerar mais depois)",
-            "prompt": "Por favor, escolha quantos validadores deseja executar"
-        },
-        "chain": {
-            "help": "A versão de Ethereum PoS do seu interesse. Use \"mainnet\" se estiver depositando ETH",
-            "prompt": "Selecione o nome da rede/cadeia (mainnet ou testnet)"
-        },
-        "keystore_password": {
-            "help": "A senha que protegerá seus keystores. Você precisará digitá-la para descriptografá-los ao configurar seus validadores Ethereum PoS. (Recomenda-se não usar esse argumento e esperar que a CLI solicite o seu mnemônico; caso contrário, aparecerá no histórico do shell.)",
-            "prompt": "A senha que protegerá seus keystores. Você precisará digitá-la para descriptografá-los ao configurar seus validadores Ethereum PoS.",
-            "confirm": "Repita para confirmar",
-            "mismatch": "Erro: os dois valores inseridos não coincidem. Digite-os novamente."
-        },
-        "folder": {
-            "help": "O caminho da pasta dos keystores e depósitos. Por padrão, aponta para `./validator_keys`."
-        },
-        "arg_withdrawal_address": {
-            "help": "O endereço Ethereum que será usado para saque. Normalmente começa com '0x', seguido de 40 caracteres hexadecimais. Certifique-se de ter controle total sobre o endereço escolhido. Depois que um endereço de saque for definido na cadeia, ele não poderá ser alterado.",
-            "prompt": "Digite o endereço de saque opcional. Observe que você NÃO poderá alterá-lo depois que for definido na cadeia.",
-            "confirm": "Repita o endereço de saque para confirmação.",
-            "mismatch": "Erro: os dois valores digitados não coincidem. Digite novamente."
-        },
-        "arg_compounding": {
-            "help": "Gera validadores com saldo composto e credenciais de saque 0x02 para um saldo efetivo máximo de 2048 ETH, ou validadores regulares com credenciais de saque 0x01 para um saldo efetivo máximo de 32 ETH. Esta opção exige um endereço de saque. Esse recurso só é compatível com redes que passaram pela fork Pectra.",
-            "prompt": "Digite yes se quiser gerar validadores com saldo composto e credenciais de saque 0x02 para um saldo efetivo máximo de 2048 ETH. Validadores com saldo composto e credenciais de saque 0x02 só são compatíveis com redes que passaram pela fork Pectra. Digite no ou nada se quiser validadores regulares com credenciais de saque 0x01 para um saldo efetivo máximo de 32 ETH."
-        },
-        "arg_amount": {
-            "help": "O valor a depositar nesses validadores, denominado em ether. Deve ser de pelo menos 1 ether e não pode ter precisão maior que 1 gwei. Esta opção exige validadores com saldo composto.",
-            "prompt": "Digite o valor que deseja depositar nesses validadores. Deve ser de pelo menos {min_deposit} e não pode ter precisão maior que 1 gwei. {activation_amount} é necessário para ativar um novo validador"
-        },
-        "arg_pbkdf2": {
-            "help": "Usa a função de hash pbkdf2 em vez de scrypt nos arquivos keystore gerados. "
-        },
-        "arg_devnet_chain_setting": {
-            "help": "[SOMENTE DEVNET] Defina um valor específico para GENESIS_FORK_VERSION. Deve ser uma string JSON contendo um objeto com as seguintes chaves: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount e min_deposit_amount. Deve ser semelhante ao que você encontra em settings.py. Isso substituirá qualquer cadeia selecionada."
-        }
+  "generate_keys_arguments_decorator": {
+    "num_validators": {
+      "help": "A quantidade de chaves de validadores que você deseja gerar (poderá gerar mais depois)",
+      "prompt": "Por favor, escolha quantos validadores deseja executar"
     },
-    "generate_keys": {
-        "msg_key_creation": "Criando suas chaves.",
-        "msg_creation_success": "\nSuccesso!\nSuas chaves se encontram em: ",
-        "msg_pause": "\n\nPressione qualquer tecla.",
-        "err_verify_keystores": "Não foi possível verificar os keystores.",
-        "err_verify_deposit": "Não foi possível verificar os dados JSON do depósito."
+    "chain": {
+      "help": "A versão de Ethereum PoS do seu interesse. Use \"mainnet\" se estiver depositando ETH",
+      "prompt": "Selecione o nome da rede/cadeia (mainnet ou testnet)"
+    },
+    "keystore_password": {
+      "help": "A senha que protegerá seus keystores. Você precisará digitá-la para descriptografá-los ao configurar seus validadores Ethereum PoS. (Recomenda-se não usar esse argumento e esperar que a CLI solicite o seu mnemônico; caso contrário, aparecerá no histórico do shell.)",
+      "prompt": "A senha que protegerá seus keystores. Você precisará digitá-la para descriptografá-los ao configurar seus validadores Ethereum PoS.",
+      "confirm": "Repita para confirmar",
+      "mismatch": "Erro: os dois valores inseridos não coincidem. Digite-os novamente."
+    },
+    "folder": {
+      "help": "O caminho da pasta dos keystores e depósitos. Por padrão, aponta para `./validator_keys`."
+    },
+    "arg_withdrawal_address": {
+      "help": "O endereço Ethereum que será usado para saque. Normalmente começa com '0x', seguido de 40 caracteres hexadecimais. Certifique-se de ter controle total sobre o endereço escolhido. Depois que um endereço de saque for definido na cadeia, ele não poderá ser alterado.",
+      "prompt": "Digite o endereço de saque opcional. Observe que você NÃO poderá alterá-lo depois que for definido na cadeia.",
+      "confirm": "Repita o endereço de saque para confirmação.",
+      "mismatch": "Erro: os dois valores digitados não coincidem. Digite novamente."
+    },
+    "arg_compounding": {
+      "help": "Gera validadores com saldo composto e credenciais de saque 0x02 para um saldo efetivo máximo de 2048 ETH, ou validadores regulares com credenciais de saque 0x01 para um saldo efetivo máximo de 32 ETH. Esta opção exige um endereço de saque. Esse recurso só é compatível com redes que passaram pela fork Pectra.",
+      "prompt": "Digite yes se quiser gerar validadores com saldo composto e credenciais de saque 0x02 para um saldo efetivo máximo de 2048 ETH. Validadores com saldo composto e credenciais de saque 0x02 só são compatíveis com redes que passaram pela fork Pectra. Digite no ou nada se quiser validadores regulares com credenciais de saque 0x01 para um saldo efetivo máximo de 32 ETH."
+    },
+    "arg_amount": {
+      "help": "O valor a depositar nesses validadores, denominado em ether. Deve ser de pelo menos 1 ether e não pode ter precisão maior que 1 gwei. Esta opção exige validadores com saldo composto.",
+      "prompt": "Digite o valor que deseja depositar nesses validadores. Deve ser de pelo menos {min_deposit} e não pode ter precisão maior que 1 gwei. {activation_amount} é necessário para ativar um novo validador"
+    },
+    "arg_pbkdf2": {
+      "help": "Usa a função de hash pbkdf2 em vez de scrypt nos arquivos keystore gerados. "
+    },
+    "arg_devnet_chain_setting": {
+      "help": "[SOMENTE DEVNET] Defina um valor específico para GENESIS_FORK_VERSION. Deve ser uma string JSON contendo um objeto com as seguintes chaves: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount e min_deposit_amount. Deve ser semelhante ao que você encontra em settings.py. Isso substituirá qualquer cadeia selecionada."
     }
+  },
+  "generate_keys": {
+    "msg_key_creation": "Criando suas chaves.",
+    "msg_creation_success": "\nSuccesso!\nSuas chaves se encontram em: ",
+    "msg_pause": "\n\nPressione qualquer tecla.",
+    "err_verify_keystores": "Não foi possível verificar os keystores.",
+    "err_verify_deposit": "Não foi possível verificar os dados JSON do depósito."
+  }
 }

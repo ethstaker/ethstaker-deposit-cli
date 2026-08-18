@@ -1,5 +1,5 @@
 {
-    "check_connectivity": {
-        "connectivity_warning": "\n*** Konektivitas internet terdeteksi ***\n\nUntuk mengurangi risiko akses tanpa izin dan melindungi material kunci yang dibuat, sangat disarankan untuk menjalankan alat ini di lingkungan offline dan terisolasi. Pengoperasian secara online meningkatkan kerentanan terhadap pencurian atau penyusupan.\n\nDengan melanjutkan, Anda menerima tanggung jawab atas risiko tersebut.\n\nTekan tombol apa saja untuk melanjutkan..."
-    }
+  "check_connectivity": {
+    "connectivity_warning": "\n*** Konektivitas internet terdeteksi ***\n\nUntuk mengurangi risiko akses tanpa izin dan melindungi material kunci yang dibuat, sangat disarankan untuk menjalankan alat ini di lingkungan offline dan terisolasi. Pengoperasian secara online meningkatkan kerentanan terhadap pencurian atau penyusupan.\n\nDengan melanjutkan, Anda menerima tanggung jawab atas risiko tersebut.\n\nTekan tombol apa saja untuk melanjutkan..."
+  }
 }

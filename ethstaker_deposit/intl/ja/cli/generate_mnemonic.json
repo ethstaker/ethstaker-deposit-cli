@@ -1,23 +1,23 @@
 {
-    "generate_mnemonic": {
-        "arg_generate_mnemonic": {
-            "help": "新しいランダムなニーモニックを生成します。バリデーターのキーストアとデポジットファイルも作成する場合は、代わりに new-mnemonic または existing-mnemonic コマンドを使用してください。"
-        },
-        "arg_mnemonic_language": {
-            "default": "english",
-            "help": "ニーモニック単語リストの言語",
-            "prompt": "ニーモニック単語リストの言語を選択してください"
-        },
-        "arg_output_file": {
-            "help": "ニーモニックを書き込む任意のファイルパス。使用すると、ニーモニックを表示する代わりにファイルへ書き込みます。",
-            "err_not_found": "ファイルの書き込み中にエラーが発生しました：パスが見つかりません。",
-            "err_perm_denied": "ファイルの書き込み中にエラーが発生しました：ファイルへの書き込み権限がありません。",
-            "err_directory_not_file": "ファイルの書き込み中にエラーが発生しました：指定されたパスはファイルではなくディレクトリです。",
-            "err_os": "ファイルの書き込み中にエラーが発生しました：OS 関連のエラーが発生しました。",
-            "err_exception": "ファイルの書き込み中にエラーが発生しました：予期しないエラーが発生しました。"
-        },
-        "msg_mnemonic_presentation": "これはランダムに生成されたニーモニックです：",
-        "msg_mnemonic_file_written": "ランダムに生成されたニーモニックは次の場所に書き込まれました：",
-        "msg_mnemonic_next": "バリデーターのキーストアとデポジットファイルも生成する場合は、existing-mnemonic コマンドを使用できます。"
-    }
+  "generate_mnemonic": {
+    "arg_generate_mnemonic": {
+      "help": "新しいランダムなニーモニックを生成します。バリデーターのキーストアとデポジットファイルも作成する場合は、代わりに new-mnemonic または existing-mnemonic コマンドを使用してください。"
+    },
+    "arg_mnemonic_language": {
+      "default": "english",
+      "help": "ニーモニック単語リストの言語",
+      "prompt": "ニーモニック単語リストの言語を選択してください"
+    },
+    "arg_output_file": {
+      "help": "ニーモニックを書き込む任意のファイルパス。使用すると、ニーモニックを表示する代わりにファイルへ書き込みます。",
+      "err_not_found": "ファイルの書き込み中にエラーが発生しました：パスが見つかりません。",
+      "err_perm_denied": "ファイルの書き込み中にエラーが発生しました：ファイルへの書き込み権限がありません。",
+      "err_directory_not_file": "ファイルの書き込み中にエラーが発生しました：指定されたパスはファイルではなくディレクトリです。",
+      "err_os": "ファイルの書き込み中にエラーが発生しました：OS 関連のエラーが発生しました。",
+      "err_exception": "ファイルの書き込み中にエラーが発生しました：予期しないエラーが発生しました。"
+    },
+    "msg_mnemonic_presentation": "これはランダムに生成されたニーモニックです：",
+    "msg_mnemonic_file_written": "ランダムに生成されたニーモニックは次の場所に書き込まれました：",
+    "msg_mnemonic_next": "バリデーターのキーストアとデポジットファイルも生成する場合は、existing-mnemonic コマンドを使用できます。"
+  }
 }

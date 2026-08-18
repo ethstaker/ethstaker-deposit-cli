@@ -14,7 +14,7 @@ from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[1] / "ethstaker_deposit" / "intl"
-LANGUAGES = ("ar", "el", "fr", "id", "it", "ja", "ko", "pt-BR", "ro", "tr", "zh-CN")
+LANGUAGES = ("ar", "de", "el", "fr", "id",  "it", "ja", "ko", "pt-BR", "ro", "tr", "zh-CN")
 
 
 def leaves(value: Any, prefix: str = "") -> dict[str, Any]:
@@ -48,7 +48,7 @@ def main() -> None:
                     continue
                 set_leaf(translated, path, source)
             target.parent.mkdir(parents=True, exist_ok=True)
-            target.write_text(json.dumps(translated, ensure_ascii=False, indent=4) + "\n", encoding="utf-8")
+            target.write_text(json.dumps(translated, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
 if __name__ == "__main__":

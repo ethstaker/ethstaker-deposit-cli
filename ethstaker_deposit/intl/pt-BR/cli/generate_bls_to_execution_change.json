@@ -1,45 +1,45 @@
 {
-    "generate_bls_to_execution_change": {
-        "arg_generate_bls_to_execution_change": {
-            "help": "Gerando os dados SignedBLSToExecutionChange para habilitar saques na Ethereum Beacon Chain."
-        },
-        "arg_withdrawal_address": {
-            "help": "O endereço Ethereum que será usado para saque. Normalmente começa com '0x', seguido de 40 caracteres hexadecimais. Certifique-se de ter controle total sobre o endereço escolhido. Depois que um endereço de saque for definido na cadeia, ele não poderá ser alterado.",
-            "prompt": "Digite o endereço de saque. Observe que você NÃO poderá alterá-lo depois que for definido na cadeia.",
-            "confirm": "Repita o endereço de saque para confirmação.",
-            "mismatch": "Erro: os dois valores digitados não coincidem. Digite novamente."
-        },
-        "arg_devnet_chain_setting": {
-            "help": "[SOMENTE DEVNET] Defina valores específicos para GENESIS_FORK_VERSION e GENESIS_VALIDATORS_ROOT. Deve ser uma string JSON contendo um objeto com as seguintes chaves: network_name, genesis_fork_version, exit_fork_versio, genesis_validator_root, multiplier, min_activation_amount e min_deposit_amount. Deve ser semelhante ao que você encontra em settings.py. Isso substituirá qualquer cadeia selecionada."
-        },
-        "arg_validator_indices": {
-            "help": "Uma lista dos números de índice dos validadores em questão",
-            "prompt": "Digite uma lista dos números de índice dos seus validadores, conforme identificados na beacon chain. Separe vários itens com espaços em branco ou vírgulas."
-        },
-        "arg_bls_withdrawal_credentials_list": {
-            "help": "Uma lista das credenciais de saque BLS antigas de 32 bytes dos validadores em questão",
-            "prompt": "Digite uma lista das credenciais de saque BLS antigas dos seus validadores. Separe vários itens com espaços em branco ou vírgulas. As credenciais de saque estão codificadas em formato hexadecimal."
-        },
-        "arg_validator_start_index": {
-            "help": "A posição de índice a partir da qual as chaves começarão a gerar credenciais de saque no formato ERC-2334",
-            "prompt": "Digite a posição de índice a partir da qual as chaves começarão a gerar credenciais de saque no formato ERC-2334.",
-            "confirm": "Repita o índice para confirmar"
-        },
-        "arg_chain": {
-            "help": "O nome da cadeia Ethereum PoS desejada. Use \"mainnet\" se estiver depositando ETH",
-            "prompt": "Escolha o nome da rede/cadeia (mainnet ou testnet)"
-        },
-        "arg_fork": {
-            "help": "O nome da fork com a qual você deseja assinar a mensagem.",
-            "prompt": "Escolha o nome da fork com a qual você deseja assinar a mensagem."
-        },
-        "arg_bls_to_execution_changes_folder": {
-            "help": "O caminho da pasta dos keystores. Por padrão, aponta para `./bls_to_execution_changes`."
-        },
-        "msg_key_creation": "Criando seu SignedBLSToExecutionChange.",
-        "msg_credentials_verification": "Verificando suas credenciais de saque.",
-        "msg_creation_success": "\nSucesso!\nO arquivo JSON SignedBLSToExecutionChange pode ser encontrado em: ",
-        "msg_pause": "\n\nPressione qualquer tecla.",
-        "err_verify_btec": "Falha ao verificar os arquivos JSON bls_to_execution_change."
-    }
+  "generate_bls_to_execution_change": {
+    "arg_generate_bls_to_execution_change": {
+      "help": "Gerando os dados SignedBLSToExecutionChange para habilitar saques na Ethereum Beacon Chain."
+    },
+    "arg_withdrawal_address": {
+      "help": "O endereço Ethereum que será usado para saque. Normalmente começa com '0x', seguido de 40 caracteres hexadecimais. Certifique-se de ter controle total sobre o endereço escolhido. Depois que um endereço de saque for definido na cadeia, ele não poderá ser alterado.",
+      "prompt": "Digite o endereço de saque. Observe que você NÃO poderá alterá-lo depois que for definido na cadeia.",
+      "confirm": "Repita o endereço de saque para confirmação.",
+      "mismatch": "Erro: os dois valores digitados não coincidem. Digite novamente."
+    },
+    "arg_devnet_chain_setting": {
+      "help": "[SOMENTE DEVNET] Defina valores específicos para GENESIS_FORK_VERSION e GENESIS_VALIDATORS_ROOT. Deve ser uma string JSON contendo um objeto com as seguintes chaves: network_name, genesis_fork_version, exit_fork_versio, genesis_validator_root, multiplier, min_activation_amount e min_deposit_amount. Deve ser semelhante ao que você encontra em settings.py. Isso substituirá qualquer cadeia selecionada."
+    },
+    "arg_validator_indices": {
+      "help": "Uma lista dos números de índice dos validadores em questão",
+      "prompt": "Digite uma lista dos números de índice dos seus validadores, conforme identificados na beacon chain. Separe vários itens com espaços em branco ou vírgulas."
+    },
+    "arg_bls_withdrawal_credentials_list": {
+      "help": "Uma lista das credenciais de saque BLS antigas de 32 bytes dos validadores em questão",
+      "prompt": "Digite uma lista das credenciais de saque BLS antigas dos seus validadores. Separe vários itens com espaços em branco ou vírgulas. As credenciais de saque estão codificadas em formato hexadecimal."
+    },
+    "arg_validator_start_index": {
+      "help": "A posição de índice a partir da qual as chaves começarão a gerar credenciais de saque no formato ERC-2334",
+      "prompt": "Digite a posição de índice a partir da qual as chaves começarão a gerar credenciais de saque no formato ERC-2334.",
+      "confirm": "Repita o índice para confirmar"
+    },
+    "arg_chain": {
+      "help": "O nome da cadeia Ethereum PoS desejada. Use \"mainnet\" se estiver depositando ETH",
+      "prompt": "Escolha o nome da rede/cadeia (mainnet ou testnet)"
+    },
+    "arg_fork": {
+      "help": "O nome da fork com a qual você deseja assinar a mensagem.",
+      "prompt": "Escolha o nome da fork com a qual você deseja assinar a mensagem."
+    },
+    "arg_bls_to_execution_changes_folder": {
+      "help": "O caminho da pasta dos keystores. Por padrão, aponta para `./bls_to_execution_changes`."
+    },
+    "msg_key_creation": "Criando seu SignedBLSToExecutionChange.",
+    "msg_credentials_verification": "Verificando suas credenciais de saque.",
+    "msg_creation_success": "\nSucesso!\nO arquivo JSON SignedBLSToExecutionChange pode ser encontrado em: ",
+    "msg_pause": "\n\nPressione qualquer tecla.",
+    "err_verify_btec": "Falha ao verificar os arquivos JSON bls_to_execution_change."
+  }
 }

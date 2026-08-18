@@ -1,5 +1,5 @@
 {
-    "check_connectivity": {
-        "connectivity_warning": "\n*** İnternet bağlantısı algılandı ***\n\nYetkisiz erişim riskini azaltmak ve oluşturulan anahtar materyalini korumak için bu aracı çevrimdışı, internete kapalı bir ortamda çalıştırmanız önemle tavsiye edilir. Çevrimiçi çalışmak, olası hırsızlık veya güvenlik ihlali riskini artırır.\n\nDevam ederek bu riskin sorumluluğunu kabul etmiş olursunuz.\n\nDevam etmek için bir tuşa basın..."
-    }
+  "check_connectivity": {
+    "connectivity_warning": "\n*** İnternet bağlantısı algılandı ***\n\nYetkisiz erişim riskini azaltmak ve oluşturulan anahtar materyalini korumak için bu aracı çevrimdışı, internete kapalı bir ortamda çalıştırmanız önemle tavsiye edilir. Çevrimiçi çalışmak, olası hırsızlık veya güvenlik ihlali riskini artırır.\n\nDevam ederek bu riskin sorumluluğunu kabul etmiş olursunuz.\n\nDevam etmek için bir tuşa basın..."
+  }
 }

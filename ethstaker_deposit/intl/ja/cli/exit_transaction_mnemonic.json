@@ -1,35 +1,35 @@
 {
-    "exit_transaction_mnemonic": {
-        "arg_exit_transaction_mnemonic": {
-            "help": "Ethereum Beacon Chain 上のバリデーターを退出させるために使用できる退出トランザクションを生成します。"
-        },
-        "arg_exit_transaction_mnemonic_chain": {
-            "help": "バリデーターが稼働している Ethereum PoS チェーンの名前。デフォルトは \"mainnet\" です。",
-            "prompt": "(mainnet または testnet) ネットワーク/チェーン名を選択してください"
-        },
-        "arg_exit_transaction_mnemonic_start_index": {
-            "help": "キーの作成時に使用したインデックス（キー番号）を入力してください。デフォルト値は 0 です。",
-            "prompt": "キーの作成時に使用したインデックス（キー番号）を入力してください。デフォルト値は 0 です。"
-        },
-        "arg_exit_transaction_mnemonic_indices": {
-            "help": "対象バリデーターのバリデーターインデックス番号の一覧",
-            "prompt": "Beacon Chain 上で識別されるバリデーターのインデックス番号の一覧を入力してください。複数の項目は空白またはカンマで区切ってください。"
-        },
-        "arg_exit_transaction_mnemonic_epoch": {
-            "help": "退出トランザクションが有効になるエポック。デフォルトではトランザクションは常に有効です。"
-        },
-        "arg_exit_transaction_mnemonic_output_folder": {
-            "help": "退出トランザクションの保存先フォルダーのパス。デフォルトでは `./exit_transactions` を指します。"
-        },
-        "arg_devnet_chain_setting": {
-            "help": "[DEVNET ONLY] 特定の EXIT_FORK_VERSION と GENESIS_VALIDATORS_ROOT の値を設定します。network_name、genesis_fork_version、exit_fork_version、genesis_validator_root、multiplier、min_activation_amount、min_deposit_amount のキーを含むオブジェクトの JSON 文字列を指定してください。settings.py にあるものと同様です。選択したチェーンの設定は上書きされます。",
-            "missing_genesis_validators_root": "チェーン設定に GENESIS_VALIDATORS_ROOT の値がありません。退出トランザクションの作成にはこの値が必要です。"
-        },
-        "msg_key_creation": "キーを作成しています：\t",
-        "msg_exit_transaction_creation": "退出トランザクションを作成しています：\t",
-        "msg_verify_exit_transaction": "退出トランザクションを確認しています：\t",
-        "err_verify_exit_transactions": "\n退出トランザクションの確認中に問題が発生しました。\nもう一度お試しください",
-        "msg_creation_success": "\n成功しました！\n退出トランザクションファイルは次の場所にあります： ",
-        "msg_pause": "\n\n任意のキーを押してください。"
-    }
+  "exit_transaction_mnemonic": {
+    "arg_exit_transaction_mnemonic": {
+      "help": "Ethereum Beacon Chain 上のバリデーターを退出させるために使用できる退出トランザクションを生成します。"
+    },
+    "arg_exit_transaction_mnemonic_chain": {
+      "help": "バリデーターが稼働している Ethereum PoS チェーンの名前。デフォルトは \"mainnet\" です。",
+      "prompt": "(mainnet または testnet) ネットワーク/チェーン名を選択してください"
+    },
+    "arg_exit_transaction_mnemonic_start_index": {
+      "help": "キーの作成時に使用したインデックス（キー番号）を入力してください。デフォルト値は 0 です。",
+      "prompt": "キーの作成時に使用したインデックス（キー番号）を入力してください。デフォルト値は 0 です。"
+    },
+    "arg_exit_transaction_mnemonic_indices": {
+      "help": "対象バリデーターのバリデーターインデックス番号の一覧",
+      "prompt": "Beacon Chain 上で識別されるバリデーターのインデックス番号の一覧を入力してください。複数の項目は空白またはカンマで区切ってください。"
+    },
+    "arg_exit_transaction_mnemonic_epoch": {
+      "help": "退出トランザクションが有効になるエポック。デフォルトではトランザクションは常に有効です。"
+    },
+    "arg_exit_transaction_mnemonic_output_folder": {
+      "help": "退出トランザクションの保存先フォルダーのパス。デフォルトでは `./exit_transactions` を指します。"
+    },
+    "arg_devnet_chain_setting": {
+      "help": "[DEVNET ONLY] 特定の EXIT_FORK_VERSION と GENESIS_VALIDATORS_ROOT の値を設定します。network_name、genesis_fork_version、exit_fork_version、genesis_validator_root、multiplier、min_activation_amount、min_deposit_amount のキーを含むオブジェクトの JSON 文字列を指定してください。settings.py にあるものと同様です。選択したチェーンの設定は上書きされます。",
+      "missing_genesis_validators_root": "チェーン設定に GENESIS_VALIDATORS_ROOT の値がありません。退出トランザクションの作成にはこの値が必要です。"
+    },
+    "msg_key_creation": "キーを作成しています：\t",
+    "msg_exit_transaction_creation": "退出トランザクションを作成しています：\t",
+    "msg_verify_exit_transaction": "退出トランザクションを確認しています：\t",
+    "err_verify_exit_transactions": "\n退出トランザクションの確認中に問題が発生しました。\nもう一度お試しください",
+    "msg_creation_success": "\n成功しました！\n退出トランザクションファイルは次の場所にあります： ",
+    "msg_pause": "\n\n任意のキーを押してください。"
+  }
 }

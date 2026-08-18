@@ -1,45 +1,45 @@
 {
-    "partial_deposit": {
-        "arg_partial_deposit": {
-            "help": "Sağlanan doğrulayıcı keystore'u tarafından imzalanacak, en az 1 ether tutarında kısmi para yatırma işlemi oluşturun. Bu işlem sağlanan doğrulayıcının bakiyesine ekleme yapar veya yeni bir doğrulayıcının oluşturulmasını başlatır."
-        },
-        "arg_partial_deposit_chain": {
-            "help": "Doğrulayıcınızın çalıştığı Ethereum PoS zincirinin adı. Varsayılan \"mainnet\"tir.",
-            "prompt": "Lütfen (mainnet veya testnet) ağ/zincir adını seçin"
-        },
-        "arg_partial_deposit_amount": {
-            "help": "Bu doğrulayıcıya ether cinsinden yatırılacak miktar. En az 1 ether olmalı ve 1 gwei'den daha yüksek hassasiyete sahip olamaz. Varsayılan değer 32 etherdir.",
-            "prompt": "Bu doğrulayıcıya yatırmak istediğiniz miktarı girin. En az {min_deposit} olmalı ve 1 gwei'den daha yüksek hassasiyete sahip olamaz. Yeni bir doğrulayıcıyı etkinleştirmek için {activation_amount} gereklidir"
-        },
-        "arg_partial_deposit_keystore": {
-            "help": "İmzalamak ve para yatırmak istediğiniz doğrulayıcıyla ilişkili keystore dosyası.",
-            "prompt": "Lütfen keystore dosyanızın konumunu girin."
-        },
-        "arg_partial_deposit_keystore_password": {
-            "help": "Sağlanan keystore dosyasını şifrelemek için kullanılan parola. Not: Bu, anımsatma parolanız değildir. (Bu bağı kullanmamanız ve CLI programının parolanızı sormasını beklemeniz önerilir; aksi takdirde parola kabuk geçmişinizde görünür.)",
-            "prompt": "Sağlanan keystore dosyasını şifrelemek için kullanılan parolayı girin.",
-            "mismatch": "Hata: Sağlanan keystore parolası bu keystore dosyasının şifresini çözemez. Doğru parolaya sahip olduğunuzdan emin olun ve tekrar deneyin."
-        },
-        "arg_partial_deposit_output_folder": {
-            "help": "Kısmi para yatırma işleminin kaydedileceği klasör yolu. Varsayılan olarak `./partial_deposits` kullanılır."
-        },
-        "arg_withdrawal_address": {
-            "help": "Doğrulayıcının para çekme adresi. 0x00 kimlik bilgilerine sahip bir doğrulayıcı oluşturmak istiyorsanız new-mnemonic veya existing-mnemonic komutunu kullanın.",
-            "confirm": "Onaylamak için para çekme adresini tekrar girin.",
-            "prompt": "Lütfen para çekme adresini girin. 0x00 kimlik bilgilerine sahip bir doğrulayıcı oluşturmak istiyorsanız new-mnemonic veya existing-mnemonic komutunu kullanın.",
-            "mismatch": "Hata: girilen iki adres eşleşmiyor. Lütfen tekrar yazın."
-        },
-        "arg_compounding": {
-            "help": "2048 ETH maksimum etkin bakiye için 0x02 para çekme kimlik bilgilerine sahip bileşik doğrulayıcılar veya 32 ETH maksimum etkin bakiye için 0x01 para çekme kimlik bilgilerine sahip normal doğrulayıcılar oluşturur. Bu özellik yalnızca Pectra fork'unu gerçekleştirmiş ağlarda desteklenir.",
-            "prompt": "2048 ETH maksimum etkin bakiye için 0x02 para çekme kimlik bilgilerine sahip bileşik doğrulayıcılar oluşturmak istiyorsanız yes girin. Bileşik doğrulayıcılar ve 0x02 para çekme kimlik bilgileri yalnızca Pectra fork'unu gerçekleştirmiş ağlarda desteklenir. 32 ETH maksimum etkin bakiye için 0x01 para çekme kimlik bilgilerine sahip normal doğrulayıcılar istiyorsanız no veya hiçbir şey yazmayın."
-        },
-        "arg_devnet_chain_setting": {
-            "help": "[DEVNET ONLY] Belirli bir GENESIS_FORK_VERSION değeri ayarlayın. Bu, şu anahtarlara sahip bir nesne içeren JSON dizesi olmalıdır: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount ve min_deposit_amount. settings.py dosyasında bulabileceğiniz yapıya benzer olmalıdır. Bu, seçilen zinciri geçersiz kılar."
-        },
-        "msg_partial_deposit_creation": "\nKısmi para yatırma işleminiz oluşturuluyor...",
-        "msg_verify_partial_deposit": "\nKısmi para yatırma işleminiz doğrulanıyor...",
-        "err_verify_partial_deposit": "\nKısmi para yatırma işleminiz doğrulanırken bir sorun oluştu.\nLütfen tekrar deneyin",
-        "msg_creation_success": "\nBaşarılı!\nKısmi para yatırma dosyanızın bulunduğu yer: ",
-        "msg_pause": "\n\nDevam etmek için bir tuşa basın."
-    }
+  "partial_deposit": {
+    "arg_partial_deposit": {
+      "help": "Sağlanan doğrulayıcı keystore'u tarafından imzalanacak, en az 1 ether tutarında kısmi para yatırma işlemi oluşturun. Bu işlem sağlanan doğrulayıcının bakiyesine ekleme yapar veya yeni bir doğrulayıcının oluşturulmasını başlatır."
+    },
+    "arg_partial_deposit_chain": {
+      "help": "Doğrulayıcınızın çalıştığı Ethereum PoS zincirinin adı. Varsayılan \"mainnet\"tir.",
+      "prompt": "Lütfen (mainnet veya testnet) ağ/zincir adını seçin"
+    },
+    "arg_partial_deposit_amount": {
+      "help": "Bu doğrulayıcıya ether cinsinden yatırılacak miktar. En az 1 ether olmalı ve 1 gwei'den daha yüksek hassasiyete sahip olamaz. Varsayılan değer 32 etherdir.",
+      "prompt": "Bu doğrulayıcıya yatırmak istediğiniz miktarı girin. En az {min_deposit} olmalı ve 1 gwei'den daha yüksek hassasiyete sahip olamaz. Yeni bir doğrulayıcıyı etkinleştirmek için {activation_amount} gereklidir"
+    },
+    "arg_partial_deposit_keystore": {
+      "help": "İmzalamak ve para yatırmak istediğiniz doğrulayıcıyla ilişkili keystore dosyası.",
+      "prompt": "Lütfen keystore dosyanızın konumunu girin."
+    },
+    "arg_partial_deposit_keystore_password": {
+      "help": "Sağlanan keystore dosyasını şifrelemek için kullanılan parola. Not: Bu, anımsatma parolanız değildir. (Bu bağı kullanmamanız ve CLI programının parolanızı sormasını beklemeniz önerilir; aksi takdirde parola kabuk geçmişinizde görünür.)",
+      "prompt": "Sağlanan keystore dosyasını şifrelemek için kullanılan parolayı girin.",
+      "mismatch": "Hata: Sağlanan keystore parolası bu keystore dosyasının şifresini çözemez. Doğru parolaya sahip olduğunuzdan emin olun ve tekrar deneyin."
+    },
+    "arg_partial_deposit_output_folder": {
+      "help": "Kısmi para yatırma işleminin kaydedileceği klasör yolu. Varsayılan olarak `./partial_deposits` kullanılır."
+    },
+    "arg_withdrawal_address": {
+      "help": "Doğrulayıcının para çekme adresi. 0x00 kimlik bilgilerine sahip bir doğrulayıcı oluşturmak istiyorsanız new-mnemonic veya existing-mnemonic komutunu kullanın.",
+      "confirm": "Onaylamak için para çekme adresini tekrar girin.",
+      "prompt": "Lütfen para çekme adresini girin. 0x00 kimlik bilgilerine sahip bir doğrulayıcı oluşturmak istiyorsanız new-mnemonic veya existing-mnemonic komutunu kullanın.",
+      "mismatch": "Hata: girilen iki adres eşleşmiyor. Lütfen tekrar yazın."
+    },
+    "arg_compounding": {
+      "help": "2048 ETH maksimum etkin bakiye için 0x02 para çekme kimlik bilgilerine sahip bileşik doğrulayıcılar veya 32 ETH maksimum etkin bakiye için 0x01 para çekme kimlik bilgilerine sahip normal doğrulayıcılar oluşturur. Bu özellik yalnızca Pectra fork'unu gerçekleştirmiş ağlarda desteklenir.",
+      "prompt": "2048 ETH maksimum etkin bakiye için 0x02 para çekme kimlik bilgilerine sahip bileşik doğrulayıcılar oluşturmak istiyorsanız yes girin. Bileşik doğrulayıcılar ve 0x02 para çekme kimlik bilgileri yalnızca Pectra fork'unu gerçekleştirmiş ağlarda desteklenir. 32 ETH maksimum etkin bakiye için 0x01 para çekme kimlik bilgilerine sahip normal doğrulayıcılar istiyorsanız no veya hiçbir şey yazmayın."
+    },
+    "arg_devnet_chain_setting": {
+      "help": "[DEVNET ONLY] Belirli bir GENESIS_FORK_VERSION değeri ayarlayın. Bu, şu anahtarlara sahip bir nesne içeren JSON dizesi olmalıdır: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount ve min_deposit_amount. settings.py dosyasında bulabileceğiniz yapıya benzer olmalıdır. Bu, seçilen zinciri geçersiz kılar."
+    },
+    "msg_partial_deposit_creation": "\nKısmi para yatırma işleminiz oluşturuluyor...",
+    "msg_verify_partial_deposit": "\nKısmi para yatırma işleminiz doğrulanıyor...",
+    "err_verify_partial_deposit": "\nKısmi para yatırma işleminiz doğrulanırken bir sorun oluştu.\nLütfen tekrar deneyin",
+    "msg_creation_success": "\nBaşarılı!\nKısmi para yatırma dosyanızın bulunduğu yer: ",
+    "msg_pause": "\n\nDevam etmek için bir tuşa basın."
+  }
 }
