@@ -1,0 +1,6 @@
+{
+  "warn_if_output_directory_symlink": {
+    "warning": "\nUYARI: Çıktı dizini bir sembolik bağlantı içeriyor: {path}\nSembolik bağlantının hedefi: {target}\nBu sembolik bağlantıyı bilerek oluşturduysanız devam edin.",
+    "prompt": "Devam edilsin mi?"
+  }
+}

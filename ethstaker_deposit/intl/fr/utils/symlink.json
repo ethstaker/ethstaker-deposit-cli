@@ -1,0 +1,6 @@
+{
+  "warn_if_output_directory_symlink": {
+    "warning": "\nAVERTISSEMENT : Le répertoire de sortie contient un lien symbolique : {path}\nLe lien symbolique pointe vers : {target}\nNe continuez que si vous avez créé ce lien symbolique intentionnellement.",
+    "prompt": "Continuer ?"
+  }
+}

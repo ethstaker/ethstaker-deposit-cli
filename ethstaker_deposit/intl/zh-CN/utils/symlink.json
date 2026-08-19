@@ -1,0 +1,6 @@
+{
+  "warn_if_output_directory_symlink": {
+    "warning": "\n警告：输出目录包含符号链接：{path}\n符号链接指向：{target}\n仅当您有意创建此符号链接时才继续。",
+    "prompt": "继续吗？"
+  }
+}

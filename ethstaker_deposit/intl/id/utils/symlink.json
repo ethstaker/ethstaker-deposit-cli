@@ -1,0 +1,6 @@
+{
+  "warn_if_output_directory_symlink": {
+    "warning": "\nPERINGATAN: Direktori keluaran berisi tautan simbolis: {path}\nTautan simbolis tersebut mengarah ke: {target}\nLanjutkan hanya jika Anda sengaja membuat tautan simbolis ini.",
+    "prompt": "Lanjutkan?"
+  }
+}

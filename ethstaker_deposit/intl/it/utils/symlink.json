@@ -1,0 +1,6 @@
+{
+  "warn_if_output_directory_symlink": {
+    "warning": "\nATTENZIONE: la directory di output contiene un collegamento simbolico: {path}\nIl collegamento simbolico punta a: {target}\nProcedi solo se hai creato intenzionalmente questo collegamento simbolico.",
+    "prompt": "Continuare?"
+  }
+}

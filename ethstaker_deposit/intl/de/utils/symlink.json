@@ -1,0 +1,6 @@
+{
+  "warn_if_output_directory_symlink": {
+    "warning": "\nWARNUNG: Das Ausgabeverzeichnis enthält einen symbolischen Link: {path}\nDer symbolische Link verweist auf: {target}\nFahren Sie nur fort, wenn Sie diesen symbolischen Link absichtlich erstellt haben.",
+    "prompt": "Fortfahren?"
+  }
+}

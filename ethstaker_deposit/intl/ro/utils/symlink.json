@@ -1,0 +1,6 @@
+{
+  "warn_if_output_directory_symlink": {
+    "warning": "\nAVERTISMENT: Directorul de ieșire conține o legătură simbolică: {path}\nLegătura simbolică indică către: {target}\nContinuați doar dacă ați creat intenționat această legătură simbolică.",
+    "prompt": "Continuați?"
+  }
+}

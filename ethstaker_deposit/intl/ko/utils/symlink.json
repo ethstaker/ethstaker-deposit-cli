@@ -1,0 +1,6 @@
+{
+  "warn_if_output_directory_symlink": {
+    "warning": "\n경고: 출력 디렉터리에 심볼릭 링크가 있습니다: {path}\n심볼릭 링크가 가리키는 대상: {target}\n이 심볼릭 링크를 의도적으로 생성한 경우에만 계속 진행하세요.",
+    "prompt": "계속하시겠습니까?"
+  }
+}

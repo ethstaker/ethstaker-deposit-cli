@@ -1,0 +1,6 @@
+{
+  "warn_if_output_directory_symlink": {
+    "warning": "\nAVISO: O diretório de saída contém um link simbólico: {path}\nO link simbólico aponta para: {target}\nProssiga somente se você tiver criado este link simbólico intencionalmente.",
+    "prompt": "Continuar?"
+  }
+}
