@@ -79,6 +79,11 @@ Depositing to the wrong address **will** lose you your ETH.
   - Deposit address: [0x00000000219ab540356cBB839Cbe05303d7705Fa](https://hoodi.etherscan.io/address/0x00000000219ab540356cBB839Cbe05303d7705Fa)
   - [Launchpad](https://hoodi.launchpad.ethereum.org/)
 
+- Plataberget testnet
+  - Deposit address: [0x00000000219ab540356cBB839Cbe05303d7705Fa](https://dora.plataberget.ethpandaops.io/address/0x00000000219ab540356cbb839cbe05303d7705fa)
+  - [Validator deposits via Dora](https://dora.plataberget.ethpandaops.io/validators/deposits/submit)
+  - Plataberget is expected to be shut down by the end of 2026.
+
 - Gnosis mainnet
   - Deposit address: [0x0B98057eA310F4d31F2a452B414647007d1645d9](https://gnosis.blockscout.com/address/0x0B98057eA310F4d31F2a452B414647007d1645d9)
   - [Gnosis Beacon Chain deposit UI](https://deposit.gnosischain.com/)

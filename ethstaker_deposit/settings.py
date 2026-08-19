@@ -29,6 +29,7 @@ class BaseChainSetting(NamedTuple):
 MAINNET = 'mainnet'
 SEPOLIA = 'sepolia'
 HOODI = 'hoodi'
+PLATABERGET = 'plataberget'
 EPHEMERY = 'ephemery'
 GNOSIS = 'gnosis'
 CHIADO = 'chiado'
@@ -51,6 +52,12 @@ HoodiSetting = BaseChainSetting(
     GENESIS_FORK_VERSION=bytes.fromhex('10000910'),
     EXIT_FORK_VERSION=bytes.fromhex('40000910'),
     GENESIS_VALIDATORS_ROOT=bytes.fromhex('212f13fc4df078b6cb7db228f1c8307566dcecf900867401a92023d7ba99cb5f'))
+# Plataberget setting
+PlatabergetSetting = BaseChainSetting(
+    NETWORK_NAME=PLATABERGET,
+    GENESIS_FORK_VERSION=bytes.fromhex('10733183'),
+    EXIT_FORK_VERSION=bytes.fromhex('40733183'),
+    GENESIS_VALIDATORS_ROOT=bytes.fromhex('bb4a1a9e3f7f4e10edcd734e4acc3b5ffd4f830efe0af2748fa458cfee5d2658'))
 # Ephemery setting
 # From https://github.com/ephemery-testnet/ephemery-genesis/blob/master/values.env
 EphemerySetting = BaseChainSetting(
@@ -79,12 +86,11 @@ ChiadoSetting = BaseChainSetting(
     MULTIPLIER=32,
     MIN_ACTIVATION_AMOUNT=1,
     MIN_DEPOSIT_AMOUNT=0.03125)
-
-
 ALL_CHAINS: dict[str, BaseChainSetting] = {
     MAINNET: MainnetSetting,
     SEPOLIA: SepoliaSetting,
     HOODI: HoodiSetting,
+    PLATABERGET: PlatabergetSetting,
     EPHEMERY: EphemerySetting,
     GNOSIS: GnosisSetting,
     CHIADO: ChiadoSetting,
