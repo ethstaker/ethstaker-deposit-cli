@@ -22,8 +22,7 @@
       "help": "退出トランザクションの保存先フォルダーのパス。デフォルトでは `./exit_transactions` を指します。"
     },
     "arg_devnet_chain_setting": {
-      "help": "[DEVNET ONLY] 特定の EXIT_FORK_VERSION と GENESIS_VALIDATORS_ROOT の値を設定します。network_name、genesis_fork_version、exit_fork_version、genesis_validator_root、multiplier、min_activation_amount、min_deposit_amount のキーを含むオブジェクトの JSON 文字列を指定してください。settings.py にあるものと同様です。選択したチェーンの設定は上書きされます。",
-      "missing_genesis_validators_root": "チェーン設定に GENESIS_VALIDATORS_ROOT の値がありません。退出トランザクションの作成にはこの値が必要です。"
+      "help": "[DEVNET ONLY] 特定の EXIT_FORK_VERSION と GENESIS_VALIDATORS_ROOT の値を設定します。network_name、genesis_fork_version、exit_fork_version、genesis_validator_root、multiplier、min_activation_amount、min_deposit_amount のキーを含むオブジェクトの JSON 文字列を指定してください。settings.py にあるものと同様です。選択したチェーンの設定は上書きされます。"
     },
     "msg_key_creation": "キーを作成しています：\t",
     "msg_exit_transaction_creation": "退出トランザクションを作成しています：\t",

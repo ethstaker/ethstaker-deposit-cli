@@ -62,6 +62,16 @@
     "err_devnet_chain_setting_key_length": "Μη έγκυρη συμβολοσειρά JSON για το devnet_chain_setting. Το αντικείμενο ρίζας πρέπει να περιέχει μόνο 3, 4, 5 ή 6 κλειδιά.",
     "err_devnet_chain_setting_unknown_keys": "Η ρύθμιση αλυσίδας devnet περιέχει μη αναγνωρισμένα κλειδιά.",
     "err_devnet_chain_setting_zero_multiplier": "Μη έγκυρη τιμή πολλαπλασιαστή στη ρύθμιση αλυσίδας devnet. Δεν μπορεί να είναι μηδέν.",
-    "err_devnet_chain_setting_negative_multiplier": "Μη έγκυρη τιμή πολλαπλασιαστή στη ρύθμιση αλυσίδας devnet. Δεν μπορεί να είναι αρνητική."
+    "err_devnet_chain_setting_negative_multiplier": "Μη έγκυρη τιμή πολλαπλασιαστή στη ρύθμιση αλυσίδας devnet. Δεν μπορεί να είναι αρνητική.",
+    "err_devnet_chain_setting_too_large": "Μη έγκυρη συμβολοσειρά JSON για devnet_chain_setting. Υπερβαίνει το μέγιστο μέγεθος.",
+    "err_devnet_chain_setting_invalid_network_name": "Μη έγκυρο network_name στη ρύθμιση αλυσίδας devnet. Πρέπει να είναι μη κενή συμβολοσειρά.",
+    "err_devnet_chain_setting_invalid_genesis_fork_version": "Μη έγκυρο genesis_fork_version στη ρύθμιση αλυσίδας devnet. Πρέπει να είναι ακριβώς 4 byte σε δεκαεξαδική μορφή.",
+    "err_devnet_chain_setting_invalid_exit_fork_version": "Μη έγκυρο exit_fork_version στη ρύθμιση αλυσίδας devnet. Πρέπει να είναι ακριβώς 4 byte σε δεκαεξαδική μορφή.",
+    "err_devnet_chain_setting_invalid_genesis_validator_root": "Μη έγκυρο genesis_validator_root στη ρύθμιση αλυσίδας devnet. Πρέπει να είναι ακριβώς 32 byte σε δεκαεξαδική μορφή.",
+    "err_devnet_chain_setting_invalid_number": "Μη έγκυρη αριθμητική τιμή στη ρύθμιση αλυσίδας devnet.",
+    "err_devnet_chain_setting_positive_number": "Οι αριθμητικές τιμές στη ρύθμιση αλυσίδας devnet πρέπει να είναι θετικές."
+  },
+  "validate_genesis_validators_root": {
+    "missing_genesis_validators_root": "Η ρύθμιση της αλυσίδας δεν περιέχει τιμή GENESIS_VALIDATORS_ROOT. Αυτή η τιμή απαιτείται για τη δημιουργία της συναλλαγής εξόδου."
   }
 }

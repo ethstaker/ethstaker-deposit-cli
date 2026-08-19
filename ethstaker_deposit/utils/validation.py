@@ -1,5 +1,4 @@
 from decimal import Decimal, InvalidOperation
-import math
 import click
 import json
 import re
@@ -630,7 +629,7 @@ def _validate_positive_number(value: Any, field_name: str) -> Decimal:
             load_text(['err_devnet_chain_setting_invalid_number'],
                       func='validate_devnet_chain_setting_json') + f' ({field_name})\n'
         )
-    if not number.is_finite() or number <= 0 or (isinstance(value, float) and not math.isfinite(value)):
+    if not number.is_finite() or number <= 0:
         raise ValidationError(
             load_text(['err_devnet_chain_setting_positive_number'],
                       func='validate_devnet_chain_setting_json') + f' ({field_name})\n'
@@ -640,4 +639,7 @@ def _validate_positive_number(value: Any, field_name: str) -> Decimal:
 
 def validate_genesis_validators_root(chain_setting: BaseChainSetting) -> None:
     if chain_setting.GENESIS_VALIDATORS_ROOT is None:
-        raise ValidationError('The chain setting is missing a GENESIS_VALIDATORS_ROOT value.')
+        raise ValidationError(load_text(
+            ['missing_genesis_validators_root'],
+            func='validate_genesis_validators_root',
+        ))

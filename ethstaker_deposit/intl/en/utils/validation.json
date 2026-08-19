@@ -70,5 +70,8 @@
     "err_devnet_chain_setting_invalid_genesis_validator_root": "Invalid genesis_validator_root in devnet chain setting. It must be exactly 32 bytes of hex.",
     "err_devnet_chain_setting_invalid_number": "Invalid numeric value in devnet chain setting.",
     "err_devnet_chain_setting_positive_number": "Numeric values in devnet chain setting must be positive."
+  },
+  "validate_genesis_validators_root": {
+    "missing_genesis_validators_root": "The chain setting is missing a GENESIS_VALIDATORS_ROOT value. That value is needed to create the exit transaction."
   }
 }

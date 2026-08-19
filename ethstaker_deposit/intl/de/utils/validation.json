@@ -62,6 +62,16 @@
     "err_devnet_chain_setting_key_length": "Ungültiger JSON-String für devnet_chain_setting. Das Wurzelobjekt darf nur 3, 4, 5 oder 6 Schlüssel enthalten.",
     "err_devnet_chain_setting_unknown_keys": "Die Devnet-Chain-Einstellung enthält nicht erkannte Schlüssel.",
     "err_devnet_chain_setting_zero_multiplier": "Ungültiger Multiplikatorwert in der Devnet-Chain-Einstellung. Er darf nicht null sein.",
-    "err_devnet_chain_setting_negative_multiplier": "Ungültiger Multiplikatorwert in der Devnet-Chain-Einstellung. Er darf nicht negativ sein."
+    "err_devnet_chain_setting_negative_multiplier": "Ungültiger Multiplikatorwert in der Devnet-Chain-Einstellung. Er darf nicht negativ sein.",
+    "err_devnet_chain_setting_too_large": "Ungültige JSON-Zeichenfolge für devnet_chain_setting. Sie überschreitet die maximale Größe.",
+    "err_devnet_chain_setting_invalid_network_name": "Ungültiger network_name in der Devnet-Chain-Einstellung. Er muss eine nicht leere Zeichenfolge sein.",
+    "err_devnet_chain_setting_invalid_genesis_fork_version": "Ungültiger genesis_fork_version in der Devnet-Chain-Einstellung. Er muss genau 4 Bytes im Hexadezimalformat umfassen.",
+    "err_devnet_chain_setting_invalid_exit_fork_version": "Ungültiger exit_fork_version in der Devnet-Chain-Einstellung. Er muss genau 4 Bytes im Hexadezimalformat umfassen.",
+    "err_devnet_chain_setting_invalid_genesis_validator_root": "Ungültiger genesis_validator_root in der Devnet-Chain-Einstellung. Er muss genau 32 Bytes im Hexadezimalformat umfassen.",
+    "err_devnet_chain_setting_invalid_number": "Ungültiger numerischer Wert in der Devnet-Chain-Einstellung.",
+    "err_devnet_chain_setting_positive_number": "Numerische Werte in der Devnet-Chain-Einstellung müssen positiv sein."
+  },
+  "validate_genesis_validators_root": {
+    "missing_genesis_validators_root": "In den Chain-Einstellungen fehlt ein Wert für GENESIS_VALIDATORS_ROOT. Dieser Wert wird zum Erstellen der Exit-Transaktion benötigt."
   }
 }

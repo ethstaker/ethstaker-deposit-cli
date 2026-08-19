@@ -22,8 +22,7 @@
       "help": "Il percorso della cartella in cui verranno salvate le transazioni di uscita. Per impostazione predefinita punta a `./exit_transactions`."
     },
     "arg_devnet_chain_setting": {
-      "help": "[SOLO DEVNET] Imposta i valori EXIT_FORK_VERSION e GENESIS_VALIDATORS_ROOT. Deve essere una stringa JSON contenente un oggetto con le chiavi network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount e min_deposit_amount. Deve essere simile a quanto indicato in settings.py. Sovrascriverà la catena selezionata.",
-      "missing_genesis_validators_root": "L'impostazione della catena non contiene un valore GENESIS_VALIDATORS_ROOT. Questo valore è necessario per creare la transazione di uscita."
+      "help": "[SOLO DEVNET] Imposta i valori EXIT_FORK_VERSION e GENESIS_VALIDATORS_ROOT. Deve essere una stringa JSON contenente un oggetto con le chiavi network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount e min_deposit_amount. Deve essere simile a quanto indicato in settings.py. Sovrascriverà la catena selezionata."
     },
     "msg_key_creation": "Creazione delle chiavi:\t",
     "msg_exit_transaction_creation": "Creazione delle transazioni di uscita:\t",

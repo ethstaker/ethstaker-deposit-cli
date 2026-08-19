@@ -62,6 +62,16 @@
     "err_devnet_chain_setting_key_length": "String JSON untuk devnet_chain_setting tidak valid. Objek root hanya boleh berisi 3, 4, 5 atau 6 kunci.",
     "err_devnet_chain_setting_unknown_keys": "Pengaturan chain devnet berisi kunci yang tidak dikenali.",
     "err_devnet_chain_setting_zero_multiplier": "Nilai multiplier dalam pengaturan chain devnet tidak valid. Nilainya tidak boleh nol.",
-    "err_devnet_chain_setting_negative_multiplier": "Nilai multiplier dalam pengaturan chain devnet tidak valid. Nilainya tidak boleh negatif."
+    "err_devnet_chain_setting_negative_multiplier": "Nilai multiplier dalam pengaturan chain devnet tidak valid. Nilainya tidak boleh negatif.",
+    "err_devnet_chain_setting_too_large": "String JSON untuk devnet_chain_setting tidak valid. Ukurannya melebihi batas maksimum.",
+    "err_devnet_chain_setting_invalid_network_name": "network_name dalam pengaturan chain devnet tidak valid. Nilainya harus berupa string yang tidak kosong.",
+    "err_devnet_chain_setting_invalid_genesis_fork_version": "genesis_fork_version dalam pengaturan chain devnet tidak valid. Nilainya harus tepat 4 byte dalam format heksadesimal.",
+    "err_devnet_chain_setting_invalid_exit_fork_version": "exit_fork_version dalam pengaturan chain devnet tidak valid. Nilainya harus tepat 4 byte dalam format heksadesimal.",
+    "err_devnet_chain_setting_invalid_genesis_validator_root": "genesis_validator_root dalam pengaturan chain devnet tidak valid. Nilainya harus tepat 32 byte dalam format heksadesimal.",
+    "err_devnet_chain_setting_invalid_number": "Nilai numerik dalam pengaturan chain devnet tidak valid.",
+    "err_devnet_chain_setting_positive_number": "Nilai numerik dalam pengaturan chain devnet harus positif."
+  },
+  "validate_genesis_validators_root": {
+    "missing_genesis_validators_root": "Pengaturan rantai tidak memiliki nilai GENESIS_VALIDATORS_ROOT. Nilai tersebut diperlukan untuk membuat transaksi keluar."
   }
 }

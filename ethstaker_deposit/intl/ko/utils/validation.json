@@ -62,6 +62,16 @@
     "err_devnet_chain_setting_key_length": "devnet_chain_setting의 JSON 문자열이 유효하지 않습니다. 최상위 객체에는 3개, 4개, 5개 또는 6개의 키만 포함되어야 합니다.",
     "err_devnet_chain_setting_unknown_keys": "devnet 체인 설정에 인식할 수 없는 키가 포함되어 있습니다.",
     "err_devnet_chain_setting_zero_multiplier": "devnet 체인 설정의 multiplier 값이 유효하지 않습니다. 0일 수 없습니다.",
-    "err_devnet_chain_setting_negative_multiplier": "devnet 체인 설정의 multiplier 값이 유효하지 않습니다. 음수일 수 없습니다."
+    "err_devnet_chain_setting_negative_multiplier": "devnet 체인 설정의 multiplier 값이 유효하지 않습니다. 음수일 수 없습니다.",
+    "err_devnet_chain_setting_too_large": "devnet_chain_setting의 JSON 문자열이 유효하지 않습니다. 최대 크기를 초과합니다.",
+    "err_devnet_chain_setting_invalid_network_name": "devnet 체인 설정의 network_name이 유효하지 않습니다. 비어 있지 않은 문자열이어야 합니다.",
+    "err_devnet_chain_setting_invalid_genesis_fork_version": "devnet 체인 설정의 genesis_fork_version이 유효하지 않습니다. 정확히 4바이트의 16진수여야 합니다.",
+    "err_devnet_chain_setting_invalid_exit_fork_version": "devnet 체인 설정의 exit_fork_version이 유효하지 않습니다. 정확히 4바이트의 16진수여야 합니다.",
+    "err_devnet_chain_setting_invalid_genesis_validator_root": "devnet 체인 설정의 genesis_validator_root가 유효하지 않습니다. 정확히 32바이트의 16진수여야 합니다.",
+    "err_devnet_chain_setting_invalid_number": "devnet 체인 설정의 숫자 값이 유효하지 않습니다.",
+    "err_devnet_chain_setting_positive_number": "devnet 체인 설정의 숫자 값은 양수여야 합니다."
+  },
+  "validate_genesis_validators_root": {
+    "missing_genesis_validators_root": "체인 설정에 GENESIS_VALIDATORS_ROOT 값이 없습니다. 종료 트랜잭션을 생성하려면 이 값이 필요합니다."
   }
 }

@@ -22,8 +22,7 @@
       "help": "Çıkış işlemlerinin kaydedileceği klasör yolu. Varsayılan olarak `./exit_transactions` kullanılır."
     },
     "arg_devnet_chain_setting": {
-      "help": "[DEVNET ONLY] Belirli bir EXIT_FORK_VERSION ve GENESIS_VALIDATORS_ROOT değeri ayarlayın. Bu, şu anahtarlara sahip bir nesne içeren JSON dizesi olmalıdır: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount ve min_deposit_amount. settings.py dosyasında bulabileceğiniz yapıya benzer olmalıdır. Bu, seçilen zinciri geçersiz kılar.",
-      "missing_genesis_validators_root": "Zincir ayarında GENESIS_VALIDATORS_ROOT değeri eksik. Bu değer, çıkış işlemini oluşturmak için gereklidir."
+      "help": "[DEVNET ONLY] Belirli bir EXIT_FORK_VERSION ve GENESIS_VALIDATORS_ROOT değeri ayarlayın. Bu, şu anahtarlara sahip bir nesne içeren JSON dizesi olmalıdır: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount ve min_deposit_amount. settings.py dosyasında bulabileceğiniz yapıya benzer olmalıdır. Bu, seçilen zinciri geçersiz kılar."
     },
     "msg_key_creation": "Anahtarlarınız oluşturuluyor:\t",
     "msg_exit_transaction_creation": "Çıkış işlemleriniz oluşturuluyor:\t",

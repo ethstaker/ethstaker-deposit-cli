@@ -22,8 +22,7 @@
       "help": "Η διαδρομή του φακέλου όπου θα αποθηκευτούν οι συναλλαγές εξόδου. Από προεπιλογή δείχνει στο `./exit_transactions`."
     },
     "arg_devnet_chain_setting": {
-      "help": "[DEVNET ONLY] Ορίστε συγκεκριμένες τιμές για τα EXIT_FORK_VERSION και GENESIS_VALIDATORS_ROOT. Αυτό πρέπει να είναι μια συμβολοσειρά JSON που περιέχει ένα αντικείμενο με τα εξής κλειδιά: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount και min_deposit_amount. Πρέπει να είναι παρόμοιο με αυτό που μπορείτε να βρείτε στο settings.py. Αυτό θα παρακάμψει οποιαδήποτε επιλεγμένη αλυσίδα.",
-      "missing_genesis_validators_root": "Η ρύθμιση της αλυσίδας δεν περιέχει τιμή GENESIS_VALIDATORS_ROOT. Αυτή η τιμή απαιτείται για τη δημιουργία της συναλλαγής εξόδου."
+      "help": "[DEVNET ONLY] Ορίστε συγκεκριμένες τιμές για τα EXIT_FORK_VERSION και GENESIS_VALIDATORS_ROOT. Αυτό πρέπει να είναι μια συμβολοσειρά JSON που περιέχει ένα αντικείμενο με τα εξής κλειδιά: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount και min_deposit_amount. Πρέπει να είναι παρόμοιο με αυτό που μπορείτε να βρείτε στο settings.py. Αυτό θα παρακάμψει οποιαδήποτε επιλεγμένη αλυσίδα."
     },
     "msg_key_creation": "Δημιουργία των κλειδιών σας:\t",
     "msg_exit_transaction_creation": "Δημιουργία των συναλλαγών εξόδου σας:\t",

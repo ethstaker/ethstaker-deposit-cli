@@ -62,6 +62,16 @@
     "err_devnet_chain_setting_key_length": "devnet_chain_setting の JSON 文字列が無効です。ルートオブジェクトには3、4、5、または6個のキーのみを含める必要があります。",
     "err_devnet_chain_setting_unknown_keys": "devnet chain setting に認識されないキーが含まれています。",
     "err_devnet_chain_setting_zero_multiplier": "devnet chain setting の乗数が無効です。0にすることはできません。",
-    "err_devnet_chain_setting_negative_multiplier": "devnet chain setting の乗数が無効です。負の値にすることはできません。"
+    "err_devnet_chain_setting_negative_multiplier": "devnet chain setting の乗数が無効です。負の値にすることはできません。",
+    "err_devnet_chain_setting_too_large": "devnet_chain_setting の JSON 文字列が無効です。最大サイズを超えています。",
+    "err_devnet_chain_setting_invalid_network_name": "devnet chain setting の network_name が無効です。空でない文字列である必要があります。",
+    "err_devnet_chain_setting_invalid_genesis_fork_version": "devnet chain setting の genesis_fork_version が無効です。正確に 4 バイトの 16 進数である必要があります。",
+    "err_devnet_chain_setting_invalid_exit_fork_version": "devnet chain setting の exit_fork_version が無効です。正確に 4 バイトの 16 進数である必要があります。",
+    "err_devnet_chain_setting_invalid_genesis_validator_root": "devnet chain setting の genesis_validator_root が無効です。正確に 32 バイトの 16 進数である必要があります。",
+    "err_devnet_chain_setting_invalid_number": "devnet chain setting の数値が無効です。",
+    "err_devnet_chain_setting_positive_number": "devnet chain setting の数値は正である必要があります。"
+  },
+  "validate_genesis_validators_root": {
+    "missing_genesis_validators_root": "チェーン設定に GENESIS_VALIDATORS_ROOT の値がありません。退出トランザクションの作成にはこの値が必要です。"
   }
 }

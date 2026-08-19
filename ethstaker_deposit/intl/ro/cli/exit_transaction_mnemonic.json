@@ -22,8 +22,7 @@
       "help": "Calea către directorul în care vor fi salvate tranzacțiile de ieșire. Implicit este `./exit_transactions`."
     },
     "arg_devnet_chain_setting": {
-      "help": "[DOAR DEVNET] Setează valorile specifice EXIT_FORK_VERSION și GENESIS_VALIDATORS_ROOT. Acesta trebuie să fie un șir JSON care conține un obiect cu următoarele chei: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount și min_deposit_amount. Ar trebui să fie similar cu ceea ce găsești în settings.py. Aceasta va suprascrie orice lanț selectat.",
-      "missing_genesis_validators_root": "Setarea lanțului nu conține o valoare GENESIS_VALIDATORS_ROOT. Această valoare este necesară pentru a crea tranzacția de ieșire."
+      "help": "[DOAR DEVNET] Setează valorile specifice EXIT_FORK_VERSION și GENESIS_VALIDATORS_ROOT. Acesta trebuie să fie un șir JSON care conține un obiect cu următoarele chei: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount și min_deposit_amount. Ar trebui să fie similar cu ceea ce găsești în settings.py. Aceasta va suprascrie orice lanț selectat."
     },
     "msg_key_creation": "Se creează cheile tale:\t",
     "msg_exit_transaction_creation": "Se creează tranzacțiile tale de ieșire:\t",

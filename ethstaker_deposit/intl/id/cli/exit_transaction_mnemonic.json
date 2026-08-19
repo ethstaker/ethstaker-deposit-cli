@@ -22,8 +22,7 @@
       "help": "Jalur folder tempat transaksi keluar akan disimpan. Secara default mengarah ke `./exit_transactions`."
     },
     "arg_devnet_chain_setting": {
-      "help": "[DEVNET ONLY] Tetapkan nilai EXIT_FORK_VERSION dan GENESIS_VALIDATORS_ROOT tertentu. Ini harus berupa string JSON yang berisi objek dengan kunci berikut: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount dan min_deposit_amount. Isinya harus serupa dengan yang dapat Anda temukan di settings.py. Ini akan menggantikan rantai yang dipilih.",
-      "missing_genesis_validators_root": "Pengaturan rantai tidak memiliki nilai GENESIS_VALIDATORS_ROOT. Nilai tersebut diperlukan untuk membuat transaksi keluar."
+      "help": "[DEVNET ONLY] Tetapkan nilai EXIT_FORK_VERSION dan GENESIS_VALIDATORS_ROOT tertentu. Ini harus berupa string JSON yang berisi objek dengan kunci berikut: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount dan min_deposit_amount. Isinya harus serupa dengan yang dapat Anda temukan di settings.py. Ini akan menggantikan rantai yang dipilih."
     },
     "msg_key_creation": "Membuat kunci Anda:\t",
     "msg_exit_transaction_creation": "Membuat transaksi keluar Anda:\t",

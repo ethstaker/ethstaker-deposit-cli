@@ -22,8 +22,7 @@
       "help": "保存退出交易的文件夹路径。默认指向 `./exit_transactions`。"
     },
     "arg_devnet_chain_setting": {
-      "help": "[DEVNET ONLY] 设置特定的 EXIT_FORK_VERSION 和 GENESIS_VALIDATORS_ROOT 值。该值应为包含以下键的对象的 JSON 字符串：network_name、genesis_fork_version、exit_fork_version、genesis_validator_root、multiplier、min_activation_amount 和 min_deposit_amount。其格式应类似于 settings.py 中的设置。这将覆盖所选链。",
-      "missing_genesis_validators_root": "链设置缺少 GENESIS_VALIDATORS_ROOT 值。创建退出交易需要此值。"
+      "help": "[DEVNET ONLY] 设置特定的 EXIT_FORK_VERSION 和 GENESIS_VALIDATORS_ROOT 值。该值应为包含以下键的对象的 JSON 字符串：network_name、genesis_fork_version、exit_fork_version、genesis_validator_root、multiplier、min_activation_amount 和 min_deposit_amount。其格式应类似于 settings.py 中的设置。这将覆盖所选链。"
     },
     "msg_key_creation": "正在创建您的密钥：\t",
     "msg_exit_transaction_creation": "正在创建您的退出交易：\t",

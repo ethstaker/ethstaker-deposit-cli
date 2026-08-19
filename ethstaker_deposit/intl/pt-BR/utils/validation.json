@@ -62,6 +62,16 @@
     "err_devnet_chain_setting_key_length": "String JSON inválida para devnet_chain_setting. O objeto raiz deve conter apenas 3, 4, 5 ou 6 chaves.",
     "err_devnet_chain_setting_unknown_keys": "A configuração de cadeia devnet contém chaves não reconhecidas.",
     "err_devnet_chain_setting_zero_multiplier": "Valor de multiplicador inválido na configuração de cadeia devnet. Ele não pode ser zero.",
-    "err_devnet_chain_setting_negative_multiplier": "Valor de multiplicador inválido na configuração de cadeia devnet. Ele não pode ser negativo."
+    "err_devnet_chain_setting_negative_multiplier": "Valor de multiplicador inválido na configuração de cadeia devnet. Ele não pode ser negativo.",
+    "err_devnet_chain_setting_too_large": "String JSON inválida para devnet_chain_setting. Ela excede o tamanho máximo.",
+    "err_devnet_chain_setting_invalid_network_name": "network_name inválido na configuração da cadeia devnet. Deve ser uma string não vazia.",
+    "err_devnet_chain_setting_invalid_genesis_fork_version": "genesis_fork_version inválido na configuração da cadeia devnet. Deve ter exatamente 4 bytes em formato hexadecimal.",
+    "err_devnet_chain_setting_invalid_exit_fork_version": "exit_fork_version inválido na configuração da cadeia devnet. Deve ter exatamente 4 bytes em formato hexadecimal.",
+    "err_devnet_chain_setting_invalid_genesis_validator_root": "genesis_validator_root inválido na configuração da cadeia devnet. Deve ter exatamente 32 bytes em formato hexadecimal.",
+    "err_devnet_chain_setting_invalid_number": "Valor numérico inválido na configuração da cadeia devnet.",
+    "err_devnet_chain_setting_positive_number": "Os valores numéricos na configuração da cadeia devnet devem ser positivos."
+  },
+  "validate_genesis_validators_root": {
+    "missing_genesis_validators_root": "A configuração da cadeia não contém um valor para GENESIS_VALIDATORS_ROOT. Esse valor é necessário para criar a transação de saída."
   }
 }

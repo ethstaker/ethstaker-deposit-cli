@@ -62,6 +62,16 @@
     "err_devnet_chain_setting_key_length": "سلسلة JSON الخاصة بـ devnet_chain_setting غير صالحة. يجب أن يحتوي الكائن الجذري على 3 أو 4 أو 5 أو 6 مفاتيح فقط.",
     "err_devnet_chain_setting_unknown_keys": "يحتوي إعداد شبكة التطوير على مفاتيح غير معروفة.",
     "err_devnet_chain_setting_zero_multiplier": "قيمة المُضاعف في إعداد شبكة التطوير غير صالحة. لا يمكن أن تكون صفرًا.",
-    "err_devnet_chain_setting_negative_multiplier": "قيمة المُضاعف في إعداد شبكة التطوير غير صالحة. لا يمكن أن تكون سالبة."
+    "err_devnet_chain_setting_negative_multiplier": "قيمة المُضاعف في إعداد شبكة التطوير غير صالحة. لا يمكن أن تكون سالبة.",
+    "err_devnet_chain_setting_too_large": "سلسلة JSON الخاصة بـ devnet_chain_setting غير صالحة. إنها تتجاوز الحد الأقصى للحجم.",
+    "err_devnet_chain_setting_invalid_network_name": "network_name غير صالح في إعداد شبكة التطوير. يجب أن يكون سلسلة غير فارغة.",
+    "err_devnet_chain_setting_invalid_genesis_fork_version": "genesis_fork_version غير صالح في إعداد شبكة التطوير. يجب أن يكون 4 بايت بالضبط بصيغة سداسية عشرية.",
+    "err_devnet_chain_setting_invalid_exit_fork_version": "exit_fork_version غير صالح في إعداد شبكة التطوير. يجب أن يكون 4 بايت بالضبط بصيغة سداسية عشرية.",
+    "err_devnet_chain_setting_invalid_genesis_validator_root": "genesis_validator_root غير صالح في إعداد شبكة التطوير. يجب أن يكون 32 بايت بالضبط بصيغة سداسية عشرية.",
+    "err_devnet_chain_setting_invalid_number": "القيمة الرقمية في إعداد شبكة التطوير غير صالحة.",
+    "err_devnet_chain_setting_positive_number": "يجب أن تكون القيم الرقمية في إعداد شبكة التطوير موجبة."
+  },
+  "validate_genesis_validators_root": {
+    "missing_genesis_validators_root": "يفتقد إعداد السلسلة قيمة GENESIS_VALIDATORS_ROOT. هذه القيمة مطلوبة لإنشاء معاملة الخروج."
   }
 }

@@ -44,6 +44,7 @@ Keep these exactly unchanged wherever they occur:
 - Apply changes in small file-scoped patches rather than one large multi-file patch.
 - Use stable JSON key paths as patch context; do not rely on indentation or large surrounding blocks.
 - Preserve the file’s existing indentation and formatting. Do not reformat unrelated content.
+- Standard indentation for this repository's JSON files is 2 spaces
 - If a patch fails, do not retry the same patch unchanged. Re-read the affected file, locate the exact current key, and apply a smaller targeted patch.
 - After each patch, verify that the intended keys changed and that no unrelated lines were modified.
 - Do not count a translation as complete until the target value is confirmed to differ from the English source.
