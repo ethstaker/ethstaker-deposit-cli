@@ -57,14 +57,15 @@
     "err_devnet_known_genesis_fork_version": "L'impostazione devnet della catena usa una genesis fork version già nota di una rete esistente.",
     "err_devnet_chain_setting_invalid_json": "Stringa JSON non valida per devnet_chain_setting. Non è stato possibile decodificare la stringa JSON. Assicurati di fornire una stringa JSON valida.",
     "err_devnet_chain_setting_unknown_keys": "L'impostazione devnet della catena contiene chiavi non riconosciute.",
-    "err_devnet_chain_setting_negative_multiplier": "Valore del moltiplicatore non valido nell'impostazione devnet della catena. Non può essere negativo.",
     "err_devnet_chain_setting_too_large": "Stringa JSON non valida per devnet_chain_setting. Supera la dimensione massima.",
     "err_devnet_chain_setting_invalid_network_name": "network_name non valido nell'impostazione devnet della catena. Deve essere una stringa non vuota.",
-    "err_devnet_chain_setting_invalid_genesis_fork_version": "genesis_fork_version non valido nell'impostazione devnet della catena. Deve essere costituito esattamente da 4 byte esadecimali.",
-    "err_devnet_chain_setting_invalid_exit_fork_version": "exit_fork_version non valido nell'impostazione devnet della catena. Deve essere costituito esattamente da 4 byte esadecimali.",
-    "err_devnet_chain_setting_invalid_genesis_validator_root": "genesis_validator_root non valido nell'impostazione devnet della catena. Deve essere costituito esattamente da 32 byte esadecimali.",
     "err_devnet_chain_setting_invalid_number": "Valore numerico non valido nell'impostazione devnet della catena.",
-    "err_devnet_chain_setting_positive_number": "I valori numerici nell'impostazione devnet della catena devono essere positivi."
+    "err_devnet_chain_setting_positive_number": "I valori numerici nell'impostazione devnet della catena devono essere positivi.",
+    "dynamic": {
+      "invalid_genesis_fork_version": "genesis_fork_version non valido nell'impostazione devnet della catena. Deve essere costituito esattamente da 4 byte esadecimali.",
+      "invalid_exit_fork_version": "exit_fork_version non valido nell'impostazione devnet della catena. Deve essere costituito esattamente da 4 byte esadecimali.",
+      "invalid_genesis_validator_root": "genesis_validator_root non valido nell'impostazione devnet della catena. Deve essere costituito esattamente da 32 byte esadecimali."
+    }
   },
   "validate_genesis_validators_root": {
     "missing_genesis_validators_root": "L'impostazione della catena non contiene un valore GENESIS_VALIDATORS_ROOT. Questo valore è necessario per creare la transazione di uscita."

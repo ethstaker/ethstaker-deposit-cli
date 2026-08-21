@@ -19,10 +19,10 @@ def test_translation_references_resolves_literal_calls(tmp_path: Path) -> None:
         encoding='utf-8',
     )
 
-    references, warnings = translation_references(package)
+    references, dynamic_prefixes = translation_references(package)
 
     assert references == {Path('feature.json'): {'render.message.prompt'}}
-    assert warnings == []
+    assert dynamic_prefixes == {}
 
 
 def test_translation_references_resolves_explicit_file_and_function(tmp_path: Path) -> None:
@@ -35,13 +35,13 @@ def test_translation_references_resolves_explicit_file_and_function(tmp_path: Pa
         encoding='utf-8',
     )
 
-    references, warnings = translation_references(package)
+    references, dynamic_prefixes = translation_references(package)
 
     assert references == {Path('shared.json'): {'shared.message'}}
-    assert warnings == []
+    assert dynamic_prefixes == {}
 
 
-def test_translation_references_warns_for_dynamic_calls(tmp_path: Path) -> None:
+def test_translation_references_ignores_dynamic_calls(tmp_path: Path) -> None:
     package = tmp_path / 'ethstaker_deposit'
     package.mkdir()
     source = package / 'feature.py'
@@ -52,11 +52,10 @@ def test_translation_references_warns_for_dynamic_calls(tmp_path: Path) -> None:
     )
     source.write_text(source_text, encoding='utf-8')
 
-    references, warnings = translation_references(package)
+    references, dynamic_prefixes = translation_references(package)
 
     assert references == {}
-    load_text_line = source_text.splitlines().index('load_text(params)') + 1
-    assert warnings == [f'ethstaker_deposit/feature.py:{load_text_line}: dynamic load_text reference']
+    assert dynamic_prefixes == {Path('feature.json'): {'feature.'}}
 
 
 def test_translation_references_ignores_intl_fallback(tmp_path: Path) -> None:
@@ -70,15 +69,36 @@ def test_translation_references_ignores_intl_fallback(tmp_path: Path) -> None:
         encoding='utf-8',
     )
 
-    references, warnings = translation_references(package)
+    references, dynamic_prefixes = translation_references(package)
 
     assert references == {}
-    assert warnings == []
+    assert dynamic_prefixes == {}
+
+
+def test_translation_references_marks_dynamic_validation_file(tmp_path: Path) -> None:
+    package = tmp_path / 'ethstaker_deposit'
+    utils = package / 'utils'
+    utils.mkdir(parents=True)
+    source = utils / 'validation.py'
+    source.write_text(
+        'from ethstaker_deposit.utils.intl import load_text\n'
+        'def _decode_fixed_hex(message_key):\n'
+        "    return load_text(['dynamic', message_key], func='validate_devnet_chain_setting_json')\n",
+        encoding='utf-8',
+    )
+
+    references, dynamic_prefixes = translation_references(package)
+
+    assert references == {}
+    assert dynamic_prefixes == {Path('utils/validation.json'): {'validate_devnet_chain_setting_json.dynamic.'}}
 
 
 def test_repository_has_no_orphaned_english_keys() -> None:
-    references, warnings = translation_references(ROOT.parent)
-    assert warnings == []
+    references, dynamic_prefixes = translation_references(ROOT.parent)
     for english_file in (ROOT / 'en').rglob('*.json'):
         relative = english_file.relative_to(ROOT / 'en')
-        assert set(leaves(json.loads(english_file.read_text(encoding='utf-8')))) <= references.get(relative, set())
+        missing = set(leaves(json.loads(english_file.read_text(encoding='utf-8')))) - references.get(relative, set())
+        assert not {
+            key for key in missing
+            if not any(key.startswith(prefix) for prefix in dynamic_prefixes.get(relative, set()))
+        }

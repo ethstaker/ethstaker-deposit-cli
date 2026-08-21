@@ -57,14 +57,15 @@
     "err_devnet_known_genesis_fork_version": "Devnet zincir ayarı, mevcut bir ağdan bilinen bir genesis fork sürümünü kullanıyor.",
     "err_devnet_chain_setting_invalid_json": "devnet_chain_setting için geçersiz JSON dizesi. JSON dizesinin kodu çözülemedi. Geçerli bir JSON dizesi sağladığınızdan emin olun.",
     "err_devnet_chain_setting_unknown_keys": "Devnet zincir ayarı tanınmayan anahtarlar içeriyor.",
-    "err_devnet_chain_setting_negative_multiplier": "Devnet zincir ayarında geçersiz çarpan değeri. Negatif olamaz.",
     "err_devnet_chain_setting_too_large": "devnet_chain_setting için geçersiz JSON dizesi. Maksimum boyutu aşıyor.",
     "err_devnet_chain_setting_invalid_network_name": "Devnet zincir ayarında geçersiz network_name. Boş olmayan bir dize olmalıdır.",
-    "err_devnet_chain_setting_invalid_genesis_fork_version": "Devnet zincir ayarında geçersiz genesis_fork_version. Tam olarak 4 bayt onaltılık biçimde olmalıdır.",
-    "err_devnet_chain_setting_invalid_exit_fork_version": "Devnet zincir ayarında geçersiz exit_fork_version. Tam olarak 4 bayt onaltılık biçimde olmalıdır.",
-    "err_devnet_chain_setting_invalid_genesis_validator_root": "Devnet zincir ayarında geçersiz genesis_validator_root. Tam olarak 32 bayt onaltılık biçimde olmalıdır.",
     "err_devnet_chain_setting_invalid_number": "Devnet zincir ayarında geçersiz sayısal değer.",
-    "err_devnet_chain_setting_positive_number": "Devnet zincir ayarındaki sayısal değerler pozitif olmalıdır."
+    "err_devnet_chain_setting_positive_number": "Devnet zincir ayarındaki sayısal değerler pozitif olmalıdır.",
+    "dynamic": {
+      "invalid_genesis_fork_version": "Devnet zincir ayarında geçersiz genesis_fork_version. Tam olarak 4 bayt onaltılık biçimde olmalıdır.",
+      "invalid_exit_fork_version": "Devnet zincir ayarında geçersiz exit_fork_version. Tam olarak 4 bayt onaltılık biçimde olmalıdır.",
+      "invalid_genesis_validator_root": "Devnet zincir ayarında geçersiz genesis_validator_root. Tam olarak 32 bayt onaltılık biçimde olmalıdır."
+    }
   },
   "validate_genesis_validators_root": {
     "missing_genesis_validators_root": "Zincir ayarında GENESIS_VALIDATORS_ROOT değeri eksik. Bu değer, çıkış işlemini oluşturmak için gereklidir."

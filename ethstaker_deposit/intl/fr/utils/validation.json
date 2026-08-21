@@ -57,14 +57,15 @@
     "err_devnet_known_genesis_fork_version": "Le paramètre de chaîne devnet utilise une version de fork de genèse connue provenant d'un réseau existant.",
     "err_devnet_chain_setting_invalid_json": "Chaîne JSON invalide pour devnet_chain_setting. Le décodage de la chaîne JSON est impossible. Veillez à fournir une chaîne JSON valide.",
     "err_devnet_chain_setting_unknown_keys": "Le paramètre de chaîne devnet contient des clés non reconnues.",
-    "err_devnet_chain_setting_negative_multiplier": "Valeur de multiplicateur invalide dans le paramètre de chaîne devnet. Elle ne peut pas être négative.",
     "err_devnet_chain_setting_too_large": "Chaîne JSON invalide pour devnet_chain_setting. Elle dépasse la taille maximale.",
     "err_devnet_chain_setting_invalid_network_name": "network_name invalide dans le paramètre de chaîne devnet. Il doit s'agir d'une chaîne non vide.",
-    "err_devnet_chain_setting_invalid_genesis_fork_version": "genesis_fork_version invalide dans le paramètre de chaîne devnet. Il doit comporter exactement 4 octets hexadécimaux.",
-    "err_devnet_chain_setting_invalid_exit_fork_version": "exit_fork_version invalide dans le paramètre de chaîne devnet. Il doit comporter exactement 4 octets hexadécimaux.",
-    "err_devnet_chain_setting_invalid_genesis_validator_root": "genesis_validator_root invalide dans le paramètre de chaîne devnet. Il doit comporter exactement 32 octets hexadécimaux.",
     "err_devnet_chain_setting_invalid_number": "Valeur numérique invalide dans le paramètre de chaîne devnet.",
-    "err_devnet_chain_setting_positive_number": "Les valeurs numériques du paramètre de chaîne devnet doivent être positives."
+    "err_devnet_chain_setting_positive_number": "Les valeurs numériques du paramètre de chaîne devnet doivent être positives.",
+    "dynamic": {
+      "invalid_genesis_fork_version": "genesis_fork_version invalide dans le paramètre de chaîne devnet. Il doit comporter exactement 4 octets hexadécimaux.",
+      "invalid_exit_fork_version": "exit_fork_version invalide dans le paramètre de chaîne devnet. Il doit comporter exactement 4 octets hexadécimaux.",
+      "invalid_genesis_validator_root": "genesis_validator_root invalide dans le paramètre de chaîne devnet. Il doit comporter exactement 32 octets hexadécimaux."
+    }
   },
   "validate_genesis_validators_root": {
     "missing_genesis_validators_root": "Le paramètre de chaîne ne contient pas de valeur GENESIS_VALIDATORS_ROOT. Cette valeur est nécessaire pour créer la transaction de sortie."

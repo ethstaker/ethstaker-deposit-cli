@@ -57,14 +57,15 @@
     "err_devnet_known_genesis_fork_version": "The devnet chain setting is using a known genesis fork version from an existing network.",
     "err_devnet_chain_setting_invalid_json": "Invalid JSON string for devnet_chain_setting. Decoding the JSON string was impossible. Make sure to pass a valid JSON string.",
     "err_devnet_chain_setting_unknown_keys": "The devnet chain setting contains unrecognized keys.",
-    "err_devnet_chain_setting_negative_multiplier": "Invalid multiplier value in devnet chain setting. It cannot be negative.",
     "err_devnet_chain_setting_too_large": "Invalid JSON string for devnet_chain_setting. It exceeds the maximum size.",
     "err_devnet_chain_setting_invalid_network_name": "Invalid network_name in devnet chain setting. It must be a non-empty string.",
-    "err_devnet_chain_setting_invalid_genesis_fork_version": "Invalid genesis_fork_version in devnet chain setting. It must be exactly 4 bytes of hex.",
-    "err_devnet_chain_setting_invalid_exit_fork_version": "Invalid exit_fork_version in devnet chain setting. It must be exactly 4 bytes of hex.",
-    "err_devnet_chain_setting_invalid_genesis_validator_root": "Invalid genesis_validator_root in devnet chain setting. It must be exactly 32 bytes of hex.",
     "err_devnet_chain_setting_invalid_number": "Invalid numeric value in devnet chain setting.",
-    "err_devnet_chain_setting_positive_number": "Numeric values in devnet chain setting must be positive."
+    "err_devnet_chain_setting_positive_number": "Numeric values in devnet chain setting must be positive.",
+    "dynamic": {
+      "invalid_genesis_fork_version": "Invalid genesis_fork_version in devnet chain setting. It must be exactly 4 bytes of hex.",
+      "invalid_exit_fork_version": "Invalid exit_fork_version in devnet chain setting. It must be exactly 4 bytes of hex.",
+      "invalid_genesis_validator_root": "Invalid genesis_validator_root in devnet chain setting. It must be exactly 32 bytes of hex."
+    }
   },
   "validate_genesis_validators_root": {
     "missing_genesis_validators_root": "The chain setting is missing a GENESIS_VALIDATORS_ROOT value. That value is needed to create the exit transaction."

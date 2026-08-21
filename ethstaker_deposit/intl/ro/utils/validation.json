@@ -57,14 +57,15 @@
     "err_devnet_known_genesis_fork_version": "Setarea de lanț devnet folosește o versiune cunoscută de genesis fork de la o rețea existentă.",
     "err_devnet_chain_setting_invalid_json": "Șir JSON invalid pentru devnet_chain_setting. Decodificarea șirului JSON nu a fost posibilă. Asigură-te că transmiți un șir JSON valid.",
     "err_devnet_chain_setting_unknown_keys": "Setarea de lanț devnet conține chei nerecunoscute.",
-    "err_devnet_chain_setting_negative_multiplier": "Valoare invalidă a multiplicatorului în setarea de lanț devnet. Nu poate fi negativă.",
     "err_devnet_chain_setting_too_large": "Șir JSON invalid pentru devnet_chain_setting. Depășește dimensiunea maximă.",
     "err_devnet_chain_setting_invalid_network_name": "network_name invalid în setarea lanțului devnet. Trebuie să fie un șir nevid.",
-    "err_devnet_chain_setting_invalid_genesis_fork_version": "genesis_fork_version invalid în setarea lanțului devnet. Trebuie să aibă exact 4 octeți în format hexazecimal.",
-    "err_devnet_chain_setting_invalid_exit_fork_version": "exit_fork_version invalid în setarea lanțului devnet. Trebuie să aibă exact 4 octeți în format hexazecimal.",
-    "err_devnet_chain_setting_invalid_genesis_validator_root": "genesis_validator_root invalid în setarea lanțului devnet. Trebuie să aibă exact 32 de octeți în format hexazecimal.",
     "err_devnet_chain_setting_invalid_number": "Valoare numerică invalidă în setarea lanțului devnet.",
-    "err_devnet_chain_setting_positive_number": "Valorile numerice din setarea lanțului devnet trebuie să fie pozitive."
+    "err_devnet_chain_setting_positive_number": "Valorile numerice din setarea lanțului devnet trebuie să fie pozitive.",
+    "dynamic": {
+      "invalid_genesis_fork_version": "genesis_fork_version invalid în setarea lanțului devnet. Trebuie să aibă exact 4 octeți în format hexazecimal.",
+      "invalid_exit_fork_version": "exit_fork_version invalid în setarea lanțului devnet. Trebuie să aibă exact 4 octeți în format hexazecimal.",
+      "invalid_genesis_validator_root": "genesis_validator_root invalid în setarea lanțului devnet. Trebuie să aibă exact 32 de octeți în format hexazecimal."
+    }
   },
   "validate_genesis_validators_root": {
     "missing_genesis_validators_root": "Setarea lanțului nu conține o valoare GENESIS_VALIDATORS_ROOT. Această valoare este necesară pentru a crea tranzacția de ieșire."

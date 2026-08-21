@@ -72,9 +72,9 @@ def is_intl_fallback(source_file: Path, node: ast.Call) -> bool:
     )
 
 
-def translation_references(root: Path) -> tuple[dict[Path, set[str]], list[str]]:
+def translation_references(root: Path) -> tuple[dict[Path, set[str]], dict[Path, set[str]]]:
     references: dict[Path, set[str]] = {}
-    warnings: list[str] = []
+    dynamic_prefixes: dict[Path, set[str]] = {}
     for source_file in sorted(root.rglob("*.py")):
         tree = ast.parse(source_file.read_text(encoding="utf-8"), filename=str(source_file))
         assigned = assigned_literals(tree)
@@ -97,8 +97,28 @@ def translation_references(root: Path) -> tuple[dict[Path, set[str]], list[str]]
             if func is None and isinstance(keywords.get("func"), ast.Name):
                 func = assigned_strings_map.get(keywords["func"].id)
             if params is None or ("func" in keywords and func is None):
-                source_name = source_file.relative_to(root.parent).as_posix()
-                warnings.append(f"{source_name}:{node.lineno}: dynamic load_text reference")
+                dynamic_func = literal_string(keywords.get("func")) or source_file.stem
+                if dynamic_func == source_file.stem:
+                    for parent, name in function_names.items():
+                        if parent.lineno <= node.lineno <= (getattr(parent, "end_lineno", parent.lineno)):
+                            dynamic_func = name
+                            break
+                file_path = literal_string(keywords.get("file_path"))
+                if file_path is None:
+                    relative = source_file.relative_to(root).with_suffix(".json")
+                else:
+                    relative_path = Path(file_path)
+                    relative = relative_path.relative_to(root) if relative_path.is_absolute() else relative_path
+                    if relative.parts and relative.parts[0] == "ethstaker_deposit":
+                        relative = Path(*relative.parts[1:])
+                    if relative.suffix != ".json":
+                        relative = relative.with_suffix(".json")
+                dynamic_path = ""
+                if node.args and isinstance(node.args[0], ast.List):
+                    literal_prefix = literal_string(node.args[0].elts[0]) if node.args[0].elts else None
+                    if literal_prefix is not None:
+                        dynamic_path = literal_prefix + "."
+                dynamic_prefixes.setdefault(relative, set()).add(f"{dynamic_func}.{dynamic_path}")
                 continue
             if func is None:
                 func = source_file.stem
@@ -117,13 +137,13 @@ def translation_references(root: Path) -> tuple[dict[Path, set[str]], list[str]]
                 if relative.suffix != ".json":
                     relative = relative.with_suffix(".json")
             references.setdefault(relative, set()).add(".".join([func, *params]))
-    return references, warnings
+    return references, dynamic_prefixes
 
 
 def main() -> int:
     errors: list[str] = []
     fallback_count = 0
-    references, warnings = translation_references(ROOT.parent)
+    references, dynamic_prefixes = translation_references(ROOT.parent)
     english_files = sorted((ROOT / "en").rglob("*.json"))
     languages = sorted(p.name for p in ROOT.iterdir() if p.is_dir() and p.name != "en" and p.name != "__pycache__")
     for english_file in english_files:
@@ -131,6 +151,8 @@ def main() -> int:
         relative = english_file.relative_to(ROOT / "en")
         referenced = references.get(relative, set())
         for key in sorted(set(source) - referenced):
+            if any(key.startswith(prefix) for prefix in dynamic_prefixes.get(relative, set())):
+                continue
             errors.append(f"orphaned key {relative}:{key}")
     for language in languages:
         for english_file in english_files:
@@ -151,11 +173,7 @@ def main() -> int:
                     fallback_count += 1
     if errors:
         print("\n".join(errors))
-        if warnings:
-            print("\n".join(f"warning: {warning}" for warning in warnings))
         return 1
-    if warnings:
-        print("\n".join(f"warning: {warning}" for warning in warnings))
     print(
         f"Checked {len(languages)} locales against {len(english_files)} English files; "
         f"{fallback_count} English fallbacks remain."

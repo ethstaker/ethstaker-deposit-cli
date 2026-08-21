@@ -544,7 +544,7 @@ def validate_devnet_chain_setting_json(json_value: str) -> bool:
 
         genesis_fork_version = _decode_fixed_hex(
             devnet_chain_setting_dict['genesis_fork_version'], 4,
-            'err_devnet_chain_setting_invalid_genesis_fork_version',
+            'invalid_genesis_fork_version',
         )
         if genesis_fork_version in ALL_FORK_VERSIONS:
             known_network = ALL_FORK_VERSIONS[genesis_fork_version]
@@ -552,13 +552,13 @@ def validate_devnet_chain_setting_json(json_value: str) -> bool:
 
         _decode_fixed_hex(
             devnet_chain_setting_dict['exit_fork_version'], 4,
-            'err_devnet_chain_setting_invalid_exit_fork_version',
+            'invalid_exit_fork_version',
         )
 
         if 'genesis_validator_root' in devnet_chain_setting_dict:
             _decode_fixed_hex(
                 devnet_chain_setting_dict['genesis_validator_root'], 32,
-                'err_devnet_chain_setting_invalid_genesis_validator_root',
+                'invalid_genesis_validator_root',
             )
 
         if 'multiplier' in devnet_chain_setting_dict:
@@ -580,13 +580,19 @@ def validate_devnet_chain_setting_json(json_value: str) -> bool:
 
 def _decode_fixed_hex(value: Any, size: int, message_key: str) -> bytes:
     if not isinstance(value, str):
-        raise ValidationError(load_text([message_key], func='validate_devnet_chain_setting_json') + '\n')
+        raise ValidationError(
+            load_text(['dynamic', message_key], func='validate_devnet_chain_setting_json') + '\n'
+        )
     try:
         decoded = decode_hex(value)
     except (TypeError, ValueError):
-        raise ValidationError(load_text([message_key], func='validate_devnet_chain_setting_json') + '\n')
+        raise ValidationError(
+            load_text(['dynamic', message_key], func='validate_devnet_chain_setting_json') + '\n'
+        )
     if len(decoded) != size:
-        raise ValidationError(load_text([message_key], func='validate_devnet_chain_setting_json') + '\n')
+        raise ValidationError(
+            load_text(['dynamic', message_key], func='validate_devnet_chain_setting_json') + '\n'
+        )
     return decoded
 
 

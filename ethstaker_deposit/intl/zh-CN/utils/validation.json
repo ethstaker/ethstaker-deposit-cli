@@ -57,14 +57,15 @@
     "err_devnet_known_genesis_fork_version": "devnet 链设置使用了现有网络中的已知 genesis fork version。",
     "err_devnet_chain_setting_invalid_json": "devnet_chain_setting 的 JSON 字符串无效。无法解析 JSON 字符串。请确保传入有效的 JSON 字符串。",
     "err_devnet_chain_setting_unknown_keys": "devnet 链设置包含无法识别的键。",
-    "err_devnet_chain_setting_negative_multiplier": "devnet 链设置中的 multiplier 值无效，不能为负数。",
     "err_devnet_chain_setting_too_large": "devnet_chain_setting 的 JSON 字符串无效。它超过了最大大小。",
     "err_devnet_chain_setting_invalid_network_name": "devnet 链设置中的 network_name 无效。它必须是非空字符串。",
-    "err_devnet_chain_setting_invalid_genesis_fork_version": "devnet 链设置中的 genesis_fork_version 无效。它必须正好是 4 字节的十六进制值。",
-    "err_devnet_chain_setting_invalid_exit_fork_version": "devnet 链设置中的 exit_fork_version 无效。它必须正好是 4 字节的十六进制值。",
-    "err_devnet_chain_setting_invalid_genesis_validator_root": "devnet 链设置中的 genesis_validator_root 无效。它必须正好是 32 字节的十六进制值。",
     "err_devnet_chain_setting_invalid_number": "devnet 链设置中的数值无效。",
-    "err_devnet_chain_setting_positive_number": "devnet 链设置中的数值必须为正数。"
+    "err_devnet_chain_setting_positive_number": "devnet 链设置中的数值必须为正数。",
+    "dynamic": {
+      "invalid_genesis_fork_version": "devnet 链设置中的 genesis_fork_version 无效。它必须正好是 4 字节的十六进制值。",
+      "invalid_exit_fork_version": "devnet 链设置中的 exit_fork_version 无效。它必须正好是 4 字节的十六进制值。",
+      "invalid_genesis_validator_root": "devnet 链设置中的 genesis_validator_root 无效。它必须正好是 32 字节的十六进制值。"
+    }
   },
   "validate_genesis_validators_root": {
     "missing_genesis_validators_root": "链设置缺少 GENESIS_VALIDATORS_ROOT 值。创建退出交易需要此值。"
