@@ -8,8 +8,7 @@
       "prompt": "Veuillez choisir le nom du réseau ou de la chaîne (mainnet ou testnet)"
     },
     "arg_partial_deposit_amount": {
-      "help": "Le montant à déposer sur ce validateur, en ether. Il doit être d'au moins 1 ether et ne peut pas avoir une précision supérieure à 1 gwei. La valeur par défaut est de 32 ether.",
-      "prompt": "Veuillez saisir le montant que vous souhaitez déposer sur ce validateur. Il doit être d'au moins {min_deposit} et ne peut pas avoir une précision supérieure à 1 gwei. {activation_amount} est requis pour activer un nouveau validateur"
+      "help": "Le montant à déposer sur ce validateur, en ether. Il doit être d'au moins 1 ether et ne peut pas avoir une précision supérieure à 1 gwei. La valeur par défaut est de 32 ether."
     },
     "arg_partial_deposit_keystore": {
       "help": "Le fichier keystore associé au validateur avec lequel vous souhaitez signer et sur lequel vous souhaitez effectuer un dépôt.",

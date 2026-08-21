@@ -22,21 +22,15 @@
     },
     "arg_validator_start_index": {
       "help": "Poziția de index de la care cheile vor începe să genereze credențiale de retragere în format ERC-2334",
-      "prompt": "Introdu poziția de index de la care cheile vor începe să genereze credențiale de retragere în format ERC-2334.",
-      "confirm": "Reintrodu indexul pentru confirmare"
+      "prompt": "Introdu poziția de index de la care cheile vor începe să genereze credențiale de retragere în format ERC-2334."
     },
     "arg_chain": {
       "help": "Numele lanțului Ethereum PoS vizat. Folosește \"mainnet\" dacă depui ETH",
       "prompt": "Alege numele rețelei/lanțului (mainnet sau testnet)"
     },
-    "arg_fork": {
-      "help": "Numele fork-ului cu care vrei să semnezi mesajul.",
-      "prompt": "Alege numele fork-ului cu care vrei să semnezi mesajul."
-    },
     "arg_bls_to_execution_changes_folder": {
       "help": "Calea către directorul pentru depozitul (depozitele) de chei. Implicit este `./bls_to_execution_changes`."
     },
-    "msg_key_creation": "Se creează SignedBLSToExecutionChange.",
     "msg_credentials_verification": "Se verifică credențialele de retragere.",
     "msg_creation_success": "\nSucces!\nFișierul JSON SignedBLSToExecutionChange poate fi găsit la: ",
     "msg_pause": "\n\nApasă orice tastă.",

@@ -8,8 +8,7 @@
       "prompt": "Escolha o nome da rede/cadeia (mainnet ou testnet)"
     },
     "arg_partial_deposit_amount": {
-      "help": "O valor a depositar neste validador, denominado em ether. Deve ser de pelo menos 1 ether e não pode ter precisão maior que 1 gwei. O padrão é 32 ether.",
-      "prompt": "Digite o valor que deseja depositar neste validador. Deve ser de pelo menos {min_deposit} e não pode ter precisão maior que 1 gwei. {activation_amount} é necessário para ativar um novo validador"
+      "help": "O valor a depositar neste validador, denominado em ether. Deve ser de pelo menos 1 ether e não pode ter precisão maior que 1 gwei. O padrão é 32 ether."
     },
     "arg_partial_deposit_keystore": {
       "help": "O arquivo keystore associado ao validador com o qual você deseja assinar e fazer o depósito.",

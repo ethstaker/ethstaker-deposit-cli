@@ -10,9 +10,6 @@
   "validate_int_range": {
     "err_not_positive_integer": "正の整数ではありません。再入力してください。"
   },
-  "validate_choice": {
-    "err_invalid_choice": "有効な選択肢ではありません。選択内容を再入力してください。"
-  },
   "validate_withdrawal_address": {
     "err_invalid_ECDSA_hex_addr": "指定された払い戻しアドレスは16進数形式でエンコードされていません。",
     "err_invalid_ECDSA_hex_addr_checksum": "指定された払い戻しアドレスはチェックサム形式ではありません。",

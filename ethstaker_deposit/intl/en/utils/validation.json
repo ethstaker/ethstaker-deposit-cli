@@ -10,9 +10,6 @@
   "validate_int_range": {
     "err_not_positive_integer": "That is not a positive integer. Please retype."
   },
-  "validate_choice": {
-    "err_invalid_choice": "That is not one of the valid choices. Please retype your choice."
-  },
   "validate_withdrawal_address": {
     "err_invalid_ECDSA_hex_addr": "The given withdrawal address is not in hexadecimal encoded form.",
     "err_invalid_ECDSA_hex_addr_checksum": "The given withdrawal address is not in checksum form.",

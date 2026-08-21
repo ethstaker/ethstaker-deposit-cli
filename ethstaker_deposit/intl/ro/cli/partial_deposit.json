@@ -8,8 +8,7 @@
       "prompt": "Alege numele rețelei/lanțului (mainnet sau testnet)"
     },
     "arg_partial_deposit_amount": {
-      "help": "Suma de depus pentru acest validator, exprimată în ether. Trebuie să fie de cel puțin 1 ether și nu poate avea o precizie mai mare de 1 gwei. Valoarea implicită este 32 ether.",
-      "prompt": "Introdu suma pe care vrei să o depui pentru acest validator. Trebuie să fie de cel puțin {min_deposit} și nu poate avea o precizie mai mare de 1 gwei. Pentru activarea unui validator nou sunt necesari {activation_amount}"
+      "help": "Suma de depus pentru acest validator, exprimată în ether. Trebuie să fie de cel puțin 1 ether și nu poate avea o precizie mai mare de 1 gwei. Valoarea implicită este 32 ether."
     },
     "arg_partial_deposit_keystore": {
       "help": "Fișierul keystore asociat validatorului cu care vrei să semnezi și în care vrei să depui.",

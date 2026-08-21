@@ -22,21 +22,15 @@
     },
     "arg_validator_start_index": {
       "help": "Posisi indeks untuk memulai pembuatan withdrawal credentials dalam format ERC-2334",
-      "prompt": "Silakan masukkan posisi indeks untuk memulai pembuatan withdrawal credentials dalam format ERC-2334.",
-      "confirm": "Silakan masukkan kembali indeks untuk konfirmasi"
+      "prompt": "Silakan masukkan posisi indeks untuk memulai pembuatan withdrawal credentials dalam format ERC-2334."
     },
     "arg_chain": {
       "help": "Nama chain Ethereum PoS yang Anda targetkan. Gunakan \"mainnet\" jika Anda melakukan deposit ETH",
       "prompt": "Silakan pilih nama jaringan/chain (mainnet atau testnet)"
     },
-    "arg_fork": {
-      "help": "Nama fork yang akan digunakan untuk menandatangani pesan.",
-      "prompt": "Silakan pilih nama fork yang akan digunakan untuk menandatangani pesan."
-    },
     "arg_bls_to_execution_changes_folder": {
       "help": "Jalur folder untuk keystore. Secara default mengarah ke `./bls_to_execution_changes`."
     },
-    "msg_key_creation": "Membuat SignedBLSToExecutionChange Anda.",
     "msg_credentials_verification": "Memverifikasi withdrawal credentials Anda.",
     "msg_creation_success": "\nBerhasil!\nFile JSON SignedBLSToExecutionChange Anda dapat ditemukan di: ",
     "msg_pause": "\n\nTekan tombol apa saja.",

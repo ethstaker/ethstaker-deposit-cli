@@ -10,9 +10,6 @@
   "validate_int_range": {
     "err_not_positive_integer": "Itu bukan bilangan bulat positif. Silakan ketik ulang."
   },
-  "validate_choice": {
-    "err_invalid_choice": "Itu bukan salah satu pilihan yang valid. Silakan ketik ulang pilihan Anda."
-  },
   "validate_withdrawal_address": {
     "err_invalid_ECDSA_hex_addr": "Alamat penarikan yang diberikan bukan dalam bentuk yang dikodekan secara heksadesimal.",
     "err_invalid_ECDSA_hex_addr_checksum": "Alamat penarikan yang diberikan bukan dalam bentuk checksum.",

@@ -10,9 +10,6 @@
   "validate_int_range": {
     "err_not_positive_integer": "Pozitif tam sayı değil. Lütfen tekrar girin."
   },
-  "validate_choice": {
-    "err_invalid_choice": "Geçerli bir seçim değil. Lütfen seçiminizi tekrar girin."
-  },
   "validate_withdrawal_address": {
     "err_invalid_ECDSA_hex_addr": "Girilen Ethereum adresi onaltılık sistemde kodlanmamıştır.",
     "msg_ECDSA_hex_addr_withdrawal": "**[Uyarı] bir Ethereum adresini varlık çekme adresi olarak giriyorsunuz. Lütfen bu adresin kontrolünün sizde olduğundan emin olun.**",

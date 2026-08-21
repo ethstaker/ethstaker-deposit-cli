@@ -8,8 +8,7 @@
       "prompt": "请选择（mainnet 或 testnet）网络/链名称"
     },
     "arg_partial_deposit_amount": {
-      "help": "向此验证者存入的 ether 数量。必须至少为 1 ether，精度不能高于 1 gwei。默认值为 32 ether。",
-      "prompt": "请输入您要向此验证者存入的数量。必须至少为 {min_deposit}，精度不能高于 1 gwei。激活新验证者需要 {activation_amount}"
+      "help": "向此验证者存入的 ether 数量。必须至少为 1 ether，精度不能高于 1 gwei。默认值为 32 ether。"
     },
     "arg_partial_deposit_keystore": {
       "help": "与您希望用于签名和存款的验证者关联的密钥库文件。",

@@ -10,9 +10,6 @@
   "validate_int_range": {
     "err_not_positive_integer": "Non è un numero intero positivo. Inseriscilo nuovamente."
   },
-  "validate_choice": {
-    "err_invalid_choice": "Non è una scelta valida. Inserisci nuovamente la tua scelta."
-  },
   "validate_withdrawal_address": {
     "err_invalid_ECDSA_hex_addr": "L'indirizzo di prelievo fornito non è in formato esadecimale.",
     "err_invalid_ECDSA_hex_addr_checksum": "L'indirizzo di prelievo fornito non è in formato checksum.",

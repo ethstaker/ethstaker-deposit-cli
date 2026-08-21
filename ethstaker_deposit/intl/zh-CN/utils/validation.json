@@ -10,9 +10,6 @@
   "validate_int_range": {
     "err_not_positive_integer": "这不是正整数。请重新输入。"
   },
-  "validate_choice": {
-    "err_invalid_choice": "这不是有效选项之一。请重新输入您的选择。"
-  },
   "validate_withdrawal_address": {
     "err_invalid_ECDSA_hex_addr": "给定的提取地址不是十六进制编码格式。",
     "err_invalid_ECDSA_hex_addr_checksum": "给定的提取地址不是校验和格式。",

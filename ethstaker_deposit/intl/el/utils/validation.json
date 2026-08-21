@@ -10,9 +10,6 @@
   "validate_int_range": {
     "err_not_positive_integer": "Αυτός δεν είναι θετικός ακέραιος αριθμός. Πληκτρολογήστε ξανά."
   },
-  "validate_choice": {
-    "err_invalid_choice": "Αυτή δεν είναι έγκυρη επιλογή. Πληκτρολογήστε ξανά την επιλογή σας."
-  },
   "validate_withdrawal_address": {
     "err_invalid_ECDSA_hex_addr": "Η δοθείσα διεύθυνση ανάληψης δεν είναι σε δεκαεξαδική κωδικοποιημένη μορφή.",
     "err_invalid_ECDSA_hex_addr_checksum": "Η δοθείσα διεύθυνση ανάληψης δεν έχει μορφή checksum.",

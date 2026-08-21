@@ -22,21 +22,15 @@
     },
     "arg_validator_start_index": {
       "help": "The index position for the keys to start generating withdrawal credentials in ERC-2334 format",
-      "prompt": "Please enter the index position for the keys to start generating withdrawal credentials in ERC-2334 format.",
-      "confirm": "Please repeat the index to confirm"
+      "prompt": "Please enter the index position for the keys to start generating withdrawal credentials in ERC-2334 format."
     },
     "arg_chain": {
       "help": "The name of Ethereum PoS chain you are targeting. Use \"mainnet\" if you are depositing ETH",
       "prompt": "Please choose the (mainnet or testnet) network/chain name"
     },
-    "arg_fork": {
-      "help": "The fork name of the fork you want to signing the message with.",
-      "prompt": "Please choose the fork name of the fork you want to signing the message with."
-    },
     "arg_bls_to_execution_changes_folder": {
       "help": "The folder path for the keystore(s). Pointing to `./bls_to_execution_changes` by default."
     },
-    "msg_key_creation": "Creating your SignedBLSToExecutionChange.",
     "msg_credentials_verification": "Verifying your withdrawal credentials.",
     "msg_creation_success": "\nSuccess!\nYour SignedBLSToExecutionChange JSON file can be found at: ",
     "msg_pause": "\n\nPress any key.",

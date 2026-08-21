@@ -10,9 +10,6 @@
   "validate_int_range": {
     "err_not_positive_integer": "Das ist keine positive Ganzzahl. Bitte geben Sie sie erneut ein."
   },
-  "validate_choice": {
-    "err_invalid_choice": "Das ist keine der gültigen Optionen. Bitte geben Sie Ihre Auswahl erneut ein."
-  },
   "validate_withdrawal_address": {
     "err_invalid_ECDSA_hex_addr": "Die angegebene Auszahlungsadresse liegt nicht in hexadezimal codierter Form vor.",
     "err_invalid_ECDSA_hex_addr_checksum": "Die angegebene Auszahlungsadresse weist keine gültige Prüfsumme auf.",

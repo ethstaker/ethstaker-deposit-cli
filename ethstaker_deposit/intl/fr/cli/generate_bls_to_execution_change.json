@@ -22,21 +22,15 @@
     },
     "arg_validator_start_index": {
       "help": "La position d'index à partir de laquelle commencer à générer les identifiants de retrait au format ERC-2334",
-      "prompt": "Veuillez saisir la position d'index à partir de laquelle commencer à générer les identifiants de retrait au format ERC-2334.",
-      "confirm": "Veuillez saisir à nouveau l'index pour confirmation"
+      "prompt": "Veuillez saisir la position d'index à partir de laquelle commencer à générer les identifiants de retrait au format ERC-2334."
     },
     "arg_chain": {
       "help": "Le nom de la chaîne Ethereum PoS ciblée. Utilisez \"mainnet\" si vous déposez des ETH",
       "prompt": "Veuillez choisir le nom du réseau ou de la chaîne (mainnet ou testnet)"
     },
-    "arg_fork": {
-      "help": "Le nom du fork avec lequel vous souhaitez signer le message.",
-      "prompt": "Veuillez choisir le nom du fork avec lequel vous souhaitez signer le message."
-    },
     "arg_bls_to_execution_changes_folder": {
       "help": "Le chemin du dossier des keystores. Pointe par défaut vers `./bls_to_execution_changes`."
     },
-    "msg_key_creation": "Création de votre SignedBLSToExecutionChange.",
     "msg_credentials_verification": "Vérification de vos identifiants de retrait.",
     "msg_creation_success": "\nOpération réussie !\nVotre fichier JSON SignedBLSToExecutionChange se trouve à l'emplacement suivant : ",
     "msg_pause": "\n\nAppuyez sur une touche.",

@@ -22,21 +22,15 @@
     },
     "arg_validator_start_index": {
       "help": "موضع الفهرس الذي تبدأ منه المفاتيح إنشاء بيانات اعتماد السحب بتنسيق ERC-2334",
-      "prompt": "يرجى إدخال موضع الفهرس الذي تبدأ منه المفاتيح إنشاء بيانات اعتماد السحب بتنسيق ERC-2334.",
-      "confirm": "يرجى إعادة إدخال الفهرس للتأكيد"
+      "prompt": "يرجى إدخال موضع الفهرس الذي تبدأ منه المفاتيح إنشاء بيانات اعتماد السحب بتنسيق ERC-2334."
     },
     "arg_chain": {
       "help": "اسم سلسلة Ethereum PoS التي تستهدفها. استخدم \"mainnet\" إذا كنت تودع ETH",
       "prompt": "يرجى اختيار اسم الشبكة/السلسلة (mainnet أو testnet)"
     },
-    "arg_fork": {
-      "help": "اسم التفرّع الذي تريد توقيع الرسالة باستخدامه.",
-      "prompt": "يرجى اختيار اسم التفرّع الذي تريد توقيع الرسالة باستخدامه."
-    },
     "arg_bls_to_execution_changes_folder": {
       "help": "مسار مجلد متجر أو متاجر المفاتيح. يشير افتراضيًا إلى `./bls_to_execution_changes`."
     },
-    "msg_key_creation": "جارٍ إنشاء SignedBLSToExecutionChange الخاص بك.",
     "msg_credentials_verification": "جارٍ التحقق من بيانات اعتماد السحب الخاصة بك.",
     "msg_creation_success": "\nنجح الأمر!\nيمكن العثور على ملف JSON الخاص بـ SignedBLSToExecutionChange في: ",
     "msg_pause": "\n\nاضغط على أي مفتاح.",

@@ -22,21 +22,15 @@
     },
     "arg_validator_start_index": {
       "help": "Die Indexposition, ab der die Schlüssel für Auszahlungs-Credentials im ERC-2334-Format erzeugt werden",
-      "prompt": "Bitte geben Sie die Indexposition ein, ab der die Schlüssel für Auszahlungs-Credentials im ERC-2334-Format erzeugt werden.",
-      "confirm": "Bitte wiederholen Sie den Index zur Bestätigung"
+      "prompt": "Bitte geben Sie die Indexposition ein, ab der die Schlüssel für Auszahlungs-Credentials im ERC-2334-Format erzeugt werden."
     },
     "arg_chain": {
       "help": "Der Name der Ethereum-PoS-Chain, für die Sie eine Aktion durchführen. Verwenden Sie \"mainnet\", wenn Sie ETH einzahlen.",
       "prompt": "Bitte wählen Sie den Namen des Netzwerks bzw. der Chain (mainnet oder testnet)"
     },
-    "arg_fork": {
-      "help": "Der Name des Forks, mit dem Sie die Nachricht signieren möchten.",
-      "prompt": "Bitte wählen Sie den Namen des Forks, mit dem Sie die Nachricht signieren möchten."
-    },
     "arg_bls_to_execution_changes_folder": {
       "help": "Der Ordnerpfad für die Keystore(s). Standardmäßig wird auf `./bls_to_execution_changes` verwiesen."
     },
-    "msg_key_creation": "Ihre SignedBLSToExecutionChange wird erstellt.",
     "msg_credentials_verification": "Ihre Withdrawal-Credentials werden überprüft.",
     "msg_creation_success": "\nErfolg!\nIhre SignedBLSToExecutionChange-JSON-Datei befindet sich unter: ",
     "msg_pause": "\n\nDrücken Sie eine beliebige Taste.",

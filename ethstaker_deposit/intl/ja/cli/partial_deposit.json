@@ -8,8 +8,7 @@
       "prompt": "(mainnet または testnet) ネットワーク/チェーン名を選択してください"
     },
     "arg_partial_deposit_amount": {
-      "help": "このバリデーターに入金する ether 単位の額。最低1 etherで、1 gweiを超える精度は指定できません。デフォルトは32 etherです。",
-      "prompt": "このバリデーターに入金する額を入力してください。{min_deposit} 以上で、1 gweiを超える精度は指定できません。新しいバリデーターの有効化には {activation_amount} が必要です"
+      "help": "このバリデーターに入金する ether 単位の額。最低1 etherで、1 gweiを超える精度は指定できません。デフォルトは32 etherです。"
     },
     "arg_partial_deposit_keystore": {
       "help": "署名して入金する対象のバリデーターに関連付けられたキーストアファイル。",

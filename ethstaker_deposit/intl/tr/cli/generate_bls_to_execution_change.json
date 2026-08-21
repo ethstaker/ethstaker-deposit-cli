@@ -22,21 +22,15 @@
     },
     "arg_validator_start_index": {
       "help": "ERC-2334 biçiminde para çekme kimlik bilgileri oluşturmaya başlanacak anahtarların dizin konumu",
-      "prompt": "Lütfen ERC-2334 biçiminde para çekme kimlik bilgileri oluşturmaya başlanacak anahtarların dizin konumunu girin.",
-      "confirm": "Onaylamak için dizini tekrar girin"
+      "prompt": "Lütfen ERC-2334 biçiminde para çekme kimlik bilgileri oluşturmaya başlanacak anahtarların dizin konumunu girin."
     },
     "arg_chain": {
       "help": "Hedeflediğiniz Ethereum PoS zincirinin adı. ETH yatırıyorsanız \"mainnet\" kullanın",
       "prompt": "Lütfen (mainnet veya testnet) ağ/zincir adını seçin"
     },
-    "arg_fork": {
-      "help": "Mesajı imzalamak istediğiniz fork'un adı.",
-      "prompt": "Lütfen mesajı imzalamak istediğiniz fork'un adını seçin."
-    },
     "arg_bls_to_execution_changes_folder": {
       "help": "Keystore dosyalarının klasör yolu. Varsayılan olarak `./bls_to_execution_changes` kullanılır."
     },
-    "msg_key_creation": "SignedBLSToExecutionChange oluşturuluyor.",
     "msg_credentials_verification": "Para çekme kimlik bilgileriniz doğrulanıyor.",
     "msg_creation_success": "\nBaşarılı!\nSignedBLSToExecutionChange JSON dosyanızın bulunduğu yer: ",
     "msg_pause": "\n\nDevam etmek için bir tuşa basın.",

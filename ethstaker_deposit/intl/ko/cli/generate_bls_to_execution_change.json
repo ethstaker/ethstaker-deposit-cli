@@ -22,21 +22,15 @@
     },
     "arg_validator_start_index": {
       "help": "ERC-2334 형식의 출금 자격 증명 생성을 시작할 키의 인덱스 위치입니다.",
-      "prompt": "ERC-2334 형식의 출금 자격 증명 생성을 시작할 키의 인덱스 위치를 입력하세요.",
-      "confirm": "확인을 위해 인덱스를 다시 입력하세요."
+      "prompt": "ERC-2334 형식의 출금 자격 증명 생성을 시작할 키의 인덱스 위치를 입력하세요."
     },
     "arg_chain": {
       "help": "대상으로 하는 Ethereum PoS 체인의 이름입니다. ETH를 예치한다면 \"mainnet\"을 사용하세요.",
       "prompt": "(mainnet 또는 testnet) 네트워크/체인 이름을 선택하세요."
     },
-    "arg_fork": {
-      "help": "메시지에 서명할 포크의 이름입니다.",
-      "prompt": "메시지에 서명할 포크의 이름을 선택하세요."
-    },
     "arg_bls_to_execution_changes_folder": {
       "help": "keystore의 폴더 경로입니다. 기본값은 `./bls_to_execution_changes`입니다."
     },
-    "msg_key_creation": "SignedBLSToExecutionChange 생성 중입니다.",
     "msg_credentials_verification": "출금 자격 증명 검증 중입니다.",
     "msg_creation_success": "\n성공!\nSignedBLSToExecutionChange JSON 파일을 찾을 수 있는 위치: ",
     "msg_pause": "\n\n아무 키나 누르세요.",

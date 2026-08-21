@@ -8,8 +8,7 @@
       "prompt": "Silakan pilih nama jaringan/chain (mainnet atau testnet)"
     },
     "arg_partial_deposit_amount": {
-      "help": "Jumlah yang akan didepositkan ke validator ini dalam denominasi ether. Harus setidaknya 1 ether dan tidak boleh memiliki presisi lebih dari 1 gwei. Nilai defaultnya adalah 32 ether.",
-      "prompt": "Silakan masukkan jumlah yang ingin Anda depositkan ke validator ini. Harus setidaknya {min_deposit} dan tidak boleh memiliki presisi lebih dari 1 gwei. {activation_amount} diperlukan untuk mengaktifkan validator baru"
+      "help": "Jumlah yang akan didepositkan ke validator ini dalam denominasi ether. Harus setidaknya 1 ether dan tidak boleh memiliki presisi lebih dari 1 gwei. Nilai defaultnya adalah 32 ether."
     },
     "arg_partial_deposit_keystore": {
       "help": "File keystore yang terkait dengan validator yang ingin Anda gunakan untuk menandatangani dan melakukan deposit.",

@@ -10,9 +10,6 @@
   "validate_int_range": {
     "err_not_positive_integer": "양의 정수가 아닙니다. 다시 입력하세요."
   },
-  "validate_choice": {
-    "err_invalid_choice": "유효한 선택 항목이 아닙니다. 선택 항목을 다시 입력하세요."
-  },
   "validate_withdrawal_address": {
     "err_invalid_ECDSA_hex_addr": "입력한 출금 주소가 16진수로 인코딩된 형식이 아닙니다.",
     "err_invalid_ECDSA_hex_addr_checksum": "입력한 출금 주소가 체크섬 형식이 아닙니다.",

@@ -22,21 +22,15 @@
     },
     "arg_validator_start_index": {
       "help": "以 ERC-2334 格式开始为密钥生成提取凭证的索引位置",
-      "prompt": "请输入以 ERC-2334 格式开始为密钥生成提取凭证的索引位置。",
-      "confirm": "请再次输入索引以确认"
+      "prompt": "请输入以 ERC-2334 格式开始为密钥生成提取凭证的索引位置。"
     },
     "arg_chain": {
       "help": "您要使用的 Ethereum PoS 链名称。如果您要存入 ETH，请使用 \"mainnet\"",
       "prompt": "请选择（mainnet 或 testnet）网络/链名称"
     },
-    "arg_fork": {
-      "help": "您要用于签署消息的分叉名称。",
-      "prompt": "请选择您要用于签署消息的分叉名称。"
-    },
     "arg_bls_to_execution_changes_folder": {
       "help": "密钥库文件夹路径。默认指向 `./bls_to_execution_changes`。"
     },
-    "msg_key_creation": "正在创建您的 SignedBLSToExecutionChange。",
     "msg_credentials_verification": "正在验证您的提取凭证。",
     "msg_creation_success": "\n成功！\n您的 SignedBLSToExecutionChange JSON 文件位于：",
     "msg_pause": "\n\n请按任意键。",

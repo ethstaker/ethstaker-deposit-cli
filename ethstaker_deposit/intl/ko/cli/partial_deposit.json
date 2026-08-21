@@ -8,8 +8,7 @@
       "prompt": "(mainnet 또는 testnet) 네트워크/체인 이름을 선택하세요."
     },
     "arg_partial_deposit_amount": {
-      "help": "이 검증자에게 예치할 금액(ether 단위)입니다. 최소 1 ether 이상이어야 하며 1 gwei보다 정밀할 수 없습니다. 기본값은 32 ether입니다.",
-      "prompt": "이 검증자에게 예치할 금액을 입력하세요. 최소 {min_deposit} 이상이어야 하며 1 gwei보다 정밀할 수 없습니다. 새 검증자를 활성화하려면 {activation_amount}이(가) 필요합니다."
+      "help": "이 검증자에게 예치할 금액(ether 단위)입니다. 최소 1 ether 이상이어야 하며 1 gwei보다 정밀할 수 없습니다. 기본값은 32 ether입니다."
     },
     "arg_partial_deposit_keystore": {
       "help": "서명하고 예치할 검증자와 연결된 keystore 파일입니다.",

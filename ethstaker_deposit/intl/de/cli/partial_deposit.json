@@ -8,8 +8,7 @@
       "prompt": "Bitte wählen Sie den Namen des Netzwerks bzw. der Chain (mainnet oder testnet)"
     },
     "arg_partial_deposit_amount": {
-      "help": "Der Einzahlungsbetrag für diesen Validator in Ether. Er muss mindestens 1 Ether betragen und darf keine höhere Genauigkeit als 1 gwei haben. Der Standardwert ist 32 Ether.",
-      "prompt": "Bitte geben Sie den Betrag ein, den Sie bei diesem Validator einzahlen möchten. Er muss mindestens {min_deposit} betragen und darf keine höhere Genauigkeit als 1 gwei haben. {activation_amount} ist erforderlich, um einen neuen Validator zu aktivieren"
+      "help": "Der Einzahlungsbetrag für diesen Validator in Ether. Er muss mindestens 1 Ether betragen und darf keine höhere Genauigkeit als 1 gwei haben. Der Standardwert ist 32 Ether."
     },
     "arg_partial_deposit_keystore": {
       "help": "Die Keystore-Datei des Validators, mit dessen Schlüssel Sie signieren und bei dem Sie einzahlen möchten.",

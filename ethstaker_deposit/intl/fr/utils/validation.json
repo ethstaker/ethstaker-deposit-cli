@@ -10,9 +10,6 @@
   "validate_int_range": {
     "err_not_positive_integer": "Ce n'est pas un entier positif. Veuillez recommencer."
   },
-  "validate_choice": {
-    "err_invalid_choice": "Ce choix ne fait pas partie des choix valides. Veuillez saisir à nouveau votre choix."
-  },
   "validate_withdrawal_address": {
     "err_invalid_ECDSA_hex_addr": "L'adresse de retrait fournie n'est pas encodée au format hexadécimal.",
     "err_invalid_ECDSA_hex_addr_checksum": "L'adresse de retrait fournie n'est pas au format checksum.",

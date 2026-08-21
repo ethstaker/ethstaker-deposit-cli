@@ -10,9 +10,6 @@
   "validate_int_range": {
     "err_not_positive_integer": "هذه ليست قيمة صحيحة موجبة. يرجى إعادة الكتابة."
   },
-  "validate_choice": {
-    "err_invalid_choice": "هذا ليس أحد الخيارات الصالحة. يرجى إعادة كتابة اختيارك."
-  },
   "validate_withdrawal_address": {
     "err_invalid_ECDSA_hex_addr": "عنوان السحب المُعطى ليس بصيغة سداسية عشرية مشفّرة.",
     "err_invalid_ECDSA_hex_addr_checksum": "عنوان السحب المُعطى ليس بصيغة تحقق.",
