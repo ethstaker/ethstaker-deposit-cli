@@ -4,9 +4,14 @@
       "help": "Jumlah kunci validator yang ingin Anda buat (Anda selalu dapat menghasilkan lebih banyak lagi nanti)",
       "prompt": "Silakan pilih berapa banyak validator yang ingin Anda jalankan"
     },
-    "chain": {
-      "help": "Versi Ethereum PoS yang Anda targetkan. Gunakan \"mainnet\" jika Anda menyetorkan ETH",
-      "prompt": "Pilih nama jaringan / rantai (mainnet atau testnet)"
+    "dynamic": {
+      "chain": {
+        "help": "Versi Ethereum PoS yang Anda targetkan. Gunakan \"mainnet\" jika Anda menyetorkan ETH",
+        "prompt": "Pilih nama jaringan / rantai (mainnet atau testnet)"
+      },
+      "arg_devnet_chain_setting": {
+        "help": "[DEVNET ONLY] Tetapkan nilai GENESIS_FORK_VERSION tertentu. Ini harus berupa string JSON yang berisi objek dengan kunci berikut: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount dan min_deposit_amount. Isinya harus serupa dengan yang dapat Anda temukan di settings.py. Ini akan menggantikan chain yang dipilih."
+      }
     },
     "keystore_password": {
       "help": "Kata sandi yang akan mengamankan keystore Anda. Anda perlu memasukkan ulang ini untuk mendekripsinya ketika Anda mengatur validator Ethereum PoS Anda. (Disarankan untuk tidak menggunakan argumen ini, dan tunggu CLI menanyakan mnemonik Anda supaya tidak akan muncul dalam riwayat shell Anda.)",
@@ -33,9 +38,6 @@
     },
     "arg_pbkdf2": {
       "help": "Menggunakan fungsi hash pbkdf2, bukan scrypt, untuk file keystore yang dibuat. "
-    },
-    "arg_devnet_chain_setting": {
-      "help": "[DEVNET ONLY] Tetapkan nilai GENESIS_FORK_VERSION tertentu. Ini harus berupa string JSON yang berisi objek dengan kunci berikut: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount dan min_deposit_amount. Isinya harus serupa dengan yang dapat Anda temukan di settings.py. Ini akan menggantikan chain yang dipilih."
     }
   },
   "generate_keys": {

@@ -9,9 +9,6 @@
       "confirm": "Saisissez à nouveau votre adresse de retrait pour confirmation.",
       "mismatch": "Erreur : les deux valeurs saisies ne correspondent pas. Veuillez recommencer."
     },
-    "arg_devnet_chain_setting": {
-      "help": "[DEVNET UNIQUEMENT] Définit une valeur spécifique pour GENESIS_FORK_VERSION et GENESIS_VALIDATORS_ROOT. Il doit s'agir d'une chaîne JSON contenant un objet avec les clés suivantes : network_name, genesis_fork_version, exit_fork_versio, genesis_validator_root, multiplier, min_activation_amount et min_deposit_amount. Elle doit être similaire à ce que vous pouvez trouver dans settings.py. Cela remplacera toute chaîne sélectionnée."
-    },
     "arg_validator_indices": {
       "help": "Une liste des numéros d'index des validateurs concernés",
       "prompt": "Veuillez saisir une liste des numéros d'index de vos validateurs tels qu'ils sont identifiés sur la chaîne Beacon. Séparez les éléments multiples par des espaces ou des virgules."
@@ -24,16 +21,21 @@
       "help": "La position d'index à partir de laquelle commencer à générer les identifiants de retrait au format ERC-2334",
       "prompt": "Veuillez saisir la position d'index à partir de laquelle commencer à générer les identifiants de retrait au format ERC-2334."
     },
-    "arg_chain": {
-      "help": "Le nom de la chaîne Ethereum PoS ciblée. Utilisez \"mainnet\" si vous déposez des ETH",
-      "prompt": "Veuillez choisir le nom du réseau ou de la chaîne (mainnet ou testnet)"
-    },
     "arg_bls_to_execution_changes_folder": {
       "help": "Le chemin du dossier des keystores. Pointe par défaut vers `./bls_to_execution_changes`."
     },
     "msg_credentials_verification": "Vérification de vos identifiants de retrait.",
     "msg_creation_success": "\nOpération réussie !\nVotre fichier JSON SignedBLSToExecutionChange se trouve à l'emplacement suivant : ",
     "msg_pause": "\n\nAppuyez sur une touche.",
-    "err_verify_btec": "Échec de la vérification des fichiers JSON bls_to_execution_change."
+    "err_verify_btec": "Échec de la vérification des fichiers JSON bls_to_execution_change.",
+    "dynamic": {
+      "arg_devnet_chain_setting": {
+        "help": "[DEVNET UNIQUEMENT] Définit une valeur spécifique pour GENESIS_FORK_VERSION et GENESIS_VALIDATORS_ROOT. Il doit s'agir d'une chaîne JSON contenant un objet avec les clés suivantes : network_name, genesis_fork_version, exit_fork_versio, genesis_validator_root, multiplier, min_activation_amount et min_deposit_amount. Elle doit être similaire à ce que vous pouvez trouver dans settings.py. Cela remplacera toute chaîne sélectionnée."
+      },
+      "arg_chain": {
+        "help": "Le nom de la chaîne Ethereum PoS ciblée. Utilisez \"mainnet\" si vous déposez des ETH",
+        "prompt": "Veuillez choisir le nom du réseau ou de la chaîne (mainnet ou testnet)"
+      }
+    }
   }
 }

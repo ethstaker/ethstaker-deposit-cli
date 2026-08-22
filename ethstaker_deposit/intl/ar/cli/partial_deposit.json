@@ -3,10 +3,6 @@
     "arg_partial_deposit": {
       "help": "إنشاء إيداع جزئي بأي مبلغ لا يقل عن 1 ether، وسيُوقّع باستخدام متجر مفاتيح المدقّق المُقدّم. سيُضاف هذا إلى رصيد المدقّق المُقدّم أو يبدأ إنشاء مدقّق جديد."
     },
-    "arg_partial_deposit_chain": {
-      "help": "اسم سلسلة Ethereum PoS التي يعمل عليها مدقّقك. القيمة الافتراضية هي \"mainnet\".",
-      "prompt": "يرجى اختيار اسم الشبكة/السلسلة (mainnet أو testnet)"
-    },
     "arg_partial_deposit_amount": {
       "help": "مبلغ الإيداع لهذا المدقّق بوحدة ether. يجب ألا يقل عن 1 ether وألا تتجاوز دقته 1 gwei. القيمة الافتراضية هي 32 ether."
     },
@@ -32,13 +28,19 @@
       "help": "ينشئ مدقّقين تراكميين ببيانات اعتماد سحب 0x02 لرصيد فعّال أقصى قدره 2048 ETH، أو ينشئ مدقّقين عاديين ببيانات اعتماد سحب 0x01 لرصيد فعّال أقصى قدره 32 ETH. هذه الميزة مدعومة فقط على الشبكات التي خضعت لتفرّع Pectra.",
       "prompt": "أدخل yes إذا كنت تريد إنشاء مدقّقين تراكميين ببيانات اعتماد سحب 0x02 لرصيد فعّال أقصى قدره 2048 ETH. المدقّقون التراكميون وبيانات اعتماد السحب 0x02 مدعومون فقط على الشبكات التي خضعت لتفرّع Pectra. اكتب no أو اتركه فارغًا إذا كنت تريد مدقّقين عاديين ببيانات اعتماد سحب 0x01 لرصيد فعّال أقصى قدره 32 ETH."
     },
-    "arg_devnet_chain_setting": {
-      "help": "[لشبكات التطوير فقط] عيّن قيمة محددة لـ GENESIS_FORK_VERSION. يجب أن تكون هذه سلسلة JSON تحتوي على كائن بالمفاتيح التالية: network_name وgenesis_fork_version وexit_fork_version وgenesis_validator_root وmultiplier وmin_activation_amount وmin_deposit_amount. يجب أن تكون مشابهة لما تجده في settings.py. سيؤدي ذلك إلى تجاوز أي سلسلة محددة."
-    },
     "msg_partial_deposit_creation": "\nجارٍ إنشاء الإيداع الجزئي الخاص بك...",
     "msg_verify_partial_deposit": "\nجارٍ التحقق من الإيداع الجزئي الخاص بك...",
     "err_verify_partial_deposit": "\nحدثت مشكلة أثناء التحقق من الإيداع الجزئي الخاص بك.\nيرجى المحاولة مرة أخرى",
     "msg_creation_success": "\nنجح الأمر!\nيمكن العثور على ملف الإيداع الجزئي الخاص بك في: ",
-    "msg_pause": "\n\nاضغط على أي مفتاح."
+    "msg_pause": "\n\nاضغط على أي مفتاح.",
+    "dynamic": {
+      "arg_partial_deposit_chain": {
+        "help": "اسم سلسلة Ethereum PoS التي يعمل عليها مدقّقك. القيمة الافتراضية هي \"mainnet\".",
+        "prompt": "يرجى اختيار اسم الشبكة/السلسلة (mainnet أو testnet)"
+      },
+      "arg_devnet_chain_setting": {
+        "help": "[لشبكات التطوير فقط] عيّن قيمة محددة لـ GENESIS_FORK_VERSION. يجب أن تكون هذه سلسلة JSON تحتوي على كائن بالمفاتيح التالية: network_name وgenesis_fork_version وexit_fork_version وgenesis_validator_root وmultiplier وmin_activation_amount وmin_deposit_amount. يجب أن تكون مشابهة لما تجده في settings.py. سيؤدي ذلك إلى تجاوز أي سلسلة محددة."
+      }
+    }
   }
 }

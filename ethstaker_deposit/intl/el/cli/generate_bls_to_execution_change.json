@@ -9,9 +9,6 @@
       "confirm": "Επαναλάβετε τη διεύθυνση ανάληψης για επιβεβαίωση.",
       "mismatch": "Σφάλμα: οι δύο τιμές που εισαγάγατε δεν ταιριάζουν. Πληκτρολογήστε ξανά."
     },
-    "arg_devnet_chain_setting": {
-      "help": "[DEVNET ONLY] Ορίστε συγκεκριμένες τιμές GENESIS_FORK_VERSION και GENESIS_VALIDATORS_ROOT. Αυτό πρέπει να είναι μια συμβολοσειρά JSON που περιέχει ένα αντικείμενο με τα εξής κλειδιά: network_name, genesis_fork_version, exit_fork_versio, genesis_validator_root, multiplier, min_activation_amount και min_deposit_amount. Πρέπει να είναι παρόμοιο με αυτό που θα βρείτε στο settings.py. Αυτό θα παρακάμψει οποιαδήποτε επιλεγμένη αλυσίδα."
-    },
     "arg_validator_indices": {
       "help": "Μια λίστα με τους αριθμούς δεικτών των συγκεκριμένων επαληθευτών",
       "prompt": "Εισαγάγετε μια λίστα με τους αριθμούς δεικτών των επαληθευτών σας, όπως προσδιορίζονται στο beacon chain. Διαχωρίστε πολλά στοιχεία με κενά ή κόμματα."
@@ -24,16 +21,21 @@
       "help": "Η θέση δείκτη από την οποία θα αρχίσει η δημιουργία διαπιστευτηρίων ανάληψης σε μορφή ERC-2334",
       "prompt": "Εισαγάγετε τη θέση δείκτη από την οποία θα αρχίσει η δημιουργία διαπιστευτηρίων ανάληψης σε μορφή ERC-2334."
     },
-    "arg_chain": {
-      "help": "Το όνομα της αλυσίδας Ethereum PoS που στοχεύετε. Χρησιμοποιήστε το \"mainnet\" αν καταθέτετε ETH",
-      "prompt": "Επιλέξτε το όνομα του δικτύου/της αλυσίδας (mainnet ή testnet)"
-    },
     "arg_bls_to_execution_changes_folder": {
       "help": "Η διαδρομή του φακέλου για τα keystore. Από προεπιλογή δείχνει στο `./bls_to_execution_changes`."
     },
     "msg_credentials_verification": "Επαλήθευση των διαπιστευτηρίων ανάληψής σας.",
     "msg_creation_success": "\nΕπιτυχία!\nΤο αρχείο JSON SignedBLSToExecutionChange σας βρίσκεται στη διεύθυνση: ",
     "msg_pause": "\n\nΠιέστε οποιοδήποτε πλήκτρο.",
-    "err_verify_btec": "Αποτυχία επαλήθευσης των αρχείων JSON bls_to_execution_change."
+    "err_verify_btec": "Αποτυχία επαλήθευσης των αρχείων JSON bls_to_execution_change.",
+    "dynamic": {
+      "arg_devnet_chain_setting": {
+        "help": "[DEVNET ONLY] Ορίστε συγκεκριμένες τιμές GENESIS_FORK_VERSION και GENESIS_VALIDATORS_ROOT. Αυτό πρέπει να είναι μια συμβολοσειρά JSON που περιέχει ένα αντικείμενο με τα εξής κλειδιά: network_name, genesis_fork_version, exit_fork_versio, genesis_validator_root, multiplier, min_activation_amount και min_deposit_amount. Πρέπει να είναι παρόμοιο με αυτό που θα βρείτε στο settings.py. Αυτό θα παρακάμψει οποιαδήποτε επιλεγμένη αλυσίδα."
+      },
+      "arg_chain": {
+        "help": "Το όνομα της αλυσίδας Ethereum PoS που στοχεύετε. Χρησιμοποιήστε το \"mainnet\" αν καταθέτετε ETH",
+        "prompt": "Επιλέξτε το όνομα του δικτύου/της αλυσίδας (mainnet ή testnet)"
+      }
+    }
   }
 }

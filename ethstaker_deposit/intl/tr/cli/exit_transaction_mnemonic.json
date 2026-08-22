@@ -3,10 +3,6 @@
     "arg_exit_transaction_mnemonic": {
       "help": "Ethereum Beacon Chain üzerindeki doğrulayıcıları çıkarmak için kullanılabilecek bir çıkış işlemi oluşturun."
     },
-    "arg_exit_transaction_mnemonic_chain": {
-      "help": "Doğrulayıcınızın çalıştığı Ethereum PoS zincirinin adı. Varsayılan \"mainnet\"tir.",
-      "prompt": "Lütfen (mainnet veya testnet) ağ/zincir adını seçin"
-    },
     "arg_exit_transaction_mnemonic_start_index": {
       "help": "Anahtarlarınızı oluştururken kullandığınız dizini (anahtar numarasını) girin. Varsayılan değer 0dır.",
       "prompt": "Anahtarlarınızı oluştururken kullandığınız dizini (anahtar numarasını) girin. Varsayılan değer 0dır."
@@ -21,14 +17,20 @@
     "arg_exit_transaction_mnemonic_output_folder": {
       "help": "Çıkış işlemlerinin kaydedileceği klasör yolu. Varsayılan olarak `./exit_transactions` kullanılır."
     },
-    "arg_devnet_chain_setting": {
-      "help": "[DEVNET ONLY] Belirli bir EXIT_FORK_VERSION ve GENESIS_VALIDATORS_ROOT değeri ayarlayın. Bu, şu anahtarlara sahip bir nesne içeren JSON dizesi olmalıdır: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount ve min_deposit_amount. settings.py dosyasında bulabileceğiniz yapıya benzer olmalıdır. Bu, seçilen zinciri geçersiz kılar."
-    },
     "msg_key_creation": "Anahtarlarınız oluşturuluyor:\t",
     "msg_exit_transaction_creation": "Çıkış işlemleriniz oluşturuluyor:\t",
     "msg_verify_exit_transaction": "Çıkış işlemleriniz doğrulanıyor:\t",
     "err_verify_exit_transactions": "\nÇıkış işlemleriniz doğrulanırken bir sorun oluştu.\nLütfen tekrar deneyin",
     "msg_creation_success": "\nBaşarılı!\nÇıkış işlemi dosyalarınızın bulunduğu yer: ",
-    "msg_pause": "\n\nDevam etmek için bir tuşa basın."
+    "msg_pause": "\n\nDevam etmek için bir tuşa basın.",
+    "dynamic": {
+      "arg_exit_transaction_mnemonic_chain": {
+        "help": "Doğrulayıcınızın çalıştığı Ethereum PoS zincirinin adı. Varsayılan \"mainnet\"tir.",
+        "prompt": "Lütfen (mainnet veya testnet) ağ/zincir adını seçin"
+      },
+      "arg_devnet_chain_setting": {
+        "help": "[DEVNET ONLY] Belirli bir EXIT_FORK_VERSION ve GENESIS_VALIDATORS_ROOT değeri ayarlayın. Bu, şu anahtarlara sahip bir nesne içeren JSON dizesi olmalıdır: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount ve min_deposit_amount. settings.py dosyasında bulabileceğiniz yapıya benzer olmalıdır. Bu, seçilen zinciri geçersiz kılar."
+      }
+    }
   }
 }

@@ -7,18 +7,20 @@
     "folder": {
       "help": "Anahtar depoları ve depozitolar için dizin yolu. Varsayılan olarak `./validator_keys` yolunu gösterir."
     },
-    "chain": {
-      "help": "Hedeflenen Ethereum PoS ağının ismi. Depozito olarak ETH kullanıyorsanız \"mainnet\" kullanın",
-      "prompt": "Lütfen (mainnet veya testnet) ağ/zincir adını seçin"
+    "dynamic": {
+      "chain": {
+        "help": "Hedeflenen Ethereum PoS ağının ismi. Depozito olarak ETH kullanıyorsanız \"mainnet\" kullanın",
+        "prompt": "Lütfen (mainnet veya testnet) ağ/zincir adını seçin"
+      },
+      "arg_devnet_chain_setting": {
+        "help": "[DEVNET ONLY] Belirli bir GENESIS_FORK_VERSION değeri ayarlayın. Bu, şu anahtarlara sahip bir nesne içeren JSON dizesi olmalıdır: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount ve min_deposit_amount. settings.py dosyasında bulabileceğiniz yapıya benzer olmalıdır. Bu, seçilen zinciri geçersiz kılar."
+      }
     },
     "keystore_password": {
       "help": "Anahtar depolarınızı koruyacak şifre. Ethereum onaylayıcılarınızı kurarken bu şifreyi tekrar girmeniz gerekecek. (Bu parametreyi kullanmamanız ve size sorulduğunda ipucu kelimelerini girmeniz tavsiye edilir, aksi taktirde şifreniz komut satırı geçmişinde gözükecektir.)",
       "prompt": "Onaylayıcı anahtar depolarınızı koruyan bir şifre oluşturun. Ethereum onaylayıcılarınızı kurarken bu şifreyi tekrar girmeniz gerekecek.",
       "confirm": "Anahtar deposu şifrenizi onaylamak için tekrar girin",
       "mismatch": "Hata: girilen değerler eşleşmiyor. Tekrar deneyin."
-    },
-    "withdrawal_address": {
-      "help": "Eğer bu alan girilmiş ve geçerliyse, verilen Ethereum adresi varlık çekme adresi olarak kullanılacaktır. Aksi taktirde, ipucu kelimelerinden üretilmiş bir genel anahtar kullanılır."
     },
     "arg_withdrawal_address": {
       "help": "Para çekmede kullanılacak Ethereum adresi. Genellikle '0x' ile başlar ve ardından 40 onaltılık karakter gelir. Burada seçtiğiniz adres üzerinde tam kontrolünüz olduğundan emin olun. Zincirde bir para çekme adresi belirledikten sonra değiştirilemez.",
@@ -36,9 +38,6 @@
     },
     "arg_pbkdf2": {
       "help": "Oluşturulan keystore dosyaları için scrypt yerine pbkdf2 karma işlevini kullanır. "
-    },
-    "arg_devnet_chain_setting": {
-      "help": "[DEVNET ONLY] Belirli bir GENESIS_FORK_VERSION değeri ayarlayın. Bu, şu anahtarlara sahip bir nesne içeren JSON dizesi olmalıdır: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount ve min_deposit_amount. settings.py dosyasında bulabileceğiniz yapıya benzer olmalıdır. Bu, seçilen zinciri geçersiz kılar."
     }
   },
   "generate_keys": {

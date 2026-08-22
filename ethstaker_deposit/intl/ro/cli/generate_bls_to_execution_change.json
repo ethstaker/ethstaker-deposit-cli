@@ -9,9 +9,6 @@
       "confirm": "Reintrodu adresa de retragere pentru confirmare.",
       "mismatch": "Eroare: cele două valori introduse sunt diferite. Te rugăm să tastezi din nou."
     },
-    "arg_devnet_chain_setting": {
-      "help": "[DOAR DEVNET] Setează valorile specifice GENESIS_FORK_VERSION și GENESIS_VALIDATORS_ROOT. Acesta trebuie să fie un șir JSON care conține un obiect cu următoarele chei: network_name, genesis_fork_version, exit_fork_versio, genesis_validator_root, multiplier, min_activation_amount și min_deposit_amount. Ar trebui să fie similar cu ceea ce găsești în settings.py. Aceasta va suprascrie orice lanț selectat."
-    },
     "arg_validator_indices": {
       "help": "O listă cu numărul (numerele) de index ale validatorului (validatorilor) respectiv(i)",
       "prompt": "Introdu o listă cu numerele de index ale validatorilor tăi, așa cum sunt identificate pe beacon chain. Separă elementele multiple prin spații sau virgule."
@@ -24,16 +21,21 @@
       "help": "Poziția de index de la care cheile vor începe să genereze credențiale de retragere în format ERC-2334",
       "prompt": "Introdu poziția de index de la care cheile vor începe să genereze credențiale de retragere în format ERC-2334."
     },
-    "arg_chain": {
-      "help": "Numele lanțului Ethereum PoS vizat. Folosește \"mainnet\" dacă depui ETH",
-      "prompt": "Alege numele rețelei/lanțului (mainnet sau testnet)"
-    },
     "arg_bls_to_execution_changes_folder": {
       "help": "Calea către directorul pentru depozitul (depozitele) de chei. Implicit este `./bls_to_execution_changes`."
     },
     "msg_credentials_verification": "Se verifică credențialele de retragere.",
     "msg_creation_success": "\nSucces!\nFișierul JSON SignedBLSToExecutionChange poate fi găsit la: ",
     "msg_pause": "\n\nApasă orice tastă.",
-    "err_verify_btec": "Nu s-a reușit verificarea fișierelor JSON bls_to_execution_change."
+    "err_verify_btec": "Nu s-a reușit verificarea fișierelor JSON bls_to_execution_change.",
+    "dynamic": {
+      "arg_devnet_chain_setting": {
+        "help": "[DOAR DEVNET] Setează valorile specifice GENESIS_FORK_VERSION și GENESIS_VALIDATORS_ROOT. Acesta trebuie să fie un șir JSON care conține un obiect cu următoarele chei: network_name, genesis_fork_version, exit_fork_versio, genesis_validator_root, multiplier, min_activation_amount și min_deposit_amount. Ar trebui să fie similar cu ceea ce găsești în settings.py. Aceasta va suprascrie orice lanț selectat."
+      },
+      "arg_chain": {
+        "help": "Numele lanțului Ethereum PoS vizat. Folosește \"mainnet\" dacă depui ETH",
+        "prompt": "Alege numele rețelei/lanțului (mainnet sau testnet)"
+      }
+    }
   }
 }

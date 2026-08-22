@@ -9,9 +9,6 @@
       "confirm": "Onaylamak için para çekme adresinizi tekrar girin.",
       "mismatch": "Hata: girilen iki değer eşleşmiyor. Lütfen tekrar yazın."
     },
-    "arg_devnet_chain_setting": {
-      "help": "[DEVNET ONLY] Belirli bir GENESIS_FORK_VERSION ve GENESIS_VALIDATORS_ROOT değeri ayarlayın. Bu, şu anahtarlara sahip bir nesne içeren JSON dizesi olmalıdır: network_name, genesis_fork_version, exit_fork_versio, genesis_validator_root, multiplier, min_activation_amount ve min_deposit_amount. settings.py dosyasında bulabileceğiniz yapıya benzer olmalıdır. Bu, seçilen zinciri geçersiz kılar."
-    },
     "arg_validator_indices": {
       "help": "Belirli doğrulayıcıların doğrulayıcı dizin numaralarının listesi",
       "prompt": "Lütfen beacon chain üzerinde tanımlanan doğrulayıcılarınızın dizin numaralarının listesini girin. Birden fazla öğeyi boşluk veya virgülle ayırın."
@@ -24,16 +21,21 @@
       "help": "ERC-2334 biçiminde para çekme kimlik bilgileri oluşturmaya başlanacak anahtarların dizin konumu",
       "prompt": "Lütfen ERC-2334 biçiminde para çekme kimlik bilgileri oluşturmaya başlanacak anahtarların dizin konumunu girin."
     },
-    "arg_chain": {
-      "help": "Hedeflediğiniz Ethereum PoS zincirinin adı. ETH yatırıyorsanız \"mainnet\" kullanın",
-      "prompt": "Lütfen (mainnet veya testnet) ağ/zincir adını seçin"
-    },
     "arg_bls_to_execution_changes_folder": {
       "help": "Keystore dosyalarının klasör yolu. Varsayılan olarak `./bls_to_execution_changes` kullanılır."
     },
     "msg_credentials_verification": "Para çekme kimlik bilgileriniz doğrulanıyor.",
     "msg_creation_success": "\nBaşarılı!\nSignedBLSToExecutionChange JSON dosyanızın bulunduğu yer: ",
     "msg_pause": "\n\nDevam etmek için bir tuşa basın.",
-    "err_verify_btec": "bls_to_execution_change JSON dosyaları doğrulanamadı."
+    "err_verify_btec": "bls_to_execution_change JSON dosyaları doğrulanamadı.",
+    "dynamic": {
+      "arg_devnet_chain_setting": {
+        "help": "[DEVNET ONLY] Belirli bir GENESIS_FORK_VERSION ve GENESIS_VALIDATORS_ROOT değeri ayarlayın. Bu, şu anahtarlara sahip bir nesne içeren JSON dizesi olmalıdır: network_name, genesis_fork_version, exit_fork_versio, genesis_validator_root, multiplier, min_activation_amount ve min_deposit_amount. settings.py dosyasında bulabileceğiniz yapıya benzer olmalıdır. Bu, seçilen zinciri geçersiz kılar."
+      },
+      "arg_chain": {
+        "help": "Hedeflediğiniz Ethereum PoS zincirinin adı. ETH yatırıyorsanız \"mainnet\" kullanın",
+        "prompt": "Lütfen (mainnet veya testnet) ağ/zincir adını seçin"
+      }
+    }
   }
 }

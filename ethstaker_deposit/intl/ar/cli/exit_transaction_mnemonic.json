@@ -3,10 +3,6 @@
     "arg_exit_transaction_mnemonic": {
       "help": "إنشاء معاملة خروج يمكن استخدامها لإخراج المدقّقين على سلسلة Ethereum Beacon Chain."
     },
-    "arg_exit_transaction_mnemonic_chain": {
-      "help": "اسم سلسلة Ethereum PoS التي يعمل عليها مدقّقك. القيمة الافتراضية هي \"mainnet\".",
-      "prompt": "يرجى اختيار اسم الشبكة/السلسلة (mainnet أو testnet)"
-    },
     "arg_exit_transaction_mnemonic_start_index": {
       "help": "أدخل الفهرس (رقم المفتاح) الذي استخدمته عند إنشاء مفاتيحك. القيمة الافتراضية هي 0.",
       "prompt": "أدخل الفهرس (رقم المفتاح) الذي استخدمته عند إنشاء مفاتيحك. القيمة الافتراضية هي 0."
@@ -21,14 +17,20 @@
     "arg_exit_transaction_mnemonic_output_folder": {
       "help": "مسار المجلد الذي ستُحفظ فيه معاملات الخروج. يشير افتراضيًا إلى `./exit_transactions`."
     },
-    "arg_devnet_chain_setting": {
-      "help": "[لشبكات التطوير فقط] عيّن قيمة محددة لـ EXIT_FORK_VERSION وGENESIS_VALIDATORS_ROOT. يجب أن تكون هذه سلسلة JSON تحتوي على كائن بالمفاتيح التالية: network_name وgenesis_fork_version وexit_fork_version وgenesis_validator_root وmultiplier وmin_activation_amount وmin_deposit_amount. يجب أن تكون مشابهة لما تجده في settings.py. سيؤدي ذلك إلى تجاوز أي سلسلة محددة."
-    },
     "msg_key_creation": "جارٍ إنشاء مفاتيحك:\t",
     "msg_exit_transaction_creation": "جارٍ إنشاء معاملات الخروج الخاصة بك:\t",
     "msg_verify_exit_transaction": "جارٍ التحقق من معاملات الخروج الخاصة بك:\t",
     "err_verify_exit_transactions": "\nحدثت مشكلة أثناء التحقق من معاملات الخروج الخاصة بك.\nيرجى المحاولة مرة أخرى",
     "msg_creation_success": "\nنجح الأمر!\nيمكن العثور على ملفات معاملات الخروج الخاصة بك في: ",
-    "msg_pause": "\n\nاضغط على أي مفتاح."
+    "msg_pause": "\n\nاضغط على أي مفتاح.",
+    "dynamic": {
+      "arg_exit_transaction_mnemonic_chain": {
+        "help": "اسم سلسلة Ethereum PoS التي يعمل عليها مدقّقك. القيمة الافتراضية هي \"mainnet\".",
+        "prompt": "يرجى اختيار اسم الشبكة/السلسلة (mainnet أو testnet)"
+      },
+      "arg_devnet_chain_setting": {
+        "help": "[لشبكات التطوير فقط] عيّن قيمة محددة لـ EXIT_FORK_VERSION وGENESIS_VALIDATORS_ROOT. يجب أن تكون هذه سلسلة JSON تحتوي على كائن بالمفاتيح التالية: network_name وgenesis_fork_version وexit_fork_version وgenesis_validator_root وmultiplier وmin_activation_amount وmin_deposit_amount. يجب أن تكون مشابهة لما تجده في settings.py. سيؤدي ذلك إلى تجاوز أي سلسلة محددة."
+      }
+    }
   }
 }

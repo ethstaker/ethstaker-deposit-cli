@@ -7,9 +7,14 @@
     "folder": {
       "help": "Der Ordnerpfad für die Keystore(s) und Deposit(s). Standardmäßig wird auf `./validator_keys` verwiesen."
     },
-    "chain": {
-      "help": "Der Name der Ethereum-PoS-Chain, für die Sie eine Aktion durchführen. Verwenden Sie \"mainnet\", wenn Sie ETH einzahlen.",
-      "prompt": "Bitte wählen Sie den Namen des Netzwerks bzw. der Chain (mainnet oder testnet)"
+    "dynamic": {
+      "chain": {
+        "help": "Der Name der Ethereum-PoS-Chain, für die Sie eine Aktion durchführen. Verwenden Sie \"mainnet\", wenn Sie ETH einzahlen.",
+        "prompt": "Bitte wählen Sie den Namen des Netzwerks bzw. der Chain (mainnet oder testnet)"
+      },
+      "arg_devnet_chain_setting": {
+        "help": "[NUR DEVNET] Einen bestimmten Wert für GENESIS_FORK_VERSION festlegen. Dies muss ein JSON-String sein, der ein Objekt mit den folgenden Schlüsseln enthält: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount und min_deposit_amount. Er sollte dem entsprechen, was Sie in settings.py finden. Dadurch wird jede ausgewählte Chain überschrieben."
+      }
     },
     "keystore_password": {
       "help": "Das Passwort, mit dem Ihre Keystores geschützt werden. Sie müssen es erneut eingeben, um sie beim Einrichten Ihrer Ethereum-Validatoren zu entschlüsseln. (Es wird empfohlen, dieses Argument nicht zu verwenden und zu warten, bis die CLI Sie nach Ihrem Passwort fragt, da es sonst in Ihrer Shell-Historie erscheint.)",
@@ -33,9 +38,6 @@
     },
     "arg_pbkdf2": {
       "help": "Verwendet für erzeugte Keystore-Dateien die Hash-Funktion pbkdf2 anstelle von scrypt. "
-    },
-    "arg_devnet_chain_setting": {
-      "help": "[NUR DEVNET] Einen bestimmten Wert für GENESIS_FORK_VERSION festlegen. Dies muss ein JSON-String sein, der ein Objekt mit den folgenden Schlüsseln enthält: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount und min_deposit_amount. Er sollte dem entsprechen, was Sie in settings.py finden. Dadurch wird jede ausgewählte Chain überschrieben."
     }
   },
   "generate_keys": {

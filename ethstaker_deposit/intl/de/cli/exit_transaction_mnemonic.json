@@ -3,10 +3,6 @@
     "arg_exit_transaction_mnemonic": {
       "help": "Eine Exit-Transaktion erzeugen, mit der Validatoren auf der Ethereum Beacon Chain beendet werden können."
     },
-    "arg_exit_transaction_mnemonic_chain": {
-      "help": "Der Name der Ethereum-PoS-Chain, auf der Ihr Validator läuft. \"mainnet\" ist die Standardeinstellung.",
-      "prompt": "Bitte wählen Sie den Namen des Netzwerks bzw. der Chain (mainnet oder testnet)"
-    },
     "arg_exit_transaction_mnemonic_start_index": {
       "help": "Geben Sie den Index (die Schlüsselnummer) ein, den Sie bei der Erstellung Ihrer Schlüssel verwendet haben. Der Standardwert ist 0.",
       "prompt": "Geben Sie den Index (die Schlüsselnummer) ein, den Sie bei der Erstellung Ihrer Schlüssel verwendet haben. Der Standardwert ist 0."
@@ -21,14 +17,20 @@
     "arg_exit_transaction_mnemonic_output_folder": {
       "help": "Der Ordnerpfad, unter dem die Exit-Transaktionen gespeichert werden. Standardmäßig wird auf `./exit_transactions` verwiesen."
     },
-    "arg_devnet_chain_setting": {
-      "help": "[NUR DEVNET] Einen bestimmten Wert für EXIT_FORK_VERSION und GENESIS_VALIDATORS_ROOT festlegen. Dies muss ein JSON-String sein, der ein Objekt mit den folgenden Schlüsseln enthält: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount und min_deposit_amount. Er sollte dem entsprechen, was Sie in settings.py finden. Dadurch wird jede ausgewählte Chain überschrieben."
-    },
     "msg_key_creation": "Ihre Schlüssel werden erstellt:\t",
     "msg_exit_transaction_creation": "Ihre Exit-Transaktionen werden erstellt:\t",
     "msg_verify_exit_transaction": "Ihre Exit-Transaktionen werden überprüft:\t",
     "err_verify_exit_transactions": "\nBei der Überprüfung Ihrer Exit-Transaktionen ist ein Problem aufgetreten.\nBitte versuchen Sie es erneut",
     "msg_creation_success": "\nErfolg!\nIhre Exit-Transaktionsdateien befinden sich unter: ",
-    "msg_pause": "\n\nDrücken Sie eine beliebige Taste."
+    "msg_pause": "\n\nDrücken Sie eine beliebige Taste.",
+    "dynamic": {
+      "arg_exit_transaction_mnemonic_chain": {
+        "help": "Der Name der Ethereum-PoS-Chain, auf der Ihr Validator läuft. \"mainnet\" ist die Standardeinstellung.",
+        "prompt": "Bitte wählen Sie den Namen des Netzwerks bzw. der Chain (mainnet oder testnet)"
+      },
+      "arg_devnet_chain_setting": {
+        "help": "[NUR DEVNET] Einen bestimmten Wert für EXIT_FORK_VERSION und GENESIS_VALIDATORS_ROOT festlegen. Dies muss ein JSON-String sein, der ein Objekt mit den folgenden Schlüsseln enthält: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount und min_deposit_amount. Er sollte dem entsprechen, was Sie in settings.py finden. Dadurch wird jede ausgewählte Chain überschrieben."
+      }
+    }
   }
 }
