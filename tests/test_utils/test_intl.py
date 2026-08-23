@@ -6,6 +6,7 @@ from ethstaker_deposit.utils.constants import (
     MNEMONIC_LANG_OPTIONS,
 )
 from ethstaker_deposit.utils.intl import (
+    _resolve_rel_path,
     fuzzy_reverse_dict_lookup,
     get_first_options,
     load_text,
@@ -31,6 +32,32 @@ def test_load_text_source_path_matches_json_path() -> None:
     json_path = os.path.join('ethstaker_deposit', 'cli', 'new_mnemonic.json')
 
     assert load_text(params, source_path, func, 'en') == load_text(params, json_path, func, 'en')
+
+
+def test_load_text_frozen_basename_uses_module_translation() -> None:
+    assert 'connectivity' in load_text(['connectivity_warning'], 'deposit.py', 'check_connectivity', 'en').lower()
+
+
+class _FakeFrame:
+    f_globals: dict
+
+
+class _FakeCaller:
+    def __init__(self, module_name: str) -> None:
+        frame = _FakeFrame()
+        frame.f_globals = {'__name__': module_name}
+        self.frame = frame
+
+
+@pytest.mark.parametrize(
+    'module_name, expected', [
+        ('ethstaker_deposit.cli.new_mnemonic', ['cli', 'new_mnemonic.json']),
+        ('ethstaker_deposit.utils.intl', ['utils', 'intl.json']),
+        ('ethstaker_deposit.cli.sub.new_mnemonic', ['cli', 'sub', 'new_mnemonic.json']),
+    ]
+)
+def test_resolve_rel_path_auto_detected(module_name: str, expected: list[str]) -> None:
+    assert _resolve_rel_path(_FakeCaller(module_name), file_path='', auto_detected=True) == expected
 
 
 @pytest.mark.parametrize(
