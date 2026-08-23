@@ -1,4 +1,3 @@
-import asyncio
 import os
 import pytest
 import json
@@ -9,6 +8,7 @@ from ethstaker_deposit.deposit import cli
 from ethstaker_deposit.utils.constants import DEFAULT_EXIT_TRANSACTION_FOLDER_NAME
 
 from tests.test_cli.helpers import clean_exit_transaction_folder, read_json_file, verify_file_permission
+from tests.test_cli.interactive import InteractiveProcess
 
 
 def test_exit_transaction_mnemonic() -> None:
@@ -57,7 +57,7 @@ def test_exit_transaction_mnemonic() -> None:
 
 
 @pytest.mark.asyncio
-async def test_exit_transaction_mnemonic_multiple() -> None:
+async def test_exit_transaction_mnemonic_multiple(deposit_cli_installed) -> None:
     # Prepare folder
     my_folder_path = os.path.join(os.getcwd(), 'TESTING_TEMP_FOLDER')
     clean_exit_transaction_folder(my_folder_path)
@@ -68,12 +68,6 @@ async def test_exit_transaction_mnemonic_multiple() -> None:
         run_script_cmd = 'bash deposit.sh'
     else:  # Mac or Linux
         run_script_cmd = './deposit.sh'
-
-    install_cmd = run_script_cmd + ' install'
-    proc = await asyncio.create_subprocess_shell(
-        install_cmd,
-    )
-    await proc.wait()
 
     cmd_args = [
         run_script_cmd,
@@ -87,12 +81,8 @@ async def test_exit_transaction_mnemonic_multiple() -> None:
         '--validator_indices', '0,1,2,3',
         '--epoch', '1234',
     ]
-    proc = await asyncio.create_subprocess_shell(
-        ' '.join(cmd_args),
-    )
-    await proc.wait()
-
-    assert proc.returncode == 0
+    async with InteractiveProcess(' '.join(cmd_args)) as process:
+        await process.wait()
 
     # Check files
     exit_transaction_folder_path = os.path.join(my_folder_path, DEFAULT_EXIT_TRANSACTION_FOLDER_NAME)

@@ -1,4 +1,3 @@
-import asyncio
 import json
 import os
 
@@ -16,6 +15,7 @@ from ethstaker_deposit.utils.constants import (
     DEFAULT_ACTIVATION_AMOUNT,
 )
 from .helpers import clean_key_folder, get_permissions, get_uuid
+from .interactive import InteractiveProcess
 
 
 def test_existing_mnemonic_bls_withdrawal() -> None:
@@ -528,7 +528,7 @@ def test_pbkdf2_new_mnemonic() -> None:
 
 
 @pytest.mark.asyncio
-async def test_script() -> None:
+async def test_script(deposit_cli_installed) -> None:
     my_folder_path = os.path.join(os.getcwd(), 'TESTING_TEMP_FOLDER')
     if not os.path.exists(my_folder_path):
         os.mkdir(my_folder_path)
@@ -537,12 +537,6 @@ async def test_script() -> None:
         run_script_cmd = 'bash deposit.sh'
     else:  # Mac or Linux
         run_script_cmd = './deposit.sh'
-
-    install_cmd = run_script_cmd + ' install'
-    proc = await asyncio.create_subprocess_shell(
-        install_cmd,
-    )
-    await proc.wait()
 
     cmd_args = [
         run_script_cmd,
@@ -558,10 +552,8 @@ async def test_script() -> None:
         '--withdrawal_address', '""',
         '--folder', my_folder_path,
     ]
-    proc = await asyncio.create_subprocess_shell(
-        ' '.join(cmd_args),
-    )
-    await proc.wait()
+    async with InteractiveProcess(' '.join(cmd_args)) as process:
+        await process.wait()
 
     # Check files
     validator_keys_folder_path = os.path.join(my_folder_path, DEFAULT_VALIDATOR_KEYS_FOLDER_NAME)
@@ -577,7 +569,7 @@ async def test_script() -> None:
 
 
 @pytest.mark.asyncio
-async def test_script_abbreviated_mnemonic() -> None:
+async def test_script_abbreviated_mnemonic(deposit_cli_installed) -> None:
     my_folder_path = os.path.join(os.getcwd(), 'TESTING_TEMP_FOLDER')
     if not os.path.exists(my_folder_path):
         os.mkdir(my_folder_path)
@@ -586,12 +578,6 @@ async def test_script_abbreviated_mnemonic() -> None:
         run_script_cmd = 'bash deposit.sh'
     else:  # Mac or Linux
         run_script_cmd = './deposit.sh'
-
-    install_cmd = run_script_cmd + ' install'
-    proc = await asyncio.create_subprocess_shell(
-        install_cmd,
-    )
-    await proc.wait()
 
     cmd_args = [
         run_script_cmd,
@@ -607,10 +593,8 @@ async def test_script_abbreviated_mnemonic() -> None:
         '--withdrawal_address', '""',
         '--folder', my_folder_path,
     ]
-    proc = await asyncio.create_subprocess_shell(
-        ' '.join(cmd_args),
-    )
-    await proc.wait()
+    async with InteractiveProcess(' '.join(cmd_args)) as process:
+        await process.wait()
 
     # Check files
     validator_keys_folder_path = os.path.join(my_folder_path, DEFAULT_VALIDATOR_KEYS_FOLDER_NAME)

@@ -1,4 +1,3 @@
-import asyncio
 import json
 import os
 
@@ -23,6 +22,7 @@ from ethstaker_deposit.utils.constants import (
 )
 from ethstaker_deposit.utils.intl import load_text
 from .helpers import clean_key_folder, get_permissions, get_uuid
+from .interactive import InteractiveProcess
 
 
 @pytest.fixture(autouse=True)
@@ -876,7 +876,7 @@ def test_pbkdf2_new_mnemonic(monkeypatch) -> None:
 
 
 @pytest.mark.asyncio
-async def test_script_bls_withdrawal() -> None:
+async def test_script_bls_withdrawal(deposit_cli_installed) -> None:
     # Prepare folder
     my_folder_path = os.path.join(os.getcwd(), 'TESTING_TEMP_FOLDER')
     clean_key_folder(my_folder_path)
@@ -887,12 +887,6 @@ async def test_script_bls_withdrawal() -> None:
         run_script_cmd = 'bash deposit.sh'
     else:  # Mac or Linux
         run_script_cmd = './deposit.sh'
-
-    install_cmd = run_script_cmd + ' install'
-    proc = await asyncio.create_subprocess_shell(
-        install_cmd,
-    )
-    await proc.wait()
 
     cmd_args = [
         run_script_cmd,
@@ -906,39 +900,34 @@ async def test_script_bls_withdrawal() -> None:
         '--withdrawal_address', '""',
         '--folder', my_folder_path,
     ]
-    proc = await asyncio.create_subprocess_shell(
-        ' '.join(cmd_args),
-        stdin=asyncio.subprocess.PIPE,
-        stdout=asyncio.subprocess.PIPE,
-    )
+
+    mnemonic_json_file = os.path.join(os.getcwd(), 'ethstaker_deposit/../ethstaker_deposit/cli/', 'new_mnemonic.json')
+    msg_mnemonic_presentation = load_text(['msg_mnemonic_presentation'], mnemonic_json_file, 'new_mnemonic')
+    msg_mnemonic_retype_prompt = load_text(['msg_mnemonic_retype_prompt'], mnemonic_json_file, 'new_mnemonic')
+    msg_mnemonic_clipboard_warning = load_text(['msg_mnemonic_clipboard_warning'], mnemonic_json_file, 'new_mnemonic')
 
     seed_phrase = ''
-    encoded_phrase = b''
-    parsing = False
-    mnemonic_json_file = os.path.join(os.getcwd(), 'ethstaker_deposit/../ethstaker_deposit/cli/', 'new_mnemonic.json')
-    msg_mnemonic_clipboard_warning = load_text(['msg_mnemonic_clipboard_warning'], mnemonic_json_file, 'new_mnemonic')
-    async for out in proc.stdout:
-        output = out.decode('utf-8').rstrip()
-        if output.startswith(load_text(['msg_mnemonic_presentation'], mnemonic_json_file, 'new_mnemonic')):
-            parsing = True
-        elif output.startswith(load_text(['msg_mnemonic_retype_prompt'], mnemonic_json_file, 'new_mnemonic')):
-            proc.stdin.write(encoded_phrase)
-            proc.stdin.write(b'\n')
-        elif output.startswith(load_text(['msg_confirm_clipboard_clearing'], mnemonic_json_file, 'new_mnemonic')):
-            proc.stdin.write(b'\n')
-        elif parsing:
+
+    async with InteractiveProcess(' '.join(cmd_args)) as process:
+        await process.expect(msg_mnemonic_presentation)
+
+        # Collect the mnemonic itself, skipping the separator lines and the
+        # clipboard warning printed around it.
+        while True:
+            line = await process.readline()
+            if line is None:
+                raise process.fail('Subprocess exited before asking to retype the mnemonic')
+            if msg_mnemonic_retype_prompt in line:
+                break
             if (
-                not output.startswith('********************')
-                and not output.startswith(msg_mnemonic_clipboard_warning)
+                not line.startswith('********************')
+                and msg_mnemonic_clipboard_warning not in line
             ):
-                seed_phrase += output
-                if len(seed_phrase) > 0:
-                    encoded_phrase = seed_phrase.encode()
-                    parsing = False
+                seed_phrase += line
 
-    assert len(seed_phrase) > 0
-
-    await proc.wait()
+        assert len(seed_phrase.strip()) > 0
+        await process.sendline(seed_phrase.strip())
+        await process.wait()
 
     # Check files
     validator_keys_folder_path = os.path.join(my_folder_path, DEFAULT_VALIDATOR_KEYS_FOLDER_NAME)
@@ -971,7 +960,7 @@ async def test_script_bls_withdrawal() -> None:
 
 
 @pytest.mark.asyncio
-async def test_script_abbreviated_mnemonic() -> None:
+async def test_script_abbreviated_mnemonic(deposit_cli_installed) -> None:
     # Prepare folder
     my_folder_path = os.path.join(os.getcwd(), 'TESTING_TEMP_FOLDER')
     clean_key_folder(my_folder_path)
@@ -982,12 +971,6 @@ async def test_script_abbreviated_mnemonic() -> None:
         run_script_cmd = 'bash deposit.sh'
     else:  # Mac or Linux
         run_script_cmd = './deposit.sh'
-
-    install_cmd = run_script_cmd + ' install'
-    proc = await asyncio.create_subprocess_shell(
-        install_cmd,
-    )
-    await proc.wait()
 
     cmd_args = [
         run_script_cmd,
@@ -1001,40 +984,36 @@ async def test_script_abbreviated_mnemonic() -> None:
         '--withdrawal_address', '""',
         '--folder', my_folder_path,
     ]
-    proc = await asyncio.create_subprocess_shell(
-        ' '.join(cmd_args),
-        stdin=asyncio.subprocess.PIPE,
-        stdout=asyncio.subprocess.PIPE,
-    )
+
+    mnemonic_json_file = os.path.join(os.getcwd(), 'ethstaker_deposit/../ethstaker_deposit/cli/', 'new_mnemonic.json')
+    msg_mnemonic_presentation = load_text(['msg_mnemonic_presentation'], mnemonic_json_file, 'new_mnemonic')
+    msg_mnemonic_retype_prompt = load_text(['msg_mnemonic_retype_prompt'], mnemonic_json_file, 'new_mnemonic')
+    msg_mnemonic_clipboard_warning = load_text(['msg_mnemonic_clipboard_warning'], mnemonic_json_file, 'new_mnemonic')
 
     seed_phrase = ''
-    encoded_phrase = b''
-    parsing = False
-    mnemonic_json_file = os.path.join(os.getcwd(), 'ethstaker_deposit/../ethstaker_deposit/cli/', 'new_mnemonic.json')
-    msg_mnemonic_clipboard_warning = load_text(['msg_mnemonic_clipboard_warning'], mnemonic_json_file, 'new_mnemonic')
-    async for out in proc.stdout:
-        output = out.decode('utf-8').rstrip()
-        if output.startswith(load_text(['msg_mnemonic_presentation'], mnemonic_json_file, 'new_mnemonic')):
-            parsing = True
-        elif output.startswith(load_text(['msg_mnemonic_retype_prompt'], mnemonic_json_file, 'new_mnemonic')):
-            proc.stdin.write(encoded_phrase)
-            proc.stdin.write(b'\n')
-        elif output.startswith(load_text(['msg_confirm_clipboard_clearing'], mnemonic_json_file, 'new_mnemonic')):
-            proc.stdin.write(b'\n')
-        elif parsing:
+
+    async with InteractiveProcess(' '.join(cmd_args)) as process:
+        await process.expect(msg_mnemonic_presentation)
+
+        # Collect the mnemonic itself, skipping the separator lines and the
+        # clipboard warning printed around it.
+        while True:
+            line = await process.readline()
+            if line is None:
+                raise process.fail('Subprocess exited before asking to retype the mnemonic')
+            if msg_mnemonic_retype_prompt in line:
+                break
             if (
-                not output.startswith('********************')
-                and not output.startswith(msg_mnemonic_clipboard_warning)
+                not line.startswith('********************')
+                and msg_mnemonic_clipboard_warning not in line
             ):
-                seed_phrase += output
-                if len(seed_phrase) > 0:
-                    abbreviated_mnemonic = ' '.join(abbreviate_words(seed_phrase.split(' ')))
-                    encoded_phrase = abbreviated_mnemonic.encode()
-                    parsing = False
+                seed_phrase += line
 
-    assert len(seed_phrase) > 0
-
-    await proc.wait()
+        assert len(seed_phrase.strip()) > 0
+        # The CLI accepts abbreviated words as confirmation of a written down mnemonic.
+        abbreviated_mnemonic = ' '.join(abbreviate_words(seed_phrase.strip().split(' ')))
+        await process.sendline(abbreviated_mnemonic)
+        await process.wait()
 
     # Check files
     validator_keys_folder_path = os.path.join(my_folder_path, DEFAULT_VALIDATOR_KEYS_FOLDER_NAME)
