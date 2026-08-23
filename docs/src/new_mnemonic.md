@@ -38,6 +38,8 @@ A successful call to this command will result in one or many [keystore files](ke
 
 ## Note
 
+The withdrawal address **must** be under your control, either an EOA or a smart contract wallet. Do **not** use an exchange wallet. If you do not control the withdrawal address, funds **cannot** be recovered.
+
 The newly generated mnemonic **must** be written down, on a piece of paper or transferred to steel. The application will attempt to clear the clipboard when this command finishes. If the mnemonic is lost and the validator does not have a withdrawal address, funds **cannot** be recovered.
 
 For non-compounding validators, a custom deposit amount requires an existing keystore file and the **[partial-deposit](partial_deposit.md)** command. Compounding validators (0x02 withdrawal credentials) can set a custom deposit amount directly using `--amount`.
