@@ -58,6 +58,7 @@ test = [
     "ruff==0.16.3",
     "Pygments==2.20.0",
     "pathspec==1.1.1",
+    "pip-audit==2.10.1",
 ]
 
 [project.urls]

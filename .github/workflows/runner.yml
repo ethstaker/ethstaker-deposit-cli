@@ -32,6 +32,8 @@ jobs:
         run: ruff check ./ethstaker_deposit ./tests
       - name: Check dependency sync
         run: python scripts/check_dependencies_sync.py
+      - name: Audit Python dependencies for known vulnerabilities
+        run: pip-audit -r requirements.txt -r requirements_test.txt --no-deps --strict --desc
       - name: Setup Node.js
         uses: actions/setup-node@v7.0.0
         with:
