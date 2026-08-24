@@ -35,19 +35,20 @@ $(VENV_NAME)/bin/activate: requirements.txt $(PYPROJECT)
 	fi
 	@test -d $(VENV_NAME) || $(PYTHON) -m venv $(VENV_NAME)
 	@$(VENV_PYTHON) scripts/check_python_version.py $(PYPROJECT)
-	$(VENV_PYTHON) -m pip install -r requirements.txt -r requirements_test.txt
+	$(VENV_PYTHON) -m pip install --require-hashes -r requirements.txt -r requirements_test.txt
 	@touch $(VENV_NAME)/bin/activate
 
 venv_build: $(VENV_NAME)/bin/activate
 
 venv_build_test: venv_build
-	$(VENV_PYTHON) -m pip install -r requirements.txt -r requirements_test.txt
+	$(VENV_PYTHON) -m pip install --require-hashes -r requirements.txt -r requirements_test.txt
 
 venv_test: venv_build_test
 	$(VENV_PYTHON) -m pytest ./tests
 
 venv_lint: venv_build_test
 	$(VENV_PYTHON) -m ruff check ./ethstaker_deposit ./tests && $(VENV_PYTHON) -m mypy --config-file mypy.ini -p ethstaker_deposit
+	$(VENV_PYTHON) scripts/check_dependencies_sync.py
 
 venv_deposit: venv_build
 	$(VENV_PYTHON) -m ethstaker_deposit $(filter-out $@,$(MAKECMDGOALS))
@@ -55,13 +56,13 @@ venv_deposit: venv_build
 build_macos: PYTHON=$(BUILD_PYTHON)
 build_macos: binary_venv
 	@command -v $(BUILD_PYTHON) >/dev/null 2>&1 || { echo "Binary builds require Python 3.14. Install python3.14 or run make BUILD_PYTHON=/path/to/python3.14 build_macos." >&2; exit 1; }
-	$(VENV_PYTHON) -m pip install -r ./build_configs/macos/requirements.txt
+	$(VENV_PYTHON) -m pip install --require-hashes -r ./build_configs/macos/requirements.txt
 	PYTHONHASHSEED=42 $(VENV_PYTHON) -m PyInstaller ./build_configs/macos/build.spec
 
 build_linux: PYTHON=$(BUILD_PYTHON)
 build_linux: binary_venv
 	@command -v $(BUILD_PYTHON) >/dev/null 2>&1 || { echo "Binary builds require Python 3.14. Install python3.14 or run make BUILD_PYTHON=/path/to/python3.14 build_linux." >&2; exit 1; }
-	$(VENV_PYTHON) -m pip install -r ./build_configs/linux/requirements.txt
+	$(VENV_PYTHON) -m pip install --require-hashes -r ./build_configs/linux/requirements.txt
 	PYTHONHASHSEED=42 $(VENV_PYTHON) -m PyInstaller ./build_configs/linux/build.spec
 
 binary_venv: PYTHON=$(BUILD_PYTHON)
@@ -74,7 +75,7 @@ binary_venv:
 	fi
 	@test -d $(VENV_NAME) || $(PYTHON) -m venv $(VENV_NAME)
 	@$(VENV_PYTHON) -c 'import sys; expected=($(BUILD_PYTHON_MAJOR), $(BUILD_PYTHON_MINOR)); actual=sys.version_info[:2]; sys.exit(0 if actual == expected else "Binary builds require Python 3.14")'
-	$(VENV_PYTHON) -m pip install -r requirements.txt
+	$(VENV_PYTHON) -m pip install --require-hashes -r requirements.txt
 
 build_docker:
 	@docker build --pull -t $(DOCKER_IMAGE) .

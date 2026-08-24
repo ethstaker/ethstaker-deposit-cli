@@ -14,9 +14,6 @@ updates:
     schedule:
       interval: "weekly"
     groups:
-      pydantic-deps:
-        patterns:
-          - "pydantic*"
       uv-deps:
         patterns:
           - "*"

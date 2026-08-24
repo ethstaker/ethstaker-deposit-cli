@@ -58,7 +58,7 @@ if [[ "${1:-}" == "install" ]]; then
     fi
 
     printf 'Installing dependencies with %s...\n' "$PYTHON"
-    exec "$PYTHON" -m pip install -r "$SCRIPT_DIR/requirements.txt"
+    exec "$PYTHON" -m pip install --require-hashes -r "$SCRIPT_DIR/requirements.txt"
 fi
 
 export PYTHONPATH="$SCRIPT_DIR${PYTHONPATH:+:$PYTHONPATH}"

@@ -81,7 +81,7 @@ jobs:
         if: ${{ startsWith(matrix.os, 'ubuntu-') || startsWith(matrix.os, 'macos-') }}
         run: |
           python -m pip install --upgrade pip
-          pip install -r "${BUILD_CONFIGS_PATH}"/requirements.txt -r requirements.txt
+          pip install --require-hashes -r "${BUILD_CONFIGS_PATH}"/requirements.txt -r requirements.txt
           pyinstaller --distpath ./"${BUILD_FILE_NAME}" "${BUILD_CONFIGS_PATH}"/build.spec
       - name: Smoke test on Linux & macOS
         if: ${{ startsWith(matrix.os, 'ubuntu-') || startsWith(matrix.os, 'macos-') }}
@@ -99,7 +99,7 @@ jobs:
         if: ${{ startsWith(matrix.os, 'windows-') }}
         run: |
           python -m pip install --upgrade pip
-          pip install -r build_configs/windows/requirements.txt -r requirements.txt
+          pip install --require-hashes -r build_configs/windows/requirements.txt -r requirements.txt
           pyinstaller --distpath $env:BUILD_FILE_NAME .\build_configs\windows\build.spec
       - name: Smoke test on Windows
         if: ${{ startsWith(matrix.os, 'windows-') }}
