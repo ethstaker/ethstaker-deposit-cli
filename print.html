@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="landing.html"><strong aria-hidden="true">1.</strong> Ethstaker Deposit CLI</a></li><li class="chapter-item expanded "><a href="quick_setup.html"><strong aria-hidden="true">2.</strong> Quick Setup</a></li><li class="chapter-item expanded "><a href="other_install_options.html"><strong aria-hidden="true">3.</strong> Other Install Options</a></li><li class="chapter-item expanded affix "><li class="part-title">Commands</li><li class="chapter-item expanded "><a href="new_mnemonic.html"><strong aria-hidden="true">4.</strong> New Mnemonic</a></li><li class="chapter-item expanded "><a href="existing_mnemonic.html"><strong aria-hidden="true">5.</strong> Existing Mnemonic</a></li><li class="chapter-item expanded "><a href="generate_bls_to_execution_change.html"><strong aria-hidden="true">6.</strong> Generate BLS to Execution Change</a></li><li class="chapter-item expanded "><a href="generate_bls_to_execution_change_keystore.html"><strong aria-hidden="true">7.</strong> Generate BLS to Execution Change Keystore</a></li><li class="chapter-item expanded "><a href="exit_transaction_keystore.html"><strong aria-hidden="true">8.</strong> Exit Transaction Keystore</a></li><li class="chapter-item expanded "><a href="exit_transaction_mnemonic.html"><strong aria-hidden="true">9.</strong> Exit Transaction Mnemonic</a></li><li class="chapter-item expanded "><a href="partial_deposit.html"><strong aria-hidden="true">10.</strong> Partial Deposit</a></li><li class="chapter-item expanded "><a href="test_keystore.html"><strong aria-hidden="true">11.</strong> Test Keystore</a></li><li class="chapter-item expanded affix "><li class="part-title">File formats</li><li class="chapter-item expanded "><a href="keystore_file.html"><strong aria-hidden="true">12.</strong> Keystore</a></li><li class="chapter-item expanded "><a href="deposit_data_file.html"><strong aria-hidden="true">13.</strong> Deposit Data</a></li><li class="chapter-item expanded "><a href="bls_to_execution_change_file.html"><strong aria-hidden="true">14.</strong> BLS to Execution Change</a></li><li class="chapter-item expanded "><a href="bls_to_execution_change_keystore_file.html"><strong aria-hidden="true">15.</strong> BLS to Execution Change Keystore</a></li><li class="chapter-item expanded "><a href="signed_exit_transaction_file.html"><strong aria-hidden="true">16.</strong> Signed Exit Transaction</a></li><li class="chapter-item expanded affix "><li class="part-title">Development</li><li class="chapter-item expanded "><a href="local_development.html"><strong aria-hidden="true">17.</strong> Local Development</a></li><li class="chapter-item expanded "><a href="release_process.html"><strong aria-hidden="true">18.</strong> Release Process</a></li><li class="chapter-item expanded "><a href="reporting_vulnerability.html"><strong aria-hidden="true">19.</strong> Reporting a Vulnerability</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="landing.html"><strong aria-hidden="true">1.</strong> Ethstaker Deposit CLI</a></li><li class="chapter-item expanded "><a href="quick_setup.html"><strong aria-hidden="true">2.</strong> Quick Setup</a></li><li class="chapter-item expanded "><a href="other_install_options.html"><strong aria-hidden="true">3.</strong> Other Install Options</a></li><li class="chapter-item expanded affix "><li class="part-title">Commands</li><li class="chapter-item expanded "><a href="new_mnemonic.html"><strong aria-hidden="true">4.</strong> New Mnemonic</a></li><li class="chapter-item expanded "><a href="existing_mnemonic.html"><strong aria-hidden="true">5.</strong> Existing Mnemonic</a></li><li class="chapter-item expanded "><a href="generate_mnemonic.html"><strong aria-hidden="true">6.</strong> Generate Mnemonic</a></li><li class="chapter-item expanded "><a href="generate_bls_to_execution_change.html"><strong aria-hidden="true">7.</strong> Generate BLS to Execution Change</a></li><li class="chapter-item expanded "><a href="generate_bls_to_execution_change_keystore.html"><strong aria-hidden="true">8.</strong> Generate BLS to Execution Change Keystore</a></li><li class="chapter-item expanded "><a href="exit_transaction_keystore.html"><strong aria-hidden="true">9.</strong> Exit Transaction Keystore</a></li><li class="chapter-item expanded "><a href="exit_transaction_mnemonic.html"><strong aria-hidden="true">10.</strong> Exit Transaction Mnemonic</a></li><li class="chapter-item expanded "><a href="partial_deposit.html"><strong aria-hidden="true">11.</strong> Partial Deposit</a></li><li class="chapter-item expanded "><a href="test_keystore.html"><strong aria-hidden="true">12.</strong> Test Keystore</a></li><li class="chapter-item expanded affix "><li class="part-title">End to End Usage</li><li class="chapter-item expanded "><a href="scripted_keygen.html"><strong aria-hidden="true">13.</strong> Fully Automatic Key Generation</a></li><li class="chapter-item expanded "><a href="verify_mnemonic.html"><strong aria-hidden="true">14.</strong> Mnemonic Verification</a></li><li class="chapter-item expanded affix "><li class="part-title">File formats</li><li class="chapter-item expanded "><a href="keystore_file.html"><strong aria-hidden="true">15.</strong> Keystore</a></li><li class="chapter-item expanded "><a href="deposit_data_file.html"><strong aria-hidden="true">16.</strong> Deposit Data</a></li><li class="chapter-item expanded "><a href="bls_to_execution_change_file.html"><strong aria-hidden="true">17.</strong> BLS to Execution Change</a></li><li class="chapter-item expanded "><a href="bls_to_execution_change_keystore_file.html"><strong aria-hidden="true">18.</strong> BLS to Execution Change Keystore</a></li><li class="chapter-item expanded "><a href="signed_exit_transaction_file.html"><strong aria-hidden="true">19.</strong> Signed Exit Transaction</a></li><li class="chapter-item expanded affix "><li class="part-title">Development</li><li class="chapter-item expanded "><a href="local_development.html"><strong aria-hidden="true">20.</strong> Local Development</a></li><li class="chapter-item expanded "><a href="release_process.html"><strong aria-hidden="true">21.</strong> Release Process</a></li><li class="chapter-item expanded "><a href="reporting_vulnerability.html"><strong aria-hidden="true">22.</strong> Reporting a Vulnerability</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -593,6 +593,7 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 <pre><code class="language-sh">./deposit new-mnemonic
 </code></pre>
 <h2 id="note"><a class="header" href="#note">Note</a></h2>
+<p>The withdrawal address <strong>must</strong> be under your control, either an EOA or a smart contract wallet. Do <strong>not</strong> use an exchange wallet. If you do not control the withdrawal address, funds <strong>cannot</strong> be recovered.</p>
 <p>The newly generated mnemonic <strong>must</strong> be written down, on a piece of paper or transferred to steel. The application will attempt to clear the clipboard when this command finishes. If the mnemonic is lost and the validator does not have a withdrawal address, funds <strong>cannot</strong> be recovered.</p>
 <p>For non-compounding validators, a custom deposit amount requires an existing keystore file and the <strong><a href="partial_deposit.html">partial-deposit</a></strong> command. Compounding validators (0x02 withdrawal credentials) can set a custom deposit amount directly using <code>--amount</code>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="existing-mnemonic"><a class="header" href="#existing-mnemonic">existing-mnemonic</a></h1>
@@ -649,14 +650,39 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 <pre><code class="language-sh">./deposit existing-mnemonic
 </code></pre>
 <h2 id="note-1"><a class="header" href="#note-1">Note</a></h2>
+<p>The withdrawal address <strong>must</strong> be under your control, either an EOA or a smart contract wallet. Do <strong>not</strong> use an exchange wallet. If you do not control the withdrawal address, funds <strong>cannot</strong> be recovered.</p>
 <p>For non-compounding validators, a custom deposit amount requires an existing keystore file and the <strong><a href="partial_deposit.html">partial-deposit</a></strong> command. Compounding validators (0x02 withdrawal credentials) can set a custom deposit amount directly using <code>--amount</code>.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="generate-bls-to-execution-change"><a class="header" href="#generate-bls-to-execution-change">generate-bls-to-execution-change</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="generate-mnemonic"><a class="header" href="#generate-mnemonic">generate-mnemonic</a></h1>
 <div class="warning">
 Including sensitive arguments when executing CLI commands poses a security risk, as these values can be accessible through disk and shell history. This exposure can allow other users, including admins and malicious actors, to gain access to sensitive information, putting your funds at risk.
 </div>
 <h2 id="description-2"><a class="header" href="#description-2">Description</a></h2>
-<p>Generates a BLS to execution address change message. This is used to add a withdrawal address to a validator that does not currently have one.</p>
+<p>Generates a new random BIP-39 mnemonic. If you also want to create your validator keystore and deposit files, you should be using the <strong><a href="new_mnemonic.html">new-mnemonic</a></strong>
+or the <strong><a href="existing_mnemonic.html">existing-mnemonic</a></strong> command instead. This command can be used as part of some automation where you can first generate your mnemonic with
+<code>generate-mnemonic</code> and generate the validator keystore and deposit files with <code>existing-mnemonic</code> without any interactive prompt.</p>
 <h2 id="optional-arguments-2"><a class="header" href="#optional-arguments-2">Optional Arguments</a></h2>
+<ul>
+<li>
+<p><strong><code>--mnemonic_language</code></strong>: The language of the BIP-39 mnemonic. Options are: 'chinese_simplified', 'chinese_traditional', 'czech', 'english', 'french', 'italian', 'japanese', 'korean', 'portuguese', 'spanish'.</p>
+</li>
+<li>
+<p><strong><code>--output_file</code></strong>: An optional file path where to write the mnemonic. When used, it will write the mnemonic to the file instead of displaying the mnemonic.</p>
+</li>
+</ul>
+<h2 id="output"><a class="header" href="#output">Output</a></h2>
+<p>By default, it will output the mnemonic on the standard output, in your terminal. You can decide to output this in a file instead using the <strong><code>--output_file</code></strong> optional argument.</p>
+<h2 id="example-usage-2"><a class="header" href="#example-usage-2">Example Usage</a></h2>
+<pre><code class="language-sh">./deposit generate-mnemonic
+</code></pre>
+<h2 id="note-2"><a class="header" href="#note-2">Note</a></h2>
+<p>The newly generated mnemonic <strong>must</strong> be written down, on a piece of paper or transferred to steel. If the mnemonic is lost and the validator does not have a withdrawal address, funds <strong>cannot</strong> be recovered.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="generate-bls-to-execution-change"><a class="header" href="#generate-bls-to-execution-change">generate-bls-to-execution-change</a></h1>
+<div class="warning">
+Including sensitive arguments when executing CLI commands poses a security risk, as these values can be accessible through disk and shell history. This exposure can allow other users, including admins and malicious actors, to gain access to sensitive information, putting your funds at risk.
+</div>
+<h2 id="description-3"><a class="header" href="#description-3">Description</a></h2>
+<p>Generates a BLS to execution address change message. This is used to add a withdrawal address to a validator that does not currently have one.</p>
+<h2 id="optional-arguments-3"><a class="header" href="#optional-arguments-3">Optional Arguments</a></h2>
 <ul>
 <li>
 <p><strong><code>--bls_to_execution_changes_folder</code></strong>: The path to store the change JSON file.</p>
@@ -691,7 +717,7 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 </ul>
 <h2 id="output-files-2"><a class="header" href="#output-files-2">Output files</a></h2>
 <p>A successful call to this command will result in one <a href="bls_to_execution_change_file.html">BLS to Execution Change file</a> created.</p>
-<h2 id="example-usage-2"><a class="header" href="#example-usage-2">Example Usage</a></h2>
+<h2 id="example-usage-3"><a class="header" href="#example-usage-3">Example Usage</a></h2>
 <pre><code class="language-sh">./deposit generate-bls-to-execution-change
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="generate-bls-to-execution-change-keystore"><a class="header" href="#generate-bls-to-execution-change-keystore">generate-bls-to-execution-change-keystore</a></h1>
@@ -699,9 +725,9 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 This command is associated with the a proposed solution to update withdrawal credentials for those who are missing their mnemonic. At this point this has not been approved or implemented and there is no guarantee credentials will be modified in the future.
 <p>The project is located <a href="https://github.com/ethstaker/update-credentials-without-mnemonic">here</a> if you would like to learn more.</p>
 </div>
-<h2 id="description-3"><a class="header" href="#description-3">Description</a></h2>
+<h2 id="description-4"><a class="header" href="#description-4">Description</a></h2>
 <p>Signs a withdrawal credential update message using the provided keystore. This signature is one of the required proofs of ownership for validators who have lost or are missing their mnemonic and are unable to perform the BLS change needed to update their withdrawal credentials.</p>
-<h2 id="optional-arguments-3"><a class="header" href="#optional-arguments-3">Optional Arguments</a></h2>
+<h2 id="optional-arguments-4"><a class="header" href="#optional-arguments-4">Optional Arguments</a></h2>
 <ul>
 <li>
 <p><strong><code>--chain</code></strong>: The chain to use for generating the deposit data. Options are: 'mainnet', 'sepolia', 'hoodi', 'plataberget', 'ephemery', 'gnosis', or 'chiado'.</p>
@@ -727,16 +753,16 @@ This command is associated with the a proposed solution to update withdrawal cre
 </ul>
 <h2 id="output-files-3"><a class="header" href="#output-files-3">Output files</a></h2>
 <p>A successful call to this command will result in one <a href="bls_to_execution_change_keystore_file.html">BLS to Execution Change Keystore file</a> created.</p>
-<h2 id="example-usage-3"><a class="header" href="#example-usage-3">Example Usage</a></h2>
+<h2 id="example-usage-4"><a class="header" href="#example-usage-4">Example Usage</a></h2>
 <pre><code class="language-sh">./deposit generate-bls-to-execution-change-keystore
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="exit-transaction-keystore"><a class="header" href="#exit-transaction-keystore">exit-transaction-keystore</a></h1>
 <div class="warning">
 Including sensitive arguments when executing CLI commands poses a security risk, as these values can be accessible through disk and shell history. This exposure can allow other users, including admins and malicious actors, to gain access to sensitive information, putting your funds at risk.
 </div>
-<h2 id="description-4"><a class="header" href="#description-4">Description</a></h2>
+<h2 id="description-5"><a class="header" href="#description-5">Description</a></h2>
 <p>Creates an exit transaction using a keystore file.</p>
-<h2 id="optional-arguments-4"><a class="header" href="#optional-arguments-4">Optional Arguments</a></h2>
+<h2 id="optional-arguments-5"><a class="header" href="#optional-arguments-5">Optional Arguments</a></h2>
 <ul>
 <li>
 <p><strong><code>--chain</code></strong>: The chain to use for generating the deposit data. Options are: 'mainnet', 'sepolia', 'hoodi', 'plataberget', 'ephemery', 'gnosis', or 'chiado'.</p>
@@ -762,16 +788,16 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 </ul>
 <h2 id="output-files-4"><a class="header" href="#output-files-4">Output files</a></h2>
 <p>A successful call to this command will result in one <a href="signed_exit_transaction_file.html">Signed Exit Transaction file</a> created.</p>
-<h2 id="example-usage-4"><a class="header" href="#example-usage-4">Example Usage</a></h2>
+<h2 id="example-usage-5"><a class="header" href="#example-usage-5">Example Usage</a></h2>
 <pre><code class="language-sh">./deposit exit-transaction-keystore --keystore /path/to/keystore.json
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="exit-transaction-mnemonic"><a class="header" href="#exit-transaction-mnemonic">exit-transaction-mnemonic</a></h1>
 <div class="warning">
 Including sensitive arguments when executing CLI commands poses a security risk, as these values can be accessible through disk and shell history. This exposure can allow other users, including admins and malicious actors, to gain access to sensitive information, putting your funds at risk.
 </div>
-<h2 id="description-5"><a class="header" href="#description-5">Description</a></h2>
+<h2 id="description-6"><a class="header" href="#description-6">Description</a></h2>
 <p>Creates an exit transaction using a mnemonic phrase.</p>
-<h2 id="optional-arguments-5"><a class="header" href="#optional-arguments-5">Optional Arguments</a></h2>
+<h2 id="optional-arguments-6"><a class="header" href="#optional-arguments-6">Optional Arguments</a></h2>
 <ul>
 <li>
 <p><strong><code>--chain</code></strong>: The chain to use for generating the deposit data. Options are: 'mainnet', 'sepolia', 'hoodi', 'plataberget', 'ephemery', 'gnosis', or 'chiado'.</p>
@@ -803,17 +829,17 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 </ul>
 <h2 id="output-files-5"><a class="header" href="#output-files-5">Output files</a></h2>
 <p>A successful call to this command will result in one or more <a href="signed_exit_transaction_file.html">Signed Exit Transaction files</a> created.</p>
-<h2 id="example-usage-5"><a class="header" href="#example-usage-5">Example Usage</a></h2>
+<h2 id="example-usage-6"><a class="header" href="#example-usage-6">Example Usage</a></h2>
 <pre><code class="language-sh">./deposit exit-transaction-mnemonic
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="partial-deposit"><a class="header" href="#partial-deposit">partial-deposit</a></h1>
 <div class="warning">
 Including sensitive arguments when executing CLI commands poses a security risk, as these values can be accessible through disk and shell history. This exposure can allow other users, including admins and malicious actors, to gain access to sensitive information, putting your funds at risk.
 </div>
-<h2 id="description-6"><a class="header" href="#description-6">Description</a></h2>
+<h2 id="description-7"><a class="header" href="#description-7">Description</a></h2>
 <p>Creates a deposit file with an existing validator key. A validator key can be created using the <strong><a href="new_mnemonic.html">new-mnemonic</a></strong> or the <strong><a href="existing_mnemonic.html">existing-mnemonic</a></strong> commands. Can be used to initiate a validator or deposit to an existing validator.
 If you wish to create a validator with 0x00 credentials, you must use the <strong><a href="new_mnemonic.html">new-mnemonic</a></strong> or the <strong><a href="existing_mnemonic.html">existing-mnemonic</a></strong> command.</p>
-<h2 id="optional-arguments-6"><a class="header" href="#optional-arguments-6">Optional Arguments</a></h2>
+<h2 id="optional-arguments-7"><a class="header" href="#optional-arguments-7">Optional Arguments</a></h2>
 <ul>
 <li>
 <p><strong><code>--chain</code></strong>: The chain to use for generating the deposit data. Options are: 'mainnet', 'sepolia', 'hoodi', 'plataberget', 'ephemery', 'gnosis', or 'chiado'.</p>
@@ -842,16 +868,16 @@ If you wish to create a validator with 0x00 credentials, you must use the <stron
 </ul>
 <h2 id="output-file"><a class="header" href="#output-file">Output file</a></h2>
 <p>A successful call to this command will result in one <a href="deposit_data_file.html">deposit data file</a> created.</p>
-<h2 id="example-usage-6"><a class="header" href="#example-usage-6">Example Usage</a></h2>
+<h2 id="example-usage-7"><a class="header" href="#example-usage-7">Example Usage</a></h2>
 <pre><code class="language-sh">./deposit partial-deposit --keystore /path/to/keystore.json
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="test-keystore"><a class="header" href="#test-keystore">test-keystore</a></h1>
 <div class="warning">
 Including sensitive arguments when executing CLI commands poses a security risk, as these values can be accessible through disk and shell history. This exposure can allow other users, including admins and malicious actors, to gain access to sensitive information, putting your funds at risk.
 </div>
-<h2 id="description-7"><a class="header" href="#description-7">Description</a></h2>
+<h2 id="description-8"><a class="header" href="#description-8">Description</a></h2>
 <p>Will verify access to the provided keystore file by attempting to decrypt it with the provided keystore password.</p>
-<h2 id="optional-arguments-7"><a class="header" href="#optional-arguments-7">Optional Arguments</a></h2>
+<h2 id="optional-arguments-8"><a class="header" href="#optional-arguments-8">Optional Arguments</a></h2>
 <ul>
 <li>
 <p><strong><code>--keystore</code></strong>: The keystore file you wish to verify.</p>
@@ -860,9 +886,45 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 <p><strong><code>--keystore_password</code></strong>: The password used to attempt decryption of the provided keystore file. Note: It is not your mnemonic password. <span class="warning"></span></p>
 </li>
 </ul>
-<h2 id="example-usage-7"><a class="header" href="#example-usage-7">Example Usage</a></h2>
+<h2 id="example-usage-8"><a class="header" href="#example-usage-8">Example Usage</a></h2>
 <pre><code class="language-sh">./deposit test-keystore --keystore /path/to/keystore.json
 </code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fully-automatic-key-generation"><a class="header" href="#fully-automatic-key-generation">Fully Automatic Key Generation</a></h1>
+<div class="warning">
+Including sensitive arguments when executing CLI commands poses a security risk, as these values can be accessible through disk and shell history. This exposure can allow other users, including admins and malicious actors, to gain access to sensitive information, putting your funds at risk.
+</div>
+<h2 id="description-9"><a class="header" href="#description-9">Description</a></h2>
+<p>ethstaker-deposit-cli supports generating keys via script, and no prompts will be shown. This is achieved by using the <strong><a href="generate_mnemonic.html">generate-mnemonic</a></strong> command followed by the <strong><a href="existing_mnemonic.html">existing-mnemonic</a></strong> command. Of necessity, the keystore password and mnemonic will be on command line with this workflow. Ensure these secrets are properly safeguarded.</p>
+<p>Parameters are positional: <code>--language</code>, <code>--non_interactive</code>, <code>--ignore_connectivity</code> all come before the command.</p>
+<h2 id="example-usage-9"><a class="header" href="#example-usage-9">Example Usage</a></h2>
+<pre><code class="language-sh">./deposit --non_interactive --ignore_connectivity --language english generate-mnemonic --mnemonic_language english --output_file ./test-mnemonic.txt
+</code></pre>
+<p>This creates a file <code>./test-mnemonic.txt</code>, which is used in the following step. Fill in the <code>&lt;&gt;</code> placeholders. If creating validators for the first time with this mnemonic, choose a start index of <code>0</code>.</p>
+<pre><code class="language-sh">./deposit --non_interactive --ignore_connectivity --language english existing-mnemonic --compounding --amount &lt;deposit-amount&gt; --withdrawal_address &lt;your-withdrawal-address&gt; --chain mainnet --keystore_password &lt;your-password&gt; --num_validators &lt;num-validators-to-create&gt; --validator_start_index &lt;index-to-start&gt; --mnemonic "$(cat ./test-mnemonic.txt)"
+</code></pre>
+<p>This creates the desired number of validator keys as <code>keystore-m_12381_3600_&lt;index&gt;_0_0-&lt;timestamp&gt;.json</code> and a matching <code>deposit_data-&lt;timestamp&gt;.json</code> in the <code>./validator_keys</code> directory. Add a <code>--folder</code> parameter to adjust the location of the output files.</p>
+<h2 id="note-3"><a class="header" href="#note-3">Note</a></h2>
+<p>The withdrawal address <strong>must</strong> be under your control, either an EOA or a smart contract wallet. Do <strong>not</strong> use an exchange wallet. If you do not control the withdrawal address, funds <strong>cannot</strong> be recovered.</p>
+<p>The newly generated mnemonic <strong>must</strong> be written down, on a piece of paper or transferred to steel. If the mnemonic is lost and the validator does not have a withdrawal address, funds <strong>cannot</strong> be recovered.</p>
+<p>For non-compounding validators, a custom deposit amount requires an existing keystore file and the <strong><a href="partial_deposit.html">partial-deposit</a></strong> command. Compounding validators (0x02 withdrawal credentials) can set a custom deposit amount directly using <code>--amount</code>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="verify-mnemonic"><a class="header" href="#verify-mnemonic">Verify Mnemonic</a></h1>
+<div class="warning">
+Including sensitive arguments when executing CLI commands poses a security risk, as these values can be accessible through disk and shell history. This exposure can allow other users, including admins and malicious actors, to gain access to sensitive information, putting your funds at risk.
+</div>
+<h2 id="description-10"><a class="header" href="#description-10">Description</a></h2>
+<p>To verify a mnemonic you recorded, you can use the <strong><a href="existing_mnemonic.html">existing-mnemonic</a></strong> command.</p>
+<h2 id="example-usage-10"><a class="header" href="#example-usage-10">Example Usage</a></h2>
+<p>Assume you have generated keys from index 0 with the <strong><a href="new_mnemonic.html">new-mnemonic</a></strong> command, and these are in <code>./validator_keys</code>.</p>
+<p>Generate one key, from the same index, using the  <strong><a href="existing_mnemonic.html">existing-mnemonic</a></strong> command, and write the generated files into a separate directory. Then compare the <code>pubkey</code>. If it matches, you correctly recorded the mnemonic.</p>
+<pre><code class="language-sh">mkdir -p ./verification_key
+./deposit --language english --non_interactive existing-mnemonic --withdrawal_address 0x0000000000000000000000000000000000000000 --chain mainnet --keystore_password WeWontUseThis --compounding --amount 2048 --num_validators 1 --validator_start_index 0 --folder ./verification_key
+</code></pre>
+<p>This creates one validator key as <code>keystore-m_12381_3600_0_0_0-&lt;timestamp&gt;.json</code> in the <code>./verification_key</code> directory. The command will prompt you for the mnemonic. The <code>deposit_data</code> file won't be used, so we can safely specify a dummy withdrawal address and amount.</p>
+<p>Either just look at the two generated files, or use <code>jq</code> (install it first) to generate the pubkey from each:</p>
+<pre><code class="language-sh">jq .pubkey ./validator_keys/keystore-m_12381_3600_0_0_0-&lt;timestamp&gt;.json
+jq .pubkey ./verification_key/keystore-m_12381_3600_0_0_0-&lt;timestamp&gt;.json
+</code></pre>
+<p>If this pubkey matches, the same mnemonic was used both times.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="keystore-file"><a class="header" href="#keystore-file">Keystore file</a></h1>
 <p>A keystore file is created when calling the <strong><a href="new_mnemonic.html">new-mnemonic</a></strong> or the <strong><a href="existing_mnemonic.html">existing-mnemonic</a></strong> command.</p>
 <p>The format of the keystore file is defined in the <a href="https://eips.ethereum.org/EIPS/eip-2335">ERC-2335: BLS12-381 Keystore</a> document.</p>
