@@ -13,13 +13,13 @@ Generates a new random BIP-39 mnemonic along with validator keystore and deposit
 
 - **`--num_validators`**: Number of validators to create.
 
-- **`--keystore_password`**: The password that is used to encrypt the provided keystore. Note: It's not your mnemonic password. <span class="warning"></span>
+- **`--keystore_password`**: The password that is used to encrypt the provided keystore. Note: It's not your optional mnemonic password. <span class="warning"></span>
 
-- **`--withdrawal_address`**: The Ethereum address that will be used in withdrawal. It typically starts with '0x' followed by 40 hexadecimal characters. Please make sure you have full control over the address you choose here. Once you set a withdrawal address on chain, it cannot be changed.
+- **`--withdrawal_address`**: The Ethereum address that will be used in withdrawal. It starts with '0x' followed by 40 hexadecimal characters. Please make sure you have full control over the address you choose here, either an EOA or a smart contract wallet. Do not choose an exchange wallet. Once you set a withdrawal address on chain, it cannot be changed.
 
-- **`--compounding / --regular-withdrawal`**: Generates compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance or generate regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance. Use of this option requires a withdrawal address. This feature is only supported on networks that have undergone the Pectra fork. Defaults to regular withdrawal.
+- **`--compounding / --regular-withdrawal`**: Generates compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance or generate regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance. Defaults to regular withdrawal.
 
-- **`--amount`**: The amount to deposit per validator in ether. Only applies to compounding validators (0x02 withdrawal credentials). Must be at least the chain's minimum deposit amount (1 ETH on mainnet) with no greater precision than 1 gwei. Defaults to the chain's minimum activation amount (32 ETH on mainnet).
+- **`--amount`**: The amount to deposit per validator in ether. Only applies to Type 2 (0x02) compounding validators. Must be at least the chain's minimum deposit amount (1 ETH on mainnet) with no greater precision than 1 gwei. Defaults to the chain's minimum activation amount (32 ETH on mainnet).
 
 - **`--pbkdf2`**: Will use pbkdf2 key encryption instead of scrypt for generated keystore files as defined in [EIP-2335](https://eips.ethereum.org/EIPS/eip-2335#decryption-key). This can be a good alternative if you intend to work with a large number of keys, as it can improve performance. pbkdf2 encryption is, however, less secure than scrypt. You should only use this option if you understand the associated risks and have familiarity with encryption.
 

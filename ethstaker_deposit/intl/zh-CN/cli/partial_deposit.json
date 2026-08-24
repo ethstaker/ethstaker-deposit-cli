@@ -19,9 +19,9 @@
       "help": "保存部分存款的文件夹路径。默认指向 `./partial_deposits`。"
     },
     "arg_withdrawal_address": {
-      "help": "验证者的提取地址。如果您希望创建具有 0x00 凭证的验证者，请使用 new-mnemonic 或 existing-mnemonic 命令。",
+      "help": "验证者的提取地址。",
       "confirm": "请再次输入提取地址以确认。",
-      "prompt": "请输入提取地址。如果您希望创建具有 0x00 凭证的验证者，请使用 new-mnemonic 或 existing-mnemonic 命令。",
+      "prompt": "请输入提取地址。",
       "mismatch": "错误：两次输入的地址不匹配。请重新输入。"
     },
     "arg_compounding": {

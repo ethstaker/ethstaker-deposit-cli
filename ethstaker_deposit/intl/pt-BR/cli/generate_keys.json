@@ -24,12 +24,12 @@
     },
     "arg_withdrawal_address": {
       "help": "O endereço Ethereum que será usado para saque. Normalmente começa com '0x', seguido de 40 caracteres hexadecimais. Certifique-se de ter controle total sobre o endereço escolhido. Depois que um endereço de saque for definido na cadeia, ele não poderá ser alterado.",
-      "prompt": "Digite o endereço de saque opcional. Observe que você NÃO poderá alterá-lo depois que for definido na cadeia.",
+      "prompt": "Digite o endereço de saque. Observe que você NÃO poderá alterá-lo depois que for definido na cadeia.",
       "confirm": "Repita o endereço de saque para confirmação.",
       "mismatch": "Erro: os dois valores digitados não coincidem. Digite novamente."
     },
     "arg_compounding": {
-      "help": "Gera validadores com saldo composto e credenciais de saque 0x02 para um saldo efetivo máximo de 2048 ETH, ou validadores regulares com credenciais de saque 0x01 para um saldo efetivo máximo de 32 ETH. Esta opção exige um endereço de saque. Esse recurso só é compatível com redes que passaram pela fork Pectra.",
+      "help": "Gera validadores com saldo composto e credenciais de saque 0x02 para um saldo efetivo máximo de 2048 ETH, ou validadores regulares com credenciais de saque 0x01 para um saldo efetivo máximo de 32 ETH. Esse recurso só é compatível com redes que passaram pela fork Pectra.",
       "prompt": "Digite yes se quiser gerar validadores com saldo composto e credenciais de saque 0x02 para um saldo efetivo máximo de 2048 ETH. Validadores com saldo composto e credenciais de saque 0x02 só são compatíveis com redes que passaram pela fork Pectra. Digite no ou nada se quiser validadores regulares com credenciais de saque 0x01 para um saldo efetivo máximo de 32 ETH."
     },
     "arg_amount": {

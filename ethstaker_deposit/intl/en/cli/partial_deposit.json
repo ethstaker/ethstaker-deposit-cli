@@ -19,9 +19,9 @@
       "help": "The folder path where the partial deposit will be saved to. Pointing to `./partial_deposits` by default."
     },
     "arg_withdrawal_address": {
-      "help": "The withdrawal address of the validator. If you wish to create a validator with 0x00 credentials use the new-mnemonic or existing-mnemonic command.",
+      "help": "The withdrawal address of the validator.",
       "confirm": "Repeat the withdrawal address for confirmation.",
-      "prompt": "Please enter the withdrawal address. If you wish to create a validator with 0x00 credentials use the new-mnemonic or existing-mnemonic command.",
+      "prompt": "Please enter the withdrawal address.",
       "mismatch": "Error: the two entered addresses do not match. Please type again."
     },
     "arg_compounding": {

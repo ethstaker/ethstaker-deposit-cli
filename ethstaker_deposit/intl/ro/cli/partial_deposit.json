@@ -19,9 +19,9 @@
       "help": "Calea către directorul în care va fi salvată depunerea parțială. Implicit este `./partial_deposits`."
     },
     "arg_withdrawal_address": {
-      "help": "Adresa de retragere a validatorului. Dacă vrei să creezi un validator cu credențiale 0x00, folosește comanda new-mnemonic sau existing-mnemonic.",
+      "help": "Adresa de retragere a validatorului.",
       "confirm": "Reintrodu adresa de retragere pentru confirmare.",
-      "prompt": "Introdu adresa de retragere. Dacă vrei să creezi un validator cu credențiale 0x00, folosește comanda new-mnemonic sau existing-mnemonic.",
+      "prompt": "Introdu adresa de retragere.",
       "mismatch": "Eroare: cele două adrese introduse sunt diferite. Te rugăm să tastezi din nou."
     },
     "arg_compounding": {

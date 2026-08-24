@@ -19,9 +19,9 @@
       "help": "부분 예치금을 저장할 폴더 경로입니다. 기본값은 `./partial_deposits`입니다."
     },
     "arg_withdrawal_address": {
-      "help": "검증자의 출금 주소입니다. 0x00 자격 증명의 검증자를 생성하려면 new-mnemonic 또는 existing-mnemonic 명령을 사용하세요.",
+      "help": "검증자의 출금 주소입니다.",
       "confirm": "확인을 위해 출금 주소를 다시 입력하세요.",
-      "prompt": "출금 주소를 입력하세요. 0x00 자격 증명의 검증자를 생성하려면 new-mnemonic 또는 existing-mnemonic 명령을 사용하세요.",
+      "prompt": "출금 주소를 입력하세요.",
       "mismatch": "오류: 입력한 두 주소가 일치하지 않습니다. 다시 입력하세요."
     },
     "arg_compounding": {

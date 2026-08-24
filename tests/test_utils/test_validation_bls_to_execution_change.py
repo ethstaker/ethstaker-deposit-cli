@@ -91,19 +91,6 @@ def test_validate_bls_to_execution_change_rejects_wrong_root_or_signature(btec_c
     )
 
 
-def test_get_bls_to_execution_change_rejects_missing_withdrawal_address() -> None:
-    credential = Credential(
-        mnemonic=MNEMONIC,
-        mnemonic_password='',
-        index=0,
-        amount=32 * 10**9,
-        chain_setting=MainnetSetting,
-        hex_withdrawal_address=None,
-    )
-    with pytest.raises(ValueError, match='withdrawal address should NOT be empty'):
-        credential.get_bls_to_execution_change(validator_index=7)
-
-
 def test_get_bls_to_execution_change_rejects_missing_genesis_root() -> None:
     credential = Credential(
         mnemonic=MNEMONIC,

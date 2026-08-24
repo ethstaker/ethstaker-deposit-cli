@@ -35,7 +35,7 @@ async def main():
         '--validator_start_index', '1',
         '--chain', 'mainnet',
         '--keystore_password', 'TheirPassword',
-        '--withdrawal_address', '""',
+        '--withdrawal_address', '0x00000000219ab540356cBB839Cbe05303d7705Fa',
         '--folder', my_folder_path,
     ]
     proc = await asyncio.create_subprocess_shell(

@@ -110,12 +110,7 @@ def validate_deposit(deposit_data_dict: dict[str, Any], chain_setting: BaseChain
     # Verify withdrawal credential
     if len(withdrawal_credentials) != 32:
         return False
-    if withdrawal_credentials[:1] == BLS_WITHDRAWAL_PREFIX:
-        if credential and withdrawal_credentials[:1] != credential.withdrawal_prefix:
-            return False
-        if withdrawal_credentials[1:] != SHA256(credential.withdrawal_pk)[1:]:
-            return False
-    elif (
+    if (
         withdrawal_credentials[:1] == EXECUTION_ADDRESS_WITHDRAWAL_PREFIX
         or withdrawal_credentials[:1] == COMPOUNDING_WITHDRAWAL_PREFIX
     ):

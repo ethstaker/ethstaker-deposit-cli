@@ -27,6 +27,7 @@ async def main(argv):
         '--mnemonic_language', 'english',
         '--chain', 'mainnet',
         '--keystore_password', 'MyPassword',
+        '--withdrawal_address', '0x00000000219ab540356cBB839Cbe05303d7705Fa',
         '--folder', my_folder_path,
     ]
     proc = await asyncio.create_subprocess_shell(

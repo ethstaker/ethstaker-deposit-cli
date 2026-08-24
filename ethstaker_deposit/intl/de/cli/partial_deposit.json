@@ -19,9 +19,9 @@
       "help": "Der Ordnerpfad, unter dem die Teilauszahlung gespeichert wird. Standardmäßig wird auf `./partial_deposits` verwiesen."
     },
     "arg_withdrawal_address": {
-      "help": "Die Auszahlungsadresse des Validators. Wenn Sie einen Validator mit 0x00-Credentials erstellen möchten, verwenden Sie den Befehl new-mnemonic oder existing-mnemonic.",
+      "help": "Die Auszahlungsadresse des Validators.",
       "confirm": "Wiederholen Sie die Auszahlungsadresse zur Bestätigung.",
-      "prompt": "Bitte geben Sie die Auszahlungsadresse ein. Wenn Sie einen Validator mit 0x00-Credentials erstellen möchten, verwenden Sie den Befehl new-mnemonic oder existing-mnemonic.",
+      "prompt": "Bitte geben Sie die Auszahlungsadresse ein.",
       "mismatch": "Fehler: Die beiden eingegebenen Adressen stimmen nicht überein. Bitte geben Sie sie erneut ein."
     },
     "arg_compounding": {

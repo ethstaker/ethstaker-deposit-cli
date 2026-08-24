@@ -19,9 +19,9 @@
       "help": "Le chemin du dossier où le dépôt partiel sera enregistré. Pointe par défaut vers `./partial_deposits`."
     },
     "arg_withdrawal_address": {
-      "help": "L'adresse de retrait du validateur. Si vous souhaitez créer un validateur avec des identifiants 0x00, utilisez la commande new-mnemonic ou existing-mnemonic.",
+      "help": "L'adresse de retrait du validateur.",
       "confirm": "Saisissez à nouveau l'adresse de retrait pour confirmation.",
-      "prompt": "Veuillez saisir l'adresse de retrait. Si vous souhaitez créer un validateur avec des identifiants 0x00, utilisez la commande new-mnemonic ou existing-mnemonic.",
+      "prompt": "Veuillez saisir l'adresse de retrait.",
       "mismatch": "Erreur : les deux adresses saisies ne correspondent pas. Veuillez recommencer."
     },
     "arg_compounding": {

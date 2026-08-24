@@ -19,9 +19,9 @@
       "help": "部分デポジットの保存先フォルダーのパス。デフォルトでは `./partial_deposits` を指します。"
     },
     "arg_withdrawal_address": {
-      "help": "バリデーターの払い戻しアドレス。0x00 認証情報を持つバリデーターを作成する場合は、new-mnemonic または existing-mnemonic コマンドを使用してください。",
+      "help": "バリデーターの払い戻しアドレス。",
       "confirm": "確認のため払い戻しアドレスをもう一度入力してください。",
-      "prompt": "払い戻しアドレスを入力してください。0x00 認証情報を持つバリデーターを作成する場合は、new-mnemonic または existing-mnemonic コマンドを使用してください。",
+      "prompt": "払い戻しアドレスを入力してください。",
       "mismatch": "エラー：入力された2つのアドレスが一致しません。もう一度入力してください。"
     },
     "arg_compounding": {

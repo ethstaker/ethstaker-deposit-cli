@@ -13,7 +13,6 @@ from ethstaker_deposit.deposit import cli
 from ethstaker_deposit.key_handling.key_derivation.mnemonic import abbreviate_words
 from ethstaker_deposit.settings import ChiadoSetting, GnosisSetting
 from ethstaker_deposit.utils.constants import (
-    BLS_WITHDRAWAL_PREFIX,
     DEFAULT_VALIDATOR_KEYS_FOLDER_NAME,
     EXECUTION_ADDRESS_WITHDRAWAL_PREFIX,
     COMPOUNDING_WITHDRAWAL_PREFIX,
@@ -31,52 +30,6 @@ def check_async(request):
         os.environ['IS_ASYNC_TEST'] = '1'
     else:
         os.environ['IS_ASYNC_TEST'] = '0'
-
-
-def test_new_mnemonic_bls_withdrawal(monkeypatch) -> None:
-    # monkeypatch get_mnemonic
-    def mock_get_mnemonic(language, words_path, entropy=None) -> str:
-        return "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about"
-
-    monkeypatch.setattr(new_mnemonic, "get_mnemonic", mock_get_mnemonic)
-
-    # Prepare folder
-    my_folder_path = os.path.join(os.getcwd(), 'TESTING_TEMP_FOLDER')
-    clean_key_folder(my_folder_path)
-    if not os.path.exists(my_folder_path):
-        os.mkdir(my_folder_path)
-
-    runner = CliRunner()
-    inputs = ['english', 'english', '1', 'mainnet', 'MyPasswordIs', 'MyPasswordIs',
-              'abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about', '']
-    data = '\n'.join(inputs)
-    arguments = [
-        '--ignore_connectivity',
-        'new-mnemonic',
-        '--withdrawal_address', '',
-        '--folder', my_folder_path,
-    ]
-    result = runner.invoke(cli, arguments, input=data)
-    assert result.exit_code == 0
-
-    # Check files
-    validator_keys_folder_path = os.path.join(my_folder_path, DEFAULT_VALIDATOR_KEYS_FOLDER_NAME)
-    _, _, key_files = next(os.walk(validator_keys_folder_path))
-
-    all_uuid = [
-        get_uuid(validator_keys_folder_path + '/' + key_file)
-        for key_file in key_files
-        if key_file.startswith('keystore')
-    ]
-    assert len(set(all_uuid)) == 1
-
-    # Verify file permissions
-    if os.name == 'posix':
-        for file_name in key_files:
-            assert get_permissions(validator_keys_folder_path, file_name) == '0o400'
-
-    # Clean up
-    clean_key_folder(my_folder_path)
 
 
 def test_new_mnemonic_withdrawal_address(monkeypatch) -> None:
@@ -812,14 +765,14 @@ def test_pbkdf2_new_mnemonic(monkeypatch) -> None:
         os.mkdir(scrypt_folder_path)
 
     runner = CliRunner()
-
-    inputs = ['english', '1', 'mainnet', 'MyPasswordIs', 'MyPasswordIs',
+    withdrawal_address = '0x00000000219ab540356cBB839Cbe05303d7705Fa'
+    inputs = [withdrawal_address, 'english', '1', 'mainnet', 'MyPasswordIs', 'MyPasswordIs', '',
               'abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about', '']
     data = '\n'.join(inputs)
     arguments = [
         '--language', 'english',
         'new-mnemonic',
-        '--withdrawal_address', '',
+        '--withdrawal_address', withdrawal_address,
         '--folder', pbkdf2_folder_path,
         '--pbkdf2',
     ]
@@ -829,7 +782,7 @@ def test_pbkdf2_new_mnemonic(monkeypatch) -> None:
     arguments = [
         '--language', 'english',
         'new-mnemonic',
-        '--withdrawal_address', '',
+        '--withdrawal_address', withdrawal_address,
         '--folder', scrypt_folder_path,
     ]
     result = runner.invoke(cli, arguments, input=data)
@@ -876,90 +829,6 @@ def test_pbkdf2_new_mnemonic(monkeypatch) -> None:
 
 
 @pytest.mark.asyncio
-async def test_script_bls_withdrawal(deposit_cli_installed) -> None:
-    # Prepare folder
-    my_folder_path = os.path.join(os.getcwd(), 'TESTING_TEMP_FOLDER')
-    clean_key_folder(my_folder_path)
-    if not os.path.exists(my_folder_path):
-        os.mkdir(my_folder_path)
-
-    if os.name == 'nt':  # Windows
-        run_script_cmd = 'bash deposit.sh'
-    else:  # Mac or Linux
-        run_script_cmd = './deposit.sh'
-
-    cmd_args = [
-        run_script_cmd,
-        '--language', 'english',
-        '--non_interactive',
-        'new-mnemonic',
-        '--num_validators', '5',
-        '--mnemonic_language', 'english',
-        '--chain', 'mainnet',
-        '--keystore_password', 'MyPasswordIs',
-        '--withdrawal_address', '""',
-        '--folder', my_folder_path,
-    ]
-
-    mnemonic_json_file = os.path.join(os.getcwd(), 'ethstaker_deposit/../ethstaker_deposit/cli/', 'new_mnemonic.json')
-    msg_mnemonic_presentation = load_text(['msg_mnemonic_presentation'], mnemonic_json_file, 'new_mnemonic')
-    msg_mnemonic_retype_prompt = load_text(['msg_mnemonic_retype_prompt'], mnemonic_json_file, 'new_mnemonic')
-    msg_mnemonic_clipboard_warning = load_text(['msg_mnemonic_clipboard_warning'], mnemonic_json_file, 'new_mnemonic')
-
-    seed_phrase = ''
-
-    async with InteractiveProcess(' '.join(cmd_args)) as process:
-        await process.expect(msg_mnemonic_presentation)
-
-        # Collect the mnemonic itself, skipping the separator lines and the
-        # clipboard warning printed around it.
-        while True:
-            line = await process.readline()
-            if line is None:
-                raise process.fail('Subprocess exited before asking to retype the mnemonic')
-            if msg_mnemonic_retype_prompt in line:
-                break
-            if (
-                not line.startswith('********************')
-                and msg_mnemonic_clipboard_warning not in line
-            ):
-                seed_phrase += line
-
-        assert len(seed_phrase.strip()) > 0
-        await process.sendline(seed_phrase.strip())
-        await process.wait()
-
-    # Check files
-    validator_keys_folder_path = os.path.join(my_folder_path, DEFAULT_VALIDATOR_KEYS_FOLDER_NAME)
-    _, _, key_files = next(os.walk(validator_keys_folder_path))
-
-    deposit_file = [key_file for key_file in key_files if key_file.startswith('deposit_data')][0]
-    with open(validator_keys_folder_path + '/' + deposit_file, encoding='utf-8') as f:
-        deposits_dict = json.load(f)
-    for deposit in deposits_dict:
-        withdrawal_credentials = bytes.fromhex(deposit['withdrawal_credentials'])
-        print('withdrawal_credentials', withdrawal_credentials)
-        assert withdrawal_credentials[:1] == BLS_WITHDRAWAL_PREFIX
-
-    _, _, key_files = next(os.walk(validator_keys_folder_path))
-
-    all_uuid = [
-        get_uuid(validator_keys_folder_path + '/' + key_file)
-        for key_file in key_files
-        if key_file.startswith('keystore')
-    ]
-    assert len(set(all_uuid)) == 5
-
-    # Verify file permissions
-    if os.name == 'posix':
-        for file_name in key_files:
-            assert get_permissions(validator_keys_folder_path, file_name) == '0o400'
-
-    # Clean up
-    clean_key_folder(my_folder_path)
-
-
-@pytest.mark.asyncio
 async def test_script_abbreviated_mnemonic(deposit_cli_installed) -> None:
     # Prepare folder
     my_folder_path = os.path.join(os.getcwd(), 'TESTING_TEMP_FOLDER')
@@ -981,7 +850,7 @@ async def test_script_abbreviated_mnemonic(deposit_cli_installed) -> None:
         '--mnemonic_language', 'english',
         '--chain', 'mainnet',
         '--keystore_password', 'MyPasswordIs',
-        '--withdrawal_address', '""',
+        '--withdrawal_address', '0x00000000219ab540356cBB839Cbe05303d7705Fa',
         '--folder', my_folder_path,
     ]
 
@@ -1058,13 +927,14 @@ def test_new_mnemonic_custom_testnet(monkeypatch) -> None:
     devnet_chain_setting = json.dumps(devnet_chain)
 
     runner = CliRunner()
-    inputs = ['english', 'english', '1', 'MyPasswordIs', 'MyPasswordIs',
+    withdrawal_address = '0x00000000219ab540356cBB839Cbe05303d7705Fa'
+    inputs = ['english', withdrawal_address, 'english', '1', 'MyPasswordIs', 'MyPasswordIs', '',
               'abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about', '']
     data = '\n'.join(inputs)
     arguments = [
         '--ignore_connectivity',
         'new-mnemonic',
-        '--withdrawal_address', '',
+        '--withdrawal_address', withdrawal_address,
         '--folder', my_folder_path,
         '--devnet_chain_setting', devnet_chain_setting,
     ]

@@ -57,14 +57,16 @@ def test_should_check_connectivity_by_default(monkeypatch) -> None:
     if not os.path.exists(my_folder_path):
         os.mkdir(my_folder_path)
     runner = CliRunner()
+    withdrawal_address = '0x00000000219ab540356cBB839Cbe05303d7705Fa'
     inputs = [
+        withdrawal_address,
         'abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about',
-        '0', '0', '1', 'mainnet', 'MyPasswordIs', 'MyPasswordIs', '']
+        '0', '0', '1', 'mainnet', 'MyPasswordIs', 'MyPasswordIs', '', '']
     data = '\n'.join(inputs)
     arguments = [
         '--language', 'english',
         'existing-mnemonic',
-        '--withdrawal_address', '',
+        '--withdrawal_address', withdrawal_address,
         '--folder', my_folder_path,
 
     ]
@@ -90,15 +92,17 @@ def test_should_not_check_connectivity_with_ignore_connectivity(monkeypatch) -> 
     if not os.path.exists(my_folder_path):
         os.mkdir(my_folder_path)
     runner = CliRunner()
+    withdrawal_address = '0x00000000219ab540356cBB839Cbe05303d7705Fa'
     inputs = [
+        withdrawal_address,
         'abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about',
-        '0', '0', '1', 'mainnet', 'MyPasswordIs', 'MyPasswordIs', '']
+        '0', '0', '1', 'mainnet', 'MyPasswordIs', 'MyPasswordIs', '', '']
     data = '\n'.join(inputs)
     arguments = [
         '--language', 'english',
         '--ignore_connectivity',
         'existing-mnemonic',
-        '--withdrawal_address', '',
+        '--withdrawal_address', withdrawal_address,
         '--folder', my_folder_path,
 
     ]
@@ -134,7 +138,7 @@ def test_should_not_check_connectivity_with_non_interactive(monkeypatch) -> None
         '--validator_start_index', '0',
         '--chain', 'mainnet',
         '--keystore_password', 'MyPasswordIs',
-        '--withdrawal_address', '',
+        '--withdrawal_address', '0x00000000219ab540356cBB839Cbe05303d7705Fa',
         '--folder', my_folder_path,
     ]
     result = runner.invoke(cli, arguments)
@@ -171,7 +175,7 @@ def test_should_not_check_connectivity_with_both_non_interactive_or_ignore_conne
         '--validator_start_index', '0',
         '--chain', 'mainnet',
         '--keystore_password', 'MyPasswordIs',
-        '--withdrawal_address', '',
+        '--withdrawal_address', '0x00000000219ab540356cBB839Cbe05303d7705Fa',
         '--folder', my_folder_path,
     ]
     result = runner.invoke(cli, arguments)

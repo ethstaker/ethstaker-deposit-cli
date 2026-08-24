@@ -80,14 +80,12 @@ def generate_keys_arguments_decorator(function: Callable[..., Any]) -> Callable[
         ),
         jit_option(
             callback=captive_prompt_callback(
-                lambda address, _: validate_withdrawal_address(None, None, address),
+                lambda address, _: validate_withdrawal_address(None, None, address, True),
                 lambda: load_text(['arg_withdrawal_address', 'prompt'], func='generate_keys_arguments_decorator'),
                 lambda: load_text(['arg_withdrawal_address', 'confirm'], func='generate_keys_arguments_decorator'),
                 lambda: load_text(['arg_withdrawal_address', 'mismatch'], func='generate_keys_arguments_decorator'),
-                default="",
                 prompt_if=prompt_if_none,
             ),
-            default="",
             help=lambda: load_text(['arg_withdrawal_address', 'help'], func='generate_keys_arguments_decorator'),
             param_decls=['--withdrawal_address', '--execution_address', '--eth1_withdrawal_address'],
             prompt=False,  # the callback handles the prompt
@@ -159,7 +157,7 @@ def generate_keys(ctx: click.Context, validator_start_index: int,
     mnemonic = ctx.obj['mnemonic']
     mnemonic_password = ctx.obj['mnemonic_password']
 
-    if withdrawal_address is None or not compounding:
+    if not compounding:
         amount = chain_setting.MIN_ACTIVATION_AMOUNT * ETH2GWEI
     amounts = [amount] * num_validators
     folder = os.path.join(folder, DEFAULT_VALIDATOR_KEYS_FOLDER_NAME)

@@ -18,50 +18,6 @@ from .helpers import clean_key_folder, get_permissions, get_uuid
 from .interactive import InteractiveProcess
 
 
-def test_existing_mnemonic_bls_withdrawal() -> None:
-    # Prepare folder
-    my_folder_path = os.path.join(os.getcwd(), 'TESTING_TEMP_FOLDER')
-    clean_key_folder(my_folder_path)
-    if not os.path.exists(my_folder_path):
-        os.mkdir(my_folder_path)
-
-    runner = CliRunner()
-    inputs = [
-        'TREZOR',
-        'abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about',
-        '2', '2', '5', 'mainnet', 'MyPasswordIs', 'MyPasswordIs', '']
-    data = '\n'.join(inputs)
-    arguments = [
-        '--language', 'english',
-        '--ignore_connectivity',
-        'existing-mnemonic',
-        '--withdrawal_address', '',
-        '--folder', my_folder_path,
-        '--mnemonic_password', 'TREZOR',
-    ]
-    result = runner.invoke(cli, arguments, input=data)
-
-    assert result.exit_code == 0
-
-    # Check files
-    validator_keys_folder_path = os.path.join(my_folder_path, DEFAULT_VALIDATOR_KEYS_FOLDER_NAME)
-    _, _, key_files = next(os.walk(validator_keys_folder_path))
-
-    all_uuid = [
-        get_uuid(validator_keys_folder_path + '/' + key_file)
-        for key_file in key_files
-        if key_file.startswith('keystore')
-    ]
-    assert len(set(all_uuid)) == 5
-
-    # Verify file permissions
-    if os.name == 'posix':
-        for file_name in key_files:
-            assert get_permissions(validator_keys_folder_path, file_name) == '0o400'
-    # Clean up
-    clean_key_folder(my_folder_path)
-
-
 def test_existing_mnemonic_withdrawal_address() -> None:
     # Prepare folder
     my_folder_path = os.path.join(os.getcwd(), 'TESTING_TEMP_FOLDER')
@@ -287,55 +243,6 @@ def test_existing_mnemonic_compounding_cli_args() -> None:
     clean_key_folder(my_folder_path)
 
 
-def test_existing_mnemonic_amount_overridden_without_withdrawal_address() -> None:
-    my_folder_path = os.path.join(os.getcwd(), 'TESTING_TEMP_FOLDER')
-    clean_key_folder(my_folder_path)
-    if not os.path.exists(my_folder_path):
-        os.mkdir(my_folder_path)
-
-    custom_amount = 100
-
-    runner = CliRunner()
-    inputs = [
-        'TREZOR',
-        'abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about',
-        '2', '2', '5', 'mainnet', 'MyPasswordIs', 'MyPasswordIs', '']
-    data = '\n'.join(inputs)
-    arguments = [
-        '--language', 'english',
-        '--ignore_connectivity',
-        'existing-mnemonic',
-        '--withdrawal_address', '',
-        '--folder', my_folder_path,
-        '--amount', str(custom_amount),
-        '--mnemonic_password', 'TREZOR',
-    ]
-    result = runner.invoke(cli, arguments, input=data)
-    assert result.exit_code == 0
-
-    validator_keys_folder_path = os.path.join(my_folder_path, DEFAULT_VALIDATOR_KEYS_FOLDER_NAME)
-    _, _, key_files = next(os.walk(validator_keys_folder_path))
-
-    deposit_file = [key_file for key_file in key_files if key_file.startswith('deposit_data')][0]
-    with open(validator_keys_folder_path + '/' + deposit_file, encoding='utf-8') as f:
-        deposits_dict = json.load(f)
-    for deposit in deposits_dict:
-        amount = deposit['amount']
-        assert amount == DEFAULT_ACTIVATION_AMOUNT * ETH2GWEI
-
-    all_uuid = [
-        get_uuid(validator_keys_folder_path + '/' + key_file)
-        for key_file in key_files
-        if key_file.startswith('keystore')
-    ]
-    assert len(set(all_uuid)) == 5
-
-    if os.name == 'posix':
-        for file_name in key_files:
-            assert get_permissions(validator_keys_folder_path, file_name) == '0o400'
-    clean_key_folder(my_folder_path)
-
-
 def test_existing_mnemonic_amount_overridden_with_regular_withdrawal() -> None:
     my_folder_path = os.path.join(os.getcwd(), 'TESTING_TEMP_FOLDER')
     clean_key_folder(my_folder_path)
@@ -463,17 +370,20 @@ def test_pbkdf2_new_mnemonic() -> None:
         os.mkdir(scrypt_folder_path)
 
     runner = CliRunner()
+    withdrawal_address = '0x00000000219ab540356cBB839Cbe05303d7705Fa'
     inputs = [
+        'TREZOR',
         'abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about',
-        '0', '0', '1', 'mainnet', 'MyPasswordIs', 'MyPasswordIs', '',
+        '0', '0', '1', 'mainnet', 'MyPasswordIs', 'MyPasswordIs',
+        withdrawal_address, withdrawal_address, '', '',
     ]
     data = '\n'.join(inputs)
     arguments = [
         '--language', 'english',
         'existing-mnemonic',
-        '--withdrawal_address', '',
         '--folder', pbkdf2_folder_path,
         '--pbkdf2',
+        '--mnemonic_password', 'TREZOR',
     ]
     result = runner.invoke(cli, arguments, input=data)
     assert result.exit_code == 0
@@ -481,8 +391,8 @@ def test_pbkdf2_new_mnemonic() -> None:
     arguments = [
         '--language', 'english',
         'existing-mnemonic',
-        '--withdrawal_address', '',
         '--folder', scrypt_folder_path,
+        '--mnemonic_password', 'TREZOR',
     ]
     result = runner.invoke(cli, arguments, input=data)
     assert result.exit_code == 0
@@ -549,7 +459,7 @@ async def test_script(deposit_cli_installed) -> None:
         '--validator_start_index', '1',
         '--chain', 'mainnet',
         '--keystore_password', 'MyPasswordIs',
-        '--withdrawal_address', '""',
+        '--withdrawal_address', '0x00000000219ab540356cBB839Cbe05303d7705Fa',
         '--folder', my_folder_path,
     ]
     async with InteractiveProcess(' '.join(cmd_args)) as process:
@@ -590,7 +500,7 @@ async def test_script_abbreviated_mnemonic(deposit_cli_installed) -> None:
         '--validator_start_index', '1',
         '--chain', 'mainnet',
         '--keystore_password', 'MyPasswordIs',
-        '--withdrawal_address', '""',
+        '--withdrawal_address', '0x00000000219ab540356cBB839Cbe05303d7705Fa',
         '--folder', my_folder_path,
     ]
     async with InteractiveProcess(' '.join(cmd_args)) as process:
@@ -626,16 +536,17 @@ def test_existing_mnemonic_custom_testnet() -> None:
     devnet_chain_setting = json.dumps(devnet_chain)
 
     runner = CliRunner()
+    withdrawal_address = '0x00000000219ab540356cBB839Cbe05303d7705Fa'
     inputs = [
         'TREZOR',
         'abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about',
-        '2', '2', '5', 'MyPasswordIs', 'MyPasswordIs', '']
+        '2', '2', '5', 'MyPasswordIs', 'MyPasswordIs',
+        withdrawal_address, withdrawal_address, '', '']
     data = '\n'.join(inputs)
     arguments = [
         '--language', 'english',
         '--ignore_connectivity',
         'existing-mnemonic',
-        '--withdrawal_address', '',
         '--folder', my_folder_path,
         '--mnemonic_password', 'TREZOR',
         '--devnet_chain_setting', devnet_chain_setting,
@@ -671,17 +582,18 @@ def test_existing_mnemonic_multiple_languages() -> None:
         os.mkdir(my_folder_path)
 
     runner = CliRunner()
+    withdrawal_address = '0x00000000219ab540356cBB839Cbe05303d7705Fa'
     inputs = [
         'TREZOR',
         '的 的 的 的 的 的 的 的 的 的 的 在', '1',
-        '2', '2', '5', 'MyPasswordIs', 'MyPasswordIs', '']
+        '2', '2', '5', 'MyPasswordIs', 'MyPasswordIs',
+        withdrawal_address, withdrawal_address, '', '']
     data = '\n'.join(inputs)
     arguments = [
         '--language', 'english',
         '--ignore_connectivity',
         'existing-mnemonic',
         '--chain', 'hoodi',
-        '--withdrawal_address', '',
         '--folder', my_folder_path,
         '--mnemonic_password', 'TREZOR',
     ]
@@ -716,17 +628,18 @@ def test_existing_mnemonic_multiple_languages_argument() -> None:
         os.mkdir(my_folder_path)
 
     runner = CliRunner()
+    withdrawal_address = '0x00000000219ab540356cBB839Cbe05303d7705Fa'
     inputs = [
         'TREZOR',
         '的 的 的 的 的 的 的 的 的 的 的 在',
-        '2', '2', '5', 'MyPasswordIs', 'MyPasswordIs', '']
+        '2', '2', '5', 'MyPasswordIs', 'MyPasswordIs',
+        withdrawal_address, withdrawal_address, '', '']
     data = '\n'.join(inputs)
     arguments = [
         '--language', 'english',
         '--ignore_connectivity',
         'existing-mnemonic',
         '--chain', 'hoodi',
-        '--withdrawal_address', '',
         '--folder', my_folder_path,
         '--mnemonic_language', '简体中文',
         '--mnemonic_password', 'TREZOR',

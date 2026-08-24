@@ -19,9 +19,9 @@
       "help": "Jalur folder tempat deposit sebagian akan disimpan. Secara default mengarah ke `./partial_deposits`."
     },
     "arg_withdrawal_address": {
-      "help": "Alamat penarikan validator. Jika Anda ingin membuat validator dengan credentials 0x00, gunakan perintah new-mnemonic atau existing-mnemonic.",
+      "help": "Alamat penarikan validator.",
       "confirm": "Masukkan kembali alamat penarikan untuk konfirmasi.",
-      "prompt": "Silakan masukkan alamat penarikan. Jika Anda ingin membuat validator dengan credentials 0x00, gunakan perintah new-mnemonic atau existing-mnemonic.",
+      "prompt": "Silakan masukkan alamat penarikan.",
       "mismatch": "Kesalahan: kedua alamat yang dimasukkan tidak cocok. Silakan ketik ulang."
     },
     "arg_compounding": {

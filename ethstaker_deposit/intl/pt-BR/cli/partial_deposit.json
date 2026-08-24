@@ -19,9 +19,9 @@
       "help": "O caminho da pasta onde o depósito parcial será salvo. Por padrão, aponta para `./partial_deposits`."
     },
     "arg_withdrawal_address": {
-      "help": "O endereço de saque do validador. Se quiser criar um validador com credenciais 0x00, use o comando new-mnemonic ou existing-mnemonic.",
+      "help": "O endereço de saque do validador.",
       "confirm": "Repita o endereço de saque para confirmação.",
-      "prompt": "Digite o endereço de saque. Se quiser criar um validador com credenciais 0x00, use o comando new-mnemonic ou existing-mnemonic.",
+      "prompt": "Digite o endereço de saque.",
       "mismatch": "Erro: os dois endereços digitados não coincidem. Digite novamente."
     },
     "arg_compounding": {

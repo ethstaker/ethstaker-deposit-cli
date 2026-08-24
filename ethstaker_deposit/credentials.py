@@ -24,13 +24,11 @@ from ethstaker_deposit.settings import (
     BaseChainSetting,
 )
 from ethstaker_deposit.utils.constants import (
-    BLS_WITHDRAWAL_PREFIX,
     EXECUTION_ADDRESS_WITHDRAWAL_PREFIX,
     COMPOUNDING_WITHDRAWAL_PREFIX,
     ETH2GWEI,
     MAX_DEPOSIT_AMOUNT,
 )
-from ethstaker_deposit.utils.crypto import SHA256
 from ethstaker_deposit.utils.deposit import export_deposit_data_json as export_deposit_data_json_util
 from ethstaker_deposit.utils.intl import load_text
 from ethstaker_deposit.utils.ssz import (
@@ -48,7 +46,6 @@ from ethstaker_deposit.utils.file_handling import (
 
 
 class WithdrawalType(Enum):
-    BLS_WITHDRAWAL = 0
     EXECUTION_ADDRESS_WITHDRAWAL = 1
     COMPOUNDING_WITHDRAWAL = 2
 
@@ -60,7 +57,7 @@ class Credential:
     """
     def __init__(self, *, mnemonic: str, mnemonic_password: str,
                  index: int, amount: int, chain_setting: BaseChainSetting,
-                 hex_withdrawal_address: HexAddress | None,
+                 hex_withdrawal_address: HexAddress,
                  compounding: bool | None = False,
                  use_pbkdf2: bool | None = False):
         # Set path as EIP-2334 format
@@ -90,26 +87,19 @@ class Credential:
         return bls.SkToPk(self.withdrawal_sk)
 
     @property
-    def withdrawal_address(self) -> Address | None:
-        if self.hex_withdrawal_address is None:
-            return None
+    def withdrawal_address(self) -> Address:
         return to_canonical_address(self.hex_withdrawal_address)
 
     @property
     def withdrawal_prefix(self) -> bytes:
-        if self.withdrawal_address is not None:
-            if self.compounding:
-                return COMPOUNDING_WITHDRAWAL_PREFIX
-            else:
-                return EXECUTION_ADDRESS_WITHDRAWAL_PREFIX
+        if self.compounding:
+            return COMPOUNDING_WITHDRAWAL_PREFIX
         else:
-            return BLS_WITHDRAWAL_PREFIX
+            return EXECUTION_ADDRESS_WITHDRAWAL_PREFIX
 
     @property
     def withdrawal_type(self) -> WithdrawalType:
-        if self.withdrawal_prefix == BLS_WITHDRAWAL_PREFIX:
-            return WithdrawalType.BLS_WITHDRAWAL
-        elif self.withdrawal_prefix == EXECUTION_ADDRESS_WITHDRAWAL_PREFIX:
+        if self.withdrawal_prefix == EXECUTION_ADDRESS_WITHDRAWAL_PREFIX:
             return WithdrawalType.EXECUTION_ADDRESS_WITHDRAWAL
         elif self.withdrawal_prefix == COMPOUNDING_WITHDRAWAL_PREFIX:
             return WithdrawalType.COMPOUNDING_WITHDRAWAL
@@ -118,20 +108,11 @@ class Credential:
 
     @property
     def withdrawal_credentials(self) -> bytes:
-        if self.withdrawal_type == WithdrawalType.BLS_WITHDRAWAL:
-            withdrawal_credentials = BLS_WITHDRAWAL_PREFIX
-            withdrawal_credentials += SHA256(self.withdrawal_pk)[1:]
-        elif (
-            self.withdrawal_type == WithdrawalType.EXECUTION_ADDRESS_WITHDRAWAL
-            and self.withdrawal_address is not None
-        ):
+        if self.withdrawal_type == WithdrawalType.EXECUTION_ADDRESS_WITHDRAWAL:
             withdrawal_credentials = EXECUTION_ADDRESS_WITHDRAWAL_PREFIX
             withdrawal_credentials += b'\x00' * 11
             withdrawal_credentials += self.withdrawal_address
-        elif (
-            self.withdrawal_type == WithdrawalType.COMPOUNDING_WITHDRAWAL
-            and self.withdrawal_address is not None
-        ):
+        elif self.withdrawal_type == WithdrawalType.COMPOUNDING_WITHDRAWAL:
             withdrawal_credentials = COMPOUNDING_WITHDRAWAL_PREFIX
             withdrawal_credentials += b'\x00' * 11
             withdrawal_credentials += self.withdrawal_address
@@ -311,7 +292,7 @@ class CredentialList:
                       amounts: list[float],
                       chain_setting: BaseChainSetting,
                       start_index: int,
-                      hex_withdrawal_address: HexAddress | None,
+                      hex_withdrawal_address: HexAddress,
                       compounding: bool | None = False,
                       use_pbkdf2: bool | None = False) -> 'CredentialList':
         if len(amounts) != num_keys:

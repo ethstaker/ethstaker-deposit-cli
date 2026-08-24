@@ -24,12 +24,12 @@
     },
     "arg_withdrawal_address": {
       "help": "Adresa Ethereum care va fi folosită pentru retragere. De obicei începe cu „0x”, urmat de 40 de caractere hexazecimale. Asigură-te că deții controlul deplin asupra adresei alese. După ce setezi o adresă de retragere on-chain, aceasta nu mai poate fi schimbată.",
-      "prompt": "Introdu adresa opțională de retragere. Reține că NU O POȚI schimba după ce ai setat-o on-chain.",
+      "prompt": "Introdu adresa de retragere. Reține că NU O POȚI schimba după ce ai setat-o on-chain.",
       "confirm": "Reintrodu adresa de retragere pentru confirmare.",
       "mismatch": "Eroare: cele două valori introduse sunt diferite. Te rugăm să tastezi din nou."
     },
     "arg_compounding": {
-      "help": "Generează validatori cu capitalizare, cu credențiale de retragere 0x02 și un sold efectiv maxim de 2048 ETH, sau validatori obișnuiți, cu credențiale de retragere 0x01 și un sold efectiv maxim de 32 ETH. Folosirea acestei opțiuni necesită o adresă de retragere. Funcția este acceptată numai pe rețelele care au trecut prin fork-ul Pectra.",
+      "help": "Generează validatori cu capitalizare, cu credențiale de retragere 0x02 și un sold efectiv maxim de 2048 ETH, sau validatori obișnuiți, cu credențiale de retragere 0x01 și un sold efectiv maxim de 32 ETH. Funcția este acceptată numai pe rețelele care au trecut prin fork-ul Pectra.",
       "prompt": "Introdu yes dacă vrei să generezi validatori cu capitalizare, cu credențiale de retragere 0x02 și un sold efectiv maxim de 2048 ETH. Validatorii cu capitalizare și credențialele de retragere 0x02 sunt acceptate numai pe rețelele care au trecut prin fork-ul Pectra. Tastează no sau nu introduce nimic dacă vrei validatori obișnuiți, cu credențiale de retragere 0x01 și un sold efectiv maxim de 32 ETH."
     },
     "arg_amount": {

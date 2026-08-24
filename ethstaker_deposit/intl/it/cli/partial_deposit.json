@@ -19,9 +19,9 @@
       "help": "Il percorso della cartella in cui verrà salvato il deposito parziale. Per impostazione predefinita punta a `./partial_deposits`."
     },
     "arg_withdrawal_address": {
-      "help": "L'indirizzo di prelievo del validatore. Se vuoi creare un validatore con withdrawal credential 0x00, usa il comando new-mnemonic o existing-mnemonic.",
+      "help": "L'indirizzo di prelievo del validatore.",
       "confirm": "Ripeti l'indirizzo di prelievo per conferma.",
-      "prompt": "Inserisci l'indirizzo di prelievo. Se vuoi creare un validatore con withdrawal credential 0x00, usa il comando new-mnemonic o existing-mnemonic.",
+      "prompt": "Inserisci l'indirizzo di prelievo.",
       "mismatch": "Errore: i due indirizzi inseriti non corrispondono. Riprova."
     },
     "arg_compounding": {

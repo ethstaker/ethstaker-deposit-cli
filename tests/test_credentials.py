@@ -9,7 +9,6 @@ from ethstaker_deposit.credentials import Credential, CredentialList, Withdrawal
 from ethstaker_deposit.key_handling.keystore import Keystore
 from ethstaker_deposit.settings import DEPOSIT_CLI_VERSION, MainnetSetting, HoodiSetting
 from ethstaker_deposit.utils.constants import (
-    BLS_WITHDRAWAL_PREFIX,
     COMPOUNDING_WITHDRAWAL_PREFIX,
     EXECUTION_ADDRESS_WITHDRAWAL_PREFIX,
     ETH2GWEI,
@@ -22,7 +21,6 @@ from ethstaker_deposit.utils.ssz import (
     compute_signing_root,
     compute_voluntary_exit_domain,
 )
-from ethstaker_deposit.utils.crypto import SHA256
 from ethstaker_deposit.utils.validation import validate_deposit
 from ethstaker_deposit.exceptions import ValidationError
 
@@ -31,7 +29,7 @@ MNEMONIC = 'abandon abandon abandon abandon abandon abandon abandon abandon aban
 WITHDRAWAL_ADDRESS = '0x00000000219ab540356cBB839Cbe05303d7705Fa'
 
 
-def make_credential(*, address: str | None = WITHDRAWAL_ADDRESS, compounding: bool = False) -> Credential:
+def make_credential(*, address: str = WITHDRAWAL_ADDRESS, compounding: bool = False) -> Credential:
     return Credential(
         mnemonic=MNEMONIC,
         mnemonic_password='',
@@ -52,7 +50,7 @@ def test_from_mnemonic() -> None:
             amounts=[32, 32],
             chain_setting=MainnetSetting,
             start_index=1,
-            hex_withdrawal_address=None,
+            hex_withdrawal_address=WITHDRAWAL_ADDRESS,
             compounding=False,
         )
 
@@ -65,7 +63,7 @@ def test_verify_keystore_passwords_and_get_key(tmp_path, use_pbkdf2: bool) -> No
         index=0,
         amount=32 * ETH2GWEI,
         chain_setting=MainnetSetting,
-        hex_withdrawal_address=None,
+        hex_withdrawal_address=WITHDRAWAL_ADDRESS,
         use_pbkdf2=use_pbkdf2,
     )
     password = 'correct-password'
@@ -91,7 +89,7 @@ def test_credential_list_export_and_verify_keystores(tmp_path, use_pbkdf2: bool)
             index=index,
             amount=32 * ETH2GWEI,
             chain_setting=MainnetSetting,
-            hex_withdrawal_address=None,
+            hex_withdrawal_address=WITHDRAWAL_ADDRESS,
             use_pbkdf2=use_pbkdf2,
         )
         for index in range(2)
@@ -137,14 +135,8 @@ def test_export_bls_to_execution_change_rejects_mismatched_indices(tmp_path) -> 
 
 
 def test_credential_withdrawal_credentials_variants() -> None:
-    bls_credential = make_credential(address=None)
     execution_credential = make_credential()
     compounding_credential = make_credential(compounding=True)
-
-    assert bls_credential.withdrawal_prefix == BLS_WITHDRAWAL_PREFIX
-    assert bls_credential.withdrawal_type is WithdrawalType.BLS_WITHDRAWAL
-    assert len(bls_credential.withdrawal_credentials) == 32
-    assert bls_credential.withdrawal_credentials[1:] == SHA256(bls_credential.withdrawal_pk)[1:]
 
     assert execution_credential.withdrawal_prefix == EXECUTION_ADDRESS_WITHDRAWAL_PREFIX
     assert execution_credential.withdrawal_type is WithdrawalType.EXECUTION_ADDRESS_WITHDRAWAL
@@ -174,22 +166,6 @@ def test_withdrawal_address_is_canonical_bytes() -> None:
 
     assert credential.withdrawal_address == bytes.fromhex(WITHDRAWAL_ADDRESS[2:].lower())
     assert len(credential.withdrawal_address) == 20
-
-
-def test_withdrawal_credentials_reject_invalid_withdrawal_state() -> None:
-    credential = make_credential()
-    credential.hex_withdrawal_address = None
-    credential.compounding = True
-
-    assert credential.withdrawal_type is WithdrawalType.BLS_WITHDRAWAL
-    assert credential.withdrawal_credentials.startswith(BLS_WITHDRAWAL_PREFIX)
-
-
-def test_bls_to_execution_change_requires_withdrawal_address() -> None:
-    credential = make_credential(address=None)
-
-    with pytest.raises(ValueError, match='withdrawal address should NOT be empty'):
-        credential.get_bls_to_execution_change(validator_index=7)
 
 
 def test_signed_deposit_and_datum_validate() -> None:
@@ -222,7 +198,7 @@ def test_deposit_message_rejects_invalid_amount(amount: int) -> None:
 
 
 def test_save_exit_transaction_writes_signed_json(tmp_path) -> None:
-    credential = make_credential(address=None)
+    credential = make_credential()
     filepath = credential.save_exit_transaction(
         validator_index=7,
         epoch=42,
@@ -253,7 +229,7 @@ def test_save_exit_transaction_uses_non_mainnet_domain_and_restrictive_permissio
         index=0,
         amount=32 * ETH2GWEI,
         chain_setting=HoodiSetting,
-        hex_withdrawal_address=None,
+        hex_withdrawal_address=WITHDRAWAL_ADDRESS,
     )
     filepath = credential.save_exit_transaction(
         validator_index=7,

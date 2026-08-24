@@ -24,12 +24,12 @@
     },
     "arg_withdrawal_address": {
       "help": "Alamat Ethereum yang akan digunakan untuk penarikan. Biasanya diawali dengan '0x' diikuti 40 karakter heksadesimal. Pastikan Anda memiliki kendali penuh atas alamat yang dipilih. Setelah alamat penarikan ditetapkan di chain, alamat tersebut tidak dapat diubah.",
-      "prompt": "Silakan masukkan alamat penarikan opsional. Perhatikan bahwa Anda TIDAK DAPAT mengubahnya setelah ditetapkan di chain.",
+      "prompt": "Silakan masukkan alamat penarikan. Perhatikan bahwa Anda TIDAK DAPAT mengubahnya setelah ditetapkan di chain.",
       "confirm": "Masukkan kembali alamat penarikan Anda untuk konfirmasi.",
       "mismatch": "Kesalahan: kedua nilai yang dimasukkan tidak cocok. Silakan ketik ulang."
     },
     "arg_compounding": {
-      "help": "Buat validator compounding dengan withdrawal credentials 0x02 untuk saldo efektif maksimum 2048 ETH atau validator biasa dengan withdrawal credentials 0x01 untuk saldo efektif maksimum 32 ETH. Opsi ini memerlukan alamat penarikan. Fitur ini hanya didukung pada jaringan yang telah menjalani fork Pectra.",
+      "help": "Buat validator compounding dengan withdrawal credentials 0x02 untuk saldo efektif maksimum 2048 ETH atau validator biasa dengan withdrawal credentials 0x01 untuk saldo efektif maksimum 32 ETH. Fitur ini hanya didukung pada jaringan yang telah menjalani fork Pectra.",
       "prompt": "Masukkan yes jika Anda ingin membuat validator compounding dengan withdrawal credentials 0x02 untuk saldo efektif maksimum 2048 ETH. Validator compounding dan withdrawal credentials 0x02 hanya didukung pada jaringan yang telah menjalani fork Pectra. Ketik no atau biarkan kosong jika Anda ingin validator biasa dengan withdrawal credentials 0x01 untuk saldo efektif maksimum 32 ETH."
     },
     "arg_amount": {

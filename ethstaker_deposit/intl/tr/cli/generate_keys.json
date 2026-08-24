@@ -24,12 +24,12 @@
     },
     "arg_withdrawal_address": {
       "help": "Para çekmede kullanılacak Ethereum adresi. Genellikle '0x' ile başlar ve ardından 40 onaltılık karakter gelir. Burada seçtiğiniz adres üzerinde tam kontrolünüz olduğundan emin olun. Zincirde bir para çekme adresi belirledikten sonra değiştirilemez.",
-      "prompt": "İsteğe bağlı para çekme adresini girin. Zincirde belirledikten sonra bunu DEĞİŞTİREMEYECEĞİNİZİ unutmayın.",
+      "prompt": "Para çekme adresini girin. Zincirde belirledikten sonra bunu DEĞİŞTİREMEYECEĞİNİZİ unutmayın.",
       "confirm": "Onaylamak için para çekme adresinizi tekrar girin.",
       "mismatch": "Hata: girilen iki değer eşleşmiyor. Lütfen tekrar yazın."
     },
     "arg_compounding": {
-      "help": "2048 ETH maksimum etkin bakiye için 0x02 para çekme kimlik bilgilerine sahip bileşik doğrulayıcılar veya 32 ETH maksimum etkin bakiye için 0x01 para çekme kimlik bilgilerine sahip normal doğrulayıcılar oluşturur. Bu seçeneğin kullanılması bir para çekme adresi gerektirir. Bu özellik yalnızca Pectra fork'unu gerçekleştirmiş ağlarda desteklenir.",
+      "help": "2048 ETH maksimum etkin bakiye için 0x02 para çekme kimlik bilgilerine sahip bileşik doğrulayıcılar veya 32 ETH maksimum etkin bakiye için 0x01 para çekme kimlik bilgilerine sahip normal doğrulayıcılar oluşturur. Bu özellik yalnızca Pectra fork'unu gerçekleştirmiş ağlarda desteklenir.",
       "prompt": "2048 ETH maksimum etkin bakiye için 0x02 para çekme kimlik bilgilerine sahip bileşik doğrulayıcılar oluşturmak istiyorsanız yes girin. Bileşik doğrulayıcılar ve 0x02 para çekme kimlik bilgileri yalnızca Pectra fork'unu gerçekleştirmiş ağlarda desteklenir. 32 ETH maksimum etkin bakiye için 0x01 para çekme kimlik bilgilerine sahip normal doğrulayıcılar istiyorsanız no veya hiçbir şey yazmayın."
     },
     "arg_amount": {

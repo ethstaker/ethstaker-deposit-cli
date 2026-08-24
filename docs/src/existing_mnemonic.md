@@ -9,21 +9,21 @@ Uses an existing BIP-39 mnemonic phrase for key generation.
 
 - **`--chain`**: The chain to use for generating the deposit data. Options are: 'mainnet', 'sepolia', 'hoodi', 'plataberget', 'ephemery', 'gnosis', or 'chiado'.
 
-- **`--mnemonic`**: The mnemonic you used to create withdrawal credentials. <span class="warning"></span>
+- **`--mnemonic`**: The mnemonic to use to create validator keys. <span class="warning"></span>
 
 - **`--mnemonic_language`**: The language of your mnemonic. If this is not provided we will attempt to determine it based on the mnemonic.
 
-- **`--mnemonic_password`**: The mnemonic password you used in your key generation. Note: It's not the keystore password. <span class="warning"></span>
+- **`--mnemonic_password`**: The optional mnemonic password to use in your key generation. Generally **not** provided, be sure you understand its use. Note: It's not the keystore password. <span class="warning"></span>
 
 - **`--validator_start_index`**: The index of the first validator's keys you wish to generate. If this is your first time generating keys with this mnemonic, use 0. If you have generated keys using this mnemonic before, use the next index from which you want to start generating keys from. As an example if you've generated 4 keys before (keys #0, #1, #2, #3), then enter 4 here.
 
 - **`--num_validators`**: Number of validators to create.
 
-- **`--keystore_password`**: The password that is used to encrypt the provided keystore. Note: It's not your mnemonic password. <span class="warning"></span>
+- **`--keystore_password`**: The password that is used to encrypt the provided keystore. Note: It's not your optional mnemonic password. <span class="warning"></span>
 
-- **`--withdrawal_address`**: The Ethereum address that will be used in withdrawal. It typically starts with '0x' followed by 40 hexadecimal characters. Please make sure you have full control over the address you choose here. Once you set a withdrawal address on chain, it cannot be changed.
+- **`--withdrawal_address`**: The Ethereum address that will be used in withdrawal. It starts with '0x' followed by 40 hexadecimal characters. Please make sure you have full control over the address you choose here, either an EOA or a smart contract wallet. Do not choose an exchange wallet. Once you set a withdrawal address on chain, it cannot be changed.
 
-- **`--compounding / --regular-withdrawal`**: Generates compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance or generate regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance. Use of this option requires a withdrawal address. This feature is only supported on networks that have undergone the Pectra fork. Defaults to regular withdrawal.
+- **`--compounding / --regular-withdrawal`**: Generates compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance or generate regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance. Defaults to regular withdrawal.
 
 - **`--amount`**: The amount to deposit per validator in ether. Only applies to compounding validators (0x02 withdrawal credentials). Must be at least the chain's minimum deposit amount (1 ETH on mainnet) with no greater precision than 1 gwei. Defaults to the chain's minimum activation amount (32 ETH on mainnet).
 

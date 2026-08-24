@@ -24,12 +24,12 @@
     },
     "arg_withdrawal_address": {
       "help": "L'adresse Ethereum qui sera utilisée pour le retrait. Elle commence généralement par '0x', suivi de 40 caractères hexadécimaux. Assurez-vous d'avoir le contrôle total de l'adresse choisie. Une fois l'adresse de retrait définie sur la chaîne, elle ne peut plus être modifiée.",
-      "prompt": "Veuillez saisir l'adresse de retrait facultative. Notez que vous NE POURREZ PAS la modifier une fois définie sur la chaîne.",
+      "prompt": "Veuillez saisir l'adresse de retrait. Notez que vous NE POURREZ PAS la modifier une fois définie sur la chaîne.",
       "confirm": "Saisissez à nouveau votre adresse de retrait pour confirmation.",
       "mismatch": "Erreur : les deux valeurs saisies ne correspondent pas. Veuillez recommencer."
     },
     "arg_compounding": {
-      "help": "Génère des validateurs à composition avec des identifiants de retrait 0x02 pour un solde effectif maximal de 2048 ETH, ou des validateurs classiques avec des identifiants de retrait 0x01 pour un solde effectif maximal de 32 ETH. L'utilisation de cette option nécessite une adresse de retrait. Cette fonctionnalité n'est prise en charge que sur les réseaux ayant effectué le fork Pectra.",
+      "help": "Génère des validateurs à composition avec des identifiants de retrait 0x02 pour un solde effectif maximal de 2048 ETH, ou des validateurs classiques avec des identifiants de retrait 0x01 pour un solde effectif maximal de 32 ETH. Cette fonctionnalité n'est prise en charge que sur les réseaux ayant effectué le fork Pectra.",
       "prompt": "Saisissez yes si vous souhaitez générer des validateurs à composition avec des identifiants de retrait 0x02 pour un solde effectif maximal de 2048 ETH. Les validateurs à composition et les identifiants de retrait 0x02 ne sont pris en charge que sur les réseaux ayant effectué le fork Pectra. Saisissez no ou ne saisissez rien pour générer des validateurs classiques avec des identifiants de retrait 0x01 pour un solde effectif maximal de 32 ETH."
     },
     "arg_amount": {

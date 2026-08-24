@@ -24,12 +24,12 @@
     },
     "arg_withdrawal_address": {
       "help": "L'indirizzo Ethereum che verrà utilizzato per il prelievo. In genere inizia con '0x' seguito da 40 caratteri esadecimali. Assicurati di avere il pieno controllo dell'indirizzo scelto. Una volta impostato on-chain, non può essere modificato.",
-      "prompt": "Inserisci l'indirizzo di prelievo opzionale. Nota: NON PUOI modificarlo dopo averlo impostato on-chain.",
+      "prompt": "Inserisci l'indirizzo di prelievo. Nota: NON PUOI modificarlo dopo averlo impostato on-chain.",
       "confirm": "Ripeti l'indirizzo di prelievo per conferma.",
       "mismatch": "Errore: i due valori inseriti non corrispondono. Riprova."
     },
     "arg_compounding": {
-      "help": "Genera validatori compounding con withdrawal credential 0x02 per un saldo effettivo massimo di 2048 ETH oppure validatori normali con withdrawal credential 0x01 per un saldo effettivo massimo di 32 ETH. Questa opzione richiede un indirizzo di prelievo ed è supportata solo sulle reti che hanno eseguito il fork Pectra.",
+      "help": "Genera validatori compounding con withdrawal credential 0x02 per un saldo effettivo massimo di 2048 ETH oppure validatori normali con withdrawal credential 0x01 per un saldo effettivo massimo di 32 ETH. Questa funzione è supportata solo sulle reti che hanno eseguito il fork Pectra.",
       "prompt": "Inserisci yes se vuoi generare validatori compounding con withdrawal credential 0x02 per un saldo effettivo massimo di 2048 ETH. I validatori compounding e le withdrawal credential 0x02 sono supportati solo sulle reti che hanno eseguito il fork Pectra. Inserisci no o lascia vuoto per generare validatori normali con withdrawal credential 0x01 e saldo effettivo massimo di 32 ETH."
     },
     "arg_amount": {

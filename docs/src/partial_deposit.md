@@ -4,7 +4,8 @@
 
 ## Description
 Creates a deposit file with an existing validator key. A validator key can be created using the **[new-mnemonic](new_mnemonic.md)** or the **[existing-mnemonic](existing_mnemonic.md)** commands. Can be used to initiate a validator or deposit to an existing validator.
-If you wish to create a validator with 0x00 credentials, you must use the **[new-mnemonic](new_mnemonic.md)** or the **[existing-mnemonic](existing_mnemonic.md)** command.
+
+If you wish to create a validator with legacy Type 0 (0x00) credentials, you must use `v1.3.0` of the software. Type 0 keys cannot be quantum-secure and will be sunset by the protocol in the coming years.
 
 ## Optional Arguments
 
@@ -12,13 +13,13 @@ If you wish to create a validator with 0x00 credentials, you must use the **[new
 
 - **`--keystore`**: The keystore file associating with the validator you wish to deposit to.
 
-- **`--keystore_password`**: The password that is used to encrypt the provided keystore. Note: It's not your mnemonic password. <span class="warning"></span>
+- **`--keystore_password`**: The password that is used to encrypt the provided keystore. Note: It's not your optional mnemonic password. <span class="warning"></span>
 
 - **`--amount`**: The amount to deposit per validator in ether. Must be at least the chain's minimum deposit amount (1 ETH on mainnet) with no greater precision than 1 gwei. Defaults to the chain's minimum activation amount (32 ETH on mainnet).
 
 - **`--withdrawal_address`**: The withdrawal address of the existing validator or the desired withdrawal address.
 
-- **`--compounding / --regular-withdrawal`**: Generates compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance or generate regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance. Use of this option requires a withdrawal address. This feature is only supported on networks that have undergone the Pectra fork. Defaults to regular withdrawal.
+- **`--compounding / --regular-withdrawal`**: Generates compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance or generate regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance. Defaults to regular withdrawal.
 
 - **`--output_folder`**: The folder path for the `deposit-*` JSON file.
 

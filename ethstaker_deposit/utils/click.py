@@ -226,7 +226,8 @@ def captive_prompt_callback(
         # the callback
         # See https://github.com/pallets/click/discussions/2673
         default_value = _value_of(default) if default is not None else param.default
-        if (prompt_if is not None
+        if (not config.non_interactive
+                and prompt_if is not None
                 and ctx.get_parameter_source(param.name) == click.core.ParameterSource.DEFAULT
                 and prompt_if(ctx, param, user_input)):
             user_input = click.prompt(prompt(), hide_input=hide_input, default=default_value)

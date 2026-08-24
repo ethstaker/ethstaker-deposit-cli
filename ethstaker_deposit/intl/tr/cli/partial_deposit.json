@@ -19,9 +19,9 @@
       "help": "Kısmi para yatırma işleminin kaydedileceği klasör yolu. Varsayılan olarak `./partial_deposits` kullanılır."
     },
     "arg_withdrawal_address": {
-      "help": "Doğrulayıcının para çekme adresi. 0x00 kimlik bilgilerine sahip bir doğrulayıcı oluşturmak istiyorsanız new-mnemonic veya existing-mnemonic komutunu kullanın.",
+      "help": "Doğrulayıcının para çekme adresi.",
       "confirm": "Onaylamak için para çekme adresini tekrar girin.",
-      "prompt": "Lütfen para çekme adresini girin. 0x00 kimlik bilgilerine sahip bir doğrulayıcı oluşturmak istiyorsanız new-mnemonic veya existing-mnemonic komutunu kullanın.",
+      "prompt": "Lütfen para çekme adresini girin.",
       "mismatch": "Hata: girilen iki adres eşleşmiyor. Lütfen tekrar yazın."
     },
     "arg_compounding": {

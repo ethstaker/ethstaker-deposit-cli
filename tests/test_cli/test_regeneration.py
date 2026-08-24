@@ -31,14 +31,16 @@ def test_regeneration(monkeypatch) -> None:
         os.mkdir(folder_path_2)
 
     runner = CliRunner()
+    withdrawal_address = '0x00000000219ab540356cBB839Cbe05303d7705Fa'
     # Create index 0 and 1
     my_password = "MyPasswordIs"
-    inputs = ['english', 'english', '2', 'mainnet', my_password, my_password, mock_mnemonic, '']
+    inputs = ['english', withdrawal_address, 'english', '2', 'mainnet', my_password, my_password, '',
+              mock_mnemonic, '']
     data = '\n'.join(inputs)
     arguments = [
         '--ignore_connectivity',
         'new-mnemonic',
-        '--withdrawal_address', '',
+        '--withdrawal_address', withdrawal_address,
         '--folder', folder_path_1,
     ]
     result = runner.invoke(cli, arguments, input=data)
@@ -63,13 +65,14 @@ def test_regeneration(monkeypatch) -> None:
     # Create index 1 and 2
     inputs = [
         'english',
+        withdrawal_address,
         mock_mnemonic,
-        '1', '1', '2', 'mainnet', 'MyPasswordIs', 'MyPasswordIs', '']
+        '1', '1', '2', 'mainnet', 'MyPasswordIs', 'MyPasswordIs', '', '']
     data = '\n'.join(inputs)
     arguments = [
         '--ignore_connectivity',
         'existing-mnemonic',
-        '--withdrawal_address', '',
+        '--withdrawal_address', withdrawal_address,
         '--folder', folder_path_2,
     ]
     result = runner.invoke(cli, arguments, input=data)
