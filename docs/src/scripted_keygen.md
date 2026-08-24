@@ -6,7 +6,7 @@
 
 ethstaker-deposit-cli supports generating keys via script, and no prompts will be shown. This is achieved by using the **[generate-mnemonic](generate_mnemonic.md)** command followed by the **[existing-mnemonic](existing_mnemonic.md)** command. Of necessity, the keystore password and mnemonic will be on command line with this workflow. Ensure these secrets are properly safeguarded.
 
-Parameters are positional: `--language`, `--non-interactive`, `--ignore_connectivity` all come before the command.
+Parameters are positional: `--language`, `--non_interactive`, `--ignore_connectivity` all come before the command.
 
 ## Example Usage
 
