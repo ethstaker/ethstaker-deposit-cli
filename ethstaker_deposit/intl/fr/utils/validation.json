@@ -20,10 +20,10 @@
     "err_invalid_bool_value": "Cette valeur n'est pas valide pour une question oui/non."
   },
   "validate_deposit_amount": {
-    "err_invalid_amount": "Montant fourni invalide. Veuillez fournir un montant d'au moins 1 ether à déposer.",
+    "err_invalid_amount": "Montant fourni invalide. Veuillez fournir un montant d'au moins 1 ETH à déposer.",
     "err_not_gwei_denomination": "Montant fourni invalide. Veuillez fournir une valeur dont la précision ne dépasse pas 1 gwei.",
-    "err_min_deposit": "Montant fourni invalide. Veuillez fournir un montant d'au moins 1 ether.",
-    "err_max_deposit": "Montant fourni invalide. Le montant maximal du dépôt est de 2048 ether. Veuillez fournir un montant inférieur ou égal.",
+    "err_min_deposit": "Montant fourni invalide. Veuillez fournir un montant d'au moins 1 ETH.",
+    "err_max_deposit": "Montant fourni invalide. Le montant maximal du dépôt est de 2048 ETH. Veuillez fournir un montant inférieur ou égal.",
     "err_zero_multiplier": "Ce paramètre de chaîne utilise un multiplicateur nul, ce qui est invalide."
   },
   "validate_bls_withdrawal_credentials": {

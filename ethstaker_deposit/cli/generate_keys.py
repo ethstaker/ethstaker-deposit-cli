@@ -30,6 +30,7 @@ from ethstaker_deposit.utils.click import (
     prompt_if_none,
     prompt_if_other_exists,
     prompt_if_other_value,
+    regular_withdrawal_alias,
 )
 from ethstaker_deposit.utils.intl import (
     load_text,
@@ -94,15 +95,24 @@ def generate_keys_arguments_decorator(function: Callable[..., Any]) -> Callable[
             callback=captive_prompt_callback(
                 lambda value, _: validate_yesno(None, None, value),
                 lambda: load_text(['arg_compounding', 'prompt'], func='generate_keys_arguments_decorator'),
-                default='no',
+                default='yes',
                 prompt_if=prompt_if_other_exists('withdrawal_address'),
             ),
-            default='no',
+            default='yes',
             help=lambda: load_text(['arg_compounding', 'help'], func='generate_keys_arguments_decorator'),
-            param_decls='--compounding/--regular-withdrawal',
+            param_decls='--compounding/--regular_withdrawal',
             prompt=False,  # the callback handles the prompt
             type=bool,
-            show_default='regular-withdrawal',
+            show_default='compounding',
+        ),
+        jit_option(
+            callback=regular_withdrawal_alias,
+            default=None,
+            help='',
+            hidden=True,
+            is_flag=True,
+            flag_value=False,
+            param_decls='--regular-withdrawal',
         ),
         jit_option(
             callback=captive_prompt_callback(

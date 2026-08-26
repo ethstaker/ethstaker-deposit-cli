@@ -186,6 +186,15 @@ def prompt_if_other_value(other: str, value: Any) -> Callable[[click.Context, An
     return callback
 
 
+def regular_withdrawal_alias(ctx: click.Context, param: Any, value: Any) -> Any:
+    '''
+    Hidden backwards-compatibility alias for --regular_withdrawal.
+    '''
+    if value is False:
+        ctx.params['compounding'] = False
+    return value
+
+
 def process_with_optional_context(ctx: click.Context, processing_func: Callable[..., Any],
                                 user_input: str, prompt_marker: str) -> Any:
     '''

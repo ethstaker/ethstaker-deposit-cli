@@ -29,11 +29,11 @@
       "mismatch": "Error: the two entered values do not match. Please type again."
     },
     "arg_compounding": {
-      "help": "Generates compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance or generate regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance. This feature is only supported on networks that have undergone the Pectra fork.",
-      "prompt": "Please enter yes if you want to generate compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance. Compounding validators and 0x02 withdrawal credentials are only supported on networks that have undergone the Pectra fork. Please type no or nothing if you want regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance."
+      "help": "Generates compounding Type 2 (0x02) validators with a 2048 ETH maximum effective balance by default. Generates regular withdrawal Type 1 (0x01) validators with a 32 ETH maximum effective balance if regular withdrawal is chosen.",
+      "prompt": "Please type \"yes\" or accept default if you want to generate compounding Type 2 (0x02) validators with a 2048 ETH maximum effective balance. Please type \"no\" if you want regular withdrawal Type 1 (0x01) validators with a 32 ETH maximum effective balance."
     },
     "arg_amount": {
-      "help": "The amount to deposit to these validators in ether denomination. Must be at least 1 ether and can not have greater precision than 1 gwei. Use of this option requires compounding validators.",
+      "help": "The amount to deposit to these validators in ETH denomination. Must be at least 1 ETH and can not have greater precision than 1 gwei. Use of this option requires compounding validators.",
       "prompt": "Please enter the amount you wish to deposit to these validators. Must be at least {min_deposit} and can not have greater precision than 1 gwei. {activation_amount} is required to activate a new validator"
     },
     "arg_pbkdf2": {

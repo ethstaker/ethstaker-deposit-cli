@@ -61,7 +61,7 @@ def test_should_check_connectivity_by_default(monkeypatch) -> None:
     inputs = [
         withdrawal_address,
         'abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about',
-        '0', '0', '1', 'mainnet', 'MyPasswordIs', 'MyPasswordIs', '', '']
+        '0', '0', '1', 'mainnet', 'MyPasswordIs', 'MyPasswordIs', 'no', '']
     data = '\n'.join(inputs)
     arguments = [
         '--language', 'english',
@@ -96,7 +96,7 @@ def test_should_not_check_connectivity_with_ignore_connectivity(monkeypatch) -> 
     inputs = [
         withdrawal_address,
         'abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about',
-        '0', '0', '1', 'mainnet', 'MyPasswordIs', 'MyPasswordIs', '', '']
+        '0', '0', '1', 'mainnet', 'MyPasswordIs', 'MyPasswordIs', 'no', '']
     data = '\n'.join(inputs)
     arguments = [
         '--language', 'english',

@@ -1,10 +1,10 @@
 {
   "partial_deposit": {
     "arg_partial_deposit": {
-      "help": "Buat deposit sebagian dengan jumlah minimal 1 ether yang akan ditandatangani oleh keystore validator yang diberikan. Ini akan menambahkan saldo validator yang diberikan atau memulai pembuatan validator baru."
+      "help": "Buat deposit sebagian dengan jumlah minimal 1 ETH yang akan ditandatangani oleh keystore validator yang diberikan. Ini akan menambahkan saldo validator yang diberikan atau memulai pembuatan validator baru."
     },
     "arg_partial_deposit_amount": {
-      "help": "Jumlah yang akan didepositkan ke validator ini dalam denominasi ether. Harus setidaknya 1 ether dan tidak boleh memiliki presisi lebih dari 1 gwei. Nilai defaultnya adalah 32 ether."
+      "help": "Jumlah yang akan didepositkan ke validator ini dalam denominasi ETH. Harus setidaknya 1 ETH dan tidak boleh memiliki presisi lebih dari 1 gwei. Nilai defaultnya adalah 32 ETH."
     },
     "arg_partial_deposit_keystore": {
       "help": "File keystore yang terkait dengan validator yang ingin Anda gunakan untuk menandatangani dan melakukan deposit.",
@@ -25,8 +25,8 @@
       "mismatch": "Kesalahan: kedua alamat yang dimasukkan tidak cocok. Silakan ketik ulang."
     },
     "arg_compounding": {
-      "help": "Buat validator compounding dengan withdrawal credentials 0x02 untuk saldo efektif maksimum 2048 ETH atau validator biasa dengan withdrawal credentials 0x01 untuk saldo efektif maksimum 32 ETH. Fitur ini hanya didukung pada jaringan yang telah menjalani fork Pectra.",
-      "prompt": "Masukkan yes jika Anda ingin membuat validator compounding dengan withdrawal credentials 0x02 untuk saldo efektif maksimum 2048 ETH. Validator compounding dan withdrawal credentials 0x02 hanya didukung pada jaringan yang telah menjalani fork Pectra. Ketik no atau biarkan kosong jika Anda ingin validator biasa dengan withdrawal credentials 0x01 untuk saldo efektif maksimum 32 ETH."
+      "help": "Secara bawaan menghasilkan validator majemuk Type 2 (0x02) dengan saldo efektif maksimum 2048 ETH. Menghasilkan validator penarikan reguler Type 1 (0x01) dengan saldo efektif maksimum 32 ETH jika \"--regular_withdrawal\" dipilih.",
+      "prompt": "Ketik \"yes\" atau terima bawaan jika Anda ingin membuat validator majemuk Type 2 (0x02) dengan saldo efektif maksimum 2048 ETH. Ketik \"no\" jika Anda ingin validator penarikan reguler Type 1 (0x01) dengan saldo efektif maksimum 32 ETH."
     },
     "msg_partial_deposit_creation": "\nMembuat deposit sebagian Anda...",
     "msg_verify_partial_deposit": "\nMemverifikasi deposit sebagian Anda...",

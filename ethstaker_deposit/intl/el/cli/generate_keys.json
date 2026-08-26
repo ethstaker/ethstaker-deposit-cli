@@ -29,11 +29,11 @@
       "mismatch": "Σφάλμα: οι δύο εισαχθείσες τιμές δεν ταιριάζουν. Παρακαλώ πληκτρολογήστε ξανά."
     },
     "arg_compounding": {
-      "help": "Δημιουργεί validators με compounding και credentials ανάληψης 0x02 για μέγιστο effective balance 2048 ETH ή κανονικούς validators με credentials ανάληψης 0x01 για μέγιστο effective balance 32 ETH. Αυτή η δυνατότητα υποστηρίζεται μόνο σε δίκτυα που έχουν υποστεί το fork Pectra.",
-      "prompt": "Εισαγάγετε yes αν θέλετε να δημιουργήσετε validators με compounding και credentials ανάληψης 0x02 για μέγιστο effective balance 2048 ETH. Οι validators με compounding και τα credentials ανάληψης 0x02 υποστηρίζονται μόνο σε δίκτυα που έχουν υποστεί το fork Pectra. Πληκτρολογήστε no ή τίποτα αν θέλετε κανονικούς validators με credentials ανάληψης 0x01 για μέγιστο effective balance 32 ETH."
+      "help": "Από προεπιλογή, δημιουργεί validators με ανατοκισμό Type 2 (0x02) για μέγιστο effective balance 2048 ETH. Δημιουργεί validators με κανονική ανάληψη Type 1 (0x01) για μέγιστο effective balance 32 ETH αν επιλεγεί το \"--regular_withdrawal\".",
+      "prompt": "Πληκτρολογήστε \"yes\" ή αποδεχτείτε την προεπιλογή αν θέλετε να δημιουργήσετε validators με ανατοκισμό Type 2 (0x02) για μέγιστο effective balance 2048 ETH. Πληκτρολογήστε \"no\" αν θέλετε validators με κανονική ανάληψη Type 1 (0x01) για μέγιστο effective balance 32 ETH."
     },
     "arg_amount": {
-      "help": "Το ποσό κατάθεσης για αυτούς τους validators, σε ether. Πρέπει να είναι τουλάχιστον 1 ether και δεν μπορεί να έχει ακρίβεια μεγαλύτερη από 1 gwei. Η χρήση αυτής της επιλογής απαιτεί validators με compounding.",
+      "help": "Το ποσό κατάθεσης για αυτούς τους validators, σε ETH. Πρέπει να είναι τουλάχιστον 1 ETH και δεν μπορεί να έχει ακρίβεια μεγαλύτερη από 1 gwei. Η χρήση αυτής της επιλογής απαιτεί validators με ανατοκισμό.",
       "prompt": "Εισαγάγετε το ποσό που θέλετε να καταθέσετε για αυτούς τους validators. Πρέπει να είναι τουλάχιστον {min_deposit} και δεν μπορεί να έχει ακρίβεια μεγαλύτερη από 1 gwei. Απαιτείται ποσό {activation_amount} για την ενεργοποίηση ενός νέου validator"
     },
     "arg_pbkdf2": {

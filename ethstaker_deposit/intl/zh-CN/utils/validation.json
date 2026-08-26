@@ -20,10 +20,10 @@
     "err_invalid_bool_value": "这是 yes/no 问题的无效值。"
   },
   "validate_deposit_amount": {
-    "err_invalid_amount": "提供的数量无效。请输入至少为 1 ether 的存款数量。",
+    "err_invalid_amount": "提供的数量无效。请输入至少为 1 ETH 的存款数量。",
     "err_not_gwei_denomination": "提供的数量无效。请输入精度不超过 1 gwei 的数值。",
-    "err_min_deposit": "提供的数量无效。请输入至少为 1 ether 的数值。",
-    "err_max_deposit": "提供的数量无效。最大存款数量为 2048 ether。请输入小于或等于该数量的值。",
+    "err_min_deposit": "提供的数量无效。请输入至少为 1 ETH 的数值。",
+    "err_max_deposit": "提供的数量无效。最大存款数量为 2048 ETH。请输入小于或等于该数量的值。",
     "err_zero_multiplier": "此链设置使用了值为零的乘数，该值无效。"
   },
   "validate_bls_withdrawal_credentials": {

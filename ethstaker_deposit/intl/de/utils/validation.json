@@ -20,10 +20,10 @@
     "err_invalid_bool_value": "Dies ist kein gültiger Wert für eine Ja/Nein-Frage."
   },
   "validate_deposit_amount": {
-    "err_invalid_amount": "Ungültiger Betrag. Bitte geben Sie einen Betrag von mindestens 1 Ether ein, den Sie einzahlen möchten.",
+    "err_invalid_amount": "Ungültiger Betrag. Bitte geben Sie einen Betrag von mindestens 1 ETH ein, den Sie einzahlen möchten.",
     "err_not_gwei_denomination": "Ungültiger Betrag. Bitte geben Sie einen Wert ein, dessen Genauigkeit 1 gwei nicht überschreitet.",
-    "err_min_deposit": "Ungültiger Betrag. Bitte geben Sie einen Betrag von mindestens 1 Ether ein.",
-    "err_max_deposit": "Ungültiger Betrag. Der maximale Einzahlungsbetrag beträgt 2048 Ether. Bitte geben Sie einen kleineren oder gleichen Betrag ein.",
+    "err_min_deposit": "Ungültiger Betrag. Bitte geben Sie einen Betrag von mindestens 1 ETH ein.",
+    "err_max_deposit": "Ungültiger Betrag. Der maximale Einzahlungsbetrag beträgt 2048 ETH. Bitte geben Sie einen kleineren oder gleichen Betrag ein.",
     "err_zero_multiplier": "Diese Chain-Einstellung verwendet einen Multiplikator mit dem Wert null, was ungültig ist."
   },
   "validate_bls_withdrawal_credentials": {

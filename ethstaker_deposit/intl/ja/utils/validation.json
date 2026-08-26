@@ -20,10 +20,10 @@
     "err_invalid_bool_value": "yes/no の質問に対する無効な値です。"
   },
   "validate_deposit_amount": {
-    "err_invalid_amount": "無効な額です。入金額として1 ether以上の値を指定してください。",
+    "err_invalid_amount": "無効な額です。入金額として1 ETH以上の値を指定してください。",
     "err_not_gwei_denomination": "無効な額です。1 gweiを超える精度の値は指定できません。",
-    "err_min_deposit": "無効な額です。1 ether以上の値を指定してください。",
-    "err_max_deposit": "無効な額です。最大入金額は2048 etherです。これ以下の値を指定してください。",
+    "err_min_deposit": "無効な額です。1 ETH以上の値を指定してください。",
+    "err_max_deposit": "無効な額です。最大入金額は2048 ETHです。これ以下の値を指定してください。",
     "err_zero_multiplier": "このチェーン設定では値が0の乗数が使用されているため無効です。"
   },
   "validate_bls_withdrawal_credentials": {

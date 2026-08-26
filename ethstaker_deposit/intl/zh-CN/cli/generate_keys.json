@@ -6,7 +6,7 @@
     },
     "dynamic": {
       "chain": {
-        "help": "您正在对准的 Ethereum PoS 版本。如果您要存入以太币，请使用 \"mainnet\"",
+        "help": "您正在对准的 Ethereum PoS 版本。如果您要存入ETH，请使用 \"mainnet\"",
         "prompt": "请选择（主网或测试网）网络名/链名"
       },
       "arg_devnet_chain_setting": {
@@ -29,11 +29,11 @@
       "mismatch": "错误：两次输入的值不匹配。请重新输入。"
     },
     "arg_compounding": {
-      "help": "生成具有 0x02 提取凭证、最大有效余额为 2048 ETH 的复利验证者，或生成具有 0x01 提取凭证、最大有效余额为 32 ETH 的普通验证者。此功能仅支持已完成 Pectra 分叉的网络。",
-      "prompt": "如果您要生成具有 0x02 提取凭证、最大有效余额为 2048 ETH 的复利验证者，请输入 yes。复利验证者和 0x02 提取凭证仅支持已完成 Pectra 分叉的网络。如果要生成具有 0x01 提取凭证、最大有效余额为 32 ETH 的普通验证者，请输入 no 或留空。"
+      "help": "默认生成最大有效余额为 2048 ETH 的复利 Type 2（0x02）验证者。如果选择 \"--regular_withdrawal\"，则生成最大有效余额为 32 ETH 的普通提取的 Type 1（0x01）验证者。",
+      "prompt": "如果您要生成最大有效余额为 2048 ETH 的复利 Type 2（0x02）验证者，请输入 \"yes\" 或接受默认值。如果您要生成最大有效余额为 32 ETH 的普通提取的 Type 1（0x01）验证者，请输入 \"no\"。"
     },
     "arg_amount": {
-      "help": "向这些验证者存入的 ether 数量。必须至少为 1 ether，精度不能高于 1 gwei。使用此选项需要生成复利验证者。",
+      "help": "向这些验证者存入的 ETH 数量。必须至少为 1 ETH，精度不能高于 1 gwei。使用此选项需要生成复利验证者。",
       "prompt": "请输入您要向这些验证者存入的数量。必须至少为 {min_deposit}，精度不能高于 1 gwei。激活新验证者需要 {activation_amount}"
     },
     "arg_pbkdf2": {

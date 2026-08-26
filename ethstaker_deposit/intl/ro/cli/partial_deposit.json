@@ -1,10 +1,10 @@
 {
   "partial_deposit": {
     "arg_partial_deposit": {
-      "help": "Generează o depunere parțială de cel puțin 1 ether, care va fi semnată de keystore-ul validatorului furnizat. Aceasta va adăuga la soldul validatorului furnizat sau va iniția crearea unuia."
+      "help": "Generează o depunere parțială de cel puțin 1 ETH, care va fi semnată de keystore-ul validatorului furnizat. Aceasta va adăuga la soldul validatorului furnizat sau va iniția crearea unuia."
     },
     "arg_partial_deposit_amount": {
-      "help": "Suma de depus pentru acest validator, exprimată în ether. Trebuie să fie de cel puțin 1 ether și nu poate avea o precizie mai mare de 1 gwei. Valoarea implicită este 32 ether."
+      "help": "Suma de depus pentru acest validator, exprimată în ETH. Trebuie să fie de cel puțin 1 ETH și nu poate avea o precizie mai mare de 1 gwei. Valoarea implicită este 32 ETH."
     },
     "arg_partial_deposit_keystore": {
       "help": "Fișierul keystore asociat validatorului cu care vrei să semnezi și în care vrei să depui.",
@@ -25,8 +25,8 @@
       "mismatch": "Eroare: cele două adrese introduse sunt diferite. Te rugăm să tastezi din nou."
     },
     "arg_compounding": {
-      "help": "Generează validatori cu capitalizare, cu credențiale de retragere 0x02 și un sold efectiv maxim de 2048 ETH, sau validatori obișnuiți, cu credențiale de retragere 0x01 și un sold efectiv maxim de 32 ETH. Funcția este acceptată numai pe rețelele care au trecut prin fork-ul Pectra.",
-      "prompt": "Introdu yes dacă vrei să generezi validatori cu capitalizare, cu credențiale de retragere 0x02 și un sold efectiv maxim de 2048 ETH. Validatorii cu capitalizare și credențialele de retragere 0x02 sunt acceptate numai pe rețelele care au trecut prin fork-ul Pectra. Tastează no sau nu introduce nimic dacă vrei validatori obișnuiți, cu credențiale de retragere 0x01 și un sold efectiv maxim de 32 ETH."
+      "help": "Generează în mod implicit validatori cu capitalizare Type 2 (0x02) cu un sold efectiv maxim de 2048 ETH. Generează validatori cu retragere obișnuită Type 1 (0x01) cu un sold efectiv maxim de 32 ETH dacă este aleată opțiunea \"--regular_withdrawal\".",
+      "prompt": "Tastează \"yes\" sau acceptă valoarea implicită dacă vrei să generezi validatori cu capitalizare Type 2 (0x02) cu un sold efectiv maxim de 2048 ETH. Tastează \"no\" dacă vrei validatori cu retragere obișnuită Type 1 (0x01) cu un sold efectiv maxim de 32 ETH."
     },
     "msg_partial_deposit_creation": "\nSe creează depunerea ta parțială...",
     "msg_verify_partial_deposit": "\nSe verifică depunerea ta parțială...",

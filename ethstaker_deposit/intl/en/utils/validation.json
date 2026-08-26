@@ -20,10 +20,10 @@
     "err_invalid_bool_value": "This is an invalid value for a yes/no question."
   },
   "validate_deposit_amount": {
-    "err_invalid_amount": "Invalid amount provided. Please provide a value of at least 1 ether of how much you wish to deposit.",
+    "err_invalid_amount": "Invalid amount provided. Please provide a value of at least 1 ETH of how much you wish to deposit.",
     "err_not_gwei_denomination": "Invalid amount provided. Please provide a value can not have precision beyond 1 gwei.",
-    "err_min_deposit": "Invalid amount provided. Please provide a value of at least 1 ether.",
-    "err_max_deposit": "Invalid amount provided. The max deposit amount is 2048 ether. Please provide a lesser or equal amount.",
+    "err_min_deposit": "Invalid amount provided. Please provide a value of at least 1 ETH.",
+    "err_max_deposit": "Invalid amount provided. The max deposit amount is 2048 ETH. Please provide a lesser or equal amount.",
     "err_zero_multiplier": "This chain setting is using a multiplier with a value of zero which is invalid."
   },
   "validate_bls_withdrawal_credentials": {

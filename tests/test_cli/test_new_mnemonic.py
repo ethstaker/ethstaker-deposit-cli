@@ -47,7 +47,7 @@ def test_new_mnemonic_withdrawal_address(monkeypatch) -> None:
 
     runner = CliRunner()
     withdrawal_address = '0x00000000219ab540356cBB839Cbe05303d7705Fa'
-    inputs = ['english', '1', 'mainnet', 'MyPasswordIs', 'MyPasswordIs', withdrawal_address, withdrawal_address, '',
+    inputs = ['english', '1', 'mainnet', 'MyPasswordIs', 'MyPasswordIs', withdrawal_address, withdrawal_address, 'no',
               'abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about', '']
     data = '\n'.join(inputs)
     arguments = [
@@ -106,7 +106,7 @@ def test_new_mnemonic_compounding_validators(monkeypatch) -> None:
     runner = CliRunner()
     withdrawal_address = '0x00000000219ab540356cBB839Cbe05303d7705Fa'
     inputs = ['english', '1', 'mainnet', 'MyPasswordIs', 'MyPasswordIs', withdrawal_address, withdrawal_address,
-              'yes', '',
+              '', '',
               'abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about', '']
     data = '\n'.join(inputs)
     arguments = [
@@ -531,7 +531,7 @@ def test_new_mnemonic_withdrawal_address_bad_checksum(monkeypatch) -> None:
     correct_withdrawal_address = '0x00000000219ab540356cBB839Cbe05303d7705Fa'
 
     inputs = ['english', '1', 'mainnet', 'MyPasswordIs', 'MyPasswordIs',
-              wrong_withdrawal_address, correct_withdrawal_address, correct_withdrawal_address, '',
+              wrong_withdrawal_address, correct_withdrawal_address, correct_withdrawal_address, 'no',
               'abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about', '']
     data = '\n'.join(inputs)
     arguments = [
@@ -587,7 +587,7 @@ def test_new_mnemonic_withdrawal_address_parameter(monkeypatch) -> None:
 
     runner = CliRunner()
     withdrawal_address = '0x00000000219ab540356cBB839Cbe05303d7705Fa'
-    inputs = [withdrawal_address, 'english', '1', 'mainnet', 'MyPasswordIs', 'MyPasswordIs', '',
+    inputs = [withdrawal_address, 'english', '1', 'mainnet', 'MyPasswordIs', 'MyPasswordIs', 'no',
               'abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about', '']
     data = '\n'.join(inputs)
     arguments = [
@@ -645,7 +645,7 @@ def test_new_mnemonic_eth1_withdrawal_address_param(monkeypatch) -> None:
 
     runner = CliRunner()
     withdrawal_address = '0x00000000219ab540356cBB839Cbe05303d7705Fa'
-    inputs = [withdrawal_address, 'english', '1', 'mainnet', 'MyPasswordIs', 'MyPasswordIs', '',
+    inputs = [withdrawal_address, 'english', '1', 'mainnet', 'MyPasswordIs', 'MyPasswordIs', 'no',
               'abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about', '']
     data = '\n'.join(inputs)
     arguments = [
@@ -703,7 +703,7 @@ def test_new_mnemonic_execution_address_param(monkeypatch) -> None:
 
     runner = CliRunner()
     withdrawal_address = '0x00000000219ab540356cBB839Cbe05303d7705Fa'
-    inputs = [withdrawal_address, 'english', '1', 'mainnet', 'MyPasswordIs', 'MyPasswordIs', '',
+    inputs = [withdrawal_address, 'english', '1', 'mainnet', 'MyPasswordIs', 'MyPasswordIs', 'no',
               'abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about', '']
     data = '\n'.join(inputs)
     arguments = [
@@ -766,7 +766,7 @@ def test_pbkdf2_new_mnemonic(monkeypatch) -> None:
 
     runner = CliRunner()
     withdrawal_address = '0x00000000219ab540356cBB839Cbe05303d7705Fa'
-    inputs = [withdrawal_address, 'english', '1', 'mainnet', 'MyPasswordIs', 'MyPasswordIs', '',
+    inputs = [withdrawal_address, 'english', '1', 'mainnet', 'MyPasswordIs', 'MyPasswordIs', 'no',
               'abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about', '']
     data = '\n'.join(inputs)
     arguments = [
@@ -928,7 +928,7 @@ def test_new_mnemonic_custom_testnet(monkeypatch) -> None:
 
     runner = CliRunner()
     withdrawal_address = '0x00000000219ab540356cBB839Cbe05303d7705Fa'
-    inputs = ['english', withdrawal_address, 'english', '1', 'MyPasswordIs', 'MyPasswordIs', '',
+    inputs = ['english', withdrawal_address, 'english', '1', 'MyPasswordIs', 'MyPasswordIs', 'no',
               'abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about', '']
     data = '\n'.join(inputs)
     arguments = [

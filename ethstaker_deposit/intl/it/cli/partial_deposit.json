@@ -1,10 +1,10 @@
 {
   "partial_deposit": {
     "arg_partial_deposit": {
-      "help": "Genera un deposito parziale di almeno 1 ether, firmato dal keystore del validatore fornito. L'importo verrà aggiunto al saldo del validatore fornito oppure avvierà la creazione di un nuovo validatore."
+      "help": "Genera un deposito parziale di almeno 1 ETH, firmato dal keystore del validatore fornito. L'importo verrà aggiunto al saldo del validatore fornito oppure avvierà la creazione di un nuovo validatore."
     },
     "arg_partial_deposit_amount": {
-      "help": "L'importo da depositare per questo validatore, espresso in ether. Deve essere almeno 1 ether e non può avere una precisione superiore a 1 gwei. Il valore predefinito è 32 ether."
+      "help": "L'importo da depositare per questo validatore, espresso in ETH. Deve essere almeno 1 ETH e non può avere una precisione superiore a 1 gwei. Il valore predefinito è 32 ETH."
     },
     "arg_partial_deposit_keystore": {
       "help": "Il file keystore associato al validatore con cui vuoi firmare ed effettuare il deposito.",
@@ -25,8 +25,8 @@
       "mismatch": "Errore: i due indirizzi inseriti non corrispondono. Riprova."
     },
     "arg_compounding": {
-      "help": "Genera validatori compounding con withdrawal credential 0x02 per un saldo effettivo massimo di 2048 ETH oppure validatori normali con withdrawal credential 0x01 per un saldo effettivo massimo di 32 ETH. Questa funzionalità è supportata solo sulle reti che hanno eseguito il fork Pectra.",
-      "prompt": "Inserisci yes se vuoi generare validatori compounding con withdrawal credential 0x02 per un saldo effettivo massimo di 2048 ETH. I validatori compounding e le withdrawal credential 0x02 sono supportati solo sulle reti che hanno eseguito il fork Pectra. Inserisci no o lascia vuoto per generare validatori normali con withdrawal credential 0x01 e saldo effettivo massimo di 32 ETH."
+      "help": "Genera per impostazione predefinita validatori con interesse composto Type 2 (0x02) con un saldo effettivo massimo di 2048 ETH. Genera validatori con prelievo normale Type 1 (0x01) con un saldo effettivo massimo di 32 ETH se viene scelta l'opzione \"--regular_withdrawal\".",
+      "prompt": "Digita \"yes\" o accetta il valore predefinito se vuoi generare validatori con interesse composto Type 2 (0x02) con un saldo effettivo massimo di 2048 ETH. Digita \"no\" se vuoi validatori con prelievo normale Type 1 (0x01) con un saldo effettivo massimo di 32 ETH."
     },
     "msg_partial_deposit_creation": "\nCreazione del deposito parziale...",
     "msg_verify_partial_deposit": "\nVerifica del deposito parziale...",

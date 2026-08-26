@@ -56,7 +56,7 @@ def test_partial_deposit(amount: str) -> None:
     keystore_file_folder = credential.save_signing_keystore(password, partial_deposit_folder, time.time())
 
     runner = CliRunner()
-    inputs = ['english', 'mainnet', password, amount, withdrawal_address, withdrawal_address, '']
+    inputs = ['english', 'mainnet', password, amount, withdrawal_address, withdrawal_address, 'no']
     data = '\n'.join(inputs) + '\n'
     arguments = [
         '--ignore_connectivity',
@@ -124,7 +124,7 @@ def test_gnosis_partial_deposit(amount: str) -> None:
     keystore_file_folder = credential.save_signing_keystore(password, partial_deposit_folder, time.time())
 
     runner = CliRunner()
-    inputs = ['english', 'gnosis', password, amount, withdrawal_address, withdrawal_address, '']
+    inputs = ['english', 'gnosis', password, amount, withdrawal_address, withdrawal_address, 'no']
     data = '\n'.join(inputs) + '\n'
     arguments = [
         '--ignore_connectivity',
@@ -299,6 +299,7 @@ def test_partial_deposit_matches_existing_mnemonic_deposit() -> None:
         '--chain', 'mainnet',
         '--keystore_password', password,
         '--withdrawal_address', f"{withdrawal_address}",
+        '--regular_withdrawal',
         '--folder', my_folder_path,
     ]
     data = '\n'
@@ -315,7 +316,7 @@ def test_partial_deposit_matches_existing_mnemonic_deposit() -> None:
     assert len(deposit_files) == 1
     key_file_location = os.path.join(validator_key_folder, key_files[0])
 
-    inputs = ['english', 'mainnet', password, "32", withdrawal_address, withdrawal_address, '']
+    inputs = ['english', 'mainnet', password, "32", withdrawal_address, withdrawal_address, 'no']
     data = '\n'.join(inputs) + '\n'
     arguments = [
         '--ignore_connectivity',
@@ -370,6 +371,7 @@ def test_partial_deposit_does_not_match_if_amount_differs() -> None:
         '--chain', 'mainnet',
         '--keystore_password', password,
         '--withdrawal_address', f"{withdrawal_address}",
+        '--regular-withdrawal',
         '--folder', my_folder_path,
     ]
     data = '\n'
@@ -386,7 +388,7 @@ def test_partial_deposit_does_not_match_if_amount_differs() -> None:
     assert len(deposit_files) == 1
     key_file_location = os.path.join(validator_key_folder, key_files[0])
 
-    inputs = ['english', 'mainnet', password, "33", withdrawal_address, withdrawal_address, '']
+    inputs = ['english', 'mainnet', password, "33", withdrawal_address, withdrawal_address, 'no']
     data = '\n'.join(inputs) + '\n'
     arguments = [
         '--ignore_connectivity',
@@ -468,7 +470,7 @@ def test_partial_deposit_custom_network(amount: str) -> None:
     keystore_file_folder = credential.save_signing_keystore(password, partial_deposit_folder, time.time())
 
     runner = CliRunner()
-    inputs = ['english', password, amount, withdrawal_address, withdrawal_address, '']
+    inputs = ['english', password, amount, withdrawal_address, withdrawal_address, 'no']
     data = '\n'.join(inputs) + '\n'
     arguments = [
         '--ignore_connectivity',
@@ -524,7 +526,7 @@ def test_invalid_custom_network_json() -> None:
     keystore_file_folder = credential.save_signing_keystore(password, partial_deposit_folder, time.time())
 
     runner = CliRunner()
-    inputs = ['english', password, '32', withdrawal_address, withdrawal_address, '']
+    inputs = ['english', password, '32', withdrawal_address, withdrawal_address, 'no']
     data = '\n'.join(inputs)
     arguments = [
         '--ignore_connectivity',

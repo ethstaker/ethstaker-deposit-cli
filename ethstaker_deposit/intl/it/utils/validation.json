@@ -20,10 +20,10 @@
     "err_invalid_bool_value": "Questo valore non è valido per una domanda sì/no."
   },
   "validate_deposit_amount": {
-    "err_invalid_amount": "Importo non valido. Inserisci un valore di almeno 1 ether per l'importo che desideri depositare.",
+    "err_invalid_amount": "Importo non valido. Inserisci un valore di almeno 1 ETH per l'importo che desideri depositare.",
     "err_not_gwei_denomination": "Importo non valido. Il valore non può avere una precisione superiore a 1 gwei.",
-    "err_min_deposit": "Importo non valido. Inserisci un valore di almeno 1 ether.",
-    "err_max_deposit": "Importo non valido. L'importo massimo del deposito è 2048 ether. Inserisci un valore minore o uguale.",
+    "err_min_deposit": "Importo non valido. Inserisci un valore di almeno 1 ETH.",
+    "err_max_deposit": "Importo non valido. L'importo massimo del deposito è 2048 ETH. Inserisci un valore minore o uguale.",
     "err_zero_multiplier": "Questa impostazione della catena usa un moltiplicatore pari a zero, che non è valido."
   },
   "validate_bls_withdrawal_credentials": {

@@ -29,11 +29,11 @@
       "mismatch": "Eroare: cele două valori introduse sunt diferite. Te rugăm să tastezi din nou."
     },
     "arg_compounding": {
-      "help": "Generează validatori cu capitalizare, cu credențiale de retragere 0x02 și un sold efectiv maxim de 2048 ETH, sau validatori obișnuiți, cu credențiale de retragere 0x01 și un sold efectiv maxim de 32 ETH. Funcția este acceptată numai pe rețelele care au trecut prin fork-ul Pectra.",
-      "prompt": "Introdu yes dacă vrei să generezi validatori cu capitalizare, cu credențiale de retragere 0x02 și un sold efectiv maxim de 2048 ETH. Validatorii cu capitalizare și credențialele de retragere 0x02 sunt acceptate numai pe rețelele care au trecut prin fork-ul Pectra. Tastează no sau nu introduce nimic dacă vrei validatori obișnuiți, cu credențiale de retragere 0x01 și un sold efectiv maxim de 32 ETH."
+      "help": "Generează în mod implicit validatori cu capitalizare Type 2 (0x02) cu un sold efectiv maxim de 2048 ETH. Generează validatori cu retragere obișnuită Type 1 (0x01) cu un sold efectiv maxim de 32 ETH dacă este aleată opțiunea \"--regular_withdrawal\".",
+      "prompt": "Tastează \"yes\" sau acceptă valoarea implicită dacă vrei să generezi validatori cu capitalizare Type 2 (0x02) cu un sold efectiv maxim de 2048 ETH. Tastează \"no\" dacă vrei validatori cu retragere obișnuită Type 1 (0x01) cu un sold efectiv maxim de 32 ETH."
     },
     "arg_amount": {
-      "help": "Suma de depus pentru acești validatori, exprimată în ether. Trebuie să fie de cel puțin 1 ether și nu poate avea o precizie mai mare de 1 gwei. Folosirea acestei opțiuni necesită validatori cu capitalizare.",
+      "help": "Suma de depus pentru acești validatori, exprimată în ETH. Trebuie să fie de cel puțin 1 ETH și nu poate avea o precizie mai mare de 1 gwei. Folosirea acestei opțiuni necesită validatori cu capitalizare.",
       "prompt": "Introdu suma pe care vrei să o depui pentru acești validatori. Trebuie să fie de cel puțin {min_deposit} și nu poate avea o precizie mai mare de 1 gwei. Pentru activarea unui validator nou sunt necesari {activation_amount}"
     },
     "arg_pbkdf2": {

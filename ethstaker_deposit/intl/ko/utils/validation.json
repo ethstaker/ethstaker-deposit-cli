@@ -20,10 +20,10 @@
     "err_invalid_bool_value": "yes/no 질문에 유효하지 않은 값입니다."
   },
   "validate_deposit_amount": {
-    "err_invalid_amount": "입력한 금액이 유효하지 않습니다. 예치하려는 금액을 최소 1 ether 이상으로 입력하세요.",
+    "err_invalid_amount": "입력한 금액이 유효하지 않습니다. 예치하려는 금액을 최소 1 ETH 이상으로 입력하세요.",
     "err_not_gwei_denomination": "입력한 금액이 유효하지 않습니다. 1 gwei보다 정밀하지 않은 값으로 입력하세요.",
-    "err_min_deposit": "입력한 금액이 유효하지 않습니다. 최소 1 ether 이상의 값을 입력하세요.",
-    "err_max_deposit": "입력한 금액이 유효하지 않습니다. 최대 예치 금액은 2048 ether입니다. 이보다 작거나 같은 금액을 입력하세요.",
+    "err_min_deposit": "입력한 금액이 유효하지 않습니다. 최소 1 ETH 이상의 값을 입력하세요.",
+    "err_max_deposit": "입력한 금액이 유효하지 않습니다. 최대 예치 금액은 2048 ETH입니다. 이보다 작거나 같은 금액을 입력하세요.",
     "err_zero_multiplier": "이 체인 설정은 값이 0인 multiplier를 사용하므로 유효하지 않습니다."
   },
   "validate_bls_withdrawal_credentials": {

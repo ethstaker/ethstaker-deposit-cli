@@ -29,11 +29,11 @@
       "mismatch": "Erreur : les deux valeurs saisies ne correspondent pas. Veuillez recommencer."
     },
     "arg_compounding": {
-      "help": "Génère des validateurs à composition avec des identifiants de retrait 0x02 pour un solde effectif maximal de 2048 ETH, ou des validateurs classiques avec des identifiants de retrait 0x01 pour un solde effectif maximal de 32 ETH. Cette fonctionnalité n'est prise en charge que sur les réseaux ayant effectué le fork Pectra.",
-      "prompt": "Saisissez yes si vous souhaitez générer des validateurs à composition avec des identifiants de retrait 0x02 pour un solde effectif maximal de 2048 ETH. Les validateurs à composition et les identifiants de retrait 0x02 ne sont pris en charge que sur les réseaux ayant effectué le fork Pectra. Saisissez no ou ne saisissez rien pour générer des validateurs classiques avec des identifiants de retrait 0x01 pour un solde effectif maximal de 32 ETH."
+      "help": "Génère par défaut des validateurs à capitalisation Type 2 (0x02) avec un solde effectif maximal de 2048 ETH. Génère des validateurs avec retrait classique Type 1 (0x01) avec un solde effectif maximal de 32 ETH si l'option \"--regular_withdrawal\" est choisie.",
+      "prompt": "Saisissez \"yes\" ou acceptez la valeur par défaut si vous souhaitez générer des validateurs à capitalisation Type 2 (0x02) avec un solde effectif maximal de 2048 ETH. Saisissez \"no\" si vous souhaitez des validateurs avec retrait classique Type 1 (0x01) avec un solde effectif maximal de 32 ETH."
     },
     "arg_amount": {
-      "help": "Le montant à déposer sur ces validateurs, en ether. Il doit être d'au moins 1 ether et ne peut pas avoir une précision supérieure à 1 gwei. L'utilisation de cette option nécessite des validateurs à composition.",
+      "help": "Le montant à déposer sur ces validateurs, en ETH. Il doit être d'au moins 1 ETH et ne peut pas avoir une précision supérieure à 1 gwei. L'utilisation de cette option nécessite des validateurs à capitalisation.",
       "prompt": "Veuillez saisir le montant que vous souhaitez déposer sur ces validateurs. Il doit être d'au moins {min_deposit} et ne peut pas avoir une précision supérieure à 1 gwei. {activation_amount} est requis pour activer un nouveau validateur"
     },
     "arg_pbkdf2": {

@@ -1,10 +1,10 @@
 {
   "partial_deposit": {
     "arg_partial_deposit": {
-      "help": "Eine Teilauszahlung mit einem beliebigen Betrag von mindestens 1 Ether erzeugen, die mit dem angegebenen Validator-Keystore signiert wird. Dadurch wird das Guthaben des angegebenen Validators erhöht oder die Erstellung eines Validators eingeleitet."
+      "help": "Eine Teilauszahlung mit einem beliebigen Betrag von mindestens 1 ETH erzeugen, die mit dem angegebenen Validator-Keystore signiert wird. Dadurch wird das Guthaben des angegebenen Validators erhöht oder die Erstellung eines Validators eingeleitet."
     },
     "arg_partial_deposit_amount": {
-      "help": "Der Einzahlungsbetrag für diesen Validator in Ether. Er muss mindestens 1 Ether betragen und darf keine höhere Genauigkeit als 1 gwei haben. Der Standardwert ist 32 Ether."
+      "help": "Der Einzahlungsbetrag für diesen Validator in ETH. Er muss mindestens 1 ETH betragen und darf keine höhere Genauigkeit als 1 gwei haben. Der Standardwert ist 32 ETH."
     },
     "arg_partial_deposit_keystore": {
       "help": "Die Keystore-Datei des Validators, mit dessen Schlüssel Sie signieren und bei dem Sie einzahlen möchten.",
@@ -25,8 +25,8 @@
       "mismatch": "Fehler: Die beiden eingegebenen Adressen stimmen nicht überein. Bitte geben Sie sie erneut ein."
     },
     "arg_compounding": {
-      "help": "Erzeugt Compounder-Validatoren mit 0x02-Auszahlungs-Credentials für ein maximales effektives Guthaben von 2048 ETH oder reguläre Validatoren mit 0x01-Auszahlungs-Credentials für ein maximales effektives Guthaben von 32 ETH. Diese Funktion wird nur von Netzwerken unterstützt, auf denen der Pectra-Fork durchgeführt wurde.",
-      "prompt": "Geben Sie yes ein, wenn Sie Compounder-Validatoren mit 0x02-Auszahlungs-Credentials für ein maximales effektives Guthaben von 2048 ETH erzeugen möchten. Compounder-Validatoren und 0x02-Auszahlungs-Credentials werden nur von Netzwerken unterstützt, auf denen der Pectra-Fork durchgeführt wurde. Geben Sie no oder nichts ein, wenn Sie reguläre Validatoren mit 0x01-Auszahlungs-Credentials für ein maximales effektives Guthaben von 32 ETH möchten."
+      "help": "Erzeugt standardmäßig kumulierende Validatoren vom Typ 2 (0x02) mit einem maximalen effektiven Guthaben von 2048 ETH. Erzeugt Validatoren mit regulärer Auszahlung vom Typ 1 (0x01) mit einem maximalen effektiven Guthaben von 32 ETH, wenn \"--regular_withdrawal\" gewählt wird.",
+      "prompt": "Geben Sie \"yes\" ein oder übernehmen Sie den Standardwert, wenn Sie kumulierende Validatoren vom Typ 2 (0x02) mit einem maximalen effektiven Guthaben von 2048 ETH erzeugen möchten. Geben Sie \"no\" ein, wenn Sie Validatoren mit regulärer Auszahlung vom Typ 1 (0x01) mit einem maximalen effektiven Guthaben von 32 ETH möchten."
     },
     "msg_partial_deposit_creation": "\nIhre Teilauszahlung wird erstellt...",
     "msg_verify_partial_deposit": "\nIhre Teilauszahlung wird überprüft...",

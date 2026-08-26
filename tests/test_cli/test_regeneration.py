@@ -34,7 +34,7 @@ def test_regeneration(monkeypatch) -> None:
     withdrawal_address = '0x00000000219ab540356cBB839Cbe05303d7705Fa'
     # Create index 0 and 1
     my_password = "MyPasswordIs"
-    inputs = ['english', withdrawal_address, 'english', '2', 'mainnet', my_password, my_password, '',
+    inputs = ['english', withdrawal_address, 'english', '2', 'mainnet', my_password, my_password, 'no',
               mock_mnemonic, '']
     data = '\n'.join(inputs)
     arguments = [
@@ -67,7 +67,7 @@ def test_regeneration(monkeypatch) -> None:
         'english',
         withdrawal_address,
         mock_mnemonic,
-        '1', '1', '2', 'mainnet', 'MyPasswordIs', 'MyPasswordIs', '', '']
+        '1', '1', '2', 'mainnet', 'MyPasswordIs', 'MyPasswordIs', 'no', '']
     data = '\n'.join(inputs)
     arguments = [
         '--ignore_connectivity',

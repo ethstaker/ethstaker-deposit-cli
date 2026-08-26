@@ -20,10 +20,10 @@
     "err_invalid_bool_value": "Aceasta este o valoare invalidă pentru o întrebare yes/no."
   },
   "validate_deposit_amount": {
-    "err_invalid_amount": "Suma furnizată nu este validă. Furnizează o valoare de cel puțin 1 ether pentru suma pe care vrei să o depui.",
+    "err_invalid_amount": "Suma furnizată nu este validă. Furnizează o valoare de cel puțin 1 ETH pentru suma pe care vrei să o depui.",
     "err_not_gwei_denomination": "Suma furnizată nu este validă. Furnizează o valoare cu o precizie de cel mult 1 gwei.",
-    "err_min_deposit": "Suma furnizată nu este validă. Furnizează o valoare de cel puțin 1 ether.",
-    "err_max_deposit": "Suma furnizată nu este validă. Suma maximă a depunerii este 2048 ether. Furnizează o sumă mai mică sau egală.",
+    "err_min_deposit": "Suma furnizată nu este validă. Furnizează o valoare de cel puțin 1 ETH.",
+    "err_max_deposit": "Suma furnizată nu este validă. Suma maximă a depunerii este 2048 ETH. Furnizează o sumă mai mică sau egală.",
     "err_zero_multiplier": "Setarea acestui lanț folosește un multiplicator cu valoarea zero, ceea ce nu este valid."
   },
   "validate_bls_withdrawal_credentials": {

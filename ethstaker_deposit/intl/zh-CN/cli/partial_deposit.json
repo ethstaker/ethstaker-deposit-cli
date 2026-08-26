@@ -1,10 +1,10 @@
 {
   "partial_deposit": {
     "arg_partial_deposit": {
-      "help": "生成金额至少为 1 ether 的部分存款，该存款将由所提供的验证者密钥库签名。这会增加所提供验证者的余额，或开始创建一个验证者。"
+      "help": "生成金额至少为 1 ETH 的部分存款，该存款将由所提供的验证者密钥库签名。这会增加所提供验证者的余额，或开始创建一个验证者。"
     },
     "arg_partial_deposit_amount": {
-      "help": "向此验证者存入的 ether 数量。必须至少为 1 ether，精度不能高于 1 gwei。默认值为 32 ether。"
+      "help": "向此验证者存入的 ETH 数量。必须至少为 1 ETH，精度不能高于 1 gwei。默认值为 32 ETH。"
     },
     "arg_partial_deposit_keystore": {
       "help": "与您希望用于签名和存款的验证者关联的密钥库文件。",
@@ -25,8 +25,8 @@
       "mismatch": "错误：两次输入的地址不匹配。请重新输入。"
     },
     "arg_compounding": {
-      "help": "生成具有 0x02 提取凭证、最大有效余额为 2048 ETH 的复利验证者，或生成具有 0x01 提取凭证、最大有效余额为 32 ETH 的普通验证者。此功能仅支持已完成 Pectra 分叉的网络。",
-      "prompt": "如果您要生成具有 0x02 提取凭证、最大有效余额为 2048 ETH 的复利验证者，请输入 yes。复利验证者和 0x02 提取凭证仅支持已完成 Pectra 分叉的网络。如果要生成具有 0x01 提取凭证、最大有效余额为 32 ETH 的普通验证者，请输入 no 或留空。"
+      "help": "默认生成最大有效余额为 2048 ETH 的复利 Type 2（0x02）验证者。如果选择 \"--regular_withdrawal\"，则生成最大有效余额为 32 ETH 的普通提取的 Type 1（0x01）验证者。",
+      "prompt": "如果您要生成最大有效余额为 2048 ETH 的复利 Type 2（0x02）验证者，请输入 \"yes\" 或接受默认值。如果您要生成最大有效余额为 32 ETH 的普通提取的 Type 1（0x01）验证者，请输入 \"no\"。"
     },
     "msg_partial_deposit_creation": "\n正在创建您的部分存款...",
     "msg_verify_partial_deposit": "\n正在验证您的部分存款...",

@@ -19,7 +19,7 @@ If you wish to create a validator with legacy Type 0 (0x00) credentials, you mus
 
 - **`--withdrawal_address`**: The withdrawal address of the existing validator or the desired withdrawal address.
 
-- **`--compounding / --regular-withdrawal`**: Generates compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance or generate regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance. Defaults to regular withdrawal.
+- **`--compounding / --regular_withdrawal`**: Generates compounding Type 2 (0x02) validators with a 2048 ETH maximum effective balance by default, or regular withdrawal Type 1 (0x01) validators with a 32 ETH maximum effective balance if regular withdrawal is chosen. Defaults to compounding withdrawal.
 
 - **`--output_folder`**: The folder path for the `deposit-*` JSON file.
 

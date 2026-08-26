@@ -22,6 +22,7 @@ from ethstaker_deposit.utils.click import (
     jit_option,
     prompt_if_none,
     prompt_if_other_exists,
+    regular_withdrawal_alias,
 )
 from ethstaker_deposit.utils.constants import (
     DEFAULT_PARTIAL_DEPOSIT_FOLDER_NAME,
@@ -105,15 +106,24 @@ FUNC_NAME = 'partial_deposit'
     callback=captive_prompt_callback(
         lambda value, _: validate_yesno(None, None, value),
         lambda: load_text(['arg_compounding', 'prompt'], func=FUNC_NAME),
-        default="False",
+        default="True",
         prompt_if=prompt_if_other_exists('withdrawal_address'),
     ),
-    default=False,
+    default=True,
     help=lambda: load_text(['arg_compounding', 'help'], func=FUNC_NAME),
-    param_decls='--compounding/--regular-withdrawal',
+    param_decls='--compounding/--regular_withdrawal',
     prompt=False,  # the callback handles the prompt
     type=bool,
     show_default=True,
+)
+@jit_option(
+    callback=regular_withdrawal_alias,
+    default=None,
+    help='',
+    hidden=True,
+    is_flag=True,
+    flag_value=False,
+    param_decls='--regular-withdrawal',
 )
 @jit_option(
     default=os.getcwd(),

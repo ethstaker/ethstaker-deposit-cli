@@ -20,10 +20,10 @@
     "err_invalid_bool_value": "Bu, yes/no sorusu için geçersiz bir değerdir."
   },
   "validate_deposit_amount": {
-    "err_invalid_amount": "Geçersiz miktar sağlandı. Lütfen yatırmak istediğiniz miktar için en az 1 ether değerinde bir sayı sağlayın.",
+    "err_invalid_amount": "Geçersiz miktar sağlandı. Lütfen yatırmak istediğiniz miktar için en az 1 ETH değerinde bir sayı sağlayın.",
     "err_not_gwei_denomination": "Geçersiz miktar sağlandı. Lütfen 1 gwei'den daha yüksek hassasiyete sahip olmayan bir değer sağlayın.",
-    "err_min_deposit": "Geçersiz miktar sağlandı. Lütfen en az 1 ether değerinde bir miktar sağlayın.",
-    "err_max_deposit": "Geçersiz miktar sağlandı. Maksimum para yatırma miktarı 2048 etherdir. Lütfen bundan küçük veya buna eşit bir miktar sağlayın.",
+    "err_min_deposit": "Geçersiz miktar sağlandı. Lütfen en az 1 ETH değerinde bir miktar sağlayın.",
+    "err_max_deposit": "Geçersiz miktar sağlandı. Maksimum para yatırma miktarı 2048 ETH. Lütfen bundan küçük veya buna eşit bir miktar sağlayın.",
     "err_zero_multiplier": "Bu zincir ayarı, sıfır değerinde geçersiz bir çarpan kullanıyor."
   },
   "validate_bls_withdrawal_credentials": {

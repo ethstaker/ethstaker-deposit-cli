@@ -20,10 +20,10 @@
     "err_invalid_bool_value": "Este é um valor inválido para uma pergunta de sim/não."
   },
   "validate_deposit_amount": {
-    "err_invalid_amount": "Valor inválido fornecido. Informe um valor de pelo menos 1 ether para o depósito.",
+    "err_invalid_amount": "Valor inválido fornecido. Informe um valor de pelo menos 1 ETH para o depósito.",
     "err_not_gwei_denomination": "Valor inválido fornecido. Informe um valor que não tenha precisão maior que 1 gwei.",
-    "err_min_deposit": "Valor inválido fornecido. Informe um valor de pelo menos 1 ether.",
-    "err_max_deposit": "Valor inválido fornecido. O valor máximo do depósito é 2048 ether. Informe um valor menor ou igual a esse.",
+    "err_min_deposit": "Valor inválido fornecido. Informe um valor de pelo menos 1 ETH.",
+    "err_max_deposit": "Valor inválido fornecido. O valor máximo do depósito é 2048 ETH. Informe um valor menor ou igual a esse.",
     "err_zero_multiplier": "Esta configuração de cadeia usa um multiplicador com valor zero, o que é inválido."
   },
   "validate_bls_withdrawal_credentials": {

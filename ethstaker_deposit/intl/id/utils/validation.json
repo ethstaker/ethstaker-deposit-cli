@@ -20,10 +20,10 @@
     "err_invalid_bool_value": "Ini adalah nilai yang tidak valid untuk pertanyaan ya/tidak."
   },
   "validate_deposit_amount": {
-    "err_invalid_amount": "Jumlah yang diberikan tidak valid. Silakan berikan nilai minimal 1 ether untuk jumlah yang ingin Anda depositkan.",
+    "err_invalid_amount": "Jumlah yang diberikan tidak valid. Silakan berikan nilai minimal 1 ETH untuk jumlah yang ingin Anda depositkan.",
     "err_not_gwei_denomination": "Jumlah yang diberikan tidak valid. Silakan berikan nilai yang tidak memiliki presisi lebih dari 1 gwei.",
-    "err_min_deposit": "Jumlah yang diberikan tidak valid. Silakan berikan nilai minimal 1 ether.",
-    "err_max_deposit": "Jumlah yang diberikan tidak valid. Jumlah deposit maksimum adalah 2048 ether. Silakan berikan jumlah yang lebih kecil atau sama dengan nilai tersebut.",
+    "err_min_deposit": "Jumlah yang diberikan tidak valid. Silakan berikan nilai minimal 1 ETH.",
+    "err_max_deposit": "Jumlah yang diberikan tidak valid. Jumlah deposit maksimum adalah 2048 ETH. Silakan berikan jumlah yang lebih kecil atau sama dengan nilai tersebut.",
     "err_zero_multiplier": "Pengaturan chain ini menggunakan multiplier dengan nilai nol, yang tidak valid."
   },
   "validate_bls_withdrawal_credentials": {
