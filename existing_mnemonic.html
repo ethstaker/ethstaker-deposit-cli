@@ -185,13 +185,13 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 <p><strong><code>--chain</code></strong>: The chain to use for generating the deposit data. Options are: 'mainnet', 'sepolia', 'hoodi', 'plataberget', 'ephemery', 'gnosis', or 'chiado'.</p>
 </li>
 <li>
-<p><strong><code>--mnemonic</code></strong>: The mnemonic you used to create withdrawal credentials. <span class="warning"></span></p>
+<p><strong><code>--mnemonic</code></strong>: The mnemonic to use to create validator keys. <span class="warning"></span></p>
 </li>
 <li>
 <p><strong><code>--mnemonic_language</code></strong>: The language of your mnemonic. If this is not provided we will attempt to determine it based on the mnemonic.</p>
 </li>
 <li>
-<p><strong><code>--mnemonic_password</code></strong>: The mnemonic password you used in your key generation. Note: It's not the keystore password. <span class="warning"></span></p>
+<p><strong><code>--mnemonic_password</code></strong>: The optional mnemonic password to use in your key generation. Generally <strong>not</strong> provided, be sure you understand its use. Note: It's not the keystore password. <span class="warning"></span></p>
 </li>
 <li>
 <p><strong><code>--validator_start_index</code></strong>: The index of the first validator's keys you wish to generate. If this is your first time generating keys with this mnemonic, use 0. If you have generated keys using this mnemonic before, use the next index from which you want to start generating keys from. As an example if you've generated 4 keys before (keys #0, #1, #2, #3), then enter 4 here.</p>
@@ -200,13 +200,13 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 <p><strong><code>--num_validators</code></strong>: Number of validators to create.</p>
 </li>
 <li>
-<p><strong><code>--keystore_password</code></strong>: The password that is used to encrypt the provided keystore. Note: It's not your mnemonic password. <span class="warning"></span></p>
+<p><strong><code>--keystore_password</code></strong>: The password that is used to encrypt the provided keystore. Note: It's not your optional mnemonic password. <span class="warning"></span></p>
 </li>
 <li>
-<p><strong><code>--withdrawal_address</code></strong>: The Ethereum address that will be used in withdrawal. It typically starts with '0x' followed by 40 hexadecimal characters. Please make sure you have full control over the address you choose here. Once you set a withdrawal address on chain, it cannot be changed.</p>
+<p><strong><code>--withdrawal_address</code></strong>: The Ethereum address that will be used in withdrawal. It starts with '0x' followed by 40 hexadecimal characters. Please make sure you have full control over the address you choose here, either an EOA or a smart contract wallet. Do not choose an exchange wallet. Once you set a withdrawal address on chain, it cannot be changed.</p>
 </li>
 <li>
-<p><strong><code>--compounding / --regular-withdrawal</code></strong>: Generates compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance or generate regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance. Use of this option requires a withdrawal address. This feature is only supported on networks that have undergone the Pectra fork. Defaults to regular withdrawal.</p>
+<p><strong><code>--compounding / --regular-withdrawal</code></strong>: Generates compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance or generate regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance. Defaults to regular withdrawal.</p>
 </li>
 <li>
 <p><strong><code>--amount</code></strong>: The amount to deposit per validator in ether. Only applies to compounding validators (0x02 withdrawal credentials). Must be at least the chain's minimum deposit amount (1 ETH on mainnet) with no greater precision than 1 gwei. Defaults to the chain's minimum activation amount (32 ETH on mainnet).</p>

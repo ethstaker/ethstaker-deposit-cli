@@ -566,16 +566,16 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 <p><strong><code>--num_validators</code></strong>: Number of validators to create.</p>
 </li>
 <li>
-<p><strong><code>--keystore_password</code></strong>: The password that is used to encrypt the provided keystore. Note: It's not your mnemonic password. <span class="warning"></span></p>
+<p><strong><code>--keystore_password</code></strong>: The password that is used to encrypt the provided keystore. Note: It's not your optional mnemonic password. <span class="warning"></span></p>
 </li>
 <li>
-<p><strong><code>--withdrawal_address</code></strong>: The Ethereum address that will be used in withdrawal. It typically starts with '0x' followed by 40 hexadecimal characters. Please make sure you have full control over the address you choose here. Once you set a withdrawal address on chain, it cannot be changed.</p>
+<p><strong><code>--withdrawal_address</code></strong>: The Ethereum address that will be used in withdrawal. It starts with '0x' followed by 40 hexadecimal characters. Please make sure you have full control over the address you choose here, either an EOA or a smart contract wallet. Do not choose an exchange wallet. Once you set a withdrawal address on chain, it cannot be changed.</p>
 </li>
 <li>
-<p><strong><code>--compounding / --regular-withdrawal</code></strong>: Generates compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance or generate regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance. Use of this option requires a withdrawal address. This feature is only supported on networks that have undergone the Pectra fork. Defaults to regular withdrawal.</p>
+<p><strong><code>--compounding / --regular-withdrawal</code></strong>: Generates compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance or generate regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance. Defaults to regular withdrawal.</p>
 </li>
 <li>
-<p><strong><code>--amount</code></strong>: The amount to deposit per validator in ether. Only applies to compounding validators (0x02 withdrawal credentials). Must be at least the chain's minimum deposit amount (1 ETH on mainnet) with no greater precision than 1 gwei. Defaults to the chain's minimum activation amount (32 ETH on mainnet).</p>
+<p><strong><code>--amount</code></strong>: The amount to deposit per validator in ether. Only applies to Type 2 (0x02) compounding validators. Must be at least the chain's minimum deposit amount (1 ETH on mainnet) with no greater precision than 1 gwei. Defaults to the chain's minimum activation amount (32 ETH on mainnet).</p>
 </li>
 <li>
 <p><strong><code>--pbkdf2</code></strong>: Will use pbkdf2 key encryption instead of scrypt for generated keystore files as defined in <a href="https://eips.ethereum.org/EIPS/eip-2335#decryption-key">EIP-2335</a>. This can be a good alternative if you intend to work with a large number of keys, as it can improve performance. pbkdf2 encryption is, however, less secure than scrypt. You should only use this option if you understand the associated risks and have familiarity with encryption.</p>
@@ -608,13 +608,13 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 <p><strong><code>--chain</code></strong>: The chain to use for generating the deposit data. Options are: 'mainnet', 'sepolia', 'hoodi', 'plataberget', 'ephemery', 'gnosis', or 'chiado'.</p>
 </li>
 <li>
-<p><strong><code>--mnemonic</code></strong>: The mnemonic you used to create withdrawal credentials. <span class="warning"></span></p>
+<p><strong><code>--mnemonic</code></strong>: The mnemonic to use to create validator keys. <span class="warning"></span></p>
 </li>
 <li>
 <p><strong><code>--mnemonic_language</code></strong>: The language of your mnemonic. If this is not provided we will attempt to determine it based on the mnemonic.</p>
 </li>
 <li>
-<p><strong><code>--mnemonic_password</code></strong>: The mnemonic password you used in your key generation. Note: It's not the keystore password. <span class="warning"></span></p>
+<p><strong><code>--mnemonic_password</code></strong>: The optional mnemonic password to use in your key generation. Generally <strong>not</strong> provided, be sure you understand its use. Note: It's not the keystore password. <span class="warning"></span></p>
 </li>
 <li>
 <p><strong><code>--validator_start_index</code></strong>: The index of the first validator's keys you wish to generate. If this is your first time generating keys with this mnemonic, use 0. If you have generated keys using this mnemonic before, use the next index from which you want to start generating keys from. As an example if you've generated 4 keys before (keys #0, #1, #2, #3), then enter 4 here.</p>
@@ -623,13 +623,13 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 <p><strong><code>--num_validators</code></strong>: Number of validators to create.</p>
 </li>
 <li>
-<p><strong><code>--keystore_password</code></strong>: The password that is used to encrypt the provided keystore. Note: It's not your mnemonic password. <span class="warning"></span></p>
+<p><strong><code>--keystore_password</code></strong>: The password that is used to encrypt the provided keystore. Note: It's not your optional mnemonic password. <span class="warning"></span></p>
 </li>
 <li>
-<p><strong><code>--withdrawal_address</code></strong>: The Ethereum address that will be used in withdrawal. It typically starts with '0x' followed by 40 hexadecimal characters. Please make sure you have full control over the address you choose here. Once you set a withdrawal address on chain, it cannot be changed.</p>
+<p><strong><code>--withdrawal_address</code></strong>: The Ethereum address that will be used in withdrawal. It starts with '0x' followed by 40 hexadecimal characters. Please make sure you have full control over the address you choose here, either an EOA or a smart contract wallet. Do not choose an exchange wallet. Once you set a withdrawal address on chain, it cannot be changed.</p>
 </li>
 <li>
-<p><strong><code>--compounding / --regular-withdrawal</code></strong>: Generates compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance or generate regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance. Use of this option requires a withdrawal address. This feature is only supported on networks that have undergone the Pectra fork. Defaults to regular withdrawal.</p>
+<p><strong><code>--compounding / --regular-withdrawal</code></strong>: Generates compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance or generate regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance. Defaults to regular withdrawal.</p>
 </li>
 <li>
 <p><strong><code>--amount</code></strong>: The amount to deposit per validator in ether. Only applies to compounding validators (0x02 withdrawal credentials). Must be at least the chain's minimum deposit amount (1 ETH on mainnet) with no greater precision than 1 gwei. Defaults to the chain's minimum activation amount (32 ETH on mainnet).</p>
@@ -837,8 +837,8 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 Including sensitive arguments when executing CLI commands poses a security risk, as these values can be accessible through disk and shell history. This exposure can allow other users, including admins and malicious actors, to gain access to sensitive information, putting your funds at risk.
 </div>
 <h2 id="description-7"><a class="header" href="#description-7">Description</a></h2>
-<p>Creates a deposit file with an existing validator key. A validator key can be created using the <strong><a href="new_mnemonic.html">new-mnemonic</a></strong> or the <strong><a href="existing_mnemonic.html">existing-mnemonic</a></strong> commands. Can be used to initiate a validator or deposit to an existing validator.
-If you wish to create a validator with 0x00 credentials, you must use the <strong><a href="new_mnemonic.html">new-mnemonic</a></strong> or the <strong><a href="existing_mnemonic.html">existing-mnemonic</a></strong> command.</p>
+<p>Creates a deposit file with an existing validator key. A validator key can be created using the <strong><a href="new_mnemonic.html">new-mnemonic</a></strong> or the <strong><a href="existing_mnemonic.html">existing-mnemonic</a></strong> commands. Can be used to initiate a validator or deposit to an existing validator.</p>
+<p>If you wish to create a validator with legacy Type 0 (0x00) credentials, you must use <code>v1.3.0</code> of the software. Type 0 keys cannot be quantum-secure and will be sunset by the protocol in the coming years.</p>
 <h2 id="optional-arguments-7"><a class="header" href="#optional-arguments-7">Optional Arguments</a></h2>
 <ul>
 <li>
@@ -848,7 +848,7 @@ If you wish to create a validator with 0x00 credentials, you must use the <stron
 <p><strong><code>--keystore</code></strong>: The keystore file associating with the validator you wish to deposit to.</p>
 </li>
 <li>
-<p><strong><code>--keystore_password</code></strong>: The password that is used to encrypt the provided keystore. Note: It's not your mnemonic password. <span class="warning"></span></p>
+<p><strong><code>--keystore_password</code></strong>: The password that is used to encrypt the provided keystore. Note: It's not your optional mnemonic password. <span class="warning"></span></p>
 </li>
 <li>
 <p><strong><code>--amount</code></strong>: The amount to deposit per validator in ether. Must be at least the chain's minimum deposit amount (1 ETH on mainnet) with no greater precision than 1 gwei. Defaults to the chain's minimum activation amount (32 ETH on mainnet).</p>
@@ -857,7 +857,7 @@ If you wish to create a validator with 0x00 credentials, you must use the <stron
 <p><strong><code>--withdrawal_address</code></strong>: The withdrawal address of the existing validator or the desired withdrawal address.</p>
 </li>
 <li>
-<p><strong><code>--compounding / --regular-withdrawal</code></strong>: Generates compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance or generate regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance. Use of this option requires a withdrawal address. This feature is only supported on networks that have undergone the Pectra fork. Defaults to regular withdrawal.</p>
+<p><strong><code>--compounding / --regular-withdrawal</code></strong>: Generates compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance or generate regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance. Defaults to regular withdrawal.</p>
 </li>
 <li>
 <p><strong><code>--output_folder</code></strong>: The folder path for the <code>deposit-*</code> JSON file.</p>
@@ -931,7 +931,7 @@ jq .pubkey ./verification_key/keystore-m_12381_3600_0_0_0-&lt;timestamp&gt;.json
 <p>In the context of staking on the Ethereum blockchain, the keystore file is used to store the validator signing key and transport it across devices while being protected with a password. Once created by a tool such as ethstaker-deposit-cli, it will generally be copied on a device running a validator client to be imported by that validator client with the associated password. Once the validator signing key is available to the validator client, it generally provides all the secrets needed to perform the associated validator's duties.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="deposit-data-file"><a class="header" href="#deposit-data-file">Deposit Data file</a></h1>
 <p>A deposit data file is created when calling the <strong><a href="new_mnemonic.html">new-mnemonic</a></strong>, the <strong><a href="existing_mnemonic.html">existing-mnemonic</a></strong> or the <strong><a href="partial_deposit.html">partial-deposit</a></strong> command.</p>
-<p>The deposit data file is a JSON file that contains a list of deposits that is mostly used for the <a href="https://github.com/ethereum/staking-launchpad">Ethereum Staking Launchpad</a>. It is loosely based on <a href="https://github.com/ethereum/consensus-specs/blob/dev/specs/phase0/beacon-chain.md#depositdata">the DepositData structure</a> and the <a href="https://github.com/ethereum/consensus-specs/blob/dev/specs/phase0/deposit-contract.md#deposit-function">deposit function</a> from the <a href="https://github.com/ethereum/consensus-specs/blob/dev/specs/phase0/deposit-contract.md">deposit smart contract</a>.</p>
+<p>The deposit data file is a JSON file that contains a list of deposits that is mostly used for the <a href="https://github.com/ethereum/staking-launchpad">Ethereum Staking Launchpad</a>. It is loosely based on <a href="https://github.com/ethereum/consensus-specs/blob/master/specs/phase0/beacon-chain.md#depositdata">the DepositData structure</a> and the <a href="https://github.com/ethereum/consensus-specs/blob/master/specs/phase0/deposit-contract.md#deposit-function">deposit function</a> from the <a href="https://github.com/ethereum/consensus-specs/blob/master/specs/phase0/deposit-contract.md">deposit smart contract</a></p>
 <h2 id="format"><a class="header" href="#format">Format</a></h2>
 <p>Each deposit from the list will contain this structure:</p>
 <pre><code class="language-JSON">{
@@ -948,21 +948,21 @@ jq .pubkey ./verification_key/keystore-m_12381_3600_0_0_0-&lt;timestamp&gt;.json
 </code></pre>
 <ul>
 <li><strong>pubkey</strong>: The validator public key value to be passed to the deposit function call.</li>
-<li><strong>withdrawal_credentials</strong>: The withdrawal credentials value to be passed to the deposit function call.</li>
-<li><strong>amount</strong>: The deposit amount to be sent with the call to the deposit function call. This should always be 32 Ethers (in GWEI, <code>32000000000</code>) when performing a deposit for a validator to be activated. The unit for this value is GWEI. For partial deposits, this value can be an integer value higher or equal than 1 and generally lower than or equal to 2048 in Ethers.</li>
+<li><strong>withdrawal_credentials</strong>: The withdrawal credentials value to be passed to the deposit function call. Contains a version (<code>02</code> or <code>01</code>), 0-padding, and the withdrawal address.</li>
+<li><strong>amount</strong>: The deposit amount to be sent with the call to the deposit function call. The unit for this value is GWEI. Depositing at least 32 ETH in total (in GWEI, <code>32000000000</code>) allows a validator to be activated. The unit for this value is GWEI. This value can be an integer value higher or equal than 1 ETH and lower than or equal to 2048 ETH. Legacy Type 1 (0x01) validators will send anything above 32 ETH back to the withdrawal address.</li>
 <li><strong>signature</strong>: The signature value to be passed to the deposit function call.</li>
 <li><strong>deposit_message_root</strong>: A deposit message root value used for validation by the Ethereum Staking Launchpad.</li>
 <li><strong>deposit_data_root</strong>: The deposit data root value to be passed to the deposit function call.</li>
 <li><strong>fork_version</strong>: The fork version of the network that this deposit file was created for.</li>
 <li><strong>network_name</strong>: The network name of the network that this deposit file was created for.</li>
-<li><strong>deposit_cli_version</strong>: The tool version used to create this file. We are currently faking this value to work around <a href="https://github.com/ethstaker/ethstaker-deposit-cli/issues/216">an issue</a> with the Launchpad.</li>
+<li><strong>deposit_cli_version</strong>: The tool version used to create this file.</li>
 </ul>
 <h2 id="example"><a class="header" href="#example">Example</a></h2>
 <pre><code class="language-JSON">[
   {
     "pubkey":"962195958e742b8dc5b2a25adede82fc5cd661827cb1e1237025e3d7847801aa5584d5bfdc6893413264cccfbff54128",
-    "withdrawal_credentials":"0007a213a9a50ddf7e00e53267af1c131ed82fec947f1c9656b54f9a20f7a87f",
-    "amount":32000000000,
+    "withdrawal_credentials":"02000000000000000000000000000000219ab540356cBB839Cbe05303d7705Fa",
+    "amount":64000000000,
     "signature":"a2d56afe4540d5b506aea614848a0838b66c8707a91aa73cdb0e7b59d819f16be64881b5b621184b1668f4f1d024094a1861c5af783ded675b5763047c069c5eb805649f7c04656c96b31b0bccc34ed93c8fcd8f2e4a9e5c03453f305089d765",
     "deposit_message_root":"f9bdb1e800b8f9f0db98c77271745e3c6140f18bf420543bda84fa92c393ddc7",
     "deposit_data_root":"7cda08cd57c303f8af720b10a0852408bc31e015cb552f0029fc1024b8a1d615",
@@ -972,7 +972,7 @@ jq .pubkey ./verification_key/keystore-m_12381_3600_0_0_0-&lt;timestamp&gt;.json
   },
   {
     "pubkey":"86ee0b826d7d5262324ace2fba4ed5f09a1cbef80552e3d945279f19bc4118a98e9a93257eb4c7731ccc10c19835d24f",
-    "withdrawal_credentials":"00daf39b8996943de9e93d417a6c5a4b958e4ae7a4d6e27f72aa08d41faa012f",
+    "withdrawal_credentials":"01000000000000000000000000000000219ab540356cBB839Cbe05303d7705Fa",
     "amount":32000000000,
     "signature":"83b227d72d9f1362d8676a61b91bb3882059e89c7d862d8030b1d37e890143869c105a78efce2a734f202da95076782219010e896ec9f8328a9e553134773626810d6c455bc1250a20e52a01684c051dd3e46151587267214cbb396673a13e89",
     "deposit_message_root":"99dbb2392fef277c15e710ca0ead058c024adce15f9e8f369bbaea939c0009ed",

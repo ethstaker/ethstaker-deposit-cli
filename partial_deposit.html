@@ -178,8 +178,8 @@
 Including sensitive arguments when executing CLI commands poses a security risk, as these values can be accessible through disk and shell history. This exposure can allow other users, including admins and malicious actors, to gain access to sensitive information, putting your funds at risk.
 </div>
 <h2 id="description"><a class="header" href="#description">Description</a></h2>
-<p>Creates a deposit file with an existing validator key. A validator key can be created using the <strong><a href="new_mnemonic.html">new-mnemonic</a></strong> or the <strong><a href="existing_mnemonic.html">existing-mnemonic</a></strong> commands. Can be used to initiate a validator or deposit to an existing validator.
-If you wish to create a validator with 0x00 credentials, you must use the <strong><a href="new_mnemonic.html">new-mnemonic</a></strong> or the <strong><a href="existing_mnemonic.html">existing-mnemonic</a></strong> command.</p>
+<p>Creates a deposit file with an existing validator key. A validator key can be created using the <strong><a href="new_mnemonic.html">new-mnemonic</a></strong> or the <strong><a href="existing_mnemonic.html">existing-mnemonic</a></strong> commands. Can be used to initiate a validator or deposit to an existing validator.</p>
+<p>If you wish to create a validator with legacy Type 0 (0x00) credentials, you must use <code>v1.3.0</code> of the software. Type 0 keys cannot be quantum-secure and will be sunset by the protocol in the coming years.</p>
 <h2 id="optional-arguments"><a class="header" href="#optional-arguments">Optional Arguments</a></h2>
 <ul>
 <li>
@@ -189,7 +189,7 @@ If you wish to create a validator with 0x00 credentials, you must use the <stron
 <p><strong><code>--keystore</code></strong>: The keystore file associating with the validator you wish to deposit to.</p>
 </li>
 <li>
-<p><strong><code>--keystore_password</code></strong>: The password that is used to encrypt the provided keystore. Note: It's not your mnemonic password. <span class="warning"></span></p>
+<p><strong><code>--keystore_password</code></strong>: The password that is used to encrypt the provided keystore. Note: It's not your optional mnemonic password. <span class="warning"></span></p>
 </li>
 <li>
 <p><strong><code>--amount</code></strong>: The amount to deposit per validator in ether. Must be at least the chain's minimum deposit amount (1 ETH on mainnet) with no greater precision than 1 gwei. Defaults to the chain's minimum activation amount (32 ETH on mainnet).</p>
@@ -198,7 +198,7 @@ If you wish to create a validator with 0x00 credentials, you must use the <stron
 <p><strong><code>--withdrawal_address</code></strong>: The withdrawal address of the existing validator or the desired withdrawal address.</p>
 </li>
 <li>
-<p><strong><code>--compounding / --regular-withdrawal</code></strong>: Generates compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance or generate regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance. Use of this option requires a withdrawal address. This feature is only supported on networks that have undergone the Pectra fork. Defaults to regular withdrawal.</p>
+<p><strong><code>--compounding / --regular-withdrawal</code></strong>: Generates compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance or generate regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance. Defaults to regular withdrawal.</p>
 </li>
 <li>
 <p><strong><code>--output_folder</code></strong>: The folder path for the <code>deposit-*</code> JSON file.</p>
