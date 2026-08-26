@@ -206,7 +206,7 @@ Including sensitive arguments when executing CLI commands poses a security risk,
 <p><strong><code>--withdrawal_address</code></strong>: The Ethereum address that will be used in withdrawal. It starts with '0x' followed by 40 hexadecimal characters. Please make sure you have full control over the address you choose here, either an EOA or a smart contract wallet. Do not choose an exchange wallet. Once you set a withdrawal address on chain, it cannot be changed.</p>
 </li>
 <li>
-<p><strong><code>--compounding / --regular-withdrawal</code></strong>: Generates compounding validators with 0x02 withdrawal credentials for a 2048 ETH maximum effective balance or generate regular validators with 0x01 withdrawal credentials for a 32 ETH maximum effective balance. Defaults to regular withdrawal.</p>
+<p><strong><code>--compounding / --regular_withdrawal</code></strong>: Generates compounding Type 2 (0x02) validators with a 2048 ETH maximum effective balance by default, or regular withdrawal Type 1 (0x01) validators with a 32 ETH maximum effective balance if regular withdrawal is chosen. Defaults to compounding withdrawal.</p>
 </li>
 <li>
 <p><strong><code>--amount</code></strong>: The amount to deposit per validator in ether. Only applies to compounding validators (0x02 withdrawal credentials). Must be at least the chain's minimum deposit amount (1 ETH on mainnet) with no greater precision than 1 gwei. Defaults to the chain's minimum activation amount (32 ETH on mainnet).</p>
