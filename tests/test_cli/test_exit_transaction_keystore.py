@@ -11,11 +11,8 @@ from ethstaker_deposit.utils.constants import DEFAULT_EXIT_TRANSACTION_FOLDER_NA
 from ethstaker_deposit.utils.intl import (
     load_text,
 )
-from tests.test_cli.helpers import (
-    clean_exit_transaction_folder,
-    read_json_file,
-    verify_file_permission,
-)
+from tests.shared_helpers import read_json_file, verify_file_permission
+from tests.test_cli.helpers import clean_exit_transaction_folder
 
 
 def test_exit_transaction_keystore() -> None:

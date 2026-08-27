@@ -19,7 +19,8 @@ from ethstaker_deposit.utils.constants import (
     DEFAULT_ACTIVATION_AMOUNT,
     ETH2GWEI,
 )
-from .helpers import clean_folder, clean_key_folder, clean_partial_deposit_folder, get_permissions
+from .helpers import clean_key_folder, clean_partial_deposit_folder
+from tests.shared_helpers import clean_folder, get_permissions
 
 
 @pytest.mark.parametrize(

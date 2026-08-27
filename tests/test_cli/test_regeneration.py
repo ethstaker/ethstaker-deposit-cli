@@ -6,7 +6,8 @@ from click.testing import CliRunner
 from ethstaker_deposit.cli import new_mnemonic
 from ethstaker_deposit.deposit import cli
 from ethstaker_deposit.utils.constants import DEFAULT_VALIDATOR_KEYS_FOLDER_NAME
-from .helpers import clean_key_folder, get_permissions, get_uuid
+from .helpers import clean_key_folder
+from tests.shared_helpers import get_permissions, get_uuid
 
 
 def test_regeneration(monkeypatch) -> None:

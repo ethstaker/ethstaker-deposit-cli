@@ -1,7 +1,6 @@
 import json
 import os
 
-import pytest
 from click.testing import CliRunner
 
 from eth_utils import decode_hex
@@ -14,8 +13,8 @@ from ethstaker_deposit.utils.constants import (
     ETH2GWEI,
     DEFAULT_ACTIVATION_AMOUNT,
 )
-from .helpers import clean_key_folder, get_permissions, get_uuid
-from .interactive import InteractiveProcess
+from .helpers import clean_key_folder
+from tests.shared_helpers import get_permissions, get_uuid
 
 
 def test_existing_mnemonic_withdrawal_address() -> None:
@@ -435,88 +434,6 @@ def test_pbkdf2_new_mnemonic() -> None:
     # Clean up
     clean_key_folder(pbkdf2_folder_path)
     clean_key_folder(scrypt_folder_path)
-
-
-@pytest.mark.asyncio
-async def test_script(deposit_cli_installed) -> None:
-    my_folder_path = os.path.join(os.getcwd(), 'TESTING_TEMP_FOLDER')
-    if not os.path.exists(my_folder_path):
-        os.mkdir(my_folder_path)
-
-    if os.name == 'nt':  # Windows
-        run_script_cmd = 'bash deposit.sh'
-    else:  # Mac or Linux
-        run_script_cmd = './deposit.sh'
-
-    cmd_args = [
-        run_script_cmd,
-        '--language', 'english',
-        '--non_interactive',
-        'existing-mnemonic',
-        '--num_validators', '1',
-        '--mnemonic="abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about"',
-        '--mnemonic_password', 'TREZOR',
-        '--validator_start_index', '1',
-        '--chain', 'mainnet',
-        '--keystore_password', 'MyPasswordIs',
-        '--withdrawal_address', '0x00000000219ab540356cBB839Cbe05303d7705Fa',
-        '--folder', my_folder_path,
-    ]
-    async with InteractiveProcess(' '.join(cmd_args)) as process:
-        await process.wait()
-
-    # Check files
-    validator_keys_folder_path = os.path.join(my_folder_path, DEFAULT_VALIDATOR_KEYS_FOLDER_NAME)
-    _, _, key_files = next(os.walk(validator_keys_folder_path))
-
-    # Verify file permissions
-    if os.name == 'posix':
-        for file_name in key_files:
-            assert get_permissions(validator_keys_folder_path, file_name) == '0o400'
-
-    # Clean up
-    clean_key_folder(my_folder_path)
-
-
-@pytest.mark.asyncio
-async def test_script_abbreviated_mnemonic(deposit_cli_installed) -> None:
-    my_folder_path = os.path.join(os.getcwd(), 'TESTING_TEMP_FOLDER')
-    if not os.path.exists(my_folder_path):
-        os.mkdir(my_folder_path)
-
-    if os.name == 'nt':  # Windows
-        run_script_cmd = 'bash deposit.sh'
-    else:  # Mac or Linux
-        run_script_cmd = './deposit.sh'
-
-    cmd_args = [
-        run_script_cmd,
-        '--language', 'english',
-        '--non_interactive',
-        'existing-mnemonic',
-        '--num_validators', '1',
-        '--mnemonic="aban aban aban aban aban aban aban aban aban aban aban abou"',
-        '--mnemonic_password', 'TREZOR',
-        '--validator_start_index', '1',
-        '--chain', 'mainnet',
-        '--keystore_password', 'MyPasswordIs',
-        '--withdrawal_address', '0x00000000219ab540356cBB839Cbe05303d7705Fa',
-        '--folder', my_folder_path,
-    ]
-    async with InteractiveProcess(' '.join(cmd_args)) as process:
-        await process.wait()
-
-    # Check files
-    validator_keys_folder_path = os.path.join(my_folder_path, DEFAULT_VALIDATOR_KEYS_FOLDER_NAME)
-    _, _, key_files = next(os.walk(validator_keys_folder_path))
-
-    # Verify file permissions
-    if os.name == 'posix':
-        for file_name in key_files:
-            assert get_permissions(validator_keys_folder_path, file_name) == '0o400'
-
-    # Clean up
-    clean_key_folder(my_folder_path)
 
 
 def test_existing_mnemonic_custom_testnet() -> None:

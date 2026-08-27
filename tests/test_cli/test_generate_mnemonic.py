@@ -14,7 +14,7 @@ from ethstaker_deposit.utils.constants import (
     WORD_LISTS_PATH,
 )
 
-from .helpers import clean_folder
+from tests.shared_helpers import clean_folder
 
 
 @pytest.mark.parametrize(

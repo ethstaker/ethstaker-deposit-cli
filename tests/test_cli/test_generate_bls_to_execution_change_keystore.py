@@ -9,13 +9,8 @@ from ethstaker_deposit.deposit import cli
 from ethstaker_deposit.settings import get_chain_setting, get_devnet_chain_setting
 from ethstaker_deposit.utils.constants import DEFAULT_BLS_TO_EXECUTION_CHANGES_KEYSTORE_FOLDER_NAME
 from ethstaker_deposit.utils.intl import load_text
-from .helpers import (
-    clean_btec_keystore_folder,
-    clean_key_folder,
-    prepare_testing_folder,
-    read_json_file,
-    verify_file_permission,
-)
+from .helpers import clean_btec_keystore_folder, clean_key_folder, prepare_testing_folder
+from tests.shared_helpers import read_json_file, verify_file_permission
 
 
 def test_bls_change_keystore() -> None:
