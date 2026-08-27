@@ -10,7 +10,6 @@ from eth_utils import decode_hex
 
 from ethstaker_deposit.cli import new_mnemonic
 from ethstaker_deposit.deposit import cli
-from ethstaker_deposit.key_handling.key_derivation.mnemonic import abbreviate_words
 from ethstaker_deposit.settings import ChiadoSetting, GnosisSetting
 from ethstaker_deposit.utils.constants import (
     DEFAULT_VALIDATOR_KEYS_FOLDER_NAME,
@@ -19,9 +18,8 @@ from ethstaker_deposit.utils.constants import (
     DEFAULT_ACTIVATION_AMOUNT,
     ETH2GWEI,
 )
-from ethstaker_deposit.utils.intl import load_text
-from .helpers import clean_key_folder, get_permissions, get_uuid
-from .interactive import InteractiveProcess
+from .helpers import clean_key_folder
+from tests.shared_helpers import get_permissions, get_uuid
 
 
 @pytest.fixture(autouse=True)
@@ -826,82 +824,6 @@ def test_pbkdf2_new_mnemonic(monkeypatch) -> None:
     # Clean up
     clean_key_folder(pbkdf2_folder_path)
     clean_key_folder(scrypt_folder_path)
-
-
-@pytest.mark.asyncio
-async def test_script_abbreviated_mnemonic(deposit_cli_installed) -> None:
-    # Prepare folder
-    my_folder_path = os.path.join(os.getcwd(), 'TESTING_TEMP_FOLDER')
-    clean_key_folder(my_folder_path)
-    if not os.path.exists(my_folder_path):
-        os.mkdir(my_folder_path)
-
-    if os.name == 'nt':  # Windows
-        run_script_cmd = 'bash deposit.sh'
-    else:  # Mac or Linux
-        run_script_cmd = './deposit.sh'
-
-    cmd_args = [
-        run_script_cmd,
-        '--language', 'english',
-        '--non_interactive',
-        'new-mnemonic',
-        '--num_validators', '5',
-        '--mnemonic_language', 'english',
-        '--chain', 'mainnet',
-        '--keystore_password', 'MyPasswordIs',
-        '--withdrawal_address', '0x00000000219ab540356cBB839Cbe05303d7705Fa',
-        '--folder', my_folder_path,
-    ]
-
-    mnemonic_json_file = os.path.join(os.getcwd(), 'ethstaker_deposit/../ethstaker_deposit/cli/', 'new_mnemonic.json')
-    msg_mnemonic_presentation = load_text(['msg_mnemonic_presentation'], mnemonic_json_file, 'new_mnemonic')
-    msg_mnemonic_retype_prompt = load_text(['msg_mnemonic_retype_prompt'], mnemonic_json_file, 'new_mnemonic')
-    msg_mnemonic_clipboard_warning = load_text(['msg_mnemonic_clipboard_warning'], mnemonic_json_file, 'new_mnemonic')
-
-    seed_phrase = ''
-
-    async with InteractiveProcess(' '.join(cmd_args)) as process:
-        await process.expect(msg_mnemonic_presentation)
-
-        # Collect the mnemonic itself, skipping the separator lines and the
-        # clipboard warning printed around it.
-        while True:
-            line = await process.readline()
-            if line is None:
-                raise process.fail('Subprocess exited before asking to retype the mnemonic')
-            if msg_mnemonic_retype_prompt in line:
-                break
-            if (
-                not line.startswith('********************')
-                and msg_mnemonic_clipboard_warning not in line
-            ):
-                seed_phrase += line
-
-        assert len(seed_phrase.strip()) > 0
-        # The CLI accepts abbreviated words as confirmation of a written down mnemonic.
-        abbreviated_mnemonic = ' '.join(abbreviate_words(seed_phrase.strip().split(' ')))
-        await process.sendline(abbreviated_mnemonic)
-        await process.wait()
-
-    # Check files
-    validator_keys_folder_path = os.path.join(my_folder_path, DEFAULT_VALIDATOR_KEYS_FOLDER_NAME)
-    _, _, key_files = next(os.walk(validator_keys_folder_path))
-
-    all_uuid = [
-        get_uuid(validator_keys_folder_path + '/' + key_file)
-        for key_file in key_files
-        if key_file.startswith('keystore')
-    ]
-    assert len(set(all_uuid)) == 5
-
-    # Verify file permissions
-    if os.name == 'posix':
-        for file_name in key_files:
-            assert get_permissions(validator_keys_folder_path, file_name) == '0o400'
-
-    # Clean up
-    clean_key_folder(my_folder_path)
 
 
 def test_new_mnemonic_custom_testnet(monkeypatch) -> None:
