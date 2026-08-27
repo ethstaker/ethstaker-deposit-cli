@@ -13,7 +13,8 @@ from ethstaker_deposit.utils.constants import (
     DEFAULT_BUILDER_KEYS_FOLDER_NAME,
     ETH2GWEI,
 )
-from .helpers import clean_builder_folder, get_permissions, get_uuid
+from .helpers import clean_builder_folder
+from tests.shared_helpers import get_permissions, get_uuid
 
 
 def test_builder_new_mnemonic(monkeypatch) -> None:
