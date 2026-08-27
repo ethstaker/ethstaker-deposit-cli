@@ -69,5 +69,13 @@
   },
   "validate_genesis_validators_root": {
     "missing_genesis_validators_root": "Pengaturan rantai tidak memiliki nilai GENESIS_VALIDATORS_ROOT. Nilai tersebut diperlukan untuk membuat transaksi keluar."
+  },
+  "verify_builder_deposit_data_json": {
+    "msg_deposit_verification": "Memverifikasi builder_deposit_data Anda:\t"
+  },
+  "validate_builder_deposit_amount": {
+    "err_invalid_amount": "Jumlah yang diberikan tidak valid. Silakan berikan nilai minimal 1 ETH untuk deposit builder.",
+    "err_not_gwei_denomination": "Jumlah yang diberikan tidak valid. Silakan berikan nilai yang tidak memiliki presisi lebih dari 1 gwei.",
+    "err_min_deposit": "Jumlah yang diberikan tidak valid. Silakan berikan nilai minimal 1 ETH. Tidak ada batas maksimum untuk jumlah deposit builder."
   }
 }

@@ -65,6 +65,8 @@ If there is a specific command you would like to understand more, please choose 
 
 - **[test-keystore](test_keystore.md)**: Verify access to the provided keystore file by attempting to decrypt with the provided keystore password.
 
+- **[builder](builder.md)**: For builders only, not validators. Generate builder keys and a builder deposit per [EIP-8282](https://eips.ethereum.org/EIPS/eip-8282). If you want to stake ETH and run a validator, use **[new-mnemonic](new_mnemonic.md)** instead.
+
 ## Canonical Deposit Contract and Launchpad
 
 Ethstaker confirms the canonical Ethereum staking deposit contract addresses and launchpad URLs.

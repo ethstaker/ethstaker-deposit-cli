@@ -1,0 +1,44 @@
+{
+    "generate_builder_keys_arguments_decorator": {
+        "num_builders": {
+            "help": "生成するビルダーキーの数 (後からいつでも追加で生成できます)",
+            "prompt": "登録したいビルダーの数を選択してください"
+        },
+        "folder": {
+            "help": "キーストアとビルダー入金のフォルダーのパス。デフォルトでは `./builder_keys` を指します。"
+        },
+        "chain": {
+            "help": "ターゲットとしている Ethereum PoS のバージョン。ETH を入金する場合は \"mainnet\" を使用してください。",
+            "prompt": "(mainnet または testnet) ネットワーク/チェーン名を選択してください"
+        },
+        "keystore_password": {
+            "help": "キーストアを保護するパスワード。ビルダーをセットアップする際に復号化するためにこれを再入力する必要があります。 (この引数を使用せずに、CLIからパスワードの入力が求められるのを待つことをお勧めします。そうしないとシェル履歴に表示されます。)",
+            "prompt": "ビルダーキーストアを保護するパスワードを作成してください。ビルダーをセットアップする際に復号化するためにこれを再入力する必要があります。",
+            "confirm": "確認のために繰り返し入力してください。",
+            "mismatch": "エラー：入力された2つの値が一致しません。もう一度入力してください。"
+        },
+        "arg_withdrawal_address": {
+            "help": "ビルダーの払い戻しアドレスとして使用する Ethereum アドレス。通常は '0x' に続く40個の16進文字で始まります。ここで選択するアドレスを完全に管理できることを確認してください。これはビルダーに必須です。バリデーターとは異なり BLS のみの払い戻しタイプは存在せず、このアドレスは将来のビルダー退出の唯一の承認手段でもあります。",
+            "prompt": "このビルダーの払い戻しアドレスを入力してください。これは必須であり、チェーン上で設定すると変更できません。",
+            "confirm": "確認のため払い戻しアドレスをもう一度入力してください。",
+            "mismatch": "エラー：入力された2つの値が一致しません。もう一度入力してください。"
+        },
+        "arg_builder_amount": {
+            "help": "これらのビルダーに入金する ETH 単位の額。最低1 ETHで、1 gweiを超える精度は指定できません。バリデーターの入金とは異なり、プロトコルで定められた上限はありません。",
+            "prompt": "これらのビルダーに入金したい額を入力してください。最低1 ETHで、1 gweiを超える精度は指定できません。上限はありません。"
+        },
+        "arg_pbkdf2": {
+            "help": "生成されたキーストアファイルに scrypt ではなく pbkdf2 ハッシュ関数を使用します。 "
+        },
+        "arg_devnet_chain_setting": {
+            "help": "[DEVNET ONLY] 特定の GENESIS_FORK_VERSION 値を設定します。network_name、genesis_fork_version、exit_fork_version、genesis_validator_root、multiplier、min_activation_amount、min_deposit_amount のキーを含むオブジェクトの JSON 文字列を指定してください。settings.py にあるものと同様です。選択したチェーンの設定は上書きされます。"
+        }
+    },
+    "generate_builder_keys": {
+        "msg_key_creation": "キーを作成しています。",
+        "msg_creation_success": "\n成功しました！\nあなたのキーは次の場所で見つけることができます：",
+        "msg_pause": "\n任意のキーを押してください。",
+        "err_verify_keystores": "キーストアの確認に失敗しました。",
+        "err_verify_deposit": "ビルダー入金データ JSON ファイルの確認に失敗しました。"
+    }
+}

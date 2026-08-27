@@ -1,0 +1,44 @@
+{
+  "generate_builder_keys_arguments_decorator": {
+    "num_builders": {
+      "help": "Il numero di nuove chiavi builder che desideri generare (puoi sempre generarne altre in seguito)",
+      "prompt": "Scegli quanti nuovi builder desideri registrare"
+    },
+    "folder": {
+      "help": "Il percorso della cartella per i keystore e i depositi builder. Per impostazione predefinita punta a `./builder_keys`."
+    },
+    "chain": {
+      "help": "La versione desiderata della Ethereum PoS chain. Utilizzare \"mainnet\" se depositano ETH",
+      "prompt": "Scegli il nome delle rete/catena (rete principale o di test)"
+    },
+    "keystore_password": {
+      "help": "La password che proteggerà i tuoi keystore. Dovrai reinserirla per decrittografarli quando configurerai i tuoi builder. (È consigliabile non utilizzare questo argomento e attendere che il CLI chieda la password, altrimenti apparirà nella cronologia della shell.)",
+      "prompt": "Crea una password che protegga i tuoi keystore builder. Dovrai reinserirla per decrittografarli quando configurerai i tuoi builder.",
+      "confirm": "Ripeti per conferma",
+      "mismatch": "Errore: i due valori inseriti non corrispondono. Ripeti l'inserimento."
+    },
+    "arg_withdrawal_address": {
+      "help": "L'indirizzo Ethereum che verrà utilizzato come indirizzo di prelievo del builder. In genere inizia con '0x' seguito da 40 caratteri esadecimali. Assicurati di avere il pieno controllo dell'indirizzo scelto. Questo è obbligatorio per i builder: a differenza dei validatori, non esiste un tipo di prelievo solo BLS, e questo indirizzo è anche l'unica autorizzazione per una futura uscita del builder.",
+      "prompt": "Inserisci l'indirizzo di prelievo per questo builder. È obbligatorio e NON PUÒ essere modificato dopo averlo impostato on-chain.",
+      "confirm": "Ripeti l'indirizzo di prelievo per conferma.",
+      "mismatch": "Errore: i due valori inseriti non corrispondono. Riprova."
+    },
+    "arg_builder_amount": {
+      "help": "L'importo da depositare per questi builder, espresso in ether. Deve essere almeno 1 ether e non può avere una precisione superiore a 1 gwei. A differenza dei depositi dei validatori, non esiste un massimo definito dal protocollo.",
+      "prompt": "Inserisci l'importo che desideri depositare per questi builder. Deve essere almeno 1 ether e non può avere una precisione superiore a 1 gwei. Non esiste un massimo."
+    },
+    "arg_pbkdf2": {
+      "help": "Usa la funzione hash pbkdf2 invece di scrypt per i file keystore generati. "
+    },
+    "arg_devnet_chain_setting": {
+      "help": "[SOLO DEVNET] Imposta il valore GENESIS_FORK_VERSION. Deve essere una stringa JSON contenente un oggetto con le chiavi network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount e min_deposit_amount. Deve essere simile a quanto indicato in settings.py. Sovrascriverà la catena selezionata."
+    }
+  },
+  "generate_builder_keys": {
+    "msg_key_creation": "Creazione delle tue chiavi.",
+    "msg_creation_success": "\nOperazione riuscita.\nLe tue chiavi si trovano in: ",
+    "msg_pause": "\n\nPremi qualunque tasto.",
+    "err_verify_keystores": "Verifica degli archivi chiavi non riuscita.",
+    "err_verify_deposit": "Verifica dei file JSON dei dati di deposito builder non riuscita."
+  }
+}

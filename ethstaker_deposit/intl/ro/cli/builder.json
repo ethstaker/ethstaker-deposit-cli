@@ -1,0 +1,34 @@
+{
+  "builder": {
+    "arg_builder": {
+      "help": "Generează chei de builder și o depunere de builder, conform EIP-8282. Vei fi întrebat dacă ai deja un mnemonic pe care vrei să îl introduci interactiv."
+    },
+    "arg_mnemonic": {
+      "help": "Un mnemonic existent din care se derivă cheile de builder. Dacă este omis, vei fi întrebat dacă ai deja un mnemonic pe care vrei să îl introduci interactiv, sau dacă vrei să fie generat unul complet nou. (Îți recomandăm să nu folosești acest argument, ci să aștepți ca interfața linie de comandă să-ți ceară mnemonicul, altfel acesta o să apară în istoricul comenzilor de shell.)",
+      "existing_confirm": "Ai deja un mnemonic pe care vrei să îl folosești pentru acest builder? Dacă nu, va fi generat unul nou.",
+      "prompt": "Introdu mnemonicul, separat cu spații („ ”)"
+    },
+    "arg_mnemonic_password": {
+      "help": "Aproape sigur acesta nu este argumentul pe care îl cauți: este vorba despre parole de mnemonice, nu despre parolele de cheie. Poate fi folosit doar atunci când refolosești un mnemonic existent; nu este permis atunci când generezi unul nou.",
+      "prompt": "Introdu parola mnemonic-ului (dacă ai folosit una). Asigură-te că nu o vei uita, deoarece nu poate fi recuperată.",
+      "confirm": "Repetă parola mnemonicului, pentru confirmare.",
+      "mismatch": "Parola mnemonic-ului introdusă nu corespunde, încearcă din nou."
+    },
+    "arg_mnemonic_language": {
+      "default": "english",
+      "help": "Limba listei de cuvinte a mnemonicului. Dacă refolosești un mnemonic existent (--mnemonic) și acest lucru nu este furnizat, vom încerca să o determinăm pe baza mnemonicului furnizat. Dacă generezi un mnemonic nou, aceasta alege limba listei de cuvinte.",
+      "prompt": "Alege limba mnemonicului"
+    },
+    "arg_builder_start_index": {
+      "help": "Introdu indexul (numărul de cheie) de la care vrei să începi să generezi chei de builder.",
+      "prompt": "Introdu indexul (numărul de cheie) de la care vrei să începi să generezi chei de builder.",
+      "confirm": "Repetă indexul de start al builderului, pentru confirmare"
+    },
+    "err_mnemonic_password_not_allowed": "--mnemonic_password poate fi folosit doar atunci când refolosești un mnemonic existent (--mnemonic); nu este permis atunci când generezi un mnemonic nou.",
+    "msg_mnemonic_presentation": "Acesta este mnemonicul (fraza sămânță). Scrie-l și păstrează-l în siguranță, este SINGURA cale de a prelua depunerea de builder.",
+    "msg_press_any_key": "După ce ți-ai notat mnemonicul, apasă orice tastă.",
+    "msg_mnemonic_retype_prompt": "Tastează mnemonicul (separat cu spații) pentru a confirma faptul că ți l-ai notat",
+    "msg_mnemonic_clipboard_warning": "AVERTISMENT: TREBUIE să notezi mnemonic-ul, deoarece vom încerca să ștergem clipboard-ul după acest pas.",
+    "msg_confirm_clipboard_clearing": "AVERTISMENT: Clipboard-ul va fi ȘTERS. Unele aplicații sau configurații pot împiedica acest lucru. Apasă orice tastă pentru a șterge clipboard-ul."
+  }
+}

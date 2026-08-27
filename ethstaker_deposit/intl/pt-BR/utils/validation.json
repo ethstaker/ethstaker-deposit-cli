@@ -69,5 +69,13 @@
   },
   "validate_genesis_validators_root": {
     "missing_genesis_validators_root": "A configuração da cadeia não contém um valor para GENESIS_VALIDATORS_ROOT. Esse valor é necessário para criar a transação de saída."
+  },
+  "verify_builder_deposit_data_json": {
+    "msg_deposit_verification": "Verificação dos seus depósitos do builder:\t"
+  },
+  "validate_builder_deposit_amount": {
+    "err_invalid_amount": "Valor inválido fornecido. Informe um valor de pelo menos 1 ETH para o depósito do builder.",
+    "err_not_gwei_denomination": "Valor inválido fornecido. Informe um valor que não tenha precisão maior que 1 gwei.",
+    "err_min_deposit": "Valor inválido fornecido. Informe um valor de pelo menos 1 ETH. Não há valor máximo para o depósito do builder."
   }
 }

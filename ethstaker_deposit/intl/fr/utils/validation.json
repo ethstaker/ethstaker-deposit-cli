@@ -69,5 +69,13 @@
   },
   "validate_genesis_validators_root": {
     "missing_genesis_validators_root": "Le paramètre de chaîne ne contient pas de valeur GENESIS_VALIDATORS_ROOT. Cette valeur est nécessaire pour créer la transaction de sortie."
+  },
+  "verify_builder_deposit_data_json": {
+    "msg_deposit_verification": "Vérification de vos dépôts de constructeur :\t"
+  },
+  "validate_builder_deposit_amount": {
+    "err_invalid_amount": "Montant fourni invalide. Veuillez fournir un montant d'au moins 1 ether pour un dépôt de constructeur.",
+    "err_not_gwei_denomination": "Montant fourni invalide. Veuillez fournir une valeur dont la précision ne dépasse pas 1 gwei.",
+    "err_min_deposit": "Montant fourni invalide. Veuillez fournir un montant d'au moins 1 ether. Il n'y a pas de montant maximal pour un dépôt de constructeur."
   }
 }

@@ -1,0 +1,44 @@
+{
+  "generate_builder_keys_arguments_decorator": {
+    "num_builders": {
+      "help": "您想要生成的构建者密钥数量（您以后随时可以生成更多密钥）",
+      "prompt": "请选择您想要注册多少个新的构建者"
+    },
+    "folder": {
+      "help": "密钥库和构建者存款文件夹路径。默认指向 `./builder_keys`。"
+    },
+    "chain": {
+      "help": "您正在对准的 Ethereum PoS 版本。如果您要存入ETH，请使用 \"mainnet\"",
+      "prompt": "请选择（主网或测试网）网络名/链名"
+    },
+    "keystore_password": {
+      "help": "用来保护您密钥库的密码。您在设置您的构建者时需要重新输入密码以便解密它们。（建议不要使用此参数，而是等待 CLI 要求您提供您的密码，否则它将出现在您的 shell 历史中。）",
+      "prompt": "创建一个用来保护您构建者密钥库的密码。您在设置您的构建者时需要重新输入此密码以便解密它们。",
+      "confirm": "重复输入以确认",
+      "mismatch": "错误：输入的两个值不匹配。请再次输入。"
+    },
+    "arg_withdrawal_address": {
+      "help": "将用作构建者提取地址的 Ethereum 地址。通常以 '0x' 开头，后跟 40 个十六进制字符。请确保您完全控制所选地址。构建者必须提供此地址：与验证者不同，构建者没有仅 BLS 的提取类型，并且此地址也是未来构建者退出的唯一授权凭证。",
+      "prompt": "请输入此构建者的提取地址。这是必填项，且链上设置后无法更改。",
+      "confirm": "请再次输入提取地址以确认。",
+      "mismatch": "错误：两次输入的值不匹配。请重新输入。"
+    },
+    "arg_builder_amount": {
+      "help": "以 ether 为单位存入这些构建者的数量。必须至少为 1 ether，且精度不超过 1 gwei。与验证者存款不同，构建者存款没有协议规定的上限。",
+      "prompt": "请输入您希望存入这些构建者的数量。必须至少为 1 ether，且精度不超过 1 gwei。没有上限。"
+    },
+    "arg_pbkdf2": {
+      "help": "为生成的密钥库文件使用 pbkdf2 哈希函数而不是 scrypt。 "
+    },
+    "arg_devnet_chain_setting": {
+      "help": "[DEVNET ONLY] 设置特定的 GENESIS_FORK_VERSION 值。该值应为包含以下键的对象的 JSON 字符串：network_name、genesis_fork_version、exit_fork_version、genesis_validator_root、multiplier、min_activation_amount 和 min_deposit_amount。其格式应类似于 settings.py 中的设置。这将覆盖所选链。"
+    }
+  },
+  "generate_builder_keys": {
+    "msg_key_creation": "正在创建您的密钥。",
+    "msg_creation_success": "\n成功！\n您的密钥可以在这里找到： ",
+    "msg_pause": "\n\n按任意键。",
+    "err_verify_keystores": "无法验证密钥库。",
+    "err_verify_deposit": "无法验证构建者存款数据 JSON 文件。"
+  }
+}

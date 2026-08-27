@@ -1,0 +1,34 @@
+{
+  "builder": {
+    "arg_builder": {
+      "help": "根据 EIP-8282 生成构建者密钥和构建者存款。系统将以交互方式询问您是否已有助记符。"
+    },
+    "arg_mnemonic": {
+      "help": "用于派生构建者密钥的现有助记符。如果省略，系统将以交互方式询问您是否已有助记符，或者是否需要生成一个全新的助记符。（建议不要使用此参数，而是等待 CLI 要求您提供您的助记符，否则它将出现在您的 shell 历史中。）",
+      "existing_confirm": "您是否有想要用于此构建者的现有助记符？如果没有，将生成一个新的助记符。",
+      "prompt": "请输入您的助记符，用空格（“ ”）分隔"
+    },
+    "arg_mnemonic_password": {
+      "help": "这几乎肯定不是您想要的参数：这里要的是助记密码，而不是密钥库密码。它只能在重用现有助记符时使用；生成新助记符时不允许使用此参数。",
+      "prompt": "请输入您的助记词密码（如果您使用了密码）。请务必牢记，因为该密码无法恢复。",
+      "confirm": "请重复输入您的助记密码以确认。",
+      "mismatch": "您输入的助记词密码不匹配，请重试。"
+    },
+    "arg_mnemonic_language": {
+      "default": "chinese_simplified",
+      "help": "助记词列表的语言。如果您重用现有助记符（--mnemonic）且未提供此项，我们将尝试根据提供的助记符进行判断。如果生成新助记符，此选项将决定使用的词表语言。",
+      "prompt": "请选择您的助记符语言"
+    },
+    "arg_builder_start_index": {
+      "help": "输入您希望开始生成构建者密钥的索引（密钥号码）。",
+      "prompt": "输入您希望开始生成构建者密钥的索引（密钥号码）。",
+      "confirm": "重复输入以确认"
+    },
+    "err_mnemonic_password_not_allowed": "--mnemonic_password 只能在重用现有助记符（--mnemonic）时使用；生成新助记符时不允许使用。",
+    "msg_mnemonic_presentation": "这是您的助记符（助记词）。请记下它并存放在安全的地方，它是取回您构建者存款的唯一方式。",
+    "msg_press_any_key": "在您记下助记符后，按任意键。",
+    "msg_mnemonic_retype_prompt": "请输入您的助记符（用空格分隔）以确认您已记下了",
+    "msg_mnemonic_clipboard_warning": "警告：您必须记下助记词，因为我们将在此步骤后尝试清空剪贴板。",
+    "msg_confirm_clipboard_clearing": "警告：您的剪贴板将被清空。某些应用程序或配置可能会阻止此操作。请按任意键清空剪贴板。"
+  }
+}

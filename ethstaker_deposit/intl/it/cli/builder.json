@@ -1,0 +1,34 @@
+{
+  "builder": {
+    "arg_builder": {
+      "help": "Genera chiavi builder e un deposito builder, secondo l'EIP-8282. Ti verrà chiesto se hai già un mnemonico esistente da inserire in modo interattivo."
+    },
+    "arg_mnemonic": {
+      "help": "Un mnemonico esistente da cui derivare le chiavi builder. Se omesso, ti verrà chiesto se hai un mnemonico esistente da inserire in modo interattivo, oppure se generarne uno completamente nuovo. (È consigliabile non utilizzare questo argomento e attendere che il CLI chieda il mnemonico, altrimenti apparirà nella cronologia della shell.)",
+      "existing_confirm": "Hai già un mnemonico esistente che vuoi usare per questo builder? In caso contrario, ne verrà generato uno nuovo.",
+      "prompt": "Inserisci il mnemonico separato da spazi (\" \"). Nota: se preferisci, devi inserire solo le prime 4 lettere di ciascuna parola."
+    },
+    "arg_mnemonic_password": {
+      "help": "Quasi sicuramente questo non è l'argomento che stai cercando: è per le password mnemoniche, non per le password dell'archivio chiavi. Può essere usato solo quando riutilizzi un mnemonico esistente; non è consentito quando ne generi uno nuovo.",
+      "prompt": "Inserisci la password della mnemonica (se ne hai usata una). Assicurati di non dimenticarla: non può essere recuperata.",
+      "confirm": "Ripeti la password della mnemonica per conferma.",
+      "mismatch": "La password della mnemonica inserita non corrisponde. Riprova."
+    },
+    "arg_mnemonic_language": {
+      "default": "italian",
+      "help": "La lingua dell'elenco di parole del mnemonico. Se riutilizzi un mnemonico esistente (--mnemonic) e questo valore non viene fornito, cercheremo di determinarla in base al mnemonico fornito. Se generi un nuovo mnemonico, questo valore sceglie la lingua dell'elenco di parole.",
+      "prompt": "Scegli la lingua del mnemonico"
+    },
+    "arg_builder_start_index": {
+      "help": "Inserisci l'indice (numero di chiave) da cui desideri iniziare a generare le chiavi builder.",
+      "prompt": "Inserisci l'indice (numero di chiave) da cui desideri iniziare a generare le chiavi builder.",
+      "confirm": "Ripeti l'indice di partenza builder per conferma."
+    },
+    "err_mnemonic_password_not_allowed": "--mnemonic_password può essere usato solo quando riutilizzi un mnemonico esistente (--mnemonic); non è consentito quando ne generi uno nuovo.",
+    "msg_mnemonic_presentation": "Questo è il tuo mnemonico (seed phrase). Prendi nota e tienilo in un luogo sicuro. Rappresenta l'UNICO modo per recuperare il tuo deposito builder.",
+    "msg_press_any_key": "Dopo aver preso nota del mnemonico, premi qualsiasi tasto.",
+    "msg_mnemonic_retype_prompt": "Digita il tuo mnemonico (separato da spazi) per confermare di averlo scritto. Nota: se preferisci, devi inserire solo le prime 4 lettere di ciascuna parola.",
+    "msg_mnemonic_clipboard_warning": "ATTENZIONE: DEVI annotare la mnemonica, perché dopo questo passaggio proveremo a cancellare gli appunti.",
+    "msg_confirm_clipboard_clearing": "ATTENZIONE: gli appunti verranno CANCELLATI. Alcune applicazioni o configurazioni potrebbero impedirlo. Premi un tasto qualsiasi per cancellare gli appunti."
+  }
+}

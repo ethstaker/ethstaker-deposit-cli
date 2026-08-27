@@ -1,6 +1,6 @@
 # Keystore file
 
-A keystore file is created when calling the **[new-mnemonic](new_mnemonic.md)** or the **[existing-mnemonic](existing_mnemonic.md)** command.
+A keystore file is created when calling the **[new-mnemonic](new_mnemonic.md)**, the **[existing-mnemonic](existing_mnemonic.md)**, or the **[builder](builder.md)** command.
 
 The format of the keystore file is defined in the [ERC-2335: BLS12-381 Keystore](https://eips.ethereum.org/EIPS/eip-2335) document.
 

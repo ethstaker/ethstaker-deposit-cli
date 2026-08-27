@@ -7,8 +7,10 @@ from py_ecc.bls import G2ProofOfPossession as bls
 
 from ethstaker_deposit.credentials import Credential, CredentialList, WithdrawalType
 from ethstaker_deposit.key_handling.keystore import Keystore
-from ethstaker_deposit.settings import DEPOSIT_CLI_VERSION, MainnetSetting, HoodiSetting
+from ethstaker_deposit.settings import DEPOSIT_CLI_VERSION, MainnetSetting, HoodiSetting, GnosisSetting
 from ethstaker_deposit.utils.constants import (
+    BUILDER_MIN_DEPOSIT,
+    BUILDER_WITHDRAWAL_PREFIX,
     COMPOUNDING_WITHDRAWAL_PREFIX,
     EXECUTION_ADDRESS_WITHDRAWAL_PREFIX,
     ETH2GWEI,
@@ -17,11 +19,16 @@ from ethstaker_deposit.utils.constants import (
 from ethstaker_deposit.utils.ssz import (
     SignedVoluntaryExit,
     VoluntaryExit,
+    compute_builder_deposit_domain,
     compute_deposit_domain,
     compute_signing_root,
     compute_voluntary_exit_domain,
 )
-from ethstaker_deposit.utils.validation import validate_deposit
+from ethstaker_deposit.utils.validation import (
+    validate_builder_deposit,
+    validate_deposit,
+    verify_builder_deposit_data_json,
+)
 from ethstaker_deposit.exceptions import ValidationError
 
 
@@ -38,6 +45,20 @@ def make_credential(*, address: str = WITHDRAWAL_ADDRESS, compounding: bool = Fa
         chain_setting=MainnetSetting,
         hex_withdrawal_address=address,
         compounding=compounding,
+    )
+
+
+def make_builder_credential(
+    *, address: str = WITHDRAWAL_ADDRESS, amount: int = BUILDER_MIN_DEPOSIT
+) -> Credential:
+    return Credential(
+        mnemonic=MNEMONIC,
+        mnemonic_password='',
+        index=0,
+        amount=amount,
+        chain_setting=MainnetSetting,
+        hex_withdrawal_address=address,
+        is_builder=True,
     )
 
 
@@ -195,6 +216,97 @@ def test_deposit_message_rejects_invalid_amount(amount: int) -> None:
     credential.amount = amount
     with pytest.raises(ValidationError, match='deposits are not within the bounds'):
         _ = credential.deposit_message
+
+
+def test_builder_credential_withdrawal_credentials_variant() -> None:
+    credential = make_builder_credential()
+
+    assert credential.withdrawal_prefix == BUILDER_WITHDRAWAL_PREFIX
+    assert credential.withdrawal_type is WithdrawalType.BUILDER_WITHDRAWAL
+    assert credential.withdrawal_credentials == (
+        BUILDER_WITHDRAWAL_PREFIX + b'\x00' * 11 + credential.withdrawal_address
+    )
+
+
+def test_builder_deposit_message_requires_is_builder_credential() -> None:
+    credential = make_credential()  # is_builder defaults to False
+
+    with pytest.raises(ValueError, match='only valid for builder credentials'):
+        _ = credential.builder_deposit_message
+
+
+@pytest.mark.parametrize('amount', [0, BUILDER_MIN_DEPOSIT - 1])
+def test_builder_deposit_message_rejects_amount_below_minimum(amount: int) -> None:
+    credential = make_builder_credential(amount=amount)
+
+    with pytest.raises(ValidationError, match='builder minimum'):
+        _ = credential.builder_deposit_message
+
+
+@pytest.mark.parametrize('amount', [BUILDER_MIN_DEPOSIT, 1_000_000 * ETH2GWEI])
+def test_signed_builder_deposit_and_datum_validate(amount: int) -> None:
+    # Unlike validator deposits, builder deposits have no protocol-defined maximum amount.
+    credential = make_builder_credential(amount=amount)
+    signed_builder_deposit = credential.signed_builder_deposit
+    domain = compute_builder_deposit_domain(MainnetSetting.GENESIS_FORK_VERSION)
+    assert bls.Verify(
+        credential.signing_pk,
+        compute_signing_root(credential.builder_deposit_message, domain),
+        signed_builder_deposit.signature,
+    )
+
+    datum = credential.builder_deposit_datum_dict
+    assert datum['deposit_message_root'] == credential.builder_deposit_message.hash_tree_root
+    assert datum['deposit_data_root'] == signed_builder_deposit.hash_tree_root
+    assert datum['amount'] == amount
+    assert datum['fork_version'] == MainnetSetting.GENESIS_FORK_VERSION
+    assert datum['network_name'] == MainnetSetting.NETWORK_NAME
+    assert datum['deposit_cli_version'] == DEPOSIT_CLI_VERSION
+
+    json_datum = json.loads(json.dumps(datum, default=lambda value: value.hex()))
+    assert validate_builder_deposit(json_datum, credential)
+
+
+def test_builder_deposit_amount_is_not_scaled_by_chain_multiplier() -> None:
+    # The CLI does not apply a chain's MULTIPLIER to builder deposits, since builder deposit
+    # handling by chains other than mainnet is not yet defined.
+    credential = Credential(
+        mnemonic=MNEMONIC,
+        mnemonic_password='',
+        index=0,
+        amount=BUILDER_MIN_DEPOSIT,
+        chain_setting=GnosisSetting,
+        hex_withdrawal_address=WITHDRAWAL_ADDRESS,
+        is_builder=True,
+    )
+    assert credential.builder_deposit_datum_dict['amount'] == BUILDER_MIN_DEPOSIT
+
+
+def test_credential_list_export_and_verify_builder_deposit_data(tmp_path) -> None:
+    credentials = CredentialList([
+        Credential(
+            mnemonic=MNEMONIC,
+            mnemonic_password='',
+            index=index,
+            amount=BUILDER_MIN_DEPOSIT,
+            chain_setting=MainnetSetting,
+            hex_withdrawal_address=WITHDRAWAL_ADDRESS,
+            is_builder=True,
+        )
+        for index in range(2)
+    ])
+    deposit_file = credentials.export_builder_deposit_data_json(str(tmp_path), 123)
+
+    assert verify_builder_deposit_data_json(deposit_file, credentials.credentials)
+
+    with open(deposit_file, encoding='utf-8') as file:
+        tampered = json.load(file)
+    tampered[0]['amount'] += 1
+    os.chmod(deposit_file, stat.S_IRUSR | stat.S_IWUSR)
+    with open(deposit_file, 'w', encoding='utf-8') as file:
+        json.dump(tampered, file)
+
+    assert not verify_builder_deposit_data_json(deposit_file, credentials.credentials)
 
 
 def test_save_exit_transaction_writes_signed_json(tmp_path) -> None:

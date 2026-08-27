@@ -1,0 +1,44 @@
+{
+  "generate_builder_keys_arguments_decorator": {
+    "num_builders": {
+      "help": "A quantidade de novas chaves de builder que você deseja gerar (poderá gerar mais depois)",
+      "prompt": "Por favor, escolha quantos novos builders deseja registrar"
+    },
+    "folder": {
+      "help": "O caminho da pasta dos keystores e depósitos do builder. Por padrão, aponta para `./builder_keys`."
+    },
+    "chain": {
+      "help": "A versão de Ethereum PoS do seu interesse. Use \"mainnet\" se estiver depositando ETH",
+      "prompt": "Selecione o nome da rede/cadeia (mainnet ou testnet)"
+    },
+    "keystore_password": {
+      "help": "A senha que protegerá seus keystores. Você precisará digitá-la para descriptografá-los ao configurar seu(s) builder(s). (Recomenda-se não usar esse argumento e esperar que a CLI solicite a sua senha; caso contrário, ela aparecerá no histórico do shell.)",
+      "prompt": "Crie uma senha que proteja seu(s) keystore(s) do builder. Você precisará digitá-la novamente para descriptografá-los ao configurar seu(s) builder(s).",
+      "confirm": "Repita para confirmar",
+      "mismatch": "Erro: os dois valores inseridos não coincidem. Digite-os novamente."
+    },
+    "arg_withdrawal_address": {
+      "help": "O endereço Ethereum que será usado como o endereço de saque do builder. Normalmente começa com '0x', seguido de 40 caracteres hexadecimais. Certifique-se de ter controle total sobre o endereço escolhido aqui. Isso é obrigatório para builders: diferentemente dos validadores, não há um tipo de saque somente BLS, e esse endereço também é a única autorização para uma futura saída do builder.",
+      "prompt": "Digite o endereço de saque deste builder. Isso é obrigatório e NÃO poderá ser alterado depois que for definido na cadeia.",
+      "confirm": "Repita o endereço de saque para confirmação.",
+      "mismatch": "Erro: os dois valores digitados não coincidem. Digite novamente."
+    },
+    "arg_builder_amount": {
+      "help": "O valor a depositar nesses builders, denominado em ether. Deve ser de pelo menos 1 ether e não pode ter precisão maior que 1 gwei. Diferentemente dos depósitos de validadores, não há um máximo definido pelo protocolo.",
+      "prompt": "Digite o valor que deseja depositar nesses builders. Deve ser de pelo menos 1 ether e não pode ter precisão maior que 1 gwei. Não há valor máximo."
+    },
+    "arg_pbkdf2": {
+      "help": "Usa a função de hash pbkdf2 em vez de scrypt nos arquivos keystore gerados. "
+    },
+    "arg_devnet_chain_setting": {
+      "help": "[SOMENTE DEVNET] Defina um valor específico para GENESIS_FORK_VERSION. Deve ser uma string JSON contendo um objeto com as seguintes chaves: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount e min_deposit_amount. Deve ser semelhante ao que você encontra em settings.py. Isso substituirá qualquer cadeia selecionada."
+    }
+  },
+  "generate_builder_keys": {
+    "msg_key_creation": "Criando suas chaves.",
+    "msg_creation_success": "\nSuccesso!\nSuas chaves se encontram em: ",
+    "msg_pause": "\n\nPressione qualquer tecla.",
+    "err_verify_keystores": "Não foi possível verificar os keystores.",
+    "err_verify_deposit": "Não foi possível verificar os dados JSON do depósito do builder."
+  }
+}

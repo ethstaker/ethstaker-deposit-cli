@@ -15,6 +15,7 @@
 - [Exit Transaction Mnemonic](exit_transaction_mnemonic.md)
 - [Partial Deposit](partial_deposit.md)
 - [Test Keystore](test_keystore.md)
+- [Builder](builder.md)
 
 # End to End Usage
 

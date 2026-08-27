@@ -1,0 +1,34 @@
+{
+  "builder": {
+    "arg_builder": {
+      "help": "Buat kunci builder dan deposit builder, sesuai EIP-8282. Anda akan ditanya apakah Anda memiliki mnemonik yang sudah ada untuk dimasukkan secara interaktif."
+    },
+    "arg_mnemonic": {
+      "help": "Mnemonik yang sudah ada untuk menurunkan kunci builder. Jika tidak diberikan, Anda akan ditanya apakah Anda memiliki mnemonik yang sudah ada untuk dimasukkan secara interaktif, atau apakah mnemonik baru harus dibuat. (Disarankan tidak menggunakan argumen ini, dan menunggu CLI menanyakan mnemonik Anda supaya tidak akan muncul di riwayat shell Anda.)",
+      "existing_confirm": "Apakah Anda memiliki mnemonik yang sudah ada yang ingin Anda gunakan untuk builder ini? Jika tidak, mnemonik baru akan dibuat.",
+      "prompt": "Silakan masukkan mnemonik Anda dipisahkan dengan spasi (\" \"). Catatan: Anda hanya perlu memasukkan 4 huruf pertama dari setiap kata jika Anda mau."
+    },
+    "arg_mnemonic_password": {
+      "help": "Ini kemungkinan bukan argumen yang Anda cari: ini untuk kata sandi mnemonik, bukan kata sandi keystore. Argumen ini hanya dapat digunakan saat menggunakan kembali mnemonik yang sudah ada; tidak diperbolehkan saat membuat mnemonik baru.",
+      "prompt": "Masukkan kata sandi mnemonik Anda (jika Anda menggunakannya). Pastikan Anda tidak melupakannya, karena kata sandi ini tidak dapat dipulihkan.",
+      "confirm": "Ulangi kata sandi mnemonik Anda untuk konfirmasi.",
+      "mismatch": "Kata sandi mnemonik yang Anda masukkan tidak cocok, silakan coba lagi."
+    },
+    "arg_mnemonic_language": {
+      "default": "english",
+      "help": "Bahasa daftar kata mnemonik. Jika menggunakan kembali mnemonik yang sudah ada (--mnemonic) dan ini tidak diberikan, kami akan mencoba menentukannya berdasarkan mnemonik yang diberikan. Jika membuat mnemonik baru, ini akan memilih bahasa daftar kata.",
+      "prompt": "Silakan pilih bahasa daftar kata mnemonik"
+    },
+    "arg_builder_start_index": {
+      "help": "Masukkan indeks (nomor kunci) yang ingin Anda gunakan untuk mulai membuat kunci builder.",
+      "prompt": "Masukkan indeks (nomor kunci) yang ingin Anda gunakan untuk mulai membuat kunci builder.",
+      "confirm": "Ulangi indeks awal builder untuk konfirmasi"
+    },
+    "err_mnemonic_password_not_allowed": "--mnemonic_password hanya dapat digunakan saat menggunakan kembali mnemonik yang sudah ada (--mnemonic); tidak diperbolehkan saat membuat mnemonik baru.",
+    "msg_mnemonic_presentation": "Ini adalah mnemonik Anda (frasa benih). Catat dan simpan dengan aman, ini adalah SATU-SATUNYA cara untuk mengambil deposit builder Anda.",
+    "msg_press_any_key": "Tekan sembarang tombol setelah Anda menuliskan mnemonik Anda.",
+    "msg_mnemonic_retype_prompt": "Harap ketik mnemonik Anda (dipisahkan dengan spasi) untuk mengonfirmasi bahwa Anda telah menuliskannya. Catatan: Anda hanya perlu memasukkan 4 huruf pertama dari setiap kata jika Anda mau.",
+    "msg_mnemonic_clipboard_warning": "PERINGATAN: Anda HARUS menuliskan mnemonik, karena kami akan mencoba menghapus papan klip setelah langkah ini.",
+    "msg_confirm_clipboard_clearing": "PERINGATAN: Papan klip Anda akan DIHAPUS. Beberapa aplikasi atau konfigurasi mungkin mencegahnya. Tekan tombol apa saja untuk menghapus papan klip."
+  }
+}

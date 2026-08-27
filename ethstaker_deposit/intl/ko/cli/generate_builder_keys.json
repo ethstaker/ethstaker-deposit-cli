@@ -1,0 +1,44 @@
+{
+  "generate_builder_keys_arguments_decorator": {
+    "num_builders": {
+      "help": "생성하려는 빌더 키의 개수(나중에 언제든 생성 가능)",
+      "prompt": "등록하려는 새 빌더의 개수를 선택하세요."
+    },
+    "folder": {
+      "help": "keystore와 빌더 예치금의 폴더 경로입니다. 기본값은 `./builder_keys`입니다."
+    },
+    "chain": {
+      "help": "타겟팅하려는 Ethereum PoS의 버전입니다. ETH를 예치한다면 \"mainnet\"을 사용하세요.",
+      "prompt": "(메인넷 또는 테스트넷) 네트워크/체인 이름을 선택하세요."
+    },
+    "keystore_password": {
+      "help": "키스토어를 안전하게 보호하는 비밀번호입니다. 빌더를 셋업할 때 다시 입력하여 복호화해야 합니다. (이 인수를 사용하지 말고 CLI가 비밀번호를 요청할 때까지 기다리는 것이 좋습니다. 기다리지 않으면 셸 기록에 표시되기 때문입니다.)",
+      "prompt": "빌더 키스토어를 안전하게 보호하는 비밀번호입니다. 빌더를 셋업할 때 다시 입력하여 복호화해야 합니다.",
+      "confirm": "확인을 위해 동일하게 입력",
+      "mismatch": "오류: 입력한 두 값이 일치하지 않습니다. 다시 입력하세요."
+    },
+    "arg_withdrawal_address": {
+      "help": "빌더의 출금 주소로 사용될 Ethereum 주소입니다. 일반적으로 '0x' 뒤에 40개의 16진수 문자가 이어집니다. 여기에서 선택한 주소를 완전히 제어할 수 있는지 확인하세요. 이는 빌더에게 필수이며, 검증자와 달리 빌더에게는 BLS 전용 출금 방식이 없고, 이 주소가 향후 빌더 종료(exit)의 유일한 인증 수단이기도 합니다.",
+      "prompt": "이 빌더의 출금 주소를 입력하세요. 필수 항목이며, 온체인에 설정한 후에는 변경할 수 없습니다.",
+      "confirm": "확인을 위해 출금 주소를 다시 입력하세요.",
+      "mismatch": "오류: 입력한 두 값이 일치하지 않습니다. 다시 입력하세요."
+    },
+    "arg_builder_amount": {
+      "help": "이 빌더들에게 예치할 금액(ETH 단위)입니다. 최소 1 ETH 이상이어야 하며 1 gwei보다 정밀할 수 없습니다. 검증자 예치금과 달리 프로토콜에서 정한 최대 한도가 없습니다.",
+      "prompt": "이 빌더들에게 예치할 금액을 입력하세요. 최소 1 ETH 이상이어야 하며 1 gwei보다 정밀할 수 없습니다. 최대 한도는 없습니다."
+    },
+    "arg_pbkdf2": {
+      "help": "생성된 keystore 파일에 scrypt 대신 pbkdf2 해시 함수를 사용합니다. "
+    },
+    "arg_devnet_chain_setting": {
+      "help": "[DEVNET ONLY] 특정 GENESIS_FORK_VERSION 값을 설정합니다. 다음 키를 포함하는 객체가 담긴 JSON 문자열이어야 합니다: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount 및 min_deposit_amount. settings.py에서 확인할 수 있는 형식과 유사해야 합니다. 이 설정은 선택한 체인을 재정의합니다."
+    }
+  },
+  "generate_builder_keys": {
+    "msg_key_creation": "키 생성 중입니다.",
+    "msg_creation_success": "\n성공!\n키를 찾을 수 있는 위치: ",
+    "msg_pause": "\n\n아무 키나 누르세요.",
+    "err_verify_keystores": "키스토어를 검증하지 못했습니다.",
+    "err_verify_deposit": "빌더 예치금 데이터 JSON 파일을 검증하지 못했습니다."
+  }
+}

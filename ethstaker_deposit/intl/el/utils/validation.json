@@ -69,5 +69,13 @@
   },
   "validate_genesis_validators_root": {
     "missing_genesis_validators_root": "Η ρύθμιση της αλυσίδας δεν περιέχει τιμή GENESIS_VALIDATORS_ROOT. Αυτή η τιμή απαιτείται για τη δημιουργία της συναλλαγής εξόδου."
+  },
+  "verify_builder_deposit_data_json": {
+    "msg_deposit_verification": "Επαλήθευση των αρχείων builder_deposit_data-*.json:\t"
+  },
+  "validate_builder_deposit_amount": {
+    "err_invalid_amount": "Δόθηκε μη έγκυρο ποσό. Δώστε μια τιμή τουλάχιστον 1 ETH για κατάθεση builder.",
+    "err_not_gwei_denomination": "Δόθηκε μη έγκυρο ποσό. Η τιμή δεν μπορεί να έχει ακρίβεια μεγαλύτερη από 1 gwei.",
+    "err_min_deposit": "Δόθηκε μη έγκυρο ποσό. Δώστε μια τιμή τουλάχιστον 1 ETH. Δεν υπάρχει μέγιστο ποσό κατάθεσης builder."
   }
 }

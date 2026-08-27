@@ -10,6 +10,7 @@ from ssz import (
 from ethstaker_deposit.utils.constants import (
     DOMAIN_BLS_TO_EXECUTION_CHANGE,
     DOMAIN_BLS_TO_EXECUTION_CHANGE_KEYSTORE,
+    DOMAIN_BUILDER_DEPOSIT,
     DOMAIN_DEPOSIT,
     DOMAIN_VOLUNTARY_EXIT,
     ZERO_BYTES32,
@@ -54,6 +55,17 @@ def compute_deposit_domain(fork_version: bytes) -> bytes:
     if len(fork_version) != 4:
         raise ValueError(f"Fork version should be in 4 bytes. Got {len(fork_version)}.")
     domain_type = DOMAIN_DEPOSIT
+    fork_data_root = compute_deposit_fork_data_root(fork_version)
+    return domain_type + fork_data_root[:28]
+
+
+def compute_builder_deposit_domain(fork_version: bytes) -> bytes:
+    """
+    Builder-deposit-only `compute_domain`
+    """
+    if len(fork_version) != 4:
+        raise ValueError(f"Fork version should be in 4 bytes. Got {len(fork_version)}.")
+    domain_type = DOMAIN_BUILDER_DEPOSIT
     fork_data_root = compute_deposit_fork_data_root(fork_version)
     return domain_type + fork_data_root[:28]
 
@@ -117,6 +129,7 @@ def compute_signing_root(ssz_object: Serializable, domain: bytes) -> bytes:
 class DepositMessage(Serializable):
     """
     Ref: https://github.com/ethereum/consensus-specs/blob/dev/specs/phase0/beacon-chain.md#depositmessage
+    https://github.com/ethereum/consensus-specs/blob/master/specs/gloas/beacon-chain.md#builderdepositmessage
     """
     fields = [
         ('pubkey', bytes48),
@@ -128,6 +141,7 @@ class DepositMessage(Serializable):
 class DepositData(Serializable):
     """
     Ref: https://github.com/ethereum/consensus-specs/blob/dev/specs/phase0/beacon-chain.md#depositdata
+    https://github.com/ethereum/consensus-specs/blob/master/specs/gloas/beacon-chain.md#builderdepositrequest
     """
     fields = [
         ('pubkey', bytes48),

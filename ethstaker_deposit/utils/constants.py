@@ -12,13 +12,20 @@ BLS_WITHDRAWAL_PREFIX = bytes.fromhex('00')
 EXECUTION_ADDRESS_WITHDRAWAL_PREFIX = bytes.fromhex('01')
 COMPOUNDING_WITHDRAWAL_PREFIX = bytes.fromhex('02')
 
+# EIP-8282: https://github.com/ethereum/consensus-specs/blob/master/specs/gloas/beacon-chain.md#domains
+DOMAIN_BUILDER_DEPOSIT = bytes.fromhex('0E000000')
+BUILDER_WITHDRAWAL_PREFIX = bytes.fromhex('B0')
+
 ETH2GWEI = 10 ** 9
 DEFAULT_ACTIVATION_AMOUNT = 2 ** 5
 MAX_DEPOSIT_AMOUNT = 2 ** 11 * ETH2GWEI
+# EIP-8282 EL-side minimum. There is no protocol-defined maximum for builders.
+BUILDER_MIN_DEPOSIT = 1 * ETH2GWEI
 
 # File/folder constants
 WORD_LISTS_PATH = os.path.join('ethstaker_deposit', 'key_handling', 'key_derivation', 'word_lists')
 DEFAULT_VALIDATOR_KEYS_FOLDER_NAME = 'validator_keys'
+DEFAULT_BUILDER_KEYS_FOLDER_NAME = 'builder_keys'
 DEFAULT_BLS_TO_EXECUTION_CHANGES_FOLDER_NAME = 'bls_to_execution_changes'
 DEFAULT_BLS_TO_EXECUTION_CHANGES_KEYSTORE_FOLDER_NAME = 'bls_to_execution_changes_keystore'
 DEFAULT_EXIT_TRANSACTION_FOLDER_NAME = 'exit_transactions'

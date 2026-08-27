@@ -69,5 +69,13 @@
   },
   "validate_genesis_validators_root": {
     "missing_genesis_validators_root": "L'impostazione della catena non contiene un valore GENESIS_VALIDATORS_ROOT. Questo valore è necessario per creare la transazione di uscita."
+  },
+  "verify_builder_deposit_data_json": {
+    "msg_deposit_verification": "Verifica dei tuoi file builder_deposit_data-*.json:\t"
+  },
+  "validate_builder_deposit_amount": {
+    "err_invalid_amount": "Importo non valido. Inserisci un valore di almeno 1 ether per un deposito builder.",
+    "err_not_gwei_denomination": "Importo non valido. Il valore non può avere una precisione superiore a 1 gwei.",
+    "err_min_deposit": "Importo non valido. Inserisci un valore di almeno 1 ether. Non esiste un importo massimo per il deposito builder."
   }
 }

@@ -1,0 +1,44 @@
+{
+  "generate_builder_keys_arguments_decorator": {
+    "num_builders": {
+      "help": "Jumlah kunci builder yang ingin Anda buat (Anda selalu dapat menghasilkan lebih banyak lagi nanti)",
+      "prompt": "Silakan pilih berapa banyak builder yang ingin Anda daftarkan"
+    },
+    "folder": {
+      "help": "Jalur folder untuk keystore dan deposit builder. Secara default mengarah ke `./builder_keys`."
+    },
+    "chain": {
+      "help": "Versi Ethereum PoS yang Anda targetkan. Gunakan \"mainnet\" jika Anda menyetorkan ETH",
+      "prompt": "Pilih nama jaringan / rantai (mainnet atau testnet)"
+    },
+    "keystore_password": {
+      "help": "Kata sandi yang akan mengamankan keystore Anda. Anda perlu memasukkan ulang ini untuk mendekripsinya ketika Anda mengatur builder Anda. (Disarankan untuk tidak menggunakan argumen ini, dan tunggu CLI menanyakan kata sandi Anda supaya tidak akan muncul dalam riwayat shell Anda.)",
+      "prompt": "Buat kata sandi yang akan mengamankan keystore builder Anda. Anda perlu memasukkan ulang ini untuk mendekripsinya ketika Anda mengatur builder Anda.",
+      "confirm": "Ulangi untuk konfirmasi",
+      "mismatch": "Kesalahan: dua nilai yang dimasukkan tidak cocok. Silakan ketik ulang."
+    },
+    "arg_withdrawal_address": {
+      "help": "Alamat Ethereum yang akan digunakan sebagai alamat penarikan builder. Biasanya diawali dengan '0x' diikuti 40 karakter heksadesimal. Pastikan Anda memiliki kendali penuh atas alamat yang dipilih. Ini wajib diisi untuk builder: tidak seperti validator, tidak ada jenis penarikan khusus BLS, dan alamat ini juga menjadi satu-satunya otorisasi untuk keluar (exit) builder di masa mendatang.",
+      "prompt": "Silakan masukkan alamat penarikan untuk builder ini. Ini wajib diisi, dan TIDAK DAPAT diubah setelah ditetapkan di chain.",
+      "confirm": "Masukkan kembali alamat penarikan Anda untuk konfirmasi.",
+      "mismatch": "Kesalahan: kedua nilai yang dimasukkan tidak cocok. Silakan ketik ulang."
+    },
+    "arg_builder_amount": {
+      "help": "Jumlah yang akan didepositkan ke builder ini dalam denominasi ether. Harus setidaknya 1 ether dan tidak boleh memiliki presisi lebih dari 1 gwei. Tidak seperti deposit validator, tidak ada batas maksimum yang ditentukan oleh protokol.",
+      "prompt": "Silakan masukkan jumlah yang ingin Anda depositkan ke builder ini. Harus setidaknya 1 ether dan tidak boleh memiliki presisi lebih dari 1 gwei. Tidak ada batas maksimum."
+    },
+    "arg_pbkdf2": {
+      "help": "Menggunakan fungsi hash pbkdf2, bukan scrypt, untuk file keystore yang dibuat. "
+    },
+    "arg_devnet_chain_setting": {
+      "help": "[DEVNET ONLY] Tetapkan nilai GENESIS_FORK_VERSION tertentu. Ini harus berupa string JSON yang berisi objek dengan kunci berikut: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount dan min_deposit_amount. Isinya harus serupa dengan yang dapat Anda temukan di settings.py. Ini akan menggantikan chain yang dipilih."
+    }
+  },
+  "generate_builder_keys": {
+    "msg_key_creation": "Membuat kunci Anda.",
+    "msg_creation_success": "\nSukses!\nKunci Anda dapat ditemukan di: ",
+    "msg_pause": "\n\nTekan tombol apa saja.",
+    "err_verify_keystores": "Gagal memverifikasi keystore.",
+    "err_verify_deposit": "Gagal memverifikasi file JSON data setoran builder."
+  }
+}

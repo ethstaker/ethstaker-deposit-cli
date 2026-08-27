@@ -69,5 +69,13 @@
   },
   "validate_genesis_validators_root": {
     "missing_genesis_validators_root": "Setarea lanțului nu conține o valoare GENESIS_VALIDATORS_ROOT. Această valoare este necesară pentru a crea tranzacția de ieșire."
+  },
+  "verify_builder_deposit_data_json": {
+    "msg_deposit_verification": "Se verifică fișierul (fișierele) builder_deposit_data-*.json:\t"
+  },
+  "validate_builder_deposit_amount": {
+    "err_invalid_amount": "Suma furnizată nu este validă. Furnizează o valoare de cel puțin 1 ETH pentru o depunere de builder.",
+    "err_not_gwei_denomination": "Suma furnizată nu este validă. Furnizează o valoare cu o precizie de cel mult 1 gwei.",
+    "err_min_deposit": "Suma furnizată nu este validă. Furnizează o valoare de cel puțin 1 ETH. Nu există o sumă maximă pentru o depunere de builder."
   }
 }

@@ -69,5 +69,13 @@
   },
   "validate_genesis_validators_root": {
     "missing_genesis_validators_root": "يفتقد إعداد السلسلة قيمة GENESIS_VALIDATORS_ROOT. هذه القيمة مطلوبة لإنشاء معاملة الخروج."
+  },
+  "verify_builder_deposit_data_json": {
+    "msg_deposit_verification": "التحقق من بيانات إيداع الباني الخاصة بك:\t"
+  },
+  "validate_builder_deposit_amount": {
+    "err_invalid_amount": "المبلغ المُقدّم غير صالح. يرجى تقديم قيمة لا تقل عن 1 ETH لوديعة الباني.",
+    "err_not_gwei_denomination": "المبلغ المُقدّم غير صالح. يرجى تقديم قيمة لا تتجاوز دقتها 1 gwei.",
+    "err_min_deposit": "المبلغ المُقدّم غير صالح. يرجى تقديم قيمة لا تقل عن 1 ETH. لا يوجد حد أقصى لمبلغ وديعة الباني."
   }
 }

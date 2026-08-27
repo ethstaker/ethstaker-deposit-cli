@@ -69,5 +69,13 @@
   },
   "validate_genesis_validators_root": {
     "missing_genesis_validators_root": "Zincir ayarında GENESIS_VALIDATORS_ROOT değeri eksik. Bu değer, çıkış işlemini oluşturmak için gereklidir."
+  },
+  "verify_builder_deposit_data_json": {
+    "msg_deposit_verification": "Builder depozitonuz doğrulanıyor:\t"
+  },
+  "validate_builder_deposit_amount": {
+    "err_invalid_amount": "Geçersiz miktar sağlandı. Lütfen bir builder depozitosu için en az 1 ETH değerinde bir sayı sağlayın.",
+    "err_not_gwei_denomination": "Geçersiz miktar sağlandı. Lütfen 1 gwei'den daha yüksek hassasiyete sahip olmayan bir değer sağlayın.",
+    "err_min_deposit": "Geçersiz miktar sağlandı. Lütfen en az 1 ETH değerinde bir miktar sağlayın. Maksimum builder depozito miktarı yoktur."
   }
 }

@@ -1,0 +1,44 @@
+{
+  "generate_builder_keys_arguments_decorator": {
+    "num_builders": {
+      "help": "Numărul de chei de builder pe care vrei să le generezi (poți genera oricând mai multe)",
+      "prompt": "Alege câți builderi vrei să înregistrezi"
+    },
+    "folder": {
+      "help": "Calea către directorul pentru depozitele de chei și fișierele de depunere de builder. Implicit este `./builder_keys`."
+    },
+    "chain": {
+      "help": "Versiunea de Ethereum PoS țintă. Dacă depui ETH, folosește „mainnet”",
+      "prompt": "Alege numele de rețea/lanț (mainnet sau testnet)"
+    },
+    "keystore_password": {
+      "help": "Parola cu care îți securizezi depozitele de chei. Va trebui să o reintroduci pentru a le decripta atunci când configurezi builderii. (Îți recomandăm să nu folosești acest argument, ci să aștepți ca interfața de linie de comandă să-ți ceară parola, altfel aceasta va apărea în istoricul comenzilor de shell.)",
+      "prompt": "Parola cu care vei securiza depozitele de chei de builder. Va trebui să o reintroduci pentru a le decripta atunci când configurezi builderii.",
+      "confirm": "Repetă parola, pentru confirmare",
+      "mismatch": "Eroare: cele două valori introduse sunt diferite. Te rugăm să tastezi din nou."
+    },
+    "arg_withdrawal_address": {
+      "help": "Adresa Ethereum care va fi folosită ca adresă de retragere a builderului. De obicei începe cu „0x”, urmat de 40 de caractere hexazecimale. Asigură-te că deții controlul deplin asupra adresei alese aici. Aceasta este obligatorie pentru builderi: spre deosebire de validatori, nu există un tip de retragere doar-BLS, iar această adresă este și singura autorizare pentru o viitoare ieșire (exit) a builderului.",
+      "prompt": "Introdu adresa de retragere pentru acest builder. Este obligatorie și NU O POȚI schimba după ce ai setat-o on-chain.",
+      "confirm": "Reintrodu adresa de retragere pentru confirmare.",
+      "mismatch": "Eroare: cele două valori introduse sunt diferite. Te rugăm să tastezi din nou."
+    },
+    "arg_builder_amount": {
+      "help": "Suma de depus pentru acești builderi, exprimată în ether. Trebuie să fie de cel puțin 1 ether și nu poate avea o precizie mai mare de 1 gwei. Spre deosebire de depunerile validatorilor, nu există un maxim definit de protocol.",
+      "prompt": "Introdu suma pe care vrei să o depui pentru acești builderi. Trebuie să fie de cel puțin 1 ether și nu poate avea o precizie mai mare de 1 gwei. Nu există o sumă maximă."
+    },
+    "arg_pbkdf2": {
+      "help": "Folosește funcția hash pbkdf2 în loc de scrypt pentru fișierele keystore generate. "
+    },
+    "arg_devnet_chain_setting": {
+      "help": "[DOAR DEVNET] Setează valoarea specifică GENESIS_FORK_VERSION. Acesta trebuie să fie un șir JSON care conține un obiect cu următoarele chei: network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount și min_deposit_amount. Ar trebui să fie similar cu ceea ce găsești în settings.py. Aceasta va suprascrie orice lanț selectat."
+    }
+  },
+  "generate_builder_keys": {
+    "msg_key_creation": "Se creează cheile.",
+    "msg_creation_success": "\nReușită!\nCheile se găsesc la: ",
+    "msg_pause": "\n\nApară o tastă oarecare.",
+    "err_verify_keystores": "Verificarea depozitelor de chei nu a reușit.",
+    "err_verify_deposit": "Verificarea datelor de depunere de builder a fişierelor JSON a eşuat."
+  }
+}

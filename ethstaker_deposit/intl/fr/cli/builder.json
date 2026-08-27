@@ -1,0 +1,34 @@
+{
+  "builder": {
+    "arg_builder": {
+      "help": "Génère des clés de constructeur et un dépôt de constructeur, conformément à l'EIP-8282. Il vous sera demandé si vous disposez d'une phrase mnémonique existante à saisir de manière interactive."
+    },
+    "arg_mnemonic": {
+      "help": "Une phrase mnémonique existante à partir de laquelle dériver les clés de constructeur. Si elle est omise, il vous sera demandé si vous disposez d'une phrase mnémonique existante à saisir de manière interactive, ou si une toute nouvelle phrase doit être générée à la place. (Il est recommandé de ne pas utiliser ce argument, et d'attendre que l'ILC vous demande votre élément mnémonique, sinon il apparaîtra dans l'historique de votre interpréteur.)",
+      "existing_confirm": "Disposez-vous d'une phrase mnémonique existante que vous souhaitez utiliser pour ce constructeur ? Si non, une nouvelle phrase mnémonique sera générée.",
+      "prompt": "Veuillez saisir votre phrase mnémonique en séparant les mots par des espaces (\" \")"
+    },
+    "arg_mnemonic_password": {
+      "help": "Ce n'est certainement pas l'argument que vous recherchez : il est destiné aux mots de passe mnémoniques, pas aux mots de passe de keystores. Il ne peut être utilisé que si vous réutilisez une phrase mnémonique existante ; il n'est pas autorisé lors de la génération d'une nouvelle phrase mnémonique.",
+      "prompt": "Saisissez votre mot de passe mnémonique (si vous en avez utilisé un). Assurez-vous de ne pas l'oublier, car il ne peut pas être récupéré.",
+      "confirm": "Répétez votre mot de passe mnémonique pour confirmation.",
+      "mismatch": "Le mot de passe mnémonique saisi ne correspond pas. Veuillez réessayer."
+    },
+    "arg_mnemonic_language": {
+      "default": "french",
+      "help": "La langue de la liste de mots mnémoniques. Si vous réutilisez une phrase mnémonique existante (--mnemonic) et que celle-ci n'est pas indiquée, nous tenterons de la déterminer à partir de la phrase fournie. Si vous générez une nouvelle phrase mnémonique, ce choix détermine la langue de la liste de mots.",
+      "prompt": "Veuillez choisir la langue de votre phrase mnémonique."
+    },
+    "arg_builder_start_index": {
+      "help": "Saisissez l'index (numéro de clé) à partir duquel vous souhaitez commencer à générer des clés de constructeur.",
+      "prompt": "Saisissez l'index (numéro de clé) à partir duquel vous souhaitez commencer à générer des clés de constructeur.",
+      "confirm": "Veuillez confirmer l'index."
+    },
+    "err_mnemonic_password_not_allowed": "--mnemonic_password ne peut être utilisé que si vous réutilisez une phrase mnémonique existante (--mnemonic) ; il n'est pas autorisé lors de la génération d'une nouvelle phrase mnémonique.",
+    "msg_mnemonic_presentation": "Ceci est votre phrase mnémonique (seed). Notez-la et conservez-la en sécurité. Elle constitue le SEUL moyen de récupérer votre dépôt de constructeur.",
+    "msg_press_any_key": "Une fois que vous avez écrit votre phrase mnémonique, appuyez sur n'importe quelle touche.",
+    "msg_mnemonic_retype_prompt": "Veuillez saisir votre phrase mnémonique (avec les mots séparés par des espaces) pour confirmer que vous l'avez écrite.",
+    "msg_mnemonic_clipboard_warning": "AVERTISSEMENT : vous DEVEZ noter la phrase mnémonique, car nous tenterons d'effacer le presse-papiers après cette étape.",
+    "msg_confirm_clipboard_clearing": "AVERTISSEMENT : votre presse-papiers sera EFFACÉ. Certaines applications ou configurations peuvent l'empêcher. Appuyez sur une touche pour effacer le presse-papiers."
+  }
+}

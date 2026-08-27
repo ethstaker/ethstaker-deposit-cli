@@ -1,0 +1,44 @@
+{
+  "generate_builder_keys_arguments_decorator": {
+    "num_builders": {
+      "help": "Nombre de clés de constructeur que vous souhaitez générer (vous pourrez en générer davantage plus tard)",
+      "prompt": "Veuillez choisir le nombre de constructeurs que vous souhaitez enregistrer"
+    },
+    "folder": {
+      "help": "Le chemin du dossier des keystores et des dépôts de constructeur. Pointe par défaut vers `./builder_keys`."
+    },
+    "chain": {
+      "help": "Version Ethereum Proof of Stake que vous ciblez. Utilisez \"mainnet\" si vous déposez de l'ETH.",
+      "prompt": "Veuillez choisir un nom de chaîne/réseau : mainnet (réseau principal) ou testnet (réseau de test)."
+    },
+    "keystore_password": {
+      "help": "Mot de passe qui sécurisera vos keystores. Vous devrez le saisir de nouveau pour les décrypter quand vous configurerez vos constructeurs. (Il est recommandé de ne pas utiliser cet argument et d'attendre que l'ILC vous demande votre mot de passe, sinon il apparaîtra dans l'historique de votre interpréteur.)",
+      "prompt": "Mot de passe qui sécurisera vos keystores de constructeur. Vous devrez le saisir de nouveau pour les décrypter quand vous configurerez vos constructeurs.",
+      "confirm": "Veuillez confirmer le mot de passe.",
+      "mismatch": "Erreur : Les deux valeurs saisies ne correspondent pas. Veuillez réessayer."
+    },
+    "arg_withdrawal_address": {
+      "help": "L'adresse Ethereum qui sera utilisée comme adresse de retrait du constructeur. Elle commence généralement par '0x', suivi de 40 caractères hexadécimaux. Assurez-vous d'avoir le contrôle total de l'adresse choisie. Ceci est requis pour les constructeurs : contrairement aux validateurs, il n'existe pas de type de retrait exclusivement BLS, et cette adresse constitue également la seule autorisation pour une future sortie du constructeur.",
+      "prompt": "Veuillez saisir l'adresse de retrait de ce constructeur. Elle est requise et NE POURRA PAS être modifiée une fois définie sur la chaîne.",
+      "confirm": "Saisissez à nouveau votre adresse de retrait pour confirmation.",
+      "mismatch": "Erreur : les deux valeurs saisies ne correspondent pas. Veuillez recommencer."
+    },
+    "arg_builder_amount": {
+      "help": "Le montant à déposer sur ces constructeurs, en ether. Il doit être d'au moins 1 ether et ne peut pas avoir une précision supérieure à 1 gwei. Contrairement aux dépôts de validateurs, il n'y a pas de maximum défini par le protocole.",
+      "prompt": "Veuillez saisir le montant que vous souhaitez déposer sur ces constructeurs. Il doit être d'au moins 1 ether et ne peut pas avoir une précision supérieure à 1 gwei. Il n'y a pas de maximum."
+    },
+    "arg_pbkdf2": {
+      "help": "Utilise la fonction de hachage pbkdf2 au lieu de scrypt pour les fichiers keystore générés. "
+    },
+    "arg_devnet_chain_setting": {
+      "help": "[DEVNET UNIQUEMENT] Définit une valeur spécifique pour GENESIS_FORK_VERSION. Il doit s'agir d'une chaîne JSON contenant un objet avec les clés suivantes : network_name, genesis_fork_version, exit_fork_version, genesis_validator_root, multiplier, min_activation_amount et min_deposit_amount. Elle doit être similaire à ce que vous pouvez trouver dans settings.py. Cela remplacera toute chaîne sélectionnée."
+    }
+  },
+  "generate_builder_keys": {
+    "msg_key_creation": "Création de vos clés.",
+    "msg_creation_success": "\nOpération terminée !\nVos clés sont disponibles ici : ",
+    "msg_pause": "\n\nAppuyez sur n'importe quelle touche.",
+    "err_verify_keystores": "Impossible de vérifier les keystores.",
+    "err_verify_deposit": "Impossible de vérifier les fichiers JSON des données de dépôt de constructeur."
+  }
+}

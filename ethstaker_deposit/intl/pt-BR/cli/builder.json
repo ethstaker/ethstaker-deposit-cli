@@ -1,0 +1,34 @@
+{
+  "builder": {
+    "arg_builder": {
+      "help": "Gera chaves de builder e um depósito de builder, conforme o EIP-8282. Você será perguntado se já possui um mnemônico existente para inserir interativamente."
+    },
+    "arg_mnemonic": {
+      "help": "Um mnemônico existente a partir do qual derivar as chaves do builder. Se omitido, você será perguntado se já possui um mnemônico existente para inserir interativamente, ou se um novo mnemônico deve ser gerado. (Recomenda-se não usar este argumento e esperar até que a CLI pergunte pelo seu mnemônico; caso contrário, ele aparecerá no seu histórico do shell.)",
+      "existing_confirm": "Você já possui um mnemônico existente que gostaria de usar para este builder? Caso contrário, um novo mnemônico será gerado.",
+      "prompt": "Por favor, digite seu mnemônico separado por espaços (\" \"). Nota: você só precisa digitar as 4 primeiras letras de cada palavra, se preferir."
+    },
+    "arg_mnemonic_password": {
+      "help": "Este, quase com certeza, não é o argumento que você está procurando: é para senhas mnemônicas, não para senhas do keystore. Só pode ser usado ao reutilizar um mnemônico existente; não é permitido ao gerar um novo mnemônico.",
+      "prompt": "Digite a senha do seu mnemônico (se você usou uma). Não a esqueça, pois ela não pode ser recuperada.",
+      "confirm": "Repita a senha do seu mnemônico para confirmação.",
+      "mismatch": "A senha mnemônica digitada não corresponde. Tente novamente."
+    },
+    "arg_mnemonic_language": {
+      "default": "portuguese",
+      "help": "O idioma da lista de palavras do mnemônico. Se estiver reutilizando um mnemônico existente (--mnemonic) e isso não for informado, tentaremos determiná-lo com base no mnemônico fornecido. Se estiver gerando um novo mnemônico, isso escolhe o idioma da lista de palavras.",
+      "prompt": "Por favor, escolha o idioma do seu mnemônico"
+    },
+    "arg_builder_start_index": {
+      "help": "Digite o índice (número de chave) a partir do qual deseja começar a gerar chaves do builder.",
+      "prompt": "Digite o índice (número de chave) a partir do qual deseja começar a gerar chaves do builder.",
+      "confirm": "Repita o índice inicial do builder para confirmar"
+    },
+    "err_mnemonic_password_not_allowed": "--mnemonic_password só pode ser usado ao reutilizar um mnemônico existente (--mnemonic); não é permitido ao gerar um novo mnemônico.",
+    "msg_mnemonic_presentation": "Este é o seu mnemônico (frase semente). Anote-o e armazene-o de maneira segura, pois será a ÚNICA maneira de recuperar o seu depósito do builder.",
+    "msg_press_any_key": "Pressione qualquer tecla quando tiver anotado o mnemônico.",
+    "msg_mnemonic_retype_prompt": "Por favor, digite seu mnemônico (separado por espaços) para confirmar que o anotou. Nota: você só precisa digitar as 4 primeiras letras de cada palavra, se preferir.",
+    "msg_mnemonic_clipboard_warning": "AVISO: Você DEVE anotar o mnemônico, pois tentaremos limpar a área de transferência após esta etapa.",
+    "msg_confirm_clipboard_clearing": "AVISO: Sua área de transferência será LIMPA. Alguns aplicativos ou configurações podem impedir isso. Pressione qualquer tecla para limpar a área de transferência."
+  }
+}

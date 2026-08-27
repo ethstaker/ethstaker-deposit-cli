@@ -1,0 +1,34 @@
+{
+  "builder": {
+    "arg_builder": {
+      "help": "Builder-Schlüssel und eine Builder-Einzahlung gemäß EIP-8282 erzeugen. Sie werden gefragt, ob Sie eine vorhandene Mnemonik interaktiv eingeben möchten."
+    },
+    "arg_mnemonic": {
+      "help": "Eine vorhandene Mnemonik, aus der die Builder-Schlüssel abgeleitet werden. Wird sie weggelassen, werden Sie gefragt, ob Sie eine vorhandene Mnemonik interaktiv eingeben möchten, oder ob stattdessen eine völlig neue erzeugt werden soll. (Es wird empfohlen, dieses Argument nicht zu verwenden und zu warten, bis die CLI Sie nach Ihrer Mnemonik fragt, da sie sonst in Ihrer Shell-Historie erscheint.)",
+      "existing_confirm": "Haben Sie eine vorhandene Mnemonik, die Sie für diesen Builder verwenden möchten? Wenn nicht, wird eine neue Mnemonik erzeugt.",
+      "prompt": "Bitte geben Sie Ihre Mnemonik durch Leerzeichen getrennt ein (\" \" ). Hinweis: Sie müssen auf Wunsch nur die ersten 4 Buchstaben jedes Wortes eingeben."
+    },
+    "arg_mnemonic_password": {
+      "help": "Dies ist mit ziemlicher Sicherheit nicht das Argument, das Sie suchen: Es ist für Mnemonik-Passwörter gedacht, nicht für Keystore-Passwörter. Es kann nur verwendet werden, wenn eine vorhandene Mnemonik wiederverwendet wird; es ist nicht erlaubt, wenn eine neue Mnemonik erzeugt wird.",
+      "prompt": "Geben Sie Ihr Mnemonik-Passwort ein (falls Sie eines verwendet haben). Stellen Sie sicher, dass Sie es nicht vergessen, da es nicht wiederhergestellt werden kann.",
+      "confirm": "Wiederholen Sie Ihr Mnemonik-Passwort zur Bestätigung.",
+      "mismatch": "Das eingegebene Mnemonik-Passwort stimmt nicht überein. Bitte versuchen Sie es erneut."
+    },
+    "arg_mnemonic_language": {
+      "default": "english",
+      "help": "Die Sprache der Mnemonik-Wortliste. Wird eine vorhandene Mnemonik wiederverwendet (--mnemonic) und dies nicht angegeben, versuchen wir, sie anhand der angegebenen Mnemonik zu bestimmen. Wird eine neue Mnemonik erzeugt, legt dies die Sprache der Wortliste fest.",
+      "prompt": "Bitte wählen Sie die Sprache der Mnemonik-Wortliste"
+    },
+    "arg_builder_start_index": {
+      "help": "Geben Sie den Index (die Schlüsselnummer) ein, ab dem Sie mit der Erzeugung von Builder-Schlüsseln beginnen möchten.",
+      "prompt": "Geben Sie den Index (die Schlüsselnummer) ein, ab dem Sie mit der Erzeugung von Builder-Schlüsseln beginnen möchten.",
+      "confirm": "Bitte wiederholen Sie den Startindex des Builders zur Bestätigung"
+    },
+    "err_mnemonic_password_not_allowed": "--mnemonic_password kann nur verwendet werden, wenn eine vorhandene Mnemonik wiederverwendet wird (--mnemonic); es ist nicht erlaubt, wenn eine neue Mnemonik erzeugt wird.",
+    "msg_mnemonic_presentation": "Dies ist Ihre Mnemonik (Seed-Phrase). Schreiben Sie sie auf und bewahren Sie sie sicher auf. Sie ist die EINZIGE Möglichkeit, Ihre Builder-Einzahlung wiederherzustellen.",
+    "msg_press_any_key": "Drücken Sie eine beliebige Taste, sobald Sie Ihre Mnemonik aufgeschrieben haben.",
+    "msg_mnemonic_retype_prompt": "Bitte geben Sie Ihre Mnemonik (durch Leerzeichen getrennt) ein, um zu bestätigen, dass Sie sie aufgeschrieben haben. Hinweis: Sie müssen auf Wunsch nur die ersten 4 Buchstaben jedes Wortes eingeben.",
+    "msg_mnemonic_clipboard_warning": "WARNUNG: Sie MÜSSEN die Mnemonik aufschreiben, da wir nach diesem Schritt versuchen werden, die Zwischenablage zu löschen.",
+    "msg_confirm_clipboard_clearing": "WARNUNG: Ihre Zwischenablage wird GELÖSCHT. Einige Anwendungen oder Konfigurationen können dies verhindern. Drücken Sie eine beliebige Taste, um die Zwischenablage zu löschen."
+  }
+}

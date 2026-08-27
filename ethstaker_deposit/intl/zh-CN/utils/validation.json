@@ -69,5 +69,13 @@
   },
   "validate_genesis_validators_root": {
     "missing_genesis_validators_root": "链设置缺少 GENESIS_VALIDATORS_ROOT 值。创建退出交易需要此值。"
+  },
+  "verify_builder_deposit_data_json": {
+    "msg_deposit_verification": "正在验证您的构建者存款：\t"
+  },
+  "validate_builder_deposit_amount": {
+    "err_invalid_amount": "提供的数量无效。请输入至少为 1 ether 的构建者存款数量。",
+    "err_not_gwei_denomination": "提供的数量无效。请输入精度不超过 1 gwei 的数值。",
+    "err_min_deposit": "提供的数量无效。请输入至少为 1 ether 的数值。构建者存款没有最大数量限制。"
   }
 }

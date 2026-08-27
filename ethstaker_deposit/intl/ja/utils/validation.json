@@ -69,5 +69,13 @@
   },
   "validate_genesis_validators_root": {
     "missing_genesis_validators_root": "チェーン設定に GENESIS_VALIDATORS_ROOT の値がありません。退出トランザクションの作成にはこの値が必要です。"
+  },
+  "verify_builder_deposit_data_json": {
+    "msg_deposit_verification": "ビルダー入金データを確認しています:\t"
+  },
+  "validate_builder_deposit_amount": {
+    "err_invalid_amount": "無効な額です。ビルダーへの入金額として1 ETH以上の値を指定してください。",
+    "err_not_gwei_denomination": "無効な額です。1 gweiを超える精度の値は指定できません。",
+    "err_min_deposit": "無効な額です。1 ETH以上の値を指定してください。ビルダー入金額に上限はありません。"
   }
 }

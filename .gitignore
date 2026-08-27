@@ -1,5 +1,6 @@
 bls_to_execution_changes
 bls_to_execution_changes_keystore
+builder_keys
 exit_transactions
 partial_deposits
 validator_keys

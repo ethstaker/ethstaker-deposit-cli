@@ -11,6 +11,7 @@ from ethstaker_deposit.utils.validation import (
     normalize_input_list,
     normalize_bls_withdrawal_credentials_to_bytes,
     validate_int_range,
+    validate_builder_deposit_amount,
     validate_deposit_amount,
     validate_bls_withdrawal_credentials,
     validate_withdrawal_address,
@@ -21,6 +22,7 @@ from ethstaker_deposit.utils.validation import (
 )
 from ethstaker_deposit.utils.constants import (
     BLS_WITHDRAWAL_PREFIX,
+    BUILDER_MIN_DEPOSIT,
     ETH2GWEI,
     MAX_DEPOSIT_AMOUNT,
 )
@@ -231,6 +233,43 @@ def test_validate_deposit_amount_returns_gwei(amount: str, expected: int) -> Non
 def test_validate_deposit_amount_rejects_invalid_boundaries(amount: Any) -> None:
     with pytest.raises((ValidationError, TypeError)):
         validate_deposit_amount(amount)
+
+
+@pytest.mark.parametrize(
+    'amount, valid',
+    [
+        ('-1', False),
+        ('0', False),
+        ('0.99999999', False),
+        ('1', True),
+        ('1.000000001', True),
+        ('1.0000000001', False),
+        ('2048', True),
+        # Unlike validator deposits, there is no upper bound for builder deposits.
+        ('2049', True),
+        ('1000000', True),
+        ('a', False),
+        (' ', False),
+    ]
+)
+def test_validate_builder_deposit_amount(amount: str, valid: bool) -> None:
+    if valid:
+        validate_builder_deposit_amount(amount)
+    else:
+        with pytest.raises(ValidationError):
+            validate_builder_deposit_amount(amount)
+
+
+@pytest.mark.parametrize(
+    'amount, expected',
+    [
+        ('1', BUILDER_MIN_DEPOSIT),
+        ('1.000000001', BUILDER_MIN_DEPOSIT + 1),
+        ('2048', 2048 * ETH2GWEI),
+    ],
+)
+def test_validate_builder_deposit_amount_returns_gwei(amount: str, expected: int) -> None:
+    assert validate_builder_deposit_amount(amount) == expected
 
 
 @pytest.mark.parametrize('num', [0, 1, 2**32 - 1, '0', '4294967295'])

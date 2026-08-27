@@ -69,5 +69,13 @@
   },
   "validate_genesis_validators_root": {
     "missing_genesis_validators_root": "체인 설정에 GENESIS_VALIDATORS_ROOT 값이 없습니다. 종료 트랜잭션을 생성하려면 이 값이 필요합니다."
+  },
+  "verify_builder_deposit_data_json": {
+    "msg_deposit_verification": "빌더 예치금 검증 중:\t"
+  },
+  "validate_builder_deposit_amount": {
+    "err_invalid_amount": "입력한 금액이 유효하지 않습니다. 빌더 예치금은 최소 1 ETH 이상으로 입력하세요.",
+    "err_not_gwei_denomination": "입력한 금액이 유효하지 않습니다. 1 gwei보다 정밀하지 않은 값으로 입력하세요.",
+    "err_min_deposit": "입력한 금액이 유효하지 않습니다. 최소 1 ETH 이상의 값을 입력하세요. 빌더 예치금에는 최대 한도가 없습니다."
   }
 }

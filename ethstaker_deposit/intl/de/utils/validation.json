@@ -69,5 +69,13 @@
   },
   "validate_genesis_validators_root": {
     "missing_genesis_validators_root": "In den Chain-Einstellungen fehlt ein Wert für GENESIS_VALIDATORS_ROOT. Dieser Wert wird zum Erstellen der Exit-Transaktion benötigt."
+  },
+  "verify_builder_deposit_data_json": {
+    "msg_deposit_verification": "Ihre builder_deposit_data-*.json-Datei(en) werden überprüft:\t"
+  },
+  "validate_builder_deposit_amount": {
+    "err_invalid_amount": "Ungültiger Betrag. Bitte geben Sie einen Betrag von mindestens 1 ETH für eine Builder-Einzahlung ein.",
+    "err_not_gwei_denomination": "Ungültiger Betrag. Bitte geben Sie einen Wert ein, dessen Genauigkeit 1 gwei nicht überschreitet.",
+    "err_min_deposit": "Ungültiger Betrag. Bitte geben Sie einen Betrag von mindestens 1 ETH ein. Es gibt keinen maximalen Betrag für eine Builder-Einzahlung."
   }
 }

@@ -1,0 +1,34 @@
+{
+  "builder": {
+    "arg_builder": {
+      "help": "EIP-8282'ye göre builder anahtarları ve bir builder depozitosu oluşturun. Mevcut bir ipucu kelime grubunuz olup olmadığı interaktif olarak sorulacaktır."
+    },
+    "arg_mnemonic": {
+      "help": "Builder anahtarlarını türetmek için kullanılacak mevcut bir ipucu kelime grubu. Belirtilmezse, mevcut bir ipucu kelime grubunuz olup olmadığı interaktif olarak sorulacak, aksi halde yepyeni bir tane oluşturulacaktır. (Bu parametreyi kullanmamanız ve size sorulduğunda ipucu kelimelerini girmeniz tavsiye edilir, aksi taktirde ipucu kelimeleriniz komut satırı geçmişinde gözükecektir.)",
+      "existing_confirm": "Bu builder için kullanmak istediğiniz mevcut bir ipucu kelime grubunuz var mı? Yoksa, yeni bir tane oluşturulacaktır.",
+      "prompt": "İpucu kelimelerinizin arasında boşluk bırakarak giriniz (\" \"). Not: her kelimenin ilk 4 harfini girmeniz yeterli olacaktır."
+    },
+    "arg_mnemonic_password": {
+      "help": "Büyük ihtimalle aradığınız parametre bu değil: bu parametre ipucu kelimeleri için şifredir, anahtar deposu şifresi değildir. Yalnızca mevcut bir ipucu kelime grubu kullanılırken kullanılabilir; yeni bir ipucu kelime grubu oluşturulurken kullanılamaz.",
+      "prompt": "İpucu kelime şifrenizi giriniz (daha önce sağladıysanız). Unutmayacağınıza emin olun, bu şifre kurtarılamaz.",
+      "confirm": "Onaylamak için ipucu kelime şifrenizi tekrar giriniz.",
+      "mismatch": "Girdiğiniz ipucu kelime şifresi eşleşmiyor, lütfen tekrar deneyiniz."
+    },
+    "arg_mnemonic_language": {
+      "default": "english",
+      "help": "İpucu kelime listesinin dili. Mevcut bir ipucu kelime grubu kullanılıyorsa (--mnemonic) ve bu belirtilmemişse, sağlanan ipucu kelimelerine göre belirlemeye çalışacağız. Yeni bir ipucu kelime grubu oluşturuluyorsa, bu seçenek kelime listesi dilini belirler.",
+      "prompt": "Lütfen ipucu kelimelerinin dilini seçin"
+    },
+    "arg_builder_start_index": {
+      "help": "Builder anahtarları oluşturmaya başlamak istediğiniz sırayı (anahtar numarası) giriniz.",
+      "prompt": "Builder anahtarları oluşturmaya başlamak istediğiniz sırayı (anahtar numarası) giriniz.",
+      "confirm": "Lütfen onaylamak için builder başlangıç sırasını tekrar girin"
+    },
+    "err_mnemonic_password_not_allowed": "--mnemonic_password yalnızca mevcut bir ipucu kelime grubu (--mnemonic) yeniden kullanılırken kullanılabilir; yeni bir ipucu kelime grubu oluşturulurken kullanılamaz.",
+    "msg_mnemonic_presentation": "Bunlar ipucu kelimelerinizdir (tohum ifadeleri). Bir yere not alın ve güvenli bir şekilde saklayın. Builder depozitosunu YALNIZCA bununla geri alabilirsiniz.",
+    "msg_press_any_key": "İpucu kelimelerinizi not aldığınızda bir tuşa basın.",
+    "msg_mnemonic_retype_prompt": "Lütfen ipucu kelimelerinizi not aldığınızı doğrulamak amacıyla (aralarında boşluk bırakarak) yazın. Not: kelimelerin yalnızca ilk 4 harfini yazmanız yeterlidir.",
+    "msg_mnemonic_clipboard_warning": "UYARI: Bu adımdan sonra panoyu temizlemeye çalışacağımız için anımsatma ifadesini MUTLAKA yazın.",
+    "msg_confirm_clipboard_clearing": "UYARI: Panonuz TEMİZLENECEK. Bazı uygulamalar veya yapılandırmalar bunu engelleyebilir. Panoyu temizlemek için bir tuşa basın."
+  }
+}
