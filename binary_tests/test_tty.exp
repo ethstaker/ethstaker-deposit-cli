@@ -77,29 +77,27 @@ if {$exit_code != 2} {
 
 # --- 5. connectivity warning (optional, network dependent) -------------------
 # The warning and its "press any key" pause only appear when an internet
-# connection is detected; when offline the CLI skips straight to the help text.
+# connection is detected; when offline the CLI skips straight to the
+# subcommand's own prompt. A real subcommand (not --help, and not
+# --ignore_connectivity) is required.
 puts "--- tty: internet connectivity warning ---"
-spawn $env(BINARY) --language english
+spawn $env(BINARY) --language english generate-mnemonic
 expect {
     -re {Internet connectivity detected} {
         press_any_key
-        expect_or_fail {Usage:}
+        expect_or_fail {language of the mnemonic word list}
     }
-    -re {Usage:} {}
+    -re {language of the mnemonic word list} {}
     timeout {
-        fail "Did not see the connectivity warning or the usage help"
+        fail "Did not see the connectivity warning or the mnemonic-language prompt"
     }
     eof {
         fail "Unexpected EOF while waiting for the connectivity check"
     }
 }
-expect_or_fail {Error: Missing command}
-expect_eof
-set result [wait]
-set exit_code [lindex $result 3]
-if {$exit_code != 2} {
-    fail "Expected exit code 2 for missing command, got $exit_code"
-}
+accept_default
+expect_or_fail {randomly generated mnemonic}
+expect_exit_zero
 
 # --- 6. Ctrl+C aborts cleanly ------------------------------------------------
 puts "--- tty: Ctrl+C aborts at a prompt ---"
