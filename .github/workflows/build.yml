@@ -86,6 +86,19 @@ jobs:
       - name: Smoke test on Linux & macOS
         if: ${{ startsWith(matrix.os, 'ubuntu-') || startsWith(matrix.os, 'macos-') }}
         run: ./"${BUILD_FILE_NAME}"/deposit --version
+      - name: Install expect (Linux & macOS)
+        if: ${{ startsWith(matrix.os, 'ubuntu-') || startsWith(matrix.os, 'macos-') }}
+        run: |
+          if command -v apt-get >/dev/null 2>&1; then
+            sudo apt-get update && sudo apt-get install -y expect
+          elif ! command -v expect >/dev/null 2>&1; then
+            brew install expect
+          fi
+      - name: Run release-asset tests on Linux & macOS
+        if: ${{ startsWith(matrix.os, 'ubuntu-') || startsWith(matrix.os, 'macos-') }}
+        env:
+          TERM: xterm
+        run: bash binary_tests/run_tests.sh "./${BUILD_FILE_NAME}"
       - name: Package on Linux & macOS
         if: ${{ startsWith(matrix.os, 'ubuntu-') || startsWith(matrix.os, 'macos-') }}
         run: |

@@ -1,0 +1,39 @@
+#!/usr/bin/env expect
+#
+# test_generate_bls_to_execution_change.exp - interactive happy path for the
+# `generate-bls-to-execution-change` command using the fixed BTEC mnemonic and
+# its known old BLS withdrawal credentials.
+
+source [file join [file dirname [info script]] lib.exp]
+
+spawn_cli generate-bls-to-execution-change --bls_to_execution_changes_folder $env(WORK_DIR)
+
+expect_or_fail {network/chain name} accept_default
+
+send_fixed_mnemonic BTEC_MNEMONIC
+
+# Index position for the withdrawal credentials in ERC-2334 format.
+expect_or_fail {ERC-2334 format} {
+    send_line 0
+}
+
+# Validator indices.
+expect_or_fail {list of the validator index number} {
+    send_line $env(BTEC_VALIDATOR_INDEX)
+}
+
+# Old BLS withdrawal credentials.
+expect_or_fail {old BLS withdrawal credentials} {
+    send_line $env(BTEC_CREDENTIALS)
+}
+
+# New execution withdrawal address + confirmation.
+expect_or_fail {withdrawal address} {
+    send_line $env(BTEC_WITHDRAWAL_ADDRESS)
+}
+expect_or_fail {Repeat your withdrawal address for confirmation} {
+    send_line $env(BTEC_WITHDRAWAL_ADDRESS)
+}
+
+# Credential verification, success message and final "Press any key." pause.
+expect_success_end

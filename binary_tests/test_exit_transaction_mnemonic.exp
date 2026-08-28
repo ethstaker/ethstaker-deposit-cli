@@ -1,0 +1,24 @@
+#!/usr/bin/env expect
+#
+# test_exit_transaction_mnemonic.exp - interactive happy path for the
+# `exit-transaction-mnemonic` command using the fixed MNEMONIC fixture and a
+# list of validator indices (exercises the multi-exit path).
+
+source [file join [file dirname [info script]] lib.exp]
+
+spawn_cli exit-transaction-mnemonic --output_folder $env(WORK_DIR)
+
+expect_or_fail {network/chain name} accept_default
+
+send_fixed_mnemonic
+
+# Validator start index (default 0).
+expect_or_fail {which you used when you created your keys} accept_default
+
+# Validator indices.
+expect_or_fail {list of the validator index number} {
+    send_line 0,1,2,3
+}
+
+# Exit creation, verification, success message and final pause.
+expect_success_end

@@ -87,7 +87,7 @@ python3 -m pytest tests
 
 ## Building Local Binaries
 
-The standalone binary targets use Python 3.14, matching the official release workflow and the Python version supported by the pinned PyInstaller toolchain.
+The standalone binary targets use the Python version pinned by the `.github/workflows/build.yml` build step.
 
 Build a Linux or macOS binary with:
 
@@ -96,18 +96,48 @@ make build_linux
 make build_macos
 ```
 
-These targets look for `python3.14`, create or reuse the `venv/` environment with that interpreter, and install the pinned build dependencies. If an existing `venv/` was created with another Python version, it is recreated automatically.
+These targets look for `python3.<xx>` matching the current build Python version, create or reuse the `venv/` environment with that interpreter, and install the pinned build dependencies. If an existing `venv/` was created with another Python version, it is recreated automatically.
 
-If Python 3.14 is installed under a non-standard path, provide it explicitly:
+If Python is installed under a non-standard path, provide it explicitly:
 
 ```sh
-make BUILD_PYTHON=/path/to/python3.14 build_linux
+make BUILD_PYTHON=/path/to/python3.<xx> build_linux
 ```
 
 The general development targets, such as `venv_test` and `venv_lint`, use `python3` by default. That interpreter must satisfy the `requires-python` range in `pyproject.toml`; override it with `PYTHON` when needed:
 
 ```sh
-make PYTHON=python3.14 venv_test
+make PYTHON=python3.15 venv_test
 ```
 
-The official release workflow builds binaries with Python 3.14. Windows binaries are currently built by GitHub Actions using `build_configs/windows/build.spec`.
+The official release workflow builds binaries with a Python version pinned in `.github/workflows/build.yml`. Windows binaries are built by GitHub Actions using `build_configs/windows/build.spec`.
+
+## Testing Built Binaries
+
+The `binary_tests/` directory contains interactive release-asset tests that drive the compiled `deposit` binary over a PTY with `expect` (a fully interactive happy path per CLI command, plus general TTY checks). They replace the old root-level `test_binary_*.py` scripts and require `expect` on `PATH` (`sudo apt install expect` on Debian/Ubuntu, `brew install expect` on macOS).
+
+Build a binary and run the whole suite against it:
+
+```sh
+make binary_test
+```
+
+This builds a standalone binary (via `build_linux`/`build_macos`, output in `./dist`) and then runs `binary_tests/run_tests.sh ./dist`.
+
+To test an existing build output (e.g. an unpacked release archive) without rebuilding:
+
+```sh
+bash binary_tests/run_tests.sh ./dist
+bash binary_tests/run_tests.sh -s new_mnemonic ./dist   # a single test
+bash binary_tests/run_tests.sh -l                        # list the available tests
+```
+
+The same suite can be run through tox against a pre-built binary:
+
+```sh
+make build_linux          # or make build_macos
+tox -e binary-test
+BINARY_TEST_BINARY_DIR=/path/to/binary-dir tox -e binary-test
+```
+
+In CI the suite runs on the Linux and macOS `ci-build` matrix entries as part of the release build workflow (`.github/workflows/build.yml`); Windows release assets are covered by the `--version` smoke test there.

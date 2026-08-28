@@ -1,0 +1,204 @@
+#!/usr/bin/env expect
+#
+# lib.exp - shared helpers for the ethstaker-deposit-cli release-asset tests.
+#
+# Each binary_tests/test_<name>.exp sources this file and then drives one fully
+# interactive happy path against the compiled `deposit` binary over a PTY. These
+# tests exist to validate that the packaged binary behaves correctly in a real
+# terminal (prompts, "press any key" pauses, screen clears, mnemonic retype),
+# which the pytest harness in tests/ deliberately does not exercise.
+#
+# The helper style is modeled on eth-docker's .github/test-ethd-config.exp.
+#
+# Environment variables provided by run_tests.sh:
+#   BINARY                  path to the compiled deposit binary
+#   WORK_DIR                per-test working folder (created by run_tests.sh)
+#   KEYSTORE_PASSWORD       password used for generated keystores
+#   WITHDRAWAL_ADDRESS      execution withdrawal address (keygen & keystore cmds)
+#   BTEC_WITHDRAWAL_ADDRESS execution withdrawal address for the BTEC flow
+#   MNEMONIC                fixed English mnemonic (existing-mnemonic flows)
+#   BTEC_MNEMONIC           fixed English mnemonic for generate-bls-to-execution-change
+#   BTEC_CREDENTIALS        old BLS withdrawal credentials matching BTEC_MNEMONIC
+#   BTEC_VALIDATOR_INDEX    validator index matching the BTEC credentials
+#   KEYSTORE_PATH           path to a keystore produced by the existing-mnemonic test
+#   VERSION_FILE            path to ethstaker_deposit/VERSION (used by test_tty.exp)
+
+set timeout 120
+match_max 100000
+log_user 1
+
+if {![info exists env(TERM)] || $env(TERM) eq ""} {
+    set env(TERM) xterm
+}
+
+proc fail {msg} {
+    puts "\n\[TEST FAIL\] $msg"
+    exit 1
+}
+
+proc expect_or_fail {pattern {procname ""} {t ""}} {
+    set old_timeout $::timeout
+    if {$t ne ""} {
+        set ::timeout $t
+    }
+    expect {
+        -re $pattern {
+            if {$procname ne ""} {
+                uplevel $procname
+            }
+        }
+        timeout {
+            puts "\n\[TEST FAIL\] Timeout waiting for: $pattern"
+            exit 1
+        }
+        eof {
+            puts "\n\[TEST FAIL\] Unexpected EOF while waiting for: $pattern"
+            exit 1
+        }
+    }
+    set ::timeout $old_timeout
+}
+
+proc expect_optional {pattern {procname ""} {t ""}} {
+    set old_timeout $::timeout
+    if {$t ne ""} {
+        set ::timeout $t
+    }
+    expect {
+        -re $pattern {
+            if {$procname ne ""} {
+                uplevel $procname
+            }
+        }
+        timeout {}
+        eof {}
+    }
+    set ::timeout $old_timeout
+}
+
+proc expect_eof {{t ""}} {
+    set old_timeout $::timeout
+    if {$t ne ""} {
+        set ::timeout $t
+    }
+    expect {
+        eof {}
+        timeout {
+            puts "\n\[TEST FAIL\] Timeout waiting for EOF"
+            exit 1
+        }
+    }
+    set ::timeout $old_timeout
+}
+
+proc expect_exit_zero {{t ""}} {
+    expect_eof $t
+    set result [wait]
+    set exit_code [lindex $result 3]
+    if {$exit_code != 0} {
+        puts "\n\[TEST FAIL\] Command exited with code $exit_code"
+        exit 1
+    }
+}
+
+# Send one line of input to the spawned process.
+proc send_line {text} {
+    send -- "$text\r"
+}
+
+# Accept the default at a choice prompt (e.g. the chain name).
+proc accept_default {} {
+    send "\r"
+}
+
+# Answer a click.pause() ("Press any key...") prompt. The key is sent only
+# after the pause text has been observed, with a small delay so the TTY line
+# discipline has consumed the previous prompt.
+proc press_any_key {} {
+    after 300
+    send "\r"
+}
+
+# spawn_cli: run the compiled binary with the common non-interactive globals
+# disabled so every command-level prompt is driven interactively. spawn_id must
+# be set in the global scope so the top-level expect calls see the child.
+proc spawn_cli {args} {
+    global env spawn_id
+    spawn $env(BINARY) --language english --ignore_connectivity {*}$args
+}
+
+# capture_mnemonic: read the 24 randomly generated words off the terminal and
+# store them (space separated) in the global ::mnemonic.
+proc capture_mnemonic {} {
+    global mnemonic
+    set mnemonic ""
+    expect {
+        -re {([a-z]+(?:[ \t\r\n]+[a-z]+){23})} {
+            set mnemonic $expect_out(1,string)
+        }
+        timeout {
+            puts "\n\[TEST FAIL\] Timeout capturing the generated mnemonic"
+            exit 1
+        }
+        eof {
+            puts "\n\[TEST FAIL\] Unexpected EOF while capturing the generated mnemonic"
+            exit 1
+        }
+    }
+    regsub -all {[[:space:]]+} $mnemonic " " mnemonic
+}
+
+# send_mnemonic: retype the captured mnemonic at the confirmation prompt.
+proc send_mnemonic {} {
+    global mnemonic
+    if {$mnemonic eq ""} {
+        fail "No mnemonic was captured before retype"
+    }
+    after 300
+    send -- "$mnemonic\r"
+}
+
+# expect_success_end: consume the final success output ("Success!", the output
+# folder message and the trailing click.pause) and require a clean exit.
+proc expect_success_end {} {
+    expect_or_fail {Success}
+    expect_or_fail {Press any key} press_any_key
+    expect_exit_zero
+}
+
+# Expect the fixed existing mnemonic prompt and answer it. The source of the
+# mnemonic is the environment variable named by the argument (default MNEMONIC,
+# BTEC_MNEMONIC for the BLS-to-execution-change flow).
+proc send_fixed_mnemonic {{mnemonic_var MNEMONIC}} {
+    global env
+    expect_or_fail {mnemonic separated by spaces} {
+        send_line [set env($mnemonic_var)]
+    }
+}
+
+# Common generate-keys prompt sequence (new-mnemonic / existing-mnemonic /
+# builder). Handles the compounding=yes path so the deposit amount prompt is
+# exercised deterministically.
+proc answer_keygen_prompts {} {
+    global env
+    expect_or_fail {how many new validators you wish to run} {
+        send_line 1
+    }
+    expect_or_fail {network/chain name} accept_default
+    expect_or_fail {Create a password that secures your validator keystore} {
+        send_line $env(KEYSTORE_PASSWORD)
+    }
+    expect_or_fail {Repeat your keystore password for confirmation} {
+        send_line $env(KEYSTORE_PASSWORD)
+    }
+    expect_or_fail {withdrawal address} {
+        send_line $env(WITHDRAWAL_ADDRESS)
+    }
+    expect_or_fail {Repeat your withdrawal address for confirmation} {
+        send_line $env(WITHDRAWAL_ADDRESS)
+    }
+    expect_or_fail {compounding} {
+        send_line y
+    }
+    expect_or_fail {amount you wish to deposit to these validators} accept_default
+}

@@ -21,3 +21,8 @@ repos:
     hooks:
     - id: check-json
       files: ^ethstaker_deposit/intl
+-   repo: https://github.com/pre-commit/mirrors-shellcheck
+    rev: v0.11.0
+    hooks:
+    - id: shellcheck
+      files: \.sh$

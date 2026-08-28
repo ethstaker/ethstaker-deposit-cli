@@ -1,0 +1,46 @@
+#!/usr/bin/env expect
+#
+# test_builder.exp - interactive happy path for the `builder` command
+# (EIP-8282 builder keys) using the fixed MNEMONIC fixture via the
+# "existing mnemonic" path.
+
+source [file join [file dirname [info script]] lib.exp]
+
+spawn_cli builder --folder $env(WORK_DIR)
+
+# Use an existing mnemonic rather than generating a new one.
+expect_or_fail {Do you have an existing mnemonic} {
+    send_line y
+}
+
+send_fixed_mnemonic
+
+# Builder start index + confirmation.
+expect_or_fail {generating builder keys from} {
+    send_line 0
+}
+expect_or_fail {repeat the builder start index to confirm} {
+    send_line 0
+}
+
+# Builder keygen prompts.
+expect_or_fail {how many new builders you wish to register} {
+    send_line 1
+}
+expect_or_fail {network/chain name} accept_default
+expect_or_fail {Create a password that secures your builder keystore} {
+    send_line $env(KEYSTORE_PASSWORD)
+}
+expect_or_fail {Repeat your keystore password for confirmation} {
+    send_line $env(KEYSTORE_PASSWORD)
+}
+expect_or_fail {withdrawal address for this builder} {
+    send_line $env(WITHDRAWAL_ADDRESS)
+}
+expect_or_fail {Repeat your withdrawal address for confirmation} {
+    send_line $env(WITHDRAWAL_ADDRESS)
+}
+expect_or_fail {amount you wish to deposit to these builders} accept_default
+
+# Key creation, success message and final "Press any key." pause.
+expect_success_end

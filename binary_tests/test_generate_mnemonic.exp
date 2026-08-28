@@ -1,0 +1,20 @@
+#!/usr/bin/env expect
+#
+# test_generate_mnemonic.exp - interactive happy path for the `generate-mnemonic`
+# command, writing the mnemonic to an output file and verifying the on-screen
+# confirmation messages.
+
+source [file join [file dirname [info script]] lib.exp]
+
+set output_file [file join $env(WORK_DIR) mnemonic.txt]
+
+spawn_cli generate-mnemonic --output_file $output_file
+
+# Choose the mnemonic word list language (English is the default).
+expect_or_fail {language of the mnemonic word list} accept_default
+
+# The mnemonic is written to the file instead of being displayed.
+expect_or_fail {randomly generated mnemonic was written in}
+expect_or_fail {existing-mnemonic command}
+
+expect_exit_zero

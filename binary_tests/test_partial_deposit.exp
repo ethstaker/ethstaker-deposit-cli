@@ -1,0 +1,32 @@
+#!/usr/bin/env expect
+#
+# test_partial_deposit.exp - interactive happy path for the `partial-deposit`
+# command, signing a partial deposit with the keystore fixture produced by
+# existing_mnemonic. Exercises the amount, withdrawal address and compounding
+# prompts.
+
+source [file join [file dirname [info script]] lib.exp]
+
+spawn_cli partial-deposit --output_folder $env(WORK_DIR)
+
+expect_or_fail {network/chain name} accept_default
+
+expect_or_fail {location of your keystore file} {
+    send_line $env(KEYSTORE_PATH)
+}
+expect_or_fail {password that is used to encrypt the provided keystore} {
+    send_line $env(KEYSTORE_PASSWORD)
+}
+expect_or_fail {amount you wish to deposit} accept_default
+expect_or_fail {withdrawal address} {
+    send_line $env(WITHDRAWAL_ADDRESS)
+}
+expect_or_fail {Repeat the withdrawal address for confirmation} {
+    send_line $env(WITHDRAWAL_ADDRESS)
+}
+expect_or_fail {compounding} {
+    send_line y
+}
+
+# Deposit creation, verification, success message and final pause.
+expect_success_end

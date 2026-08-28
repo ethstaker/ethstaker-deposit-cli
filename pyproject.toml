@@ -21,7 +21,6 @@ select = ["E", "W", "F", "UP", "S"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**/*.py" = ["S101", "S105", "S106"]
-"test_*.py" = ["S101", "S105", "S106"]
 
 [project]
 name = "ethstaker_deposit"
