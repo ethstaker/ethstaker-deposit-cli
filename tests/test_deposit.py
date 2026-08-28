@@ -2,9 +2,11 @@ import os
 import socket
 
 import click
+import pytest
 from click.testing import CliRunner
 
-from ethstaker_deposit.deposit import check_connectivity, cli
+from ethstaker_deposit import deposit
+from ethstaker_deposit.deposit import check_connectivity, cli, run
 from tests.test_cli.helpers import clean_key_folder
 
 
@@ -147,6 +149,22 @@ def test_should_not_check_connectivity_with_non_interactive(monkeypatch) -> None
     assert connectivity_called is False
 
     clean_key_folder(my_folder_path)
+
+
+def test_run_handles_keyboard_interrupt_from_cli(monkeypatch, capsys) -> None:
+    # Simulates a KeyboardInterrupt escaping click's own Abort handling
+    # (see click's `except Abort:` block in `BaseCommand.main`), which can
+    # happen if a second interrupt fires while click is echoing "Aborted!".
+    def _mock_cli():
+        raise KeyboardInterrupt()
+
+    monkeypatch.setattr(deposit, 'cli', _mock_cli)
+
+    with pytest.raises(SystemExit) as exc_info:
+        run()
+
+    assert exc_info.value.code == 1
+    assert 'Aborted!' in capsys.readouterr().err
 
 
 def test_should_not_check_connectivity_with_both_non_interactive_or_ignore_connectivity(monkeypatch) -> None:
