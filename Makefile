@@ -8,7 +8,7 @@ BUILD_PYTHON_MINOR=14
 DOCKER_IMAGE="ghcr.io/ethstaker/ethstaker-deposit-cli:latest"
 
 .PHONY: help clean venv_build venv_build_test venv_test venv_lint venv_deposit \
-	build_macos build_linux build_docker run_docker binary_venv
+	build_macos build_linux build_docker run_docker binary_venv binary_test
 
 help:
 	@echo "clean - remove build and Python file artifacts"
@@ -18,6 +18,7 @@ help:
 	@echo "venv_build_test - install testing dependencies with venv"
 	@echo "venv_lint - check style with ruff and mypy with venv"
 	@echo "venv_test - run tests with venv"
+	@echo "binary_test - build a standalone binary and run the binary_tests release-asset suite with expect"
 
 clean:
 	rm -rf venv/
@@ -76,6 +77,22 @@ binary_venv:
 	@test -d $(VENV_NAME) || $(PYTHON) -m venv $(VENV_NAME)
 	@$(VENV_PYTHON) -c 'import sys; expected=($(BUILD_PYTHON_MAJOR), $(BUILD_PYTHON_MINOR)); actual=sys.version_info[:2]; sys.exit(0 if actual == expected else "Binary builds require Python 3.14")'
 	$(VENV_PYTHON) -m pip install --require-hashes -r requirements.txt
+
+# Build a standalone binary for the current platform and run the
+# interactive release-asset tests from binary_tests/ against it with expect.
+# Requires `expect` on PATH.
+binary_test:
+	@os=$$(uname -s); \
+	if [ "$$os" = "Linux" ]; then \
+		$(MAKE) build_linux; \
+	elif [ "$$os" = "Darwin" ]; then \
+		$(MAKE) build_macos; \
+	else \
+		echo "binary_test is only supported on Linux and macOS (got $$os)." >&2; \
+		exit 1; \
+	fi
+	bash binary_tests/run_tests.sh ./dist
+	bash binary_tests/test_non_interactive.sh ./dist
 
 build_docker:
 	@docker build --pull -t $(DOCKER_IMAGE) .

@@ -1,0 +1,32 @@
+#!/usr/bin/env expect
+#
+# test_new_mnemonic.exp - interactive happy path for the `new-mnemonic` command.
+#
+# This is the flagship TTY test: it captures the randomly generated 24-word
+# mnemonic off the terminal, presses the "any key" pause, retypes the mnemonic
+# to confirm it, clears the clipboard, and verifies the generated keystores.
+# It also exercises the mnemonic word-list chooser, the keystore password,
+# withdrawal address (with confirmation) and the compounding + amount prompts.
+
+source [file join [file dirname [info script]] lib.exp]
+
+spawn_cli new-mnemonic --folder $env(WORK_DIR)
+
+# Choose the mnemonic word list language (English is the default).
+expect_or_fail {language of the mnemonic word list} accept_default
+
+# Common keygen prompts: validator count, chain, keystore password,
+# withdrawal address, compounding and deposit amount.
+answer_keygen_prompts
+
+# Mnemonic presentation: read the words off the screen, press the pause,
+# then retype them at the confirmation prompt.
+expect_or_fail {This is your mnemonic} capture_mnemonic
+expect_or_fail {Press any key when you have written down your mnemonic} press_any_key
+expect_or_fail {type your mnemonic} send_mnemonic
+
+# Clipboard clearing pause.
+expect_or_fail {clipboard will be CLEARED} press_any_key
+
+# Key creation, success message and final "Press any key." pause.
+expect_success_end

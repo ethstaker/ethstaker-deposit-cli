@@ -1,0 +1,29 @@
+#!/usr/bin/env expect
+#
+# test_existing_mnemonic.exp - interactive happy path for the `existing-mnemonic`
+# command using the fixed MNEMONIC fixture. Also produces the keystore fixture
+# that the keystore-consuming commands (exit-transaction-keystore, ...) reuse.
+
+source [file join [file dirname [info script]] lib.exp]
+
+spawn_cli existing-mnemonic --folder $env(WORK_DIR)
+
+send_fixed_mnemonic
+
+# Validator start index + confirmation.
+expect_or_fail {you wish to start generating more keys} {
+    send_line 0
+}
+expect_or_fail {repeat the validator start index to confirm} {
+    send_line 0
+}
+
+# Common keygen prompts: validator count, chain, keystore password,
+# withdrawal address, compounding and deposit amount.
+answer_keygen_prompts
+
+# Clipboard clearing pause.
+expect_or_fail {clipboard will be CLEARED} press_any_key
+
+# Key creation, success message and final "Press any key." pause.
+expect_success_end

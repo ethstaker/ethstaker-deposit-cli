@@ -1,0 +1,117 @@
+#!/usr/bin/env expect
+#
+# test_tty.exp - general TTY-specific checks for the compiled binary.
+#
+# Covers behaviors that only matter when the binary runs in a real terminal:
+#   * --version reports the bundled VERSION
+#   * --help lists every top-level command
+#   * every subcommand renders its help
+#   * the interactive language chooser accepts input
+#   * the internet-connectivity warning and its "press any key" pause
+#     (exercised only when online, skipped cleanly when offline)
+#   * Ctrl+C at a prompt aborts with "Aborted!" and exit code 1
+
+source [file join [file dirname [info script]] lib.exp]
+
+set commands {new-mnemonic generate-mnemonic existing-mnemonic generate-bls-to-execution-change generate-bls-to-execution-change-keystore exit-transaction-keystore exit-transaction-mnemonic partial-deposit test-keystore builder}
+
+# --- 1. --version matches the bundled VERSION file ---------------------------
+puts "--- tty: --version ---"
+spawn $env(BINARY) --version
+set version ""
+expect {
+    -re {deposit, version (.+)} {
+        set version [string trim $expect_out(1,string)]
+    }
+    timeout {
+        fail "Did not receive version output from $env(BINARY)"
+    }
+    eof {
+        fail "Unexpected EOF while reading version output"
+    }
+}
+expect_exit_zero
+puts "    reported version: $version"
+
+if {[info exists env(VERSION_FILE)] && [file exists $env(VERSION_FILE)]} {
+    set expected [string trim [exec cat $env(VERSION_FILE)]]
+    if {$version ne $expected} {
+        fail "Version mismatch: binary reports '$version', VERSION file has '$expected'"
+    }
+} else {
+    puts "    VERSION_FILE not available; skipping exact version comparison"
+}
+
+# --- 2. --help lists every top-level command ---------------------------------
+puts "--- tty: --help command list ---"
+spawn $env(BINARY) --language english --help
+expect_or_fail {Commands:}
+foreach cmd $commands {
+    expect_or_fail $cmd
+}
+expect_exit_zero
+
+# --- 3. every subcommand renders its own help --------------------------------
+puts "--- tty: subcommand help ---"
+foreach cmd $commands {
+    spawn $env(BINARY) --language english --ignore_connectivity $cmd --help
+    expect_or_fail {Usage:}
+    expect_exit_zero
+}
+
+# --- 4. interactive language chooser -----------------------------------------
+# A group invocation with no subcommand prints help and exits 2
+# ("Error: Missing command."), which is expected here.
+puts "--- tty: interactive language chooser ---"
+spawn $env(BINARY) --ignore_connectivity
+expect_or_fail {Please choose your language}
+send_line 3
+expect_or_fail {Usage:}
+expect_or_fail {Error: Missing command}
+expect_eof
+set result [wait]
+set exit_code [lindex $result 3]
+if {$exit_code != 2} {
+    fail "Expected exit code 2 for missing command, got $exit_code"
+}
+
+# --- 5. connectivity warning (optional, network dependent) -------------------
+# The warning and its "press any key" pause only appear when an internet
+# connection is detected; when offline the CLI skips straight to the help text.
+puts "--- tty: internet connectivity warning ---"
+spawn $env(BINARY) --language english
+expect {
+    -re {Internet connectivity detected} {
+        press_any_key
+        expect_or_fail {Usage:}
+    }
+    -re {Usage:} {}
+    timeout {
+        fail "Did not see the connectivity warning or the usage help"
+    }
+    eof {
+        fail "Unexpected EOF while waiting for the connectivity check"
+    }
+}
+expect_or_fail {Error: Missing command}
+expect_eof
+set result [wait]
+set exit_code [lindex $result 3]
+if {$exit_code != 2} {
+    fail "Expected exit code 2 for missing command, got $exit_code"
+}
+
+# --- 6. Ctrl+C aborts cleanly ------------------------------------------------
+puts "--- tty: Ctrl+C aborts at a prompt ---"
+spawn $env(BINARY) --language english --ignore_connectivity generate-mnemonic
+expect_or_fail {language of the mnemonic word list}
+send "\x03"
+expect_or_fail {Aborted}
+expect_eof
+set result [wait]
+set exit_code [lindex $result 3]
+if {$exit_code != 1} {
+    fail "Expected exit code 1 after Ctrl+C, got $exit_code"
+}
+
+puts "--- tty: all checks passed ---"
