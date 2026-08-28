@@ -114,7 +114,7 @@ The official release workflow builds binaries with a Python version pinned in `.
 
 ## Testing Built Binaries
 
-The `binary_tests/` directory contains interactive release-asset tests that drive the compiled `deposit` binary over a PTY with `expect` (a fully interactive happy path per CLI command, plus general TTY checks). They replace the old root-level `test_binary_*.py` scripts and require `expect` on `PATH` (`sudo apt install expect` on Debian/Ubuntu, `brew install expect` on macOS).
+The `binary_tests/` directory contains release-asset tests for the compiled `deposit` binary. Most drive the binary over a PTY with `expect` (a fully interactive happy path per CLI command, plus general TTY checks) and require `expect` on `PATH` (`sudo apt install expect` on Debian/Ubuntu, `brew install expect` on macOS); they replace the old root-level `test_binary_*.py` scripts. `binary_tests/test_non_interactive.sh` instead covers the expect-free `--non_interactive` flow (exit code and output file only), so it also runs on Windows.
 
 Build a binary and run the whole suite against it:
 
@@ -122,7 +122,7 @@ Build a binary and run the whole suite against it:
 make binary_test
 ```
 
-This builds a standalone binary (via `build_linux`/`build_macos`, output in `./dist`) and then runs `binary_tests/run_tests.sh ./dist`.
+This builds a standalone binary (via `build_linux`/`build_macos`, output in `./dist`) and then runs the release-asset tests against it: `binary_tests/run_tests.sh` (the interactive, expect-driven suite) and `binary_tests/test_non_interactive.sh` (the expect-free `--non_interactive` flow).
 
 To test an existing build output (e.g. an unpacked release archive) without rebuilding:
 
@@ -140,4 +140,4 @@ tox -e binary-test
 BINARY_TEST_BINARY_DIR=/path/to/binary-dir tox -e binary-test
 ```
 
-In CI the suite runs on the Linux and macOS `ci-build` matrix entries as part of the release build workflow (`.github/workflows/build.yml`); Windows release assets are covered by the `--version` smoke test there.
+In CI the suite runs on the Linux and macOS `ci-build` matrix entries as part of the release build workflow (`.github/workflows/build.yml`); Windows release assets are covered there by the `--version` smoke test and the `binary_tests/test_non_interactive.sh` check, which needs no expect.

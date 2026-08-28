@@ -99,6 +99,9 @@ jobs:
         env:
           TERM: xterm
         run: bash binary_tests/run_tests.sh "./${BUILD_FILE_NAME}"
+      - name: Run non-interactive test on Linux & macOS
+        if: ${{ startsWith(matrix.os, 'ubuntu-') || startsWith(matrix.os, 'macos-') }}
+        run: bash binary_tests/test_non_interactive.sh "./${BUILD_FILE_NAME}"
       - name: Package on Linux & macOS
         if: ${{ startsWith(matrix.os, 'ubuntu-') || startsWith(matrix.os, 'macos-') }}
         run: |
@@ -118,6 +121,9 @@ jobs:
         if: ${{ startsWith(matrix.os, 'windows-') }}
         run: |
           & "$env:BUILD_FILE_NAME\deposit.exe" --version
+      - name: Run non-interactive test on Windows
+        if: ${{ startsWith(matrix.os, 'windows-') }}
+        run: bash binary_tests/test_non_interactive.sh "$env:BUILD_FILE_NAME"
       - name: Package on Windows
         if: ${{ startsWith(matrix.os, 'windows-') }}
         run: |

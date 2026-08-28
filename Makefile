@@ -92,6 +92,7 @@ binary_test:
 		exit 1; \
 	fi
 	bash binary_tests/run_tests.sh ./dist
+	bash binary_tests/test_non_interactive.sh ./dist
 
 build_docker:
 	@docker build --pull -t $(DOCKER_IMAGE) .
