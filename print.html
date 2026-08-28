@@ -1160,19 +1160,36 @@ uv run pre-commit install
 python3 -m pytest tests
 </code></pre>
 <h2 id="building-local-binaries"><a class="header" href="#building-local-binaries">Building Local Binaries</a></h2>
-<p>The standalone binary targets use Python 3.14, matching the official release workflow and the Python version supported by the pinned PyInstaller toolchain.</p>
+<p>The standalone binary targets use the Python version pinned by the <code>.github/workflows/build.yml</code> build step.</p>
 <p>Build a Linux or macOS binary with:</p>
 <pre><code class="language-sh">make build_linux
 make build_macos
 </code></pre>
-<p>These targets look for <code>python3.14</code>, create or reuse the <code>venv/</code> environment with that interpreter, and install the pinned build dependencies. If an existing <code>venv/</code> was created with another Python version, it is recreated automatically.</p>
-<p>If Python 3.14 is installed under a non-standard path, provide it explicitly:</p>
-<pre><code class="language-sh">make BUILD_PYTHON=/path/to/python3.14 build_linux
+<p>These targets look for <code>python3.&lt;xx&gt;</code> matching the current build Python version, create or reuse the <code>venv/</code> environment with that interpreter, and install the pinned build dependencies. If an existing <code>venv/</code> was created with another Python version, it is recreated automatically.</p>
+<p>If Python is installed under a non-standard path, provide it explicitly:</p>
+<pre><code class="language-sh">make BUILD_PYTHON=/path/to/python3.&lt;xx&gt; build_linux
 </code></pre>
 <p>The general development targets, such as <code>venv_test</code> and <code>venv_lint</code>, use <code>python3</code> by default. That interpreter must satisfy the <code>requires-python</code> range in <code>pyproject.toml</code>; override it with <code>PYTHON</code> when needed:</p>
-<pre><code class="language-sh">make PYTHON=python3.14 venv_test
+<pre><code class="language-sh">make PYTHON=python3.15 venv_test
 </code></pre>
-<p>The official release workflow builds binaries with Python 3.14. Windows binaries are currently built by GitHub Actions using <code>build_configs/windows/build.spec</code>.</p>
+<p>The official release workflow builds binaries with a Python version pinned in <code>.github/workflows/build.yml</code>. Windows binaries are built by GitHub Actions using <code>build_configs/windows/build.spec</code>.</p>
+<h2 id="testing-built-binaries"><a class="header" href="#testing-built-binaries">Testing Built Binaries</a></h2>
+<p>The <code>binary_tests/</code> directory contains release-asset tests for the compiled <code>deposit</code> binary. Most drive the binary over a PTY with <code>expect</code> (a fully interactive happy path per CLI command, plus general TTY checks) and require <code>expect</code> on <code>PATH</code> (<code>sudo apt install expect</code> on Debian/Ubuntu, <code>brew install expect</code> on macOS); they replace the old root-level <code>test_binary_*.py</code> scripts. <code>binary_tests/test_non_interactive.sh</code> instead covers the expect-free <code>--non_interactive</code> flow (exit code and output file only), so it also runs on Windows.</p>
+<p>Build a binary and run the whole suite against it:</p>
+<pre><code class="language-sh">make binary_test
+</code></pre>
+<p>This builds a standalone binary (via <code>build_linux</code>/<code>build_macos</code>, output in <code>./dist</code>) and then runs the release-asset tests against it: <code>binary_tests/run_tests.sh</code> (the interactive, expect-driven suite) and <code>binary_tests/test_non_interactive.sh</code> (the expect-free <code>--non_interactive</code> flow).</p>
+<p>To test an existing build output (e.g. an unpacked release archive) without rebuilding:</p>
+<pre><code class="language-sh">bash binary_tests/run_tests.sh ./dist
+bash binary_tests/run_tests.sh -s new_mnemonic ./dist   # a single test
+bash binary_tests/run_tests.sh -l                        # list the available tests
+</code></pre>
+<p>The same suite can be run through tox against a pre-built binary:</p>
+<pre><code class="language-sh">make build_linux          # or make build_macos
+tox -e binary-test
+BINARY_TEST_BINARY_DIR=/path/to/binary-dir tox -e binary-test
+</code></pre>
+<p>In CI the suite runs on the Linux and macOS <code>ci-build</code> matrix entries as part of the release build workflow (<code>.github/workflows/build.yml</code>); Windows release assets are covered there by the <code>--version</code> smoke test and the <code>binary_tests/test_non_interactive.sh</code> check, which needs no expect.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="release-process-instructions"><a class="header" href="#release-process-instructions">Release Process Instructions</a></h1>
 <p>This document is meant as a guide on how to perform and publish a new release version of <a href="https://github.com/ethstaker/ethstaker-deposit-cli">ethstaker-deposit-cli</a>. It includes step by step instructions to complete the release process.</p>
 <ol>
