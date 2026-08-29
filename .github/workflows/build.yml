@@ -171,6 +171,10 @@ jobs:
         uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          # Don't auto-tag `latest` here: whether a release is a pre-release is only decided
+          # later, manually, on the draft release. See docker-latest.yml for the `latest` tag.
+          flavor: |
+            latest=false
       # Set up Qemu for multi-arch build
       - name: Set up Qemu
         # This pinned action came from docker/setup-qemu-action@v3, releases can be found on https://github.com/docker/setup-qemu-action/releases
