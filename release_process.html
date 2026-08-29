@@ -177,8 +177,8 @@
 <p>This document is meant as a guide on how to perform and publish a new release version of <a href="https://github.com/ethstaker/ethstaker-deposit-cli">ethstaker-deposit-cli</a>. It includes step by step instructions to complete the release process.</p>
 <ol>
 <li>Make sure all the tests from the latest <a href="https://github.com/ethstaker/ethstaker-deposit-cli/actions/workflows/runner.yml">ci-runner workflow</a> on the latest commit of the main branch are completed. Make sure all tests are passing on all the supported platforms.</li>
-<li>Determine a new version number. Version numbers should adhere to <a href="https://semver.org/">Semantic Versioning</a>. For any official release, it should include a major, a minor and a patch identifier like <code>1.0.0</code>.</li>
-<li>Update <code>ethstaker_deposit/VERSION</code>'s content with the new version number, with no <code>dev</code> (or other) suffix. Commit this change to the main branch of the main repository. This is a hard requirement: <a href="https://github.com/ethstaker/ethstaker-deposit-cli/actions/workflows/pypi.yml">the ci-pypi workflow</a> (see step 6 below) refuses to publish to PyPI if this file doesn't exactly match the tag pushed in the next step.</li>
+<li>Determine a new version number. Version numbers should adhere to <a href="https://semver.org/">Semantic Versioning</a>. For any official release, it should include a major, a minor and a patch identifier like <code>1.0.0</code>. For a pre-release append a <a href="https://peps.python.org/pep-0440/">PEP 440</a> pre-release identifier such as <code>rc1</code> e.g. <code>1.4.0-rc1</code>. This suffix is the only thing that makes PyPi treat the library package as a pre-release, and it can't be added or removed after the fact.</li>
+<li>Update <code>ethstaker_deposit/VERSION</code>'s content with the new version number (including the pre-release suffix from step 2, if any). Commit this change to the main branch of the main repository. This is a hard requirement: <a href="https://github.com/ethstaker/ethstaker-deposit-cli/actions/workflows/pypi.yml">the ci-pypi workflow</a> (see step 8 below) refuses to publish to PyPI if this file doesn't exactly match the tag pushed in the next step, or if its pre-release status doesn't match the <em>Set as a pre-release</em> checkbox in step 7.</li>
 <li>Add a tag to the main repository for this changed version commit above. The name of this tag should be a string starting with <code>v</code> concatenated with the version number. With git, the main repository cloned and the commit above being the head, it can look like this:</li>
 </ol>
 <pre><code class="language-console">git tag -a -m 'Version 1.0.0' v1.0.0
@@ -186,11 +186,15 @@ git push origin v1.0.0
 </code></pre>
 <ol start="5">
 <li>Wait for all the build assets and the draft release to be created by <a href="https://github.com/ethstaker/ethstaker-deposit-cli/actions/workflows/build.yml">the ci-build workflow</a>.</li>
-<li>The tag push also triggers <a href="https://github.com/ethstaker/ethstaker-deposit-cli/actions/workflows/pypi.yml">the ci-pypi workflow</a>, which builds and publishes the package to PyPI. This workflow waits for approval against the <code>pypi</code> environment's protection rule — open the workflow run in the Actions tab and approve the pending deployment to let it proceed.</li>
 <li>Open the draft release and fill in the different sections correctly.</li>
-<li>If this is not a production release, check the <em>Set as a pre-release</em> checkbox.</li>
-<li>Click the <em>Publish release</em> button. This triggers <a href="https://github.com/ethstaker/ethstaker-deposit-cli/actions/workflows/docker-latest.yml">the docker-latest workflow</a>, which points the <code>latest</code> Docker tag at this release's image — unless it was checked as a pre-release in step 8, in which case <code>latest</code> is left untouched.</li>
-<li>Determine a new dev version number. You can try to guess the next version number to the best of your ability. This will always be subject to change. Add a <code>dev</code> identifier to the version number to clearly indicate this is a dev version number.</li>
+<li>Check the <em>Set as a pre-release</em> checkbox if and only if the version from step 2/3 carries a pre-release suffix — these must agree, or the ci-pypi workflow will refuse to publish in the next step.</li>
+<li>Click the <em>Publish release</em> button. This triggers:
+<ul>
+<li><a href="https://github.com/ethstaker/ethstaker-deposit-cli/actions/workflows/pypi.yml">the ci-pypi workflow</a>, which cross-checks the VERSION file's pre-release status against this release's <em>Set as a pre-release</em> flag, then builds and publishes the package to PyPI regardless of pre-release status. This workflow waits for approval against the <code>pypi</code> environment's protection rule — open the workflow run in the Actions tab and approve the pending deployment to let it proceed.</li>
+<li><a href="https://github.com/ethstaker/ethstaker-deposit-cli/actions/workflows/docker-latest.yml">the docker-latest workflow</a>, which points the <code>latest</code> Docker tag at this release's image — unless it was checked as a pre-release in step 7, in which case <code>latest</code> is left untouched.</li>
+</ul>
+</li>
+<li>Determine a new dev version number. You can try to guess the next version number to the best of your ability. This will always be subject to change. Add a <code>-dev</code> identifier to the version number.</li>
 <li>Update <code>ethstaker_deposit/VERSION</code>'s content with a new dev version number. Commit this change to the main branch.</li>
 </ol>
 <h2 id="release-notes-template"><a class="header" href="#release-notes-template">Release Notes Template</a></h2>
