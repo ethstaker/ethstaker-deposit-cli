@@ -26,6 +26,12 @@ select = ["E", "W", "F", "UP", "S"]
 name = "ethstaker_deposit"
 description = "Secure key generation for deposits"
 readme = "README.md"
+license = "CC0-1.0"
+license-files = ["LICENSE"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
 dependencies = [
     "click>=8.4.2",
     "eth-typing>=6.0.0",
@@ -61,7 +67,8 @@ test = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/ethstaker/ethstaker-deposit-cli"
+Homepage = "https://github.com/ethstaker/ethstaker-deposit-cli"
+Issues = "https://github.com/ethstaker/ethstaker-deposit-cli/issues"
 
 [dependency-groups]
 dev = [
