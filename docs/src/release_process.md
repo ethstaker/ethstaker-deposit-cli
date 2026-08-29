@@ -14,7 +14,7 @@ git push origin v1.0.0
 6. The tag push also triggers [the ci-pypi workflow](https://github.com/ethstaker/ethstaker-deposit-cli/actions/workflows/pypi.yml), which builds and publishes the package to PyPI. This workflow waits for approval against the `pypi` environment's protection rule — open the workflow run in the Actions tab and approve the pending deployment to let it proceed.
 7. Open the draft release and fill in the different sections correctly.
 8. If this is not a production release, check the *Set as a pre-release* checkbox.
-9. Click the *Publish release* button.
+9. Click the *Publish release* button. This triggers [the docker-latest workflow](https://github.com/ethstaker/ethstaker-deposit-cli/actions/workflows/docker-latest.yml), which points the `latest` Docker tag at this release's image — unless it was checked as a pre-release in step 8, in which case `latest` is left untouched.
 10. Determine a new dev version number. You can try to guess the next version number to the best of your ability. This will always be subject to change. Add a `dev` identifier to the version number to clearly indicate this is a dev version number.
 11. Update `ethstaker_deposit/VERSION`'s content with a new dev version number. Commit this change to the main branch.
 
