@@ -104,10 +104,10 @@ class SortedGroup(click.Group):
 )
 @click.version_option(version=DEPOSIT_CLI_VERSION)
 def cli(ctx: click.Context, language: str, non_interactive: bool, ignore_connectivity: bool) -> None:
-    if not ignore_connectivity and not non_interactive:
-        check_connectivity()
     config.language = language
     config.non_interactive = non_interactive  # Remove interactive commands
+    if not ignore_connectivity and not non_interactive:
+        check_connectivity()
 
 
 for command in commands:
