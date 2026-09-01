@@ -10,7 +10,7 @@ def resource_path(relative_path: str) -> str:
     into a resource path so it is available both when building binaries and running natively.
     """
     try:
-        base_path = sys._MEIPASS  # type: ignore
+        base_path: str = getattr(sys, '_MEIPASS')
     except Exception:
         base_path = os.path.abspath(".")
     return os.path.join(base_path, relative_path)

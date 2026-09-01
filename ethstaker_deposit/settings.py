@@ -107,9 +107,9 @@ def get_devnet_chain_setting(network_name: str,
                              genesis_fork_version: str,
                              exit_fork_version: str,
                              genesis_validator_root: str | None,
-                             multiplier: int | None = 1,
-                             min_activation_amount: float | None = 32,
-                             min_deposit_amount: float | None = 1) -> BaseChainSetting:
+                             multiplier: int = 1,
+                             min_activation_amount: float = 32,
+                             min_deposit_amount: float = 1) -> BaseChainSetting:
 
     return BaseChainSetting(
         NETWORK_NAME=network_name,

@@ -1,6 +1,5 @@
 import inspect
 import difflib
-from functools import reduce
 import json
 from typing import Any
 from collections.abc import Iterable, Mapping, Sequence
@@ -21,7 +20,11 @@ def _get_from_dict(dataDict: dict[str, Any], mapList: Iterable[str]) -> str:
     Iterate nested dictionaries
     '''
     try:
-        ans = reduce(dict.get, mapList, dataDict)
+        # Unbound dict.get keeps the existing contract: a missing key yields None and a
+        # non-dict intermediate raises TypeError, both of which surface below as KeyError.
+        ans: Any = dataDict
+        for key in mapList:
+            ans = dict.get(ans, key)
         if not isinstance(ans, str):
             raise ValidationError('Incomplete')
         return ans

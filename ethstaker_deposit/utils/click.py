@@ -61,7 +61,7 @@ class JITOption(click.Option):
         self.prompt = _value_of(self.callable_prompt)
         return super().prompt_for_value(ctx)
 
-    def get_help_record(self, ctx: click.Context) -> tuple[str, str]:
+    def get_help_record(self, ctx: click.Context) -> tuple[str, str] | None:
         self.help = _value_of(self.callable_help)
         return super().get_help_record(ctx)
 
@@ -211,7 +211,7 @@ def captive_prompt_callback(
     confirmation_prompt: Callable[[], str] | None = None,
     confirmation_mismatch_msg: Callable[[], str] = lambda: '',
     hide_input: bool = False,
-    default: Callable[[], str] | str | None = None,
+    default: Callable[[], str | None] | str | None = None,
     prompt_if: Callable[[click.Context, Any, str], bool] | None = None,
     prompt_marker: str = '',
 ) -> Callable[[click.Context, str, str], Any]:

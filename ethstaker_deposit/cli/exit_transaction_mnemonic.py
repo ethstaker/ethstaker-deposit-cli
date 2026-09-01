@@ -111,7 +111,7 @@ def exit_transaction_mnemonic(
     with click.progressbar(length=num_keys, label=load_text(['msg_key_creation']),
                            show_percent=False, show_pos=True) as bar:
 
-        executor_kwargs = [{
+        executor_kwargs: list[dict[str, Any]] = [{
             'mnemonic': mnemonic,
             'mnemonic_password': mnemonic_password,
             'index': index,
