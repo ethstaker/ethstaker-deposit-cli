@@ -122,9 +122,6 @@ def run() -> None:
     except (MultiLanguageError, ValueError, ValidationError) as e:
         click.echo(f"\nError: {e}\n", err=True)
         sys.exit(1)
-    except KeyboardInterrupt:
-        sys.stderr.write('Aborted!\n')
-        sys.exit(1)
 
 
 if __name__ == '__main__':
