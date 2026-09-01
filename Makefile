@@ -45,7 +45,7 @@ venv_build_test: venv_build
 	$(VENV_PYTHON) -m pip install --require-hashes -r requirements.txt -r requirements_test.txt
 
 venv_test: venv_build_test
-	$(VENV_PYTHON) -m pytest ./tests
+	PYTHONWARNINGS=error::DeprecationWarning,error::PendingDeprecationWarning $(VENV_PYTHON) -m pytest ./tests
 
 venv_lint: venv_build_test
 	$(VENV_PYTHON) -m ruff check ./ethstaker_deposit ./tests && $(VENV_PYTHON) -m mypy --config-file mypy.ini -p ethstaker_deposit
