@@ -282,11 +282,11 @@ wheels = [
 
 [[package]]
 name = "click"
-version = "8.5.0"
+version = "8.5.1"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/c7/0e/7fa0ef50764b67090eca4114772a2abf8b6148198475e54c660b97caeee6/click-8.5.0.tar.gz", hash = "sha256:ba0d2089de75ea0310e2dde03160e6ca10009947fb95a182f9b54021bb272e34", size = 382235, upload-time = "2026-08-26T13:33:14.56Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/45/37/edbf1b0707709013c0cf2e8317e03d97ed29bf4cac709fe328904ae92a38/click-8.5.1.tar.gz", hash = "sha256:9bbfada76703fd1d784b83eea012e3e8c6a001a876543ef104fa56aaaeb072b4", size = 399151, upload-time = "2026-11-06T17:37:01.021Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/58/50/6c0d534c5f134586a8e1ba4e330569e32f057e33372ae556463212fb4cd3/click-8.5.0-py3-none-any.whl", hash = "sha256:255bc9599cf7748b4b1a446ccc735421bd08a2ae529a8b88597d3de5664ee360", size = 125251, upload-time = "2026-08-26T13:33:12.928Z" },
+    { url = "https://files.pythonhosted.org/packages/31/7d/164b7ffc8624fe9efb4221bf9af485d5c1e41b9ae118045d2b6dc5457d8b/click-8.5.1-py3-none-any.whl", hash = "sha256:8bb5376d2006950386f8c6427613334a2acadc5f559cb80e638d00b4df957e37", size = 126163, upload-time = "2026-11-06T17:36:59.287Z" },
 ]
 
 [[package]]
@@ -677,71 +677,25 @@ wheels = [
 name = "ethstaker-deposit"
 source = { editable = "." }
 dependencies = [
-    { name = "annotated-types" },
-    { name = "attrs" },
     { name = "click" },
     { name = "colorama", marker = "sys_platform == 'win32'" },
-    { name = "cytoolz", marker = "implementation_name == 'cpython'" },
-    { name = "eth-hash" },
     { name = "eth-typing" },
     { name = "eth-utils" },
     { name = "jsonschema" },
-    { name = "jsonschema-specifications" },
-    { name = "lru-dict" },
     { name = "py-ecc" },
     { name = "pycryptodome" },
-    { name = "pydantic" },
-    { name = "pydantic-core" },
     { name = "pyperclip" },
-    { name = "pyrsistent" },
-    { name = "referencing" },
-    { name = "rpds-py" },
     { name = "ssz" },
-    { name = "toolz", marker = "implementation_name == 'cpython' or implementation_name == 'pypy'" },
-    { name = "typing-extensions" },
-    { name = "typing-inspection" },
 ]
 
 [package.optional-dependencies]
 test = [
-    { name = "ast-serialize" },
-    { name = "boolean-py" },
-    { name = "cachecontrol" },
-    { name = "certifi" },
-    { name = "charset-normalizer" },
     { name = "coverage" },
-    { name = "cyclonedx-python-lib" },
-    { name = "defusedxml" },
-    { name = "filelock" },
-    { name = "idna" },
-    { name = "iniconfig" },
-    { name = "librt", marker = "platform_python_implementation != 'PyPy'" },
-    { name = "license-expression" },
-    { name = "markdown-it-py" },
-    { name = "mdurl" },
-    { name = "msgpack" },
     { name = "mypy" },
-    { name = "mypy-extensions" },
-    { name = "packageurl-python" },
-    { name = "packaging" },
-    { name = "pathspec" },
-    { name = "pip-api" },
     { name = "pip-audit" },
-    { name = "pip-requirements-parser" },
-    { name = "platformdirs" },
-    { name = "pluggy" },
-    { name = "py-serializable" },
-    { name = "pygments" },
-    { name = "pyparsing" },
     { name = "pytest" },
     { name = "pytest-asyncio" },
-    { name = "requests" },
-    { name = "rich" },
     { name = "ruff" },
-    { name = "sortedcontainers" },
-    { name = "tomli" },
-    { name = "tomli-w" },
-    { name = "urllib3" },
 ]
 
 [package.dev-dependencies]
@@ -751,67 +705,21 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "annotated-types", specifier = ">=0.6.0" },
-    { name = "ast-serialize", marker = "extra == 'test'", specifier = "==0.13.1" },
-    { name = "attrs", specifier = ">=22.2.0" },
-    { name = "boolean-py", marker = "extra == 'test'", specifier = "==5.0" },
-    { name = "cachecontrol", marker = "extra == 'test'", specifier = "==0.14.4" },
-    { name = "certifi", marker = "extra == 'test'", specifier = "==2026.10.23" },
-    { name = "charset-normalizer", marker = "extra == 'test'", specifier = "==3.5.2" },
-    { name = "click", specifier = ">=8.4.2" },
+    { name = "click", specifier = ">=8.5.1" },
     { name = "colorama", marker = "sys_platform == 'win32'", specifier = ">=0.4.6" },
     { name = "coverage", marker = "extra == 'test'", specifier = "==7.17.0" },
-    { name = "cyclonedx-python-lib", marker = "extra == 'test'", specifier = "==11.12.0" },
-    { name = "cytoolz", marker = "implementation_name == 'cpython'", specifier = ">=0.10.1" },
-    { name = "defusedxml", marker = "extra == 'test'", specifier = "==0.7.1" },
-    { name = "eth-hash", specifier = ">=0.3.1" },
     { name = "eth-typing", specifier = ">=6.0.0" },
     { name = "eth-utils", specifier = ">=6.0.0" },
-    { name = "filelock", marker = "extra == 'test'", specifier = "==4.2.4" },
-    { name = "idna", marker = "extra == 'test'", specifier = "==3.20" },
-    { name = "iniconfig", marker = "extra == 'test'", specifier = "==2.3.1" },
     { name = "jsonschema", specifier = ">=4.26.0" },
-    { name = "jsonschema-specifications", specifier = ">=2023.3.6" },
-    { name = "librt", marker = "platform_python_implementation != 'PyPy' and extra == 'test'", specifier = "==0.16.0" },
-    { name = "license-expression", marker = "extra == 'test'", specifier = "==30.4.4" },
-    { name = "lru-dict", specifier = ">=1.1.6" },
-    { name = "markdown-it-py", marker = "extra == 'test'", specifier = "==4.2.0" },
-    { name = "mdurl", marker = "extra == 'test'", specifier = "==0.1.2" },
-    { name = "msgpack", marker = "extra == 'test'", specifier = "==1.2.4" },
     { name = "mypy", marker = "extra == 'test'", specifier = "==2.4.1" },
-    { name = "mypy-extensions", marker = "extra == 'test'", specifier = "==1.1.0" },
-    { name = "packageurl-python", marker = "extra == 'test'", specifier = "==0.17.6" },
-    { name = "packaging", marker = "extra == 'test'", specifier = "==26.3" },
-    { name = "pathspec", marker = "extra == 'test'", specifier = "==1.1.1" },
-    { name = "pip-api", marker = "extra == 'test'", specifier = "==0.0.35" },
     { name = "pip-audit", marker = "extra == 'test'", specifier = "==2.10.1" },
-    { name = "pip-requirements-parser", marker = "extra == 'test'", specifier = "==32.0.1" },
-    { name = "platformdirs", marker = "extra == 'test'", specifier = "==4.14.0" },
-    { name = "pluggy", marker = "extra == 'test'", specifier = "==1.7.0" },
     { name = "py-ecc", specifier = ">=8.0.0" },
-    { name = "py-serializable", marker = "extra == 'test'", specifier = "==2.1.0" },
     { name = "pycryptodome", specifier = ">=3.23.0" },
-    { name = "pydantic", specifier = ">=2.0.0" },
-    { name = "pydantic-core", specifier = ">=2.0.1" },
-    { name = "pygments", marker = "extra == 'test'", specifier = "==2.21.0" },
-    { name = "pyparsing", marker = "extra == 'test'", specifier = "==3.3.3" },
     { name = "pyperclip", specifier = ">=1.11.0" },
-    { name = "pyrsistent", specifier = ">=0.16.0" },
     { name = "pytest", marker = "extra == 'test'", specifier = "==9.2.0" },
     { name = "pytest-asyncio", marker = "extra == 'test'", specifier = "==1.4.1" },
-    { name = "referencing", specifier = ">=0.31.0" },
-    { name = "requests", marker = "extra == 'test'", specifier = "==2.34.2" },
-    { name = "rich", marker = "extra == 'test'", specifier = "==15.0.0" },
-    { name = "rpds-py", specifier = ">=0.25.0" },
     { name = "ruff", marker = "extra == 'test'", specifier = "==0.17.3" },
-    { name = "sortedcontainers", marker = "extra == 'test'", specifier = "==2.4.0" },
     { name = "ssz", specifier = ">=0.5.2" },
-    { name = "tomli", marker = "extra == 'test'", specifier = "==2.5.0" },
-    { name = "tomli-w", marker = "extra == 'test'", specifier = "==1.2.0" },
-    { name = "toolz", marker = "implementation_name == 'cpython' or implementation_name == 'pypy'", specifier = ">=0.9.0" },
-    { name = "typing-extensions", specifier = ">=4.15.0" },
-    { name = "typing-inspection", specifier = ">=0.4.2" },
-    { name = "urllib3", marker = "extra == 'test'", specifier = "==2.8.0" },
 ]
 provides-extras = ["test"]
 
