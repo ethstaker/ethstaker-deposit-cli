@@ -39,8 +39,8 @@ jobs:
           GH_PRERELEASE="${{ github.event.release.prerelease }}"
           echo "Version is_prerelease: ${IS_PRERELEASE}"
           echo "GitHub release prerelease flag: ${GH_PRERELEASE}"
-          if [[ "${IS_PRERELEASE,,}" != "${GH_PRERELEASE}" ]]; then
-            echo "::error::ethstaker_deposit/VERSION (${FILE_VERSION}) pre-release status (${IS_PRERELEASE}) does not match this release's 'Set as a pre-release' flag (${GH_PRERELEASE}). Refusing to publish to PyPI."
+          if [[ "${IS_PRERELEASE,,}" != "${GH_PRERELEASE,,}" ]]; then
+            echo "::error::ethstaker_deposit/VERSION (${FILE_VERSION}) pre-release status (${IS_PRERELEASE,,}) does not match this release's 'Set as a pre-release' flag (${GH_PRERELEASE,,}). Refusing to publish to PyPI."
             exit 1
           fi
 
