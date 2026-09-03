@@ -251,13 +251,15 @@ class Credential:
         decryption_key = saved_keystore._get_decryption_key(password=password)
         return (decryption_key, saved_keystore.crypto.kdf.params['salt'])
 
-    def get_bls_to_execution_change(self, validator_index: int) -> SignedBLSToExecutionChange:
-        if self.withdrawal_address is None:
-            raise ValueError("The withdrawal address should NOT be empty.")
+    def _require_genesis_validators_root(self) -> bytes:
         if self.chain_setting.GENESIS_VALIDATORS_ROOT is None:
             raise ValidationError("The genesis validators root should NOT be empty "
                                   "for this chain to obtain the BLS to execution change.")
+        return self.chain_setting.GENESIS_VALIDATORS_ROOT
 
+    def get_bls_to_execution_change(self, validator_index: int) -> SignedBLSToExecutionChange:
+        if self.withdrawal_address is None:
+            raise ValueError("The withdrawal address should NOT be empty.")
         message = BLSToExecutionChange(  # type: ignore[no-untyped-call]
             validator_index=validator_index,
             from_bls_pubkey=self.withdrawal_pk,
@@ -265,7 +267,7 @@ class Credential:
         )
         domain = compute_bls_to_execution_change_domain(
             fork_version=self.chain_setting.GENESIS_FORK_VERSION,
-            genesis_validators_root=self.chain_setting.GENESIS_VALIDATORS_ROOT,
+            genesis_validators_root=self._require_genesis_validators_root(),
         )
         signing_root = compute_signing_root(message, domain)
         signature = bls.Sign(self.withdrawal_sk, signing_root)
@@ -293,7 +295,7 @@ class Credential:
         # metadata
         metadata: dict[str, Any] = {
             'network_name': self.chain_setting.NETWORK_NAME,
-            'genesis_validators_root': '0x' + self.chain_setting.GENESIS_VALIDATORS_ROOT.hex(),
+            'genesis_validators_root': '0x' + self._require_genesis_validators_root().hex(),
             'deposit_cli_version': DEPOSIT_CLI_VERSION,
         }
 

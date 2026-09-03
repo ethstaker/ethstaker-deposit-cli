@@ -64,7 +64,7 @@ commands = [
 class SortedGroup(click.Group):
 
     def list_commands(self, ctx: click.Context) -> list[str]:
-        return [x.name for x in commands]
+        return [x.name for x in commands if x.name is not None]
 
 
 @click.group(cls=SortedGroup)

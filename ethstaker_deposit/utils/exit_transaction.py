@@ -3,6 +3,7 @@ import os
 from typing import Any
 from py_ecc.bls import G2ProofOfPossession as bls
 
+from ethstaker_deposit.exceptions import ValidationError
 from ethstaker_deposit.settings import BaseChainSetting
 from ethstaker_deposit.utils.ssz import (
     SignedVoluntaryExit,
@@ -20,6 +21,10 @@ def exit_transaction_generation(
         signing_key: int,
         validator_index: int,
         epoch: int) -> SignedVoluntaryExit:
+    if chain_setting.GENESIS_VALIDATORS_ROOT is None:
+        raise ValidationError("The genesis validators root should NOT be empty "
+                              "for this chain to sign a voluntary validator exit message.")
+
     message = VoluntaryExit(  # type: ignore[no-untyped-call]
         epoch=epoch,
         validator_index=validator_index

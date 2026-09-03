@@ -282,7 +282,8 @@ def validate_int_range(num: Any, low: int, high: int) -> int:
         raise ValidationError(load_text(['err_not_positive_integer']))
 
 
-def validate_withdrawal_address(cts: click.Context, param: Any, address: str, require: bool = False) -> HexAddress:
+def validate_withdrawal_address(ctx: click.Context | None, param: Any, address: str,
+                                require: bool = False) -> HexAddress | None:
     if address in ("", None):
         if require:
             raise ValidationError(load_text(['err_missing_address']))
@@ -297,7 +298,7 @@ def validate_withdrawal_address(cts: click.Context, param: Any, address: str, re
     return normalized_address
 
 
-def validate_yesno(ctx: click.Context, param: Any, value: str) -> bool:
+def validate_yesno(ctx: click.Context | None, param: Any, value: str) -> bool:
     '''
     Verifies that a value is part of the bool values accepted by click. The string values “1”, “true”,
     “t”, “yes”, “y”, and “on” convert to True. “0”, “false”, “f”, “no”, “n”, and “off” convert to False.
@@ -544,6 +545,10 @@ def validate_signed_exit(validator_index: str,
                          signature: str,
                          pubkey: str,
                          chain_setting: BaseChainSetting) -> bool:
+    if chain_setting.GENESIS_VALIDATORS_ROOT is None:
+        raise ValidationError(load_text(['missing_genesis_validators_root'],
+                                        func='validate_genesis_validators_root'))
+
     bls_pubkey = BLSPubkey(bytes.fromhex(pubkey))
     bls_signature = BLSSignature(decode_hex(signature))
     message = VoluntaryExit(  # type: ignore[no-untyped-call]
@@ -584,6 +589,10 @@ def validate_bls_to_execution_change_keystore(validator_index: str,
                                               signature: str,
                                               pubkey: str,
                                               chain_setting: BaseChainSetting) -> bool:
+    if chain_setting.GENESIS_VALIDATORS_ROOT is None:
+        raise ValidationError(load_text(['missing_genesis_validators_root'],
+                                        func='validate_genesis_validators_root'))
+
     bls_pubkey = BLSPubkey(bytes.fromhex(pubkey))
     bls_signature = BLSSignature(decode_hex(signature))
     message = BLSToExecutionChangeKeystore(  # type: ignore[no-untyped-call]
