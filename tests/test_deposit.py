@@ -1,11 +1,11 @@
 import os
 import socket
+import sys
 
 import click
 import pytest
 from click.testing import CliRunner
 
-from ethstaker_deposit import deposit
 from ethstaker_deposit.deposit import check_connectivity, cli, run
 from tests.test_cli.helpers import clean_key_folder
 
@@ -151,20 +151,80 @@ def test_should_not_check_connectivity_with_non_interactive(monkeypatch) -> None
     clean_key_folder(my_folder_path)
 
 
-def test_run_handles_keyboard_interrupt_from_cli(monkeypatch, capsys) -> None:
-    # Simulates a KeyboardInterrupt escaping click's own Abort handling
-    # (see click's `except Abort:` block in `BaseCommand.main`), which can
-    # happen if a second interrupt fires while click is echoing "Aborted!".
-    def _mock_cli():
+class _RecordingStderr:
+    '''
+    A stderr stand-in that records what is written to it and can raise a second
+    KeyboardInterrupt from isatty(), simulating a Ctrl+C that lands while click
+    is reporting the abort for the first one.
+
+    click's echo() calls should_strip_ansi() -> isatty() before writing, and
+    click._compat.isatty() only catches Exception, so a KeyboardInterrupt raised
+    there escapes Command.main() entirely. That is where the traceback in
+    https://github.com/pallets/click/issues/3802 ended.
+
+    Counting only starts once arm() is called, so `interrupt_at` is relative to
+    the abort sequence rather than to any earlier stderr output from the CLI.
+    '''
+
+    def __init__(self, interrupt_at: int | None = None):
+        self.text = ''
+        self.interrupt_at = interrupt_at
+        self.isatty_calls = 0
+        self.armed = False
+
+    def arm(self) -> None:
+        self.armed = True
+
+    def isatty(self) -> bool:
+        if self.armed:
+            self.isatty_calls += 1
+            if self.isatty_calls == self.interrupt_at:
+                raise KeyboardInterrupt()
+        return False
+
+    def write(self, value: str) -> int:
+        self.text += value
+        return len(value)
+
+    def flush(self) -> None:
+        pass
+
+
+@pytest.mark.parametrize('interrupt_at', [None, 1])
+def test_run_handles_keyboard_interrupt_at_prompt(monkeypatch, interrupt_at) -> None:
+    '''
+    Ctrl+C at the mnemonic language prompt must exit 1, even if a second
+    interrupt arrives while click writes "Aborted!". The message is best effort
+    once that happens, but the exit code is not.
+
+    This drives the real `cli` through `run()`: the interrupt is injected where a
+    real one lands (click's input function), not by replacing `cli` itself, so
+    click's own Abort handling is what is under test.
+    '''
+    stderr = _RecordingStderr(interrupt_at=interrupt_at)
+
+    def _interrupt_prompt(text: str) -> str:
+        stderr.arm()
         raise KeyboardInterrupt()
 
-    monkeypatch.setattr(deposit, 'cli', _mock_cli)
+    monkeypatch.setattr('click.termui.visible_prompt_func', _interrupt_prompt)
+    monkeypatch.setattr(sys, 'stderr', stderr)
+    monkeypatch.setattr(sys, 'argv', [
+        'deposit', '--language', 'english', '--ignore_connectivity', 'generate-mnemonic',
+    ])
 
-    with pytest.raises(SystemExit) as exc_info:
+    try:
         run()
+    except SystemExit as e:
+        exit_code = e.code
+    except KeyboardInterrupt:
+        pytest.fail('KeyboardInterrupt escaped click Command.main(); see pallets/click#3802')
+    else:
+        pytest.fail('run() returned without exiting')
 
-    assert exc_info.value.code == 1
-    assert 'Aborted!' in capsys.readouterr().err
+    assert exit_code == 1
+    if interrupt_at is None:
+        assert 'Aborted!' in stderr.text
 
 
 def test_should_not_check_connectivity_with_both_non_interactive_or_ignore_connectivity(monkeypatch) -> None:

@@ -8,7 +8,7 @@ repos:
     hooks:
     - id: mypy
       additional_dependencies:
-        - click==8.1.8
+        - click>=8.5.1
         - eth-typing==5.1.0
         - eth-utils==5.1.0
         - pycryptodome==3.21.0
