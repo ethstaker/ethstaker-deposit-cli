@@ -92,7 +92,7 @@ class InteractiveProcess:
                 self._process.stdout.readline(),
                 timeout=self._read_timeout,
             )
-        except asyncio.TimeoutError as e:
+        except TimeoutError as e:
             raise self.fail(
                 f'Timed out after {self._read_timeout}s waiting for subprocess output'
             ) from e
@@ -148,7 +148,7 @@ class InteractiveProcess:
         '''
         try:
             await asyncio.wait_for(self._process.wait(), timeout=self._exit_timeout)
-        except asyncio.TimeoutError as e:
+        except TimeoutError as e:
             self._process.kill()
             await self._process.wait()
             raise self.fail(
