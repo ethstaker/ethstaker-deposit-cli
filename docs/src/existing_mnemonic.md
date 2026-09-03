@@ -7,7 +7,7 @@ Uses an existing BIP-39 mnemonic phrase for key generation.
 
 ## Optional Arguments
 
-- **`--chain`**: The chain to use for generating the deposit data. Options are: 'mainnet', 'sepolia', 'hoodi', 'plataberget', 'ephemery', 'gnosis', or 'chiado'.
+- **`--chain`**: The chain to use for generating the deposit data. Options are: 'mainnet', 'sepolia', 'hoodi', 'ephemery', 'gnosis', or 'chiado'.
 
 - **`--mnemonic`**: The mnemonic to use to create validator keys. <span class="warning"></span>
 
