@@ -14,7 +14,7 @@ from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[1] / "ethstaker_deposit" / "intl"
-LANGUAGES = ("ar", "de", "el", "fr", "id",  "it", "ja", "ko", "pt-BR", "ro", "tr", "zh-CN")
+LANGUAGES = ("ar", "de", "el", "fr", "id", "it", "ja", "ko", "pt-BR", "ro", "tr", "zh-CN")
 
 
 def leaves(value: Any, prefix: str = "") -> dict[str, Any]:

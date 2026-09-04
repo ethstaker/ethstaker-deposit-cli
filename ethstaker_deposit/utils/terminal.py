@@ -25,18 +25,18 @@ def clear_terminal() -> None:
             if os.getenv("IS_ASYNC_TEST") == "1":
                 click.clear()
             elif shutil.which('clear'):
-                subprocess.run(['clear'])  # noqa: S607
+                subprocess.run(['clear'])  # noqa: S603, S607
             else:
                 # cls is a Windows shell builtin and cannot run without a shell.
                 subprocess.run('cls', shell=True)  # noqa: S602, S607
         elif sys.platform == 'linux' or sys.platform == 'darwin':
             if shutil.which('clear'):
-                subprocess.run(['clear'], env=clean_env)  # noqa: S607
+                subprocess.run(['clear'], env=clean_env)  # noqa: S603, S607
             else:
                 click.clear()
             if shutil.which('tput'):
-                subprocess.run(['tput', 'reset'], env=clean_env)  # noqa: S607
+                subprocess.run(['tput', 'reset'], env=clean_env)  # noqa: S603, S607
             if shutil.which('reset'):
-                subprocess.run(['reset'], env=clean_env)  # noqa: S607
+                subprocess.run(['reset'], env=clean_env)  # noqa: S603, S607
         else:
             click.clear()

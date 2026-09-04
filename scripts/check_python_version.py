@@ -3,8 +3,8 @@
 from __future__ import annotations
 import re
 import sys
+from collections.abc import Sequence
 from pathlib import Path
-from typing import Sequence
 
 
 VERSION_SPECIFIER = re.compile(r'(?P<operator>>=|<)\s*(?P<major>\d+)(?:\.(?P<minor>\d+))?')

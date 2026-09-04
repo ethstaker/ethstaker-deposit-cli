@@ -31,7 +31,7 @@ def literal_string(node: ast.AST | None) -> str | None:
 
 
 def literal_params(node: ast.AST | None) -> list[str] | None:
-    if not isinstance(node, (ast.List, ast.Tuple)):
+    if not isinstance(node, ast.List | ast.Tuple):
         return None
     values = [literal_string(element) for element in node.elts]
     return values if all(value is not None for value in values) else None
@@ -88,11 +88,14 @@ def deferred_helpers(root: Path) -> dict[str, tuple[list[str], list[str], dict[s
     for source_file in sorted(root.rglob("*.py")):
         tree = ast.parse(source_file.read_text(encoding="utf-8"), filename=str(source_file))
         for function in ast.walk(tree):
-            if not isinstance(function, (ast.FunctionDef, ast.AsyncFunctionDef)):
+            if not isinstance(function, ast.FunctionDef | ast.AsyncFunctionDef):
                 continue
             parameters = {argument.arg for argument in function.args.args}
             arguments = [argument.arg for argument in function.args.args]
-            defaults = dict(zip(arguments[-len(function.args.defaults):], function.args.defaults)) if function.args.defaults else {}
+            defaults = (
+                dict(zip(arguments[-len(function.args.defaults):], function.args.defaults))
+                if function.args.defaults else {}
+            )
             file_path_parameters: list[str] = []
             func_parameters: dict[str, str | None] = {}
             prefixes: list[str] = []
@@ -115,12 +118,15 @@ def deferred_helpers(root: Path) -> dict[str, tuple[list[str], list[str], dict[s
     return helpers
 
 
-def deferred_wrappers(root: Path, helpers: dict[str, tuple[list[str], list[str], dict[str, str | None], list[str]]]) -> dict[str, tuple[list[str], str]]:
+def deferred_wrappers(
+    root: Path,
+    helpers: dict[str, tuple[list[str], list[str], dict[str, str | None], list[str]]],
+) -> dict[str, tuple[list[str], str]]:
     wrappers: dict[str, tuple[list[str], str]] = {}
     for source_file in sorted(root.rglob("*.py")):
         tree = ast.parse(source_file.read_text(encoding="utf-8"), filename=str(source_file))
         for function in ast.walk(tree):
-            if not isinstance(function, (ast.FunctionDef, ast.AsyncFunctionDef)):
+            if not isinstance(function, ast.FunctionDef | ast.AsyncFunctionDef):
                 continue
             arguments = [argument.arg for argument in function.args.args]
             for node in ast.walk(function):
@@ -146,15 +152,17 @@ def translation_references(root: Path) -> tuple[dict[Path, set[str]], dict[Path,
         function_names = {
             node: node.name
             for node in ast.walk(tree)
-            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef))
+            if isinstance(node, ast.FunctionDef | ast.AsyncFunctionDef)
         }
         for node in ast.walk(tree):
             if not isinstance(node, ast.Call) or not isinstance(node.func, ast.Name) or node.func.id != "load_text":
                 continue
             if is_intl_fallback(source_file, node):
                 continue
-            if any(parent.name in deferred and parent.lineno <= node.lineno <= getattr(parent, "end_lineno", parent.lineno)
-                   for parent in function_names):
+            if any(
+                parent.name in deferred and parent.lineno <= node.lineno <= getattr(parent, "end_lineno", parent.lineno)
+                for parent in function_names
+            ):
                 continue
             params = literal_params(node.args[0] if node.args else None)
             if params is None and node.args and isinstance(node.args[0], ast.Name):
@@ -204,7 +212,7 @@ def translation_references(root: Path) -> tuple[dict[Path, set[str]], dict[Path,
                 )
             if deferred_call is None:
                 continue
-            arguments, file_path_parameters, func_parameters, prefixes = deferred_call
+            arguments, _file_path_parameters, func_parameters, prefixes = deferred_call
             values = dict(zip(arguments, node.args))
             values.update({keyword.arg: keyword.value for keyword in node.keywords if keyword.arg})
             file_path = values.get("file_path")
