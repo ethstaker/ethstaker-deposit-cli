@@ -1,10 +1,10 @@
 repos:
 - repo: https://github.com/astral-sh/ruff-pre-commit
-  rev: v0.9.2
+  rev: 73413df07b4ab0bf103ca1ae73c7cec5c0ace593
   hooks:
     - id: ruff
 - repo: https://github.com/pre-commit/mirrors-mypy
-  rev: v1.14.1
+  rev: bbc3dc1f890007061f18f17e2334f216ea9e5df7
   hooks:
     - id: mypy
       additional_dependencies:
@@ -17,7 +17,7 @@ repos:
       files: ^ethstaker_deposit/
       args: [--config-file, mypy.ini]
 - repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v5.0.0
+  rev: cef0300fd0fc4d2a87a85fa2093c6b283ea36f4b
   hooks:
     - id: check-json
       files: ^ethstaker_deposit/intl
@@ -35,6 +35,6 @@ repos:
     - id: check-case-conflict
     - id: requirements-txt-fixer
 - repo: https://github.com/shellcheck-py/shellcheck-py
-  rev: v0.11.0.1
+  rev: 745eface02aef23e168a8afb6b5737818efbea95
   hooks:
     - id: shellcheck
