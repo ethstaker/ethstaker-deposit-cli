@@ -7,6 +7,7 @@ from click.testing import CliRunner
 
 from ethstaker_deposit import deposit
 from ethstaker_deposit.deposit import check_connectivity, cli, run
+from ethstaker_deposit.utils import config
 from tests.test_cli.helpers import clean_key_folder
 
 
@@ -25,6 +26,35 @@ def test_should_pause_if_connected(monkeypatch) -> None:
 
     check_connectivity()
     assert pause_called is True
+
+
+def test_connectivity_warning_uses_selected_language(monkeypatch) -> None:
+    # The warning is emitted from the group callback, which must record the chosen
+    # language before running the connectivity check, or load_text falls back to English.
+    paused_text = None
+
+    def _mock_click_pause(text):
+        nonlocal paused_text
+        paused_text = text
+
+    def _mock_socket_getaddrinfo(url, port):
+        return True
+
+    monkeypatch.setattr(click, 'pause', _mock_click_pause)
+    monkeypatch.setattr(socket, 'getaddrinfo', _mock_socket_getaddrinfo)
+    # config.language is a module global that nothing else in the suite resets.
+    monkeypatch.setattr(config, 'language', 'en')
+
+    runner = CliRunner()
+    arguments = [
+        '--language', 'german',
+        'generate-mnemonic',
+    ]
+    result = runner.invoke(cli, arguments, input='english\n')
+
+    assert result.exit_code == 0
+    assert paused_text is not None
+    assert 'Internetverbindung erkannt' in paused_text
 
 
 def test_should_not_pause_if_not_connected(monkeypatch) -> None:
