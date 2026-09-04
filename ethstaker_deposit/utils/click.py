@@ -74,21 +74,20 @@ class JITOption(click.Option):
 
 
 def jit_option(*args: Any, **kwargs: Any) -> Callable[[Any], Any]:
-    """Attaches an option to the command.  All positional arguments are
-    passed as parameter declarations to :class:`Option`; all keyword
-    arguments are forwarded unchanged (except ``cls``).
-    This is equivalent to creating an :class:`Option` instance manually
-    and attaching it to the :attr:`Command.params` list.
+    """Attaches a :class:`JITOption` to the command.  This is
+    :func:`click.option` with ``cls`` fixed to :class:`JITOption`; all arguments
+    are forwarded unchanged.
 
-    :param cls: the option class to instantiate.  This defaults to
-                :class:`Option`.
+    :param param_decls: the parameter declarations, either as positional
+                        arguments or as a ``str``/sequence of ``str`` passed by
+                        keyword.
     """
 
-    def decorator(f: Callable[[Any], Any]) -> Callable[[Any], Any]:
-        click.decorators._param_memo(f, JITOption(*args, **kwargs))
-        return f
+    param_decls = kwargs.pop('param_decls', ())
+    if isinstance(param_decls, str):
+        param_decls = (param_decls,)
 
-    return decorator
+    return click.option(*args, *param_decls, cls=JITOption, **kwargs)
 
 
 def chain_arguments_decorator_list(
@@ -237,7 +236,7 @@ def captive_prompt_callback(
         default_value = _value_of(default) if default is not None else param.default
         if (not config.non_interactive
                 and prompt_if is not None
-                and ctx.get_parameter_source(param.name) == click.core.ParameterSource.DEFAULT
+                and ctx.get_parameter_source(param.name) == click.ParameterSource.DEFAULT
                 and prompt_if(ctx, param, user_input)):
             user_input = click.prompt(prompt(), hide_input=hide_input, default=default_value)
         if config.non_interactive:
