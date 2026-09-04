@@ -60,7 +60,7 @@ test = [
     "packaging==26.3",
     "pluggy==1.6.0",
     "typing-extensions==4.16.0",
-    "ruff==0.16.4",
+    "ruff==0.16.5",
     "Pygments==2.20.0",
     "pathspec==1.1.1",
     "pip-audit==2.10.1",
