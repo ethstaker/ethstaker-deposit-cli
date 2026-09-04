@@ -8,12 +8,12 @@ repos:
   hooks:
     - id: mypy
       additional_dependencies:
-        - click>=8.5.0
-        - eth-typing>=6.0.0
-        - eth-utils>=6.0.0
-        - pycryptodome>=3.23.0
-        - py-ecc>=8.0.0
-        - ssz>=0.6.0
+        - click==8.5.0
+        - eth-typing==6.0.0
+        - eth-utils==6.0.0
+        - pycryptodome==3.23.0
+        - py-ecc==8.0.0
+        - ssz==0.6.0
       files: ^ethstaker_deposit/
       args: [--config-file, mypy.ini]
 - repo: https://github.com/pre-commit/pre-commit-hooks
