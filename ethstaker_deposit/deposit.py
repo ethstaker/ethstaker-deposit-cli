@@ -17,6 +17,7 @@ from ethstaker_deposit.exceptions import MultiLanguageError, ValidationError
 from ethstaker_deposit.utils.click import (
     captive_prompt_callback,
     choice_prompt_func,
+    first_sentence,
     jit_option,
     deactivate_prompts_callback
 )
@@ -65,6 +66,20 @@ class SortedGroup(click.Group):
 
     def list_commands(self, ctx: click.Context) -> list[str]:
         return [x.name for x in commands if x.name is not None]
+
+    def format_commands(self, ctx: click.Context, formatter: click.HelpFormatter) -> None:
+        # click truncates each description to fit beside the longest command name, which leaves
+        # about 31 characters here. Wrap the first sentence instead of cutting it off.
+        rows = []
+        for name in self.list_commands(ctx):
+            command = self.get_command(ctx, name)
+            if command is None or command.hidden:
+                continue
+            rows.append((name, command.short_help or first_sentence(command.help or '')))
+
+        if rows:
+            with formatter.section('Commands'):
+                formatter.write_dl(rows)
 
 
 @click.group(cls=SortedGroup)

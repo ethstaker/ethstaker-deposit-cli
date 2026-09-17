@@ -232,3 +232,27 @@ def test_should_not_check_connectivity_with_both_non_interactive_or_ignore_conne
     assert connectivity_called is False
 
     clean_key_folder(my_folder_path)
+
+
+def test_help_does_not_truncate_command_descriptions() -> None:
+    runner = CliRunner()
+    result = runner.invoke(cli, ['--help'])
+
+    assert result.exit_code == 0
+    commands_section = result.output.split('Commands:')[1]
+    assert '...' not in commands_section
+    assert 'Generate a new mnemonic and keys' in commands_section
+    assert 'Generating the SignedBLSToExecutionChange data to enable withdrawals' in ' '.join(
+        commands_section.split()
+    )
+
+
+def test_help_lists_every_command() -> None:
+    runner = CliRunner()
+    result = runner.invoke(cli, ['--help'])
+
+    assert result.exit_code == 0
+    commands_section = result.output.split('Commands:')[1]
+    for command in deposit.commands:
+        assert command.name is not None
+        assert command.name in commands_section

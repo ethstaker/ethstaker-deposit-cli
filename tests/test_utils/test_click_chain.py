@@ -6,7 +6,7 @@ from click.testing import CliRunner
 
 from ethstaker_deposit.settings import HoodiSetting, MainnetSetting
 from ethstaker_deposit.utils import config
-from ethstaker_deposit.utils.click import chain_arguments_decorator, jit_option
+from ethstaker_deposit.utils.click import chain_arguments_decorator, first_sentence, jit_option
 
 
 CHAIN_SOURCE_FILE = os.path.join(
@@ -132,3 +132,29 @@ def test_amount_default_falls_back_to_mainnet_without_chain_setting() -> None:
 
     assert result.exit_code == 0
     assert result.output.strip() == str(MainnetSetting.MIN_ACTIVATION_AMOUNT)
+
+
+def test_first_sentence_stops_at_the_first_sentence() -> None:
+    assert first_sentence(
+        'Generate a new random mnemonic. If you also want to create your validator keystore.'
+    ) == 'Generate a new random mnemonic.'
+
+
+def test_first_sentence_keeps_text_without_a_sentence_end() -> None:
+    assert first_sentence('Generate a new mnemonic and keys') == 'Generate a new mnemonic and keys'
+
+
+def test_first_sentence_ignores_a_period_mid_word() -> None:
+    assert first_sentence('Deposit at least 1.5 ETH to the validator') == 'Deposit at least 1.5 ETH to the validator'
+
+
+def test_first_sentence_only_considers_the_first_paragraph() -> None:
+    assert first_sentence('First paragraph\n\nSecond paragraph.') == 'First paragraph'
+
+
+def test_first_sentence_collapses_whitespace() -> None:
+    assert first_sentence('Generate a\n    new mnemonic\tand keys') == 'Generate a new mnemonic and keys'
+
+
+def test_first_sentence_handles_empty_text() -> None:
+    assert first_sentence('') == ''

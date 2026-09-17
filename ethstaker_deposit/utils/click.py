@@ -1,4 +1,5 @@
 import click
+import re
 from typing import Any
 from collections.abc import Callable, Sequence
 
@@ -26,6 +27,16 @@ def _value_of(f: Callable[[], Any] | Any) -> Any:
     If the input, f, is a function, return f(), else return f.
     '''
     return (f() if callable(f) else f)
+
+
+def first_sentence(text: str) -> str:
+    '''
+    Returns the first sentence of a help string, collapsed onto a single line.
+    '''
+    paragraph = text.split('\n\n')[0]
+    collapsed = ' '.join(paragraph.split())
+    match = re.search(r'\.(?=\s|$)', collapsed)
+    return collapsed[:match.end()] if match else collapsed
 
 
 class JITOption(click.Option):
