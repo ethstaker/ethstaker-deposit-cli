@@ -27,7 +27,7 @@ jobs:
       # Set up buildx, needed for the `docker buildx imagetools` command below
       - name: Set up Docker Buildx
         # This pinned action came from docker/setup-buildx-action@v3, releases can be found on https://github.com/docker/setup-buildx-action/releases
-        uses: docker/setup-buildx-action@37fe631027851001ddb9b187196cc803df7f5f0e
+        uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069
       # Points the `latest` tag at the already-built, already-pushed multi-arch image for this
       # release's tag, without rebuilding it.
       - name: Tag image as latest
