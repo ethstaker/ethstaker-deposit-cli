@@ -64,25 +64,25 @@ dynamic = ["version"]
 
 [project.optional-dependencies]
 test = [
-    "mypy==2.3.1",
+    "mypy==2.4.0",
     "pytest==9.1.1",
     "pytest-asyncio==1.4.0",
     "coverage==7.16.2",
-    "ruff==0.16.9",
+    "ruff==0.16.10",
     "pip-audit==2.10.1",
     # Transitive dependencies, listed so Dependabot updates them in uv.lock,
     # pinned to the locked version. pip (via pip-api) is omitted because it
     # is not exported to requirements_test.txt.
-    "ast-serialize==0.11.2",
+    "ast-serialize==0.12.1",
     "boolean-py==5.0",
     "cachecontrol==0.14.4",
     "certifi==2026.7.22",
     "charset-normalizer==3.5.2",
     "cyclonedx-python-lib==11.12.0",
     "defusedxml==0.7.1",
-    "filelock==4.0.8",
+    "filelock==4.0.12",
     "idna==3.20",
-    "iniconfig==2.3.0",
+    "iniconfig==2.3.1",
     "librt==0.16.0 ; platform_python_implementation != 'PyPy'",
     "license-expression==30.4.4",
     "markdown-it-py==4.2.0",
@@ -94,7 +94,7 @@ test = [
     "pathspec==1.1.1",
     "pip-api==0.0.35",
     "pip-requirements-parser==32.0.1",
-    "platformdirs==4.12.2",
+    "platformdirs==4.12.4",
     "pluggy==1.6.0",
     "py-serializable==2.1.0",
     "pygments==2.21.0",
@@ -102,7 +102,7 @@ test = [
     "requests==2.34.2",
     "rich==15.0.0",
     "sortedcontainers==2.4.0",
-    "tomli==2.4.1",
+    "tomli==2.5.0",
     "tomli-w==1.2.0",
     "urllib3==2.8.0",
 ]
