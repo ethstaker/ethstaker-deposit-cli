@@ -11,7 +11,7 @@ repos:
         - click==8.5.0
         - eth-typing==6.0.0
         - eth-utils==6.0.0
-        - pycryptodome==3.24.0
+        - pycryptodome==4.0.0
         - py-ecc==8.0.0
         - ssz==0.6.0
       files: ^ethstaker_deposit/
