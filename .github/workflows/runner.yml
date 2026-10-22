@@ -24,7 +24,7 @@ jobs:
           cache: 'pip'
       - name: Install uv
         # This pinned action came from astral-sh/setup-uv@v10.0.1, releases can be found on https://github.com/astral-sh/setup-uv/releases
-        uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7
+        uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884
       - name: Install pre-commit
         run: uv sync --only-group dev --no-install-project
       - name: Cache pre-commit environments
