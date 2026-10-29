@@ -18,13 +18,13 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - name: Set up Python
-        uses: actions/setup-python@v7.0.0
+        uses: actions/setup-python@v7.1.0
         with:
           python-version: 3.14
           cache: 'pip'
       - name: Install uv
         # This pinned action came from astral-sh/setup-uv@v10.0.1, releases can be found on https://github.com/astral-sh/setup-uv/releases
-        uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884
+        uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e
       - name: Install pre-commit
         run: uv sync --only-group dev --no-install-project
       - name: Cache pre-commit environments
@@ -74,7 +74,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - name: Set up Python
-        uses: actions/setup-python@v7.0.0
+        uses: actions/setup-python@v7.1.0
         with:
           python-version: ${{ matrix.python-version }}
           cache: 'pip'
@@ -105,7 +105,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - name: Set up Python
-        uses: actions/setup-python@v7.0.0
+        uses: actions/setup-python@v7.1.0
         with:
           python-version: 3.14
           cache: 'pip'
