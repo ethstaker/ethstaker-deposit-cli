@@ -9,7 +9,7 @@
 #   * the interactive language chooser accepts input
 #   * the internet-connectivity warning and its "press any key" pause
 #     (exercised only when online, skipped cleanly when offline)
-#   * Ctrl+C at a prompt aborts with "Aborted!" and exit code 1
+#   * Ctrl+C at a prompt aborts with exit code 1
 
 source [file join [file dirname [info script]] lib.exp]
 
@@ -104,7 +104,11 @@ puts "--- tty: Ctrl+C aborts at a prompt ---"
 spawn $env(BINARY) --language english --ignore_connectivity generate-mnemonic
 expect_or_fail {language of the mnemonic word list}
 send "\x03"
-expect_or_fail {Aborted}
+# Only the exit code is asserted, not the "Aborted!" message. A second interrupt
+# can land while click is writing that message, and click's contract is that a
+# late interrupt may lose the message but never the exit code.
+# See https://github.com/pallets/click/pull/3818 and
+# https://github.com/pallets/click/issues/3802.
 expect_eof
 set result [wait]
 set exit_code [lindex $result 3]
