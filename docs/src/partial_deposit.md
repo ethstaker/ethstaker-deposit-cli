@@ -9,7 +9,7 @@ If you wish to create a validator with legacy Type 0 (0x00) credentials, you mus
 
 ## Optional Arguments
 
-- **`--chain`**: The chain to use for generating the deposit data. Options are: 'mainnet', 'sepolia', 'hoodi', 'plataberget', 'ephemery', 'gnosis', or 'chiado'.
+- **`--chain`**: The chain to use for generating the deposit data. Options are: 'mainnet', 'sepolia', 'hoodi', 'ephemery', 'gnosis', or 'chiado'.
 
 - **`--keystore`**: The keystore file associating with the validator you wish to deposit to.
 
