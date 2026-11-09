@@ -64,12 +64,12 @@ dynamic = ["version"]
 
 [project.optional-dependencies]
 test = [
-    "mypy==2.4.1",
-    "pytest==9.2.0",
-    "pytest-asyncio==1.4.1",
-    "coverage==7.17.0",
-    "ruff==0.17.3",
-    "pip-audit==2.10.1",
+    "mypy>=2.4.1",
+    "pytest>=9.2.0",
+    "pytest-asyncio>=1.4.1",
+    "coverage>=7.17.0",
+    "ruff>=0.17.3",
+    "pip-audit>=2.10.1",
     # Transitive dependencies, listed so Dependabot updates them in uv.lock,
     # pinned to the locked version. pip (via pip-api) is omitted because it
     # is not exported to requirements_test.txt.
