@@ -746,7 +746,14 @@ test = [
 
 [package.dev-dependencies]
 dev = [
+    { name = "cfgv" },
+    { name = "distlib" },
+    { name = "identify" },
+    { name = "nodeenv" },
     { name = "pre-commit" },
+    { name = "python-discovery" },
+    { name = "pyyaml" },
+    { name = "virtualenv" },
 ]
 
 [package.metadata]
@@ -816,7 +823,16 @@ requires-dist = [
 provides-extras = ["test"]
 
 [package.metadata.requires-dev]
-dev = [{ name = "pre-commit", specifier = ">=4.6.1" }]
+dev = [
+    { name = "cfgv", specifier = ">=3.5.0" },
+    { name = "distlib", specifier = ">=0.4.4" },
+    { name = "identify", specifier = ">=2.6.20" },
+    { name = "nodeenv", specifier = ">=1.11.0" },
+    { name = "pre-commit", specifier = ">=4.6.1" },
+    { name = "python-discovery", specifier = ">=1.6.7" },
+    { name = "pyyaml", specifier = ">=6.0.3" },
+    { name = "virtualenv", specifier = ">=21.15.1" },
+]
 
 [[package]]
 name = "filelock"
