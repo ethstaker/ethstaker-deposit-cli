@@ -114,4 +114,11 @@ Issues = "https://github.com/ethstaker/ethstaker-deposit-cli/issues"
 [dependency-groups]
 dev = [
     "pre-commit>=4.6.1",
+    "cfgv>=3.5.0",
+    "distlib>=0.4.4",
+    "identify>=2.6.20",
+    "nodeenv>=1.11.0",
+    "python-discovery>=1.6.7",
+    "pyyaml>=6.0.3",
+    "virtualenv>=21.15.1",
 ]
