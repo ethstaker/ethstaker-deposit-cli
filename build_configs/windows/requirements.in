@@ -1,3 +1,0 @@
-# Windows binary build requirements
-pefile
-pywin32-ctypes

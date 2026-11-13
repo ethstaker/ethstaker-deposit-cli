@@ -52,3 +52,17 @@ updates:
       precommit-deps:
         patterns:
           - "*"
+  - package-ecosystem: "pip"
+    allow:
+      - dependency-type: "all"
+    cooldown:
+      default-days: 7
+    directories:
+      - "/build_configs/common"
+      - "/build_configs/windows"
+    schedule:
+      interval: "weekly"
+    groups:
+      build-deps:
+        patterns:
+          - "*"
