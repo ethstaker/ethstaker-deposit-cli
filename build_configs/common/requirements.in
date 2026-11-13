@@ -1,5 +1,5 @@
 # common requirements.in
 cffi
 macholib
-pyinstaller>=6.10.0
+pyinstaller>=6.22.3
 setuptools
